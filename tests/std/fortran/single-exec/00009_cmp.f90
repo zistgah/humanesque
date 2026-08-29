@@ -1,0 +1,6 @@
+PROGRAM P
+  IF (3 .LT. 4) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

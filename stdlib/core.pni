@@ -1,0 +1,38 @@
+MODULE Std.Core
+    EXPORT identity, compose, map, filter, reduce
+
+    FUNCTION identity(x:Any) -> Any
+        RETURN x
+    END
+
+    FUNCTION compose(f:Function, g:Function) -> Function
+        RETURN FUNCTION(x)
+            RETURN f(g(x))
+        END
+    END
+
+    FUNCTION map(xs:List, f:Function) -> List
+        out = []
+        FOREACH x IN xs
+            out = out + [f(x)]
+        END
+        RETURN out
+    END
+
+    FUNCTION filter(xs:List, pred:Function) -> List
+        out = []
+        FOREACH x IN xs
+            IF pred(x)
+                out = out + [x]
+            END
+        END
+        RETURN out
+    END
+
+    FUNCTION reduce(xs:List, acc:Any, f:Function) -> Any
+        FOREACH x IN xs
+            acc = f(acc, x)
+        END
+        RETURN acc
+    END
+END

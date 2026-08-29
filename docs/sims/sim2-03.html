@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V1.2 - Physics & Robotics Arm</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: #020617; color: white; font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .physics-indicator { transition: all 0.2s; }
+        .collision { color: #ef4444; text-shadow: 0 0 8px #ef4444; }
+    </style>
+</head>
+<body>
+
+    <div class="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-6">
+        <div class="flex justify-between items-start pointer-events-auto">
+            <div class="glass p-4 rounded-lg">
+                <h1 class="text-blue-400 font-bold text-xl">AyeCNSe <span class="text-white">V1.2</span></h1>
+                <div id="status-tag" class="text-[10px] mt-1 text-green-400 uppercase tracking-widest">Physics: Active</div>
+            </div>
+
+            <div class="glass p-4 rounded-lg w-72">
+                <label class="text-[10px] text-slate-500 font-bold">EMBODIMENT SELECTION</label>
+                <select id="stageSelector" class="w-full bg-slate-900 text-blue-400 p-2 mt-1 rounded border border-slate-700 text-xs">
+                    <option value="0">STAGE 0: Chassis Only</option>
+                    <option value="3">STAGE 3: Mobile + Gripper</option>
+                    <option value="arm">ARM: 4-DOF Industrial Arm</option>
+                </select>
+                
+                <div class="mt-4 border-t border-slate-800 pt-2 text-[10px] space-y-1">
+                    <div class="flex justify-between"><span>COLLISION:</span> <span id="tel-coll" class="text-slate-500">NONE</span></div>
+                    <div class="flex justify-between"><span>LOAD:</span> <span id="tel-load">0.0kg</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass p-4 rounded-lg pointer-events-auto flex gap-4 h-56">
+            <div class="flex-grow flex flex-col">
+                <div class="flex justify-between text-[10px] mb-1 font-bold">
+                    <span class="text-slate-500">ILM SCRIPT EDITOR</span>
+                    <span class="text-blue-500">KEYWORDS: MOVE, TURN, ARM_BASE, ARM_ELBOW</span>
+                </div>
+                <textarea id="ilmInput" class="flex-grow bg-slate-950 p-3 text-xs text-blue-300 outline-none rounded border border-slate-800">MOVE(4)
+ARM_BASE(45)
+ARM_ELBOW(-30)
+DANCE(1)</textarea>
+            </div>
+            <div class="w-1/4 flex flex-col">
+                <button onclick="sim.run()" class="flex-grow bg-blue-600 hover:bg-blue-500 rounded font-bold transition-all">EXECUTE INTENT</button>
+                <button onclick="sim.resetWorld()" class="mt-2 text-[10px] text-slate-400 hover:text-white">RESET WORLD</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <script>
+        class AyeSim {
+            constructor() {
+                this.obstacles = [];
+                this.isCollision = false;
+                this.initEngine();
+                this.createWorld();
+                this.swapEmbodiment('0');
+                this.animate();
+            }
+
+            initEngine() {
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x020617);
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 6, 6);
+                
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+                const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+                sun.position.set(5, 10, 7);
+                this.scene.add(sun);
+
+                const grid = new THREE.GridHelper(20, 20, 0x1e293b, 0x0f172a);
+                this.scene.add(grid);
+
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                document.getElementById('stageSelector').addEventListener('change', (e) => this.swapEmbodiment(e.target.value));
+            }
+
+            createWorld() {
+                // Add static physics objects (Boxes)
+                const boxGeo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+                const mat = new THREE.MeshPhongMaterial({ color: 0x334155 });
+                
+                const pos = [[3,0,3], [-4,0,2], [0,0,-5]];
+                pos.forEach(p => {
+                    const mesh = new THREE.Mesh(boxGeo, mat);
+                    mesh.position.set(p[0], 0.75, p[2]);
+                    this.scene.add(mesh);
+                    // Collision box
+                    mesh.userData.bbox = new THREE.Box3().setFromObject(mesh);
+                    this.obstacles.push(mesh);
+                });
+            }
+
+            swapEmbodiment(type) {
+                if (this.robotGroup) this.scene.remove(this.robotGroup);
+                this.robotGroup = new THREE.Group();
+                this.robotType = type;
+
+                if (type === 'arm') {
+                    this.createStandaloneArm();
+                } else {
+                    this.createMobileBase(type);
+                }
+                this.scene.add(this.robotGroup);
+                this.robotBBox = new THREE.Box3();
+            }
+
+            createMobileBase(stage) {
+                const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.4, 1.5), new THREE.MeshPhongMaterial({ color: 0x1e293b }));
+                this.robotGroup.add(chassis);
+                
+                if (stage >= 3) { // Mobile with Arm Payload
+                    this.armBase = new THREE.Group();
+                    this.armBase.position.y = 0.2;
+                    this.createArmJoints(this.armBase);
+                    this.robotGroup.add(this.armBase);
+                }
+            }
+
+            createStandaloneArm() {
+                const base = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 0.2), new THREE.MeshPhongMaterial({color: 0x0f172a}));
+                this.robotGroup.add(base);
+                this.armBase = new THREE.Group();
+                this.createArmJoints(this.armBase);
+                this.robotGroup.add(this.armBase);
+            }
+
+            createArmJoints(parent) {
+                // Joint 1: Base Rotation
+                this.jointBase = new THREE.Group();
+                parent.add(this.jointBase);
+
+                const j1 = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.8, 0.4), new THREE.MeshPhongMaterial({color: 0x3b82f6}));
+                j1.position.y = 0.4;
+                this.jointBase.add(j1);
+
+                // Joint 2: Shoulder
+                this.jointShoulder = new THREE.Group();
+                this.jointShoulder.position.y = 0.8;
+                this.jointBase.add(this.jointShoulder);
+
+                const j2 = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), new THREE.MeshPhongMaterial({color: 0x60a5fa}));
+                j2.position.y = 0.6;
+                this.jointShoulder.add(j2);
+
+                // Joint 3: Elbow
+                this.jointElbow = new THREE.Group();
+                this.jointElbow.position.y = 1.2;
+                this.jointShoulder.add(this.jointElbow);
+
+                const j3 = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.0, 0.2), new THREE.MeshPhongMaterial({color: 0x93c5fd}));
+                j3.position.y = 0.5;
+                this.jointElbow.add(j3);
+            }
+
+            checkCollisions() {
+                this.robotBBox.setFromObject(this.robotGroup);
+                this.isCollision = false;
+                
+                for (let obs of this.obstacles) {
+                    if (this.robotBBox.intersectsBox(obs.userData.bbox)) {
+                        this.isCollision = true;
+                        break;
+                    }
+                }
+
+                const el = document.getElementById('tel-coll');
+                const tag = document.getElementById('status-tag');
+                if (this.isCollision) {
+                    el.innerText = "CRITICAL IMPACT";
+                    el.className = "text-red-500 font-bold";
+                    tag.className = "text-[10px] mt-1 text-red-500 uppercase tracking-widest animate-pulse";
+                } else {
+                    el.innerText = "CLEAR";
+                    el.className = "text-slate-500";
+                    tag.className = "text-[10px] mt-1 text-green-400 uppercase tracking-widest";
+                }
+            }
+
+            async run() {
+                const code = document.getElementById('ilmInput').value;
+                const lines = code.split('\n');
+                for (let line of lines) {
+                    const match = line.match(/(.+)\((.+)\)/);
+                    if (match) {
+                        await this.execute(match[1].trim(), parseFloat(match[2]));
+                    }
+                }
+            }
+
+            async execute(cmd, val) {
+                if (cmd === 'MOVE') {
+                    const dir = val > 0 ? 1 : -1;
+                    const steps = Math.abs(val) * 20;
+                    for(let i=0; i<steps; i++) {
+                        if (this.isCollision && dir > 0) break; // Block forward movement
+                        this.robotGroup.translateZ(0.05 * dir);
+                        await new Promise(r => setTimeout(r, 20));
+                    }
+                }
+                if (cmd === 'TURN') {
+                    const rad = (val * Math.PI) / 180;
+                    this.robotGroup.rotation.y += rad;
+                }
+                if (cmd === 'ARM_BASE') this.jointBase.rotation.y = (val * Math.PI) / 180;
+                if (cmd === 'ARM_SHOULDER') this.jointShoulder.rotation.z = (val * Math.PI) / 180;
+                if (cmd === 'ARM_ELBOW') this.jointElbow.rotation.z = (val * Math.PI) / 180;
+            }
+
+            resetWorld() {
+                this.robotGroup.position.set(0,0,0);
+                this.robotGroup.rotation.set(0,0,0);
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.checkCollisions();
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        const sim = new AyeSim();
+    </script>
+</body>
+</html>

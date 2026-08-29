@@ -1,0 +1,18 @@
+/* Bells & whistles — jazz plus motion. */
+@import url("jazz.css");
+html[data-theme="bells"] body.site {
+  animation: panini-hue 28s linear infinite;
+}
+@keyframes panini-hue {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(18deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+.role { transform: translateZ(0); transition: transform .2s, box-shadow .2s; }
+.role:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 40px rgba(201,162,39,.4); }
+h1 { animation: panini-glow 3.2s ease-in-out infinite alternate; }
+@keyframes panini-glow {
+  from { text-shadow: 0 0 18px rgba(201,162,39,.35); }
+  to { text-shadow: 0 0 48px rgba(255,213,106,.8); }
+}
+.site-head strong { letter-spacing: .28em; }

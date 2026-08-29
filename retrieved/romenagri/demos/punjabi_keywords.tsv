@@ -1,0 +1,16 @@
+# Punjabi — C/C++ keyword localization
+# Script: Gurmukhi | Speakers: 125 million
+# © 1993-2026 Abhishek Choudhary, GPL
+native	c_construct
+ਰੋਕੋ	break
+ਜਦੋਂ	case
+ਅੱਖਰ	char
+ਵਰਗ	class
+ਜਾਰੀ	continue
+ਨਹੀਂਤਾਂ	else
+ਲਈ	for
+ਜੇ	if
+ਪੂਰਨਅੰਕ	int
+ਵਾਪਸ	return
+ਕਾਰਜ	void
+ਜਦਤੱਕ	while

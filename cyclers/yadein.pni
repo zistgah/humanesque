@@ -1,0 +1,515 @@
+REM yadein.pni — YADEIN multimodal temporal-memory cycler
+REM YADEIN is one of the six Cyclers.
+REM It is a programmable lifecycle for staggered ingestion,
+REM preservation, contextualization, correlation and consolidation
+REM of human experiential material into longitudinal memory.
+REM
+REM Architectural invariant:
+REM   INGEST != INTERPRET != INTEGRATE != RENDER
+REM
+REM YADEIN is the experiential seed substrate for TransEg.
+REM It does not prematurely transform the source corpus into TransEg.
+
+MODULE YADEIN
+
+  VERSION "1.0.0"
+  TITLE "Yadein"
+  SCRIPT "یادین"
+  CLASS CYCLER
+  PURPOSE "Capture, preserve, connect and progressively consolidate lived experience."
+  UNIT "experiential-fragment"
+  RESOLUTION EASY
+  EXTENDS CYCLER_SUBSTRATE
+
+  CONTRACT
+
+    REQUIRE "staggered upload is supported"
+    REQUIRE "multimodal ingestion is supported"
+    REQUIRE "late-arriving material is preserved"
+    REQUIRE "event time is distinct from capture time"
+    REQUIRE "capture time is distinct from upload time"
+    REQUIRE "upload time is distinct from interpretation time"
+    REQUIRE "interpretation time is distinct from memory-integration time"
+
+    INVARIANT "incoming fragments retain temporal identity"
+    INVARIANT "incoming fragments retain provenance"
+    INVARIANT "source material is preserved before transformation"
+    INVARIANT "ingestion does not imply interpretation"
+    INVARIANT "interpretation does not imply integration"
+    INVARIANT "integration does not imply rendering"
+    INVARIANT "YADEIN remains a source-preserving memory substrate"
+    INVARIANT "TransEg is derived from YADEIN and does not replace YADEIN"
+
+    REFUSE "silently synchronizing asynchronous sensory fragments"
+    REFUSE "inventing event time when it is unknown"
+    REFUSE "converting interpretation into source evidence"
+    REFUSE "discarding superseded or conflicting fragments without provenance"
+    REFUSE "claiming a derived TransEg representation is the original experience"
+
+  END CONTRACT
+
+
+  TYPE TEMPORAL_EVENT
+
+    EVENT_TIME       TIME OPTIONAL
+    CAPTURE_TIME     TIME REQUIRED
+    UPLOAD_TIME      TIME REQUIRED
+    INTERPRET_TIME   TIME OPTIONAL
+    INTEGRATE_TIME   TIME OPTIONAL
+
+    EVENT_TIME_STATUS ENUM(
+      KNOWN,
+      APPROXIMATE,
+      INFERRED,
+      UNKNOWN
+    )
+
+  END TYPE
+
+
+  TYPE EXPERIENCE_FRAGMENT
+
+    ID              IDENTIFIER
+    TEMPORAL        TEMPORAL_EVENT
+    MODALITY        MODALITY
+    SOURCE          RESOURCE
+    PROVENANCE      PROVENANCE
+    CONTENT         DATA
+    CONTEXT         CONTEXT OPTIONAL
+    RELATIONS       SET<RELATION>
+    INTERPRETATIONS SET<INTERPRETATION>
+    REVISION        VERSION
+    EPISTEMIC       EPISTEMIC_STATUS
+
+  END TYPE
+
+
+  ENUM MODALITY
+
+    SIGHT
+    HEARING
+    TOUCH
+    SMELL
+    TASTE
+    PROPRIOCEPTION
+    INTEROCEPTION
+    VESTIBULAR
+    SPEECH
+    TEXT
+    ENVIRONMENT
+    CONTEXT
+    OTHER
+
+  END ENUM
+
+
+  ENUM EPISTEMIC_STATUS
+
+    RETRIEVED
+    OBSERVED
+    INFERRED
+    INTERPRETED
+    PROPOSED
+    UNRESOLVED
+
+  END ENUM
+
+
+  RECORD MEMORY
+
+    ID              IDENTIFIER
+    FRAGMENTS       SET<EXPERIENCE_FRAGMENT>
+    TIMELINE        TIMELINE
+    CORRELATIONS    SET<RELATION>
+    CONTEXT         CONTEXT
+    PROVENANCE      PROVENANCE
+    REPRESENTATION  RESOURCE
+    VERSION         VERSION
+    STATUS          STATUS
+
+  END RECORD
+
+
+  STAGE INTENT
+
+    RESOLUTION EASY
+    VERB ELICIT
+    EXPECT TEXT
+    INTO memory.intent
+
+    ASK
+      Describe what you want YADEIN to preserve or reconstruct.
+      Capture the intention without inventing experiential facts.
+    END ASK
+
+    VALIDATE WORDS(memory.intent) > 0
+    ON FAIL REPAIR
+
+  END STAGE
+
+
+  STAGE INGEST
+
+    RESOLUTION EASY
+    VERB INGEST
+    EXPECT EXPERIENCE_FRAGMENT
+    REPEAT ON INPUT
+
+    CAPTURE input.fragment
+
+    REQUIRE input.fragment.ID
+    REQUIRE input.fragment.MODALITY
+    REQUIRE input.fragment.SOURCE
+    REQUIRE input.fragment.TEMPORAL.CAPTURE_TIME
+    REQUIRE input.fragment.TEMPORAL.UPLOAD_TIME
+    REQUIRE input.fragment.PROVENANCE
+
+    PRESERVE input.fragment
+
+  END STAGE
+
+
+  STAGE STAGGERED_UPLOAD
+
+    RESOLUTION MID
+    VERB ACCUMULATE
+    EXPECT SET<EXPERIENCE_FRAGMENT>
+    REPEAT UNTIL HUMAN "CLOSE YADEIN"
+
+    ACCEPT fragment FROM
+      SIGHT,
+      HEARING,
+      TOUCH,
+      SMELL,
+      TASTE,
+      PROPRIOCEPTION,
+      INTEROCEPTION,
+      VESTIBULAR,
+      SPEECH,
+      TEXT,
+      ENVIRONMENT,
+      CONTEXT,
+      OTHER
+
+    APPEND fragment TO memory.fragments
+
+    PRESERVE fragment.TEMPORAL
+    PRESERVE fragment.PROVENANCE
+
+    ON fragment.arrives_late
+      LINK fragment TO memory
+      DO NOT REWRITE historical fragment
+      CREATE RELATION "late-arrival"
+    END ON
+
+  END STAGE
+
+
+  STAGE INDEX
+
+    RESOLUTION EASY
+    VERB INDEX
+    EXPECT INDEX
+    FROM memory.fragments
+    INTO memory.index
+
+    FOR EACH fragment IN memory.fragments
+
+      INDEX fragment.ID
+      INDEX fragment.MODALITY
+      INDEX fragment.TEMPORAL.EVENT_TIME
+      INDEX fragment.TEMPORAL.CAPTURE_TIME
+      INDEX fragment.TEMPORAL.UPLOAD_TIME
+      INDEX fragment.PROVENANCE
+
+    END FOR
+
+  END STAGE
+
+
+  STAGE TEMPORAL_ORDER
+
+    RESOLUTION MID
+    VERB STRUCTURE
+    EXPECT TIMELINE
+    FROM memory.fragments
+    INTO memory.timeline
+
+    ORDER BY
+      EVENT_TIME WHEN KNOWN,
+      OTHERWISE CAPTURE_TIME,
+      OTHERWISE UPLOAD_TIME
+
+    PRESERVE original arrival order
+
+    MARK uncertain ordering AS UNRESOLVED
+
+  END STAGE
+
+
+  STAGE CORRELATE
+
+    RESOLUTION MID
+    VERB INTEGRATE
+    EXPECT SET<RELATION>
+    FROM memory.fragments
+    INTO memory.correlations
+
+    FOR EACH fragment IN memory.fragments
+
+      FIND related fragments BY
+        temporal proximity,
+        shared event,
+        shared context,
+        modality correspondence,
+        identity,
+        provenance,
+        semantic similarity
+
+      CREATE RELATIONS
+
+    END FOR
+
+    PRESERVE source fragments independently
+
+  END STAGE
+
+
+  STAGE CONTEXTUALIZE
+
+    RESOLUTION MID
+    VERB ENRICH
+    EXPECT CONTEXT
+    FROM memory.fragments
+    INTO memory.context
+
+    ASK
+      Identify contextual information supported by the supplied fragments.
+      Separate observation from inference and interpretation.
+      Do not manufacture missing context.
+    END ASK
+
+    TAG ALL claims WITH EPISTEMIC_STATUS
+
+  END STAGE
+
+
+  STAGE INTERPRET
+
+    RESOLUTION PRO
+    VERB INTERPRET
+    EXPECT SET<INTERPRETATION>
+    FROM memory.fragments, memory.context
+    INTO memory.fragments.INTERPRETATIONS
+
+    ASK
+      Interpret the accumulated material while preserving the distinction
+      between source material, observation, inference and interpretation.
+    END ASK
+
+    REQUIRE every interpretation HAS provenance
+    REQUIRE every interpretation HAS epistemic status
+
+  END STAGE
+
+
+  STAGE CONSOLIDATE
+
+    RESOLUTION PRO
+    VERB INTEGRATE
+    EXPECT MEMORY
+    FROM memory.fragments, memory.timeline, memory.correlations, memory.context
+    INTO memory
+
+    PRESERVE original fragments
+    BUILD longitudinal representation
+    LINK derived representations to source fragments
+    RECORD integration provenance
+
+    ASSERT source_fragments_are_recoverable
+
+  END STAGE
+
+
+  STAGE MEMORY_REVIEW
+
+    RESOLUTION MID
+    VERB VERIFY
+    EXPECT REPORT
+    FROM memory
+
+    VERIFY
+      temporal integrity,
+      provenance completeness,
+      modality coverage,
+      unresolved states,
+      late-arriving material,
+      conflicting interpretations,
+      recoverability of source fragments
+
+    ON FAIL
+      REPAIR
+      REVERIFY
+    END ON
+
+  END STAGE
+
+
+  STAGE HUMAN_REVIEW
+
+    RESOLUTION PRO
+    VERB REVIEW
+    GATE HUMAN "APPROVE YADEIN MEMORY"
+
+    REQUIRE HUMAN SIGNOFF
+
+  END STAGE
+
+
+  STAGE TRANSEG_SEED
+
+    RESOLUTION PRO
+    VERB DERIVE
+    FROM memory
+    INTO transeg.seed
+
+    REQUIRE memory.STATUS IN [VERIFIED, APPROVED]
+
+    EMIT transeg.seed WITH
+
+      SOURCE "YADEIN"
+      TYPE "experiential-memory-seed"
+      PROVENANCE memory.PROVENANCE
+      FRAGMENTS memory.fragments
+      TIMELINE memory.timeline
+      CORRELATIONS memory.correlations
+      CONTEXT memory.context
+      REPRESENTATION memory.REPRESENTATION
+
+    INVARIANT "TransEg seed remains traceable to YADEIN source fragments"
+
+  END STAGE
+
+
+  STAGE EXPORT
+
+    RESOLUTION EASY
+    VERB EXPORT
+    EXPECT RESOURCE
+
+    EXPORT memory AS
+      "application/json"
+      "application/ld+json"
+      "text/markdown"
+      "text/plain"
+
+    EXPORT provenance
+    EXPORT timeline
+    EXPORT manifest
+
+  END STAGE
+
+
+  STAGE PRESERVE
+
+    RESOLUTION PRO
+    VERB PRESERVE
+
+    HASH memory
+    HASH memory.fragments
+    HASH memory.timeline
+    HASH memory.REPRESENTATION
+
+    CHECKPOINT memory
+    RECORD VERSION
+    RECORD PROVENANCE
+
+  END STAGE
+
+
+  WHEN fragment.uploaded
+
+    APPEND fragment TO memory.fragments
+    INDEX fragment
+    PRESERVE fragment
+
+    IF fragment.TEMPORAL.EVENT_TIME IS UNKNOWN
+      MARK fragment AS EVENT_TIME_UNKNOWN
+    END IF
+
+    IF fragment.arrives_late
+      CREATE RELATION "late-arrival"
+      DO NOT INVALIDATE source
+      REASSESS affected correlations
+    END IF
+
+  END WHEN
+
+
+  WHEN fragment.changed
+
+    CREATE REVISION fragment
+    PRESERVE previous fragment
+    INVALIDATE affected derived representations
+
+    REBUILD
+      memory.correlations
+      memory.context
+      memory.timeline
+    END REBUILD
+
+  END WHEN
+
+
+  WHEN memory.fragments.count MOD 10 == 0
+
+    GENERATE memory.summary
+    GENERATE memory.state_report
+
+  END WHEN
+
+
+  AFTER memory.fragments.count >= 50
+
+    GENERATE memory.combined_updated_narrative
+    INTO memory.periodic_narrative
+
+  END AFTER
+
+
+  UNTIL HUMAN "CLOSE YADEIN"
+
+    ACCEPT new fragments
+    REINDEX
+    RECORRELATE
+    RECONSOLIDATE
+    VERIFY
+
+  END UNTIL
+
+
+  DELIVERABLE YADEIN_MEMORY
+
+    TYPE "longitudinal-memory"
+    SOURCE memory
+    FORMAT "application/ld+json"
+    PROVENANCE REQUIRED
+    VERSIONED TRUE
+    REVISIONED TRUE
+
+  END DELIVERABLE
+
+
+  DELIVERABLE TRANSEG_SEED
+
+    TYPE "experiential-memory-seed"
+    SOURCE transeg.seed
+    FORMAT "application/ld+json"
+    DERIVED_FROM YADEIN_MEMORY
+    PROVENANCE REQUIRED
+    VERSIONED TRUE
+
+  END DELIVERABLE
+
+
+END MODULE

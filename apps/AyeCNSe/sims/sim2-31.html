@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V6.0 - SpaceX Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'JetBrains Mono', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; }
+        .glass { background: rgba(20, 20, 20, 0.8); border-left: 4px solid #fff; padding: 15px; border-radius: 4px; pointer-events: auto; color: #fff; }
+        .console-box { display: flex; gap: 10px; height: 220px; width: 100%; max-width: 800px; align-self: center; background: rgba(10, 10, 10, 0.9); padding: 15px; border-radius: 8px; pointer-events: auto; border: 1px solid #333; }
+        textarea { flex-grow: 1; background: #000; color: #fff; border: 1px solid #444; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 140px; background: #fff; color: #000; border: none; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="glass">
+            <h2 style="margin:0;">AyeCNSe V6.0 <span style="font-weight:normal; font-size:10px;">| ORBITAL_FLIGHT_OS</span></h2>
+            <div id="telemetry" style="font-size: 10px; color: #aaa; margin-top: 5px;">ALT: 0m | VEL: 0m/s</div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// FALCON 9 MISSION PROFILE
+STAGE_IGNITION(25.0)
+WAIT(2.5)
+GRAVITY_TURN(15)   // Pitch over to gain orbital velocity
+WAIT(4.0)
+MECO()             // Main Engine Cut Off
+WAIT(2.0)
+BOOST_BACK(-15)    // Flip and burn toward pad
+WAIT(1.5)
+ENTRY_BURN()       // Slow down in atmosphere
+WAIT(2.0)
+LANDING_BURN(18.0) // Propulsive landing
+WAIT(3.0)</textarea>
+            <button onclick="sim.run()">Launch Mission</button>
+        </div>
+    </div>
+
+    <script>
+        class RocketSim {
+            constructor() {
+                this.velocity = new THREE.Vector3(0, 0, 0);
+                this.thrustPower = 0;
+                this.gravity = -0.098; // 9.8 m/s scaled
+                this.isEngineOn = false;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 20000);
+                this.camera.position.set(100, 50, 100);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+                const sun = new THREE.DirectionalLight(0xffffff, 1.5); sun.position.set(500, 1000, 500); this.scene.add(sun);
+                this.scene.add(new THREE.GridHelper(5000, 50, 0x333333, 0x111111));
+
+                this.buildRocket();
+                this.animate();
+            }
+
+            buildRocket() {
+                this.rocket = new THREE.Group();
+                const body = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 15, 32), new THREE.MeshStandardMaterial({color: 0xdddddd}));
+                const nose = new THREE.Mesh(new THREE.ConeGeometry(1.5, 4, 32), new THREE.MeshStandardMaterial({color: 0xdddddd}));
+                nose.position.y = 9.5;
+                this.rocket.add(body, nose);
+
+                // Flame effect
+                this.flame = new THREE.Mesh(new THREE.ConeGeometry(1.2, 5, 16), new THREE.MeshBasicMaterial({color: 0xff4400, transparent: true, opacity: 0}));
+                this.flame.position.y = -10;
+                this.flame.rotation.x = Math.PI;
+                this.rocket.add(this.flame);
+
+                this.scene.add(this.rocket);
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'STAGE_IGNITION') { this.thrustPower = val * 0.01; this.isEngineOn = true; }
+                        else if (cmd === 'GRAVITY_TURN') this.targetPitch = THREE.MathUtils.degToRad(val);
+                        else if (cmd === 'MECO') { this.thrustPower = 0; this.isEngineOn = false; }
+                        else if (cmd === 'BOOST_BACK') { this.targetPitch = THREE.MathUtils.degToRad(val); this.thrustPower = 0.1; this.isEngineOn = true; }
+                        else if (cmd === 'ENTRY_BURN') this.thrustPower = 0.05;
+                        else if (cmd === 'LANDING_BURN') { this.thrustPower = val * 0.01; this.isEngineOn = true; this.targetPitch = 0; }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // 1. GIMBAL / ATTITUDE
+                if (this.targetPitch !== undefined) {
+                    this.rocket.rotation.z += (this.targetPitch - this.rocket.rotation.z) * 0.02;
+                }
+
+                // 2. THRUST VECTORING
+                if (this.isEngineOn) {
+                    const vector = new THREE.Vector3(0, 1, 0).applyQuaternion(this.rocket.quaternion);
+                    this.velocity.addScaledVector(vector, this.thrustPower);
+                    this.flame.opacity = 0.8;
+                    this.flame.scale.set(1 + Math.random()*0.2, 1 + Math.random()*0.5, 1);
+                } else {
+                    this.flame.opacity = 0;
+                }
+
+                // 3. GRAVITY & DRAG
+                this.velocity.y += this.gravity * 0.1;
+                this.rocket.position.add(this.velocity);
+
+                // 4. TELEMETRY
+                document.getElementById('telemetry').innerText = `ALT: ${Math.round(this.rocket.position.y)}m | VEL: ${Math.round(this.velocity.length() * 100)}m/s`;
+
+                // 5. LANDING CHECK
+                if (this.rocket.position.y <= 0) {
+                    this.rocket.position.y = 0;
+                    if (this.velocity.y < -0.5) {
+                        console.log("RUD (Rapid Unscheduled Disassembly)");
+                        this.rocket.rotation.z = Math.PI / 2; // Tumble on crash
+                    }
+                    this.velocity.set(0,0,0);
+                    this.isEngineOn = false;
+                }
+
+                this.controls.target.copy(this.rocket.position);
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new RocketSim();
+    </script>
+</body>
+</html>

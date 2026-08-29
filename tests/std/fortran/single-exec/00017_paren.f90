@@ -1,0 +1,6 @@
+PROGRAM P
+  IF (((1 + 2) * 3) .EQ. 9) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

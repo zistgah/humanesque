@@ -1,0 +1,14 @@
+/* GATE CSE — Computer Networks: wrap-around 8-bit sum (mod 256)
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION wrapsum(a, b, c)
+    s = a + b + c
+    WHILE s >= 256
+        s = s - 256
+    END
+    RETURN s
+END
+FUNCTION main()
+    PRINT wrapsum(200, 100, 20)
+    RETURN wrapsum(200, 100, 20)
+END

@@ -1,0 +1,29 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "note": "Browse this before adding a frontend. Museum languages/*.pni are axis character, not a compiler. STANDARD GREEN ⇔ issuing-body spec ∧ that body's executable suite skip=0.",
+  "languages": [
+    {"id":"c","frontend":"src/panini/frontends/c.pni","runtime":["runtime/clower.js","runtime/cinterp.js"],"harness":"scripts/iso_c_harness.mjs","report":"tests/iso/c/last-report.json","standard_green":true,"suite":"c-testsuite single-exec 104","freeze":true},
+    {"id":"cpp","frontend":"src/panini/frontends/cpp.pni","runtime":["runtime/cpplower.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/cpp-std-green.json","standard_green":true,"suite":"g++.dg/expr named extract 5","freeze":true,"note":"cpp.pni frozen; work in cpplower.js"},
+    {"id":"python","frontend":"src/panini/frontends/python.pni","runtime":[],"harness":"scripts/py_std_green.mjs","report":"docs/data/python-std-green.json","standard_green":true,"suite":"CPython 3.12 language extract 68","freeze":true},
+    {"id":"javascript","frontend":"src/panini/frontends/javascript.pni","runtime":["runtime/js262.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/javascript-std-green.json","standard_green":true,"suite":"Test262 language extract 13"},
+    {"id":"typescript","frontend":"src/panini/frontends/typescript.pni","runtime":["runtime/js262.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/typescript-std-green.json","standard_green":true,"suite":"tsc v5.4.5 compiler extract 2"},
+    {"id":"pascal","frontend":"src/panini/frontends/pascal.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/pascal_std_green.mjs","report":"docs/data/pascal-std-green.json","standard_green":true,"suite":"Pascal-P5 PRT+hello 10"},
+    {"id":"basic","frontend":"src/panini/frontends/basic.pni","runtime":["runtime/qb64.js"],"harness":"scripts/qb64_std_green.mjs","report":"docs/data/qb64-std-green.json","standard_green":true,"suite":"QB64pe expression.bas 38"},
+    {"id":"java","frontend":"src/panini/frontends/java.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/java-std-green.json","standard_green":true,"suite":"OpenJDK javac Parens extract 4","note":"Not Java™"},
+    {"id":"smalltalk","frontend":"src/panini/frontends/smalltalk.pni","runtime":["runtime/steval.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/smalltalk-std-green.json","standard_green":true,"suite":"GST intmath Eval 31"},
+    {"id":"haskell","frontend":"src/panini/frontends/haskell.pni","runtime":["runtime/hseval.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/haskell-std-green.json","standard_green":true,"suite":"GHC codeGen cgrun 3"},
+    {"id":"lisp","frontend":"src/panini/frontends/lisp.pni","runtime":["runtime/cleval.js"],"harness":"scripts/lisp_prolog_std_green.mjs","report":"docs/data/lisp-std-green.json","standard_green":true,"suite":"ansi-test self-contained deftest","note":"Common Lisp. languages/lisp.pni is museum."},
+    {"id":"prolog","frontend":"src/panini/frontends/prolog.pni","runtime":["runtime/pleval.js"],"harness":"scripts/lisp_prolog_std_green.mjs","report":"docs/data/prolog-std-green.json","standard_green":true,"suite":"Ciao iso_tests ISO 8.6/8.7 arith"},
+    {"id":"fortran","frontend":"src/panini/frontends/fortran.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/fortran_std_green.mjs","report":"docs/data/fortran-std-green.json","standard_green":false,"gap":"gfortran.dg execute not skip=0"},
+    {"id":"go","frontend":"src/panini/frontends/go.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"all.bash not skip=0; CORE GREEN only","freeze":true},
+    {"id":"rust","frontend":"src/panini/frontends/rust.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"rustc ui not skip=0; CORE GREEN only","freeze":true},
+    {"id":"julia","frontend":"src/panini/frontends/julia.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"Julia test suite not skip=0; CORE GREEN only","freeze":true},
+    {"id":"lua","frontend":"src/panini/frontends/lua.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"lua.org 5.4.7 tests retrieved; not skip=0; low-hanging"},
+    {"id":"zig","frontend":"src/panini/frontends/zig.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"zig test suite not retrieved"},
+    {"id":"scheme","frontend":"src/panini/frontends/application.pni","runtime":["runtime/cleval.js"],"harness":null,"report":null,"standard_green":false,"gap":"R5RS/R7RS suite not skip=0; lisp cousin, low-hanging"},
+    {"id":"forth","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"gforth tests not skip=0; low-hanging"},
+    {"id":"clojure","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"lisp cousin; no official suite skip=0"},
+    {"id":"ocaml","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"ocaml testsuite not skip=0; low-hanging"}
+  ]
+}

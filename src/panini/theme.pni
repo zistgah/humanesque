@@ -1,0 +1,21 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * Theme presets as PANINI data. CSS files are the Pages projection.
+ */
+MODULE PANINI.Theme
+FUNCTION presets()
+    RETURN {
+        jazz: {label: "Jazz", primary: TRUE},
+        bells: {label: "Bells"},
+        estate: {label: "Estate"},
+        night: {label: "Night"},
+        manuscript: {label: "Manuscript"},
+        terminal: {label: "Terminal"},
+        contrast: {label: "Contrast"}
+    }
+END
+FUNCTION main()
+    p = presets()
+    PRINT p.jazz.label
+    RETURN p.jazz.primary
+END
+END

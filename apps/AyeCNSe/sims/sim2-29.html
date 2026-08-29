@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V5.1 - Stabilized Wing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #010409; font-family: monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; }
+        .glass { background: rgba(13, 17, 23, 0.9); border-left: 4px solid #3b82f6; padding: 15px; border-radius: 8px; pointer-events: auto; color: #fff; }
+        .console-box { display: flex; gap: 10px; height: 250px; width: 100%; max-width: 900px; align-self: center; background: rgba(13,17,23,0.95); padding: 15px; border-radius: 12px; pointer-events: auto; border: 1px solid #1e293b; }
+        textarea { flex-grow: 1; background: #000; color: #3b82f6; border: 1px solid #334155; padding: 10px; font-size: 12px; resize: none; outline: none; }
+        button { width: 150px; background: #3b82f6; color: #fff; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="glass">
+            <h2 style="margin:0;">AyeCNSe V5.1 <span style="font-weight:normal; font-size:12px;">| AUTO_LEVEL_ACTIVE</span></h2>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// CONTROLLED CLIMB
+THRUST(12.0)   // High speed for takeoff
+WAIT(1.5)
+PITCH(-15)     // Nose up
+WAIT(1.0)
+PITCH(0)       // RETURN TO LEVEL (Crucial!)
+WAIT(4.0)
+THRUST(2.0)    // Slow down to descend
+WAIT(2.0)</textarea>
+            <button onclick="sim.run()">Launch</button>
+        </div>
+    </div>
+
+    <script>
+        class StabilizedWingSim {
+            constructor() {
+                this.velocity = new THREE.Vector3(0, 0, 0);
+                this.thrustPower = 0;
+                this.gravity = -0.02;
+                this.targetPitch = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 2000);
+                this.camera.position.set(30, 15, 30);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+                const sun = new THREE.DirectionalLight(0xffffff, 1); sun.position.set(10, 50, 10); this.scene.add(sun);
+                this.scene.add(new THREE.GridHelper(1000, 100, 0x1e293b, 0x0f172a));
+
+                this.buildPlane();
+                this.animate();
+            }
+
+            buildPlane() {
+                this.plane = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x3b82f6 });
+                this.plane.add(new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 3), mat)); // Body
+                const wing = new THREE.Mesh(new THREE.BoxGeometry(5, 0.1, 1), new THREE.MeshStandardMaterial({color:0xffffff}));
+                wing.position.z = 0.5; this.plane.add(wing);
+                this.prop = new THREE.Mesh(new THREE.BoxGeometry(1, 0.1, 0.1), new THREE.MeshBasicMaterial({color:0x000}));
+                this.prop.position.z = 1.5; this.plane.add(this.prop);
+                this.scene.add(this.plane);
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'THRUST') this.thrustPower = val * 0.004;
+                        else if (cmd === 'PITCH') this.targetPitch = THREE.MathUtils.degToRad(val);
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                        else if (cmd === 'RESET') { this.plane.position.set(0,0,0); this.velocity.set(0,0,0); this.targetPitch = 0; this.plane.rotation.set(0,0,0); }
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // 1. Smoothly interpolate to target pitch (Fly-by-wire)
+                this.plane.rotation.x += (this.targetPitch - this.plane.rotation.x) * 0.05;
+
+                // 2. Thrust in the direction the nose is pointing
+                const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(this.plane.quaternion);
+                this.velocity.addScaledVector(forward, this.thrustPower);
+
+                // 3. LIFT PHYSICS: Lift = Speed * LiftCoefficient
+                const speed = this.velocity.length();
+                // We generate lift based on forward speed and pitch angle
+                const liftFactor = (speed * speed) * (-this.plane.rotation.x + 0.05); 
+                this.velocity.y += liftFactor + this.gravity;
+
+                // 4. QUADRATIC DRAG: Prevents escaping to space
+                // Drag increases as the square of speed
+                const dragAmount = 1 - (speed * 0.02); 
+                this.velocity.multiplyScalar(Math.max(0.9, dragAmount));
+
+                this.plane.position.add(this.velocity);
+
+                if (this.plane.position.y <= 0) {
+                    this.plane.position.y = 0;
+                    this.velocity.y = Math.max(0, this.velocity.y);
+                    this.velocity.multiplyScalar(0.9); // Ground friction
+                }
+
+                if (this.thrustPower > 0) this.prop.rotation.z += 0.8;
+                
+                this.controls.target.copy(this.plane.position);
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new StabilizedWingSim();
+    </script>
+</body>
+</html>

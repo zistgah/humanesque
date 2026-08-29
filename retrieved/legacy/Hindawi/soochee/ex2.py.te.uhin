@@ -1,0 +1,6 @@
+rows = లోt(లోput("Enter number of rows: "))
+
+కోసం i లో range(rows):
+    కోసం j లో range(i+1):
+        ముద్రించు(j+1, end=" ")
+    ముద్రించు("\n")

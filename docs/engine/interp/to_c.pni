@@ -1,0 +1,180 @@
+/* Surface → C for the numeric subset that PANINI.Backend.Wasm runs.
+ * Python uses the AST (pyToC). Braced languages use ordered replacements.
+ * Not a #define localization. Keywords of the *host language* become C.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.ToC
+
+FUNCTION strReplace(src, a, b)
+    out = ""
+    i = 0
+    n = LEN(src)
+    m = LEN(a)
+    WHILE i < n
+        hit = 0
+        IF m > 0 AND i + m <= n
+            IF SLICE(src, i, i + m) == a
+                hit = 1
+            END
+        END
+        IF hit
+            out = out + b
+            i = i + m
+        ELSE
+            out = out + src[i]
+            i = i + 1
+        END
+    END
+    RETURN out
+END
+
+FUNCTION typeBareParams(s)
+    out = ""
+    i = 0
+    n = LEN(s)
+    WHILE i < n
+        out = out + s[i]
+        IF s[i] == "("
+            j = i + 1
+            WHILE j < n AND (s[j] == " " OR s[j] == NEWLINE() OR s[j] == TAB())
+                j = j + 1
+            END
+            IF j < n
+                ch = s[j]
+                IF (ch >= "A" AND ch <= "Z") OR (ch >= "a" AND ch <= "z") OR ch == "_"
+                    already = 0
+                    IF j + 4 <= n
+                        IF SLICE(s, j, j + 4) == "int "
+                            already = 1
+                        END
+                    END
+                    IF already == 0
+                        out = out + "int "
+                    END
+                END
+            END
+        END
+        i = i + 1
+    END
+    RETURN out
+END
+
+FUNCTION bracedToC(src)
+    src = strReplace(src, "pub fn ", "int ")
+    src = strReplace(src, "pub func ", "int ")
+    src = strReplace(src, "function ", "int ")
+    src = strReplace(src, "func ", "int ")
+    src = strReplace(src, "fn ", "int ")
+    src = strReplace(src, "let mut ", "int ")
+    src = strReplace(src, "let ", "int ")
+    src = strReplace(src, "var ", "int ")
+    src = strReplace(src, "local ", "int ")
+    src = strReplace(src, ": i32", "")
+    src = strReplace(src, ": isize", "")
+    src = strReplace(src, ": number", "")
+    src = strReplace(src, ": int", "")
+    src = strReplace(src, " -> i32", "")
+    src = strReplace(src, " -> int", "")
+    src = strReplace(src, " -> number", "")
+    src = strReplace(src, "i32 ", "int ")
+    src = strReplace(src, "isize ", "int ")
+    src = strReplace(src, "const ", "")
+    src = strReplace(src, "export ", "")
+    src = strReplace(src, "package main" + NEWLINE(), "")
+    src = strReplace(src, "using namespace std;", "")
+    src = strReplace(src, "#include <iostream>", "")
+    src = strReplace(src, "#include<iostream>", "")
+    src = strReplace(src, "std::", "")
+    src = strReplace(src, "fmt.", "")
+    src = strReplace(src, "println!", "")
+    src = strReplace(src, "console.log", "")
+    src = strReplace(src, "debug.print", "")
+    src = strReplace(src, "end" + NEWLINE(), "}" + NEWLINE())
+    src = strReplace(src, " int)", ")")
+    src = strReplace(src, " int {", " {")
+    src = strReplace(src, " int,", ",")
+    RETURN typeBareParams(src)
+END
+
+FUNCTION cppToC(s)
+    RETURN bracedToC(s)
+END
+
+FUNCTION rustToC(s)
+    RETURN bracedToC(s)
+END
+
+FUNCTION goToC(s)
+    RETURN bracedToC(s)
+END
+
+FUNCTION tsToC(s)
+    RETURN bracedToC(s)
+END
+
+FUNCTION zigToC(s)
+    RETURN bracedToC(s)
+END
+
+FUNCTION luaToC(s)
+    s = strReplace(s, "function ", "int ")
+    s = strReplace(s, "local ", "int ")
+    s = strReplace(s, NEWLINE() + "end", NEWLINE() + "}")
+    IF LEN(s) >= 3
+        IF SLICE(s, LEN(s) - 3, LEN(s)) == "end"
+            s = SLICE(s, 0, LEN(s) - 3) + "}"
+        END
+    END
+    s = typeBareParams(s)
+    s = strReplace(s, ")" + NEWLINE(), ") {" + NEWLINE())
+    RETURN s
+END
+
+FUNCTION fortranToC(s)
+    s = strReplace(s, "INTEGER FUNCTION ", "int ")
+    s = strReplace(s, "integer function ", "int ")
+    s = strReplace(s, "INTEGER ", "int ")
+    s = strReplace(s, "integer ", "int ")
+    s = strReplace(s, "PROGRAM ", "int ")
+    s = strReplace(s, "program ", "int ")
+    s = strReplace(s, "END FUNCTION", "}")
+    s = strReplace(s, "end function", "}")
+    s = strReplace(s, "END PROGRAM", "}")
+    s = strReplace(s, "end program", "}")
+    s = strReplace(s, "END", "}")
+    s = strReplace(s, "RETURN", "return 0")
+    RETURN s
+END
+
+FUNCTION lower_to_c(lang, source)
+    IF lang == "c" OR lang == "C"
+        RETURN source
+    END
+    IF lang == "python" OR lang == "py"
+        RETURN pyToC(source)
+    END
+    IF lang == "cpp" OR lang == "c++" OR lang == "C++"
+        RETURN cppToC(source)
+    END
+    IF lang == "rust" OR lang == "rs"
+        RETURN rustToC(source)
+    END
+    IF lang == "go"
+        RETURN goToC(source)
+    END
+    IF lang == "typescript" OR lang == "ts"
+        RETURN tsToC(source)
+    END
+    IF lang == "zig"
+        RETURN zigToC(source)
+    END
+    IF lang == "lua"
+        RETURN luaToC(source)
+    END
+    IF lang == "fortran" OR lang == "f90"
+        RETURN fortranToC(source)
+    END
+    RETURN source
+END
+
+END

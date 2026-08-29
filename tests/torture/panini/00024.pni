@@ -1,0 +1,10 @@
+MODULE T00024
+FUNCTION main()
+    acc = 1
+    FOR i IN 1..4
+        acc = acc * i
+    END
+    PRINT acc
+    RETURN 0
+END
+END

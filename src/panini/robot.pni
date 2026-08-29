@@ -1,0 +1,22 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * Shaili Robot (2004): Indic LOGO. Cardinal pixel moves as ROBOT.C.
+ * Retrieved: hindawi3.zip src/jpchin/ROBOT.C — not reconstructed.
+ */
+MODULE PANINI.Shaili.Robot
+FUNCTION north(y, n)
+    RETURN y - n
+END
+FUNCTION south(y, n)
+    RETURN y + n
+END
+FUNCTION east(x, n)
+    RETURN x + n
+END
+FUNCTION west(x, n)
+    RETURN x - n
+END
+FUNCTION main()
+    y = north(100, 10)
+    RETURN y
+END
+END

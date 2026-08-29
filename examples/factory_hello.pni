@@ -1,0 +1,8 @@
+# Factory specimen — reuse the interpreter, do not add a second eval.
+# Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+MODULE Example.Factory
+FUNCTION main()
+    PRINT "browse factory/REGISTRY.json first"
+    RETURN 0
+END
+END

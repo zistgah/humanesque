@@ -1,0 +1,32 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Torch-shaped surface on PANINI tensors (float path).
+ * Not PRATIK: PRATIK core is balanced ternary, no float.
+ */
+MODULE PANINI.Torch
+
+FUNCTION torch_tensor(rows)
+    RETURN TENSOR(rows)
+END
+
+FUNCTION torch_mm(a, b)
+    RETURN MATMUL(a, b)
+END
+
+FUNCTION torch_add(a, b)
+    RETURN TADD(a, b)
+END
+
+FUNCTION torch_relu(a)
+    RETURN RELU(a)
+END
+
+FUNCTION main()
+    i = TENSOR([[1, 0], [0, 1]])
+    x = TENSOR([[1, 2], [3, 4]])
+    y = MATMUL(x, i)
+    PRINT y
+    RETURN 0
+END
+
+END

@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(javascript)",
+  "standard": "ECMA-262 — panini-js-testsuite single-exec",
+  "subject": "PANINI.Frontend.JavaScript",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

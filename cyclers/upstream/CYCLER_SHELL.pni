@@ -1,0 +1,1005 @@
+REM  CYCLER_SHELL.pni
+REM  PANINI representation of a general-purpose Cycler Shell.
+REM
+REM  Purpose:
+REM    Provide a universal tool/app execution layer for Cyclers.
+REM    The Shell can discover an arbitrary installed or accessible tool,
+REM    utility, command, application, CLI, or service by reading its
+REM    manpages, info pages, --help output, documentation, metadata and
+REM    observable interface; construct an execution plan; invoke it;
+REM    inspect results and errors; diagnose failures; and preserve a
+REM    reusable local .pni description of the discovered capability.
+REM
+REM  Core principle:
+REM    DISCOVER -> UNDERSTAND -> PLAN -> EXECUTE -> OBSERVE -> DIAGNOSE
+REM    -> PRESERVE -> REUSE
+REM
+REM  A tool invocation is an executable operation inside a lifecycle,
+REM  not an opaque shell command.
+REM
+REM  The Shell is provider/tool agnostic and does not require a fixed
+REM  catalogue of utilities.
+REM
+PROGRAM CYCLER_SHELL
+
+  VERSION "1.0.0"
+  LANGUAGE "PANINI"
+  CLASS   CYCLER
+  DOMAIN  "TOOL_EXECUTION_AND_DISCOVERY"
+  PURPOSE "Discover, understand, execute, diagnose and preserve arbitrary tool capabilities."
+
+  REM ================================================================
+  REM  0. CONSTITUTION
+  REM ================================================================
+
+  CONSTITUTION CYCLER_SHELL_CONSTITUTION
+
+    IDENTITY
+      SYSTEM      "CYCLER_SHELL"
+      ROLE        "General-purpose tool and application execution cycler"
+      SECONDARY   "Tool discovery, interface interpretation and execution layer"
+    END IDENTITY
+
+    CANON
+      REQUIRE explicit_tool_identity
+      REQUIRE capability_discovery
+      REQUIRE execution_plan
+      REQUIRE observable_result
+      REQUIRE error_diagnosis
+      REQUIRE provenance
+      REQUIRE local_tool_specification
+      REQUIRE versioned_tool_state
+      REQUIRE human_sovereignty
+      REQUIRE capability_authorization
+      REQUIRE credential_separation
+      REQUIRE preservation_of_tool_outputs
+    END CANON
+
+    RULE "Never invent a tool interface when authoritative local documentation can be read."
+    RULE "Read before executing unfamiliar capabilities."
+    RULE "Help/man/info/documentation are evidence about an interface, not permission to use it."
+    RULE "Execution authority is separate from interface discovery."
+    RULE "Destructive, irreversible, privileged or externally consequential actions require an explicit policy gate."
+    RULE "Credentials MUST NOT be embedded in generated .pni files."
+    RULE "A failed invocation MUST NOT be silently represented as a successful operation."
+    RULE "A retry MUST be based on observed state, not merely repeated blindly."
+    RULE "Discovered tool specifications remain local unless the user explicitly contributes them."
+    RULE "A contributed .pni MUST preserve provenance and authorship."
+    RULE "Local discovery MUST NOT silently modify an upstream GitHub repository."
+    RULE "Tool documentation may be incomplete, contradictory or stale; preserve that state explicitly."
+    RULE "Unknown interface semantics remain UNKNOWN until verified."
+  END CONSTITUTION
+
+
+  REM ================================================================
+  REM  1. CORE TYPES
+  REM ================================================================
+
+  TYPE TOOL
+    id
+    name
+    executable
+    path
+    version
+    platform
+    package_source
+    installation_state
+    interface_sources
+    capabilities
+    commands
+    options
+    inputs
+    outputs
+    side_effects
+    permissions
+    dependencies
+    documentation
+    pni
+    provenance
+    status
+  END TYPE
+
+  TYPE TOOL_INTERFACE
+    source_type
+    source_location
+    retrieved_at
+    content_hash
+    version_context
+    authority
+    commands
+    arguments
+    options
+    examples
+    exit_codes
+    output_contract
+    error_contract
+    unresolved
+  END TYPE
+
+  TYPE EXECUTION_PLAN
+    tool
+    operation
+    arguments
+    working_directory
+    environment
+    input_artifacts
+    expected_outputs
+    expected_side_effects
+    required_capabilities
+    authorization
+    dry_run
+    rollback
+    verification
+  END TYPE
+
+  TYPE EXECUTION_RESULT
+    tool
+    operation
+    command
+    started_at
+    completed_at
+    exit_code
+    stdout
+    stderr
+    outputs
+    filesystem_changes
+    network_activity
+    side_effects
+    status
+    provenance
+  END TYPE
+
+  TYPE ERROR_ANALYSIS
+    tool
+    operation
+    exit_code
+    stderr
+    error_class
+    probable_causes
+    evidence
+    state_after_failure
+    recoverability
+    proposed_actions
+    retry_safe
+    human_gate_required
+  END TYPE
+
+  TYPE TOOL_PNI
+    identity
+    version
+    executable
+    platform
+    discovery
+    interface
+    capabilities
+    invocation
+    outputs
+    errors
+    safety
+    examples
+    provenance
+    generated_at
+    generator
+    source_hashes
+    status
+  END TYPE
+
+  TYPE TOOL_REGISTRY_ENTRY
+    tool_id
+    tool_name
+    executable
+    version
+    pni_path
+    pni_hash
+    discovered_at
+    last_verified
+    source
+    local_only
+    contribution_status
+  END TYPE
+
+
+  REM ================================================================
+  REM  2. DISCOVERY MODEL
+  REM ================================================================
+
+  OPERATION DISCOVER_TOOL(tool_reference)
+
+    RESOLVE tool_reference
+      TRY executable lookup
+      TRY absolute path
+      TRY PATH lookup
+      TRY application registry/package metadata
+      TRY user-supplied documentation
+    END RESOLVE
+
+    IDENTIFY tool
+      CAPTURE executable
+      CAPTURE path
+      CAPTURE version
+      CAPTURE platform
+      CAPTURE package/source information
+    END IDENTIFY
+
+    COLLECT INTERFACE_SOURCES
+      TRY "tool --help"
+      TRY "tool -h"
+      TRY "man tool"
+      TRY "info tool"
+      TRY "tool help"
+      TRY application-specific help commands
+      TRY installed documentation
+      TRY package metadata
+      TRY local README / docs
+      TRY machine-readable command schema where available
+    END COLLECT
+
+    PRESERVE every retrieved source with:
+      source_type
+      source_location
+      retrieved_at
+      content_hash
+      tool_version
+    END PRESERVE
+
+    RETURN TOOL
+  END OPERATION
+
+
+  REM ================================================================
+  REM  3. INTERFACE INTERPRETATION
+  REM ================================================================
+
+  OPERATION READ_INTERFACE(tool)
+
+    READ manpages
+    READ info_pages
+    READ help_output
+    READ installed_documentation
+    READ machine_readable_metadata
+
+    EXTRACT
+      commands
+      subcommands
+      positional_arguments
+      options
+      flags
+      defaults
+      environment_variables
+      input_formats
+      output_formats
+      exit_codes
+      examples
+      side_effects
+      permissions
+      dependencies
+    END EXTRACT
+
+    CORRELATE sources
+
+    IF sources contradict
+      PRESERVE contradiction
+      MARK unresolved
+      DO NOT silently select one as canonical
+    END IF
+
+    CLASSIFY interface statements as:
+      RETRIEVED
+      OBSERVED
+      INFERRED
+      UNRESOLVED
+    END CLASSIFY
+
+    RETURN TOOL_INTERFACE
+  END OPERATION
+
+
+  REM ================================================================
+  REM  4. CAPABILITY MODEL
+  REM ================================================================
+
+  OPERATION MAP_CAPABILITIES(tool_interface)
+
+    MAP operations into capability classes:
+
+      READ
+      INSPECT
+      TRANSFORM
+      CREATE
+      MODIFY
+      DELETE
+      MOVE
+      PACKAGE
+      CONVERT
+      ANALYZE
+      COMPUTE
+      NETWORK
+      PUBLISH
+      DEPLOY
+      INSTALL
+      EXECUTE
+      ADMINISTER
+      DEVICE_CONTROL
+      OTHER
+
+    MAP each capability to:
+      required_permissions
+      expected_side_effects
+      reversibility
+      data_access
+      network_access
+      credential_requirement
+      human_gate
+    END MAP
+
+    RETURN capability_map
+  END OPERATION
+
+
+  REM ================================================================
+  REM  5. COMMAND PLANNING
+  REM ================================================================
+
+  OPERATION PLAN(tool, user_intent)
+
+    READ_INTERFACE(tool)
+    MAP_CAPABILITIES(tool)
+
+    TRANSLATE user_intent
+      INTO tool_operation
+      WITH arguments
+      WITH input_artifacts
+      WITH expected_outputs
+    END TRANSLATE
+
+    VALIDATE:
+      command_exists
+      required_arguments
+      argument_types
+      path_existence
+      capability_authorization
+      expected_side_effects
+      credential availability
+    END VALIDATE
+
+    IF destructive OR irreversible OR privileged OR externally_consequential
+      REQUIRE HUMAN_GATE
+    END IF
+
+    IF uncertainty affects correctness
+      ASK HUMAN OR RUN SAFE DISCOVERY
+    END IF
+
+    RETURN EXECUTION_PLAN
+  END OPERATION
+
+
+  REM ================================================================
+  REM  6. EXECUTION
+  REM ================================================================
+
+  OPERATION EXECUTE(plan)
+
+    VERIFY plan
+    VERIFY authorization
+    VERIFY tool identity/version
+    VERIFY required inputs
+    VERIFY credentials through secure host mechanism
+
+    IF plan.dry_run
+      EXECUTE safe planning/probing only
+      RETURN observed_plan
+    END IF
+
+    INVOKE underlying tool/application
+      USING plan.command
+      USING plan.arguments
+      USING plan.environment
+      USING plan.working_directory
+    END INVOKE
+
+    CAPTURE:
+      stdout
+      stderr
+      exit_code
+      created_files
+      modified_files
+      deleted_files
+      generated_artifacts
+      observable network activity
+      observable side effects
+    END CAPTURE
+
+    RETURN EXECUTION_RESULT
+  END OPERATION
+
+
+  REM ================================================================
+  REM  7. RESULT INTERPRETATION
+  REM ================================================================
+
+  OPERATION OBSERVE(result)
+
+    IF exit_code == 0
+      CHECK expected_outputs
+      CHECK output_integrity
+      CHECK stated completion condition
+    END IF
+
+    IF exit_code != 0
+      INVOKE DIAGNOSE(result)
+    END IF
+
+    VERIFY actual_state against expected_state
+
+    IF mismatch
+      MARK result "PARTIAL_OR_INCONSISTENT"
+    END IF
+
+    RETURN observed_state
+  END OPERATION
+
+
+  REM ================================================================
+  REM  8. ERROR DIAGNOSIS
+  REM ================================================================
+
+  OPERATION DIAGNOSE(result)
+
+    COLLECT:
+      exit_code
+      stderr
+      stdout
+      tool_version
+      invocation
+      environment
+      relevant documentation
+      filesystem state before/after
+      provider state where observable
+    END COLLECT
+
+    CLASSIFY error:
+
+      INTERFACE_ERROR
+      ARGUMENT_ERROR
+      INPUT_ERROR
+      OUTPUT_ERROR
+      PERMISSION_ERROR
+      AUTHENTICATION_ERROR
+      CREDENTIAL_ERROR
+      DEPENDENCY_ERROR
+      ENVIRONMENT_ERROR
+      NETWORK_ERROR
+      PROVIDER_ERROR
+      RESOURCE_ERROR
+      STATE_ERROR
+      VERSION_ERROR
+      DOCUMENTATION_CONFLICT
+      TOOL_BUG
+      UNKNOWN_ERROR
+    END CLASSIFY
+
+    ANALYZE probable causes
+
+    DETERMINE:
+      recoverability
+      safe_next_action
+      retry_safe
+      human_gate_required
+    END DETERMINE
+
+    IF retry_safe
+      PROPOSE corrected invocation
+    ELSE
+      DO NOT retry automatically
+    END IF
+
+    PRESERVE failure evidence
+
+    RETURN ERROR_ANALYSIS
+  END OPERATION
+
+
+  REM ================================================================
+  REM  9. STATE-AWARE RETRY
+  REM ================================================================
+
+  OPERATION RETRY(error_analysis)
+
+    REQUIRE error_analysis.retry_safe == TRUE
+
+    INSPECT state_after_failure
+
+    IF prior invocation may have produced external side effects
+      VERIFY external state before retry
+    END IF
+
+    APPLY only evidence-supported correction
+
+    EXECUTE corrected plan
+
+    PRESERVE:
+      original attempt
+      error analysis
+      corrected attempt
+      final state
+    END PRESERVE
+
+    RETURN result
+  END OPERATION
+
+
+  REM ================================================================
+  REM 10. GENERATE LOCAL .PNI
+  REM ================================================================
+
+  OPERATION GENERATE_PNI(tool)
+
+    REQUIRE discovered tool identity
+    REQUIRE interface sources
+    REQUIRE source hashes
+    REQUIRE generated timestamp
+
+    CONSTRUCT TOOL_PNI containing:
+
+      identity
+      executable
+      version
+      platform
+      discovery sources
+      commands
+      arguments
+      options
+      capabilities
+      input/output model
+      invocation patterns
+      environment requirements
+      permissions
+      side effects
+      error patterns
+      diagnostic procedures
+      safe examples
+      unresolved interface questions
+      provenance
+    END CONSTRUCT
+
+    MARK generated facts:
+      RETRIEVED
+      OBSERVED
+      INFERRED
+      UNRESOLVED
+    END MARK
+
+    WRITE local .pni
+
+    RETURN TOOL_PNI
+  END OPERATION
+
+
+  REM ================================================================
+  REM 11. LOCAL TOOL REGISTRY
+  REM ================================================================
+
+  REGISTRY LOCAL_TOOL_REGISTRY
+
+    LOCATION ".cycler/tools/"
+
+    ENTRY TOOL_REGISTRY_ENTRY
+
+    POLICY
+      DISCOVERED tools MAY be registered locally
+      LOCAL registry is user-controlled
+      registry entries are versioned
+      pni files are content-addressable where supported
+      tool version changes trigger re-verification
+      stale specifications are marked rather than silently replaced
+    END POLICY
+
+  END REGISTRY
+
+
+  OPERATION REGISTER_LOCAL(tool_pni)
+
+    CALCULATE pni_hash
+    WRITE tool_pni to local registry
+    WRITE TOOL_REGISTRY_ENTRY
+    RECORD discovery provenance
+    RECORD tool version
+    RECORD source hashes
+    RETURN registry_entry
+  END OPERATION
+
+
+  REM ================================================================
+  REM 12. RE-DISCOVERY / DRIFT DETECTION
+  REM ================================================================
+
+  OPERATION VERIFY_TOOL(tool_registry_entry)
+
+    RESOLVE executable
+    READ current version
+    COMPARE version with registry
+    RECOLLECT relevant interface sources
+    CALCULATE source hashes
+
+    IF interface changed
+      MARK "INTERFACE_DRIFT"
+      GENERATE updated candidate .pni
+      PRESERVE previous .pni
+    END IF
+
+    IF executable version changed
+      MARK "VERSION_DRIFT"
+      REQUIRE re-verification before high-risk execution
+    END IF
+
+    RETURN verification_state
+  END OPERATION
+
+
+  REM ================================================================
+  REM 13. .PNI CONTRIBUTION TO GITHUB
+  REM ================================================================
+
+  OPERATION PREPARE_CONTRIBUTION(tool_pni, repository)
+
+    REQUIRE USER_EXPLICIT_CONTRIBUTION
+
+    CHECK:
+      no credentials
+      no secrets
+      no private paths unless explicitly permitted
+      no personal data unless explicitly permitted
+      provenance retained
+      source documentation references retained
+      license/redistribution status known or marked unresolved
+      tool version identified
+      generated .pni passes syntax validation
+    END CHECK
+
+    CREATE contribution package:
+      tool.pni
+      source/provenance manifest
+      validation report
+      tool identity/version
+      contribution metadata
+    END CREATE
+
+    RETURN contribution_package
+  END OPERATION
+
+
+  OPERATION CONTRIBUTE_TO_GITHUB(repository, contribution_package)
+
+    REQUIRE HUMAN_AUTHORIZATION
+
+    PREFERRED_FLOW:
+      FORK_OR_BRANCH repository
+      ADD contribution_package
+      VALIDATE
+      COMMIT
+      PUSH
+      OPEN_PULL_REQUEST
+    END FLOW
+
+    DO NOT:
+      silently push to upstream
+      overwrite another contributor's specification
+      expose credentials
+      claim upstream acceptance before merge
+    END DO
+
+    RECORD:
+      repository
+      branch
+      commit
+      pull_request
+      contribution_author
+      contribution_timestamp
+      pni_hash
+      review_status
+    END RECORD
+
+    RETURN contribution_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM 14. USER CONTRIBUTION MODEL
+  REM ================================================================
+
+  CONTRIBUTION_POLICY
+
+    DEFAULT "LOCAL_ONLY"
+
+    USER MAY:
+      KEEP_LOCAL
+      EXPORT
+      SHARE_FILE
+      CONTRIBUTE_TO_GITHUB
+      UPDATE_EXISTING_PNI
+      PROPOSE_NEW_TOOL_PNI
+      REPORT_INTERFACE_DRIFT
+      REPORT_TOOL_BUG
+    END USER MAY
+
+    RULE "Local discovery never implies public contribution."
+
+  END CONTRIBUTION_POLICY
+
+
+  REM ================================================================
+  REM 15. SHELL COMMAND MODEL
+  REM ================================================================
+
+  COMMAND discover
+    DISCOVER_TOOL(argument)
+    READ_INTERFACE(result)
+    MAP_CAPABILITIES(result)
+    OUTPUT result
+  END COMMAND
+
+  COMMAND inspect
+    READ_INTERFACE(argument)
+    OUTPUT interface
+  END COMMAND
+
+  COMMAND plan
+    PLAN(tool, user_intent)
+    OUTPUT execution_plan
+  END COMMAND
+
+  COMMAND run
+    PLAN(tool, user_intent)
+    EXECUTE(plan)
+    OBSERVE(result)
+    OUTPUT result
+  END COMMAND
+
+  COMMAND diagnose
+    DIAGNOSE(result)
+    OUTPUT error_analysis
+  END COMMAND
+
+  COMMAND retry
+    RETRY(error_analysis)
+    OUTPUT result
+  END COMMAND
+
+  COMMAND learn
+    GENERATE_PNI(tool)
+    REGISTER_LOCAL(tool_pni)
+    OUTPUT tool_pni
+  END COMMAND
+
+  COMMAND verify
+    VERIFY_TOOL(registry_entry)
+    OUTPUT verification_state
+  END COMMAND
+
+  COMMAND contribute
+    PREPARE_CONTRIBUTION(tool_pni, repository)
+    CONTRIBUTE_TO_GITHUB(repository, contribution_package)
+    OUTPUT contribution_result
+  END COMMAND
+
+
+  REM ================================================================
+  REM 16. NATURAL-LANGUAGE TOOL USE
+  REM ================================================================
+
+  OPERATION RESOLVE_INTENT(user_request)
+
+    IDENTIFY likely tool/app
+    IF tool unknown
+      DISCOVER candidate tools
+    END IF
+
+    READ relevant interface documentation
+    MAP user_request to one or more operations
+    BUILD execution plan
+    PRESENT ambiguity where necessary
+    EXECUTE only after capability policy permits
+    DIAGNOSE if execution fails
+    PRESERVE successful and failed state
+    RETURN result
+  END OPERATION
+
+
+  REM ================================================================
+  REM 17. COMPOSITION
+  REM ================================================================
+
+  OPERATION COMPOSE_TOOLS(tool_a, tool_b, intermediate)
+
+    DISCOVER_TOOL(tool_a)
+    DISCOVER_TOOL(tool_b)
+
+    PLAN:
+      tool_a -> intermediate
+      intermediate -> tool_b
+    END PLAN
+
+    PRESERVE:
+      tool identities
+      versions
+      interface sources
+      intermediate artifact
+      hashes
+      provenance
+      execution results
+    END PRESERVE
+
+    VERIFY interface compatibility
+
+    EXECUTE composition
+
+    RETURN composed_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM 18. CYCLER INTEROPERABILITY
+  REM ================================================================
+
+  CONTRACT CYCLER_SHELL_CONTRACT
+
+    INVARIANT "The Shell is a Cycler, not merely a command parser."
+    INVARIANT "Tool discovery and tool authorization remain distinct."
+    INVARIANT "The underlying tool remains sovereign over its own semantics."
+    INVARIANT "The Shell interprets documented interfaces rather than replacing them."
+    INVARIANT "Tool identity and version are preserved."
+    INVARIANT "Execution results and failures are provenance-bearing events."
+    INVARIANT "Generated .pni specifications are local artifacts first."
+    INVARIANT "Users control public contribution."
+    INVARIANT "A .pni generated from incomplete evidence MUST expose its unresolved state."
+    INVARIANT "A tool may be called by another Cycler through the Shell."
+    INVARIANT "Shared tool execution does not collapse Cycler workflow identities."
+    INVARIANT "Human sovereignty remains above irreversible execution."
+
+  END CONTRACT
+
+
+  REM ================================================================
+  REM 19. STANDARD LIFECYCLE
+  REM ================================================================
+
+  CYCLE TOOL_USE
+    INPUT user_request
+    DISCOVER
+    READ
+    INTERPRET
+    PLAN
+    AUTHORIZE
+    EXECUTE
+    OBSERVE
+    VERIFY
+    DIAGNOSE IF FAILED
+    RETRY IF SAFE
+    PRESERVE
+    UPDATE_LOCAL_PNI IF NEW_INFORMATION
+    OUTPUT result
+  END CYCLE
+
+
+  REM ================================================================
+  REM 20. TOOL LEARNING LIFECYCLE
+  REM ================================================================
+
+  CYCLE TOOL_LEARNING
+    INPUT tool_reference
+    DISCOVER
+    READ_MAN
+    READ_INFO
+    READ_HELP
+    READ_LOCAL_DOCUMENTATION
+    PROBE_SAFE_INTERFACE
+    CORRELATE
+    CLASSIFY_EPISTEMIC_STATUS
+    GENERATE_PNI
+    VALIDATE_PNI
+    REGISTER_LOCAL
+    OUTPUT tool_pni
+  END CYCLE
+
+
+  REM ================================================================
+  REM 21. CONTRIBUTION LIFECYCLE
+  REM ================================================================
+
+  CYCLE TOOL_CONTRIBUTION
+    INPUT local_tool_pni
+    REVIEW
+    SANITIZE
+    VALIDATE
+    CHECK_PROVENANCE
+    CHECK_LICENSE
+    CHECK_SECRETS
+    PREPARE_CONTRIBUTION
+    HUMAN_SIGNOFF
+    CONTRIBUTE_TO_GITHUB
+    PRESERVE_PULL_REQUEST_STATE
+    OUTPUT contribution_result
+  END CYCLE
+
+
+  REM ================================================================
+  REM 22. FAILURE PHILOSOPHY
+  REM ================================================================
+
+  FAILURE_POLICY
+
+    "Unknown tool interface -> discover before execution."
+    "Missing documentation -> use safe probing and mark uncertainty."
+    "Conflicting documentation -> preserve conflict."
+    "Invalid arguments -> diagnose and propose correction."
+    "Permission failure -> report required permission; do not bypass."
+    "Credential failure -> report secure credential requirement; do not expose secret."
+    "Partial execution -> inspect resulting state before retry."
+    "Unknown failure -> preserve evidence and stop unsafe retry."
+    "Destructive action -> require explicit authorization."
+    "Publication/deployment/network side effect -> preserve resulting external state."
+    "Generated .pni uncertainty -> mark UNRESOLVED rather than inventing semantics."
+
+  END FAILURE_POLICY
+
+
+  REM ================================================================
+  REM 23. RELATIONSHIP TO OTHER HUMANESQUE COMPONENTS
+  REM ================================================================
+
+  RELATIONSHIPS
+
+    PANINI
+      "Language in which CYCLER_SHELL is specified."
+
+    CYCLER_SUBSTRATE
+      "Interoperability substrate through which the Shell can serve Cyclers."
+
+    MEZ
+      "Workbench/runtime in which the Shell may be authored, inspected,
+       executed, debugged, rendered and released."
+
+    GENIE
+      "May use CYCLER_SHELL as a general-purpose execution/orchestration
+       capability."
+
+    FAKIR
+      "May provide retrieval, evidence, ontology and provenance governance
+       around tool discovery and documentation."
+
+    MISTY
+      "May preserve or publish important tool specifications and execution
+       artefacts."
+
+    MASI
+      "May gate publication/IPR transitions when tool-generated artefacts
+       enter research or IPR workflows."
+
+  END RELATIONSHIPS
+
+
+  REM ================================================================
+  REM 24. CANONICAL COMPRESSION
+  REM ================================================================
+
+  REM
+  REM  CYCLER SHELL
+  REM
+  REM  Read the tool.
+  REM  Understand the interface.
+  REM  Plan the operation.
+  REM  Execute the underlying capability.
+  REM  Observe what actually happened.
+  REM  Diagnose failure rather than merely reporting it.
+  REM  Learn the tool as a local .pni.
+  REM  Reuse the learned specification.
+  REM  Let the user decide whether to contribute it upstream.
+  REM
+  REM  ONE SHELL.
+  REM  MANY TOOLS.
+  REM  LOCAL KNOWLEDGE.
+  REM  USER-CONTROLLED CONTRIBUTION.
+  REM
+
+END PROGRAM

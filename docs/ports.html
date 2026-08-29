@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Hindawi local ports</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="nb.html">Notebook</a>
+    <a href="ports.html">Local ports</a>
+    <a href="standards/">Standards</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">One kernel · 22 scheduled languages · configure && make</p>
+  <h1>Local Hindawi</h1>
+  <p class="lead">The same compiler people ran as Hindi C on a 486, unzipped from this tree, modernized. Not 22 copies. Not <code>#define</code>.</p>
+  <pre class="notranslate" translate="no">cd dist/hindawi
+./configure --prefix=$HOME/.local
+make
+make check
+make install
+guru examples/hindi/guru.uhin
+</pre>
+  <p>Driver: <code>tools/hincc.mjs</code>. Wrappers: <code>guru</code>, <code>shraeni</code>. Host is GNU11 <code>gcc</code>. UTF-8 identifiers are allowed. <code>#समावेश <मानकपन.स></code> becomes <code>#include <stdio.h></code>.</p>
+
+  <h2>Architecture</h2>
+  <pre class="notranslate" translate="no">script table     language table      shaili table
+(flatten reverse) (native ↔ C)        (Guru / श्रेणी / …)
+        \              |                   /
+         \             v                  /
+          \     Devanagari hub          /
+           \           |               /
+            →  shaili lex → host → cc
+</pre>
+  <p>Hindi is the retrieved shaili. Other languages are projections of that kernel. Brahmi letters flatten. Perso-Arabic is named lossy. Manipuri and Santali wait for a CSV in <code>deposits/csv</code> — they are not invented here.</p>
+
+  <h2>22 scheduled</h2>
+  <table>
+    <thead><tr><th>Language</th><th>Script</th><th>Keywords</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Hindi</td><td>Devanagari</td><td>shaili + TSV</td><td><code>examples/hindi/guru.uhin</code></td></tr>
+      <tr><td>Bengali, Assamese</td><td>Bengali</td><td>TSV + flatten</td><td>dist/hindawi/examples/bengali</td></tr>
+      <tr><td>Punjabi</td><td>Gurmukhi</td><td>TSV + flatten</td><td>dist/hindawi/examples/punjabi</td></tr>
+      <tr><td>Tamil, Telugu, Kannada, Malayalam, Gujarati, Odia</td><td>own Brahmi</td><td>TSV + flatten</td><td>examples/<id>/guru.uhin</td></tr>
+      <tr><td>Marathi, Nepali, Sanskrit</td><td>Devanagari</td><td>TSV</td><td>examples/<id></td></tr>
+      <tr><td>Bodo, Dogri, Konkani, Maithili</td><td>Devanagari</td><td>Hindi hub until CSV</td><td>labelled in the file</td></tr>
+      <tr><td>Urdu, Kashmiri, Sindhi</td><td>Perso-Arabic</td><td>TSV, lossy</td><td>round-trip not guaranteed</td></tr>
+      <tr><td>Manipuri, Santali</td><td>Meitei / Ol Chiki</td><td>awaiting map</td><td>deposits/csv</td></tr>
+    </tbody>
+  </table>
+  <p><a href="faq.html">FAQ</a> · <a href="nb.html">Notebook (browser)</a> · <a href="view.html?src=WHY_DEFINE_IS_NOT_LOCALIZATION.md">#define is not a lexer</a></p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+</body>
+</html>

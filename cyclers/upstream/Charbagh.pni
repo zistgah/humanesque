@@ -1,0 +1,209 @@
+# CHARBAGH.pni
+# Humanesque Estate — Triage & Wayfinding Cycler
+# PANINI source representation
+# Version: 1.0.0
+# Status: canonical architectural specification
+# Relationship: extends the Humanesque / GENIE / FAKIR architecture
+
+[IDENTITY]
+name = CHARBAGH
+kind = triage_and_wayfinding_cycler
+domain = HUMANESQUE
+purpose = "Help a person discover where and how they may participate in the Humanesque Estate."
+constitutional_statement = "Charbagh does not decide who you are. It helps you discover where and how you may participate."
+principle = "Many gardens. One Humanesque."
+
+[ETYMOLOGY_AND_ARCHITECTURAL_METAPHOR]
+name = Charbagh
+meaning = "four gardens / quadrants"
+quadrants = "multiple legitimate directions of belonging and realization"
+central_axis = "Humanesque provides constitutional ground"
+paths = "people may move between gardens rather than being permanently classified"
+recombination = "composite identities and composite estates are native"
+cultivation = "new gardens / estates may be derived when existing paths are insufficient"
+territory_distinction = "Charbagh is navigable architecture, not the totality of Humanesque"
+
+[CONSTITUTIONAL_ROLE]
+humanesque = "constitutional substrate; sovereignty; equity; plurality; continuity"
+charbagh = "triage; wayfinding; mapping; routing; estate composition and derivation"
+fakir = "epistemic retrieval substrate; evidence; provenance; governance"
+genie = "creative agency; conceptualization; orchestration; transformation"
+estate = "contextual social/cultural/operational configuration"
+cycler = "executable lifecycle pattern"
+realization = "deliverable / lived / institutional / technical manifestation"
+
+[ENTRY_ARCHITECTURE]
+flow = "HUMANESQUE -> CHARBAGH -> FAKIR / GENIE -> ESTATE / CYCLER -> REALIZATION"
+
+[CORE_CYCLER]
+sequence = [
+  ARRIVE,
+  ELICIT,
+  RETRIEVE,
+  MAP,
+  NAVIGATE,
+  COMPOSE,
+  DERIVE,
+  ENTER,
+  REMEMBER
+]
+
+[OPERATIONS]
+ARRIVE = "receive the person, group, project, or community"
+ELICIT = "surface intent, context, affiliations, inheritances, capabilities, needs and aspirations"
+RETRIEVE = "obtain relevant inherited and existing knowledge through FAKIR"
+MAP = "correlate person/group/project with available estates, cyclers, inheritances and paths"
+NAVIGATE = "select viable routes without collapsing plural belonging into a single classification"
+COMPOSE = "combine compatible existing estates/configurations"
+DERIVE = "constitute a new derivative estate where existing configurations do not suffice"
+ENTER = "route into the selected estate/cycler configuration"
+REMEMBER = "preserve decisions, rationale, provenance, state and continuity for future navigation"
+
+[BRANCHING]
+ENTER_EXISTING_ESTATE = [
+  "Zistgah",
+  "Kaivalyik",
+  "Cosmopolis",
+  "other canonical or derived estates"
+]
+COMPOSE_ESTATES = "participate across multiple compatible existing configurations"
+DERIVE_ESTATE = "constitute a new derivative estate"
+INVOKE_GENIE = "activate when the destination, configuration or required artifact cannot yet be conceptualized"
+
+[PLURAL_BELONGING]
+principle = "One person may belong to multiple cultures, languages, communities, professions, projects and inheritances."
+anti_pattern = "premature single-estate classification"
+required_behavior = "preserve plurality and permit multi-estate composition"
+canonical_example = "Bazmi"
+bazmi = "a derivative estate initiated through Charbagh by a person whose belonging is intrinsically plural"
+bazmi_retrieval_rule = "FAKIR must retrieve authentic constituent inheritances; it must not reconstruct them"
+
+[FAKIR_RELATION]
+FAKIR_role = "retrieves what is there"
+FAKIR_sequence = "RETRIEVE -> READ -> INTERPRET -> CORRELATE -> VERIFY -> EVIDENCE -> GOVERN -> PRESERVE -> TRANSFORM"
+charbagh_role = "finds where retrieved material belongs and which routes/configurations are viable"
+genie_role = "determines what can be conceived or made from the available material"
+relationship = "FAKIR retrieves. Charbagh routes. GENIE conceives."
+
+[GENIE_RELATION]
+GENIE_invocation = "when a person cannot conceptualize the destination, required configuration, or deliverable"
+GENIE_function = "creative agency and meta-cycler orchestration"
+genie_to_charbagh = "GENIE may return a conceptualized destination/configuration for Charbagh to route"
+charbagh_to_genie = "Charbagh may elevate an unresolved routing/configuration problem into GENIE"
+preservation = "GENIE does not replace Charbagh; it supplies creative agency where conceptualization is required"
+
+[WAYFINDING_MODEL]
+inputs = [
+  "person / group / project",
+  "intent",
+  "context",
+  "affiliations / inheritances",
+  "capabilities",
+  "needs",
+  "aspirations",
+  "retrieved evidence"
+]
+outputs = [
+  "existing estate route",
+  "composite estate route",
+  "derived-estate pathway",
+  "GENIE invocation",
+  "preserved navigation state"
+]
+
+[ESTATE_DERIVATION]
+derivation_principle = "Do not force a person into an existing estate when their configuration requires a new one."
+minimum_derivation_path = [
+  "DECLARE INTENT",
+  "RETRIEVE WITH FAKIR",
+  "CORRELATE & INTERPRET",
+  "HUMAN REVIEW",
+  "CONSTITUTE ESTATE",
+  "ENTER HUMANESQUE"
+]
+
+[BAZMI_EXAMPLE]
+intent = "I want to constitute Bazmi."
+retrieve = "retrieve authentic sources from each relevant inheritance"
+correlate = "identify compatibilities, tensions, gaps and complementarities"
+human_review = "ensure accuracy, respect, sovereignty and consent"
+constitute = "define grammar, values, governance, scope and relations"
+enter = "Bazmi becomes a recognized derivative estate"
+constraint = "retrieve, don't reconstruct"
+
+[CONSTITUTIONAL_GUARDRAILS]
+- "Charbagh does not decide who a person is."
+- "Charbagh routes; it does not assign identity."
+- "Plurality over uniformity."
+- "Preserve provenance before transformation."
+- "Retrieve before assumption."
+- "Read before interpretation."
+- "Verify before claim."
+- "Continuity over novelty."
+- "Equity across layers."
+- "Human-in-the-loop sovereignty."
+- "Prevent premature assimilation or erasure."
+- "Preserve decisions, rationale and provenance."
+
+[STATE_AND_MEMORY]
+persistent_state = true
+memory = true
+learns = "new routes and patterns"
+evolution = "maps may evolve as new estates emerge"
+preservation = "decisions, rationale, provenance, state and navigation history"
+continuity = "return, revision and re-navigation are first-class operations"
+
+[ARCHITECTURAL_STACK]
+layers = [
+  HUMANESQUE,
+  CHARBAGH,
+  FAKIR,
+  GENIE,
+  CYCLER_SUBSTRATE,
+  CYCLERS,
+  ESTATES,
+  INFRASTRUCTURE
+]
+HUMANESQUE = "constitutional substrate"
+CHARBAGH = "triage and wayfinding across estates and paths"
+FAKIR = "epistemic retrieval, evidence and governance"
+GENIE = "creative agency and meta-cycler orchestration"
+CYCLER_SUBSTRATE = "contracts for lifecycle patterns"
+CYCLERS = "realization lifecycles"
+ESTATES = "Zistgah, Kaivalyik, Cosmopolis, Bazmi and other configurations"
+INFRASTRUCTURE = "heterogeneous execution substrate"
+
+[COMPOSITION_AND_META_CYCLING]
+supports = [
+  "composite cycles",
+  "cycler -> GENIE elevation",
+  "GENIE -> cycler descent",
+  "GENIE splitting into multiple GENIEs",
+  "multiple GENIEs merging into a higher-order GENIE",
+  "recursive / meta-cycling"
+]
+identity_preservation = "preserve cycler identity, state, provenance and modality semantics during composition/elevation"
+backend_neutrality = true
+infrastructure_heterogeneity = true
+
+[DOMAIN_MODEL]
+domain_strategy = "universality through abstraction, not enumeration of every human profession"
+FAKIR_scope = "domains of human endeavour, governed contextually and extensibly"
+CHARBAGH_scope = "all Humanesque entry, routing, composition and derivation contexts"
+
+[NON_GOALS]
+- "Do not reduce Humanesque to a directory."
+- "Do not permanently classify people into one garden."
+- "Do not erase inherited distinctions through premature synthesis."
+- "Do not reconstruct retrieved cultural material when authentic retrieval is possible."
+- "Do not replace GENIE or FAKIR; coordinate with them."
+
+[CANONICAL_DISTINCTION]
+charbagh = "helps you find where to go"
+genie = "helps you figure out what to make when you do not yet know where to go"
+fakir = "retrieves what is there"
+
+[CANONICAL_SUMMARY]
+statement = "HUMANESQUE provides the constitutional ground; CHARBAGH provides triage and wayfinding; FAKIR retrieves and governs inherited knowledge; GENIE provides creative agency; ESTATES provide contextual configurations; CYCLERS execute realization lifecycles."
+
+[END]

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — dome (zistgah/dome)</title>
+  <link rel="stylesheet" href="dome.css" />
+  <style>
+    .leave { position:fixed; top:3.2rem; left:1rem; z-index:9;
+      color:#c9a44e; font:13px ui-monospace,monospace; text-decoration:none;
+      border:1px solid rgba(201,164,78,.45); padding:.3rem .6rem; border-radius:999px;
+      background:rgba(6,11,26,.7); }
+  </style>
+</head>
+<body>
+<a class="leave" href="../index.html">← PANINI</a>
+<canvas id="nebula" aria-hidden="true"></canvas>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="calbar" role="list" aria-label="calendars"></div>
+<div id="brand" aria-hidden="true">PANINI</div>
+<button id="setBtn" title="settings">⚙</button>
+<div id="settings" role="dialog" aria-label="scene settings"></div>
+<div id="fractal"><button class="x" aria-label="close">✕</button><canvas width="340" height="340"></canvas><div class="cap"></div></div>
+<button id="themeBtn" title="dawn">☼ auto-dawn</button>
+<div id="hot" aria-label="scrub time"></div>
+<div id="scrubline"></div>
+<div id="veil" aria-hidden="true"></div>
+<main>
+  <div class="spacer" aria-hidden="true"></div>
+  <section id="arrival">
+    <div class="cartouche rev"><h1>PANINI</h1></div>
+    <p class="tag rev">Immersive rung — retrieved zistgah/dome<br>DOI 10.5281/zenodo.21449034</p>
+  </section>
+  <section><p class="vision rev">Same laboratory. Different projection.
+     Console, paper, studio, or dome — the maps do not change.</p></section>
+  <section><h2 class="rev">Foundational Domains</h2><div class="domains rev" id="domains"></div></section>
+  <section><h2 class="rev">Hero Artifacts</h2><div class="exhibits rev" id="exhibits"></div></section>
+  <section><h2 class="rev">Research Threads</h2><div class="threads rev" id="threads"></div></section>
+  <div id="pop" role="tooltip"></div>
+</main>
+<div id="horizon" aria-hidden="true"><div class="ah"></div><div class="cross"></div></div>
+<div id="hud" role="status">
+  <div class="row"><span class="alt">ALT 0.0 m</span><span class="spd">SPD 0.0 m/s</span>
+    <span class="thr">THR 50%</span><span class="thrbar"><span class="bar"></span></span></div>
+  <div class="msg"></div>
+  <div class="keys">W/S throttle · A/D yaw · retrieved zistgah/dome</div>
+</div>
+<div class="stick" id="stickL"><div class="knob"></div></div>
+<div class="stick" id="stickR"><div class="knob"></div></div>
+<div id="toast" role="status"></div>
+<footer>zistgah/dome in PANINI · © 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="chakra-core.js"></script>
+<script src="dome.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# FAKIR-shaped literate cycler
+## Domainal guide
+REM This is prose, not code.
+MODULE T00040
+FUNCTION main()
+    PRINT "cycler"
+    RETURN 0
+END
+END

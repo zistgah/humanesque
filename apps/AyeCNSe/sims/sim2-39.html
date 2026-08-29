@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V13.0 - Omniverse Navigator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Courier New', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box; }
+        .core-hud { background: rgba(10, 10, 10, 0.9); border-left: 5px solid #ff0055; padding: 20px; border-radius: 4px; pointer-events: auto; color: #ff0055; width: 320px; box-shadow: 0 0 30px rgba(255, 0, 85, 0.3); }
+        .console-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 900px; align-self: center; background: rgba(5, 5, 5, 0.98); padding: 15px; border-radius: 8px; border: 1px solid #ff0055; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #ff0055; border: 1px solid #440022; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 160px; background: #ff0055; color: #fff; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .stat { font-size: 12px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="core-hud">
+            <h2 style="margin:0; font-size: 14px;">OMNIVERSE_CORE_v13.0</h2>
+            <hr style="border: 0.5px solid #440022; margin: 10px 0;">
+            <div class="stat"><span>DIMENSION:</span><span id="dim">3D</span></div>
+            <div class="stat"><span>REALITY_SEED:</span><span id="seed">0.122</span></div>
+            <div class="stat"><span>ENTROPY:</span><span id="entropy">STABLE</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// BEYOND REALITY
+INITIATE_DIMENSIONAL_SHIFT(10)
+WAIT(2.0)
+GENERATE_NEW_REALITY_SEED(0.88)
+WAIT(3.0)
+RECURSIVE_FOLDING_ON()
+WAIT(4.0)
+COLLAPSE_TO_SINGULARITY()</textarea>
+            <button onclick="sim.run()">Shift Reality</button>
+        </div>
+    </div>
+
+    <script>
+        class OmniverseSim {
+            constructor() {
+                this.dimension = 3;
+                this.seed = 0.122;
+                this.isFolding = false;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.camera.position.z = 200;
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // Create "Reality Particles"
+                const geo = new THREE.TorusKnotGeometry(40, 15, 200, 32);
+                const mat = new THREE.PointsMaterial({color: 0xff0055, size: 0.5});
+                this.realityMesh = new THREE.Points(geo, mat);
+                this.scene.add(this.realityMesh);
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'INITIATE_DIMENSIONAL_SHIFT') this.dimension = val;
+                        else if (cmd === 'GENERATE_NEW_REALITY_SEED') this.seed = val;
+                        else if (cmd === 'RECURSIVE_FOLDING_ON') this.isFolding = true;
+                        else if (cmd === 'COLLAPSE_TO_SINGULARITY') { this.isFolding = false; this.dimension = 0; }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // Transform reality based on "Dimension" and "Seed"
+                this.realityMesh.rotation.x += 0.01 * this.seed;
+                this.realityMesh.rotation.y += 0.02;
+
+                if (this.isFolding) {
+                    this.realityMesh.scale.x = Math.sin(Date.now()*0.001) * 2;
+                    this.realityMesh.scale.y = Math.cos(Date.now()*0.001) * 2;
+                }
+
+                // Camera "Beyond" Effect
+                this.camera.position.z += ( (100 + (this.dimension * 20)) - this.camera.position.z) * 0.05;
+
+                document.getElementById('dim').innerText = this.dimension.toFixed(0) + "D";
+                document.getElementById('seed').innerText = this.seed.toFixed(3);
+                document.getElementById('entropy').innerText = this.dimension === 0 ? "SINGULARITY" : "EVOLVING";
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new OmniverseSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "language": "haskell",
+  "issuing_body": "GHC codeGen should_run (Haskell 2010 proxy)",
+  "suite": "testsuite/tests/codeGen/should_run/cgrun001,002,005 vs official .stdout",
+  "n": 3,
+  "pass": 3,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named GHC codeGen should_run extract. Full GHC testsuite (typechecker, TH, extensions) is GAP."
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — story spinner</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .story-paper {
+      background: var(--paper, #f4efe2);
+      color: var(--text, #1a1408);
+      padding: 1.5rem 1.75rem;
+      min-height: 16rem;
+      white-space: pre-wrap;
+      font: 1.15rem/1.7 Georgia, "Iowan Old Style", serif;
+      border: 1px solid rgba(201,162,39,.45);
+    }
+    .story-controls { display: flex; flex-wrap: wrap; gap: .6rem .8rem; align-items: end; margin: 1rem 0; }
+    .story-controls label { display: flex; flex-direction: column; gap: .2rem; font-size: .85rem; color: var(--dim); }
+    .story-controls input, .story-controls textarea {
+      font: inherit; padding: .35rem .5rem; min-width: 4rem;
+    }
+    #seed { width: min(36rem, 100%); min-height: 4rem; }
+    .turn-log { color: var(--dim); font-size: .85rem; }
+    @media print {
+      .site-head, .pfoot, .story-controls, .cite, .no-print, nav, button, .turn-log { display: none !important; }
+      html, body.site { background: #fff; color: #111; }
+      .story-paper { border: 0; background: #fff; color: #111; font-size: 12pt; }
+      @page { margin: 18mm; size: A4; }
+    }
+  </style>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite no-print">Parallel to <a href="llm.html">llama.cpp</a> · same wllama guest · one sentence per turn</p>
+  <h1>Story spinner</h1>
+  <p class="lead no-print">A few words. N turns. Each turn feeds the last sentence and appends the next. Length is arbitrary. Download, or print to PDF from the browser.</p>
+
+  <div class="story-controls no-print">
+    <label>Opening words
+      <textarea id="seed">Once upon a time in a small village</textarea>
+    </label>
+    <label>Turns N
+      <input id="n" type="number" min="1" max="500" value="8" />
+    </label>
+    <label>Tokens / turn
+      <input id="tok" type="number" min="8" max="128" value="32" />
+    </label>
+    <button type="button" id="go">Spin</button>
+    <button type="button" id="stop">Stop</button>
+    <button type="button" id="dl">Download .txt</button>
+    <button type="button" id="dlh">Download .html</button>
+    <button type="button" id="pdf">Print / PDF</button>
+  </div>
+  <p class="turn-log no-print" id="log">idle — same model as llama-cli (stories15M Q4_0).</p>
+  <article id="paper" class="story-paper" aria-live="polite"></article>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script src="engine/llm.js"></script>
+<script>
+(function () {
+  var stop = false;
+  var paper = document.getElementById("paper");
+  var log = document.getElementById("log");
+
+  function sentences(t) {
+    var parts = String(t).match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+    return parts.map(function (s) { return s.replace(/\s+/g, " ").trim(); }).filter(Boolean);
+  }
+  function lastSentence(t) {
+    var s = sentences(t);
+    return s.length ? s[s.length - 1] : t;
+  }
+  function clipSentence(chunk) {
+    var m = String(chunk).match(/^[\s\S]*?[.!?]/);
+    return m ? m[0].replace(/\s+/g, " ").trim() : String(chunk).replace(/\s+/g, " ").trim();
+  }
+  function titleFrom(t) {
+    var w = t.trim().split(/\s+/).slice(0, 6).join(" ");
+    return (w || "story") + " — PANINI";
+  }
+  function download(name, mime, body) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([body], { type: mime }));
+    a.download = name;
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
+  }
+
+  document.getElementById("go").onclick = async function () {
+    stop = false;
+    var seed = document.getElementById("seed").value.trim();
+    var N = Math.max(1, Number(document.getElementById("n").value) || 8);
+    var tok = Math.max(8, Number(document.getElementById("tok").value) || 32);
+    if (!seed) { log.textContent = "give a few words"; return; }
+    paper.textContent = seed;
+    log.textContent = "loading llama.cpp WASM…";
+    try {
+      await PANINI_LLM.getWllama();
+    } catch (e) {
+      log.textContent = String(e.message || e);
+      return;
+    }
+    var story = seed;
+    for (var i = 1; i <= N && !stop; i++) {
+      log.textContent = "turn " + i + " / " + N + " — feeding: “" + lastSentence(story).slice(0, 80) + "”";
+      var prompt = story;
+      var raw;
+      try {
+        raw = await PANINI_LLM.llamaCli(["-p", prompt, "-n", String(tok)]);
+      } catch (e) {
+        log.textContent = String(e.message || e);
+        break;
+      }
+      var gen = String(raw || "");
+      if (gen.indexOf(prompt) === 0) gen = gen.slice(prompt.length);
+      var next = clipSentence(gen);
+      if (!next) break;
+      story = (story.replace(/\s+$/, "") + " " + next).replace(/\s+/g, " ").trim();
+      paper.textContent = story;
+    }
+    log.textContent = stop ? "stopped · " + sentences(story).length + " sentences"
+      : "done · " + N + " turns · " + sentences(story).length + " sentences · download or print to PDF";
+  };
+  document.getElementById("stop").onclick = function () { stop = true; };
+  document.getElementById("dl").onclick = function () {
+    download("story.txt", "text/plain;charset=utf-8", paper.textContent || "");
+  };
+  document.getElementById("dlh").onclick = function () {
+    var t = paper.textContent || "";
+    var html = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>" +
+      titleFrom(t).replace(/</g, "") + "</title></head><body><article style='max-width:40rem;margin:2rem auto;font:18px/1.7 Georgia,serif;white-space:pre-wrap'>" +
+      t.replace(/&/g, "&").replace(/</g, "<") + "</article></body></html>";
+    download("story.html", "text/html;charset=utf-8", html);
+  };
+  document.getElementById("pdf").onclick = function () {
+    document.title = titleFrom(paper.textContent || "story");
+    window.print();
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+; ini-style comment
+MODULE T00033
+FUNCTION main()
+    PRINT 7
+    RETURN 0
+END
+END

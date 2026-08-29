@@ -1,0 +1,7 @@
+@imperative @state(linear_borrow) @mem(affine) @type(static_nominal) @failure(result_monad)
+MODULE RustCharacter
+    FUNCTION main()
+        x = 1
+        RETURN x
+    END
+END

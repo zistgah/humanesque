@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V10.0 - Interstellar Voyager</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'JetBrains Mono', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; }
+        .warp-hud { background: rgba(0, 0, 0, 0.85); border: 1px solid #7c3aed; padding: 20px; border-radius: 4px; pointer-events: auto; color: #a78bfa; width: 320px; box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+        .console-box { display: flex; gap: 10px; height: 160px; width: 100%; max-width: 900px; align-self: center; background: rgba(5, 0, 15, 0.95); padding: 15px; border-radius: 8px; border: 1px solid #7c3aed; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #c4b5fd; border: 1px solid #4c1d95; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 160px; background: #7c3aed; color: #fff; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+        .stat { font-size: 12px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="warp-hud">
+            <h2 style="margin:0; font-size: 16px; color:#fff">INTERSTELLAR_V10.0</h2>
+            <hr style="border: 0.5px solid #4c1d95; margin: 10px 0;">
+            <div class="stat"><span>VELOCITY:</span><span id="vel">0.00c</span></div>
+            <div class="stat"><span>TIME DILATION:</span><span id="gamma">1.00x</span></div>
+            <div class="stat"><span>DESTINATION:</span><span>ALPHA CENTAURI</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// INTERSTELLAR FLIGHT PLAN
+ENGAGE_ANTIMATTER_DRIVE(0.5)
+WAIT(3.0)
+ACCELERATE_TO_RELATIVISTIC(0.99)
+WAIT(5.0)
+TIME_DILATION_LOCK()
+WAIT(2.0)
+DECELERATE_FOR_ARRIVAL()</textarea>
+            <button onclick="sim.run()">Engage Warp</button>
+        </div>
+    </div>
+
+    <script>
+        class InterstellarSim {
+            constructor() {
+                this.c = 1.0; // Speed of light constant
+                this.velocity = 0;
+                this.targetVel = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 10000);
+                this.camera.position.z = 5;
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // Starfield
+                const starGeo = new THREE.BufferGeometry();
+                const starCount = 15000;
+                const posArray = new Float32Array(starCount * 3);
+                for(let i=0; i<starCount*3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 2000;
+                }
+                starGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7, transparent: true });
+                this.stars = new THREE.Points(starGeo, starMat);
+                this.scene.add(this.stars);
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'ENGAGE_ANTIMATTER_DRIVE') this.targetVel = val;
+                        else if (cmd === 'ACCELERATE_TO_RELATIVISTIC') this.targetVel = val;
+                        else if (cmd === 'DECELERATE_FOR_ARRIVAL') this.targetVel = 0.01;
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // Ease toward target velocity
+                this.velocity += (this.targetVel - this.velocity) * 0.01;
+
+                // Lorentz Factor (Time Dilation)
+                // gamma = 1 / sqrt(1 - v^2/c^2)
+                const gamma = 1 / Math.sqrt(1 - Math.pow(this.velocity, 2));
+
+                // Warp visual effect: Stretch stars along Z-axis
+                this.stars.scale.z = 1 + (this.velocity * 50);
+                this.stars.position.z += this.velocity * 20;
+                if(this.stars.position.z > 1000) this.stars.position.z = 0;
+
+                // Update HUD
+                document.getElementById('vel').innerText = `${this.velocity.toFixed(3)}c`;
+                document.getElementById('gamma').innerText = `${gamma.toFixed(2)}x`;
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new InterstellarSim();
+    </script>
+</body>
+</html>

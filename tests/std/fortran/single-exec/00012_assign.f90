@@ -1,0 +1,9 @@
+PROGRAM P
+  INTEGER X
+  X = 1
+  X = X + 2
+  IF (X .EQ. 3) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

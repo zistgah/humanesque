@@ -1,0 +1,27 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+MODULE ArtifactDemo
+    FILE "hello.generated.pni"
+        MIME "text/x-panini"
+        ENCODING "utf-8"
+        CONTENT
+            FUNCTION main() -> Int
+                PRINT "generated"
+                RETURN 0
+            END
+        END
+    END FILE
+
+    ARTIFACT requirements
+        TYPE "specification"
+        FORMAT "text/markdown"
+        VERSION "1.0.0"
+        STATUS DRAFT
+    END
+
+    FUNCTION main() -> Int
+        PRINT "artifacts registered"
+        RETURN 0
+    END
+END

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="und">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>marathi guru / C — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/academic.css"/>
+</head>
+<body class="site">
+<header class="site-head"><strong>PANINI</strong>
+<nav><a href="index.html">Standards</a> <a href="../nb.html">Notebook</a> <a href="CONTRIBUTE.html">Submit</a></nav>
+</header>
+<main class="site-main">
+<h1>marathi · गुरु · C</h1>
+<p>Released lineage: Hindawi 15 August 2004. This file is the first filled standard for this pair in this tree.</p>
+
+<h2>1–10 · clauses</h2>
+<ol><li>यह दस्तावेज़ marathi guru / C का मानक है।</li><li>यह दस्तावेज़ अंग्रेज़ी ISO पाठ का अनुवाद नहीं है।</li><li>इस फ़ाइल की कुंजी-सारणी आधिकारिक है।</li><li>संकलन पथ है: यूनिकोड, फिर ACII, फिर रोमननागरी, फिर शैली लेक्स, फिर मेज़बान।</li><li>इस मानक में लिखा कार्यक्रम उसी शैली के किसी अन्य प्रकाशित मानक में देखा जा सकता है।</li><li>देखना संकलन की पहचान नहीं बदलता।</li><li>नामकोश के द्वारा पहचानकर्ता दिखते हैं। संकलन मूल पहचानकर्ता लेता है।</li><li>कुंजी-सारणी के अंतर सूचीबद्ध हैं। स्मृति से नहीं भरे गए।</li><li>बोली फ़ाइलें ध्वनि, शब्द-चयन, या वाक्य-रचना पंक्तियाँ जोड़ सकती हैं। स्वीकृति से पहले वे इस सारणी की जगह नहीं लेतीं।</li><li>सुधार deposits/csv और deposits/standards में CSV के रूप में भेजें।</li></ol>
+<ol><li>This document is the standard of marathi guru / C.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri, then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+<h2>Keyword table (normative)</h2>
+<p>Source: retrieved <code>langs/marathi_c.tsv</code>. Not invented this turn.</p>
+<table><thead><tr><th>native</th><th>Romenagri</th><th>host C</th></tr></thead>
+<tbody><tr><td>जर</td><td><code>jara</code></td><td><code>if</code></td></tr><tr><td>अन्यथा</td><td><code>anyathaa</code></td><td><code>else</code></td></tr><tr><td>पर्यंत</td><td><code>parya_nta</code></td><td><code>while</code></td></tr><tr><td>करा</td><td><code>karaa</code></td><td><code>do</code></td></tr><tr><td>साठी</td><td><code>saathii</code></td><td><code>for</code></td></tr><tr><td>थांबा</td><td><code>thaa_mbaa</code></td><td><code>break</code></td></tr><tr><td>सुरूठेवा</td><td><code>suruutheevaa</code></td><td><code>continue</code></td></tr><tr><td>निवड</td><td><code>nivada</code></td><td><code>switch</code></td></tr><tr><td>स्थिती</td><td><code>sthitii</code></td><td><code>case</code></td></tr><tr><td>पूर्वनिर्धारित</td><td><code>puurvanirdhaarita</code></td><td><code>default</code></td></tr><tr><td>परत</td><td><code>parata</code></td><td><code>return</code></td></tr><tr><td>स्थिरांक</td><td><code>sthiraa_nka</code></td><td><code>const</code></td></tr><tr><td>पूर्णांक</td><td><code>puur_naa_nka</code></td><td><code>int</code></td></tr><tr><td>दशांश</td><td><code>dashaa_nsha</code></td><td><code>float</code></td></tr><tr><td>द्विगुण</td><td><code>dvigu_na</code></td><td><code>double</code></td></tr><tr><td>अक्षर</td><td><code>ak_sara</code></td><td><code>char</code></td></tr><tr><td>शून्य</td><td><code>shuunya</code></td><td><code>void</code></td></tr><tr><td>कार्य</td><td><code>kaarya</code></td><td><code>void</code></td></tr><tr><td>वर्ग</td><td><code>varga</code></td><td><code>class</code></td></tr><tr><td>नवीन</td><td><code>naviina</code></td><td><code>new</code></td></tr><tr><td>सार्वजनिक</td><td><code>saarvajanika</code></td><td><code>public</code></td></tr><tr><td>खाजगी</td><td><code>khaajagii</code></td><td><code>private</code></td></tr><tr><td>स्थिर</td><td><code>sthira</code></td><td><code>static</code></td></tr><tr><td>आभासी</td><td><code>aabhaasii</code></td><td><code>virtual</code></td></tr><tr><td>जेव्हा</td><td><code>jeevhaa</code></td><td><code>case</code></td></tr><tr><td>संरचना</td><td><code>sa_nracanaa</code></td><td><code>struct</code></td></tr></tbody></table>
+<h2>Gaps toward C17 keywords</h2>
+<p><code>auto</code>, <code>enum</code>, <code>extern</code>, <code>goto</code>, <code>inline</code>, <code>long</code>, <code>register</code>, <code>restrict</code>, <code>short</code>, <code>signed</code>, <code>sizeof</code>, <code>typedef</code>, <code>union</code>, <code>unsigned</code>, <code>volatile</code>, <code>_Bool</code>, <code>_Complex</code>, <code>_Generic</code>, <code>_Atomic</code>, <code>_Alignas</code>, <code>_Alignof</code>, <code>_Noreturn</code>, <code>_Static_assert</code>, <code>_Thread_local</code></p>
+<p>C17 have 19 / 43. Extra host tokens in TSV: class, new, private, public, virtual</p>
+<p class="fine">View this program in another standard: notebook → View as. Identifiers use the dictionary. Compilation identity does not follow the view.</p>
+<p class="fine"><a href="CONTRIBUTE.html">Correct this table</a></p>
+</main></body></html>

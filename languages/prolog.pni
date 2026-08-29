@@ -1,0 +1,9 @@
+@logic @eval(inference) @abstract(constraint) @state(immutable)
+MODULE PrologCharacter
+    FUNCTION holds(x)
+        RETURN x == TRUE
+    END
+    FUNCTION main()
+        RETURN holds(TRUE)
+    END
+END

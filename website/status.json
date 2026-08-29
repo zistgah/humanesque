@@ -1,0 +1,16 @@
+{
+  "standard": "PANINI.STD.2026.08",
+  "frontends": {
+    "panini": "VERIFIED",
+    "python": "VERIFIED_SUBSET",
+    "c": "VERIFIED_SUBSET",
+    "cpp": "VERIFIED_SUBSET",
+    "fortran": "VERIFIED_SUBSET",
+    "rust": "VERIFIED_SUBSET",
+    "typescript": "VERIFIED_SUBSET",
+    "go": "VERIFIED_SUBSET",
+    "zig": "VERIFIED_SUBSET"
+  },
+  "vscode": "Open folder in VS Code; use .vscode/launch.json. Install tools/vscode-panini via Extension Development Host.",
+  "debugger": "node tools/panini-debug/adapter.mjs <file> <lang> — token/eval trace, not DWARF."
+}

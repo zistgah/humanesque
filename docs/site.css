@@ -1,0 +1,106 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+   Humanesque estate theme — one palette for every public page. */
+:root {
+  --navy: #070d18;
+  --navy-2: #0e1a28;
+  --gold: #c9a227;
+  --ink: #e8d9a8;
+  --dim: #8a9bb0;
+  --paper: #f4efe2;
+  --text: #1a1408;
+}
+* { box-sizing: border-box; }
+html { background: var(--navy); }
+body.site, body.poster {
+  margin: 0;
+  font: 18px/1.55 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  color: var(--ink);
+  background: radial-gradient(120% 80% at 50% -10%, #1a2744 0%, var(--navy) 55%);
+  min-height: 100vh;
+}
+.site-head {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+  padding: .85rem 1.5rem;
+  background: rgba(7,13,24,.92);
+  border-bottom: 1px solid rgba(201,162,39,.35);
+  color: var(--ink);
+}
+.site-head strong { letter-spacing: .14em; color: var(--gold); font-weight: 500; }
+.site-head nav.spine-nav { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; }
+.spine-drop { position: relative; }
+.spine-drop > button, .spine-drop > a {
+  background: transparent; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0;
+}
+.spine-drop ul {
+  display: none; position: absolute; z-index: 20; margin: 0; padding: .4rem 0;
+  list-style: none; min-width: 12rem;
+  background: #0b1524; border: 1px solid rgba(201,162,39,.4);
+}
+.spine-drop:hover ul, .spine-drop:focus-within ul { display: block; }
+.spine-drop li a { display: block; padding: .25rem .8rem; color: var(--ink); text-decoration: none; }
+.spine-drop li a:hover { color: var(--gold); }
+.spine-langs { display: flex; gap: .4rem; align-items: center; }
+.spine-langs select { max-width: 12rem; }
+.site-head a.brand { text-decoration: none; }
+
+.site-head a { color: var(--ink); text-decoration: none; font-size: .95rem; }
+.site-head a:hover { color: var(--gold); }
+.site-main { max-width: 52rem; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+.lead { font-size: 1.2rem; color: var(--ink); }
+a { color: var(--gold); }
+h1, h2, h3 { color: #f3e6b6; font-weight: 500; }
+h1 { letter-spacing: .06em; font-size: clamp(2rem, 6vw, 3.4rem); }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { border-bottom: 1px solid rgba(201,162,39,.25); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+.roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr)); gap: .75rem; margin: 1.2rem 0 2rem; }
+.role {
+  display: block; text-decoration: none; color: inherit;
+  border: 1px solid rgba(201,162,39,.32);
+  background: rgba(8,16,32,.72);
+  padding: 1rem 1.05rem;
+  min-height: 9.5rem;
+}
+.role:hover { border-color: var(--gold); }
+.role h2 { margin: 0 0 .35rem; font-size: 1.15rem; color: var(--gold); }
+.role p { margin: 0; font-size: .95rem; color: var(--ink); }
+.cite { color: var(--dim); font-size: .9rem; }
+.fine { color: var(--dim); font-size: .88rem; }
+.poster-wrap { margin: 1.2rem 0; border: 1px solid rgba(201,162,39,.35); }
+.poster-wrap img { width: 100%; height: auto; display: block; }
+.claim { border-left: 3px solid var(--gold); padding: .2rem 1rem; font-style: italic; color: #f3e6b6; }
+.eve { background: rgba(201,162,39,.1); border: 1px solid var(--gold); padding: .85rem 1rem; }
+footer.pfoot, .site-foot {
+  text-align: center; padding: 2rem 1rem 3rem; color: var(--dim); font-size: .88rem;
+}
+code, pre { font-family: ui-monospace, "Cascadia Code", Menlo, monospace; }
+pre { background: rgba(0,0,0,.35); padding: .8rem; overflow: auto; }
+textarea, select, input[type=text] {
+  background: #071018; color: var(--ink); border: 1px solid rgba(201,162,39,.3);
+  font: 15px/1.4 ui-monospace, monospace;
+}
+button, .btn {
+  background: #1a3348; color: var(--ink); border: 1px solid rgba(201,162,39,.4);
+  padding: .35rem .75rem; cursor: pointer; font: inherit; text-decoration: none;
+}
+button:hover, .btn:hover { border-color: var(--gold); color: #fff; }
+.warn { background: rgba(201,162,39,.12); border: 1px solid var(--gold); padding: .7rem; }
+.paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .75rem; margin: 1rem 0 1.6rem; }
+.path {
+  display: block; text-decoration: none; color: inherit;
+  border: 1px solid rgba(201,162,39,.4);
+  background: rgba(8,16,32,.75);
+  padding: 1rem 1.1rem;
+  min-height: 8.5rem;
+}
+.path:hover { border-color: var(--gold); }
+.path .native { font-size: 1.35rem; color: var(--gold); display: block; margin-bottom: .25rem; }
+.path h2 { margin: 0 0 .3rem; font-size: 1.05rem; }
+.path p { margin: 0; font-size: .92rem; color: var(--ink); }
+.path .tag { font-size: .75rem; color: var(--dim); letter-spacing: .04em; }
+.ok { color: #8fd18f; }
+.fail { color: #e07a7a; }
+.rt-out { min-height: 6rem; width: 100%; }
+@media (max-width: 640px) {
+  .site-main { padding: 1rem; }
+  body.site, body.poster { font-size: 16px; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI ontology</title>
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media (max-width:800px) { .two { grid-template-columns:1fr; } }
+    textarea { width:100%; min-height:10rem; background:#0e1a28; color:#e8d9a8; }
+    .node { border:1px solid #345; padding:.5rem; margin:.3rem 0; }
+    .node.on { border-color:#c9a227; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>ONTOLOGY</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="console.html">Console</a>
+    <a href="explorer.html">Estate</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Ontology browser</h1>
+  <p>Identity is the node <code>id</code>. English / Hindi / Sanskrit strings are <em>labels</em> (ILM views). Paste a graph from another AI and merge. Duplicate ids update; new ids add.</p>
+  <p><input id="q" placeholder="search labels…" style="width:100%;max-width:28rem;padding:.4rem" /></p>
+  <div class="two">
+    <div>
+      <h2>Graph</h2>
+      <div id="list"></div>
+    </div>
+    <div>
+      <h2>Node</h2>
+      <div id="detail" class="node">Select a node.</div>
+      <h2>Load overlay (other AI)</h2>
+      <textarea id="paste" placeholder='{"nodes":[{"id":"concept:…","labels":{"hi":"…","en":"…"}}],"edges":[]}'></textarea>
+      <p><button type="button" id="merge">Merge</button>
+         <button type="button" id="exp">Export JSON</button></p>
+      <p class="fine" id="note"></p>
+    </div>
+  </div>
+</main>
+<script>
+fetch("ontology/core.json").then(r=>r.json()).then(G => {
+  /* Pages: copy also at docs/ontology/core.json */
+  window.G = G;
+  let sel = null;
+  function hay(n) {
+    return (n.id + " " + n.kind + " " + Object.values(n.labels||{}).join(" ")).toLowerCase();
+  }
+  function show(n) {
+    sel = n.id;
+    const labs = Object.entries(n.labels||{}).map(([k,v]) => k + ": " + v).join(" · ");
+    const ed = (G.edges||[]).filter(e => e.from===n.id || e.to===n.id)
+      .map(e => e.from + " —" + e.rel + "→ " + e.to).join("<br>");
+    document.getElementById("detail").innerHTML = "<h3>"+n.id+"</h3><p>"+labs+"</p><p>kind "+n.kind+(n.layer?(" · "+n.layer):"")+"</p><p>"+ed+"</p>";
+    draw();
+  }
+  function draw() {
+    const q = document.getElementById("q").value.trim().toLowerCase();
+    const nodes = (G.nodes||[]).filter(n => !q || hay(n).includes(q));
+    document.getElementById("list").innerHTML = nodes.map(n =>
+      "<div class='node"+(sel===n.id?" on":"")+"' data-id='"+n.id+"'><b>"+n.id+"</b><div>"+
+      Object.values(n.labels||{})[0]+" · "+n.kind+"</div></div>"
+    ).join("");
+    document.querySelectorAll("#list .node").forEach(el => {
+      el.onclick = () => show(G.nodes.find(x => x.id === el.dataset.id));
+    });
+    document.getElementById("note").textContent = (G.nodes||[]).length + " nodes · " + (G.edges||[]).length + " edges";
+  }
+  document.getElementById("q").oninput = draw;
+  document.getElementById("merge").onclick = () => {
+    try {
+      const o = JSON.parse(document.getElementById("paste").value);
+      const nodes = o.nodes || o["@graph"] || (Array.isArray(o) ? o : []);
+      const by = new Map((G.nodes||[]).map(n => [n.id, n]));
+      for (const n of nodes) {
+        if (!n || !n.id) continue;
+        by.set(n.id, Object.assign({}, by.get(n.id) || {}, n, {
+          labels: Object.assign({}, (by.get(n.id)||{}).labels || {}, n.labels || {})
+        }));
+      }
+      G.nodes = [...by.values()];
+      G.edges = (G.edges||[]).concat(o.edges || []);
+      draw();
+    } catch (e) { document.getElementById("note").textContent = String(e); }
+  };
+  document.getElementById("exp").onclick = () => {
+    const blob = new Blob([JSON.stringify(G, null, 2)], {type:"application/json"});
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "ontology.json"; a.click();
+  };
+  draw();
+});
+</script>
+</body>
+</html>

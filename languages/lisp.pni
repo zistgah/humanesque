@@ -1,0 +1,6 @@
+@functional @stage(homoiconic) @eval(reduction) @state(immutable)
+MODULE LispCharacter
+    FUNCTION main()
+        RETURN [QUOTE, [1, 2]]
+    END
+END

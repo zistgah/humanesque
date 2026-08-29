@@ -1,0 +1,1 @@
+Spins off to github.com/hindawiai/hindawi-legacy

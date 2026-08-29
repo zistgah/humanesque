@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pa">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Gurmukhi localization (not #define)</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="hindawi.html">Devanagari flow</a>
+    <a href="view.html?src=WHY_DEFINE_IS_NOT_LOCALIZATION.md">Why macros fail</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Gurmukhi localization has to survive gcc -E, gdb, and nm</h1>
+  <p class="lead"><code>gurmukhi_demo.c</code> is not done. <code>#define je if</code> evaporates before the compiler. The 2004 bar is <code>HindiC.uhin</code>.</p>
+
+  <h2>Axes (do not collapse)</h2>
+  <ul>
+    <li><strong>Script</strong> — Gurmukhi. The programmer authors this. Romenagri is a round-trip channel, not the source of truth.</li>
+    <li><strong>Language</strong> — Punjabi keywords from retrieved <code>punjabi_c.tsv</code> / <code>lang_punjabi.csv</code>.</li>
+    <li><strong>Standard</strong> — C, after a <em>lexer transducer</em>, inverse included.</li>
+  </ul>
+
+  <h2>What HindiC.uhin does that macros cannot</h2>
+  <pre><code><शैली गुरु>          dialect
+#समावेश <मानकपन.स>    header name + native extension
+पूर्णांक मुख्य()
+    अक्षर अ[८०];         native identifier + native numerals
+    म_लिखो / क्रम / वापस  library and keywords at the lexer</code></pre>
+
+  <h2>Punjabi analogue (lexer, bidirectional)</h2>
+  <pre><code><ਸ਼ੈਲੀ ਗੁਰੂ>
+ਪੂਰਨਅੰਕ ਮੁੱਖ() {
+  ਅੱਖਰ ਅ[੮੦];
+  ਲਈ (ਕ=੧; ਕ<=੧੦; ਕ++) ;
+  ਜੇ (ਕ) ਵਾਪਸ ੦;
+}</code></pre>
+  <p>Keywords map from the TSV at tokenisation. Native digits ੮੦ → 80. Identifiers keep a bijection <code>ਅ</code>↔channel so <code>nm</code> and diagnostics can be rewritten. Inverse exists. No <code>#define</code>.</p>
+  <p>UNRESOLVED (retrieved tables have no KW_MAIN / printf): <code>ਮੁੱਖ</code> is an identifier on the channel, not an invented <code>main</code>. Library mapping is still thinner than 2004 Hindi <code>म_लिखो</code>.</p>
+  <p class="fine"><a href="view.html?src=WHY_DEFINE_IS_NOT_LOCALIZATION.md">Claude note, filed</a> · CLI <code>node src/cli.js pa2c</code> · <code>node src/cli.js transducer</code></p>
+</main>
+</body>
+</html>

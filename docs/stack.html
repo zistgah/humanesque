@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — language stack</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">One kernel. Three axes. Not a card per language with the same paragraph.</p>
+  <h1>Language stack</h1>
+  <p class="lead">A stack is ⟨script, language, shaili⟩. The host is C (Guru) unless you pick another shaili. Keywords are a table. Identifiers stay in the source and get a <em>view</em> dictionary. Compilation does not rewrite names into English.</p>
+  <p>
+    <label>Language
+      <select id="lang"></select>
+    </label>
+    <a class="btn" id="nb" href="nb.html">Notebook</a>
+    <a class="btn" id="std" href="standards/">Standard</a>
+    <a class="btn" href="cyclers.html">Send gaps to a cycler</a>
+  </p>
+  <table>
+    <tr><th>Axis</th><th>This stack</th></tr>
+    <tr><td>Language</td><td id="ax-lang">—</td></tr>
+    <tr><td>Script / round-trip</td><td id="ax-rt">—</td></tr>
+    <tr><td>Keywords in table</td><td id="ax-n">—</td></tr>
+    <tr><td>Shaili</td><td>Guru → C (same pipeline as Hindi 2004)</td></tr>
+  </table>
+  <p class="warn" id="gap" hidden></p>
+  <h2>Keyword table</h2>
+  <p>Shown once. Change the dropdown; the table follows. Incomplete tables are a linguistics deposit, not something this tree invents.</p>
+  <table id="kw"><thead><tr><th>native</th><th>romenagri</th><th>C</th></tr></thead><tbody></tbody></table>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+const HINDI_BAR = 29;
+PANINI_NB_HINT = 0;
+fetch("engine/bundle.json").then(r => r.json()).then(b => {
+  const sel = document.getElementById("lang");
+  const langs = b.langs || {};
+  Object.keys(langs).sort().forEach(id => {
+    const o = document.createElement("option");
+    o.value = id; o.textContent = id;
+    sel.appendChild(o);
+  });
+  const want = new URLSearchParams(location.search).get("lang") || "hindi";
+  if (langs[want]) sel.value = want;
+  function show() {
+    const id = sel.value;
+    const L = langs[id] || { rows: [] };
+    const rows = L.rows || [];
+    document.getElementById("ax-lang").textContent = id;
+    document.getElementById("ax-rt").textContent = (L.roundtrip || L.script || "") + "";
+    document.getElementById("ax-n").textContent = rows.length + " / Hindi bar " + HINDI_BAR;
+    document.getElementById("nb").href = "nb.html?lang=" + encodeURIComponent(id);
+    document.getElementById("std").href = "standards/" + id + "-c.html";
+    const gap = document.getElementById("gap");
+    if (rows.length < HINDI_BAR) {
+      gap.hidden = false;
+      gap.innerHTML = id + " has " + rows.length + " keywords. Hindi C has " + HINDI_BAR +
+        ". Do not invent the rest here. Open a cycler deposit: " +
+        "<a href=\"deposits/linguist/KEYWORD_GAPS.md\">KEYWORD_GAPS.md</a>.";
+    } else gap.hidden = true;
+    const tb = document.querySelector("#kw tbody");
+    tb.innerHTML = rows.map(r => "<tr><td dir=\"auto\">" + (r.native||"") +
+      "</td><td><code>" + (r.romenagri||"") + "</code></td><td><code>" + (r.c||"") +
+      "</code></td></tr>").join("") || "<tr><td colspan=3>No rows.</td></tr>";
+    history.replaceState(null, "", "stack.html?lang=" + encodeURIComponent(id));
+  }
+  sel.onchange = show;
+  show();
+});
+</script>
+</body>
+</html>

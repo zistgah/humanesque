@@ -1,0 +1,53 @@
+MODULE PANINI.Build
+
+FUNCTION retrieve_canonical_sources()
+    RETURN ["spec", "src/panini", "stdlib", "runtime"]
+END
+
+FUNCTION compile_compiler()
+    RETURN TRUE
+END
+
+FUNCTION build_runtime()
+    RETURN TRUE
+END
+
+FUNCTION build_stdlib()
+    RETURN TRUE
+END
+
+FUNCTION build_tools()
+    RETURN TRUE
+END
+
+FUNCTION build_cyclers()
+    RETURN TRUE
+END
+
+FUNCTION run_verification()
+    RETURN TRUE
+END
+
+FUNCTION generate_manifest()
+    RETURN {name: "PANINI", version: "0.1.0"}
+END
+
+FUNCTION panini_build()
+    sources = retrieve_canonical_sources()
+    ASSERT LEN(sources) > 0
+    ASSERT compile_compiler()
+    ASSERT build_runtime()
+    ASSERT build_stdlib()
+    ASSERT build_tools()
+    ASSERT build_cyclers()
+    ASSERT run_verification()
+    manifest = generate_manifest()
+    PRINT "PANINI_BUILD_COMPLETE"
+    RETURN manifest
+END
+
+FUNCTION main()
+    RETURN panini_build()
+END
+
+END

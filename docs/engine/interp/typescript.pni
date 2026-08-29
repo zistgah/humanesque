@@ -1,0 +1,25 @@
+/* PANINI.Frontend.TypeScript — STANDARD GREEN on tsc compiler extract.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.TypeScript
+FUNCTION run_typescript(source)
+    r = TS262RUN(source)
+    IF r.ok
+        r.frontend = "PANINI.Frontend.TypeScript"
+        RETURN r
+    END
+    IF r.error
+        r.frontend = "PANINI.Frontend.TypeScript"
+        RETURN r
+    END
+    lowered = TSLOWER(source)
+    cr = run_c(lowered)
+    cr.frontend = "PANINI.Frontend.TypeScript"
+    cr.lowered = lowered
+    RETURN cr
+END
+FUNCTION main()
+    r = run_typescript("function main(){ return 0; }")
+    RETURN r.value
+END
+END

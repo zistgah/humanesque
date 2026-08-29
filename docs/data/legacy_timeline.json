@@ -1,0 +1,28 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Dates retrieved from source headers, Wikipedia, Sarai, Dataquest, SourceForge. Mid-1990s machine-level trace is the next turns.",
+  "events": [
+    {"date": "1993", "kind": "span", "title": "Copyright span begins", "source": "file headers 1993–2026"},
+    {"date": "mid-1990s", "kind": "work", "title": "Work on a 486, ~4 MiB RAM, ~500 MB disk, Linux", "source": "architect"},
+    {"date": "1996", "kind": "work", "title": "Freelance embedded systems (biography, not this estate)", "source": "LinkedIn/cognitist"},
+    {"date": "2003-02-10", "kind": "filing", "title": "CSIR: Health Monitoring System for Elders and Invalids", "source": "cognitist profile"},
+    {"date": "2003", "kind": "code", "title": "APCISR and Romenagri copyright on retrieved C sources", "source": "retrieved/legacy/APCISR, Romenagri"},
+    {"date": "2004-early", "kind": "code", "title": "FreeBot Angel and Romenagri; Hindi systems languages on FreeDOS+DJGPP", "source": "Dataquest 2008"},
+    {"date": "2004-08-15", "kind": "release", "title": "Hindawi Programming System 1.0 public release (Independence Day)", "source": "Wikipedia; Dataquest"},
+    {"date": "2005-08-15", "kind": "release", "title": "Version 2 released by Dr Ram Prakash Mahto", "source": "Wikipedia"},
+    {"date": "2005", "kind": "award", "title": "CSI National Young IT Professional Award", "source": "Wikipedia"},
+    {"date": "2005-2006", "kind": "fellowship", "title": "Sarai/CSDS FLOSS: port Hindawi, Romenagri, APCISR to Linux", "source": "sarai.net/floss-fellowship"},
+    {"date": "2006-05", "kind": "award", "title": "CSI NYITPA dated May 2006 on profile", "source": "cognitist"},
+    {"date": "2006-07-31", "kind": "code", "title": "h2c.uhin modifications section added", "source": "retrieved/legacy/Hindawi/guru/h2c.uhin"},
+    {"date": "2006-08-16", "kind": "release", "title": "Linux port under Sarai fellowship", "source": "Wikipedia"},
+    {"date": "2006-08-27", "kind": "press", "title": "VGLUG: first complete Indic programming suite", "source": "groups.google.com/g/vglug"},
+    {"date": "2007", "kind": "award", "title": "Manthan Award shortlist", "source": "Wikipedia"},
+    {"date": "2008-05-10", "kind": "press", "title": "Dataquest: Programming for All", "source": "dqindia.com"},
+    {"date": "2011-09-08", "kind": "filing", "title": "IN 3033/CHE/2011 cognitive computing; 3032 recipe dispenser; 3029 prosthetic", "source": "cognitist profile"},
+    {"date": "2011-11-03", "kind": "press", "title": "TechWelkin: Write Computer Programs in Indic Languages", "source": "techwelkin.com"},
+    {"date": "2014-04-26", "kind": "forge", "title": "SourceForge hindawi last listed update", "source": "sourceforge.net/projects/hindawi"},
+    {"date": "2020", "kind": "release", "title": "hindawi2020 / Hindawi@Linux (GPL-2)", "source": "github.com/hindawiai/hindawi2020"},
+    {"date": "2023-12-21", "kind": "draft", "title": "Hindawi 2023.12.21 draft note in legacy README", "source": "retrieved/legacy/README.md"},
+    {"date": "2026-08", "kind": "now", "title": "PANINI self-hosting spec + this tree; Cycles Zenodo 10.5281/zenodo.22122422", "source": "this repo"}
+  ]
+}

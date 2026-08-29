@@ -1,0 +1,65 @@
+/* GATE CS §1 Engineering Mathematics — PANINI
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION implies(p, q)
+    IF p == 0
+        RETURN 1
+    END
+    RETURN q
+END
+FUNCTION fact(n)
+    IF n <= 1
+        RETURN 1
+    END
+    RETURN n * fact(n - 1)
+END
+FUNCTION ncr(n, r)
+    RETURN INT(fact(n) / (fact(r) * fact(n - r)))
+END
+FUNCTION fib(n)
+    IF n <= 1
+        RETURN n
+    END
+    RETURN fib(n - 1) + fib(n - 2)
+END
+FUNCTION det2(a, b, c, d)
+    RETURN a * d - b * c
+END
+FUNCTION mean4(a, b, c, d)
+    RETURN INT((a + b + c + d) / 4)
+END
+FUNCTION bayes(pa, pb_a, pb)
+    RETURN INT((pb_a * pa) / pb)
+END
+FUNCTION rel_reflexive(n, eq)
+    i = 0
+    WHILE i < n
+        IF eq[i][i] != 1
+            RETURN 0
+        END
+        i = i + 1
+    END
+    RETURN 1
+END
+FUNCTION main()
+    t = 1
+    IF implies(1, 0) != 0
+        t = 0
+    END
+    IF ncr(5, 2) != 10
+        t = 0
+    END
+    IF fib(7) != 13
+        t = 0
+    END
+    IF det2(1, 2, 3, 4) != 0 - 2
+        t = 0
+    END
+    IF mean4(2, 4, 6, 8) != 5
+        t = 0
+    END
+    IF bayes(20, 80, 40) != 40
+        t = 0
+    END
+    RETURN t
+END

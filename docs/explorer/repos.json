@@ -1,0 +1,1247 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Public GitHub API 2026-08-28. Not a live 105-org walk. ayesha/AyeSHA org: 404.",
+  "orgs": {
+    "zistgah": [
+      {
+        "name": "zistgah.github.io",
+        "description": "Zistgah",
+        "html_url": "https://github.com/zistgah/zistgah.github.io",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-17T21:00:47Z"
+      },
+      {
+        "name": "pratik_core_mvp",
+        "description": "PRATIK Kernel Core — balanced-ternary, event-driven developmental kernel (PEDLER/AyeAI Triad)",
+        "html_url": "https://github.com/zistgah/pratik_core_mvp",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:48:05Z"
+      },
+      {
+        "name": "zamin",
+        "description": "Zamin — PRATIK ternary silicon: physicalizing the poised-zero substrate (PEDLER/AyeAI Triad)",
+        "html_url": "https://github.com/zistgah/zamin",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:48:04Z"
+      },
+      {
+        "name": "aab",
+        "description": "",
+        "html_url": "https://github.com/zistgah/aab",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-11T05:49:23Z"
+      },
+      {
+        "name": "fiza",
+        "description": "",
+        "html_url": "https://github.com/zistgah/fiza",
+        "language": "Shell",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-11T11:55:31Z"
+      },
+      {
+        "name": "governance",
+        "description": "",
+        "html_url": "https://github.com/zistgah/governance",
+        "language": "Shell",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-08-12T08:19:17Z"
+      },
+      {
+        "name": "ztools",
+        "description": "",
+        "html_url": "https://github.com/zistgah/ztools",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-11T17:45:01Z"
+      },
+      {
+        "name": "transeg",
+        "description": "Project TransEg — local digital twin reference implementation (identity continuity research platform)",
+        "html_url": "https://github.com/zistgah/transeg",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-29T20:26:55Z"
+      },
+      {
+        "name": "transeg-idgov",
+        "description": "TransEg identity governance — typed layers, envelope, staged policies, audit",
+        "html_url": "https://github.com/zistgah/transeg-idgov",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-12T10:15:22Z"
+      },
+      {
+        "name": "transeg-research",
+        "description": "TransEg research — 9-benchmark framework + 7 reference experiments",
+        "html_url": "https://github.com/zistgah/transeg-research",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-12T10:16:29Z"
+      },
+      {
+        "name": "poie",
+        "description": "Proclamation of Individual Equity",
+        "html_url": "https://github.com/zistgah/poie",
+        "language": "Shell",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:48:13Z"
+      },
+      {
+        "name": "fakir",
+        "description": "",
+        "html_url": "https://github.com/zistgah/fakir",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-26T02:45:21Z"
+      },
+      {
+        "name": "dome",
+        "description": "",
+        "html_url": "https://github.com/zistgah/dome",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:48:12Z"
+      },
+      {
+        "name": "marham",
+        "description": "",
+        "html_url": "https://github.com/zistgah/marham",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-26T22:00:01Z"
+      },
+      {
+        "name": "estate",
+        "description": "IP estate: inventory, licensing, offerings, workspace sync",
+        "html_url": "https://github.com/zistgah/estate",
+        "language": "Shell",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-29T01:08:54Z"
+      },
+      {
+        "name": "mez",
+        "description": "mez — the desk. میز. Local-first, no account, no vendor.",
+        "html_url": "https://github.com/zistgah/mez",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:20:01Z"
+      },
+      {
+        "name": "tabdili",
+        "description": "",
+        "html_url": "https://github.com/zistgah/tabdili",
+        "language": "",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-02T23:33:26Z"
+      },
+      {
+        "name": "tarbiyat",
+        "description": "",
+        "html_url": "https://github.com/zistgah/tarbiyat",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-03T13:42:15Z"
+      },
+      {
+        "name": "copa",
+        "description": "COPA — Cost of Perceived Authority: a black-box behavioural methodology (measurement framework + open hypothesis)",
+        "html_url": "https://github.com/zistgah/copa",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-05T22:33:39Z"
+      },
+      {
+        "name": "kitab",
+        "description": "",
+        "html_url": "https://github.com/zistgah/kitab",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:27:45Z"
+      },
+      {
+        "name": "vakil",
+        "description": "",
+        "html_url": "https://github.com/zistgah/vakil",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-08-04T05:27:28Z"
+      },
+      {
+        "name": "zindagi",
+        "description": "",
+        "html_url": "https://github.com/zistgah/zindagi",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-06T00:27:29Z"
+      },
+      {
+        "name": "qaem",
+        "description": "",
+        "html_url": "https://github.com/zistgah/qaem",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-06T06:57:50Z"
+      },
+      {
+        "name": "varzish",
+        "description": "",
+        "html_url": "https://github.com/zistgah/varzish",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-08-06T04:47:21Z"
+      },
+      {
+        "name": "alam",
+        "description": "Small work, cycled with any AI. Part of the Zistgah ecosystem.",
+        "html_url": "https://github.com/zistgah/alam",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-11T14:39:58Z"
+      },
+      {
+        "name": "genie",
+        "description": "",
+        "html_url": "https://github.com/zistgah/genie",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:26:08Z"
+      },
+      {
+        "name": "genie-book",
+        "description": "",
+        "html_url": "https://github.com/zistgah/genie-book",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-11T16:16:19Z"
+      },
+      {
+        "name": "dukedom",
+        "description": "The Dukedom of Humanesque",
+        "html_url": "https://github.com/zistgah/dukedom",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-13T11:39:44Z"
+      },
+      {
+        "name": "paradox",
+        "description": "The Paradox of Innovation",
+        "html_url": "https://github.com/zistgah/paradox",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-14T05:20:27Z"
+      },
+      {
+        "name": "duke2",
+        "description": "The Dukedom of Humanesque, Volume II",
+        "html_url": "https://github.com/zistgah/duke2",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-14T07:45:28Z"
+      },
+      {
+        "name": "matba",
+        "description": "matba — the press. Posters in, book out, sealed, pushed, minted.",
+        "html_url": "https://github.com/zistgah/matba",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:23:34Z"
+      },
+      {
+        "name": "janapad",
+        "description": "",
+        "html_url": "https://github.com/zistgah/janapad",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-15T14:25:29Z"
+      },
+      {
+        "name": "khwab",
+        "description": "",
+        "html_url": "https://github.com/zistgah/khwab",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:20:28Z"
+      },
+      {
+        "name": "inclinations",
+        "description": "",
+        "html_url": "https://github.com/zistgah/inclinations",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-16T10:05:08Z"
+      },
+      {
+        "name": "awaz",
+        "description": "awaz — the listening room",
+        "html_url": "https://github.com/zistgah/awaz",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:20:42Z"
+      },
+      {
+        "name": "tilasm",
+        "description": "tilasm — the immersive cycler. AR, XR, VR.",
+        "html_url": "https://github.com/zistgah/tilasm",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:26:36Z"
+      },
+      {
+        "name": "pench",
+        "description": "pench — the embodied cycler. Robotics, cyberphysical, sim2real, real2sim.",
+        "html_url": "https://github.com/zistgah/pench",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:26:35Z"
+      },
+      {
+        "name": "yadein",
+        "description": "yadein — the record. A multimodal diary, staggered, toward TransEg.",
+        "html_url": "https://github.com/zistgah/yadein",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T20:25:42Z"
+      },
+      {
+        "name": "wake",
+        "description": "",
+        "html_url": "https://github.com/zistgah/wake",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-21T14:30:25Z"
+      },
+      {
+        "name": "panini",
+        "description": "PANINI — a language for prompt cycles",
+        "html_url": "https://github.com/zistgah/panini",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T23:12:33Z"
+      },
+      {
+        "name": "mrd",
+        "description": "Market Requirements for the Zistgah / AyeAI estate",
+        "html_url": "https://github.com/zistgah/mrd",
+        "language": "",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-25T23:07:22Z"
+      },
+      {
+        "name": "cycles",
+        "description": "",
+        "html_url": "https://github.com/zistgah/cycles",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-27T06:17:26Z"
+      },
+      {
+        "name": "panini_by_grok",
+        "description": "",
+        "html_url": "https://github.com/zistgah/panini_by_grok",
+        "language": "C",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-28T02:51:50Z"
+      },
+      {
+        "name": "panini_by_claude",
+        "description": "",
+        "html_url": "https://github.com/zistgah/panini_by_claude",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-08-28T02:06:16Z"
+      }
+    ],
+    "project-ilm": [
+      {
+        "name": "praat",
+        "description": "Praat: Doing Phonetics By Computer",
+        "html_url": "https://github.com/project-ilm/praat",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2025-04-19T08:00:57Z"
+      },
+      {
+        "name": "legacy",
+        "description": "Initial fork of Project ILM from Project Hindawi",
+        "html_url": "https://github.com/project-ilm/legacy",
+        "language": "Jupyter Notebook",
+        "fork": true,
+        "pages": false,
+        "updated": "2026-06-11T10:10:24Z"
+      },
+      {
+        "name": "ilm-data",
+        "description": "Data: canonical corpora, dialect maps, phoneme-audio pairs, aligned scripts, acoustic training data, lexical resources.",
+        "html_url": "https://github.com/project-ilm/ilm-data",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:37:07Z"
+      },
+      {
+        "name": "ilm-validation",
+        "description": "Validation: native speaker QA, annotation tools, field instruments, crowdsourced schema, cultural-linguistic QA loops.",
+        "html_url": "https://github.com/project-ilm/ilm-validation",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:37:24Z"
+      },
+      {
+        "name": "ilm-meta",
+        "description": "Meta repo for ILM / علم: vision docs, architecture diagrams, manifestos, research summaries, roadmap, cultural-philosophical grounding.",
+        "html_url": "https://github.com/project-ilm/ilm-meta",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:37:41Z"
+      },
+      {
+        "name": "ilm-lexicon",
+        "description": "Layer 3: Morpho-lexical layer – multilingual lexicons, WordNets, morphology analyzers, clitics, affixation, reduplication.",
+        "html_url": "https://github.com/project-ilm/ilm-lexicon",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:37:59Z"
+      },
+      {
+        "name": "ilm-devtools",
+        "description": "Devtools: reversible compiler infra, script-aware IDEs, debug harnesses. Consumers of core ILM layers, not core layers themselves.",
+        "html_url": "https://github.com/project-ilm/ilm-devtools",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:38:17Z"
+      },
+      {
+        "name": "ilm-syntax-semantics",
+        "description": "Layer 4: Syntax-semantics – UD parsing, SRL, AMR/UCCA, discourse segmentation, code-switching awareness.",
+        "html_url": "https://github.com/project-ilm/ilm-syntax-semantics",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:38:34Z"
+      },
+      {
+        "name": "ilm-transliteration",
+        "description": "Layer 1: Transliteration pivot – reversible, compiler-friendly Romanized layer with diacritics; bridges phonology and scripts.",
+        "html_url": "https://github.com/project-ilm/ilm-transliteration",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T04:38:52Z"
+      },
+      {
+        "name": "ilm-phonology",
+        "description": "Layer 0: Phonological base – IPA core, phonotactics, prosody, dialect normalization, audio alignment. Reversible sound mapping foundation.",
+        "html_url": "https://github.com/project-ilm/ilm-phonology",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T05:31:25Z"
+      },
+      {
+        "name": "ilm-orthography",
+        "description": "Layer 2: Orthographic engine – script-specific shaping, Unicode normalization, ZWJ/ZWNJ handling, grapheme clustering.",
+        "html_url": "https://github.com/project-ilm/ilm-orthography",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T05:31:51Z"
+      },
+      {
+        "name": "ilm-interface",
+        "description": "Layer 5: Interface & application – multiscript IMEs, NLP/NLU APIs (TTS, ASR, QA), mother-tongue IDEs, educational tools.",
+        "html_url": "https://github.com/project-ilm/ilm-interface",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T05:32:19Z"
+      },
+      {
+        "name": "ilm-site",
+        "description": "A layered, open-source effort for phonetically accurate, reversible, culturally respectful language tooling across world scripts.",
+        "html_url": "https://github.com/project-ilm/ilm-site",
+        "language": "CSS",
+        "fork": false,
+        "pages": true,
+        "updated": "2025-09-23T03:34:59Z"
+      },
+      {
+        "name": ".github",
+        "description": "Org profile for project-ilm",
+        "html_url": "https://github.com/project-ilm/.github",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-04-22T03:57:08Z"
+      },
+      {
+        "name": "ai-scratch",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/ai-scratch",
+        "language": "",
+        "fork": false,
+        "pages": true,
+        "updated": "2025-12-17T05:03:13Z"
+      },
+      {
+        "name": "ilm.codes",
+        "description": "ILM / Project ILM — Integrative Linguistic Multiscript (BETA)",
+        "html_url": "https://github.com/project-ilm/ilm.codes",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:47:22Z"
+      },
+      {
+        "name": "romenagri",
+        "description": "Romenagri: reversible transliteration library (Perso-Arabic seed). HPS/ILM. GPL. © 1993-2026 Abhishek Choudhary.",
+        "html_url": "https://github.com/project-ilm/romenagri",
+        "language": "C",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-24T16:47:26Z"
+      },
+      {
+        "name": "misty-doi",
+        "description": "Automation-first DOI minting & research publication packaging. Muh Mitha Kijiye!",
+        "html_url": "https://github.com/project-ilm/misty-doi",
+        "language": "Python",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-28T00:00:59Z"
+      },
+      {
+        "name": "vscode-ilm",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/vscode-ilm",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-28T03:41:07Z"
+      },
+      {
+        "name": "ilm-lsp",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/ilm-lsp",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-15T04:13:24Z"
+      },
+      {
+        "name": "language-specs",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/language-specs",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-28T03:41:58Z"
+      },
+      {
+        "name": "linguistics-labs",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/linguistics-labs",
+        "language": "Dockerfile",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-15T04:13:43Z"
+      },
+      {
+        "name": "ops",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/ops",
+        "language": "Shell",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-29T10:26:26Z"
+      },
+      {
+        "name": "spi-scan",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/spi-scan",
+        "language": "Python",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-29T10:29:16Z"
+      },
+      {
+        "name": "cognitive-fabric",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/cognitive-fabric",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-26T19:23:56Z"
+      },
+      {
+        "name": "foundry",
+        "description": "Canonical engineering substrate for Project ILM.",
+        "html_url": "https://github.com/project-ilm/foundry",
+        "language": "Shell",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-28T03:40:28Z"
+      },
+      {
+        "name": "chakra",
+        "description": "CHAKRA — Temporal Cycle Observatory: offline multi-tradition astronomical/calendrical observatory, tested library, and URL→JSON API. GPL-3.0.",
+        "html_url": "https://github.com/project-ilm/chakra",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-08-12T08:20:11Z"
+      },
+      {
+        "name": "scripts",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/scripts",
+        "language": "Shell",
+        "fork": true,
+        "pages": false,
+        "updated": "2026-07-11T07:32:41Z"
+      },
+      {
+        "name": "tok-doi",
+        "description": "Tok DoI",
+        "html_url": "https://github.com/project-ilm/tok-doi",
+        "language": "Shell",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-28T00:29:56Z"
+      },
+      {
+        "name": "qedler",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/qedler",
+        "language": "Shell",
+        "fork": false,
+        "pages": true,
+        "updated": "2026-07-26T17:20:16Z"
+      },
+      {
+        "name": "vgc-notes",
+        "description": "Notes on verification-gated human-AI co-development",
+        "html_url": "https://github.com/project-ilm/vgc-notes",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-26T21:29:24Z"
+      },
+      {
+        "name": "research-kundali",
+        "description": "",
+        "html_url": "https://github.com/project-ilm/research-kundali",
+        "language": "HTML",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-07-28T09:32:58Z"
+      }
+    ],
+    "hindawiai": [
+      {
+        "name": "old-hindawiai.github.io",
+        "description": "Hindawi AI Community Site",
+        "html_url": "https://github.com/hindawiai/old-hindawiai.github.io",
+        "language": "HTML",
+        "fork": false,
+        "pages": false,
+        "updated": "2020-07-05T21:59:41Z"
+      },
+      {
+        "name": "hindawi-legacy",
+        "description": "Legacy files of Hindawi Programming System",
+        "html_url": "https://github.com/hindawiai/hindawi-legacy",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-01-27T07:16:06Z"
+      },
+      {
+        "name": "hindawi-tx",
+        "description": "",
+        "html_url": "https://github.com/hindawiai/hindawi-tx",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2020-09-01T09:35:55Z"
+      },
+      {
+        "name": "qb.js",
+        "description": "QBASIC implementation in JavaScript",
+        "html_url": "https://github.com/hindawiai/qb.js",
+        "language": "JavaScript",
+        "fork": true,
+        "pages": true,
+        "updated": "2021-08-23T08:39:08Z"
+      },
+      {
+        "name": "js-py",
+        "description": "PyPy.js website",
+        "html_url": "https://github.com/hindawiai/js-py",
+        "language": "JavaScript",
+        "fork": true,
+        "pages": true,
+        "updated": "2021-08-23T09:43:27Z"
+      },
+      {
+        "name": "hindawi2020",
+        "description": "Hindawi Programming System (Hindawi@Linux) 2008 version",
+        "html_url": "https://github.com/hindawiai/hindawi2020",
+        "language": "C",
+        "fork": true,
+        "pages": false,
+        "updated": "2025-09-26T21:14:14Z"
+      },
+      {
+        "name": "hindawiai.github.io",
+        "description": "Hindawi Programming System - Programming in every person's own language",
+        "html_url": "https://github.com/hindawiai/hindawiai.github.io",
+        "language": "JavaScript",
+        "fork": true,
+        "pages": true,
+        "updated": "2024-08-20T16:44:04Z"
+      },
+      {
+        "name": "chintamani",
+        "description": "HindawiAI in Telugu",
+        "html_url": "https://github.com/hindawiai/chintamani",
+        "language": "Jupyter Notebook",
+        "fork": false,
+        "pages": false,
+        "updated": "2026-06-13T15:05:39Z"
+      },
+      {
+        "name": "hinlin",
+        "description": "Linux kernel source tree",
+        "html_url": "https://github.com/hindawiai/hinlin",
+        "language": "C",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-06-25T14:35:46Z"
+      },
+      {
+        "name": "hindawi2021",
+        "description": "Bootstrapping Hindawi Programming System",
+        "html_url": "https://github.com/hindawiai/hindawi2021",
+        "language": "Assembly",
+        "fork": false,
+        "pages": false,
+        "updated": "2021-07-25T13:02:49Z"
+      },
+      {
+        "name": "hi",
+        "description": "",
+        "html_url": "https://github.com/hindawiai/hi",
+        "language": "Ruby",
+        "fork": false,
+        "pages": true,
+        "updated": "2021-07-24T04:52:07Z"
+      },
+      {
+        "name": "pyaara",
+        "description": "BASIC Interpreter by @djinn based on Beautiful Racket by @mbutterick",
+        "html_url": "https://github.com/hindawiai/pyaara",
+        "language": "Racket",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-08-05T10:41:40Z"
+      },
+      {
+        "name": "beautiful-racket",
+        "description": "Resources for the “Beautiful Racket” book ",
+        "html_url": "https://github.com/hindawiai/beautiful-racket",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-08-05T06:40:26Z"
+      },
+      {
+        "name": "racketscript",
+        "description": "Racket to JavaScript Compiler",
+        "html_url": "https://github.com/hindawiai/racketscript",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-08-05T20:47:05Z"
+      },
+      {
+        "name": "autogit",
+        "description": "git automations",
+        "html_url": "https://github.com/hindawiai/autogit",
+        "language": "C",
+        "fork": false,
+        "pages": false,
+        "updated": "2021-09-30T15:38:13Z"
+      },
+      {
+        "name": "qbjc",
+        "description": "QBasic to JavaScript compiler",
+        "html_url": "https://github.com/hindawiai/qbjc",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-10-02T04:06:37Z"
+      },
+      {
+        "name": "v86",
+        "description": "x86 virtualization in your browser, recompiling x86 to wasm on the fly",
+        "html_url": "https://github.com/hindawiai/v86",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-10-02T04:23:18Z"
+      },
+      {
+        "name": "js-dos",
+        "description": "The best API for running dos programs in browser",
+        "html_url": "https://github.com/hindawiai/js-dos",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-10-02T04:33:39Z"
+      },
+      {
+        "name": "em-dosbox",
+        "description": "An Emscripten port of DOSBox",
+        "html_url": "https://github.com/hindawiai/em-dosbox",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-10-02T10:17:07Z"
+      },
+      {
+        "name": "JPC",
+        "description": "JPC - The fast x86 PC emulator in 100% pure Java",
+        "html_url": "https://github.com/hindawiai/JPC",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-10-02T11:00:31Z"
+      },
+      {
+        "name": "practice",
+        "description": "",
+        "html_url": "https://github.com/hindawiai/practice",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2022-05-25T13:15:19Z"
+      },
+      {
+        "name": "2023.12.21",
+        "description": "Hindawi AI - Bada Din release (Coding in all ISO supported languages by 25th Dec 2023)",
+        "html_url": "https://github.com/hindawiai/2023.12.21",
+        "language": "Jupyter Notebook",
+        "fork": false,
+        "pages": false,
+        "updated": "2024-12-10T23:18:55Z"
+      }
+    ],
+    "AyeAI": [
+      {
+        "name": "ayeai.github.io",
+        "description": "Aye AI ... the inclusive AI (www repo)",
+        "html_url": "https://github.com/ayeai/ayeai.github.io",
+        "language": "HTML",
+        "fork": false,
+        "pages": true,
+        "updated": "2019-01-14T10:01:38Z"
+      },
+      {
+        "name": "ayevdi",
+        "description": "Virtual Deployment IaaS (tools) for Scientific & Cognitive Computing",
+        "html_url": "https://github.com/ayeai/ayevdi",
+        "language": "Awk",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-12-13T13:46:41Z"
+      },
+      {
+        "name": "shellinabox",
+        "description": "AyeVDI modifications. Original is available at",
+        "html_url": "https://github.com/ayeai/shellinabox",
+        "language": "C",
+        "fork": true,
+        "pages": false,
+        "updated": "2020-01-14T12:48:30Z"
+      },
+      {
+        "name": "util-linux",
+        "description": "",
+        "html_url": "https://github.com/ayeai/util-linux",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2021-11-02T12:06:16Z"
+      },
+      {
+        "name": "shadow",
+        "description": "",
+        "html_url": "https://github.com/ayeai/shadow",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-11-27T13:29:14Z"
+      },
+      {
+        "name": "KodExplorer",
+        "description": "A web based file manager,web IDE / browser based code editor",
+        "html_url": "https://github.com/ayeai/KodExplorer",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-11-30T22:47:40Z"
+      },
+      {
+        "name": "dockerfiles",
+        "description": "Various Dockerfiles I use on the desktop and on servers.",
+        "html_url": "https://github.com/ayeai/dockerfiles",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T14:31:18Z"
+      },
+      {
+        "name": "x11docker",
+        "description": "Run GUI applications and desktops in docker. Focus on security.",
+        "html_url": "https://github.com/ayeai/x11docker",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T14:32:20Z"
+      },
+      {
+        "name": "runc",
+        "description": "CLI tool for spawning and running containers according to the OCI specification",
+        "html_url": "https://github.com/ayeai/runc",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:10:55Z"
+      },
+      {
+        "name": "go-digest",
+        "description": "Common digest package used across the container ecosystem",
+        "html_url": "https://github.com/ayeai/go-digest",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:11:50Z"
+      },
+      {
+        "name": "image-tools",
+        "description": "OCI Image Tooling",
+        "html_url": "https://github.com/ayeai/image-tools",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:14:42Z"
+      },
+      {
+        "name": "runtime-tools",
+        "description": "OCI Runtime Tools",
+        "html_url": "https://github.com/ayeai/runtime-tools",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:17:33Z"
+      },
+      {
+        "name": "AIX360",
+        "description": "Interpretability and explainability of data and machine learning models",
+        "html_url": "https://github.com/ayeai/AIX360",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2020-07-13T23:34:36Z"
+      },
+      {
+        "name": "adversarial-robustness-toolbox",
+        "description": "Python library for adversarial machine learning, attacks and defences for neural networks, logistic regression, decision trees, SVM, gradient boosted trees, Gaussian processes and more with multiple framework support",
+        "html_url": "https://github.com/ayeai/adversarial-robustness-toolbox",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2020-07-13T23:40:33Z"
+      },
+      {
+        "name": "kui",
+        "description": "A hybrid command-line/UI development experience for cloud-native development",
+        "html_url": "https://github.com/ayeai/kui",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2025-07-30T04:28:30Z"
+      },
+      {
+        "name": "FHIR",
+        "description": "The IBM FHIR® Server and related projects",
+        "html_url": "https://github.com/ayeai/FHIR",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:28:09Z"
+      },
+      {
+        "name": "kubernetes-cobol",
+        "description": "A Code Pattern to teach how to run a COBOL program on Kubernetes",
+        "html_url": "https://github.com/ayeai/kubernetes-cobol",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:31:37Z"
+      },
+      {
+        "name": "insilico",
+        "description": "Neuronal Network Simulation Library",
+        "html_url": "https://github.com/ayeai/insilico",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:34:09Z"
+      },
+      {
+        "name": "Virtual-Studio",
+        "description": "https://insilico.uk/virtual-studioindex",
+        "html_url": "https://github.com/ayeai/Virtual-Studio",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:35:52Z"
+      },
+      {
+        "name": "sway",
+        "description": "i3-compatible Wayland compositor",
+        "html_url": "https://github.com/ayeai/sway",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:48:00Z"
+      },
+      {
+        "name": "qiskit",
+        "description": "Qiskit is an open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms.",
+        "html_url": "https://github.com/ayeai/qiskit",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T17:53:03Z"
+      },
+      {
+        "name": "qiskit-terra",
+        "description": "Terra provides the foundations for Qiskit. It allows the user to write quantum circuits easily, and takes care of the constraints of real hardware.",
+        "html_url": "https://github.com/ayeai/qiskit-terra",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T18:30:53Z"
+      },
+      {
+        "name": "qiskit-aer",
+        "description": "Aer is a high performance simulator for quantum circuits that includes noise models",
+        "html_url": "https://github.com/ayeai/qiskit-aer",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2019-12-11T18:34:56Z"
+      },
+      {
+        "name": "ayeq",
+        "description": "",
+        "html_url": "https://github.com/ayeai/ayeq",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-12-11T19:19:44Z"
+      },
+      {
+        "name": "SPL-ignore-and-delete",
+        "description": "Singularity Public License",
+        "html_url": "https://github.com/ayeai/SPL-ignore-and-delete",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-12-14T08:43:33Z"
+      },
+      {
+        "name": "spl",
+        "description": "AyeAI Singularity Public License",
+        "html_url": "https://github.com/ayeai/spl",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2019-12-14T08:45:22Z"
+      },
+      {
+        "name": "dockersh",
+        "description": "A shell which places users into individual docker containers",
+        "html_url": "https://github.com/ayeai/dockersh",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2026-01-28T01:20:03Z"
+      },
+      {
+        "name": "bash2python",
+        "description": "A tool that converts a bash script to python script",
+        "html_url": "https://github.com/ayeai/bash2python",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2020-01-30T13:55:41Z"
+      },
+      {
+        "name": "anusaaraka",
+        "description": "Imported from https://web.archive.org/web/20200218013006/https://sourceforge.net/p/anusaaraka/git/ci/master/tree/",
+        "html_url": "https://github.com/ayeai/anusaaraka",
+        "language": "CLIPS",
+        "fork": false,
+        "pages": false,
+        "updated": "2020-03-02T08:59:03Z"
+      },
+      {
+        "name": "xmp",
+        "description": "CUDA accelerated(X) Multi-Precision library",
+        "html_url": "https://github.com/ayeai/xmp",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2020-02-20T00:55:48Z"
+      },
+      {
+        "name": "ayeam",
+        "description": "AyeAI's Autonomous Metaverse - A cyber-physical autnomous metaverse... A nervous system for the Singularity",
+        "html_url": "https://github.com/ayeai/ayeam",
+        "language": "",
+        "fork": true,
+        "pages": false,
+        "updated": "2022-03-25T00:31:11Z"
+      },
+      {
+        "name": "upload",
+        "description": "Staggered Upload (TM)",
+        "html_url": "https://github.com/ayeai/upload",
+        "language": "",
+        "fork": false,
+        "pages": true,
+        "updated": "2022-11-09T11:42:42Z"
+      },
+      {
+        "name": "chuha",
+        "description": "Chat Hosting Utility with Hypelink Automation",
+        "html_url": "https://github.com/ayeai/chuha",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2022-11-25T13:54:24Z"
+      },
+      {
+        "name": "ni2a2",
+        "description": "",
+        "html_url": "https://github.com/ayeai/ni2a2",
+        "language": "JavaScript",
+        "fork": false,
+        "pages": true,
+        "updated": "2023-08-09T15:51:16Z"
+      },
+      {
+        "name": "ChainOfSurvival.github.io",
+        "description": "A public information repository on the Chain of Survival",
+        "html_url": "https://github.com/ayeai/ChainOfSurvival.github.io",
+        "language": "Ruby",
+        "fork": true,
+        "pages": false,
+        "updated": "2023-08-20T22:00:16Z"
+      },
+      {
+        "name": "opssi",
+        "description": "open public stack for synthetic intelligence",
+        "html_url": "https://github.com/ayeai/opssi",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2025-10-05T00:27:43Z"
+      },
+      {
+        "name": "athena",
+        "description": "GSF VIKRAM - An inclusive rural digitalization platform by GramSheel Foundation",
+        "html_url": "https://github.com/ayeai/athena",
+        "language": "",
+        "fork": true,
+        "pages": true,
+        "updated": "2024-01-18T00:17:34Z"
+      },
+      {
+        "name": "join",
+        "description": "",
+        "html_url": "https://github.com/ayeai/join",
+        "language": "",
+        "fork": false,
+        "pages": false,
+        "updated": "2024-08-24T01:21:27Z"
+      },
+      {
+        "name": "ayeai.ayeam.com",
+        "description": "AyeAI ∴ AyeAM",
+        "html_url": "https://github.com/ayeai/ayeai.ayeam.com",
+        "language": "Ruby",
+        "fork": true,
+        "pages": true,
+        "updated": "2025-01-16T07:05:02Z"
+      }
+    ]
+  }
+}

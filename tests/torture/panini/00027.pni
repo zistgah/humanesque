@@ -1,0 +1,11 @@
+MODULE T00027
+FUNCTION main()
+    x = 3
+    IF x > 2
+        PRINT "gt"
+    ELSE
+        PRINT "le"
+    END
+    RETURN 0
+END
+END

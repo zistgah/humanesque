@@ -1,0 +1,57 @@
+REM mez.pni — the desk, in PANINI
+REM Copyright (C) 1993-2026 Abhishek Choudhary
+REM SPDX-License-Identifier: GPL-3.0-or-later
+REM
+REM mez is not the language and not a cycler.
+REM mez is where you sit. Cyclers are the work you run at this desk.
+REM Three rungs: console, 2D, immersive. This file is the desk program.
+
+MODULE MEZ
+  VERSION "0.1.0"
+  KIND DESK
+  DOMAIN "cognitive-workbench"
+  PURPOSE
+    "Local-first desk: bearings, WBS, seed a cycler, no account required."
+  END PURPOSE
+
+  CONTRACT
+    INVARIANT "role selects what is shown, never what is computed"
+    INVARIANT "providers are data; desk works with zero providers"
+    INVARIANT "a cell the human set is never overwritten by import"
+    INVARIANT "cyclers are PANINI programs, not plugins"
+    INVARIANT "no API key required to walk a cycler"
+  END CONTRACT
+
+  REM six domain cyclers (each is its own repo AND a .pni)
+  REM matba  the press
+  REM khwab  the dream / vision
+  REM awaz   the listening room
+  REM tilasm the immersive cycler
+  REM pench  the embodied cycler
+  REM yadein the record
+  REM GENIE is the meta-cycler a sovereign may elevate to.
+
+  FUNCTION bearings()
+    PRINT "mez — the desk"
+    PRINT "sit. pick a cycler. walk it. no git required."
+    RETURN 0
+  END FUNCTION
+
+  FUNCTION list_cyclers()
+    PRINT "matba khwab awaz tilasm pench yadein"
+    PRINT "plus GENIE, FAKIR, CHARBAGH, SHELL, MASI, …"
+    RETURN 0
+  END FUNCTION
+
+  FUNCTION seed(cycler$)
+    PRINT "seed "; cycler$
+    PRINT "load cyclers/"; cycler$; ".pni"
+    PRINT "walk PURPOSE then CONTRACT then ENTRY"
+    RETURN 0
+  END FUNCTION
+END MODULE
+
+PROGRAM MEZ_DESK
+  CALL bearings()
+  CALL list_cyclers()
+END PROGRAM

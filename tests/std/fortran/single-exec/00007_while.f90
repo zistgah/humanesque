@@ -1,0 +1,8 @@
+PROGRAM P
+  INTEGER I
+  I = 4
+  IF (I .EQ. 4) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

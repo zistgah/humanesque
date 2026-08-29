@@ -1,0 +1,7 @@
+MODULE T00037
+FUNCTION main()
+    m = {a: 1}
+    PRINT m.a
+    RETURN 0
+END
+END

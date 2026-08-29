@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI / Hindawi FAQ</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="nb.html">Notebook</a>
+    <a href="wasm.html">WASM</a>
+    <a href="view.html?src=WHY_DEFINE_IS_NOT_LOCALIZATION.md">#define is not a lexer</a>
+    <a href="standards/">Standards</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">Hindi Programming System FAQ (2004 lineage) · WASM lowering · not a copilot last-mile note</p>
+  <h1>FAQ</h1>
+  <p class="lead">People have asked the same two questions for twenty years: “is this just <code class="notranslate">#define</code>?” and “can’t you just run it through wabt?” Both flatten the work. These answers do not.</p>
+
+  <h2>1. Hindawi — is it <code class="notranslate">#define je if</code>?</h2>
+  <p>No. That was the FAQ ten to fifteen years ago, and it is still the FAQ. A preprocessor macro is not a localized programming language.</p>
+  <p>After <code class="notranslate">gcc -E</code>, every vernacular token is gone. The translation unit never knew Hindi, Punjabi, or Bangla existed. Diagnostics name <code>while</code> / <code>if</code>. gdb’s <code>break main</code> is English. <code>nm</code> and <code>.debug_str</code> hold ASCII, not the author’s letters.</p>
+  <p>Hindawi changes the <strong>lexer</strong>. The 2004 path is:</p>
+  <pre class="notranslate" translate="no">Unicode  →  ACII  →  Romenagri (ASCII-7 kernel)  →  shaili lex (h2c / h2cpp / …)  →  gcc</pre>
+  <p>Romenagri is a reversible kernel so gdb can still speak at the lowest layer. Identifiers round-trip. Keywords are kernel mappings, not macros. Script, language, and standard are three axes. <code>#define</code> cannot reach the script axis; the lexer must.</p>
+  <p>The negative example is in the tree: <a href="../examples/faq/define_is_not_a_lexer.c"><code>examples/faq/define_is_not_a_lexer.c</code></a>. The bar is <a href="../retrieved/legacy/Hindawi/samples/HindiC.uhin"><code>HindiC.uhin</code></a> (2004, GPL). Done means a deliberate syntax error, gdb, and <code>nm</code> still answer in the programmer’s language. See <a href="view.html?src=WHY_DEFINE_IS_NOT_LOCALIZATION.md">WHY_DEFINE_IS_NOT_LOCALIZATION.md</a>.</p>
+  <p>Line two of a Guru program is not decoration. <code class="notranslate">#समावेश <मानकपन.स></code> is <code class="notranslate">#include <stdio.h></code>. If that line vanishes, the preprocessor was stripping C angle-includes. That was a bug. It is fixed: only the Shaili pragma <code class="notranslate"><शैली गुरु></code> is stripped.</p>
+
+  <h2>2. Why is that more complex than a keyword table?</h2>
+  <ul>
+    <li><strong>Script axis.</strong> Brahmi-derived letters flatten to Devanagari, then to Romenagri. Perso-Arabic does not round-trip. That is named, not hidden.</li>
+    <li><strong>Language axis.</strong> Hindi C, Bangla C, Punjabi C share a shaili (Guru = C) and differ in the keyword table. The standard is the table, not an English ISO in another script.</li>
+    <li><strong>Host axis.</strong> Guru is C, श्रेणी is C++, प्राथमिक is BASIC, शब्द is lex, व्याक is yacc, यांत्रिक is asm, कृत्रिम is Java. Each has its own 2004 filter (<code>h2c.uhin</code>, <code>h2cpp.uhin</code>, …).</li>
+    <li><strong>Identifiers.</strong> Views use a dictionary. Compilation uses the original names. A Hebrew C file can be <em>viewed</em> as Hindi C without becoming a different program.</li>
+    <li><strong>Diagnostics all the way down.</strong> If gdb answers in English, localization stopped at the preprocessor.</li>
+  </ul>
+
+  <h2>3. The copilot said “just run wat2wasm / wasmtime.” What is it missing?</h2>
+  <p>It starts after the compiler. It assumes WAT already exists, then packages it with an external toolkit. That is the cheap end of:</p>
+  <pre class="notranslate" translate="no">Source → AST → typed IR → postfix / RPN → WAT → binary → instantiate</pre>
+  <p>We already instantiate. <code>compute(5) = 25</code> is proven. The copilot’s own sample <strong>does not run</strong>:</p>
+  <pre class="notranslate" translate="no">copilot WAT  →  instantiate REJECT
+  not enough arguments on the stack for i32.mul (need 2, got 0)
+
+named WAT    →  compute(5) = 25</pre>
+  <p>Its module used invalid <code>(local $loc_0 i32 $loc_1 i32)</code>, unnamed <code>(param i32)</code>, and flat instructions that are not S-expressions. If a parser had bound <code>$loc_0</code> as a local, index 0 is the argument and <code>$loc_0</code> would be 0: <code>compute(5)</code> would be 20, not 25. The comment “Output: 25” was not executed.</p>
+  <p>External tools (<code>brew install wabt</code>, <code>pip install wabt</code>, wasmtime) are a desktop toolchain. This estate ships on GitHub Pages. The emitter is PANINI (<code>src/panini/backends/wasm.pni</code>). The assembler is in-tree (<code>runtime/wat2wasm.js</code>). <code>WebAssembly.instantiate</code> is the W3C engine already in the browser.</p>
+  <p>The three WASM hurdles the copilot never named:</p>
+  <ol>
+    <li>Stack machine — every expression lowers post-order, not one demo line.</li>
+    <li>Strict i32/i64/f32/f64 — C promotions become explicit nodes.</li>
+    <li>One linear memory — <code>$heap</code> is <code>calloc</code>, <code>$sp</code> grows down, pointers are i32 offsets.</li>
+  </ol>
+  <p><code>goto</code> (Maṇḍūkapluti) is still on the C interpreter. WASM is structured. A <code>br_table</code> dispatcher is the next lowering, not wabt.</p>
+  <p>Hindi C flattens to the same AST, then to the same module. Representation stays off the binary. The copilot has no ILM path.</p>
+  <p>Live: <a href="wasm.html">wasm.html</a>. Spec: <a href="view.html?src=WASM.md">WASM.md</a>.</p>
+
+  <h2>4. Notebook: Shaili Guru, C++, lex, Bhāṣā</h2>
+  <dl>
+    <dt>Guru / समावेश</dt>
+    <dd>The second line after the Shaili pragma is the include. Host must show <code class="notranslate">#include <stdio.h></code>. A regex that deleted every <code><…></code> was eating it. Only <code><शैली …></code> is stripped now.</dd>
+    <dt>Hindi C++</dt>
+    <dd><code>HindiC++.uhin</code> was not in <code>docs/demos</code>. Fetch returned an HTML 404 and the editor loaded markup. The demo is now <code>docs/demos/HindiCPP.uhin</code> (शैली श्रेणी). The loader refuses HTML.</dd>
+    <dt>Lex / Yacc / Bhāṣā</dt>
+    <dd>Retrieved samples exist (<code>HindiLEX.uhin</code>, <code>HindiYACC.uhin</code>). In-browser run of lex/yacc is still a host dump plus a gap label — not a fake interpreter. Language demos: 18 retrieved Guru files under <code>docs/demos/langs/</code>. Kashmiri, Santali, Manipuri, Sindhi Guru files are not invented; they wait in deposits.</dd>
+  </dl>
+
+  <h2>5. May I Google-Translate the site?</h2>
+  <p>Yes — the page chrome. No — the programming languages. Every <code>pre</code>, <code>code</code>, and <code>textarea</code> is marked <code>notranslate</code>. The selector in the header sends the URL to Google Translate with that contract. Keyword tables and <code>.uhin</code> stay in the author’s letters. People may still submit corrected prose in <code>deposits/i18n</code>.</p>
+
+  <h2>6. What does “every turn” mean?</h2>
+  <p>See <a href="view.html?src=PROCESS.md">PROCESS.md</a>. Each cycle: grow <code>examples/</code>, update architect prompts and CONTEXT, fix named bugs, zip. Do not leave a working note only in chat.</p>
+
+  <p class="fine">
+    Wikipedia: <a href="https://en.wikipedia.org/wiki/Hindawi_Programming_System">Hindawi Programming System</a> ·
+    TechWelkin 2011 ·
+    <a href="https://doi.org/10.5281/zenodo.22121524">PANINI poster, Zenodo</a>
+  </p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later · Hail PANINI</footer>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+</body>
+</html>

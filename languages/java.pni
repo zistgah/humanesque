@@ -1,0 +1,6 @@
+@imperative
+MODULE JavaCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

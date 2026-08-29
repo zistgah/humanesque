@@ -1,0 +1,10 @@
+MODULE T00005
+FUNCTION main()
+    IF 2 > 1
+        PRINT "yes"
+    ELSE
+        PRINT "no"
+    END
+    RETURN 0
+END
+END

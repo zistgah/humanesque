@@ -1,0 +1,12 @@
+{
+  "language": "prolog",
+  "issuing_body": "ISO/IEC 13211-1 via Ciao iso_tests (ISO 8.6 is/2 + 8.7 arith comparison)",
+  "suite": "ciao-lang/iso_tests src/iso_tests.pl [ISO] arith named extract",
+  "n": 23,
+  "pass": 23,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named Ciao ISO arithmetic extract. bagof/setof/IO/exceptions are GAP. Full iso_tests.pl is GAP."
+}

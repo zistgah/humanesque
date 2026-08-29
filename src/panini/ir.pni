@@ -1,0 +1,80 @@
+MODULE PANINI.Language
+
+FUNCTION lower(ast)
+    fns = []
+    src = ast.functions
+    i = 0
+    WHILE i < LEN(src)
+        fns = APPEND(fns, src[i])
+        i = i + 1
+    END
+    RETURN {kind: "panini-ir", version: "0.1.0", functions: fns}
+END
+
+FUNCTION foldExpr(e)
+    IF e.op == "bin"
+        l = foldExpr(e.left)
+        r = foldExpr(e.right)
+        IF l.op == "const" AND r.op == "const"
+            IF e.operator == "+"
+                RETURN {op: "const", value: l.value + r.value}
+            END
+            IF e.operator == "-"
+                RETURN {op: "const", value: l.value - r.value}
+            END
+            IF e.operator == "*"
+                RETURN {op: "const", value: l.value * r.value}
+            END
+        END
+        RETURN {op: "bin", operator: e.operator, left: l, right: r}
+    END
+    RETURN e
+END
+
+FUNCTION foldStmts(body)
+    out = []
+    i = 0
+    WHILE i < LEN(body)
+        s = body[i]
+        IF s.op == "if"
+            s = {op: "if", test: foldExpr(s.test), then: foldStmts(s.then), else: foldStmts(s.else)}
+        ELSE
+            IF s.op == "while"
+                s = {op: "while", test: foldExpr(s.test), body: foldStmts(s.body)}
+            ELSE
+                IF s.op == "return"
+                    s = {op: "return", arg: foldExpr(s.arg)}
+                ELSE
+                    IF s.op == "assign"
+                        s = {op: "assign", target: s.target, value: foldExpr(s.value)}
+                    ELSE
+                        IF s.op == "expr"
+                            s = {op: "expr", value: foldExpr(s.value)}
+                        END
+                    END
+                END
+            END
+        END
+        out = APPEND(out, s)
+        i = i + 1
+    END
+    RETURN out
+END
+
+FUNCTION optimize(ir)
+    fns = []
+    src = ir.functions
+    i = 0
+    WHILE i < LEN(src)
+        fn = src[i]
+        fns = APPEND(fns, {name: fn.name, params: fn.params, body: foldStmts(fn.body)})
+        i = i + 1
+    END
+    RETURN {kind: "panini-ir", version: ir.version, functions: fns}
+END
+
+FUNCTION codegen(ir)
+    RETURN ir
+END
+
+END

@@ -1,0 +1,26 @@
+MODULE PANINI.VFS
+
+FUNCTION vfs_pwd()
+    RETURN VFS_PWD()
+END
+
+FUNCTION vfs_ls(path)
+    RETURN VFS_LS(path)
+END
+
+FUNCTION vfs_cat(path)
+    RETURN VFS_READ(path)
+END
+
+FUNCTION vfs_write(path, text)
+    RETURN VFS_WRITE(path, text)
+END
+
+FUNCTION main()
+    PRINT VFS_PWD()
+    PRINT VFS_LS("/home/panini")
+    PRINT VFS_READ("/home/panini/readme.txt")
+    RETURN 0
+END
+
+END

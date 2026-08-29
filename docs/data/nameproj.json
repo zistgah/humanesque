@@ -1,0 +1,520 @@
+[
+  {
+    "script": "AHOM",
+    "file": "ahom_to_deva.tsv",
+    "rows": 43,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BALINESE",
+    "file": "balinese_to_deva.tsv",
+    "rows": 27,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BATAK",
+    "file": "batak_to_deva.tsv",
+    "rows": 22,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BENGALI",
+    "file": "bengali_to_deva.tsv",
+    "rows": 79,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BHAIKSUKI",
+    "file": "bhaiksuki_to_deva.tsv",
+    "rows": 75,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BRAHMI",
+    "file": "brahmi_to_deva.tsv",
+    "rows": 76,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BUGINESE",
+    "file": "buginese_to_deva.tsv",
+    "rows": 23,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "BUHID",
+    "file": "buhid_to_deva.tsv",
+    "rows": 19,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "CHAKMA",
+    "file": "chakma_to_deva.tsv",
+    "rows": 28,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "CHAM",
+    "file": "cham_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "DEVANAGARI",
+    "file": "devanagari_to_deva.tsv",
+    "rows": 128,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "DIVES AKURU",
+    "file": "dives_akuru_to_deva.tsv",
+    "rows": 64,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "DOGRA",
+    "file": "dogra_to_deva.tsv",
+    "rows": 60,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "GRANTHA",
+    "file": "grantha_to_deva.tsv",
+    "rows": 64,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "GUJARATI",
+    "file": "gujarati_to_deva.tsv",
+    "rows": 82,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "GUNJALA GONDI",
+    "file": "gunjala_gondi_to_deva.tsv",
+    "rows": 58,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "GURMUKHI",
+    "file": "gurmukhi_to_deva.tsv",
+    "rows": 67,
+    "source": "retrieved name-projection",
+    "generated": false
+  },
+  {
+    "script": "GURUNG KHEMA",
+    "file": "gurung_khema_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "HANUNOO",
+    "file": "hanunoo_to_deva.tsv",
+    "rows": 19,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "JAVANESE",
+    "file": "javanese_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KAITHI",
+    "file": "kaithi_to_deva.tsv",
+    "rows": 62,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KANNADA",
+    "file": "kannada_to_deva.tsv",
+    "rows": 79,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KAWI",
+    "file": "kawi_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KAYAH LI",
+    "file": "kayah_li_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KHAROSHTHI",
+    "file": "kharoshthi_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KHMER",
+    "file": "khmer_to_deva.tsv",
+    "rows": 34,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KHOJKI",
+    "file": "khojki_to_deva.tsv",
+    "rows": 57,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KHUDAWADI",
+    "file": "khudawadi_to_deva.tsv",
+    "rows": 69,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "KIRAT RAI",
+    "file": "kirat_rai_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "LAO",
+    "file": "lao_to_deva.tsv",
+    "rows": 19,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "LEPCHA",
+    "file": "lepcha_to_deva.tsv",
+    "rows": 45,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "LIMBU",
+    "file": "limbu_to_deva.tsv",
+    "rows": 42,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MAHAJANI",
+    "file": "mahajani_to_deva.tsv",
+    "rows": 37,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MALAYALAM",
+    "file": "malayalam_to_deva.tsv",
+    "rows": 79,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MARCHEN",
+    "file": "marchen_to_deva.tsv",
+    "rows": 32,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MASARAM GONDI",
+    "file": "masaram_gondi_to_deva.tsv",
+    "rows": 67,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MEETEI MAYEK",
+    "file": "meetei_mayek_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MODI",
+    "file": "modi_to_deva.tsv",
+    "rows": 77,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MONGOLIAN",
+    "file": "mongolian_to_deva.tsv",
+    "rows": 36,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MULTANI",
+    "file": "multani_to_deva.tsv",
+    "rows": 37,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "MYANMAR",
+    "file": "myanmar_to_deva.tsv",
+    "rows": 69,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "NAG MUNDARI",
+    "file": "nag_mundari_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "NANDINAGARI",
+    "file": "nandinagari_to_deva.tsv",
+    "rows": 63,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "NEW TAI LUE",
+    "file": "new_tai_lue_to_deva.tsv",
+    "rows": 17,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "NEWA",
+    "file": "newa_to_deva.tsv",
+    "rows": 80,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "OL CHIKI",
+    "file": "ol_chiki_to_deva.tsv",
+    "rows": 11,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "OL ONAL",
+    "file": "ol_onal_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "ORIYA",
+    "file": "oriya_to_deva.tsv",
+    "rows": 80,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "PAU CIN HAU",
+    "file": "pau_cin_hau_to_deva.tsv",
+    "rows": 26,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "PHAGS PA",
+    "file": "phags-pa_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "REJANG",
+    "file": "rejang_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SAURASHTRA",
+    "file": "saurashtra_to_deva.tsv",
+    "rows": 77,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SHARADA",
+    "file": "sharada_to_deva.tsv",
+    "rows": 83,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SIDDHAM",
+    "file": "siddham_to_deva.tsv",
+    "rows": 65,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SINHALA",
+    "file": "sinhala_to_deva.tsv",
+    "rows": 1,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SOYOMBO",
+    "file": "soyombo_to_deva.tsv",
+    "rows": 48,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SUNDANESE",
+    "file": "sundanese_to_deva.tsv",
+    "rows": 39,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SUNUWAR",
+    "file": "sunuwar_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "SYLOTI NAGRI",
+    "file": "syloti_nagri_to_deva.tsv",
+    "rows": 9,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAGALOG",
+    "file": "tagalog_to_deva.tsv",
+    "rows": 19,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAGBANWA",
+    "file": "tagbanwa_to_deva.tsv",
+    "rows": 17,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAI LE",
+    "file": "tai_le_to_deva.tsv",
+    "rows": 23,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAI THAM",
+    "file": "tai_tham_to_deva.tsv",
+    "rows": 24,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAI VIET",
+    "file": "tai_viet_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAKRI",
+    "file": "takri_to_deva.tsv",
+    "rows": 66,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TAMIL",
+    "file": "tamil_to_deva.tsv",
+    "rows": 56,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TANGSA",
+    "file": "tangsa_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TELUGU",
+    "file": "telugu_to_deva.tsv",
+    "rows": 78,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "THAI",
+    "file": "thai_to_deva.tsv",
+    "rows": 10,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TIBETAN",
+    "file": "tibetan_to_deva.tsv",
+    "rows": 56,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TIRHUTA",
+    "file": "tirhuta_to_deva.tsv",
+    "rows": 80,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "TOTO",
+    "file": "toto_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "WANCHO",
+    "file": "wancho_to_deva.tsv",
+    "rows": 0,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  },
+  {
+    "script": "ZANABAZAR SQUARE",
+    "file": "zanabazar_square_to_deva.tsv",
+    "rows": 47,
+    "source": "unicodedata name-projection (same method as Gurmukhi TSV comment)",
+    "generated": true
+  }
+]

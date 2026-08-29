@@ -1,0 +1,169 @@
+/*
+ PANINI v2 — Correlated Architectural & Formal Specification
+ Status tags: V verified | F formalization target | E empirical | A architecture
+ The original self-hosting spec is unchanged. This file is additive.
+*/
+
+MODULE PANINI.V2
+
+CONSTITUTION
+    TITLE "PANINI v2"
+    FOUNDATION PANINI_CAN_EXPRESS_THE_LANGUAGE_REQUIRED_TO_BUILD_PANINI
+    EQUATION "(R, C, D, X) --N--> IR_P --V--> E"
+    PILLARS
+        REPRESENTATIONAL_EQUITY ILM
+        COMPUTATIONAL_EQUITY PANINI
+        LINGUISTIC_EQUITY REPRESENTATIONAL_EQUITY + COMPUTATIONAL_EQUITY
+    END
+    PRINCIPLES
+        REPRESENTATION_ORTHOGONAL_TO_COMPUTATION
+        PARADIGMS_ARE_SCOPED_CONFIGURATIONS
+        BOUNDARIES_ARE_TYPED_CONTRACTS
+        VERIFIED_SEPARATE_FROM_PROPOSED
+    END
+END
+
+/*
+ 0. Equation
+ R = ILM representation
+ C = 13-axis computational configuration
+ D = domain/resource/effect configuration
+ X = inter-scope boundary contracts
+ N = normalize to canonical IR
+ V = verify
+ E = execution artifact
+*/
+
+INVARIANT V0
+    A_TO_B_TO_C_FIXED_POINT == TRUE
+    B_EQUALS_C == TRUE
+    FUNCTIONS == 37
+END
+
+/*
+ I1-I15 retained from v1 as V-level claims under existing evidence.
+*/
+
+TYPE Representation = Latin | Devanagari | Arabic | Visual | Mixed
+TYPE Paradigm = Imperative | Functional | Logic | Query | Object | Reactive | Concurrent | Assembly
+TYPE AxisId = Abstract | Eval | Exec | State | Async | Dispatch | Stage | Type | Mem | Failure | Control | ScopeRule | Ilm
+
+CONFIGURATION AXIS_SPACE
+    A1_ABSTRACT [func, object, constraint, entity]
+    A2_EVAL [operational, reduction, inference, reactive, query]
+    A3_EXEC [stack, register, graph_vm, actor_ring, simd_vector]
+    A4_STATE [mutable, immutable, linear_borrow, effect_tracked]
+    A5_ASYNC [sequential, actor, csp_channel, event_loop, data_parallel]
+    A6_DISPATCH [static_single, dynamic_multi, pattern_match, predicate]
+    A7_STAGE [runtime, compile_time, homoiconic, reflective]
+    A8_TYPE [static_nominal, structural, dependent, dynamic_gradual]
+    A9_MEM [tracing_gc, region_arena, affine, manual_raw]
+    A10_FAILURE [exception, result_monad, condition_restart, crash_isolate]
+    A11_CONTROL [structured, coroutine, algebraic_effect, continuation]
+    A12_SCOPE_RULE [lexical, dynamic, capability_ambient]
+    A13_ILM [latin_en, devanagari_hi, arabic_ar, visual_graph]
+END
+
+/*
+ Paradigm presets are axis bundles.
+*/
+CONFIGURATION PRESETS
+    functional {abstract: func, eval: reduction, state: immutable, async: sequential}
+    imperative {abstract: entity, eval: operational, state: mutable, async: sequential}
+    logic {abstract: constraint, eval: inference, state: immutable}
+    query {eval: query, abstract: constraint}
+    assembly {exec: register, mem: manual_raw, state: mutable}
+END
+
+/*
+ Memory store Sigma = <GC, Arena, Aff, Roots>
+ Bridges: affine->gc consume+alloc; arena->gc deepcopy; gc->affine pin+root; affine->arena transfer.
+*/
+
+THEOREM T0_SELF_HOSTING
+    STATUS V
+    REQUIRE B_EQUALS_C
+END
+
+THEOREM T1_SCOPED_CONFIGURATION_SYNTAX
+    STATUS F
+    REQUIRE PANINI_CAN_PARSE_ANNOTATED_SCOPES
+END
+
+THEOREM T2_FAITHFUL_EMBEDDING
+    STATUS F
+    REQUIRE EACH_PRESET_LOWERS_TO_IR_WITH_REGIME
+END
+
+THEOREM T3_LOCAL_EQUIVALENCE
+    STATUS F
+    REQUIRE EVAL_UNDER_REGIME_EQUALS_CANONICAL_EVAL
+END
+
+THEOREM T4_BOUNDARY_PRESERVATION
+    STATUS F
+    REQUIRE BRIDGE_PRESERVES_TYPE_AND_EFFECT
+END
+
+THEOREM T5_NON_INTERFERENCE
+    STATUS F
+    REQUIRE SCOPE_PI_CANNOT_CORRUPT_SCOPE_PJ
+END
+
+THEOREM T6_SELF_COMPILE_UNDER_COMPOSITION
+    STATUS F
+    REQUIRE COMPILER_WITH_SCOPES_COMPILES
+END
+
+THEOREM T7_FIXED_POINT_RETENTION
+    STATUS F
+    REQUIRE B_EQUALS_C_AFTER_V2_LAYER
+END
+
+THEOREM T8_ORTHOGONALITY
+    STATUS F
+    REQUIRE ILM_CHANGE_DOES_NOT_CHANGE_IR_SEMANTICS
+END
+
+THEOREM SRI_SCRIPT_REPRESENTATION_INVARIANCE
+    STATUS F
+    REQUIRE PROJECT_PARSE_IR_IDENTICAL_ACROSS_SCRIPTS
+END
+
+THEOREM M0_STORE_WELLFORMED
+    STATUS F
+    REQUIRE WF_SIGMA
+END
+
+THEOREM M1_AFFINE_CONSUMPTION
+    STATUS F
+    REQUIRE MOVED_LOCATION_UNREADABLE
+END
+
+THEOREM M2_ARENA_NON_ESCAPE
+    STATUS F
+    REQUIRE REGION_NOT_IN_RETURN_TYPE
+END
+
+THEOREM M3_GC_ROOT_PRESERVATION
+    STATUS F
+    REQUIRE PINNED_HANDLE_IS_ROOTED
+END
+
+THEOREM M4_NO_DANGLING
+    STATUS F
+    REQUIRE GC_REACH_DISJOINT_INACTIVE_ARENA
+END
+
+THEOREM M5_MEMORY_BOUNDARY
+    STATUS F
+    REQUIRE EVERY_PERMITTED_BRIDGE_PRESERVES_WF
+END
+
+/*
+ Empirical program E1-E6 remains E, not V.
+ 68 writing systems = ILM architectural scope, not a proven bijection.
+ Romenagri != ILM. HPS != ILM != PANINI.
+*/
+
+END MODULE PANINI.V2

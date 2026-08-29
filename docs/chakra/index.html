@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI · CHAKRA — temporal observatory</title>
+  <link rel="stylesheet" href="../site.css" />
+  <style>
+    .today { border:1px solid #c9a227; padding:1rem; background:#0e1a28; margin:1rem 0; }
+    .today h2 { margin-top:0; }
+    .cals { display:grid; grid-template-columns:repeat(auto-fill,minmax(14rem,1fr)); gap:.5rem; }
+    .cals div { border:1px solid #345; padding:.5rem .6rem; background:#1118; }
+    .ev { padding:.3rem 0; border-bottom:1px solid #243; }
+    .rakhi { background:#3a1d2e; border-color:#c9a227; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>CHAKRA × PANINI</strong>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../nb.html">Notebook</a>
+    <a href="../linguist.html">ILM</a>
+    <a href="https://project-ilm.github.io/chakra/">Full observatory</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">Retrieved <code>project-ilm/chakra</code> v1.4.1 · computed, not looked up · GPL-3.0-or-later · not for navigation or muhūrta-critical use</p>
+  <h1>Temporal Cycle Observatory</h1>
+  <p>Linguistic equity for time: the same computed instant, viewed in the operator’s script. Ephemeris is retrieved. Names may be viewed; they are not invented.</p>
+  <p>
+    View:
+    <select id="view"><option value="iast">IAST (compute identity)</option><option value="hi" selected>हिन्दी</option></select>
+  </p>
+  <div class="today" id="hero"></div>
+  <h2>Ten calendars (this instant)</h2>
+  <div class="cals" id="cals"></div>
+  <h2>2026 festivals (computed)</h2>
+  <div id="ev"></div>
+  <p class="fine">Full geared observatory, API, C library: <a href="https://project-ilm.github.io/chakra/">project-ilm/chakra</a>. Spin-off: <code>apps/project-ilm/chakra</code>. PANINI module: <code>languages/chakra.pni</code>.</p>
+</main>
+<script src="chakra-core.js"></script>
+<script>
+fetch("labels.json").then(r=>r.json()).then(L => {
+  const C = window.Chakra;
+  const view = document.getElementById("view");
+  function nameOf(s) {
+    if (view.value !== "hi") return s;
+    if (L.festivals[s] && L.festivals[s].hi) return L.festivals[s].hi;
+    if (L.vara[s]) return L.vara[s];
+    return s;
+  }
+  function draw() {
+    const now = new Date();
+    const Y = now.getFullYear(), M = now.getMonth()+1, D = now.getDate();
+    const UT = now.getUTCHours()+now.getUTCMinutes()/60;
+    const d = C.dayNo(Y, M, D, UT);
+    const pan = C.panchanga(d, Y);
+    const ev = C.annualEvents(Y);
+    const todayISO = Y + "-" + String(M).padStart(2,"0") + "-" + String(D).padStart(2,"0");
+    const hit = ev.filter(e => e.date === todayISO);
+    const heb = C.hebrew(C.greg2jdn(Y,M,D));
+    const nan = C.nanakshahi(C.greg2jdn(Y,M,D));
+    const hs = C.hijriSunni(C.greg2jdn(Y,M,D));
+    const rakhi = hit.some(e => /Rak/.test(e.name));
+    document.getElementById("hero").className = "today" + (rakhi ? " rakhi" : "");
+    document.getElementById("hero").innerHTML =
+      "<h2>" + (rakhi ? nameOf("Rakṣā Bandhana") + " · " : "") + todayISO + "</h2>" +
+      "<p>" + nameOf(pan.vara) + " · " + pan.tithi + " · " + pan.nak + "</p>" +
+      (hit.length ? "<p>" + hit.map(e => nameOf(e.name) + " (" + e.tradition + ")").join(" · ") + "</p>" : "") +
+      "<p class='cite'>Śrāvaṇa pūrṇimā is computed (amānta, Lahiri). Same day 2026: lunar eclipse. Not a lookup table.</p>";
+    document.getElementById("cals").innerHTML = [
+      ["Gregorian", todayISO],
+      ["Vāra / tithi", nameOf(pan.vara) + " · " + pan.tithi],
+      ["Nakṣatra", pan.nak],
+      ["Hebrew", heb.d + " " + heb.month + " " + heb.y],
+      ["Nanakshahi", (nan.d||"?") + " " + (nan.month||"") + " " + (nan.y||"")],
+      ["Hijrī Sunni tabular", "AH " + hs.y + " / " + hs.m + " / " + hs.d]
+    ].map(x => "<div><b>"+x[0]+"</b><div>"+x[1]+"</div></div>").join("");
+    document.getElementById("ev").innerHTML = ev.map(e =>
+      "<div class='ev"+(e.date===todayISO?" rakhi":"")+"'><code>"+e.date+"</code> "+nameOf(e.name)+
+      " <span class='cite'>"+e.tradition+(e.note?" · "+e.note:"")+"</span></div>"
+    ).join("");
+  }
+  view.onchange = draw;
+  draw();
+});
+</script>
+</body>
+</html>

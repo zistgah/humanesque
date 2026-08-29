@@ -1,0 +1,100 @@
+<!doctype html><meta charset="utf-8">
+<title>Research Kundali</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--ink:#132029;--mut:#68808f;--acc:#0a6a5c;--warm:#b4531f;--line:#e2ddd3;--bg:#fbfaf7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.6 "Iowan Old Style",Palatino,Georgia,serif}
+.bar{position:sticky;top:0;z-index:9;background:rgba(251,250,247,.94);backdrop-filter:blur(8px);
+ border-bottom:1px solid var(--line)}.bar .in{max-width:1080px;margin:0 auto;padding:14px 20px;
+ display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+h1{font-size:18px;margin:0;white-space:nowrap}
+input{flex:1;min-width:160px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font:inherit}
+.tab{font:13px system-ui;padding:7px 11px;border:1px solid var(--line);background:#fff;
+ border-radius:8px;cursor:pointer}.tab:hover{border-color:var(--acc);color:var(--acc)}
+main{max-width:1080px;margin:0 auto;padding:20px 20px 70px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px}
+.card b{display:block;font:11px system-ui;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.card i{font-style:normal;font-size:26px;letter-spacing:-.02em}
+h2{font:13px system-ui;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin:26px 0 8px}
+.spark{display:flex;gap:4px;align-items:flex-end;height:70px;background:#fff;padding:10px;
+ border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+.spark div{min-width:14px;background:var(--acc);opacity:.75;border-radius:2px 2px 0 0;position:relative}
+.chips span{display:inline-block;font:12px system-ui;background:#fff;border:1px solid var(--line);
+ border-radius:20px;padding:4px 10px;margin:0 5px 5px 0}
+ol{list-style:none;padding:0;margin:0}li{padding:11px 0;border-top:1px solid var(--line)}
+li a{color:var(--ink)}.meta{display:block;font:11px ui-monospace;color:var(--mut);margin-top:3px}
+#sel{position:fixed;display:none;z-index:20;background:#fff;border:1px solid var(--acc);
+ border-radius:9px;box-shadow:0 6px 20px rgba(0,0,0,.14);padding:6px}
+#sel button{font:12px system-ui;border:0;background:none;cursor:pointer;padding:5px 9px;color:var(--acc)}
+#sel button:hover{background:#eef5f3;border-radius:6px}
+footer{color:var(--mut);font-size:12.5px;margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+body.giddy-on{background:#0a0713;color:#f2e9ff}
+body.giddy-on .card,body.giddy-on .spark{background:#150c24;border-color:#3a2a55}
+body.giddy-on .card i{animation:hue 5s linear infinite}
+body.giddy-on .spark div{animation:hue 3s linear infinite;background:#ff5ec8}
+@keyframes hue{0%{color:#ff4d9d}25%{color:#ffb02e}50%{color:#4dff88}75%{color:#4dd2ff}100%{color:#ff4d9d}}
+@media(prefers-reduced-motion:reduce){body.giddy-on *{animation:none!important}}
+</style>
+<div class="bar"><div class="in"><h1 id="sub">Research Kundali</h1>
+<input id="q" placeholder="Filter works by title, venue, year or topic">
+<button class="tab" id="gd">Aren\'t you giddy yet?</button></div></div>
+<main>
+<div class="grid" id="cards"></div>
+<h2>Output by year</h2><div class="spark" id="sp"></div>
+<h2>Topics</h2><div class="chips" id="tp"></div>
+<h2>Frequent co-authors</h2><div class="chips" id="ca"></div>
+<h2>Venues</h2><div class="chips" id="vn"></div>
+<h2 id="wh">Works</h2><ol id="wl"></ol>
+<footer id="ft"></footer></main>
+<div id="sel"><button data-a="explain">Explain this</button><button data-a="context">Put it in context</button
+><button data-a="critique">What would a critic say?</button></div>
+<script id="d" type="application/json">__DATA__</script>
+<script>
+const K=JSON.parse(document.getElementById(\'d\').textContent);
+document.getElementById(\'sub\').textContent=\'Research Kundali — \'+K.subject;
+const c=K.counts;document.getElementById(\'cards\').innerHTML=
+ [[\'works\',c.works],[\'with DOI\',c.with_doi],[\'open access\',c.open_access],
+  [\'citations\',c.citations],[\'sources\',Object.keys(K.sources).join(\' + \')]]
+ .map(([k,v])=>\'<div class="card"><b>\'+k+\'</b><i>\'+v+\'</i></div>\').join(\'\');
+const ys=Object.entries(K.years),mx=Math.max(1,...ys.map(y=>y[1]));
+document.getElementById(\'sp\').innerHTML=ys.map(([y,n])=>
+ \'<div style="height:\'+(6+58*n/mx)+\'px" title="\'+y+\': \'+n+\'"></div>\').join(\'\');
+const chip=(o,el)=>document.getElementById(el).innerHTML=
+ Object.entries(o).map(([k,v])=>\'<span>\'+k+\' <b style="color:var(--mut)">\'+v+\'</b></span>\').join(\'\');
+chip(K.topics||{},\'tp\');chip(K.coauthors||{},\'ca\');chip(K.venues||{},\'vn\');
+function draw(){const q=document.getElementById(\'q\').value.toLowerCase();
+ const rows=K.works.filter(w=>!q||[w.title,w.venue,w.year,(w.topics||[]).join(\' \')]
+  .join(\' \').toLowerCase().includes(q));
+ document.getElementById(\'wh\').textContent=\'Works — \'+rows.length;
+ document.getElementById(\'wl\').innerHTML=rows.slice(0,600).map(w=>
+  \'<li>\'+(w.doi?\'<a href="https://doi.org/\'+w.doi+\'" target="_blank" rel="noopener">\'+
+   (w.title||w.doi)+\'</a>\':(w.title||\'(untitled)\'))+
+  \'<span class="meta">\'+[w.year,w.type,w.venue,w.doi?\'doi \'+w.doi:\'\',
+   \'sha \'+w.sha256.slice(0,12)].filter(Boolean).join(\'  ·  \')+\'</span></li>\').join(\'\');}
+document.getElementById(\'q\').oninput=draw;draw();
+// selection -> seeded AI conversation. No key held, nothing posted; the reader chooses.
+const sel=document.getElementById(\'sel\');
+document.addEventListener(\'mouseup\',()=>{const s=window.getSelection();const t=(s+\'\').trim();
+ if(t.length<12){sel.style.display=\'none\';return}
+ const r=s.getRangeAt(0).getBoundingClientRect();
+ sel.style.left=Math.max(8,r.left)+\'px\';sel.style.top=(r.bottom+8)+\'px\';sel.style.display=\'block\';
+ sel.dataset.t=t;});
+sel.querySelectorAll(\'button\').forEach(b=>b.onclick=()=>{
+ const t=sel.dataset.t||\'\',a=b.dataset.a;
+ const pre={explain:\'Explain this passage from the public scholarly record, plainly:\',
+  context:\'Place this within its field and say what came before and after:\',
+  critique:\'What would an informed sceptic challenge here?\'}[a];
+ const p=pre+\'\\n\\n"\'+t+\'"\\n\\n(From the Research Kundali of \'+K.subject+
+  \'. The work belongs to its authors; this is metadata, not full text.)\';
+ window.open(\'https://claude.ai/new?q=\'+encodeURIComponent(p),\'_blank\');
+ sel.style.display=\'none\';});
+document.getElementById(\'gd\').onclick=()=>{
+ if(!document.body.classList.contains(\'giddy-on\')&&
+    !confirm("This animates colours rapidly.\\n\\nSkip it if you are sensitive to flashing "+
+      "or animated colour.\\n\\nProceed?"))return;
+ document.body.classList.toggle(\'giddy-on\');};
+document.getElementById(\'ft\').textContent=
+ K.counts.works+\' works · generated \'+K.generated_utc+
+ \' · metadata only, no full text · nothing minted\';
+</script>

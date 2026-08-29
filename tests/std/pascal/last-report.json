@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(pascal)",
+  "standard": "ISO 7185 subset — panini-pascal-testsuite single-exec",
+  "subject": "PANINI.Frontend.Pascal",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — llama.cpp on the VFS</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">VFS guest · llama.cpp WASM · not GitHub Pages as the runtime story</p>
+  <h1>llama.cpp</h1>
+  <p class="lead">Two guests. Do not flatten them.</p>
+  <table>
+    <tr><th>Guest</th><th>What</th><th>Where</th></tr>
+    <tr><td>x86 i386</td><td>v86 · FreeDOS · Lekhak EXE</td><td><a href="emu.html">emu.html</a></td></tr>
+    <tr><td>llama.cpp</td><td>Upstream C++ built natively (g++/cmake) <em>and</em> the same engine as WASM via wllama, invoked as <code>llama-cli</code> on the VFS</td><td><a href="console.html">console</a></td></tr>
+  </table>
+  <p>x86_64 ELF does not run in v86. The browser path is llama.cpp compiled to WASM, model on <code>/models/</code>.</p>
+  <p>
+    <input id="p" value="Once upon a time" style="width:min(32rem,100%)" />
+    <button type="button" id="run">llama-cli -p … -n 16</button>
+  </p>
+  <pre id="out">idle</pre>
+  <p>Console: <code>llama-cli --version</code> then <code>llama-cli -p "Once upon a time" -n 16</code></p>
+  <p class="fine">WASM: @wllama/wllama 2.3.1 MIT (ngxson) — llama.cpp. Model: stories15M Q4_0. Parallel: <a href="story.html">story spinner</a> (N turns, one sentence at a time, download / print-PDF).</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script src="engine/llm.js"></script>
+<script>
+document.getElementById("run").onclick = function () {
+  const out = document.getElementById("out");
+  out.textContent = "loading llama.cpp WASM + GGUF…";
+  PANINI_LLM.llamaCli(["-p", document.getElementById("p").value, "-n", "16"])
+    .then(function (t) { out.textContent = t; })
+    .catch(function (e) { out.textContent = String(e.message || e); });
+};
+</script>
+</body>
+</html>

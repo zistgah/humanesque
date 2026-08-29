@@ -1,0 +1,12 @@
+MODULE T00038
+FUNCTION fact(n)
+    IF n <= 1
+        RETURN 1
+    END
+    RETURN n * fact(n - 1)
+END
+FUNCTION main()
+    PRINT fact(5)
+    RETURN 0
+END
+END

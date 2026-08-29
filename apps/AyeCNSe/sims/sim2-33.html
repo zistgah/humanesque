@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V8.0 - Orbital Mechanics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'JetBrains Mono', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+        .hud { background: rgba(0, 10, 30, 0.8); border: 1px solid #3b82f6; padding: 15px; border-radius: 8px; pointer-events: auto; color: #3b82f6; width: 280px; }
+        .console-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 800px; align-self: center; background: rgba(5, 5, 10, 0.95); padding: 15px; border-radius: 8px; border: 1px solid #3b82f6; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #60a5fa; border: 1px solid #1e3a8a; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 140px; background: #3b82f6; color: #fff; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .telemetry-row { display: flex; justify-content: space-between; font-size: 11px; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="hud">
+            <h2 style="margin:0; font-size: 14px; color:#fff">ORBITAL_OS v8.0</h2>
+            <div class="telemetry-row"><span>ALTITUDE:</span><span id="alt">0 km</span></div>
+            <div class="telemetry-row"><span>VELOCITY:</span><span id="vel">0 km/s</span></div>
+            <div class="telemetry-row"><span>STATUS:</span><span id="stat" style="color:#fbbf24">DE-ORBITED</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// MISSION: SPUTNIK TO ISS
+DEPLOY_SPUTNIK()
+WAIT(2.0)
+PROGRADE_BURN(5.0) // Increase orbital height
+WAIT(3.0)
+UPGRADE_TO_ISS()
+CIRCULARIZE()     // Lock into stable orbit
+WAIT(5.0)</textarea>
+            <button onclick="sim.run()">Execute Mission</button>
+        </div>
+    </div>
+
+    <script>
+        class SatelliteSim {
+            constructor() {
+                this.earthRadius = 63.7; // Scaled
+                this.pos = new THREE.Vector3(this.earthRadius + 2, 0, 0);
+                this.vel = new THREE.Vector3(0, 0, 0);
+                this.mu = 100; // Gravitational constant * Mass
+                this.mode = 'SPUTNIK';
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.camera.position.set(100, 50, 100);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                
+                // Earth
+                const earthGeo = new THREE.SphereGeometry(this.earthRadius, 64, 64);
+                const earthMat = new THREE.MeshStandardMaterial({ color: 0x153063, wireframe: true });
+                this.earth = new THREE.Mesh(earthGeo, earthMat);
+                this.scene.add(this.earth);
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+                const sun = new THREE.DirectionalLight(0xffffff, 1); sun.position.set(100, 100, 100); this.scene.add(sun);
+
+                this.buildSputnik();
+                this.animate();
+            }
+
+            buildSputnik() {
+                if(this.sat) this.scene.remove(this.sat);
+                this.sat = new THREE.Group();
+                const core = new THREE.Mesh(new THREE.SphereGeometry(0.8, 16, 16), new THREE.MeshStandardMaterial({color: 0xcccccc, metalness: 0.8}));
+                this.sat.add(core);
+                for(let i=0; i<4; i++) {
+                    const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 3), new THREE.MeshBasicMaterial({color: 0xffffff}));
+                    ant.position.set(Math.cos(i)*0.8, -1.5, Math.sin(i)*0.8);
+                    ant.rotation.z = 0.5;
+                    this.sat.add(ant);
+                }
+                this.scene.add(this.sat);
+            }
+
+            buildISS() {
+                this.scene.remove(this.sat);
+                this.sat = new THREE.Group();
+                const truss = new THREE.Mesh(new THREE.BoxGeometry(6, 0.4, 0.4), new THREE.MeshStandardMaterial({color:0x888888}));
+                this.sat.add(truss);
+                for(let i=0; i<4; i++) {
+                    const panel = new THREE.Mesh(new THREE.BoxGeometry(1.5, 4, 0.05), new THREE.MeshStandardMaterial({color:0x1e3a8a, emissive: 0x112244}));
+                    panel.position.set(-2.25 + (i*1.5), 0, 0);
+                    this.sat.add(panel);
+                }
+                this.scene.add(this.sat);
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'DEPLOY_SPUTNIK') { 
+                            this.pos.set(this.earthRadius + 10, 0, 0);
+                            this.vel.set(0, 0, 0.8); // Initial tangential velocity
+                        }
+                        else if (cmd === 'PROGRADE_BURN') {
+                            const unitVel = this.vel.clone().normalize();
+                            this.vel.addScaledVector(unitVel, val * 0.1);
+                        }
+                        else if (cmd === 'UPGRADE_TO_ISS') this.buildISS();
+                        else if (cmd === 'CIRCULARIZE') {
+                            const r = this.pos.length();
+                            const vMag = Math.sqrt(this.mu / r);
+                            this.vel.normalize().multiplyScalar(vMag);
+                        }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // Newtonian Orbital Physics
+                const rVec = this.pos.clone().negate();
+                const rMag = rVec.length();
+                const forceMag = this.mu / (rMag * rMag);
+                const accel = rVec.normalize().multiplyScalar(forceMag);
+                
+                this.vel.add(accel);
+                this.pos.add(this.vel);
+                this.sat.position.copy(this.pos);
+                this.sat.lookAt(0,0,0); // Always face Earth
+
+                // Update HUD
+                const altitude = rMag - this.earthRadius;
+                document.getElementById('alt').innerText = `${(altitude * 100).toFixed(0)} km`;
+                document.getElementById('vel').innerText = `${(this.vel.length() * 10).toFixed(2)} km/s`;
+                document.getElementById('stat').innerText = altitude > 0 ? "STABLE ORBIT" : "DE-ORBITED / RE-ENTRY";
+                if(altitude <= 0) this.vel.set(0,0,0);
+
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new SatelliteSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V3.4 - Full 32-DOF Assembly</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050507; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); pointer-events: auto; }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="relative z-10 h-screen pointer-events-none flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-yellow-500 w-fit">
+            <h1 class="text-yellow-500 font-bold text-xl uppercase tracking-tighter">AyeCNSe <span class="text-white">V3.4_FINAL_ASSY</span></h1>
+            <p class="text-[10px] text-slate-400 uppercase mt-1">Status: All Systems Nominal | DOF: 32 | Physics: Active</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl flex gap-4 h-80 w-full max-w-6xl self-center">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-black p-4 jetbrains text-yellow-200 outline-none rounded-lg border border-slate-800 resize-none leading-relaxed">
+// FULL BODY BHANGRA
+ARM_L_SHOULDER_ROLL(90)
+ARM_R_SHOULDER_ROLL(-90)
+HEAD_TILT(-20)
+LEG_L_KNEE(30)
+LEG_R_KNEE(30)
+WAIT(0.5)
+JUMP(4.0)
+WAIT(1.5)
+RESET()</textarea>
+            </div>
+            <button onclick="sim.run()" class="w-48 bg-yellow-600 hover:bg-yellow-500 text-white font-bold rounded-xl transition-all uppercase text-sm">Initiate Sequence</button>
+        </div>
+    </div>
+
+    <script>
+        class FinalAssySim {
+            constructor() {
+                this.joints = {};
+                this.velY = 0;
+                this.gravity = -0.15;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(0, 4, 10);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(0, 2, 0);
+
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+                const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+                sun.position.set(10, 20, 10);
+                this.scene.add(sun);
+                this.scene.add(new THREE.GridHelper(50, 50, 0x1e293b, 0x0f172a));
+
+                this.buildFullBot();
+                this.animate();
+            }
+
+            buildFullBot() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155 });
+                const accent = new THREE.MeshStandardMaterial({ color: 0xeab308 });
+
+                // PELVIS
+                this.pelvis = new THREE.Group();
+                this.pelvis.position.y = 2.4;
+                this.bot.add(this.pelvis);
+                this.pelvis.add(new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.6), mat));
+
+                // TORSO
+                this.torso = new THREE.Group();
+                this.torso.position.y = 0.2;
+                this.pelvis.add(this.torso);
+                this.torso.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.4, 0.7), mat));
+
+                // HEAD (2-DOF)
+                const neck = new THREE.Group(); neck.position.set(0, 0.8, 0); this.torso.add(neck);
+                const head = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), mat);
+                neck.add(head);
+                this.joints['HEAD_PAN'] = { ref: neck.rotation, axis: 'y' };
+                this.joints['HEAD_TILT'] = { ref: head.rotation, axis: 'x' };
+
+                // ARMS (6-DOF Each)
+                this.createArm(-0.65, 0.5, this.torso, mat, accent, 'L');
+                this.createArm(0.65, 0.5, this.torso, mat, accent, 'R');
+
+                // LEGS (With Feet)
+                this.createLeg(-0.35, this.pelvis, mat, accent, 'L');
+                this.createLeg(0.35, this.pelvis, mat, accent, 'R');
+
+                this.scene.add(this.bot);
+            }
+
+            createArm(x, y, parent, mat, acc, side) {
+                const sP = new THREE.Group(); sP.position.set(x, y, 0); parent.add(sP);
+                const sR = new THREE.Group(); sP.add(sR);
+                const upper = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.7, 0.2), mat); upper.position.y = -0.35; sR.add(upper);
+                const elbow = new THREE.Group(); elbow.position.y = -0.7; sR.add(elbow);
+                const lower = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.7, 0.18), mat); lower.position.y = -0.35; elbow.add(lower);
+                const hand = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.2, 0.2), acc); hand.position.y = -0.8; elbow.add(hand);
+
+                this.joints[`ARM_${side}_SHOULDER_PITCH`] = { ref: sP.rotation, axis: 'x' };
+                this.joints[`ARM_${side}_SHOULDER_ROLL`] = { ref: sR.rotation, axis: 'z' };
+                this.joints[`ARM_${side}_ELBOW`] = { ref: elbow.rotation, axis: 'x' };
+            }
+
+            createLeg(x, parent, mat, acc, side) {
+                const hip = new THREE.Group(); hip.position.set(x, -0.2, 0); parent.add(hip);
+                const upper = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.0, 0.3), mat); upper.position.y = -0.5; hip.add(upper);
+                const knee = new THREE.Group(); knee.position.y = -1.0; hip.add(knee);
+                const lower = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.0, 0.25), mat); lower.position.y = -0.5; knee.add(lower);
+                const foot = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.15, 0.6), acc); foot.position.set(0, -1.1, 0.1); knee.add(foot);
+
+                this.joints[`LEG_${side}_HIP_PITCH`] = { ref: hip.rotation, axis: 'x' };
+                this.joints[`LEG_${side}_KNEE`] = { ref: knee.rotation, axis: 'x' };
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]);
+                        if (cmd === 'JUMP') this.velY = val * 0.1;
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                        else if (cmd === 'RESET') { this.bot.position.y = 0; this.velY = 0; Object.values(this.joints).forEach(j => j.ref[j.axis] = 0); }
+                        else if (this.joints[cmd]) this.joints[cmd].ref[this.joints[cmd].axis] = (val * Math.PI) / 180;
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                if (this.bot.position.y > 0 || this.velY !== 0) {
+                    this.bot.position.y += this.velY;
+                    this.velY += this.gravity;
+                    if (this.bot.position.y <= 0) { this.bot.position.y = 0; this.velY = 0; }
+                }
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new FinalAssySim();
+    </script>
+</body>
+</html>

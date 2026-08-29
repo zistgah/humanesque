@@ -1,0 +1,6 @@
+@imperative
+MODULE RubyCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

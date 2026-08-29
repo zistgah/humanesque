@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V18.0 - Omni-Kernel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'JetBrains Mono', monospace; color: #00ffcc; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; box-sizing: border-box; }
+        .master-hud { background: rgba(0, 10, 10, 0.9); border: 1px solid #00ffcc; padding: 15px; border-radius: 8px; pointer-events: auto; width: 400px; box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
+        .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 10px; margin-top: 10px; opacity: 0.8; }
+        .console-box { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 1000px; align-self: center; background: rgba(0,0,0,0.95); padding: 15px; border-radius: 12px; border: 1px solid #00ffcc; pointer-events: auto; }
+        textarea { width: 100%; height: 150px; background: #000; color: #00ffcc; border: 1px solid #004444; padding: 10px; font-size: 12px; outline: none; }
+        .module-active { color: #fff; text-shadow: 0 0 5px #00ffcc; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="master-hud">
+            <h2 style="margin:0; font-size: 14px;">OMNI_KERNEL_v18.0</h2>
+            <div class="module-grid">
+                <div id="m1">● 2WD_PHYSICS</div><div id="m2">● HUMANOID_IK</div>
+                <div id="m3">● ROCKET_FLUIDS</div><div id="m4">● LUNAR_GRAVITY</div>
+                <div id="m5">● HYPER_FOLD</div><div id="m6">● OMNIVERSE_SINGULARITY</div>
+                <div id="m7">● DNA_CRISPR</div><div id="m8">● NEURAL_MITOSIS</div>
+            </div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// PIPELINE: THE DOZEN-SIM THREAD
+LOAD_BIO_MODULE(DNA_STABILITY: 0.98)
+EVOLVE_TO_PILOT(TYPE: HUMANOID)
+TRANSITION_TO_HARDWARE(VEHICLE: MULTI_STAGE_ROCKET)
+LAUNCH_SEQUENCE(DESTINATION: LUNAR_ORBIT)
+ENGAGE_JUMP(FOLD_TYPE: HYPERSPACE)
+EXECUTE_LANDING(TARGET: MOON_CRATER_A)</textarea>
+            <button onclick="sim.runPipeline()" style="padding:10px; background:#00ffcc; color:#000; font-weight:bold; cursor:pointer; border:none;">INITIATE OMNI-STACK</button>
+        </div>
+    </div>
+
+    <script>
+        class OmniKernel {
+            constructor() {
+                this.initGraphics();
+                this.activeModule = null;
+            }
+
+            initGraphics() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 2000);
+                this.renderer = new THREE.WebGLRenderer({antialias: true});
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.camera.position.z = 100;
+                
+                // Generic "World" object that morphs based on the sim
+                this.geometry = new THREE.IcosahedronGeometry(30, 2);
+                this.material = new THREE.MeshStandardMaterial({color: 0x00ffcc, wireframe: true});
+                this.world = new THREE.Mesh(this.geometry, this.material);
+                this.scene.add(this.world);
+                this.scene.add(new THREE.AmbientLight(0x404040));
+                this.animate();
+            }
+
+            async runPipeline() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for(let line of lines) {
+                    if(line.includes("LOAD_BIO")) { this.updateVisual(0xff00ff, true); document.getElementById('m7').className="module-active"; }
+                    if(line.includes("HUMANOID")) { this.world.scale.set(1, 2, 1); document.getElementById('m2').className="module-active"; }
+                    if(line.includes("LAUNCH")) { this.updateVisual(0xffffff, false); document.getElementById('m3').className="module-active"; }
+                    if(line.includes("JUMP")) { this.world.scale.set(0.1, 0.1, 50); document.getElementById('m5').className="module-active"; }
+                    if(line.includes("LANDING")) { this.world.scale.set(5, 5, 5); document.getElementById('m4').className="module-active"; }
+                    await new Promise(r => setTimeout(r, 2000));
+                }
+            }
+
+            updateVisual(color, wire) {
+                this.material.color.setHex(color);
+                this.material.wireframe = wire;
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.world.rotation.y += 0.01;
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new OmniKernel();
+    </script>
+</body>
+</html>

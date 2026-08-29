@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — PSpice subset</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="gate-cse.html">GATE CS</a>
+    <a href="gate-papers.html">DA / EC / IN</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>PSpice in PANINI</h1>
+  <p>Not Cadence PSpice. A DC / Thevenin / Norton / mesh / RC-Euler engine written in PANINI, for GATE <strong>EC §2</strong> and <strong>IN §3</strong> (node analysis). Official EC/IN PDFs do not name SPICE; they name the analysis PSpice performs.</p>
+  <pre>V1 1 0 DC 12
+R1 1 2 1
+R2 2 0 2
+.OP
+* V(2) = 8</pre>
+  <p>Code: <code>src/panini/pspice.pni</code>. Netlist: <code>examples/pspice/divider.net</code>.</p>
+</main>
+</body>
+</html>

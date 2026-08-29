@@ -1,0 +1,287 @@
+{
+ "meta": {
+  "name": "FAKIR domain x layer lattice",
+  "repo": "zistgah/fakir",
+  "author": "Abhishek Choudhary",
+  "affiliation": "AyeAI",
+  "copyright": "(c) 1993-2026 Abhishek Choudhary. All rights reserved.",
+  "license": "CC0-1.0 (metadata)",
+  "doi": "DOI-PENDING",
+  "method": "AAB over VGC (doi:10.5281/zenodo.21264248)",
+  "agi_stack_source": "Project ILM (ilm.codes/explore)"
+ },
+ "layers": [
+  {
+   "id": "L0",
+   "name": "Hardware Definition"
+  },
+  {
+   "id": "L1",
+   "name": "Verification"
+  },
+  {
+   "id": "L2",
+   "name": "Synthesis/Compilation"
+  },
+  {
+   "id": "L3",
+   "name": "Firmware/Embedded"
+  },
+  {
+   "id": "L4",
+   "name": "Systems"
+  },
+  {
+   "id": "L5",
+   "name": "Parallel"
+  },
+  {
+   "id": "L6",
+   "name": "Distributed/Cloud"
+  },
+  {
+   "id": "L7",
+   "name": "AI/Deep Learning"
+  },
+  {
+   "id": "L8",
+   "name": "Robotics/Embodiment"
+  },
+  {
+   "id": "L9",
+   "name": "AGI/ASI"
+  }
+ ],
+ "families": [
+  {
+   "id": "ISIC",
+   "label": "UN ISIC Rev.4 - Industries / Economic Activities",
+   "hue": 212,
+   "count": 21
+  },
+  {
+   "id": "ISCO",
+   "label": "ILO ISCO-08 - Occupations / Roles",
+   "hue": 38,
+   "count": 10
+  },
+  {
+   "id": "ISCED",
+   "label": "UNESCO ISCED-F 2013 - Fields of Education",
+   "hue": 160,
+   "count": 11
+  }
+ ],
+ "domains": [
+  {
+   "family": "ISIC",
+   "code": "A",
+   "name": "Agriculture, forestry and fishing"
+  },
+  {
+   "family": "ISIC",
+   "code": "B",
+   "name": "Mining and quarrying"
+  },
+  {
+   "family": "ISIC",
+   "code": "C",
+   "name": "Manufacturing"
+  },
+  {
+   "family": "ISIC",
+   "code": "D",
+   "name": "Electricity, gas, steam and air conditioning supply"
+  },
+  {
+   "family": "ISIC",
+   "code": "E",
+   "name": "Water supply; sewerage, waste management and remediation"
+  },
+  {
+   "family": "ISIC",
+   "code": "F",
+   "name": "Construction"
+  },
+  {
+   "family": "ISIC",
+   "code": "G",
+   "name": "Wholesale and retail trade; repair of motor vehicles and motorcycles"
+  },
+  {
+   "family": "ISIC",
+   "code": "H",
+   "name": "Transportation and storage"
+  },
+  {
+   "family": "ISIC",
+   "code": "I",
+   "name": "Accommodation and food service activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "J",
+   "name": "Information and communication"
+  },
+  {
+   "family": "ISIC",
+   "code": "K",
+   "name": "Financial and insurance activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "L",
+   "name": "Real estate activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "M",
+   "name": "Professional, scientific and technical activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "N",
+   "name": "Administrative and support service activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "O",
+   "name": "Public administration and defence; compulsory social security"
+  },
+  {
+   "family": "ISIC",
+   "code": "P",
+   "name": "Education"
+  },
+  {
+   "family": "ISIC",
+   "code": "Q",
+   "name": "Human health and social work activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "R",
+   "name": "Arts, entertainment and recreation"
+  },
+  {
+   "family": "ISIC",
+   "code": "S",
+   "name": "Other service activities"
+  },
+  {
+   "family": "ISIC",
+   "code": "T",
+   "name": "Activities of households as employers; undifferentiated own-use production"
+  },
+  {
+   "family": "ISIC",
+   "code": "U",
+   "name": "Activities of extraterritorial organizations and bodies"
+  },
+  {
+   "family": "ISCO",
+   "code": "0",
+   "name": "Armed Forces Occupations"
+  },
+  {
+   "family": "ISCO",
+   "code": "1",
+   "name": "Managers"
+  },
+  {
+   "family": "ISCO",
+   "code": "2",
+   "name": "Professionals"
+  },
+  {
+   "family": "ISCO",
+   "code": "3",
+   "name": "Technicians and Associate Professionals"
+  },
+  {
+   "family": "ISCO",
+   "code": "4",
+   "name": "Clerical Support Workers"
+  },
+  {
+   "family": "ISCO",
+   "code": "5",
+   "name": "Service and Sales Workers"
+  },
+  {
+   "family": "ISCO",
+   "code": "6",
+   "name": "Skilled Agricultural, Forestry and Fishery Workers"
+  },
+  {
+   "family": "ISCO",
+   "code": "7",
+   "name": "Craft and Related Trades Workers"
+  },
+  {
+   "family": "ISCO",
+   "code": "8",
+   "name": "Plant and Machine Operators and Assemblers"
+  },
+  {
+   "family": "ISCO",
+   "code": "9",
+   "name": "Elementary Occupations"
+  },
+  {
+   "family": "ISCED",
+   "code": "00",
+   "name": "Generic programmes and qualifications"
+  },
+  {
+   "family": "ISCED",
+   "code": "01",
+   "name": "Education"
+  },
+  {
+   "family": "ISCED",
+   "code": "02",
+   "name": "Arts and humanities"
+  },
+  {
+   "family": "ISCED",
+   "code": "03",
+   "name": "Social sciences, journalism and information"
+  },
+  {
+   "family": "ISCED",
+   "code": "04",
+   "name": "Business, administration and law"
+  },
+  {
+   "family": "ISCED",
+   "code": "05",
+   "name": "Natural sciences, mathematics and statistics"
+  },
+  {
+   "family": "ISCED",
+   "code": "06",
+   "name": "Information and Communication Technologies"
+  },
+  {
+   "family": "ISCED",
+   "code": "07",
+   "name": "Engineering, manufacturing and construction"
+  },
+  {
+   "family": "ISCED",
+   "code": "08",
+   "name": "Agriculture, forestry, fisheries and veterinary"
+  },
+  {
+   "family": "ISCED",
+   "code": "09",
+   "name": "Health and welfare"
+  },
+  {
+   "family": "ISCED",
+   "code": "10",
+   "name": "Services"
+  }
+ ]
+}

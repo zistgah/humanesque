@@ -1,0 +1,8 @@
+body.site, body.poster {
+  background: #000 !important;
+  color: #fff !important;
+}
+.site-head { background: #000 !important; border-bottom: 2px solid #fff !important; }
+.site-head a, .site-head strong, h1, h2, h3 { color: #fff !important; text-shadow: none; }
+a { color: #ffff00 !important; }
+.role { background: #000 !important; border: 2px solid #fff !important; }

@@ -1,0 +1,6 @@
+{
+  "_": "PANINI mount of zistgah/dome. Data only. Retrieved library, this config is the seam.",
+  "flight": { "spawn": { "zone": "space", "pos": [0, 20, 26], "yaw": 3.14159 } },
+  "gallery": { "title": "PANINI", "slots": 4, "intervalS": 20, "images": [] },
+  "videos": { "items": [] }
+}

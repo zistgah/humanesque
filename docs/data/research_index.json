@@ -1,0 +1,28 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Search instruments and known citations. Not a live patent opinion. IBM/HP employment is biography, not ownership.",
+  "searches": [
+    {"name": "Google Scholar", "url": "https://scholar.google.com/scholar?q=%22Hindawi+Programming+System%22+OR+Romenagri+OR+APCISR", "use": "papers citing HPS / Romenagri"},
+    {"name": "Google Patents", "url": "https://patents.google.com/?q=Hindawi+programming+OR+Romenagri+OR+APCISR&inventor=Abhishek+Choudhary", "use": "inventor + keyword"},
+    {"name": "WIPO PATENTSCOPE", "url": "https://patentscope.wipo.int/search/en/search.jsf", "use": "international applications"},
+    {"name": "USPTO Patent Public Search", "url": "https://ppubs.uspto.gov/pubwebapp/", "use": "US grants/applications"},
+    {"name": "Indian Patent Advanced Search", "url": "https://iprsearch.ipindia.gov.in/PublicSearch/", "use": "IN/CHE filings e.g. 3033/CHE/2011"},
+    {"name": "Semantic Scholar", "url": "https://www.semanticscholar.org/search?q=Hindawi%20Programming%20System", "use": "citation graph"},
+    {"name": "DBLP", "url": "https://dblp.org/search?q=Hindawi+programming", "use": "CS bibliography"},
+    {"name": "arXiv", "url": "https://arxiv.org/search/?query=linguistic+equity+programming+language+localization&searchtype=all", "use": "preprints"},
+    {"name": "ACL Anthology", "url": "https://aclanthology.org/search/?q=transliteration+Indic", "use": "CL venues"},
+    {"name": "IEEE Xplore", "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=Indic%20programming%20language", "use": "IEEE conferences"},
+    {"name": "Zenodo", "url": "https://zenodo.org/search?q=PANINI%20OR%20Hindawi%20Choudhary", "use": "this line's minted posters"}
+  ],
+  "known_filings": [
+    {"id": "IN 3033/CHE/2011", "date": "2011-09-08", "title": "A cognitive computing system"},
+    {"id": "IN 3032/CHE/2011", "date": "2011-09-08", "title": "Apparatus and method for automatically dispensing ingredients for a recipe"},
+    {"id": "IN 3029/CHE/2011", "date": "2011-09-08", "title": "A novel prosthetic device"},
+    {"id": "CSIR", "date": "2003-02-10", "title": "Health Monitoring System for Elders and Invalids"}
+  ],
+  "related_other_work": [
+    {"title": "Qalb — Arabic programming language", "why": "native-script PL; often compared with HPS in the literature"},
+    {"title": "Panini – Integrated Translation Management System (Sarai 2005-06, Baishampyan Ghose)", "why": "Same-year Sarai neighbour; different project, same name. Do not claim."},
+    {"title": "Vitraag 2025 survey of Hindi-based PLs", "url": "https://www.vitraag.com/2025/05/06/hindi-based-programming-languages/", "why": "positions Hindawi among later Hindi PLs"}
+  ]
+}

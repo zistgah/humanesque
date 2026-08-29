@@ -1,0 +1,43 @@
+/* Expert: recursive-descent expression  (GATE CS Compiler Design)
+ * Grammar: E → T {+ T}   T → F {* F}   F → digit
+ * Input 2*3+4 → 10
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION peek(s, c)
+    IF c[0] >= LEN(s)
+        RETURN ""
+    END
+    RETURN s[c[0]]
+END
+FUNCTION eat(c)
+    c[0] = c[0] + 1
+END
+FUNCTION isd(ch)
+    RETURN ch >= "0" AND ch <= "9"
+END
+FUNCTION parseF(s, c)
+    ch = peek(s, c)
+    v = INT(ch)
+    eat(c)
+    RETURN v
+END
+FUNCTION parseT(s, c)
+    v = parseF(s, c)
+    WHILE peek(s, c) == "*"
+        eat(c)
+        v = v * parseF(s, c)
+    END
+    RETURN v
+END
+FUNCTION parseE(s, c)
+    v = parseT(s, c)
+    WHILE peek(s, c) == "+"
+        eat(c)
+        v = v + parseT(s, c)
+    END
+    RETURN v
+END
+FUNCTION main()
+    c = [0]
+    RETURN parseE("2*3+4", c)
+END

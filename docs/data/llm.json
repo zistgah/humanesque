@@ -1,0 +1,37 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "engine": "ggml-org/llama.cpp",
+  "also_called": ["llm.cpp", "llama.cpp"],
+  "toolchain": {
+    "cxx": "g++ (Debian 12.2.0) 12.2.0",
+    "standard": "C++11 (llama.cpp uses later dialect as upstream requires)",
+    "cmake": "4.4.2 (pip)",
+    "make": true,
+    "cuda": false,
+    "metal": false,
+    "hip": false,
+    "vulkan": false
+  },
+  "build": {
+    "source": "https://github.com/ggml-org/llama.cpp/archive/refs/heads/master.tar.gz",
+    "configure": "cmake -B build -DCMAKE_BUILD_TYPE=Release -DGGML_NATIVE=OFF -DLLAMA_BUILD_TESTS=OFF -DLLAMA_CURL=OFF -DGGML_BLAS=OFF",
+    "target": "llama-cli",
+    "ok": true,
+    "binary": "build/bin/llama-cli",
+    "version": "0.3.0-dev (build 0, commit unknown)",
+    "built_with": "GNU 12.2.0 for Linux x86_64"
+  },
+  "execute": {
+    "ok": true,
+    "model": "GGUF v3 (tinyllamas stories, F32)",
+    "prompt": "Once upon a time",
+    "completion": "One day, a little girl named Lucya came to visit",
+    "generation_tps": 203.4,
+    "flags": "-n 12 -c 64 -t 1 --temp 0 -st --no-jinja"
+  },
+  "not_this_tree": [
+    "PANINI C++ subset → WASM is not llama.cpp",
+    "GitHub Pages cannot run llama-cli",
+    "GPU SDKs not present in this builder"
+  ]
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — mentions</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>MENTIONS</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="legacy.html">Legacy</a>
+    <a href="research.html">Research</a>
+    <a href="REFERENCES.md">REFERENCES.md</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Internet mentions (retrieved)</h1>
+  <p>Not a complete web crawl. Homonyms are listed so they are not absorbed. Wikipedia itself says the HPS article is thin on independent sources.</p>
+  <table id="m"><thead><tr><th>Date</th><th>Where</th><th>What</th></tr></thead><tbody></tbody></table>
+  <h2>Not this person</h2>
+  <ul id="h"></ul>
+</main>
+<script>
+fetch("data/mentions.json").then(r=>r.json()).then(j=>{
+  document.querySelector("#m tbody").innerHTML = j.primary.map(x =>
+    "<tr><td>"+x.date+"</td><td><a href='"+x.url+"'>"+x.where+"</a><br>"+x.title+"</td><td>"+x.what+"</td></tr>"
+  ).join("");
+  document.getElementById("h").innerHTML = j.homonyms.map(x =>
+    "<li><a href='"+x.url+"'>"+x.title+"</a> — "+x.note+"</li>"
+  ).join("");
+});
+</script>
+</body>
+</html>

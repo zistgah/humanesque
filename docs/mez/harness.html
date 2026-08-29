@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mez — cycler harness</title>
+  <link rel="stylesheet" href="../site.css" />
+  <style>
+    textarea { width:98%; min-height:140px; font:13px/1.4 ui-monospace,monospace; }
+    .row { display:flex; flex-wrap:wrap; gap:.4rem; margin:.5rem 0; }
+    .row a, .row button { padding:.4rem .75rem; background:#1a3348; color:#e8f0f8; border:0; text-decoration:none; cursor:pointer; }
+    .note { background:#14283a; padding:.6rem; margin:.6rem 0; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>mez cycler</strong>
+  <nav>
+    <a href="../index.html">explorer</a>
+    <a href="desk.html">full desk</a>
+    <a href="../nb.html">Hindawi notebook</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>AI harness — no API key</h1>
+  <p class="lead">A cycler assembles a prompt here, opens another AI <em>by URL</em>, then you paste or save what came back. Nothing is billed through this page. Clipboard is the zero-credential path.</p>
+  <p class="note">mez is itself a cycler. The six domain cyclers (matba, khwab, awaz, tilasm, pench, yadein) are stages of work at this harness. GENIE is elevation, not another vendor.</p>
+  <p>
+    <label>cycler
+      <select id="flow"></select>
+    </label>
+    <label>stage
+      <select id="stage"></select>
+    </label>
+  </p>
+  <label>your intent for this stage</label>
+  <textarea id="intent" placeholder="what you want this stage to do"></textarea>
+  <label>assembled prompt (goes out)</label>
+  <textarea id="prompt" readonly></textarea>
+  <div class="row" id="providers"></div>
+  <label>paste the AI’s reply (comes back)</label>
+  <textarea id="reply" placeholder="copy from ChatGPT / Claude / Gemini / Grok and paste here"></textarea>
+  <div class="row">
+    <button id="save">Save reply to this machine</button>
+    <button id="load">Load last saved</button>
+    <button id="accept">Accept stage</button>
+  </div>
+  <pre id="log"></pre>
+</main>
+<script>
+const PROVIDERS = [
+  { id:'chatgpt', name:'ChatGPT', url: p => 'https://chatgpt.com/?q=' + encodeURIComponent(p) },
+  { id:'claude',  name:'Claude',  url: () => 'https://claude.ai/new' },
+  { id:'gemini',  name:'Gemini',  url: () => 'https://gemini.google.com/app' },
+  { id:'grok',    name:'Grok',    url: p => 'https://grok.com/?q=' + encodeURIComponent(p) }
+];
+const KEY = 'mez.cycler.v1';
+const log = (m) => { document.getElementById('log').textContent = m; };
+let flows = {};
+function currentFlow(){ return flows[document.getElementById('flow').value]; }
+function currentStage(){
+  const f = currentFlow(); if(!f) return null;
+  const i = +document.getElementById('stage').value || 0;
+  return f.stages[i];
+}
+function assemble(){
+  const f = currentFlow(), s = currentStage();
+  if(!f || !s) return '';
+  const intent = document.getElementById('intent').value.trim();
+  const L = [];
+  L.push((s.prompt || ('You are executing the ' + f.title + ' cycler, stage ' + s.title + '.')).trim());
+  L.push('');
+  L.push('WORKFLOW — ' + f.title + ' (' + (f.domain||'') + ')');
+  if (f.invariants) f.invariants.forEach(i => L.push('  · ' + i));
+  if (intent) { L.push(''); L.push('USER INTENT:'); L.push(intent); }
+  L.push('');
+  L.push('SAFETY: assembled on the user\'s machine. No credentials. Do not ask for keys.');
+  L.push('Return: (1) human-readable result (2) unresolved questions (3) recommended next stage.');
+  return L.join('\n');
+}
+function refreshPrompt(){ document.getElementById('prompt').value = assemble(); }
+function fillStages(){
+  const f = currentFlow(); const sel = document.getElementById('stage');
+  sel.innerHTML = '';
+  (f && f.stages || []).forEach((s,i) => {
+    const o = document.createElement('option'); o.value = i; o.textContent = (s.id||i) + ' — ' + (s.title||'');
+    sel.appendChild(o);
+  });
+  refreshPrompt();
+}
+fetch('workflows.json').then(r=>r.json()).then(w => {
+  flows = w;
+  const sel = document.getElementById('flow');
+  Object.keys(w).forEach(k => {
+    const o = document.createElement('option'); o.value = k;
+    o.textContent = (w[k].title || k);
+    sel.appendChild(o);
+  });
+  fillStages();
+}).catch(() => {
+  flows = { mez: { title:'MEZ', domain:'desk', invariants:['no vendor owned'], stages:[
+    { id:'bearings', title:'bearings', prompt:'You are the mez cycler. Sit the operator down. Ask what they want to make. Do not require an API key.' }
+  ]}};
+  const o = document.createElement('option'); o.value='mez'; o.textContent='MEZ';
+  document.getElementById('flow').appendChild(o);
+  fillStages();
+});
+document.getElementById('flow').onchange = fillStages;
+document.getElementById('stage').onchange = refreshPrompt;
+document.getElementById('intent').oninput = refreshPrompt;
+const row = document.getElementById('providers');
+function copyPrompt(){
+  const p = document.getElementById('prompt').value;
+  navigator.clipboard.writeText(p).then(()=>log('Prompt on clipboard. Paste into the AI that just opened, or any other.')).catch(()=>log('Clipboard blocked — select the prompt and copy it yourself.'));
+}
+const copy = document.createElement('button');
+copy.textContent = 'Copy prompt';
+copy.onclick = copyPrompt;
+row.appendChild(copy);
+PROVIDERS.forEach(p => {
+  const a = document.createElement('a');
+  a.textContent = 'Open ' + p.name;
+  a.target = '_blank'; a.rel = 'noopener';
+  a.onclick = (ev) => {
+    a.href = p.url(document.getElementById('prompt').value);
+    copyPrompt();
+  };
+  row.appendChild(a);
+});
+document.getElementById('save').onclick = () => {
+  const rec = {
+    flow: document.getElementById('flow').value,
+    stage: document.getElementById('stage').value,
+    intent: document.getElementById('intent').value,
+    prompt: document.getElementById('prompt').value,
+    reply: document.getElementById('reply').value,
+    at: new Date().toISOString()
+  };
+  const all = JSON.parse(localStorage.getItem(KEY) || '[]');
+  all.push(rec);
+  localStorage.setItem(KEY, JSON.stringify(all));
+  log('Saved on this machine (' + all.length + ' records). Not sent anywhere.');
+};
+document.getElementById('load').onclick = () => {
+  const all = JSON.parse(localStorage.getItem(KEY) || '[]');
+  const last = all[all.length-1];
+  if (!last) { log('Nothing saved yet.'); return; }
+  document.getElementById('reply').value = last.reply || '';
+  document.getElementById('intent').value = last.intent || '';
+  log('Loaded ' + last.at);
+};
+document.getElementById('accept').onclick = () => {
+  const r = document.getElementById('reply').value.trim();
+  if (!r) { log('Nothing captured. Paste what came back, or save a file.'); return; }
+  log('Stage accepted. Reply stays on this machine. Next stage is yours to open.');
+};
+</script>
+</body>
+</html>

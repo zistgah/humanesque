@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — software and systems factory</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Browse the registry before writing a file. Frozen components are not restyled.</p>
+  <h1>Software and systems factory</h1>
+  <p class="lead"><strong>SHIP GREEN</strong> is the requirements bar. <strong>STANDARD GREEN</strong> is the language bar. Optimized components are hash-locked.</p>
+  <p>
+    <a class="btn" href="SHIP_GREEN.md">SHIP GREEN</a>
+    <a class="btn" href="STANDARD_GREEN.md">STANDARD GREEN</a>
+    <a class="btn" href="CORRELATION.md">Correlation</a>
+    <a class="btn" href="FACTORY.md">Factory README</a>
+    <a class="btn" href="data/languages.json">languages.json</a>
+    <a class="btn" href="data/factory-registry.json">REGISTRY.json</a>
+    <a class="btn" href="DELIBERATION.md">Unfreeze protocol</a>
+    <a class="btn" href="data/ship-green.json">Derived report</a>
+    <a class="btn" href="data/standard-green-index.json">STANDARD GREEN index</a>
+  </p>
+  <h2>This build</h2>
+  <pre id="rep">loading docs/data/ship-green.json …</pre>
+  <h2>STANDARD GREEN languages</h2>
+  <p class="cite">Source: <a href="data/languages.json">factory/languages.json</a>. GREEN ⇔ issuing-body suite skip=0. Homemade 20-case is CORE GREEN only.</p>
+  <table id="langs"><thead><tr><th>language</th><th>suite</th><th>pass</th><th>skip=0</th></tr></thead><tbody></tbody></table>
+  <h2>Components by group</h2>
+  <div id="groups"></div>
+  <h2>Components</h2>
+  <table id="tbl"><thead><tr><th>id</th><th>path</th><th>status</th><th>freeze</th></tr></thead><tbody></tbody></table>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+fetch("data/ship-green.json").then(r => r.json()).then(j => {
+  document.getElementById("rep").textContent = JSON.stringify({status:j.status, requirements:j.requirements, freeze:{locked:j.freeze.locked, drift:j.freeze.drift}}, null, 2);
+}).catch(() => { document.getElementById("rep").textContent = "report not generated — run node scripts/factory_scan.mjs"; });
+fetch("data/standard-green-index.json").then(r => r.json()).then(j => {
+  const tb = document.querySelector("#langs tbody");
+  for (const r of (j.languages || [])) {
+    const tr = document.createElement("tr");
+    const pn = (r.pass == null) ? (r.gap || "") : (r.pass + "/" + (r.n || 0));
+    tr.innerHTML = "<td>"+r.language+"</td><td>"+(r.suite||"")+"</td><td>"+pn+"</td><td>"+(r.standard_green?"GREEN":"GAP")+"</td>";
+    tb.appendChild(tr);
+  }
+}).catch(() => {});
+fetch("data/factory-registry.json").then(r => r.json()).then(j => {
+  const tb = document.querySelector("#tbl tbody");
+  const byId = {};
+  for (const c of j.components) {
+    byId[c.id] = c;
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>"+c.id+"</td><td><code>"+c.path+"</code></td><td>"+c.status+"</td><td>"+(c.freeze?"FROZEN":"")+"</td>";
+    tb.appendChild(tr);
+  }
+  const box = document.getElementById("groups");
+  const groups = j.groups || {};
+  for (const g of Object.keys(groups)) {
+    const h = document.createElement("h3");
+    h.textContent = g;
+    box.appendChild(h);
+    const ul = document.createElement("ul");
+    for (const id of groups[g]) {
+      const li = document.createElement("li");
+      const c = byId[id];
+      li.innerHTML = "<code>"+id+"</code>" + (c ? " — " + (c.owns||c.path) : "");
+      ul.appendChild(li);
+    }
+    box.appendChild(ul);
+  }
+}).catch(() => {});
+</script>
+</body>
+</html>

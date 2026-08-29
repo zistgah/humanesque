@@ -1,0 +1,21 @@
+id,field,text
+page,title,PANINI — AGI stack × shaili × labs
+page,lead,A shaili is captured as name host axis transducer standard lab. Script is not language is not shaili.
+page,layersHeading,Layers
+page,labsHeading,Role labs
+page,publishHint,Submit deposits/i18n/stack.YOURTAG.csv
+L0,domain,Physical substrate
+L3,domain,Hardware / asm
+L7,domain,OS / runtime
+L8,domain,Execution frameworks
+L9,domain,Simulation / twins
+L12,domain,Representation / ILM
+L13,domain,Programming language
+L14,domain,Compiler / semantic
+L15,domain,Tooling / workbench
+L16,domain,Interaction
+L18,domain,Cognition
+L21,domain,Agent architecture
+L23,domain,Metacognition
+L25,domain,Sovereignty
+L26,domain,Civilizational

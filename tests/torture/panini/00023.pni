@@ -1,0 +1,6 @@
+MODULE T00023
+FUNCTION main()
+    PRINT LEN("abcd")
+    RETURN 0
+END
+END

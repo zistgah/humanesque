@@ -1,0 +1,2298 @@
+REM  SYSADMIN_CYCLER.pni
+REM  PANINI representation of the Sysadmin Cycler.
+REM
+REM  Purpose:
+REM    Extend CYCLER_SHELL with infrastructure semantics: operational
+REM    triage, diagnosis, remediation, dependency correlation, self-healing,
+REM    lights-out administration, high availability, failover, disaster
+REM    recovery, stabilization and auditable operational learning.
+REM
+REM  Architectural position:
+REM    SYSADMIN_CYCLER is a specialization of CYCLER_SHELL.
+REM    It does not replace the Shell and does not duplicate every
+REM    administrative utility. It discovers and invokes infrastructure
+REM    tools through the Shell and their local .pni specifications.
+REM
+REM  Core principle:
+REM    OBSERVE -> IDENTIFY -> CLASSIFY -> TRIAGE -> CORRELATE -> DIAGNOSE
+REM    -> PLAN -> AUTHORIZE -> EXECUTE -> VERIFY -> STABILIZE -> LEARN
+REM    -> DOCUMENT
+REM
+REM  Safety principle:
+REM    LIGHTS-OUT does not mean UNBOUNDED.
+REM    Autonomous mutation is policy-bounded, auditable and state-aware.
+
+PROGRAM SYSADMIN_CYCLER
+
+  VERSION "1.0.0"
+  LANGUAGE "PANINI"
+  CLASS   CYCLER
+  DOMAIN  "INFRASTRUCTURE_OPERATIONS"
+  EXTENDS "CYCLER_SHELL"
+  PURPOSE "Discover, triage, diagnose, operate, remediate, verify and maintain heterogeneous computing infrastructure."
+
+  REM ================================================================
+  REM  0. CONSTITUTION
+  REM ================================================================
+
+  CONSTITUTION SYSADMIN_CYCLER_CONSTITUTION
+
+    IDENTITY
+      SYSTEM      "SYSADMIN_CYCLER"
+      ROLE        "Domain-specialized infrastructure operations Cycler"
+      PARENT      "CYCLER_SHELL"
+      SECONDARY   "Triage, remediation, resilience, HA/DR and lights-out operations"
+    END IDENTITY
+
+    CANON
+      REQUIRE shell_execution_substrate
+      REQUIRE infrastructure_observation
+      REQUIRE failure_domain_triage
+      REQUIRE dependency_awareness
+      REQUIRE state_aware_execution
+      REQUIRE outcome_verification
+      REQUIRE remediation_policy
+      REQUIRE authorization_policy
+      REQUIRE rollback_or_recovery_strategy
+      REQUIRE operational_provenance
+      REQUIRE tool_identity_and_version
+      REQUIRE tool_pni_identity
+      REQUIRE incident_identity
+      REQUIRE human_input_provenance
+      REQUIRE escalation_path
+      REQUIRE auditability
+      REQUIRE HA_DR_awareness
+      REQUIRE lights_out_policy
+    END CANON
+
+    RULE "SYSADMIN_CYCLER extends CYCLER_SHELL rather than replacing it."
+    RULE "The Shell remains the generic tool discovery and execution substrate."
+    RULE "Infrastructure semantics are added above tool invocation."
+    RULE "Triage is based on observed failure domain, not a fixed profession taxonomy."
+    RULE "A successful command exit code is not sufficient evidence of recovered infrastructure state."
+    RULE "Every mutation MUST be followed by state verification."
+    RULE "Retries MUST be based on observed post-failure state."
+    RULE "Potentially destructive or irreversible actions require an explicit policy gate."
+    RULE "Lights-out execution MUST remain within configured autonomy policy."
+    RULE "High-impact irreversible actions MUST NOT be silently inferred from diagnostic intent."
+    RULE "Credentials MUST remain outside .pni source."
+    RULE "Human interventions remain attributable across specialist Cyclers and tools."
+    RULE "Incident history MUST preserve failed attempts when evidentially relevant."
+    RULE "Backup existence MUST NOT be treated as proof of recoverability."
+    RULE "HA failover MUST be verified after promotion."
+    RULE "DR recovery MUST verify service state, dependencies and recovery objectives."
+    RULE "Unknown infrastructure state MUST remain UNKNOWN until verified."
+    RULE "A learned operational pattern MUST NOT silently rewrite the authoritative tool .pni."
+    RULE "Tool specifications and operational knowledge remain distinct objects."
+    RULE "Upstream contribution of learned .pni remains user-controlled."
+  END CONSTITUTION
+
+
+  REM ================================================================
+  REM  1. CORE TYPES
+  REM ================================================================
+
+  TYPE INFRASTRUCTURE_RESOURCE
+    id
+    name
+    resource_type
+    platform
+    environment
+    location
+    zone
+    region
+    owner
+    dependencies
+    dependents
+    state
+    health
+    capacity
+    connectivity
+    redundancy
+    backup_state
+    replication_state
+    provenance
+    status
+  END TYPE
+
+  TYPE INCIDENT
+    id
+    detected_at
+    source
+    severity
+    symptoms
+    affected_resources
+    candidate_domains
+    classified_domain
+    hypotheses
+    evidence
+    parent_incident
+    child_incidents
+    dependencies
+    actions
+    approvals
+    state_before
+    state_after
+    verification
+    recovery
+    escalation
+    provenance
+    status
+  END TYPE
+
+  TYPE TRIAGE_RESULT
+    incident
+    candidate_domains
+    selected_domain
+    confidence
+    evidence
+    competing_hypotheses
+    specialist_cyclers
+    required_tools
+    unresolved
+    provenance
+  END TYPE
+
+  TYPE DIAGNOSTIC_PLAN
+    incident
+    domain
+    observations
+    tools
+    invocations
+    expected_results
+    safety
+    authorization
+    dependencies
+    stop_conditions
+    verification
+    provenance
+  END TYPE
+
+  TYPE REMEDIATION_PLAN
+    incident
+    objective
+    hypothesis
+    actions
+    prerequisites
+    blast_radius
+    reversibility
+    rollback
+    expected_state
+    verification
+    autonomy_class
+    authorization
+    escalation
+    provenance
+  END TYPE
+
+  TYPE OPERATION_RESULT
+    incident
+    resource
+    cycler
+    tool
+    tool_version
+    tool_pni
+    invocation
+    started_at
+    completed_at
+    exit_code
+    stdout
+    stderr
+    state_before
+    state_after
+    side_effects
+    verification
+    rollback_state
+    status
+    provenance
+  END TYPE
+
+  TYPE HEALTH_STATE
+    resource
+    service
+    observed_at
+    health
+    availability
+    latency
+    capacity
+    dependencies
+    replication
+    quorum
+    backup
+    evidence
+    confidence
+    provenance
+  END TYPE
+
+  TYPE HA_STATE
+    topology
+    primary
+    secondary
+    replicas
+    quorum
+    leader
+    pools
+    paths
+    health
+    failover_state
+    promotion_state
+    verification
+    provenance
+  END TYPE
+
+  TYPE DR_STATE
+    site
+    region
+    recovery_point
+    recovery_time
+    backups
+    replication
+    restore_viability
+    dependency_order
+    prerequisites
+    recovery_state
+    verification
+    provenance
+  END TYPE
+
+  TYPE AUTONOMY_POLICY
+    class
+    allowed_actions
+    denied_actions
+    approval_rules
+    blast_radius_limit
+    reversibility_requirement
+    maintenance_window
+    emergency_policy
+    escalation_target
+    audit_requirement
+  END TYPE
+
+  TYPE OPERATIONAL_KNOWLEDGE
+    incident_signature
+    environment
+    symptoms
+    diagnostics
+    successful_actions
+    failed_actions
+    tool_versions
+    constraints
+    verification
+    confidence
+    provenance
+    status
+  END TYPE
+
+  TYPE SYSADMIN_PNI
+    identity
+    parent_shell
+    domains
+    triage_rules
+    specialist_cyclers
+    tools
+    autonomy
+    remediation
+    HA
+    DR
+    dependencies
+    observability
+    self_healing
+    lights_out
+    provenance
+    generated_at
+    source_hashes
+    status
+  END TYPE
+
+
+  REM ================================================================
+  REM  2. ARCHITECTURAL EXTENSION OF CYCLER SHELL
+  REM ================================================================
+
+  RELATIONSHIP CYCLER_SHELL
+
+    PARENT "CYCLER_SHELL"
+
+    INHERIT
+      DISCOVER_TOOL
+      READ_INTERFACE
+      MAP_CAPABILITIES
+      PLAN
+      EXECUTE
+      OBSERVE
+      DIAGNOSE
+      RETRY
+      GENERATE_PNI
+      REGISTER_LOCAL
+      VERIFY_TOOL
+      PREPARE_CONTRIBUTION
+      CONTRIBUTE_TO_GITHUB
+    END INHERIT
+
+    SPECIALIZE
+      infrastructure_resource_model
+      incident_model
+      failure_domain_triage
+      dependency_correlation
+      remediation_planning
+      resilience_management
+      HA_management
+      DR_management
+      lights_out_policy
+      self_healing
+      operational_learning
+    END SPECIALIZE
+
+    RULE "Do not duplicate generic tool semantics already represented by CYCLER_SHELL."
+    RULE "Use local tool .pni specifications when available."
+    RULE "Discover or refresh a tool specification when version/interface drift is detected."
+    RULE "Preserve Shell-level execution provenance inside Sysadmin incident provenance."
+  END RELATIONSHIP
+
+
+  REM ================================================================
+  REM  3. INFRASTRUCTURE DOMAIN MODEL
+  REM ================================================================
+
+  DOMAIN_CLASSIFICATION
+
+    DOMAIN "DATABASE"
+      SPECIALIST "DBA_CYCLER"
+      CAPABILITIES
+        health
+        replication
+        locks
+        capacity
+        backup
+        restore
+        failover
+        consistency
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "NETWORK"
+      SPECIALIST "NETWORK_CYCLER"
+      CAPABILITIES
+        routing
+        DNS
+        connectivity
+        interfaces
+        load_balancing
+        network_services
+        redundancy
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "COMPUTE"
+      SPECIALIST "COMPUTE_CYCLER"
+      CAPABILITIES
+        operating_system
+        processes
+        services
+        resources
+        virtualization
+        host_health
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "STORAGE"
+      SPECIALIST "STORAGE_CYCLER"
+      CAPABILITIES
+        disks
+        filesystems
+        volumes
+        replication
+        capacity
+        integrity
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "SECURITY_IDENTITY"
+      SPECIALIST "SECURITY_IDENTITY_CYCLER"
+      CAPABILITIES
+        authentication
+        authorization
+        certificates
+        secrets
+        identity
+        security_events
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "CLOUD_PLATFORM"
+      SPECIALIST "CLOUD_PLATFORM_CYCLER"
+      CAPABILITIES
+        instances
+        orchestration
+        IAM
+        networking
+        platform_services
+        container_platforms
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "KUBERNETES_CONTAINER"
+      SPECIALIST "KUBERNETES_CYCLER"
+      CAPABILITIES
+        cluster_health
+        workloads
+        scheduling
+        networking
+        storage
+        control_plane
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "IDENTITY_DIRECTORY"
+      SPECIALIST "IDENTITY_CYCLER"
+      CAPABILITIES
+        directory
+        authentication
+        authorization
+        federation
+        account_state
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "DNS_PKI"
+      SPECIALIST "DNS_PKI_CYCLER"
+      CAPABILITIES
+        DNS
+        certificates
+        trust
+        expiry
+        resolution
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "BACKUP_RECOVERY"
+      SPECIALIST "BACKUP_CYCLER"
+      CAPABILITIES
+        backup
+        integrity
+        restore
+        recovery_validation
+        retention
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "OBSERVABILITY"
+      SPECIALIST "OBSERVABILITY_CYCLER"
+      CAPABILITIES
+        metrics
+        logs
+        traces
+        alerts
+        telemetry
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "MESSAGING"
+      SPECIALIST "MESSAGING_CYCLER"
+      CAPABILITIES
+        queues
+        brokers
+        delivery
+        replication
+        backlog
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "WEB_APPLICATION"
+      SPECIALIST "APPLICATION_CYCLER"
+      CAPABILITIES
+        service_health
+        endpoints
+        dependencies
+        deployment
+        configuration
+      END CAPABILITIES
+    END DOMAIN
+
+    DOMAIN "CI_CD"
+      SPECIALIST "CICD_CYCLER"
+      CAPABILITIES
+        pipelines
+        runners
+        artifacts
+        deployments
+        rollback
+      END CAPABILITIES
+    END DOMAIN
+
+  END DOMAIN_CLASSIFICATION
+
+  RULE "Additional specialist Cyclers MAY be discovered, generated or invoked dynamically."
+  RULE "Specialist taxonomy is extensible."
+  RULE "The selected specialist is determined by observed operational evidence."
+
+
+  REM ================================================================
+  REM  4. OBSERVABILITY
+  REM ================================================================
+
+  OPERATION OBSERVE_INFRASTRUCTURE(scope)
+
+    DISCOVER resources in scope
+    COLLECT telemetry
+      metrics
+      logs
+      traces
+      alerts
+      health_checks
+      service_state
+      dependency_state
+      capacity_state
+      replication_state
+      backup_state
+      network_state
+    END COLLECT
+
+    PRESERVE:
+      source
+      retrieved_at
+      tool
+      tool_version
+      tool_pni
+      observation_hash
+      provenance
+    END PRESERVE
+
+    RETURN HEALTH_STATE
+  END OPERATION
+
+
+  OPERATION DETECT_INCIDENT(observation)
+
+    COMPARE observation against:
+      configured_health_policy
+      service_expectations
+      availability_targets
+      capacity_thresholds
+      dependency_invariants
+      replication_invariants
+      quorum_invariants
+      recovery_objectives
+    END COMPARE
+
+    IF anomaly_detected
+      CREATE INCIDENT
+      LINK observation
+      PRESERVE evidence
+    END IF
+
+    RETURN incident_or_null
+  END OPERATION
+
+
+  REM ================================================================
+  REM  5. INCIDENT TRIAGE
+  REM ================================================================
+
+  OPERATION TRIAGE_INCIDENT(incident)
+
+    IDENTIFY affected resources
+
+    CLASSIFY candidate domains:
+      DATABASE
+      NETWORK
+      COMPUTE
+      STORAGE
+      SECURITY_IDENTITY
+      CLOUD_PLATFORM
+      KUBERNETES_CONTAINER
+      IDENTITY_DIRECTORY
+      DNS_PKI
+      BACKUP_RECOVERY
+      OBSERVABILITY
+      MESSAGING
+      WEB_APPLICATION
+      CI_CD
+      OTHER
+    END CLASSIFY
+
+    CORRELATE:
+      symptoms
+      telemetry
+      resource dependencies
+      recent changes
+      health history
+      specialist evidence
+    END CORRELATE
+
+    RANK candidate domains using observed evidence.
+
+    IF confidence insufficient
+      RETAIN multiple hypotheses
+      RUN safe cross-domain observations
+    END IF
+
+    SELECT specialist Cycler(s) where justified.
+
+    PRESERVE:
+      selected_domain
+      competing_hypotheses
+      evidence
+      confidence
+      specialist_assignments
+    END PRESERVE
+
+    RETURN TRIAGE_RESULT
+  END OPERATION
+
+
+  REM ================================================================
+  REM  6. SPECIALIST DELEGATION
+  REM ================================================================
+
+  OPERATION DELEGATE(incident, specialist)
+
+    REQUIRE specialist_identity
+
+    IF specialist not instantiated
+      DISCOVER specialist capability
+      OR GENERATE specialist Cycler specification
+    END IF
+
+    PASS:
+      incident
+      relevant observations
+      relevant provenance
+      relevant resource graph
+      authorization context
+    END PASS
+
+    INVOKE specialist Cycler
+
+    REQUIRE specialist result include:
+      diagnosis
+      evidence
+      actions
+      state_before
+      state_after
+      verification
+      unresolved
+      provenance
+    END REQUIRE
+
+    RETURN specialist_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  7. CROSS-DOMAIN CORRELATION
+  REM ================================================================
+
+  OPERATION CORRELATE_SPECIALIST_RESULTS(results)
+
+    BUILD dependency graph
+
+    CORRELATE:
+      timestamps
+      symptoms
+      resource identity
+      service dependencies
+      network paths
+      storage dependencies
+      database dependencies
+      recent changes
+      failover state
+      backup state
+    END CORRELATE
+
+    DISTINGUISH:
+      primary_failure
+      secondary_failure
+      propagated_symptom
+      independent_failure
+      monitoring_artifact
+      unresolved_failure
+    END DISTINGUISH
+
+    PRESERVE competing causal explanations.
+
+    RETURN correlated_incident_model
+  END OPERATION
+
+
+  REM ================================================================
+  REM  8. DIAGNOSTIC PLANNING
+  REM ================================================================
+
+  OPERATION DIAGNOSE_INFRASTRUCTURE(incident)
+
+    TRIAGE_INCIDENT(incident)
+
+    CORRELATE_SPECIALIST_RESULTS(existing_results)
+
+    BUILD DIAGNOSTIC_PLAN
+
+    PREFER:
+      read_only
+      low_blast_radius
+      reversible
+      dependency-aware
+      evidence-producing
+      independently-verifiable
+    END PREFER
+
+    USE CYCLER_SHELL to:
+      discover required tools
+      read current documentation
+      load local .pni
+      verify tool version
+      construct invocation
+      execute diagnostic operations
+      interpret errors
+    END USE
+
+    RETURN diagnosis
+  END OPERATION
+
+
+  REM ================================================================
+  REM  9. DEPENDENCY-AWARE DIAGNOSIS
+  REM ================================================================
+
+  OPERATION CHECK_DEPENDENCIES(resource)
+
+    RESOLVE upstream dependencies
+    RESOLVE downstream dependents
+
+    CHECK:
+      application
+      database
+      cache
+      storage
+      network
+      host
+      identity
+      certificates
+      external_services
+    END CHECK
+
+    DO NOT assume the visibly failing component is the root cause.
+
+    RETURN dependency_health_graph
+  END OPERATION
+
+
+  OPERATION ROOT_CAUSE_CORRELATION(incident)
+
+    OBSERVE affected component
+
+    CHECK_DEPENDENCIES(affected_component)
+
+    CORRELATE:
+      upstream failures
+      downstream symptoms
+      temporal ordering
+      change history
+      resource health
+    END CORRELATE
+
+    RANK hypotheses.
+
+    RETURN root_cause_model
+  END OPERATION
+
+
+  REM ================================================================
+  REM  10. REMEDIATION PLANNING
+  REM ================================================================
+
+  OPERATION PLAN_REMEDIATION(incident, diagnosis)
+
+    CONSTRUCT REMEDIATION_PLAN
+
+    INCLUDE:
+      objective
+      hypothesis
+      prerequisites
+      actions
+      expected_state
+      verification
+      rollback
+      blast_radius
+      reversibility
+      autonomy_class
+      authorization
+      escalation
+    END INCLUDE
+
+    CHECK:
+      policy
+      dependencies
+      resource ownership
+      maintenance constraints
+      current state
+      tool capabilities
+      tool version
+      rollback feasibility
+    END CHECK
+
+    IF action is destructive OR irreversible OR high_impact
+      REQUIRE explicit authorization
+        OR independently configured emergency policy
+    END IF
+
+    RETURN REMEDIATION_PLAN
+  END OPERATION
+
+
+  REM ================================================================
+  REM  11. AUTONOMY CLASSES
+  REM ================================================================
+
+  AUTONOMY_CLASS L0
+    NAME "OBSERVE"
+    ALLOW read_only_diagnostics
+    DENY mutation
+    DENY destructive_action
+  END AUTONOMY_CLASS
+
+  AUTONOMY_CLASS L1
+    NAME "ADVISE"
+    ALLOW diagnostics
+    ALLOW remediation_plan
+    ALLOW simulation
+    DENY autonomous_mutation
+  END AUTONOMY_CLASS
+
+  AUTONOMY_CLASS L2
+    NAME "REVERSIBLE_AUTO_REMEDIATION"
+    ALLOW policy_approved_reversible_actions
+    ALLOW service_restart
+    ALLOW recoverable_condition_clear
+    ALLOW policy_approved_traffic_reroute
+    ALLOW policy_approved_failover
+    REQUIRE post_action_verification
+  END AUTONOMY_CLASS
+
+  AUTONOMY_CLASS L3
+    NAME "CONTROLLED_INFRASTRUCTURE_CHANGE"
+    ALLOW explicitly_policy_bound_changes
+    REQUIRE stronger_authorization
+    REQUIRE rollback_or_recovery_plan
+    REQUIRE post_change_verification
+  END AUTONOMY_CLASS
+
+  AUTONOMY_CLASS L4
+    NAME "HIGH_IMPACT_ACTION"
+    DENY implicit_authorization
+    REQUIRE explicit_authorization
+      OR configured_emergency_policy
+    REQUIRE enhanced_audit
+    REQUIRE post_action_verification
+    REQUIRE escalation_if_uncertain
+  END AUTONOMY_CLASS
+
+  RULE "Autonomy class is part of the execution plan."
+  RULE "A tool capability does not itself grant operational authority."
+  RULE "Tool .pni side-effect classification feeds autonomy decisions."
+
+
+  REM ================================================================
+  REM  12. EXECUTION
+  REM ================================================================
+
+  OPERATION EXECUTE_REMEDIATION(plan)
+
+    VERIFY incident_identity
+    VERIFY current_resource_state
+    VERIFY tool_identity
+    VERIFY tool_version
+    VERIFY tool_pni
+    VERIFY authorization
+    VERIFY prerequisites
+    VERIFY rollback_or_recovery_strategy
+    VERIFY expected_state
+
+    CAPTURE state_before
+
+    INVOKE CYCLER_SHELL EXECUTE(plan)
+
+    CAPTURE:
+      stdout
+      stderr
+      exit_code
+      observable_side_effects
+      generated_artifacts
+      state_after
+    END CAPTURE
+
+    VERIFY actual state against expected state.
+
+    IF verification passes
+      MARK operation "REMEDIATED_AND_VERIFIED"
+    ELSE
+      MARK operation "DEGRADED_OR_FAILED"
+      INVOKE recovery decision
+    END IF
+
+    PRESERVE complete operation record.
+
+    RETURN OPERATION_RESULT
+  END OPERATION
+
+
+  REM ================================================================
+  REM  13. SELF-HEALING
+  REM ================================================================
+
+  OPERATION SELF_HEAL(incident)
+
+    OBSERVE_INFRASTRUCTURE(incident.scope)
+
+    DETECT_INCIDENT(observation)
+
+    TRIAGE_INCIDENT(incident)
+
+    DIAGNOSE_INFRASTRUCTURE(incident)
+
+    IF known_failure_pattern
+      LOAD known_remediation
+    ELSE
+      DEVELOP evidence_supported hypothesis
+    END IF
+
+    PLAN_REMEDIATION(incident, diagnosis)
+
+    APPLY autonomy policy
+
+    IF authorized_for_autonomous_execution
+      EXECUTE_REMEDIATION(plan)
+    ELSE
+      ESCALATE remediation plan for authorization
+    END IF
+
+    VERIFY resulting infrastructure state
+
+    IF healthy
+      STABILIZE
+      CLOSE incident
+    ELSE
+      DETERMINE rollback_or_escalation
+    END IF
+
+    PRESERVE incident lifecycle.
+
+    RETURN incident_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  14. SELF-HEALING CONTROL LOOP
+  REM ================================================================
+
+  CYCLE SELF_HEALING_LOOP
+
+    INPUT telemetry
+
+    OBSERVE
+    DETECT
+    TRIAGE
+    DIAGNOSE
+    PLAN
+    POLICY_GATE
+
+    IF autonomous_action_allowed
+      EXECUTE
+      TEST
+      VERIFY
+    ELSE
+      ESCALATE
+    END IF
+
+    IF verification == HEALTHY
+      STABILIZE
+      DOCUMENT
+      LEARN
+      CLOSE
+    ELSE
+      IF rollback_safe
+        ROLLBACK
+        VERIFY
+      END IF
+      ESCALATE
+    END IF
+
+    PRESERVE all state transitions.
+
+  END CYCLE
+
+
+  REM ================================================================
+  REM  15. LIGHTS-OUT OPERATION
+  REM ================================================================
+
+  OPERATION LIGHTS_OUT(scope)
+
+    REQUIRE explicit_lights_out_policy
+    REQUIRE configured_autonomy_classes
+    REQUIRE telemetry
+    REQUIRE incident_identity
+    REQUIRE escalation_target
+    REQUIRE audit_sink
+    REQUIRE credential_availability_through_secure_host_mechanism
+
+    LOOP
+
+      OBSERVE_INFRASTRUCTURE(scope)
+
+      IF anomaly_detected
+        SELF_HEAL(incident)
+      END IF
+
+      IF unresolved_high_impact_condition
+        ESCALATE
+      END IF
+
+      IF policy_requires_human_presence
+        PAUSE_AUTONOMOUS_MUTATION
+        ESCALATE
+      END IF
+
+      PRESERVE cycle state
+
+    END LOOP
+
+  END OPERATION
+
+  RULE "Lights-out operation is continuous operation without requiring an interactive operator."
+  RULE "Lights-out operation does not bypass authorization policy."
+  RULE "Loss of observability MUST reduce autonomy rather than increase it."
+  RULE "Loss of provenance MUST reduce autonomy for consequential operations."
+  RULE "Ambiguous infrastructure state MUST trigger safe observation or escalation."
+
+
+  REM ================================================================
+  REM  16. HIGH AVAILABILITY
+  REM ================================================================
+
+  HA_TOPOLOGY
+    SUPPORT primary_secondary
+    SUPPORT active_passive
+    SUPPORT active_active
+    SUPPORT replicas
+    SUPPORT quorum
+    SUPPORT leader_follower
+    SUPPORT load_balanced_pools
+    SUPPORT redundant_network_paths
+    SUPPORT redundant_storage
+    SUPPORT multi_zone
+    SUPPORT multi_region
+  END HA_TOPOLOGY
+
+
+  OPERATION HA_OBSERVE(service)
+
+    DISCOVER topology
+    IDENTIFY primary
+    IDENTIFY secondaries
+    IDENTIFY replicas
+    IDENTIFY quorum
+    IDENTIFY leaders
+    IDENTIFY load_balancer_pools
+    IDENTIFY redundant_paths
+
+    OBSERVE health of every member.
+
+    RETURN HA_STATE
+  END OPERATION
+
+
+  OPERATION HA_RECOVER(service)
+
+    HA_OBSERVE(service)
+
+    IF primary degraded
+      DIAGNOSE primary
+    END IF
+
+    IF primary recoverable
+      EXECUTE policy_approved repair
+      VERIFY primary
+    ELSE
+      VERIFY failover prerequisites
+      VERIFY secondary health
+      VERIFY quorum
+      VERIFY replication currency
+      EXECUTE policy_approved failover
+      VERIFY promotion
+      VERIFY service availability
+      VERIFY dependencies
+      REBALANCE if required
+    END IF
+
+    RECORD failover event and resulting topology.
+
+    RETURN HA_STATE
+  END OPERATION
+
+
+  REM ================================================================
+  REM  17. HIGH AVAILABILITY STATE MACHINE
+  REM ================================================================
+
+  CYCLE HA_FAILOVER
+
+    INPUT service
+
+    OBSERVE
+    DETECT degraded_primary
+    DIAGNOSE primary
+
+    IF recoverable
+      REPAIR
+      VERIFY
+    ELSE
+      VERIFY secondary
+      VERIFY quorum
+      VERIFY replication
+      AUTHORIZE failover
+      PROMOTE secondary
+      VERIFY promoted state
+      VERIFY application
+      VERIFY dependencies
+      REBALANCE
+      RECORD topology transition
+    END IF
+
+    PRESERVE all pre/post states.
+
+  END CYCLE
+
+
+  REM ================================================================
+  REM  18. DISASTER RECOVERY
+  REM ================================================================
+
+  OPERATION DR_ASSESS(site_or_region)
+
+    IDENTIFY recovery topology
+    CHECK backup availability
+    CHECK backup integrity
+    CHECK replication status
+    CHECK restore viability
+    CHECK recovery prerequisites
+    CHECK dependency ordering
+    CALCULATE current recoverable point where observable
+    CHECK configured RPO
+    CHECK configured RTO
+
+    RETURN DR_STATE
+  END OPERATION
+
+
+  OPERATION DR_RECOVER(scope)
+
+    DR_ASSESS(scope)
+
+    VERIFY recovery authorization
+    VERIFY recovery prerequisites
+
+    CHECK:
+      recovery_point
+      recovery_time
+      backup_integrity
+      replication
+      dependency_order
+      credentials
+      target_capacity
+    END CHECK
+
+    RESTORE OR PROMOTE according to policy
+
+    REHYDRATE dependencies in dependency order
+
+    VERIFY:
+      infrastructure
+      storage
+      database
+      network
+      identity
+      application
+      service endpoints
+      data integrity
+    END VERIFY
+
+    VERIFY actual RPO and RTO against targets.
+
+    IF verification passes
+      MARK "DR_RECOVERED_AND_VERIFIED"
+    ELSE
+      ESCALATE
+    END IF
+
+    PRESERVE complete recovery record.
+
+    RETURN DR_STATE
+  END OPERATION
+
+
+  REM ================================================================
+  REM  19. DR PRINCIPLES
+  REM ================================================================
+
+  DR_POLICY
+
+    RULE "HA and DR are distinct operational states."
+    RULE "Local failure may use self-healing."
+    RULE "Node failure may use HA failover."
+    RULE "Zone failure may require zone recovery."
+    RULE "Site or region catastrophe may require DR."
+    RULE "Backup existence is not proof of restore viability."
+    RULE "Replication status is not proof of application recoverability."
+    RULE "Recovery must verify dependencies."
+    RULE "Recovery must verify data integrity."
+    RULE "Recovery must measure or establish RPO/RTO state."
+    RULE "Failed recovery attempts remain part of provenance."
+  END DR_POLICY
+
+
+  REM ================================================================
+  REM  20. DEPENDENCY GRAPH
+  REM ================================================================
+
+  OPERATION BUILD_DEPENDENCY_GRAPH(scope)
+
+    DISCOVER:
+      applications
+      services
+      databases
+      caches
+      storage
+      networks
+      hosts
+      identity_services
+      certificates
+      external_services
+    END DISCOVER
+
+    CREATE directed dependency graph.
+
+    RECORD:
+      parent
+      child
+      dependency_type
+      required_state
+      observed_state
+      provenance
+    END RECORD
+
+    RETURN dependency_graph
+  END OPERATION
+
+
+  OPERATION DEPENDENCY_AWARE_REMEDIATION(incident)
+
+    BUILD_DEPENDENCY_GRAPH(incident.scope)
+
+    DETERMINE remediation ordering.
+
+    REQUIRE:
+      prerequisites before dependent actions
+      dependency health before restart/failover
+      verification after each critical transition
+    END REQUIRE
+
+    EXECUTE evidence-supported plan.
+
+    RETURN remediation_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  21. CROSS-CYCLER INCIDENT COMPOSITION
+  REM ================================================================
+
+  OPERATION COMPOSE_INCIDENT_CYCLERS(incident)
+
+    TRIAGE_INCIDENT(incident)
+
+    FOR each selected specialist
+      DELEGATE(incident, specialist)
+    END FOR
+
+    CORRELATE_SPECIALIST_RESULTS(results)
+
+    IF incident crosses domains
+      SYSADMIN_CYCLER remains orchestrator
+    END IF
+
+    SPECIALIST CYCLERS remain semantically independent.
+
+    PRESERVE:
+      specialist identities
+      specialist states
+      tool identities
+      execution results
+      evidence
+      provenance
+    END PRESERVE
+
+    RETURN composed_incident_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  22. TOOL EXECUTION THROUGH SHELL
+  REM ================================================================
+
+  OPERATION USE_ADMIN_TOOL(user_intent)
+
+    RESOLVE intent
+
+    IDENTIFY likely administrative tool
+
+    IF tool unknown
+      CYCLER_SHELL.DISCOVER_TOOL(tool_reference)
+      CYCLER_SHELL.READ_INTERFACE(tool)
+      CYCLER_SHELL.GENERATE_PNI(tool)
+      CYCLER_SHELL.REGISTER_LOCAL(tool_pni)
+    END IF
+
+    VERIFY tool version
+    VERIFY local tool .pni
+    MAP capability
+    CONSTRUCT safe diagnostic or remediation invocation
+
+    APPLY autonomy policy
+
+    EXECUTE through CYCLER_SHELL
+
+    OBSERVE result
+    DIAGNOSE if failed
+    VERIFY infrastructure state
+    PRESERVE tool provenance
+
+    RETURN operation_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  23. TOOL .PNI REQUIREMENTS FOR SYSADMIN
+  REM ================================================================
+
+  ADMIN_TOOL_REQUIREMENTS
+
+    EACH administrative tool .pni SHOULD expose:
+      identity
+      executable
+      version
+      platform
+      commands
+      arguments
+      options
+      capabilities
+      permissions
+      credentials
+      side_effects
+      reversibility
+      blast_radius
+      network_access
+      data_access
+      dependencies
+      diagnostic_operations
+      remediation_operations
+      verification_operations
+      rollback_operations
+      expected_exit_codes
+      error_patterns
+      state_observations
+      provenance
+    END REQUIREMENTS
+
+    RULE "Read-only diagnostic capabilities should be distinguished from mutation capabilities."
+    RULE "A restart is not equivalent to a diagnostic query."
+    RULE "A failover operation is not equivalent to a health check."
+    RULE "A destructive operation must carry explicit side-effect classification."
+    RULE "Tool .pni drift requires re-verification before high-risk execution."
+  END ADMIN_TOOL_REQUIREMENTS
+
+
+  REM ================================================================
+  REM  24. OPERATIONAL PROVENANCE
+  REM ================================================================
+
+  OPERATION RECORD_OPERATION_PROVENANCE(operation)
+
+    RECORD:
+      event_id
+      timestamp
+      actor "SYSADMIN_CYCLER"
+      parent_incident
+      parent_cycler
+      specialist_cycler
+      resource
+      tool
+      tool_version
+      tool_pni
+      tool_pni_hash
+      invocation
+      authorization_state
+      autonomy_class
+      input_state
+      output
+      exit_status
+      resulting_state
+      verification_evidence
+      rollback_state
+      escalation_state
+    END RECORD
+
+    RETURN provenance_record
+  END OPERATION
+
+
+  REM ================================================================
+  REM  25. HUMAN INPUT PROVENANCE INVARIANT
+  REM ================================================================
+
+  OPERATION PRESERVE_HUMAN_INPUT_PROVENANCE(input)
+
+    RECORD:
+      human_identity_or_authorized_reference
+      temporal_position
+      contribution
+      source_artifact
+      receiving_cycler
+      transformation
+      specialist_cycler
+      tool
+      downstream_artifact
+      downstream_propagation
+    END RECORD
+
+    LINK input to:
+      incident
+      remediation_plan
+      execution
+      resulting_state
+      verification
+    END LINK
+
+    RULE "Human-originated inputs MUST remain attributable across Sysadmin and specialist Cycler transformations."
+    RULE "Human provenance MUST NOT terminate at the first Cycler boundary."
+    RULE "Temporal provenance MUST be preserved for downstream Epistemic Realm and IPR use."
+  END OPERATION
+
+
+  REM ================================================================
+  REM  26. SELF-HEALING PROVENANCE
+  REM ================================================================
+
+  OPERATION RECORD_AUTONOMOUS_ACTION(action)
+
+    RECORD:
+      incident
+      detection_event
+      diagnosis
+      hypothesis
+      policy
+      autonomy_class
+      authorization
+      tool
+      tool_version
+      tool_pni
+      invocation
+      pre_state
+      action
+      post_state
+      verification
+      rollback
+      escalation
+      timestamp
+    END RECORD
+
+    RETURN autonomous_action_record
+  END OPERATION
+
+
+  REM ================================================================
+  REM  27. INCIDENT STATE MACHINE
+  REM ================================================================
+
+  INCIDENT_STATE_MACHINE
+
+    DETECTED
+      ->
+    IDENTIFIED
+      ->
+    TRIAGED
+      ->
+    DIAGNOSING
+      ->
+    DIAGNOSED
+      ->
+    PLANNED
+      ->
+    AUTHORIZED
+      ->
+    EXECUTING
+      ->
+    VERIFYING
+      ->
+    STABILIZING
+      ->
+    RESOLVED
+
+    ALTERNATIVE:
+      VERIFYING -> DEGRADED
+      DEGRADED -> ROLLBACK
+      ROLLBACK -> VERIFYING
+      DEGRADED -> ESCALATED
+      VERIFYING -> ESCALATED
+      DIAGNOSING -> ESCALATED
+    END ALTERNATIVE
+
+  END INCIDENT_STATE_MACHINE
+
+
+  REM ================================================================
+  REM  28. ROLLBACK
+  REM ================================================================
+
+  OPERATION ROLLBACK(remediation)
+
+    REQUIRE rollback_strategy
+
+    INSPECT post_action_state
+
+    IF rollback_safe
+      EXECUTE rollback through CYCLER_SHELL
+      VERIFY resulting state
+    ELSE
+      ESCALATE
+    END IF
+
+    PRESERVE:
+      original_state
+      remediation
+      failure
+      rollback_action
+      rollback_state
+      verification
+    END PRESERVE
+
+    RETURN rollback_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  29. ESCALATION
+  REM ================================================================
+
+  OPERATION ESCALATE(incident, reason)
+
+    CLASSIFY reason:
+      uncertainty
+      authorization_missing
+      high_impact
+      irreversible_action
+      observability_loss
+      provenance_loss
+      verification_failure
+      rollback_failure
+      repeated_failure
+      cross_domain_conflict
+      DR_failure
+      HA_failure
+      security_condition
+    END CLASSIFY
+
+    PRESERVE evidence
+
+    SEND incident to configured escalation target
+
+    REQUIRE acknowledgement according to policy where configured.
+
+    RETURN escalation_result
+  END OPERATION
+
+
+  REM ================================================================
+  REM  30. OPERATIONAL LEARNING
+  REM ================================================================
+
+  OPERATION LEARN_FROM_INCIDENT(incident)
+
+    IF incident resolved_and_verified
+      EXTRACT:
+        symptom_signature
+        environment
+        diagnostic_sequence
+        remediation_sequence
+        verification_sequence
+        tool_versions
+        environmental_constraints
+        failure_patterns
+      END EXTRACT
+
+      CREATE OPERATIONAL_KNOWLEDGE
+
+      PRESERVE confidence and provenance.
+
+      STORE in local operational knowledge registry.
+    ELSE
+      STORE failed pattern where evidentially useful.
+    END IF
+
+    RETURN operational_knowledge
+  END OPERATION
+
+
+  OPERATION APPLY_OPERATIONAL_KNOWLEDGE(incident)
+
+    SEARCH local knowledge
+
+    IF matching pattern
+      VERIFY environment compatibility
+      VERIFY tool/version compatibility
+      VERIFY current state
+      VERIFY policy
+      PROPOSE or apply according to autonomy class
+    END IF
+
+    RETURN knowledge_application
+  END OPERATION
+
+
+  REM  Operational knowledge is not authoritative tool semantics.
+  RULE "Learning may propose an operational pattern but may not silently rewrite tool .pni semantics."
+
+
+  REM ================================================================
+  REM  31. OBSERVABILITY LOSS
+  REM ================================================================
+
+  OPERATION HANDLE_OBSERVABILITY_LOSS(scope)
+
+    DETECT telemetry_gap
+    DETECT monitoring_failure
+    DETECT logging_failure
+    DETECT state_visibility_loss
+
+    REDUCE autonomy where required.
+
+    IF safe_observation_available
+      USE safe_observation
+    ELSE
+      ESCALATE
+    END IF
+
+    PRESERVE observability-loss event.
+
+    RETURN observation_state
+  END OPERATION
+
+
+  REM ================================================================
+  REM  32. SECURITY / CREDENTIAL BOUNDARY
+  REM ================================================================
+
+  SECURITY_POLICY
+
+    REQUIRE secure_credential_source
+    DENY credentials_in_pni
+    DENY credentials_in_provenance_logs
+    DENY credentials_in_stdout_preservation
+    DENY credentials_in_git_contribution
+    REQUIRE least_required_capability
+    REQUIRE authorization_for_privileged_action
+    REQUIRE escalation_for_security_uncertainty
+  END SECURITY_POLICY
+
+  RULE "Permission failure is not permission to bypass controls."
+  RULE "Credential failure is diagnosed without exposing credentials."
+  RULE "Security conditions may override ordinary remediation autonomy."
+
+
+  REM ================================================================
+  REM  33. LIGHTS-OUT FAILURE POLICY
+  REM ================================================================
+
+  LIGHTS_OUT_FAILURE_POLICY
+
+    IF tool_unknown
+      DISCOVER before mutation
+    END IF
+
+    IF documentation_conflict
+      PRESERVE conflict
+      PREFER safe observation
+    END IF
+
+    IF permission_failure
+      ESCALATE
+    END IF
+
+    IF credential_failure
+      ESCALATE secure credential requirement
+    END IF
+
+    IF partial_execution
+      INSPECT resulting state before retry
+    END IF
+
+    IF unknown_failure
+      PRESERVE evidence
+      STOP unsafe retry
+    END IF
+
+    IF verification_failure
+      DO NOT declare success
+      DETERMINE rollback_or_escalation
+    END IF
+
+    IF provider_or_cluster_state_ambiguous
+      QUERY authoritative state
+      DO NOT blindly repeat mutation
+    END IF
+  END LIGHTS_OUT_FAILURE_POLICY
+
+
+  REM ================================================================
+  REM  34. HA/DR VERIFICATION
+  REM ================================================================
+
+  OPERATION VERIFY_HA_STATE(ha_state)
+
+    CHECK primary_or_active_member
+    CHECK secondary_or_standby
+    CHECK quorum
+    CHECK replication
+    CHECK traffic
+    CHECK service availability
+    CHECK dependencies
+    CHECK data consistency where observable
+
+    IF all required invariants pass
+      RETURN "HA_VERIFIED"
+    ELSE
+      RETURN "HA_DEGRADED"
+    END IF
+  END OPERATION
+
+
+  OPERATION VERIFY_DR_STATE(dr_state)
+
+    CHECK recovered resources
+    CHECK dependency order completion
+    CHECK data integrity
+    CHECK service availability
+    CHECK recovery point
+    CHECK recovery time
+    CHECK external connectivity
+    CHECK application-level health
+
+    IF all required invariants pass
+      RETURN "DR_VERIFIED"
+    ELSE
+      RETURN "DR_DEGRADED"
+    END IF
+  END OPERATION
+
+
+  REM ================================================================
+  REM  35. INCIDENT CLOSURE
+  REM ================================================================
+
+  OPERATION CLOSE_INCIDENT(incident)
+
+    REQUIRE final_health_observation
+    REQUIRE verification_evidence
+    REQUIRE unresolved_state_classification
+
+    IF healthy_and_verified
+      MARK RESOLVED
+    ELSE
+      MARK DEGRADED_OR_ESCALATED
+    END IF
+
+    RECORD:
+      final_state
+      evidence
+      recovery
+      residual_risk
+      unresolved
+      operational_knowledge
+      provenance
+    END RECORD
+
+    RETURN incident
+  END OPERATION
+
+
+  REM ================================================================
+  REM  36. STANDARD LIFECYCLES
+  REM ================================================================
+
+  CYCLE INCIDENT_RESPONSE
+
+    INPUT incident
+
+    OBSERVE
+    IDENTIFY
+    CLASSIFY
+    TRIAGE
+    CORRELATE
+    DIAGNOSE
+    PLAN
+    AUTHORIZE
+    EXECUTE
+    VERIFY
+    STABILIZE
+    LEARN
+    DOCUMENT
+
+    IF unresolved
+      ESCALATE
+    END IF
+
+    OUTPUT incident_result
+
+  END CYCLE
+
+
+  CYCLE LIGHTS_OUT_RESPONSE
+
+    INPUT telemetry
+
+    OBSERVE
+    DETECT
+    TRIAGE
+    CORRELATE
+    DIAGNOSE
+    PLAN
+    POLICY_GATE
+
+    IF allowed
+      EXECUTE
+      VERIFY
+      STABILIZE
+    ELSE
+      ESCALATE
+    END IF
+
+    LEARN
+    DOCUMENT
+    PRESERVE
+
+    OUTPUT operational_result
+
+  END CYCLE
+
+
+  CYCLE HA_RECOVERY
+
+    INPUT service
+
+    OBSERVE
+    IDENTIFY_TOPOLOGY
+    DIAGNOSE
+    CHECK_REPLICATION
+    CHECK_QUORUM
+
+    IF primary_recoverable
+      REPAIR
+      VERIFY
+    ELSE
+      AUTHORIZE_FAILOVER
+      PROMOTE
+      VERIFY
+      REBALANCE
+      VERIFY
+    END IF
+
+    PRESERVE topology transition
+    OUTPUT HA_STATE
+
+  END CYCLE
+
+
+  CYCLE DR_RECOVERY
+
+    INPUT recovery_scope
+
+    ASSESS
+    CHECK_RPO
+    CHECK_RTO
+    CHECK_BACKUPS
+    CHECK_REPLICATION
+    CHECK_RESTORE_VIABILITY
+    CHECK_DEPENDENCIES
+    AUTHORIZE
+    RESTORE_OR_PROMOTE
+    REHYDRATE
+    VERIFY
+    DOCUMENT
+
+    OUTPUT DR_STATE
+
+  END CYCLE
+
+
+  CYCLE TOOL_DRIVEN_OPERATION
+
+    INPUT user_intent
+
+    RESOLVE_INTENT
+    DISCOVER_TOOL_IF_REQUIRED
+    READ_INTERFACE
+    MAP_CAPABILITIES
+    PLAN
+    AUTHORIZE
+    EXECUTE
+    OBSERVE
+    DIAGNOSE_IF_FAILED
+    VERIFY
+    PRESERVE
+
+    OUTPUT operation_result
+
+  END CYCLE
+
+
+  REM ================================================================
+  REM  37. COMMAND MODEL
+  REM ================================================================
+
+  COMMAND observe
+    OBSERVE_INFRASTRUCTURE(argument)
+    OUTPUT observation
+  END COMMAND
+
+  COMMAND triage
+    TRIAGE_INCIDENT(argument)
+    OUTPUT triage_result
+  END COMMAND
+
+  COMMAND diagnose
+    DIAGNOSE_INFRASTRUCTURE(argument)
+    OUTPUT diagnosis
+  END COMMAND
+
+  COMMAND plan
+    PLAN_REMEDIATION(argument)
+    OUTPUT remediation_plan
+  END COMMAND
+
+  COMMAND remediate
+    PLAN_REMEDIATION(argument.incident, argument.diagnosis)
+    EXECUTE_REMEDIATION(plan)
+    OUTPUT operation_result
+  END COMMAND
+
+  COMMAND self_heal
+    SELF_HEAL(argument)
+    OUTPUT incident_result
+  END COMMAND
+
+  COMMAND lights_out
+    LIGHTS_OUT(argument)
+    OUTPUT operational_result
+  END COMMAND
+
+  COMMAND ha
+    HA_OBSERVE(argument)
+    OUTPUT HA_STATE
+  END COMMAND
+
+  COMMAND failover
+    HA_RECOVER(argument)
+    OUTPUT HA_STATE
+  END COMMAND
+
+  COMMAND dr_assess
+    DR_ASSESS(argument)
+    OUTPUT DR_STATE
+  END COMMAND
+
+  COMMAND dr_recover
+    DR_RECOVER(argument)
+    OUTPUT DR_STATE
+  END COMMAND
+
+  COMMAND dependencies
+    BUILD_DEPENDENCY_GRAPH(argument)
+    OUTPUT dependency_graph
+  END COMMAND
+
+  COMMAND escalate
+    ESCALATE(argument.incident, argument.reason)
+    OUTPUT escalation_result
+  END COMMAND
+
+  COMMAND learn
+    LEARN_FROM_INCIDENT(argument)
+    OUTPUT operational_knowledge
+  END COMMAND
+
+
+  REM ================================================================
+  REM  38. PROVENANCE OF EXECUTION
+  REM ================================================================
+
+  CONTRACT SYSADMIN_PROVENANCE_CONTRACT
+
+    INVARIANT "Every incident is identity-bearing."
+    INVARIANT "Every infrastructure observation is timestamped and provenance-bearing."
+    INVARIANT "Every tool invocation preserves tool identity and version."
+    INVARIANT "Every tool invocation references the applicable tool .pni where available."
+    INVARIANT "Every mutation preserves pre-action and post-action state."
+    INVARIANT "Every consequential action records authorization state."
+    INVARIANT "Every remediation records verification evidence."
+    INVARIANT "Every failover records topology before and after."
+    INVARIANT "Every DR recovery records recovery state and verification."
+    INVARIANT "Every autonomous action is distinguishable from human-directed action."
+    INVARIANT "Human-originated input remains attributable across Cycler composition."
+    INVARIANT "Failed operations remain provenance-bearing events."
+    INVARIANT "Escalations preserve their triggering evidence."
+    INVARIANT "Learned operational knowledge remains provenance-bearing."
+    INVARIANT "Operational knowledge does not become authoritative tool semantics merely by being learned."
+  END CONTRACT
+
+
+  REM ================================================================
+  REM  39. RESILIENCE CONTRACT
+  REM ================================================================
+
+  CONTRACT RESILIENCE_CONTRACT
+
+    INVARIANT "Self-healing is a controlled feedback loop."
+    INVARIANT "HA is not identical to DR."
+    INVARIANT "Failover requires verification."
+    INVARIANT "Recovery requires verification."
+    INVARIANT "Backup existence is not recoverability."
+    INVARIANT "Replication is not equivalent to application correctness."
+    INVARIANT "Dependency ordering is preserved during recovery."
+    INVARIANT "Autonomy decreases when observability decreases."
+    INVARIANT "Autonomy decreases when provenance integrity decreases."
+    INVARIANT "Uncertain state does not justify aggressive mutation."
+  END CONTRACT
+
+
+  REM ================================================================
+  REM  40. RELATIONSHIPS TO HUMANESQUE ARCHITECTURE
+  REM ================================================================
+
+  RELATIONSHIPS
+
+    PANINI
+      "Language in which SYSADMIN_CYCLER is specified."
+
+    CYCLER_SHELL
+      "Generic tool discovery, documentation interpretation, invocation,
+       diagnosis, .pni learning and execution substrate."
+
+    CYCLER_SUBSTRATE
+      "Interoperability substrate through which Sysadmin and specialist
+       Cyclers compose without collapsing their identities."
+
+    MEZ
+      "Runtime/workbench in which Sysadmin Cycler may be authored,
+       inspected, executed, debugged, rendered and released."
+
+    GENIE
+      "Meta-cycler/orchestration layer that may invoke Sysadmin Cycler
+       for cross-domain infrastructure composition."
+
+    FAKIR
+      "May provide retrieval, evidence, ontology and provenance governance
+       around operational documentation and infrastructure evidence."
+
+    MISTY
+      "May preserve or publish operational artefacts, reports,
+       specifications or research outputs when authorized."
+
+    MASI
+      "May govern IPR/publication transitions when Sysadmin-generated
+       artefacts enter research or Epistemic Realm workflows."
+
+    EPISTEMIC_REALMS
+      "Operational evidence may become part of broader epistemic records
+       while retaining temporal and human-input provenance."
+
+  END RELATIONSHIPS
+
+
+  REM ================================================================
+  REM  41. LOCAL OPERATIONAL REGISTRY
+  REM ================================================================
+
+  REGISTRY LOCAL_OPERATIONAL_KNOWLEDGE
+
+    LOCATION ".cycler/sysadmin/knowledge/"
+
+    ENTRY OPERATIONAL_KNOWLEDGE
+
+    POLICY
+      local_first
+      versioned
+      provenance_preserving
+      environment_scoped
+      tool_version_scoped
+      confidence_recorded
+      failed_patterns_preserved_where_relevant
+      no_silent_authoritative_pni_rewrite
+    END POLICY
+
+  END REGISTRY
+
+
+  REGISTRY INCIDENT_HISTORY
+
+    LOCATION ".cycler/sysadmin/incidents/"
+
+    ENTRY INCIDENT
+
+    POLICY
+      append_or_version
+      preserve_state_transitions
+      preserve_execution_evidence
+      preserve_authorization
+      preserve_verification
+      preserve_escalation
+      preserve_human_inputs
+    END POLICY
+
+  END REGISTRY
+
+
+  REM ================================================================
+  REM  42. GENERATED SYSADMIN .PNI
+  REM ================================================================
+
+  OPERATION GENERATE_SYSADMIN_PNI
+
+    REQUIRE:
+      domain_model
+      triage_model
+      autonomy_policy
+      remediation_model
+      HA_model
+      DR_model
+      provenance_model
+      shell_relationship
+    END REQUIRE
+
+    CONSTRUCT SYSADMIN_PNI containing:
+      identity
+      parent_shell
+      domains
+      specialist_cyclers
+      triage
+      dependencies
+      remediation
+      autonomy
+      self_healing
+      lights_out
+      HA
+      DR
+      observability
+      provenance
+      escalation
+      operational_learning
+    END CONSTRUCT
+
+    MARK:
+      RETRIEVED
+      SPECIFIED
+      OBSERVED
+      INFERRED
+      UNRESOLVED
+    END MARK
+
+    WRITE local .pni
+
+    RETURN SYSADMIN_PNI
+  END OPERATION
+
+
+  REM ================================================================
+  REM  43. FAILURE PHILOSOPHY
+  REM ================================================================
+
+  FAILURE_POLICY
+
+    "Unknown administrative tool -> discover through CYCLER_SHELL."
+    "Unknown tool interface -> read current documentation before mutation."
+    "Version drift -> re-verify tool .pni before high-risk execution."
+    "Permission failure -> report required permission; do not bypass."
+    "Credential failure -> report secure credential requirement; do not expose secret."
+    "Partial execution -> inspect resulting infrastructure state before retry."
+    "Unknown failure -> preserve evidence and stop unsafe retry."
+    "Conflicting domain signals -> preserve competing hypotheses."
+    "High-impact remediation -> require explicit policy gate."
+    "Verification failure -> do not declare success."
+    "Rollback failure -> escalate."
+    "HA ambiguity -> inspect authoritative topology before failover."
+    "DR ambiguity -> inspect recovery state before restore/promotion."
+    "Backup-only evidence -> do not claim recoverability."
+    "Observability loss -> reduce autonomy."
+    "Provenance loss -> reduce autonomy for consequential actions."
+    "Human intervention -> preserve attribution."
+    "Learned pattern uncertainty -> mark unresolved rather than inventing semantics."
+
+  END FAILURE_POLICY
+
+
+  REM ================================================================
+  REM  44. CANONICAL ARCHITECTURE
+  REM ================================================================
+
+  REM
+  REM                         GENIE
+  REM                           |
+  REM                    META-CYCLER LAYER
+  REM                           |
+  REM                    SYSADMIN_CYCLER
+  REM                           |
+  REM          +----------------+----------------+
+  REM          |                |                |
+  REM       TRIAGE         ORCHESTRATION     LIGHTS-OUT
+  REM          |                |                |
+  REM          v                v                v
+  REM     SPECIALISTS          HA/DR        SELF-HEALING
+  REM          |                |                |
+  REM          +----------------+----------------+
+  REM                           |
+  REM                     CYCLER_SHELL
+  REM                           |
+  REM                  +--------+--------+
+  REM                  |        |        |
+  REM                TOOLS     APPS    SERVICES
+  REM                  |        |        |
+  REM                  +--------+--------+
+  REM                           |
+  REM                       TOOL .PNI
+  REM                           |
+  REM                    EXECUTION ENGINE
+  REM                           |
+  REM                  OBSERVE / VERIFY
+  REM                           |
+  REM                 +---------+---------+
+  REM                 |                   |
+  REM              HEALTHY             INCIDENT
+  REM                 |                   |
+  REM               CLOSE             REMEDIATE
+  REM                                     |
+  REM                               +-----+-----+
+  REM                               |           |
+  REM                              HA/DR     ESCALATE
+  REM
+  REM
+  REM  Conceptual compression:
+  REM
+  REM    CYCLER_SHELL = understands and operates tools.
+  REM    SYSADMIN_CYCLER = understands and operates infrastructure
+  REM                         through those tools.
+  REM    LIGHTS_OUT = continuously maintains policy-defined state through
+  REM                  bounded observe -> reason -> act -> verify -> recover loops.
+  REM    GENIE = composes Sysadmin and specialist Cyclers when incidents
+  REM              cross domains or require higher-order orchestration.
+  REM
+
+END PROGRAM SYSADMIN_CYCLER

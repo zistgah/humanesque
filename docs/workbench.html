@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Visual Studio Code</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    html, body.wb { height: 100%; margin: 0; }
+    body.wb { display: flex; flex-direction: column; background: #1e1e1e; color: #d4d4d4; }
+    body.wb .site-head { flex: 0 0 auto; }
+    #vscode-bar {
+      display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+      padding: .5rem .8rem; background: #007acc; color: #fff;
+      font: 13px/1.3 ui-sans-serif, system-ui, sans-serif;
+    }
+    #vscode-bar a, #vscode-bar button {
+      background: #fff; color: #005a9e; border: 0; padding: .35rem .7rem;
+      text-decoration: none; font-weight: 600; cursor: pointer;
+    }
+    #vscode-bar .lic { margin-left: auto; font-size: 11px; opacity: .95; }
+    #editor { flex: 1; min-height: 70vh; }
+    #pick { background: #252526; color: #ccc; border: 1px solid #3c3c3c; padding: .3rem; }
+  </style>
+</head>
+<body class="wb site">
+<!-- Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later -->
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<div id="vscode-bar">
+  <strong>Visual Studio Code</strong>
+  <a href="https://vscode.dev/github/zistgah/panini_by_grok" rel="noopener">Open vscode.dev (original)</a>
+  <a href="https://github.dev/zistgah/panini_by_grok" rel="noopener">Open github.dev</a>
+  <label>Local Monaco file
+    <select id="pick"></select>
+  </label>
+  <span class="lic">VS Code and Monaco Editor © Microsoft, MIT. We do not ship a clone of the workbench chrome. Run is the notebook / console — not a third box here.</span>
+</div>
+<div id="editor" aria-label="Monaco editor"></div>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+<script src="files.js"></script>
+<script>
+/* Pages cannot host the VS Code desktop binary. vscode.dev IS that product on the web.
+   Monaco is the editor engine extracted from VS Code (same MIT tree). */
+(function () {
+  var FILES = window.PANINI_FILES || {};
+  var names = Object.keys(FILES);
+  var pick = document.getElementById("pick");
+  names.forEach(function (n) {
+    var o = document.createElement("option");
+    o.value = n; o.textContent = n; pick.appendChild(o);
+  });
+  function langOf(n) {
+    if (/\.py$/.test(n)) return "python";
+    if (/\.(c|h|cpp)$/.test(n)) return "cpp";
+    if (/\.ts$/.test(n)) return "typescript";
+    if (/\.js$/.test(n)) return "javascript";
+    if (/\.rs$/.test(n)) return "rust";
+    if (/\.go$/.test(n)) return "go";
+    if (/\.md$/.test(n)) return "markdown";
+    return "plaintext";
+  }
+  require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } });
+  require(["vs/editor/editor.main"], function () {
+    var first = names[0] || "untitled.pni";
+    var ed = monaco.editor.create(document.getElementById("editor"), {
+      value: FILES[first] || "",
+      language: langOf(first),
+      theme: "vs-dark",
+      automaticLayout: true,
+      minimap: { enabled: true }
+    });
+    pick.value = first;
+    pick.onchange = function () {
+      var n = pick.value;
+      monaco.editor.setModelLanguage(ed.getModel(), langOf(n));
+      ed.setValue(FILES[n] || "");
+    };
+  });
+})();
+</script>
+</body>
+</html>

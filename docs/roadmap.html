@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — sovereignty roadmap</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">STANDARD GREEN is the line in the sand. <code>run_c</code> and WASM stay frozen. New work is pre-passes.</p>
+  <h1>Complete roadmap</h1>
+  <p class="lead">Twelve points plus the ISA matrix. Linux, Boost, AOSP, QEMU are <strong>named</strong>, not claimed. llama.cpp’s restricted C/C++ is the workload this lowering is tuned for.</p>
+  <p><a class="btn" href="ROADMAP.md">ROADMAP.md</a> <a class="btn" href="lowering/00_README.md">Lowering notes</a> <a class="btn" href="STANDARD_GREEN.md">STANDARD GREEN</a></p>
+
+  <h2>12 points</h2>
+  <ol>
+    <li><strong>Linux kernel</strong> — GNU C pre-pass is in <code>runtime/gnuc.js</code>. <em>vmlinux does not build.</em> Needs <code>asm volatile</code> JIT + <code>.lds</code>.</li>
+    <li><strong>Binutils</strong> — ELF/object notes. Not GNU <code>ld</code>.</li>
+    <li><strong>Android</strong> — Bionic as a target. Not AOSP.</li>
+    <li><strong>QEMU</strong> — named guest list. Not QEMU.</li>
+    <li><strong>CUDA on host</strong> — detect NVCC, skip WASM. No CUDA in this zip.</li>
+    <li><strong>WGSL in browser</strong> — <code>runtime/wgsl.js</code> emits a matmul shader. Not ggml-GPU.</li>
+    <li><strong>Frontend keep-fit</strong> — STANDARD GREEN harnesses + <code>tests/test.mjs</code> (exit 0).</li>
+    <li><strong>BLAS + autotune</strong> — <code>stdlib/blas.pni</code>. Not OpenBLAS. SIMD later.</li>
+    <li><strong>x86 on VFS</strong> — v86 guest live. SoftMMU + virtio-blk designed, not booting Linux.</li>
+    <li><strong>Resource monitor</strong> — <code>runtime/monitor.js</code>.</li>
+    <li><strong>Refactor</strong> — unified lowerers into C AST. One <code>run_c</code>.</li>
+    <li><strong>Linguistic equity packs</strong> — ILM tables retrieved, not invented. Dialects via cycler deposits.</li>
+  </ol>
+
+  <h2>Beyond x86</h2>
+  <table>
+    <tr><th>Target</th><th>Now</th><th>Gap</th></tr>
+    <tr><td>x86 / i386</td><td>v86 Lekhak guest</td><td>SoftMMU, virtio-blk / IndexedDB</td></tr>
+    <tr><td>RISC-V / Shakti</td><td><code>runtime/isa/riscv.js</code> RV32IMAC slot</td><td>execute loop, Sv32/Sv39, CLINT</td></tr>
+    <tr><td>ARM Cortex-A/M</td><td><code>runtime/isa/arm.js</code></td><td>execute, NVIC</td></tr>
+    <tr><td>ESP32</td><td>Web Serial SLIP protocol <code>docs/engine/esp32.js</code></td><td>user-gesture flash on silicon</td></tr>
+    <tr><td>Arduino AVR</td><td>named</td><td>avrdude-class</td></tr>
+    <tr><td>SysML v2 / UML</td><td><code>languages/sysml.pni</code> stub</td><td>state machines → C AST, model check</td></tr>
+  </table>
+
+  <h2>Lowering pipeline (frozen backends)</h2>
+  <pre>source → GNU/CPP pre-pass → CLOWER / CPPLOWER / RUSTLOWER / GOLOWER / JULIALOWER
+      → ISO C AST → run_c (frozen) → WASM (frozen)
+Python → python.pni eval</pre>
+
+  <h2>Honesty wall</h2>
+  <table>
+    <tr><th>Workload</th><th>This tree</th></tr>
+    <tr><td>llama.cpp / ggml subset</td><td>Intended (micro-STL + ISO C/C++)</td></tr>
+    <tr><td>Linux kernel</td><td>No — GNU C + asm + .lds missing</td></tr>
+    <tr><td>Boost</td><td>No — two-phase templates / SFINAE missing</td></tr>
+    <tr><td>Netlib CBLAS</td><td>Yes, slowly</td></tr>
+    <tr><td>OpenBLAS</td><td>No — Fortran+AVX</td></tr>
+  </table>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+</body>
+</html>

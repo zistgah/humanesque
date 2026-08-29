@@ -1,0 +1,6 @@
+PROGRAM P
+  IF ((10 - 3) .EQ. 7) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

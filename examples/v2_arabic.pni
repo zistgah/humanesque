@@ -1,0 +1,12 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+@ilm(arabic_ar)
+@functional
+دالة double(x)
+    أرجع x * 2
+نهاية
+
+دالة main()
+    أرجع double(21)
+نهاية

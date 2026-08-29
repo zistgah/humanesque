@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Devanagari Hindawi flow</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="punjabi.html">Punjabi</a>
+    <a href="workbench.html">Workbench</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Devanagari flow — how Hindawi localizes a language</h1>
+  <p class="lead">Two independent axes. Mixing them was the earlier error.</p>
+
+  <section id="run" style="border:1px solid #c9a227;padding:12px;margin:12px 0">
+    <h2>Load a demo and run it</h2>
+    <p>2004 samples. Compile with retrieved h2c/h2b. The browser interprets the host; <code>gurucc</code> ends in gcc and has produced binaries since 2004.</p>
+    <p>
+      <button type="button" id="d-c">Load Hindi C</button>
+      <button type="button" id="d-b">Load Hindi BASIC</button>
+      <button type="button" id="d-t">Load Telugu C (flatten hub)</button>
+      <button type="button" id="d-pa">Load Punjabi C (Gurmukhi script)</button>
+      <button type="button" id="d-run">Run</button>
+    </p>
+    <label>परोग्राम</label>
+    <textarea id="prog" style="width:98%;min-height:140px;font-family:monospace"></textarea>
+    <label>निविष्ट (one line per input)</label>
+    <textarea id="inp" style="width:98%;min-height:48px;font-family:monospace">राम
+</textarea>
+    <label>उत्पादन</label>
+    <textarea id="out" readonly style="width:98%;min-height:100px;font-family:monospace"></textarea>
+  </section>
+
+
+  <h2>1. Script substrate (all Devanagari languages share this)</h2>
+  <pre><code>Devanagari Unicode
+        │  retrieved unicode.h (73 signs)
+        ▼
+      ACII  (8-bit phonetic; one layer for all Indic)
+        │  retrieved acii2rmn.c (stack: implicit a, matras pop it)
+        ▼
+    Romenagri ASCII   मुख्य → mukhya    अ → _a    क → ka
+        │
+        ▼
+  gcc / debugger see C-legal identifiers
+  APCISR paints the same ACII as Devanagari in true text mode</code></pre>
+  <p>Strings stay UTF-8. Identifiers never become English names. That is how you debug at the hardware in the vernacular.</p>
+
+  <h2>2. Shaili (शैली) — which <em>host language</em></h2>
+  <p>Not Hindi vs Nepali. Which compiler you are localizing. Each is a retrieved lex filter:</p>
+  <table>
+    <tr><th>Shaili</th><th>Host</th><th>Filter</th><th>Layer</th></tr>
+    <tr><td>गुरु guru</td><td>C</td><td>h2c.lex</td><td>Romenagri</td></tr>
+    <tr><td>श्रेणी shraeni</td><td>C++</td><td>h2cpp.uhin</td><td>Romenagri</td></tr>
+    <tr><td>प्राथमिक praatha</td><td>BASIC</td><td>h2b.uhin</td><td>Devanagari keywords</td></tr>
+    <tr><td>कृत्रिम kritrima</td><td>Java</td><td>h2j.uhin</td><td>Romenagri</td></tr>
+    <tr><td>सूची soochee</td><td>Python</td><td>h2py.lex</td><td>Romenagri</td></tr>
+    <tr><td>शब्द shabda</td><td>lex</td><td>h2l.uhin</td><td>Romenagri</td></tr>
+    <tr><td>व्याकरण wyaaka</td><td>yacc</td><td>h2yacc.uhin</td><td>Romenagri then h2c</td></tr>
+    <tr><td>यांत्रिक yantra</td><td>asm</td><td>h2y.uhin</td><td>Romenagri → fasm</td></tr>
+  </table>
+  <p>Praatha writes the lex in Devanagari (<code>लिखो {printf("PRINT");}</code>). Guru writes it in Romenagri (<code>mukhya {printf("main");}</code>) after acii2rmn. Same idea, different layer.</p>
+
+  <h2>3. Bhasha — which <em>vernacular</em> on that script</h2>
+  <p>Hindi, Nepali, Marathi, Sanskrit all write Devanagari. They do not share C-keyword words. Retrieved TSVs:</p>
+  <pre><code>Hindi     यदि / लौटाओ     → if / return
+Nepali    यदि / फर्काऊ     → if / return
+Marathi   जर  / परत       → if / return
+Sanskrit  यदि / प्रत्यागम  → if / return   (keyword-by-keyword; not a Paninian parser)</code></pre>
+  <p>Executed:</p>
+  <pre><code>यदि (1) { लौटाओ 0; }      →  if (1) { return 0; }
+यदि (1) { फर्काऊ 0; }     →  if (1) { return 0; }
+जर (1) { परत 0; }        →  if (1) { return 0; }
+यदि (1) { प्रत्यागम 0; }   →  if (1) { return 0; }</code></pre>
+
+  <h2>4. Proof on retrieved samples</h2>
+  <p><strong>Guru / HindiC.uhin</strong></p>
+  <pre><code>पूर्णांक मुख्य()           →  int main()
+अक्षर अ[]               →  char _a[]
+म_लिखो("…")            →  printf("आपका नाम क्या है?\n")
+क्रम(क=1; क<=10; क++)   →  for(ka=1; ka<=10; ka++)
+वापस 0                  →  return 0</code></pre>
+  <p><strong>Praatha / HindiBASIC.uhin</strong></p>
+  <pre><code>पूछो "ऊँचाई: ", न   →  INPUT "ऊँचाई: ", न
+लिखो न               →  PRINT न
+क्रम क = १ से न      →  FOR क = १ TO न
+क्रमांत ख             →  NEXT ख</code></pre>
+  <p>Leftover <code>न</code>, <code>क</code> stay for the identifier/Romenagri step. Indic digits १ are not in unicode.h’s 73 rows — reported, not invented.</p>
+
+  <h2>5. What this is not</h2>
+  <ul>
+    <li>Not Gurmukhi→Devanagari as the localization of C.</li>
+    <li>Not an 8-word <code>if</code>→<code>यदि</code> toy in the linguist pane.</li>
+    <li>Not a Sanskrit grammar engine. Sanskrit here is the keyword TSV only.</li>
+  </ul>
+  <p>CLI: <code>node src/cli.js port --lang punjabi --shaili guru file.uhin</code>
+     · all 8 shailis × Brahmi languages as script projections in <code>examples/hindawi/script/</code>
+     · bhasha keyword projections in <code>examples/hindawi/bhasha/</code>
+     · PANINI: <code>src/panini/hindawi_port.pni</code>
+     · Perso-Arabic flagged lossy.</p>
+</main>
+<script src="engine/nb.js"></script>
+<script>
+PANINI_NB.load("engine/bundle.json");
+function loadDemo(name){
+  return fetch("demos/"+name).then(r=>r.text()).then(t=>{
+    document.getElementById("prog").value=t;
+    document.getElementById("out").value="Loaded "+name+" — press Run (compiles, then interprets host).";
+  }).catch(e=>{ document.getElementById("out").value="Could not load "+name+": "+e; });
+}
+document.getElementById("d-c").onclick=()=>loadDemo("HindiC.uhin");
+document.getElementById("d-b").onclick=()=>loadDemo("HindiBASIC.uhin");
+document.getElementById("d-t").onclick=()=>loadDemo("TeluguC.uhin");
+document.getElementById("d-pa").onclick=()=>loadDemo("punjabi_guru.uhin");
+document.getElementById("d-run").onclick=async ()=>{
+  const src=document.getElementById("prog").value;
+  const box=document.getElementById("out");
+  if(!src.trim()){ box.value="Load a demo first."; return; }
+  if (!PANINI_NB.bundle()) await PANINI_NB.load("engine/bundle.json");
+  const shaili = /प्राथमिक|पूछो/.test(src) ? "praatha" : "guru";
+  const r = PANINI_NB.compile({ src, lang: "hindi", shaili });
+  const exec = PANINI_NB.run(r, document.getElementById("inp").value);
+  box.value = "--- host ("+shaili+", "+r.rule_count+" rules) ---\n"+r.host+
+    "\n--- run "+(exec.ok?"ok":"FAIL")+" ---\n"+exec.out;
+};
+</script>
+<script src="i18n/gt.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,6 @@
+PROGRAM P
+  IF (1 .EQ. 1) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

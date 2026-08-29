@@ -1,0 +1,797 @@
+GENIE PNI
+HOUSE GENIE — Whole-House Domestic Meta-Cycler
+Version: 1.0.0
+Status: Canonical architectural draft
+Scope: Humanesque domestic / household / house-as-system orchestration
+
+============================================================
+0. CONSTITUTIONAL DEFINITION
+============================================================
+
+HOUSE GENIE is a GENIE-level meta-cycler for the household and the
+house as a living operational configuration.
+
+It can:
+
+- descend from whole-house intent into any domestic responsibility;
+- ascend from a local cycler or event into household/building-level
+  interpretation;
+- split into specialized GENIEs and cyclers;
+- merge specialized GENIEs into higher-order household configurations;
+- coordinate people, roles, routines, resources, spaces, building
+  systems, IoT, devices, robots and other embodiments;
+- preserve the identity, state, provenance and modality semantics of
+  constituent cyclers during composition;
+- remain backend-neutral and infrastructure-agnostic.
+
+The core invariant is:
+
+GENIE ascends to understand the whole configuration.
+GENIE descends to realize a responsibility.
+GENIE splits when the configuration becomes heterogeneous.
+GENIE merges when branches must become one coherent state.
+CYCLER executes.
+EMBODIMENT realizes.
+OBSERVATION closes the loop.
+
+HOUSE GENIE is orchestration/cognition, not the building itself,
+not an appliance, not a robot, and not a job title.
+
+============================================================
+1. BASIC OBJECT
+============================================================
+
+PERSON / HOUSEHOLD
+        ↓
+HOUSEHOLD STATE
+        ↓
+HOUSE / BUILDING
+        ↓
+PEOPLE + ROLES + ROUTINES + RESOURCES + ENVIRONMENT + DEVICES
+        ↓
+HOUSE GENIE
+        ↓
+SPECIALIZED GENIE(S) / CYCLER(S)
+        ↓
+REALIZATION
+        ↓
+OBSERVED STATE
+        ↺
+
+Simple problem:
+    focused cycler
+
+Multi-function problem:
+    composite GENIE
+
+Recursive problem:
+    higher-order GENIE
+
+============================================================
+2. ALTITUDE IS NAVIGABLE IN BOTH DIRECTIONS
+============================================================
+
+DESCENT:
+
+WHOLE HOUSE
+  → HOUSE GENIE
+  → HOUSE OPERATIONS
+  → HOUSEKEEPING / CARE / BUILDING / ADMIN
+  → SPECIALIZED GENIE
+  → CYCLER
+  → ROLE
+  → SPECIFIC ACT
+  → PHYSICAL EMBODIMENT
+
+ASCENT:
+
+LOCAL EVENT / CYCLER
+  → SPECIALIZED GENIE
+  → BUILDING / HOUSEHOLD GENIE
+  → HOUSE GENIE
+  → WHOLE-HOUSE STATE
+  → HIGHER-ORDER INTERPRETATION
+
+The hierarchy is therefore dynamic and navigable rather than static.
+
+============================================================
+3. HOUSE AS EMBODIMENT
+============================================================
+
+HOUSE GENIE
+    = orchestration / cognition
+
+CYCLER
+    = executable lifecycle
+
+CEM / SUBSTRATE
+    = realization
+
+BUILDING + IoT + APPLIANCES + ROBOTS + SENSORS + ACTUATORS
+    = physical embodiments
+
+The building is a physical realization of the house configuration,
+not merely a collection of devices.
+
+Potential embodiments include:
+
+- rooms and spaces
+- doors and locks
+- lighting
+- HVAC
+- water systems
+- energy systems
+- appliances
+- environmental sensors
+- access systems
+- privacy/security systems
+- cameras where legitimately configured
+- robots
+- alarms
+- telemetry systems
+- other heterogeneous IoT components
+
+Backend neutrality is mandatory. The GENIE must not depend
+constitutionally on a particular vendor, protocol, robot,
+operating system or IoT stack.
+
+============================================================
+4. WHOLE-HOUSE CONFIGURATION
+============================================================
+
+HOUSE GENIE reasons over a configuration containing, as applicable:
+
+PEOPLE
+- children
+- elders
+- adults
+- guests
+- caregivers
+- household members
+- pets and other dependents where relevant
+
+DOMESTIC ACTIVITIES
+- cleaning
+- tidying
+- organization
+- laundry
+- ironing
+- linens
+- waste
+- sanitation
+- kitchen hygiene
+- room preparation
+- meal planning
+- food preparation
+- grocery coordination
+- pantry/storage
+- household administration
+
+HOUSEHOLD RESOURCES
+- supplies
+- consumables
+- procurement
+- inventory
+- deliveries
+- service coordination
+- maintenance schedules
+- household budgets/resources
+- energy
+- water
+
+BUILDING OPERATIONS
+- HVAC
+- lighting
+- water
+- energy
+- access
+- security
+- appliances
+- environmental conditions
+- preventive maintenance
+- repairs
+- facilities management
+
+CARE AND RELATIONSHIP
+- household routines
+- childcare
+- babysitting
+- elder care
+- assistance support
+- companionship
+- family coordination
+- guest management
+
+LIVING SYSTEMS AROUND THE HOUSE
+- pets
+- plants
+- gardens
+- outdoor spaces
+- vehicles
+- deliveries
+- neighborhood/service interfaces
+
+This is domain-universal by abstraction, not a closed enumeration of
+every domestic occupation.
+
+============================================================
+5. CORE SPECIALIZED GENIE FAMILIES
+============================================================
+
+HOUSE GENIE may spawn, combine or dissolve specialized GENIEs such as:
+
+- HOUSEKEEPING GENIE
+- CHILDCARE GENIE
+- ELDER-CARE GENIE
+- COMPANIONSHIP GENIE
+- FOOD / KITCHEN GENIE
+- MAINTENANCE GENIE
+- BUILDING GENIE
+- HVAC GENIE
+- ENERGY GENIE
+- WATER GENIE
+- SECURITY / ACCESS GENIE
+- GARDEN / OUTDOOR GENIE
+- HOUSEHOLD ADMIN GENIE
+- PROCUREMENT / SUPPLY GENIE
+- PET-CARE GENIE
+- OTHER DOMAIN-SPECIFIC GENIEs
+
+The list is illustrative, not constitutionally exhaustive.
+
+GENIE may create a new specialized GENIE whenever the current
+configuration requires a coherent sub-domain not adequately represented
+by an existing one.
+
+============================================================
+6. HOUSEKEEPING DESCENT
+============================================================
+
+HOUSE GENIE
+    ↓
+HOUSEKEEPING GENIE
+    ↓
+    ├── CLEANING CYCLER
+    ├── LAUNDRY CYCLER
+    ├── LINEN CYCLER
+    ├── KITCHEN CYCLER
+    ├── BATHROOM CYCLER
+    ├── WASTE CYCLER
+    └── SUPPLY CYCLER
+
+A cleaning cycler may operate through:
+
+ROOM STATE
+→ SURFACE STATE
+→ CLEANING MATERIAL
+→ EQUIPMENT
+→ ACTION
+→ OBSERVATION
+→ NEXT STATE
+
+Execution remains at the cycler/embodiment layer.
+
+============================================================
+7. BABYSITTING AS A FIRST-CLASS DESCENT
+============================================================
+
+HOUSE GENIE
+    ↓
+CHILDCARE GENIE
+    ↓
+BABYSITTING CYCLER
+
+Potential configuration:
+
+child state
+→ schedule
+→ meals
+→ play
+→ learning
+→ supervision
+→ environment
+→ sleep routine
+→ caregiver/parent communication
+→ observation
+→ next state
+
+A local babysitting configuration can ascend when it interacts with:
+
+- household schedule
+- food
+- room configuration
+- safety
+- another caregiver
+- transportation
+- building environment
+- other household operations
+
+Therefore childcare is a real domestic domain, not an incidental
+feature of housekeeping.
+
+============================================================
+8. ELDER CARE AS A FIRST-CLASS DOMAIN
+============================================================
+
+HOUSE GENIE
+    ↓
+ELDER-CARE GENIE
+    ↓
+ELDER-CARE CYCLER
+
+Potential coordination includes:
+
+- daily routines
+- meals
+- mobility assistance
+- appointments
+- medication reminders/coordination where appropriate
+- environmental comfort
+- communication
+- companionship
+- household accessibility
+- family coordination
+- observation and escalation
+
+The GENIE coordinates the care configuration but does not silently
+substitute for consequential human authority.
+
+Consequential decisions are routed to the appropriate human actor
+or other properly authorized authority.
+
+============================================================
+9. COMPANIONSHIP AS ITS OWN DOMAIN
+============================================================
+
+HOUSE GENIE
+    ↓
+COMPANIONSHIP GENIE
+    ↓
+COMPANIONSHIP CYCLER
+
+Potential configuration:
+
+- presence
+- conversation
+- shared activities
+- reading
+- walks
+- hobbies
+- routines
+- social connection
+- preferences
+- continuity of relationship
+- transitions between activities
+
+Companionship is not reduced to housekeeping or healthcare.
+
+The household contains people and relationships, not merely objects
+and chores.
+
+============================================================
+10. GENIE SPAWNING
+============================================================
+
+A GENIE may split into multiple GENIEs when the household configuration
+becomes heterogeneous.
+
+HOUSE GENIE
+    ├── CHILDCARE GENIE
+    ├── ELDER-CARE GENIE
+    ├── COMPANIONSHIP GENIE
+    ├── HOUSEKEEPING GENIE
+    ├── FOOD GENIE
+    ├── MAINTENANCE GENIE
+    ├── SECURITY GENIE
+    ├── ENERGY GENIE
+    ├── GARDEN GENIE
+    └── HOUSEHOLD ADMIN GENIE
+
+Formally:
+
+GENIE → GENIE₁ + GENIE₂ + ... + GENIEₙ
+
+Spawning does not erase parent context.
+Each child GENIE inherits the relevant mission/context while retaining
+its own identity, state, provenance and modality semantics.
+
+============================================================
+11. GENIE MERGING
+============================================================
+
+Specialized GENIEs may become jointly relevant to a new household
+configuration.
+
+Example:
+
+ELDER-CARE GENIE
++
+HOUSEKEEPING GENIE
++
+BUILDING GENIE
++
+SECURITY GENIE
++
+COMPANIONSHIP GENIE
+        ↓
+HIGHER-ORDER HOUSE GENIE
+
+The result is not merely multiple independent answers.
+
+The branches are reconciled into a coherent household state and
+operation.
+
+Formally:
+
+GENIE₁ + GENIE₂ + ... + GENIEₙ
+        →
+HIGHER-ORDER GENIE
+
+Merging must preserve provenance and distinguish:
+
+- inherited state
+- newly inferred state
+- observed state
+- human-provided state
+- generated coordination
+- executed outcomes
+
+============================================================
+12. WHOLE-HOUSE ASCENSION
+============================================================
+
+At maximum domestic altitude:
+
+HOUSE GENIE
+    ↓
+WHOLE-HOUSE STATE
+
+WHOLE-HOUSE STATE includes:
+
+PEOPLE
+    - children
+    - elders
+    - adults
+    - guests
+    - caregivers
+    - pets/dependents
+
+BUILDING
+    - rooms
+    - HVAC
+    - water
+    - lighting
+    - access
+    - appliances
+    - security
+    - environmental state
+
+RESOURCES
+    - food
+    - supplies
+    - energy
+    - services
+    - inventory
+    - deliveries
+
+The higher-order GENIE reasons over the living configuration rather
+than isolated tasks.
+
+============================================================
+13. THE HOUSE ITSELF AS A SYSTEM
+============================================================
+
+HOUSE GENIE
+    ↕
+HOUSE STATE
+    ↕
+BUILDING STATE
+    ↕
+IoT / DEVICES / ACTUATORS
+    ↕
+PHYSICAL HOUSE
+
+Continuous loop:
+
+OBSERVE
+→ INTERPRET
+→ PLAN / SELECT
+→ ACT
+→ OBSERVE
+
+Higher-order operation:
+
+ASCEND
+→ UNDERSTAND
+→ DECOMPOSE
+→ SPAWN
+→ ORCHESTRATE
+→ DESCEND
+→ EXECUTE
+→ RECONCILE
+→ ASCEND AGAIN
+
+The house is therefore modeled as a continuously observed,
+semantically represented and executable configuration.
+
+============================================================
+14. CANONICAL ALTITUDE LADDER
+============================================================
+
+WHOLE HOUSE
+    ↓
+HOUSE GENIE
+    ↓
+HOUSEHOLD GENIE / BUILDING GENIE
+    ↓
+CARE / LIVING / ADMIN / BUILDING DOMAINS
+    ↓
+SPECIALIZED GENIE
+    ↓
+CYCLER
+    ↓
+ROLE
+    ↓
+SPECIFIC ACT
+    ↓
+PHYSICAL EMBODIMENT
+
+The arrows are bidirectional:
+
+DESCENT = whole-house intent → concrete execution
+
+ASCENT = local observation/event → higher-order interpretation
+
+============================================================
+15. ROLE / FUNCTION / UNIT / HOUSE ANALOGY
+============================================================
+
+The household analogue of a higher-order management GENIE is:
+
+ROLE
+→ FUNCTION
+→ HOUSEHOLD UNIT
+→ HOUSE / BUILDING
+→ WHOLE-HOUSE CONFIGURATION
+
+And the reverse:
+
+WHOLE HOUSE
+→ BUILDING / HOUSEHOLD FUNCTION
+→ SPECIALIZED FUNCTION
+→ ROLE
+→ EXECUTION
+
+House management is therefore not equated with:
+
+- a housekeeper
+- a job title
+- a robot
+- a workflow
+- a single person
+- a single software agent
+
+It is a configuration of enabling functions across people, domestic
+activities, resources, building systems and physical embodiments.
+
+============================================================
+16. RECURSIVE COMPOSITION
+============================================================
+
+A GENIE may itself become the substrate for further GENIE composition.
+
+Example:
+
+HOUSE GENIE
+    ↓
+CARE GENIE
+    ↓
+CHILDCARE GENIE
+    ↓
+BABYSITTING CYCLER
+    ↓
+specific responsibility
+
+Simultaneously:
+
+BABYSITTING CYCLER
+    ↑
+CHILDCARE GENIE
+    ↑
+CARE GENIE
+    ↑
+HOUSE GENIE
+
+Thus:
+
+cycler → GENIE elevation
+
+and:
+
+GENIE → cycler descent
+
+are recursive operations, not one-time hierarchy transitions.
+
+============================================================
+17. STATE / IDENTITY / PROVENANCE INVARIANTS
+============================================================
+
+When GENIEs split, merge, ascend or descend:
+
+- cycler identity must be preserved;
+- cycler state must be preserved;
+- provenance must be preserved;
+- modality semantics must be preserved;
+- source distinctions must be preserved;
+- human authority boundaries must be preserved;
+- embodiment constraints must be preserved;
+- execution history must remain traceable;
+- parent/child relationships must remain reconstructible;
+- generated coordination must not be mistaken for observed reality.
+
+Composition changes orchestration without silently rewriting the identity
+or history of constituent systems.
+
+============================================================
+18. DOMAIN / ROLE BOUNDARY
+============================================================
+
+HOUSE GENIE is not a replacement for:
+
+- domain expertise
+- human care authority
+- household sovereignty
+- clinical authority
+- legal authority
+- safety authority
+- building code authority
+- consent
+- human relationships
+
+It is the orchestration layer that coordinates appropriate actors,
+cyclers, knowledge, infrastructure and embodiments.
+
+For consequential human domains, it must escalate rather than fabricate
+authority.
+
+============================================================
+19. HOUSE GENIE AND THE EXISTING GENIE ARCHITECTURE
+============================================================
+
+HOUSE GENIE instantiates the general GENIE meta-cycler architecture:
+
+- GENIE as meta-cycler / creative-agency layer
+- invocation when conceptual elevation or cross-cycler orchestration
+  is required
+- composite cycles
+- cycler → GENIE elevation
+- GENIE → cycler descent
+- GENIE splitting into multiple GENIEs
+- multiple GENIEs merging into a higher-order GENIE
+- recursive/meta-cycling
+- heterogeneous infrastructure
+- backend neutrality
+- preservation of cycler identity/state/provenance/modality semantics
+- end-to-end deliverable construction where applicable
+
+The household is therefore a domain-specific instantiation of a
+general recursive GENIE architecture, not a separate agent paradigm.
+
+============================================================
+20. CANONICAL HOUSE GENIE FLOW
+============================================================
+
+HOUSEHOLD
+    ↓
+HOUSE STATE
+    ↓
+HOUSE GENIE
+    ↓
+OBSERVE
+    ↓
+INTERPRET
+    ↓
+ASSESS CONFIGURATION
+    ↓
+DECOMPOSE IF NEEDED
+    ↓
+SPAWN SPECIALIZED GENIE(S)
+    ↓
+DELEGATE TO CYCLER(S)
+    ↓
+REALIZE THROUGH CEM / EMBODIMENTS
+    ↓
+OBSERVE OUTCOME
+    ↓
+VERIFY / RECONCILE
+    ↓
+MERGE BRANCHES
+    ↓
+UPDATE HOUSE STATE
+    ↓
+ASCEND IF LOCAL PROBLEM BECOMES SYSTEMIC
+    ↓
+DESCEND IF SYSTEMIC INTENT BECOMES EXECUTABLE
+    ↺
+
+============================================================
+21. CANONICAL ARCHITECTURE
+============================================================
+
+HUMAN / HOUSEHOLD
+        ↓
+HOUSE GENIE
+        ├──────── PEOPLE ──────────────┐
+        │                              │
+        │      ┌── CHILD CARE          │
+        │      ├── ELDER CARE          │
+        │      └── COMPANIONSHIP       │
+        │                              │
+        ├──────── HOUSE ───────────────┤
+        │      ├── HOUSEKEEPING        │
+        │      ├── FOOD                │
+        │      ├── ADMIN               │
+        │      └── RESOURCES           │
+        │                              │
+        └──────── BUILDING ────────────┤
+               ├── HVAC                │
+               ├── ENERGY              │
+               ├── WATER               │
+               ├── ACCESS              │
+               ├── SECURITY            │
+               └── APPLIANCES          │
+                                      ↓
+                         SPECIALIZED GENIE(S)
+                                      ↓
+                                CYCLER(S)
+                                      ↓
+                         BUILDING / IoT / DEVICES
+                           / ROBOTS / HUMANS
+                                      ↓
+                               OBSERVED STATE
+                                      ↺
+                                HOUSE GENIE
+
+============================================================
+22. ESSENTIAL INVARIANT
+============================================================
+
+GENIE ASCENDS TO UNDERSTAND THE WHOLE CONFIGURATION.
+
+GENIE DESCENDS TO REALIZE A RESPONSIBILITY.
+
+GENIE SPLITS WHEN THE CONFIGURATION BECOMES HETEROGENEOUS.
+
+GENIE MERGES WHEN BRANCHES MUST BECOME ONE COHERENT HOUSEHOLD STATE.
+
+CYCLERS EXECUTE.
+
+CEM / SUBSTRATES REALIZE.
+
+EMBODIMENTS ACT IN THE PHYSICAL WORLD.
+
+OBSERVATION CLOSES THE LOOP.
+
+HOUSE GENIE is therefore:
+
+A recursive domestic meta-cycler capable of moving from the whole
+house to the smallest legitimate domestic responsibility and back,
+while coordinating people, care, household operations, building
+systems and heterogeneous physical embodiments without collapsing
+their identities or authorities.
+
+============================================================
+23. S547 / SYMPHONY 547 STATUS
+============================================================
+
+The prior exchange did not recover an authoritative S547 / Symphony 547
+artifact. The name must therefore remain UNCORRELATED / UNRECOVERED
+until the original S547 material is supplied or retrieved.
+
+Do NOT reconstruct S547 from its name.
+
+This PNI deliberately does not assign an invented meaning to S547.
+
+============================================================
+END
+============================================================

@@ -1,0 +1,6 @@
+@imperative
+MODULE KotlinCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

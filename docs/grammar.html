@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — formal grammar</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    pre.ebnf { background:#0a1220; color:#d8e8d0; padding:1rem; overflow:auto; font:13px/1.45 ui-monospace,monospace; }
+    .kw { color:#e8c36a; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="console.html">Console</a>
+    <a href="mez/desk.html">Mez</a>
+    <a href="dome/">Dome</a>
+    <a href="apps.html">Apps</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">Normative for this tree: <code>compiler/tokens.js</code> + <code>compiler/parser.js</code> (2026.08.28). Spec: <code>spec/PANINI_SELF_HOSTING_SPEC.pni</code>.</p>
+  <h1>PANINI grammar (implemented)</h1>
+  <p>This is the language the interpreter actually accepts. The spec is larger. Gaps are not filled from memory.</p>
+
+  <h2>Lexical</h2>
+  <pre class="ebnf">token      = keyword | ident | number | string | op | comment | newline ;
+comment    = "//" { char - nl } | "#" { char - nl } | "/*" { char } "*/" ;
+ident      = (letter | "_") { letter | digit | "_" } ;
+number     = digit { digit } [ "." digit { digit } ] ;
+string     = '"' { char | escape } '"' ;
+op         = "..." | ".." | ":=" | "->" | "=>" | "<=" | ">=" | "==" | "!="
+           | "&&" | "||" | "+" | "-" | "*" | "/" | "%" | "=" | "<" | ">"
+           | "!" | "." | "(" | ")" | "[" | "]" | "{" | "}" | "," | ":" | "@" | "|" | "?" ;
+</pre>
+
+  <h2>Phrases (parser)</h2>
+  <pre class="ebnf">program    = { top } ;
+top        = module | function | class | type_decl | statement ;
+module     = ( "MODULE" | "SCOPE" ) name { top } "END" ;
+function   = "FUNCTION" name [ "(" params ")" ] [ "->" type ] block "END" ;
+params     = [ param { "," param } ] ;
+param      = name [ ":" type ] ;
+block      = { statement } ;
+statement  = function | if | while | for | try | return | print | assign | expr ;
+if         = "IF" expr [ "THEN" ] block
+           { "ELSEIF" expr [ "THEN" ] block }
+           [ "ELSE" block ]
+           "END" ;
+while      = "WHILE" expr block "END" ;
+for        = "FOR" name "=" expr "TO" expr [ "STEP" expr ] block "END" ;
+return     = "RETURN" [ expr ] ;
+print      = "PRINT" expr { "," expr } ;
+assign     = name ( "=" | ":=" ) expr ;
+expr       = or_expr ;
+name       = ident { "." ident } ;
+</pre>
+
+  <h2>Keywords (tokens.js)</h2>
+  <p>MODULE SCOPE END CONSTITUTION FUNCTION RETURN IF ELSE ELSEIF ELSIF THEN FOR FOREACH WHILE UNTIL REPEAT CLASS TRAIT INTERFACE TYPE TRY CATCH FINALLY MATCH CASE PRINT LET VAR CONST TRUE FALSE NULL AND OR NOT IMPORT EXPORT THIS NEW ARTIFACT CYCLER STAGE THEOREM INVARIANT … (full set in <code>compiler/tokens.js</code>).</p>
+
+  <h2>Self-host</h2>
+  <p><code>src/panini/lexer.pni</code> and <code>src/panini/parser.pni</code> are the same grammar written in PANINI. A=B=C is the theorem that this host lexer, that PANINI lexer, and the spec agree on the token stream.</p>
+</main>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+</body>
+</html>

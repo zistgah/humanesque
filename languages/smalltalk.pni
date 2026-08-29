@@ -1,0 +1,6 @@
+@imperative
+MODULE SmalltalkCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

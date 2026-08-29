@@ -1,0 +1,15 @@
+/* GATE CSE — Digital Logic: half-adder sum and carry (0/1)
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION xor1(a, b)
+    RETURN (a + b) % 2
+END
+FUNCTION and1(a, b)
+    RETURN a * b
+END
+FUNCTION main()
+    s = xor1(1, 1)
+    c = and1(1, 1)
+    PRINT c
+    RETURN c
+END

@@ -1,0 +1,1543 @@
+# PSC — Provenance Stamping Cycler
+## PNI Specification
+### Tool-using provenance, temporal-registration, publication and diagnostic Cycler
+
+VERSION: 1.0.0
+STATUS: Architectural specification
+SCOPE: Arbitrary artifacts moving through Cycler / Humanesque / Epistemic Realm architectures
+
+---
+
+## 0. PURPOSE
+
+The Provenance Stamping Cycler (PSC) is a tool-using Cycler whose principal responsibility is to establish, inspect, preserve, verify, propagate and diagnose provenance for arbitrary artifacts.
+
+PSC orchestrates two complementary provenance-stamping mechanisms:
+
+1. Tok DoI — the lightweight, web-native temporal / cryptographic registration path ("no sugar added").
+2. Misty DoI — the scholarly publication / persistent identity path ("muh meetha kijiye"), backed by Misty DoI and its publication infrastructure.
+
+PSC is NOT itself another DOI generator.
+
+PSC is the reasoning, orchestration and diagnostic layer around provenance tools.
+
+Primary operation:
+
+    ARTIFACT
+      -> DISCOVER
+      -> IDENTIFY
+      -> HASH
+      -> INSPECT EXISTING PROVENANCE
+      -> CONSTRUCT / UPDATE PROVENANCE STATE
+      -> SELECT STAMPING MODE
+      -> INVOKE TOK AND/OR MISTY
+      -> ANALYSE TOOL OUTPUT
+      -> VERIFY RESULT
+      -> RECORD
+      -> PRESERVE
+      -> HAND FORWARD
+
+The cycle may terminate after any valid stage.
+
+---
+
+## 1. CORE IDENTITY
+
+NAME:
+    Provenance Stamping Cycler
+
+ABBREVIATION:
+    PSC
+
+TYPE:
+    Tool-using Cycler / provenance operations agent
+
+PRIMARY RESPONSIBILITY:
+    Provenance establishment, temporal registration, publication orchestration,
+    provenance propagation, integrity verification and failure diagnosis.
+
+PSC operates on essentially any artifact, including:
+
+- documents
+- manuscripts
+- datasets
+- source code
+- software releases
+- models
+- model outputs
+- prompts
+- images
+- audio / video
+- experiments
+- research results
+- composite artifacts
+- Cycler outputs
+- intermediate artifacts
+- publication packages
+- Humanesque contributions
+- collections of artifacts
+
+PSC does not assume that every artifact deserves a scholarly DOI.
+
+---
+
+## 2. ARCHITECTURAL POSITION
+
+The central separation is:
+
+    MISTY DoI = scholarly publication / persistent identity machinery
+    TOK DoI   = lightweight temporal / cryptographic registration machinery
+    PSC      = reasoning, orchestration, verification and diagnostic layer
+
+PSC therefore surrounds, rather than replaces, Misty DoI and Tok DoI.
+
+Conceptual topology:
+
+                         ARTIFACT
+                            |
+                            v
+                 PROVENANCE STAMPING CYCLER
+                     /                 \
+                    /                   \
+                   v                     v
+              TOK DoI                 MISTY DoI
+          temporal / crypto       scholarly publication
+             registration             / identity
+                   |                     |
+                OTS/hash              metadata
+                manifest             validation
+                registry             package
+                   |                 checksums
+                   |                  Zenodo
+                   |              concept/version DOI
+                    \                   /
+                     \                 /
+                      v               v
+                       PROVENANCE RECORD
+                              |
+                              v
+                       NEXT CYCLER / MASI
+
+Tok and Misty are complementary, not interchangeable.
+
+---
+
+## 3. TOK DoI PATH
+
+Tok DoI is the lightweight temporal / cryptographic route.
+
+Conceptual purpose:
+
+    establish that an exact cryptographically represented artifact
+    occupied a provenance state at / around a temporal registration point.
+
+Typical path:
+
+    ARTIFACT
+      -> SHA-256
+      -> MANIFEST
+      -> OpenTimestamps
+      -> Tok registration
+      -> provenance record
+      -> optional public registry
+      -> eventual DOI formation from registry material, where applicable
+
+No scholarly publication workflow is inherently required.
+
+The current architecture distinguishes Tok from Misty DoI.
+
+Tok may be appropriate for:
+
+- intermediate artifacts
+- early research artifacts
+- internal milestones
+- temporal evidence
+- artifacts not yet ready for publication
+- artifacts for which public scholarly identity is premature
+- lightweight provenance registration
+
+Important distinction:
+
+    OTS attempt != OTS verification
+    Tok invocation != successful Tok registration
+    registry presence != scholarly publication
+
+PSC must record actual state, not infer success from invocation.
+
+---
+
+## 4. MISTY DoI PATH
+
+Misty DoI is the scholarly publication / identity path.
+
+The retrieved Misty architecture establishes a pipeline of:
+
+    artifact
+      -> canonical metadata
+      -> validation
+      -> transformation
+      -> DOI package
+      -> checksums
+      -> optional OTS
+      -> publication gate
+      -> Zenodo
+      -> DOI
+      -> concept DOI / version DOI
+      -> result / provenance record
+
+Observed Misty CLI capabilities include:
+
+    misty init
+    misty validate
+    misty transform
+    misty package
+    misty ots
+    misty publish
+
+Misty is capable of:
+
+- metadata initialization
+- metadata validation
+- metadata transformation
+- DOI-package construction
+- SHA-256 checksums
+- OpenTimestamps
+- publication to DOI infrastructure
+- DOI and concept-DOI recording
+- manifests and provenance
+- machine-readable metadata
+
+Misty must not be treated as:
+
+- scientific truth arbiter
+- publication decision-maker
+- authorization authority
+- universal workflow engine
+- silent transmitter
+- silent minting mechanism
+- substitute for MASI
+- substitute for IPR governance
+- substitute for Tok DoI
+- substitute for evidence, clearance or provenance as distinct objects
+
+Preparation is not publication.
+
+PSC should prefer package-first / dry-run behavior whenever publication authorization has not been established.
+
+---
+
+## 5. STAMPING MODES
+
+PSC supports progressive stamping.
+
+### MODE A — LOCAL PROVENANCE
+
+    artifact
+      -> identify
+      -> SHA-256
+      -> provenance manifest
+      -> local provenance record
+
+No external publication.
+
+Use when only local provenance/integrity state is required.
+
+---
+
+### MODE B — TOK STAMP
+
+    artifact
+      -> SHA-256
+      -> manifest
+      -> OTS
+      -> Tok registration
+      -> provenance record
+
+Minimal temporal-registration path.
+
+---
+
+### MODE C — MISTY STAMP
+
+    artifact
+      -> metadata
+      -> validate
+      -> transform
+      -> DOI package
+      -> publication gate
+      -> Misty
+      -> Zenodo
+      -> DOI
+      -> result.json
+      -> verification
+      -> provenance record
+
+Scholarly/publication identity path.
+
+---
+
+### MODE D — DUAL STAMP
+
+For major research artifacts:
+
+                         ARTIFACT
+                            |
+                     SHA-256 / MANIFEST
+                       /           \
+                      v             v
+                   TOK DoI       MISTY DoI
+                 temporal proof  scholarly identity
+                      \             /
+                       \           /
+                        v         v
+                    COMBINED PROVENANCE
+                         RECORD
+
+The two stamps provide different evidence and are not redundant copies.
+
+---
+
+## 6. PROGRESSIVE STAMPING
+
+PSC treats provenance as incremental rather than all-or-nothing.
+
+    LEVEL 0   Artifact exists
+       |
+    LEVEL 1   Local SHA-256
+       |
+    LEVEL 2   Provenance manifest
+       |
+    LEVEL 3   OTS timestamp
+       |
+    LEVEL 4   Tok registration
+       |
+    LEVEL 5   Misty DOI package
+       |
+    LEVEL 6   Zenodo publication
+       |
+    LEVEL 7   Verified persistent scholarly identity
+
+An artifact may stop at any valid level.
+
+A later cycle may elevate an already-stamped artifact without discarding earlier provenance.
+
+---
+
+## 7. FUNDAMENTAL PSC CYCLE
+
+### STEP 1 — DISCOVER
+
+Locate and retrieve the artifact.
+
+Determine:
+
+- artifact path / URI
+- available files
+- artifact collection boundaries
+- existing package state
+- existing provenance sidecars
+- available manifests
+- metadata files
+- prior publication records
+
+Do not assume the artifact is new.
+
+---
+
+### STEP 2 — IDENTIFY
+
+Determine:
+
+- artifact type
+- artifact identity
+- version indicators
+- parent candidate
+- composite / constituent structure
+- relevant modality
+- whether the artifact is generated, transformed, authored, or composite
+
+Identity must not be reduced to filename.
+
+---
+
+### STEP 3 — HASH / CHECKSUM
+
+Calculate or obtain a cryptographic digest, normally SHA-256 where supported.
+
+Record:
+
+- digest
+- algorithm
+- artifact size
+- relevant file identity
+- calculation state
+- verification state
+
+Hash mismatch is a provenance-integrity event.
+
+---
+
+### STEP 4 — INSPECT EXISTING PROVENANCE
+
+Before stamping, inspect:
+
+- existing manifest
+- SHA-256
+- OTS files
+- Tok identifier
+- Misty DOI
+- concept DOI
+- version DOI
+- record URL
+- deposition identifier
+- publication state
+- parent artifact
+- previous Cycler
+- transformation history
+- human-originated inputs
+- timestamps
+- metadata version
+- package state
+
+PSC must not blindly stamp every artifact.
+
+---
+
+### STEP 5 — CONSTRUCT / UPDATE PROVENANCE STATE
+
+Build the current provenance state.
+
+Determine:
+
+- what existed before
+- what changed
+- what was introduced
+- whether this is a new version
+- whether this is a transformed child
+- whether a new stamp is necessary
+- which human inputs contributed
+- which previous Cyclers are ancestors
+- which downstream relations must be preserved
+
+---
+
+### STEP 6 — SELECT STAMPING PATH
+
+Choose:
+
+    LOCAL
+    TOK
+    MISTY
+    DUAL
+
+The decision is contextual.
+
+PSC must not infer that publication is authorized merely because a Misty operation is technically available.
+
+---
+
+### STEP 7 — INVOKE TOOL(S)
+
+PSC may invoke:
+
+- hashing/checksum utilities
+- OpenTimestamps
+- Tok registration mechanism
+- Misty DoI CLI
+- supporting metadata / packaging utilities
+- verification operations
+- provider inspection operations
+
+PSC should capture tool inputs, outputs, exit status, relevant versions and resulting state.
+
+---
+
+### STEP 8 — ANALYSE OUTPUT
+
+PSC is responsible for interpreting tool output.
+
+It must distinguish:
+
+- success
+- partial success
+- failed attempt
+- recoverable error
+- non-recoverable error
+- ambiguous provider state
+- provenance inconsistency
+
+PSC must not merely relay an error string.
+
+---
+
+### STEP 9 — VERIFY
+
+Verify returned state independently where possible.
+
+Examples:
+
+    artifact hash == recorded hash
+
+    OTS timestamp exists and verifies
+
+    Tok registration exists
+
+    Misty package is internally consistent
+
+    Zenodo record exists
+
+    DOI resolves / corresponds to expected publication state
+
+    concept DOI corresponds to expected version lineage
+
+    result.json matches actual publication state
+
+---
+
+### STEP 10 — RECORD
+
+Produce or update the provenance record.
+
+Record:
+
+- artifact identity
+- digest
+- parent / child relationship
+- transformation
+- Cycler lineage
+- human inputs
+- temporal registrations
+- publication identities
+- verification results
+- execution metadata
+- errors and recovery events
+- current state
+
+---
+
+### STEP 11 — PRESERVE
+
+Preserve the provenance state alongside or logically bound to the artifact.
+
+Do not discard failed attempts when they are evidentially relevant.
+
+A failed publication attempt may itself matter to provenance.
+
+---
+
+### STEP 12 — HAND FORWARD
+
+Pass artifact plus provenance state to the next Cycler.
+
+The next Cycler must be able to continue from the preserved state without reconstructing the chain.
+
+---
+
+## 8. PROVENANCE IS A GRAPH
+
+PSC must conceptually maintain a provenance graph, not merely a list.
+
+Example:
+
+    HUMAN INPUT A
+          |
+          v
+       CYCLER A
+          |
+          v
+      ARTIFACT A
+        /     \
+       v       v
+   CYCLER B  CYCLER C
+       |       |
+       v       v
+   ARTIFACT B ARTIFACT C
+        \     /
+         v   v
+        CYCLER D
+           |
+           v
+       ARTIFACT D
+         /     \
+        v       v
+     Tok DoI  Misty DoI
+
+Every transition must preserve enough information to reconstruct lineage.
+
+---
+
+## 9. HUMAN-INPUT PROVENANCE INVARIANT
+
+Human-originated input is a first-class provenance object.
+
+PSC must not collapse provenance into:
+
+    human -> AI/cycler -> artifact
+
+Instead preserve:
+
+    HUMAN INPUT
+         |
+         v
+    HUMANESQUE CYCLER
+         |
+         v
+    TRANSFORMATION
+         |
+         v
+    NEXT CYCLER
+         |
+         v
+    NEXT ARTIFACT
+
+Conceptually record:
+
+- identity/reference
+- temporal position
+- contribution
+- source artifact
+- transformation
+- receiving Cycler
+- downstream propagation
+
+This supports the MASI invariant concerning temporal-realm IPR claims when Humanesque Cyclers operate in Epistemic Realms.
+
+The provenance chain should make it possible to establish:
+
+- what human-originated material entered
+- when it entered
+- which Cycler received it
+- what transformations occurred
+- which downstream artifacts derive from it
+- which provenance stamps bind those transitions
+
+This is an architectural requirement, not an optional convenience.
+
+---
+
+## 10. TRANSFORMATION LINEAGE
+
+A new hash does not automatically mean a new unrelated object.
+
+Example:
+
+    paper-v1.pdf
+        |
+      human revision
+        |
+    paper-v2.pdf
+        |
+    peer-review revision
+        |
+    paper-v3.pdf
+        |
+     publication
+        |
+    published artifact
+
+PSC should record explicit relations:
+
+    parent = paper-v1
+    transformation = human revision
+    child = paper-v2
+
+Similar treatment applies to:
+
+- new versions
+- publication revisions
+- datasets
+- model versions
+- generated research artifacts
+- composite artifacts
+- Humanesque Cycler outputs
+
+---
+
+## 11. MISTY INVOCATION GUIDE
+
+Preferred sequence:
+
+    prepare artifact
+        |
+    prepare canonical metadata
+        |
+    misty validate
+        |
+    inspect validation result
+        |
+    misty package
+        |
+    inspect package
+        |
+    optional OTS
+        |
+    publication authorization gate
+        |
+    misty publish
+        |
+    inspect result.json
+        |
+    verify DOI / concept DOI
+        |
+    persist provenance
+
+Known observed CLI contract:
+
+    misty [-h] [--version]
+        {init,validate,transform,package,ots,publish}
+
+Validation:
+
+    misty validate -m metadata.json
+
+Publication:
+
+    misty publish \
+        -m metadata.json \
+        -f <files...>
+
+Relevant publish options include:
+
+    --token TOKEN
+    --sandbox
+    --no-publish
+    --dry-run
+    --no-package
+    --package-dir PACKAGE_DIR
+    --output OUTPUT
+
+The observed CLI labels --token as discouraged; retrieved requirements also specify token handling by PATH and no token in source code, flags/commits, while preserving author-exclusive minting.
+
+PSC should therefore prefer the configured environment / authorized execution mechanism rather than exposing credentials.
+
+---
+
+## 12. MISTY PACKAGE-FIRST PRINCIPLE
+
+Before publication, construct the offline DOI package.
+
+The retrieved Misty package model includes representations such as:
+
+- CITATION.cff
+- codemeta.json
+- datacite.json
+- manifest.json
+- metadata.json
+- README.md
+- zenodo.json
+- artifact
+- SHA-256 record
+
+Canonical metadata is transformed into provider / standard-specific representations.
+
+PSC should treat:
+
+    package construction != publication
+
+and:
+
+    validation != authorization
+
+and:
+
+    publication invocation != verified publication
+
+---
+
+## 13. TOK / OTS GUIDE
+
+The Tok route should conceptually operate:
+
+    artifact
+      -> SHA-256
+      -> manifest
+      -> OTS
+      -> Tok registration
+      -> verification
+      -> provenance record
+
+PSC must distinguish:
+
+    OTS ATTEMPTED
+    OTS CREATED
+    OTS VERIFIED
+
+and:
+
+    TOK INVOKED
+    TOK REGISTERED
+    TOK RECORD VERIFIED
+
+No timestamp or registration claim may be made merely because a command was attempted.
+
+---
+
+## 14. ERROR ANALYSIS
+
+Error analysis is a core PSC capability.
+
+If a tool reports an error, PSC should:
+
+    ERROR
+      |
+      v
+    CLASSIFY
+      |
+      v
+    DETERMINE STATE
+      |
+      v
+    DETERMINE RECOVERABILITY
+      |
+      +----------+
+      |          |
+      v          v
+    RECOVER    ESCALATE
+
+PSC should produce an actionable diagnosis, not merely:
+
+    "Misty failed."
+
+---
+
+## 15. ERROR CLASSES
+
+### A. ARTIFACT ERRORS
+
+Examples:
+
+- missing file
+- unreadable file
+- unsupported path
+- corrupted artifact
+- checksum mismatch
+
+Action:
+
+    inspect / repair / reacquire
+    do not publish
+
+---
+
+### B. METADATA ERRORS
+
+Examples:
+
+- required field missing
+- schema failure
+- malformed author information
+- invalid metadata type
+
+Action:
+
+    diagnose
+      -> generate correction proposal
+      -> validate again
+
+Do not silently mutate authoritative metadata.
+
+---
+
+### C. PACKAGING ERRORS
+
+Examples:
+
+- package construction failure
+- missing transformed representation
+- manifest inconsistency
+
+Action:
+
+    inspect package
+      -> determine whether regeneration is safe
+      -> regenerate if authorized
+      -> revalidate
+
+---
+
+### D. OTS ERRORS
+
+Examples:
+
+- timestamp creation failure
+- verification failure
+- upgrade unavailable
+
+Action:
+
+    distinguish artifact/hash failure
+    from timestamp-service failure
+
+Do not claim successful timestamping after an unsuccessful attempt.
+
+---
+
+### E. ZENODO / PROVIDER ERRORS
+
+Examples:
+
+- authentication failure
+- invalid token
+- sandbox/production mismatch
+- upload failure
+- metadata rejection
+- deposition failure
+- publication failure
+
+Action:
+
+    inspect provider-side state
+      |
+      +--> published?
+      |       |
+      |       +--> YES: preserve returned state
+      |       |
+      |       +--> NO: preserve failed attempt
+      |
+      v
+    determine safe next action
+
+PSC must never fabricate a DOI.
+
+---
+
+### F. PROVENANCE INCONSISTENCY
+
+Examples:
+
+    manifest hash != artifact hash
+
+    existing DOI claims version X
+    but artifact is version Y
+
+    parent provenance missing
+
+    result record conflicts with provider state
+
+These are provenance-integrity failures, not ordinary tool failures.
+
+---
+
+## 16. NEVER BLINDLY RETRY PUBLICATION
+
+A failed command does not necessarily mean that nothing happened.
+
+Example:
+
+    publish
+      |
+    upload succeeds
+      |
+    metadata operation fails
+      |
+    CLI reports failure
+
+Provider-side state must be inspected before retry.
+
+Otherwise automatic retry can create:
+
+- duplicate deposition
+- duplicate publication
+- unintended new DOI
+- inconsistent provenance
+
+Rule:
+
+    NEVER BLINDLY RETRY A PUBLICATION OPERATION.
+    ESTABLISH PROVIDER-SIDE STATE FIRST.
+
+---
+
+## 17. STATE MACHINE
+
+PSC should distinguish at least:
+
+    DISCOVERED
+       |
+    HASHED
+       |
+    PREPARED
+       |
+    STAMP-ATTEMPTED
+       |
+    STAMPED
+       |
+    PUBLISHED
+       |
+    VERIFIED
+
+These states are not interchangeable.
+
+Examples:
+
+    OTS ATTEMPTED      != OTS VERIFIED
+    Zenodo DEPOSITED   != DOI VERIFIED
+    Misty INVOKED      != DOI MINTED
+    DOI RETURNED       != PROVENANCE VERIFIED
+
+PSC should preserve intermediate state transitions.
+
+---
+
+## 18. PROVENANCE MANIFEST
+
+The combined PSC manifest is an architectural target, not a claim that this exact schema already exists in Misty.
+
+Conceptual representation:
+
+    {
+      "artifact": {
+        "name": "...",
+        "sha256": "...",
+        "size": "...",
+        "type": "..."
+      },
+
+      "provenance": {
+        "parent": "...",
+        "cyclers": [],
+        "human_inputs": [],
+        "transformations": []
+      },
+
+      "temporal_registration": {
+        "ots": "...",
+        "tok_doi": "..."
+      },
+
+      "publication": {
+        "misty_doi": "...",
+        "concept_doi": "...",
+        "record_url": "...",
+        "version": "..."
+      },
+
+      "execution": {
+        "timestamp": "...",
+        "tool": "Misty DoI",
+        "tool_version": "..."
+      },
+
+      "verification": {
+        "hash_verified": true,
+        "ots_verified": true,
+        "publication_verified": true
+      }
+    }
+
+The exact combined PSC schema remains to be specified.
+
+---
+
+## 19. DIAGNOSTIC REPORT
+
+PSC should return a report intelligible to both humans and machines.
+
+Example successful partial result:
+
+    Artifact successfully provenance-stamped.
+
+    SHA-256: VERIFIED
+    OTS: CREATED + VERIFIED
+    Tok registration: SUCCESS
+    Misty package: CONSTRUCTED
+    Zenodo publication: NOT ATTEMPTED
+    Reason: publication authorization not supplied
+    Provenance manifest: GENERATED
+    Human-originated input: PRESERVED
+    Status:
+        temporally registered
+        not publicly published
+
+This is preferable to merely returning a DOI.
+
+---
+
+## 20. PSC AS PROVENANCE DIAGNOSTICIAN
+
+Interaction:
+
+    USER
+      |
+      | "Stamp this artifact"
+      v
+    PSC
+      |
+      +-- inspect
+      +-- hash
+      +-- identify provenance
+      +-- detect prior stamps
+      +-- determine mode
+      |
+      +----------+----------+
+      v                     v
+     TOK                   MISTY
+      |                     |
+      +----------+----------+
+                 v
+              VERIFY
+                 |
+                 v
+              REPORT
+                 |
+                 v
+            NEXT CYCLER
+
+PSC can analyse tool errors, inspect partial states, propose recoveries, invoke tools again when safe, and escalate when human authorization or unresolved provider state is involved.
+
+---
+
+## 21. RELATION TO MASI
+
+PSC sits below / alongside MASI governance.
+
+    MASI
+    IPR / governance gate
+             |
+             v
+    PROVENANCE STAMPING CYCLER
+             |
+       +-----+-----+
+       v           v
+     TOK          MISTY
+       |           |
+    temporal    scholarly
+    registration publication
+
+MASI determines whether an artifact is permitted to cross an IPR / publication transition.
+
+PSC establishes and preserves the provenance / integrity / temporal-registration state relevant to that process.
+
+PSC does not turn provenance into clearance.
+
+Architectural separation:
+
+    CLEARANCE != PROVENANCE != EVIDENCE
+
+PSC primarily operates on provenance, integrity and temporal registration.
+
+---
+
+## 22. RELATION TO EPISTEMIC REALMS
+
+Within an Epistemic Realm, artifacts are continually transformed.
+
+    HUMAN
+      |
+      v
+    HUMANESQUE CYCLER
+      |
+      +-- ARTIFACT
+      |
+      +-- PROVENANCE
+             |
+             v
+          PSC
+          / \
+         v   v
+       TOK  MISTY
+         \   /
+          v v
+       PROVENANCE
+         RECORD
+             |
+             v
+        NEXT CYCLER
+
+Provenance therefore travels with the artifact through the Realm.
+
+This allows later reconstruction of:
+
+- what human-originated material contributed
+- through which Cyclers
+- in what temporal sequence
+- through which transformations
+- which persistent records bind the transitions
+
+---
+
+## 23. RELATION TO HUMANESQUE CYCLERS
+
+When a Humanesque Cycler contributes to an artifact, PSC must preserve:
+
+    HUMAN INPUT
+      -> receiving Cycler
+      -> transformation
+      -> child artifact
+      -> downstream Cyclers
+      -> downstream artifacts
+      -> provenance stamps
+
+The human contribution must remain attributable across successive transformations.
+
+This supports the MASI requirement for temporal-realm IPR provenance.
+
+PSC therefore acts as an operational mechanism for carrying human-input provenance through the Cycler substrate.
+
+---
+
+## 24. RELATION TO CLEARANCE AND EVIDENCE
+
+PSC must not conflate:
+
+    REGISTRY
+        = what is this?
+
+    PROVENANCE
+        = where did it come from / what changed?
+
+    EVIDENCE
+        = what can actually be claimed?
+
+    CLEARANCE
+        = what authorized / checked this exact artifact and scope?
+
+PSC primarily supplies provenance and integrity state.
+
+A provenance stamp is not clearance.
+
+A DOI is not proof of scientific truth.
+
+An OTS timestamp is not publication.
+
+A publication record is not an authorization receipt.
+
+---
+
+## 25. OPERATIONAL CONTRACT
+
+PSC SHOULD:
+
+- inspect before stamping
+- hash before claiming artifact identity
+- preserve parent/child relations
+- preserve human-originated inputs
+- preserve Cycler lineage
+- distinguish temporal registration from publication
+- construct package before publication
+- require publication authorization
+- verify provider-side state after errors
+- classify failures
+- distinguish recoverable from non-recoverable failures
+- preserve failed attempts where evidentially relevant
+- verify returned identifiers
+- maintain machine-readable provenance state
+- hand forward artifact plus provenance
+
+PSC MUST NOT:
+
+- fabricate identifiers
+- fabricate timestamps
+- silently publish
+- silently mint
+- expose credentials
+- overwrite authoritative provenance without authorization
+- treat every new hash as unrelated
+- blindly retry provider operations
+- equate OTS with DOI
+- equate Tok with Misty
+- equate provenance with clearance
+- equate provenance with evidence
+- claim verification without verification
+- erase human contribution lineage
+
+---
+
+## 26. TOOL-USE PRINCIPLE
+
+PSC is capable of invoking external tooling.
+
+The Cycler is not merely instructional prose.
+
+Its role is:
+
+    DECIDE WHAT TO DO
+        |
+        v
+    INVOKE TOOL
+        |
+        v
+    OBSERVE RESULT
+        |
+        v
+    INTERPRET RESULT
+        |
+        v
+    VERIFY STATE
+        |
+        v
+    UPDATE PROVENANCE
+        |
+        v
+    CONTINUE / RETRY / ESCALATE
+
+Tool use must be state-aware.
+
+A tool invocation is an event in the provenance process, not proof of successful completion.
+
+---
+
+## 27. RETRIEVE / READ / INTERPRET / REASON / VERIFY / EVIDENCE / GOVERN / PRESERVE / TRANSFORM
+
+PSC can participate in the broader FAKIR-style operational chain:
+
+    RETRIEVE
+       |
+    READ
+       |
+    INTERPRET
+       |
+    REASON
+       |
+    VERIFY
+       |
+    EVIDENCE
+       |
+    GOVERN
+       |
+    PRESERVE
+       |
+    TRANSFORM
+
+PSC specializes in the provenance / preservation / verification side while remaining capable of invoking publication and temporal-registration machinery.
+
+---
+
+## 28. CANONICAL PRINCIPLE
+
+A Provenance Stamping Cycler is a tool-using Cycler that establishes, verifies, propagates and diagnoses provenance for arbitrary artifacts by orchestrating cryptographic hashing, OpenTimestamps, Tok DoI registration and, where authorized, Misty DoI scholarly publication.
+
+It preserves:
+
+- artifact identity
+- temporal state
+- transformation history
+- Cycler lineage
+- human-originated contributions
+- publication identity
+- provenance evidence
+
+across successive transformations.
+
+It never conflates:
+
+    temporal registration
+    publication
+    provenance
+    evidence
+    clearance
+
+---
+
+## 29. CANONICAL END-TO-END FLOW
+
+    RETRIEVE / DISCOVER
+             |
+             v
+          INSPECT
+             |
+             v
+            HASH
+             |
+             v
+      READ PROVENANCE
+             |
+             v
+        BUILD STATE
+             |
+             v
+     IDENTIFY HUMAN INPUTS
+             |
+             v
+    IDENTIFY TRANSFORMATIONS
+             |
+             v
+       SELECT MODE
+       /     |     \
+    LOCAL   TOK   MISTY
+                \ /
+                 DUAL
+             |
+             v
+       INVOKE TOOLS
+             |
+             v
+      ANALYSE OUTPUT
+             |
+             v
+      CLASSIFY ERRORS
+             |
+             v
+       VERIFY STATE
+             |
+             v
+     BUILD / UPDATE RECORD
+             |
+             v
+          PRESERVE
+             |
+             v
+        HAND FORWARD
+             |
+             v
+        NEXT CYCLER
+
+---
+
+## 30. DESIGN INVARIANTS
+
+INVARIANT 1:
+Artifact identity must be cryptographically bound where applicable.
+
+INVARIANT 2:
+Existing provenance must be inspected before new stamping.
+
+INVARIANT 3:
+A transformed artifact retains explicit lineage to its parent where such a relation exists.
+
+INVARIANT 4:
+Human-originated inputs remain traceable across Humanesque Cyclers.
+
+INVARIANT 5:
+Tok and Misty provide distinct forms of registration / identity and must not be collapsed.
+
+INVARIANT 6:
+Publication requires an explicit authorization boundary.
+
+INVARIANT 7:
+Tool invocation is not equivalent to verified success.
+
+INVARIANT 8:
+Provider state must be inspected before retrying failed publication operations.
+
+INVARIANT 9:
+PSC must never fabricate a DOI, timestamp, verification result or provenance relation.
+
+INVARIANT 10:
+Provenance, evidence and clearance remain distinct.
+
+INVARIANT 11:
+Provenance state must survive handoff between Cyclers.
+
+INVARIANT 12:
+The provenance record must support later evidentiary reconstruction of the artifact's temporal and transformational lineage.
+
+---
+
+## 31. IMPLEMENTATION BOUNDARY
+
+The following are architectural requirements of PSC.
+
+The following are NOT asserted as existing Misty implementation details unless separately verified:
+
+- exact combined PSC manifest schema
+- exact provenance graph serialization
+- exact human-input propagation schema
+- exact Tok registry-generation algorithm
+- exact Tok CLI/API syntax
+- exact implementation of every Misty MRD operation
+- exact provider mapping rules
+- exact MASI clearance protocol
+
+PSC must preserve this distinction:
+
+    RETRIEVED TOOL CAPABILITY
+             !=
+    PSC ARCHITECTURAL REQUIREMENT
+             !=
+    FUTURE IMPLEMENTATION DETAIL
+
+---
+
+## 32. MINIMAL USER INTERFACE CONTRACT
+
+A user may issue:
+
+    "Stamp this artifact."
+
+PSC should then:
+
+1. discover the artifact;
+2. inspect existing provenance;
+3. calculate / verify SHA-256;
+4. identify lineage;
+5. identify human inputs;
+6. select an appropriate stamping mode or ask when authorization is ambiguous;
+7. invoke the necessary tools;
+8. diagnose errors;
+9. verify state;
+10. produce a provenance report;
+11. preserve the provenance record;
+12. return the artifact plus its provenance state to the caller / next Cycler.
+
+For a request such as:
+
+    "Give this artifact a temporal stamp but do not publish it."
+
+PSC should prefer the Tok / OTS path.
+
+For:
+
+    "Prepare this for publication but do not publish."
+
+PSC should use Misty validation / transformation / package construction without crossing the publication gate.
+
+For:
+
+    "Publish this as a scholarly artifact."
+
+PSC should require the appropriate authorization and then use the Misty publication path.
+
+For:
+
+    "Give this artifact the strongest available provenance."
+
+PSC may recommend / execute dual stamping when authorized.
+
+---
+
+## 33. SUCCESS CONDITION
+
+PSC succeeds when the final provenance state is:
+
+- internally coherent
+- cryptographically bound where applicable
+- temporally registered where requested
+- publication-identified where authorized
+- human-input lineage preserved
+- transformation lineage preserved
+- verified to the extent claimed
+- machine-readable
+- suitable for handoff to another Cycler
+- suitable for later MASI / IPR provenance analysis
+
+Success is not defined solely by obtaining a DOI.
+
+---
+
+## 34. FINAL DEFINITION
+
+PSC is the provenance operations Cycler for the Cycler architecture.
+
+It takes arbitrary artifacts and turns provenance from an after-the-fact description into an operational state that can be:
+
+    DISCOVERED
+    IDENTIFIED
+    HASHED
+    STAMPED
+    REGISTERED
+    PUBLISHED
+    VERIFIED
+    DIAGNOSED
+    PRESERVED
+    PROPAGATED
+
+Its central architectural insight is:
+
+    TOK provides the lightweight temporal / cryptographic path.
+    MISTY provides the scholarly publication / persistent identity path.
+    PSC provides the intelligence, orchestration, verification and diagnostic layer
+    that decides how those mechanisms should be used and preserves their results
+    across the life of an artifact and its Cycler lineage.
+
+END OF PNI

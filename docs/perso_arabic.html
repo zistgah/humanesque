@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Perso-Arabic (legacy manual work)</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="hindawi.html">Devanagari flow</a>
+    <a href="punjabi.html">Gurmukhi</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Perso-Arabic work in legacy — script axis, done by hand</h1>
+  <p class="lead">Not <code>#define agar if</code>. That demo is the same failure as Gurmukhi macros. The 2000s work is a <em>script</em> transducer plus an optional harakat layer, because Arabic-family writing is an abjad.</p>
+
+  <h2>What is actually in the tree</h2>
+  <table>
+    <tr><th>File</th><th>What it is</th></tr>
+    <tr><td><code>urdu_map.csv</code> (91 rows)</td><td>Manual Devanagari skeleton → Nastaliq letters, with isolated / joining alternatives. ख→کھ, क→ک, virama-related forms, nukta pairs (क़→ق).</td></tr>
+    <tr><td><code>fltr_ur_hi</code></td><td>Hand-ordered <code>sed</code> reversing Perso-Arabic → Devanagari. Tatweel, hamza, tashkil, RTL mark. Not a mechanical inverse of the CSV.</td></tr>
+    <tr><td><code>arabic-generic.csv</code> + <code>fltr_ar_uni</code></td><td>Unicode <em>presentation forms</em> (U+FE8D…) → canonical Arabic letters. Required before any linguistic map.</td></tr>
+    <tr><td><code>hindawi_tashkil.txt</code></td><td>Harakat experiment: damma / kasrah / sukun on <code>ہندوی</code>. Vowels are optional residue on an abjad — documented, not invented away.</td></tr>
+    <tr><td><code>flatten_uni_dev.lex</code></td><td>Indic scripts flatten to Devanagari as the hub, then the Urdu map fires.</td></tr>
+    <tr><td><code>UrduC_sample.uhin</code></td><td>HindiC.uhin <em>presented</em> in Perso-Arabic (same Guru dialect, same Hindi words). Mixed leftover Devanagari is honest underspecification, not a bug to patch with heuristics in this layer.</td></tr>
+    <tr><td><code>urdu_c.tsv</code> / persian / arabic</td><td><em>Language</em> axis: اگر→if. Separate from script.</td></tr>
+  </table>
+
+  <h2>Axes, not collapsed</h2>
+  <pre><code>script     Perso-Arabic / Nastaliq   ← urdu_map.csv, fltr_ur_hi, tashkil
+language   Urdu / Persian / Arabic   ← *_c.tsv  (اگر, اگر not यदि)
+standard   C after Shaili Guru       ← h2c.lex, same as HindiC.uhin</code></pre>
+  <p><code>UrduC_sample.uhin</code> is Hindi-in-Nastaliq (script). <code>urdu_c.tsv</code> is Urdu-the-language (keywords). Mixing them is the category error.</p>
+
+  <h2>What the CSV does on HindiC.uhin</h2>
+  <p>Longest-match on the 91-row map. Tatweel joining and hamza word-breaks in the 2004 sample are <em>manual presentation</em> on top of that skeleton — the JS pass does not pretend to be a Nastaliq shaper.</p>
+  <pre><code>शैली गुरु     →  ش◌َـےلـی گـورـو     (sample uses شـےلـیء گـورـو)
+पूर्णांक         →  پ◌ُـور्ݨاںک          (virama leftover)
+मुख्य         →  مـوکھ्ی
+वापस         →  वापस / ؤاپس         (hamza vs व — map residue)</code></pre>
+  <p>Short-vowel residue is the abjad. Coverage report in <code>PERSO_ARABIC.json</code>: 42-letter BASE attested; 158 later heuristic fills are a <em>different</em> layer (<code>perso2deva_heur.py</code>) and are not this manual map.</p>
+
+  <p class="fine">CLI: <code>node src/cli.js perso</code> · maps stay in <code>retrieved/legacy/Romenagri/</code></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Do not collapse names. PRATIK-the-kernel ≠ PRATIK-the-programme ≠ shaili pratik (Lisp). Research Kundali ≠ Chakra natal trivia. VIDYA = Yeoman Alliance here; 'virtualized infrastructure' is an unresolved historical variant.",
+  "programmes": [
+    {
+      "id": "hmsei",
+      "name": "HMSEI — Health Monitoring System for Elders and Invalids",
+      "also": ["RDK", "Dr Rho"],
+      "start": "2003-02-10",
+      "source": "CSIR filing on cognitist profile; Team TWISHA/VIKRAM bios",
+      "path": "2003 CSIR device → internationally awarded telemedicine (HMSEI/RDK/Dr Rho) → AyeAI accessible healthcare IaaS",
+      "current": "Named in biography and VIKRAM/TWISHA pages. No slug in the 105/486 estate walk. Gap.",
+      "req": ["REQ-008", "REQ-230"]
+    },
+    {
+      "id": "angel",
+      "name": "ANGEL / FreeBot Angel",
+      "start": "2004-early",
+      "source": "Dataquest 2008",
+      "path": "cognitive robot → later cognitive-computing filings (2011) → PEDLER/PRATIK kernel",
+      "current": "pratik_core_mvp live (CPU verified). CUDA written not run.",
+      "req": ["REQ-230"]
+    },
+    {
+      "id": "hindawi",
+      "name": "Hindawi Programming System",
+      "start": "2004-08-15",
+      "source": "Wikipedia; FreeDOS+DJGPP; CDAC/NRC-FOSS FOSS India Award 17 Feb 2008",
+      "path": "Romenagri 2003 → HPS 2004 DOS → Linux 2006 Sarai → SourceForge 2014 → hindawi2020 → PANINI 2026",
+      "current": "this tree + hindawi-legacy + notebook executes HindiC.uhin",
+      "req": ["REQ-300", "REQ-004", "REQ-006"]
+    },
+    {
+      "id": "pat.al",
+      "name": "PAT.AL — Participatory Alliance (for Technology Access & Livelihood)",
+      "start": "programme (retrieved)",
+      "source": "PAT.AL_PRATIK_VIDYA_GENIE.pni",
+      "path": "Zistgah → VIKRAM → PAT.AL → PRATIK → VIDYA → TWISHA → CHAKRA → Misty",
+      "current": "Named entity + GENIE cycler. No standalone repo in the walk.",
+      "req": ["REQ-400"]
+    },
+    {
+      "id": "pratik",
+      "name": "PRATIK",
+      "start": "programme + kernel",
+      "source": "GENIE PNI; zistgah/pratik_core_mvp",
+      "path": "Multiple expansions MUST NOT be conflated: practice & integration; Programme for Research Architecture Technology Innovation & Knowledge; Participatory Recursive Adaptive Trans-Intelligence Kernels.",
+      "current": "Kernel: https://zistgah.org/pratik_core_mvp — ternary event algebra, CPU green.",
+      "req": ["REQ-230", "REQ-400"]
+    },
+    {
+      "id": "vidya",
+      "name": "VIDYA — Yeoman Alliance",
+      "start": "programme (retrieved)",
+      "source": "GENIE PNI (user-constrained)",
+      "path": "Knowledge/learning/commons. Alternate 'virtualized infrastructure' is unresolved variant.",
+      "current": "Named entity in GENIE. No standalone repo in the walk.",
+      "req": ["REQ-400"]
+    },
+    {
+      "id": "research-kundali",
+      "name": "Research Kundali",
+      "start": "project-ilm/research-kundali (live)",
+      "source": "retrieved README; apps/project-ilm/research-kundali",
+      "path": "Chart metaphor from kundali; scholarly record (ORCID/OpenAlex/Crossref/DataCite). Not natal astrology. Not Google Scholar.",
+      "current": "python3 kundali/kundali.py <ORCID|lab|DOI>. Adjacent to Chakra observatory, different job.",
+      "req": ["REQ-520", "REQ-321"]
+    },
+    {
+      "id": "tara",
+      "name": "TARA — blended-reality autonomous vehicles",
+      "start": "biography",
+      "source": "cognitist / TWISHA",
+      "path": "vehicles → Transeg digital twin (estate)",
+      "current": "zistgah/transeg* live",
+      "req": ["REQ-420"]
+    }
+  ]
+}

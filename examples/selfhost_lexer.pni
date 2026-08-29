@@ -1,0 +1,73 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+/*
+  A PANINI implementation of a minimal lexer.
+  This is Stage-1 evidence: PANINI source that tokenizes PANINI-like text
+  when executed by the Stage-0 JS runtime.
+*/
+
+MODULE PANINI.Language
+
+    FUNCTION isDigit(ch:String) -> Bool
+        RETURN ch >= "0" AND ch <= "9"
+    END
+
+    FUNCTION isAlpha(ch:String) -> Bool
+        RETURN (ch >= "A" AND ch <= "Z") OR (ch >= "a" AND ch <= "z") OR ch == "_"
+    END
+
+    FUNCTION isSpace(ch:String) -> Bool
+        RETURN ch == " " OR ch == "\t" OR ch == "\n" OR ch == "\r"
+    END
+
+    FUNCTION slice1(s:String, i:Int) -> String
+        RETURN s[i]
+    END
+
+    FUNCTION lex(source:String) -> List
+        tokens = []
+        i = 0
+        n = LEN(source)
+        WHILE i < n
+            ch = source[i]
+            IF isSpace(ch)
+                i = i + 1
+            ELSE
+                IF isDigit(ch)
+                    start = i
+                    raw = ""
+                    WHILE i < n AND isDigit(source[i])
+                        raw = raw + source[i]
+                        i = i + 1
+                    END
+                    tokens = tokens + [raw]
+                ELSE
+                    IF isAlpha(ch)
+                        raw = ""
+                        WHILE i < n AND (isAlpha(source[i]) OR isDigit(source[i]))
+                            raw = raw + source[i]
+                            i = i + 1
+                        END
+                        tokens = tokens + [raw]
+                    ELSE
+                        tokens = tokens + [ch]
+                        i = i + 1
+                    END
+                END
+            END
+        END
+        RETURN tokens
+    END
+
+    FUNCTION main() -> Int
+        source = "FUNCTION f(x) RETURN 42 END"
+        tokens = lex(source)
+        PRINT LEN(tokens)
+        FOREACH t IN tokens
+            PRINT t
+        END
+        ASSERT LEN(tokens) > 0
+        RETURN LEN(tokens)
+    END
+END

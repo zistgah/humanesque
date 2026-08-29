@@ -1,0 +1,22 @@
+/* PANINI.Frontend.BASIC — STANDARD GREEN on QB64pe const/expression.bas (38/38).
+ * Hindawi Shaili BASIC character. Not VB.NET. Not ECMA-116.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.BASIC
+FUNCTION run_basic(source)
+    qb = QB64RUN(source)
+    IF qb.ok AND LEN(qb.prints) > 0
+        qb.frontend = "PANINI.Frontend.BASIC/QB64"
+        RETURN qb
+    END
+    lowered = BASICLOWER(source)
+    r = run_c(lowered)
+    r.frontend = "PANINI.Frontend.BASIC"
+    r.lowered = lowered
+    RETURN r
+END
+FUNCTION main()
+    r = run_basic("FUNCTION MAIN()\nRETURN 0\nEND FUNCTION\n")
+    RETURN r.value
+END
+END

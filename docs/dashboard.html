@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — programme dashboard</title>
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; margin:1rem 0; }
+    .kpi { border:1px solid rgba(201,162,39,.35); padding:.7rem; background:rgba(8,16,32,.7); }
+    .kpi b { display:block; font-size:1.6rem; color:#f3e6b6; }
+    .met { color:#8fd18f; } .partial { color:#e6c35c; } .planned { color:#c9897a; }
+    .pill { display:inline-block; padding:0 .35rem; border:1px solid currentColor; font-size:.75rem; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="stack.html">AGI stack</a>
+    <a href="view.html?src=STATUS.md">Report</a>
+    <a href="fakir/">FAKIR</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Programme dashboard</h1>
+  <p class="lead">Counted from this tree. <a href="factory.html">Factory</a> / <a href="SHIP_GREEN.md">SHIP GREEN</a> is the requirements bar.</p>
+  <div class="kpis" id="kpis"></div>
+  <h2>Requirements</h2>
+  <table><thead><tr><th>#</th><th>Requirement</th><th>Status</th></tr></thead><tbody id="req"></tbody></table>
+  <h2>FAKIR domains (top-level, 42) — [COUNTED]</h2>
+  <p class="fine">21 ISIC sections · 10 ISCO major groups · 11 ISCED broad fields. Exhaustive lattice (divisions/unit groups) is cited, not fully inlined. See STATUS.md.</p>
+  <table><thead><tr><th>Family</th><th>Code</th><th>Name</th></tr></thead><tbody id="dom"></tbody></table>
+  <h2>ILM coverage — [COUNTED] in this clone</h2>
+  <p id="ilm"></p>
+  <h2>MRD components (26) — [RETRIEVED] 2026-08-23</h2>
+  <table><thead><tr><th>Id</th><th>Stage</th><th>Repo</th><th>One line</th></tr></thead><tbody id="mrd"></tbody></table>
+  <h2>FAKIR AGI L0–L9</h2>
+  <p id="l9"></p>
+  <h2>Workbench L0–L26</h2>
+  <p id="l26"></p>
+  <h2>Derived from tests/test.mjs</h2>
+  <p id="derived" class="fine">Loading test-report.json…</p>
+  <table><thead><tr><th>Section</th><th>pass</th><th>n</th></tr></thead><tbody id="derived-sec"></tbody></table>
+</main>
+<script>
+fetch("data/status.json").then(r=>r.json()).then(S => {
+  const met=S.requirements.filter(x=>x.status==="met").length;
+  const par=S.requirements.filter(x=>x.status==="partial").length;
+  const pla=S.requirements.filter(x=>x.status==="planned").length;
+  document.getElementById("kpis").innerHTML = [
+    ["MRD components", S.mrd.n],
+    ["FAKIR top-level", S.fakir.n_top_level],
+    ["ILM langs (clone)", S.ilm.n_languages_counted],
+    ["Flatten pairs", S.ilm.flatten_pairs_counted],
+    ["Reqs met", met],
+    ["Reqs partial", par],
+    ["Reqs planned", pla]
+  ].map(([k,v]) => "<div class=kpi><b>"+v+"</b>"+k+"</div>").join("");
+  document.getElementById("req").innerHTML = S.requirements.map(r =>
+    "<tr><td>"+r.id+"</td><td>"+r.text+"</td><td class='"+r.status+"'><span class=pill>"+r.status+"</span></td></tr>"
+  ).join("");
+  document.getElementById("dom").innerHTML = S.fakir.domains_top_level.map(d =>
+    "<tr><td>"+d.family+"</td><td>"+d.code+"</td><td>"+d.name+"</td></tr>"
+  ).join("");
+  document.getElementById("ilm").innerHTML =
+    "Languages: "+S.ilm.languages_in_bundle_counted.join(", ")+
+    ".<br>Brahmi reverse scripts: "+S.ilm.brahmi_reverse_scripts_counted.join(", ")+
+    ".<br>Programme claim (MRD): "+S.ilm.mrd_claim;
+  document.getElementById("mrd").innerHTML = S.mrd.components.map(c =>
+    "<tr><td>"+c.id+"</td><td>"+c.stage+"</td><td>"+c.repo+"</td><td>"+(c.one_line||"")+"</td></tr>"
+  ).join("");
+  document.getElementById("l9").textContent = S.fakir.layers_L0_L9.map(l => l.id+" "+l.name).join(" · ");
+  document.getElementById("l26").textContent = S.workbench_L0_L26.map(l => l.id+" "+l.name).join(" · ");
+});
+fetch("data/test-report.json").then(r => r.ok ? r.json() : null).then(T => {
+  if (!T) { document.getElementById("derived").textContent = "No test-report.json. Run node tests/test.mjs"; return; }
+  document.getElementById("derived").textContent = T.when + " · " + (T.derived && T.derived.greenish) + " · exit " + T.exit_policy;
+  const d = T.derived || {};
+  document.getElementById("derived-sec").innerHTML = Object.keys(d).filter(k => d[k] && d[k].n != null).map(k =>
+    "<tr><td>"+k+"</td><td>"+d[k].pass+"</td><td>"+d[k].n+"</td></tr>"
+  ).join("");
+}).catch(() => {});
+</script>
+</body>
+</html>

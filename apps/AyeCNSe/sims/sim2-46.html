@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V16.0 - Evolution Loop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000205; font-family: 'JetBrains Mono', monospace; color: #a5f3fc; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 25px; box-sizing: border-box; }
+        .evo-hud { background: rgba(0, 10, 20, 0.95); border: 1px solid #22d3ee; padding: 20px; border-radius: 12px; pointer-events: auto; width: 380px; box-shadow: 0 0 40px rgba(34, 211, 238, 0.2); }
+        .console-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 950px; align-self: center; background: rgba(0,0,0,0.9); padding: 15px; border-radius: 12px; border: 1px solid #22d3ee; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #22d3ee; border: 1px solid #083344; padding: 10px; font-size: 11px; outline: none; }
+        button { width: 160px; background: #22d3ee; color: #083344; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="evo-hud">
+            <h2 style="margin:0; font-size: 16px;">EVOLUTION_ARCHIVE_v16.0</h2>
+            <div class="stat-grid">
+                <div>CELL_COUNT: <span id="cells">1</span></div>
+                <div>COMPLEXITY: <span id="comp">LOW</span></div>
+                <div>ERA: <span id="era">BIOLOGICAL</span></div>
+                <div>TECH_LEVEL: <span id="tech">NONE</span></div>
+            </div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// THE ASCENSION SEQUENCE
+INIT_MITOSIS(8) // Divide into 8 cells
+WAIT(3.0)
+DIFFERENTIATE_TISSUE("NEURAL")
+WAIT(3.0)
+ACCELERATE_EVOLUTION(10000) // Years
+WAIT(4.0)
+BOOT_ROBOTIC_PROTOTYPE("2WD_ROVER")</textarea>
+            <button onclick="sim.run()">Execute Epoch</button>
+        </div>
+    </div>
+
+    <script>
+        class EvolutionSim {
+            constructor() {
+                this.cellCount = 1; this.isRobotic = false; this.cells = [];
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.z = 60;
+                this.renderer = new THREE.WebGLRenderer({antialias: true});
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                this.createCell(new THREE.Vector3(0,0,0));
+                this.scene.add(new THREE.AmbientLight(0x404040));
+                const p = new THREE.PointLight(0x22d3ee, 1, 100); p.position.set(10,20,10); this.scene.add(p);
+
+                this.animate();
+            }
+
+            createCell(pos) {
+                const geo = new THREE.IcosahedronGeometry(4, 2);
+                const mat = new THREE.MeshStandardMaterial({color: 0x22d3ee, transparent: true, opacity: 0.7});
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.copy(pos);
+                this.cells.push(mesh);
+                this.scene.add(mesh);
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (!m) continue;
+                    const cmd = m[1].trim(), val = m[2];
+
+                    if (cmd === 'INIT_MITOSIS') {
+                        for(let i=0; i<parseInt(val); i++) {
+                            this.createCell(new THREE.Vector3((Math.random()-0.5)*20, (Math.random()-0.5)*20, (Math.random()-0.5)*20));
+                            document.getElementById('cells').innerText = this.cells.length;
+                        }
+                    }
+                    else if (cmd === 'DIFFERENTIATE_TISSUE') {
+                        this.cells.forEach(c => c.material.color.setHex(0xff00ff));
+                        document.getElementById('comp').innerText = "HIGH";
+                    }
+                    else if (cmd === 'BOOT_ROBOTIC_PROTOTYPE') {
+                        this.isRobotic = true;
+                        document.getElementById('era').innerText = "TECHNOLOGICAL";
+                        document.getElementById('tech').innerText = "LVL_1 (ROVER)";
+                        // Transform cells into a "Machine Core"
+                        this.cells.forEach((c, i) => {
+                            c.geometry = new THREE.BoxGeometry(5, 5, 5);
+                            c.material.color.setHex(0xaaaaaa);
+                            c.material.wireframe = true;
+                        });
+                    }
+                    else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, parseFloat(val) * 1000));
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.cells.forEach((c, i) => {
+                    c.rotation.y += 0.01;
+                    if (this.isRobotic) {
+                        c.position.x = Math.sin(Date.now()*0.001 + i) * 15;
+                    }
+                });
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new EvolutionSim();
+    </script>
+</body>
+</html>

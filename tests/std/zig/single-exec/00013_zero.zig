@@ -1,0 +1,1 @@
+pub fn main() i32 { if (0 == 0) return 0; return 1; }

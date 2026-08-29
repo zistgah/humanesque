@@ -1,0 +1,6 @@
+PROGRAM P
+  IF (3 .LE. 3) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

@@ -1,0 +1,6 @@
+MODULE T00018
+FUNCTION main()
+    PRINT 84 / 2
+    RETURN 0
+END
+END

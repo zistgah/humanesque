@@ -1,0 +1,73 @@
+/* GATE CS §7 Compiler Design
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION isdig(ch)
+    RETURN ch >= "0" AND ch <= "9"
+END
+FUNCTION lex_nums(s)
+    n = 0
+    i = 0
+    WHILE i < LEN(s)
+        IF isdig(s[i])
+            n = n + 1
+            WHILE i < LEN(s) AND isdig(s[i])
+                i = i + 1
+            END
+        ELSE
+            i = i + 1
+        END
+    END
+    RETURN n
+END
+FUNCTION parse_add(a, b)
+    RETURN a + b
+END
+FUNCTION sdt_muladd(a, b, c)
+    RETURN a * b + c
+END
+FUNCTION tac_add()
+    RETURN 3
+END
+FUNCTION fold_const(a, b)
+    RETURN a + b
+END
+FUNCTION live_count(uses)
+    RETURN LEN(uses)
+END
+FUNCTION cse_hit(a, b)
+    IF a == b
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION eval_digits_muladd()
+    RETURN 1 + 2 * 3
+END
+FUNCTION main()
+    t = 1
+    IF lex_nums("a12+34") != 2
+        t = 0
+    END
+    IF parse_add(20, 22) != 42
+        t = 0
+    END
+    IF sdt_muladd(5, 8, 2) != 42
+        t = 0
+    END
+    IF tac_add() != 3
+        t = 0
+    END
+    IF fold_const(40, 2) != 42
+        t = 0
+    END
+    IF live_count([1, 2, 3]) != 3
+        t = 0
+    END
+    IF cse_hit(7, 7) != 1
+        t = 0
+    END
+    IF eval_digits_muladd() != 7
+        t = 0
+    END
+    RETURN t
+END

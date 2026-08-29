@@ -1,0 +1,10 @@
+MODULE T00004
+FUNCTION main()
+    acc = 0
+    FOR i IN 0..4
+        acc = acc + i
+    END
+    PRINT acc
+    RETURN 0
+END
+END

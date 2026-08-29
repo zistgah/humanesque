@@ -1,0 +1,12 @@
+{
+  "language": "common-lisp",
+  "issuing_body": "ANSI INCITS 226-1994 / X3J13 via Paul Dietz ansi-test",
+  "suite": "ansi-test numbers/{plus,minus,times,oneplus,oneminus} cons/{cons,list} eval-and-compile/eval self-contained deftest",
+  "n": 19,
+  "pass": 19,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named ansi-test extract. loop/*numbers*/compile/macrolet/signals-error-beyond-arity are GAP. Full ansi-test is GAP."
+}

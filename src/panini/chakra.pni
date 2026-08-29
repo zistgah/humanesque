@@ -1,0 +1,18 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * PANINI port of retrieved project-ilm/chakra v1.4.1 notes in chakra.h:
+ *   day number d from 2000 Jan 0.0 UT; JD = d + 2451543.5
+ * Ephemeris stays in chakra-core.js / lib/chakra.c — not reconstructed here.
+ */
+MODULE PANINI.Chakra
+FUNCTION jd_from_d(d)
+    RETURN d + 2451543.5
+END
+FUNCTION d_from_jd(jd)
+    RETURN jd - 2451543.5
+END
+FUNCTION main()
+    j = jd_from_d(0)
+    PRINT j
+    RETURN j
+END
+END

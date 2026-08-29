@@ -1,0 +1,34 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+MODULE Control
+    FUNCTION main() -> Int
+        acc = 0
+        FOR i IN 0..10
+            CONTINUE IF i == 5
+            acc = acc + i
+        END
+        PRINT acc
+
+        items = [1, 2, 3]
+        FOREACH item IN items
+            PRINT item
+        END
+
+        n = 0
+        WHILE n < 3
+            n = n + 1
+        END
+        PRINT n
+
+        MATCH n
+            CASE 3
+                PRINT "three"
+            CASE _
+                PRINT "other"
+        END
+
+        ASSERT n == 3
+        RETURN acc
+    END
+END

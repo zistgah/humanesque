@@ -1,0 +1,23 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * tree-rev: 2026.08.28
+ * POSIX personality calls (JS-backed syscalls).
+ */
+MODULE PANINI.POSIX
+
+FUNCTION posix_getcwd()
+    RETURN SYS_GETCWD()
+END
+
+FUNCTION posix_write(text)
+    RETURN SYS_WRITE(1, text)
+END
+
+FUNCTION main()
+    PRINT SYS_GETCWD()
+    SYS_MKDIR("/tmp/posix")
+    SYS_CHDIR("/tmp/posix")
+    PRINT SYS_GETCWD()
+    RETURN 0
+END
+
+END

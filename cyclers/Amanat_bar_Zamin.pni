@@ -1,0 +1,296 @@
+# AMANAT BAR ZAMIN
+# Humanesque / ZAMIN Estate-Management Architecture
+# Source artifact: retrieved canonical architecture
+
+PNI_VERSION: 1.0
+STATUS: CANONICAL_DRAFT
+PARENT: ZAMIN
+SIBLING: KHĀK
+ROLE: ESTATE_MANAGEMENT
+
+## 1. CANONICAL IDENTITY
+
+NAME: Amanat bar Zamin
+MEANING: Stewardship of the Realms upon the Ground
+
+Amanat bar Zamin is the ZAMIN estate-management layer: the system by which epistemic realms, their boundaries, deliverables, provenance, rights, dependencies, versions, custodianship, and continuity are constituted and maintained.
+
+Its concern is not what computes, but:
+
+“What exists as an epistemic realm, what has been entrusted to it, who/what may act upon it, how its artefacts are governed, and how its continuity is preserved.”
+
+## 2. CONSTITUTIONAL PLACEMENT
+
+ZISTGAH
+  -> ZAMIN
+      -> AMANAT BAR ZAMIN
+      -> KHĀK
+
+ZISTGAH: living ecosystem.
+ZAMIN: ground / realm ontology; the ontological space of epistemic realms.
+AMANAT BAR ZAMIN: stewardship and management of what is entrusted upon/in that ground.
+KHĀK: physical/computational substrate through which realization occurs.
+
+## 3. CORE DISTINCTION
+
+KHĀK asks:
+“What is the substrate through which this can exist or execute?”
+
+AMANAT BAR ZAMIN asks:
+“What is entrusted here, under what epistemic realm, with what provenance, rights, dependencies, obligations, and continuity?”
+
+KHĀK therefore covers the silicon/material/computational realization layer; Amanat bar Zamin governs the epistemic estate that exists upon and through that substrate.
+
+## 4. ESTATE-MANAGEMENT SCOPE
+
+AMANAT BAR ZAMIN governs:
+
+- epistemic realms
+- domain boundaries
+- deliverables
+- provenance
+- configuration management / SCM
+- version and revision
+- dependencies
+- lineage
+- custodianship
+- IPR / rights
+- licences
+- evidence
+- sign-off
+- release
+- preservation
+- supersession
+- continuity
+- relationships between artefacts and their originating realms
+
+## 5. EPISTEMIC REALMS
+
+An epistemic realm is a governed space in which knowledge, artefacts, practices, claims, evidence, authorities, dependencies and rights have identifiable relationships.
+
+Amanat bar Zamin maintains the integrity of the realm without manufacturing its contents or authority.
+
+Realm management includes:
+- constitution and scope
+- boundaries
+- internal and external relationships
+- authority and evidence
+- custodianship
+- permitted transformations
+- dependencies
+- continuity
+
+## 6. DELIVERABLES AND KITAB
+
+REALM
+  -> produces / contains
+KITAB / DELIVERABLE
+  -> carries
+     version
+     provenance
+     dependency
+     rights
+     status
+     lineage
+  -> is governed by
+AMANAT BAR ZAMIN
+
+KITAB remains the persistent artefact abstraction.
+Amanat bar Zamin governs the estate of such artefacts: their status, provenance, rights, dependencies, revisions, custody, release, preservation and continuity.
+
+## 7. CONFIGURATION AND CHANGE
+
+Amanat bar Zamin is the natural governance home for configuration management and SCM at the epistemic-estate level.
+
+It records and governs:
+- configuration state
+- revisions
+- version history
+- change lineage
+- dependencies
+- derivations
+- release state
+- supersession
+- continuity
+
+Change must remain attributable, inspectable and reversible where applicable.
+
+## 8. PROVENANCE, RIGHTS AND IPR
+
+Amanat bar Zamin governs provenance, attribution, IPR, rights and licences without manufacturing them.
+
+It must:
+- retrieve authoritative records where available
+- preserve source provenance
+- distinguish evidence from interpretation
+- record attribution
+- preserve rights and licence conditions
+- preserve custodial relationships
+- prevent unsupported ownership or authority claims
+
+## 9. EVIDENCE AND AUTHORITY
+
+Evidence precedes claim.
+Authority is recorded rather than invented.
+Provenance is preserved before transformation.
+
+Amanat bar Zamin maintains the evidentiary chain necessary to understand why an artefact, realm, relationship, right, or governance decision exists in its recorded state.
+
+## 10. RETRIEVE, DON'T RECONSTRUCT
+
+The governing epistemic constraint is:
+
+RETRIEVE -> RECORD -> VERIFY -> GOVERN -> PRESERVE
+
+NOT:
+
+GENERATE -> ASSUME -> ATTRIBUTE -> CLAIM
+
+Amanat bar Zamin must not manufacture:
+- ownership
+- provenance
+- attribution
+- authority
+- inheritance
+- custodianship
+- rights
+- evidence
+
+Where the authoritative source is unavailable or unresolved, the unresolved status must itself be preserved rather than silently reconstructed.
+
+## 11. CUSTODIANSHIP
+
+Amanat bar Zamin distinguishes:
+- creator / originator
+- custodian / steward
+- rights-holder
+- maintainer
+- reviewer / signatory
+- consuming or authorized party
+
+Custodianship is a governed relationship, not an inferred identity.
+
+## 12. RELEASE, SIGN-OFF AND PRESERVATION
+
+Lifecycle:
+
+CONSTITUTE
+  -> RECORD
+  -> VERIFY
+  -> REVIEW
+  -> SIGN-OFF
+  -> RELEASE
+  -> MAINTAIN
+  -> PRESERVE
+  -> SUPERSEDE / CONTINUE
+
+Release does not erase lineage.
+Supersession does not erase provenance.
+Preservation does not imply continued validity.
+Continuity preserves the intelligibility of the estate across change.
+
+## 13. CONTINUITY
+
+Continuity includes:
+- succession
+- supersession
+- archival preservation
+- version continuity
+- dependency continuity
+- provenance continuity
+- custodial continuity
+- reconstitution from preserved records
+
+The estate remains intelligible even as individual artefacts, configurations, custodians or implementations change.
+
+## 14. RELATION TO HUMANESQUE SOVEREIGNTY
+
+Amanat bar Zamin is a sovereignty-preserving architecture.
+
+It protects the integrity of epistemic estates by ensuring that their boundaries, inheritances, artefacts, rights and authorities are not silently replaced by generated approximations.
+
+It governs what has been entrusted; it does not appropriate what has been entrusted.
+
+## 15. RELATION TO ZAMIN
+
+ZAMIN = ground and realm ontology.
+AMANAT BAR ZAMIN = stewardship of realms and what is entrusted upon/in them.
+
+ZAMIN defines the ontological ground on which epistemic realms can exist.
+Amanat bar Zamin manages their governed existence, artefacts, relations and continuity.
+
+## 16. RELATION TO KHĀK
+
+KHĀK is the segregated silicon / physical-computational layer.
+
+KHĀK includes:
+- material
+- process
+- device
+- circuit
+- memory
+- compute
+- heterogeneous realization
+
+Amanat bar Zamin does not govern silicon as such. It governs the epistemic estate and its management relations, regardless of the heterogeneous substrate through which realization occurs.
+
+## 17. RELATION TO ZISTGAH
+
+ZISTGAH is the living ecosystem.
+ZAMIN is its ground / realm ontology.
+AMANAT BAR ZAMIN is the stewardship layer for epistemic estates upon that ground.
+KHĀK supplies physical/computational realization.
+
+These layers are complementary and must not be collapsed.
+
+## 18. FIRST-CLASS STATUS
+
+AMANAT BAR ZAMIN is a first-class Humanesque / Zistgah estate-management architecture.
+
+It is not merely:
+- a feature inside SCM
+- document management
+- a repository wrapper
+- a metadata layer
+- a generic governance checklist
+
+It is the constitutional stewardship architecture for what is entrusted to epistemic realms and for preserving their continuity.
+
+## 19. CONSTITUTIONAL FORMULA
+
+ZAMIN
+  = GROUND + REALM ONTOLOGY
+
+AMANAT BAR ZAMIN
+  = STEWARDSHIP + GOVERNANCE + PROVENANCE + RIGHTS + CONTINUITY
+
+KHĀK
+  = PHYSICAL / COMPUTATIONAL REALIZATION SUBSTRATE
+
+ZISTGAH
+  = LIVING ECOSYSTEM
+
+## 20. CORE PRINCIPLES
+
+1. SOVEREIGNTY OF REALMS
+2. RETRIEVE, DON'T RECONSTRUCT
+3. VERIFY BEFORE CLAIM
+4. PROVENANCE BEFORE TRANSFORMATION
+5. RIGHTS ARE RECORDED, NOT INVENTED
+6. CUSTODIANSHIP IS EXPLICIT
+7. CHANGE RETAINS LINEAGE
+8. RELEASE RETAINS PROVENANCE
+9. PRESERVATION RETAINS CONTEXT
+10. CONTINUITY OVER ERASURE
+11. HUMAN / SOVEREIGN REVIEW WHERE CONSTITUTIONALLY REQUIRED
+12. GOVERN THE ESTATE WITHOUT APPROPRIATING THE ESTATE
+
+## 21. COMPACT ARCHITECTURAL STATEMENT
+
+ZAMIN is the ground and realm.
+Amanat bar Zamin is stewardship of what is entrusted upon that ground.
+Khāk is the physical/computational substrate through which realization occurs.
+
+Amanat bar Zamin exists to constitute, govern, evidence, preserve and maintain the continuity of epistemic realms and their deliverables without manufacturing their provenance, rights, authority or identity.
+
+END PNI

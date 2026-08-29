@@ -1,0 +1,19 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * Differential-drive kinematics. Physical: two wheels, axle length L.
+ * Retrieved from AyeCNSe / VIDYA sim line (github.com/AyeCNSe/sims).
+ */
+MODULE PANINI.Sims.DiffDrive
+FUNCTION step(x, y, th, vl, vr, L, dt)
+    v = (vl + vr) / 2
+    w = (vr - vl) / L
+    nx = x + v * COS(th) * dt
+    ny = y + v * SIN(th) * dt
+    nth = th + w * dt
+    RETURN {x: nx, y: ny, th: nth, v: v, w: w}
+END
+FUNCTION main()
+    s = step(0, 0, 0, 1, 1, 1, 1)
+    PRINT s.x
+    RETURN s.x
+END
+END

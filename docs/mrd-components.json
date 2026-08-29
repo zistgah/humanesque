@@ -1,0 +1,1803 @@
+{
+ "generated": "2026-08-23",
+ "note": "Basic MRDs. Every line traced to a memory file or the live repo. [UNRESOLVED] where retrieval found nothing.",
+ "components": [
+  {
+   "id": "mez",
+   "name": "Mez Cognitive Workbench",
+   "script": "میز",
+   "tier": "Laboratory",
+   "repo": "zistgah/mez",
+   "doi": null,
+   "stage": "live-unsealed",
+   "one_line": "A desk you own: a laboratory in which independently existing systems are composed, exercised, inspected and synthesised.",
+   "problem": "Work spanning many independent systems has no place to stand. Capability exists in the estate and cannot be reached from where the person is sitting.",
+   "users": [
+    "the author himself",
+    "engineers composing across systems",
+    "researchers running a cycle",
+    "institutions taking inventory"
+   ],
+   "in": [
+    "three rungs: console, 2D studio, dome",
+    "the six output cyclers as reachable systems",
+    "the prompt operating system",
+    "capability matrix",
+    "ACM/NISO/FAIR4RS badge scoring",
+    "WBS, bearings, mail, meetings, classes",
+    "local-AI seam"
+   ],
+   "out": [
+    "reimplementing any component it reaches",
+    "cloud storage of the person's data",
+    "certifying anything (samd is framework only)"
+   ],
+   "refuses": [
+    "a stub that looks alive (M2)",
+    "overwriting a cell the person set by hand (owned.json)",
+    "binding to anything but loopback (M6)",
+    "awarding Results Reproduced to itself"
+   ],
+   "primitives": [
+    [
+     "rung",
+     "a projection of the laboratory; changes what is SHOWN, never what is COMPUTED",
+     "not a permission level, not a feature tier"
+    ],
+    [
+     "wiring gap",
+     "a capability that exists and cannot be reached from the desk",
+     "not a missing build"
+    ],
+    [
+     "sovereign system",
+     "owns its ontology, runtime, artifacts, evolution and users",
+     "not a module, not a plugin"
+    ]
+   ],
+   "reqs": [
+    [
+     "local-first, Python standard library only, runs with the network unplugged",
+     "M1"
+    ],
+    [
+     "never pretend: anything absent exits 3 and says where it looked",
+     "M2"
+    ],
+    [
+     "the person's data is plain CSV/JSON; the export format IS the storage format",
+     "M3"
+    ],
+    [
+     "an owned cell is never overwritten by an import; --force required",
+     "the destructive-import bug"
+    ],
+    [
+     "role changes the view, never the computation",
+     "M4/C33"
+    ],
+    [
+     "components are DATA; delete them all and the desk still runs",
+     "M5"
+    ],
+    [
+     "loopback only; exposing to a network is a separate deliberate act",
+     "M6"
+    ]
+   ],
+   "invariants": [
+    "no component id appears in the spine's code",
+    "a badge is never self-awarded where it requires an independent party",
+    "the manifest never contains its own hash"
+   ],
+   "failures": [
+    "21 basenames duplicated three deep and 2.5MB of tarballs committed inside the repo (23 Aug)",
+    "the seal broken by a script that changed tracked content and did not reseal",
+    "the studio served on loopback only while docs/ stayed empty"
+   ],
+   "evidence": [
+    "every suite green from a clean clone",
+    "manifest verifies over all tracked files",
+    "Pages actually enabled"
+   ],
+   "contracts": [
+    "M1-M6 repo overlay",
+    "C33 three rungs",
+    "C37 wired-but-unproven is its own tier",
+    "C38 the estate mirror is read-only"
+   ],
+   "interfaces": [
+    "reaches 13 sovereign systems by interface, never containment",
+    "probes 127.0.0.1:7373 from the published page",
+    "CORS on reads only"
+   ],
+   "unresolved": [
+    "which of index.html / desk.html / about.html / index2.html is the front door",
+    "the immersive rung has never run against a live dome"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "cyclers",
+   "name": "The Six Output Cyclers",
+   "script": "مطبع خواب آواز طلسم پیچ یادیں",
+   "tier": "Sovereign systems",
+   "repo": "zistgah/{matba,khwab,awaz,tilasm,pench,yadein}",
+   "doi": "21948734 · 22005507 · 22005575 · 22010869 · 22010962 · 22011073",
+   "stage": "live-minted",
+   "one_line": "Six independent creativity cyclers classified by WHAT COMES OUT: print, visual, audio, immersive, embodied, record.",
+   "problem": "Turning raw material or a bare idea into a published, sealed, citable artifact requires a different workflow per output kind, and no shared tool respects that difference.",
+   "users": [
+    "authors and researchers",
+    "film and audio makers",
+    "XR builders",
+    "roboticists",
+    "anyone keeping a life record"
+   ],
+   "in": [
+    "one shared ENGINE: clipboard loop, answer routing, artefact inbox, AI source table",
+    "62 stages across six workflows, each with its own implementation prompt",
+    "kitab-shaped output that reads in the same reader as every other book",
+    "seed / clear / attest / mint as four distinct implements"
+   ],
+   "out": [
+    "a shared WORKFLOW — that was the error of 19 Aug",
+    "being an AI provider",
+    "assuming any commercial service exists"
+   ],
+   "refuses": [
+    "tilasm: a piece where no station leads anywhere; a station with no comfort note",
+    "pench: a manoeuvre with no operating envelope; an invented limit in place of an unknown one; a sim2real claim naming no hardware run",
+    "yadein: publishing any entry not individually marked; sharpening a vague date; adding a surname the source never gave",
+    "all: claiming a file in a folder was produced by an AI"
+   ],
+   "primitives": [
+    [
+     "cycler",
+     "classified by OUTPUT, not by input",
+     "matba is print and not 'books'; khwab spans a single image to a long-running series"
+    ],
+    [
+     "engine vs workflow",
+     "the engine is common; the workflow is emphatically not",
+     "shared code is an implementation optimisation, never an ontological claim"
+    ],
+    [
+     "gate",
+     "a boundary only a human may cross",
+     "not a confirmation dialogue"
+    ]
+   ],
+   "reqs": [
+    [
+     "each cycler declares its own purpose, contract, context, state, invariants, failure modes, evidence requirements, workflow and artifact model",
+     "19 Aug ruling"
+    ],
+    [
+     "the AI source table ships WITH links, in a config file, alphabetical so the order is not a ranking",
+     "21 Aug correction to an earlier empty table"
+    ],
+    [
+     "at least one keyless local path, and answering by hand always allowed",
+     "C32"
+    ],
+    [
+     "a leak check refuses any page borrowing a sibling's vocabulary",
+     "the defect that reached six live DOIs"
+    ],
+    [
+     "chapters are cues into ONE media file, never cut copies",
+     "one file, one hash, one deposit"
+    ]
+   ],
+   "invariants": [
+    "no two cyclers share a purpose, contract, artifact or step sequence",
+    "the artefact inbox says what is newly VISIBLE, never who made it",
+    "the mint implement records intent and mints nothing"
+   ],
+   "failures": [
+    "one workflow parameterised by a noun and shipped six times — 'cues into one entry' on a diary",
+    "a description pipeline where ab-initio construction was needed",
+    "the AI table shipped empty, making the tool useless out of the box"
+   ],
+   "evidence": [
+    "47-65 assertions per cycler, green from a clean extraction",
+    "the leak check proven to catch what actually shipped",
+    "no service name in the code, only in the config"
+   ],
+   "contracts": [
+    "per-repo CONTRACT overlay clause 8: the model's own refusals are contract, not style",
+    "kitab-shaped deployment",
+    "nothing pushes or mints without a typed gate"
+   ],
+   "interfaces": [
+    "emit into kitab",
+    "reached from mez by interface",
+    "each runs standalone with no server for the composing half"
+   ],
+   "unresolved": [
+    "the pench safety envelope has never been exercised against real hardware",
+    "yadein's path to TransEg is declared, not built"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "genie",
+   "name": "GENIE",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "zistgah/genie",
+   "doi": "genie corpus minted; prompt-OS plate pending",
+   "stage": "live-minted",
+   "one_line": "Generalized Emotive-Narrative Interaction Engine, and the Prompt Operating System: an eleven-node cycle in which every prompt must CREATE, VERIFY, EXECUTE, MEASURE, FALSIFY or INTEGRATE an artifact.",
+   "problem": "AI-assisted research drifts, hallucinates and produces prose about work instead of the work. A hypothesis silently becomes a derived fact.",
+   "users": [
+    "researchers running a formal programme",
+    "anyone building an artifact from nothing"
+   ],
+   "in": [
+    "DISCOVER → SPECIFY → FORMALIZE → IMPLEMENT → VERIFY → SIMULATE → EXPERIMENT → FALSIFY → DOCUMENT → AUDIT → REFINE",
+    "Layer 0 constitution plus layers 1-10",
+    "nine epistemic tags",
+    "three entry modes with ab-initio first",
+    "the lab BOM, software stack and 18 work chunks",
+    "aesthetic analysis engine"
+   ],
+   "out": [
+    "being a chat interface",
+    "promoting a conjecture to canon"
+   ],
+   "refuses": [
+    "a step whose product begins describe/explain/summarise/discuss",
+    "a PASS with no evidence",
+    "saying the research is complete",
+    "a measurement with no units or uncertainty"
+   ],
+   "primitives": [
+    [
+     "Act",
+     "executable intent; a walk through transition structure",
+     "NOT the ACT of ACT-R, NOT a legislative text"
+    ],
+    [
+     "Inclination",
+     "a signed directional gradient on transition EDGES, I in [-1,+1]",
+     "not a probability; 0 is neutrality, not cessation"
+    ],
+    [
+     "Natural Justice",
+     "a gate on the intent-to-execution transition",
+     "not external ethical commentary"
+    ]
+   ],
+   "reqs": [
+    [
+     "every statement carries an epistemic tag; untagged reads as derived, which would be a lie",
+     "the plate"
+    ],
+    [
+     "retrieved, inferred, proposed and unresolved are kept apart",
+     "layer 2"
+    ],
+    [
+     "where unknown, write UNRESOLVED and never supply a plausible value",
+     "layer 4"
+    ],
+    [
+     "completeness reported per component; the system never says 'complete'",
+     "panel 13"
+    ],
+    [
+     "a simulation may never pass the experiment gate",
+     "the six-gate pipeline"
+    ]
+   ],
+   "invariants": [
+    "each cycle leaves a more complete executable artifact than the last",
+    "a conjecture never becomes a theorem by restatement"
+   ],
+   "failures": [
+    "Claude built description workflows and called them cyclers",
+    "MERGE was conflated with CANON in an early reading"
+   ],
+   "evidence": [
+    "191 assertions on the engine, every guard mutation-tested",
+    "18 work chunks each with a named module and a stated oracle"
+   ],
+   "contracts": [
+    "Oracle / Interpretation (IWBT) / Verification (VGC) kept separate",
+    "dome-derived; Pages/JS; BYOK"
+   ],
+   "interfaces": [
+    "uses the cycler protocol",
+    "can be used BY the workbench and can use the workbench — bidirectional"
+   ],
+   "unresolved": [
+    "the 8-dimension aesthetic vector P F S E N C I X is UNADOPTED pending his ruling",
+    "two poster titles carry religiously significant words he has ruled must be renamed"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "kitab",
+   "name": "Kitab",
+   "script": "کتاب",
+   "tier": "Sovereign system",
+   "repo": "zistgah/kitab",
+   "doi": null,
+   "stage": "live",
+   "one_line": "The book template every cycler emits into: reader, theme, plumbing, talking figures, exercises.",
+   "problem": "A published research artifact should read the same whatever produced it, and should carry its own provenance and assessment.",
+   "users": [
+    "readers of any estate book",
+    "authors forking a book",
+    "teachers setting work"
+   ],
+   "in": [
+    "parts, chapters, figures that declare explanation/tts/seed",
+    "exercises: MCQ, cloze, long-answer handoff, timed, proctored",
+    "certificates backed by OTS",
+    "config-driven embeds",
+    "PWA"
+   ],
+   "out": [
+    "hosting",
+    "accounts",
+    "tracking a reader"
+   ],
+   "refuses": [
+    "auto-marking a long answer",
+    "naming an AI vendor in shipped content",
+    "hardcoding a social handle, callback or provider"
+   ],
+   "primitives": [
+    [
+     "talking artifact",
+     "a figure that can explain itself, speak, and hand off to the reader's own AI",
+     "not a chatbot"
+    ]
+   ],
+   "reqs": [
+    [
+     "never name an AI vendor; which AI is the reader's choice",
+     "standing rule"
+    ],
+    [
+     "nothing hardcoded: handles, seeding URLs, sim URLs, review repos, callbacks, providers",
+     "a shipped default is fine; a shipped constant is not"
+    ],
+    [
+     "entry paths: fork the book being read, or a blank slate",
+     "content paths a/b/c"
+    ],
+    [
+     "completion recorded by GitHub issue OR web callback, configurable, or nowhere"
+    ]
+   ],
+   "invariants": [
+    "assets/figures is DATA; template placeholders are swept before real ones land",
+    "a certificate is evidence of a run, not of identity"
+   ],
+   "failures": [
+    "five Lorem-Ipsum placeholder SVGs reached a live DOI (21917807)"
+   ],
+   "evidence": [
+    "the reader renders every block type from a clean clone"
+   ],
+   "contracts": [
+    "licence: code GPL-3.0-or-later where dome-derived; content per deposit"
+   ],
+   "interfaces": [
+    "every cycler emits into it",
+    "reads in the same reader across the estate"
+   ],
+   "unresolved": [
+    "exercises and certificates are specified and partially built; the proctored path is not exercised"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "misty",
+   "name": "Misty DoI",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "project-ilm/misty-doi",
+   "doi": "10.5281/zenodo.20719388",
+   "stage": "live-pypi-1.0.1",
+   "one_line": "The publication layer: mint, version, walk, harvest — from concept to persistent scholarly artifact.",
+   "problem": "Getting a researcher's own work to a persistent, citable, machine-readable record is donkey work, and the mistakes are irreversible.",
+   "users": [
+    "the author",
+    "third-party authors minting their OWN work under their OWN token",
+    "institutions auditing a deposit estate"
+   ],
+   "in": [
+    "init validate transform package ots publish newversion discard walk harvest latest masi clearance",
+    "MASI: seven tracks, ordered states, evidence requirements, five cross-track gates",
+    "rules and known_facts are DATA"
+   ],
+   "out": [
+    "owning disclosure rules — extracted to spiguard on the CBE ruling",
+    "minting third-party work"
+   ],
+   "refuses": [
+    "minting while a linked patent matter is pre-filing unless defensive publication is asserted (G3)",
+    "accepted without a recorded review round (G4)",
+    "an approval applied backwards (G1)",
+    "a prereg stamped after collection (G2)"
+   ],
+   "primitives": [
+    [
+     "concept DOI vs version DOI",
+     "publish makes a NEW record; newversion mints beneath an existing concept",
+     "using the wrong one splits a lineage, unmergeable without the registrar"
+    ],
+    [
+     "clearance",
+     "a signed receipt that covers THIS exact artifact",
+     "misty verifies it and knows nothing about what was checked"
+    ]
+   ],
+   "reqs": [
+    [
+     "tokens by PATH only, never inlined, never in a flag, never committed"
+    ],
+    [
+     "mint is TEST-gated, not human-donkey-work gated",
+     "his correction"
+    ],
+    [
+     "enable OTHERS to mint their own work — kits remove every step but the one only they can take"
+    ],
+    [
+     "the interface is READ at run time, never recalled"
+    ]
+   ],
+   "invariants": [
+    "a walk reports and never edits",
+    "a date is never inferred or proposed",
+    "the same title under two concept DOIs is a reported ERROR"
+   ],
+   "failures": [
+    "AAB under two concept DOIs — split lineage, live and unmergeable",
+    "~140 records with empty affiliation, no ORCID, no version",
+    "~180 DOIs recorded in no repo",
+    "harvest downloads all 404'd on draft file links"
+   ],
+   "evidence": [
+    "28-test suite plus e2e against a local Zenodo stand-in; live Zenodo deliberately never contacted because minting is irreversible"
+   ],
+   "contracts": [
+    "CBE: disclosure rules and minting mechanics change for different reasons, so they are different components"
+   ],
+   "interfaces": [
+    "spiguard emits the clearance it verifies",
+    "Candor supplies the attested intent",
+    "Tok DOI is the atomic layer beneath it"
+   ],
+   "unresolved": [
+    "v1.1.3 built and never landed; live repo still 1.1.2 with guard.py present",
+    "PyPI still at 1.0.1",
+    "sandbox 403 — sandbox.zenodo.org needs its own token"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "tokdoi",
+   "name": "Tok DOI",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "project-ilm/tok-doi",
+   "doi": "10.5281/zenodo.21402745",
+   "stage": "live-minted",
+   "one_line": "Register cryptographic proof, not publications: artifact to SHA-256 to OpenTimestamps to AyeSHA to a public registry.",
+   "problem": "Proof of existence at arbitrary granularity has no lightweight, keyless, backend-free path.",
+   "users": [
+    "anyone needing a dated proof",
+    "PIE signatories",
+    "MASI ledger holders"
+   ],
+   "in": [
+    "browser-first registrar, verifier, PIE signing page",
+    "registries as DATA",
+    "collections: sub-DOI to curated set to Misty to Zenodo",
+    "T-MASI: the same seven tracks and five gates in the browser"
+   ],
+   "out": [
+    "scholarly publication",
+    "storing raw .ots"
+   ],
+   "refuses": [
+    "storing a raw .ots — only its AyeSHA encoding",
+    "requiring a backend or an account"
+   ],
+   "primitives": [
+    [
+     "atomic registration",
+     "proof at arbitrary granularity",
+     "not a publication, not a verdict"
+    ]
+   ],
+   "reqs": [
+    [
+     "browser-first, no backend; GitHub Pages plus public OTS is sufficient"
+    ],
+    [
+     "keyless submission by compose-URL",
+     "registries retrieved, never generated"
+    ]
+   ],
+   "invariants": [
+    "gate verdicts match the Python implementation — one definition, two runtimes, and a check that says so"
+   ],
+   "failures": [
+    "seeded pre-rename with old naming; its own DOI was absent from the repo until corrected"
+   ],
+   "evidence": [
+    "10 parity checks proving browser gates match misty/masi.py"
+   ],
+   "contracts": [
+    "five T-MASI clauses in CONTRACT.md"
+   ],
+   "interfaces": [
+    "feeds Misty for the publication layer",
+    "carries the PIE signatory campaign"
+   ],
+   "unresolved": [
+    "AyeSHA canonical encoding NOT defined — a reversible placeholder codec ships behind a stable interface"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "spiguard",
+   "name": "spiguard",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "NOT CREATED",
+   "doi": null,
+   "stage": "built-never-landed",
+   "one_line": "The disclosure gate: judges secrets, third-party PII, IPR leakage, plagiarism, patent language and clean-room, and emits a clearance. Fails closed.",
+   "problem": "Disclosure rules change with law and compliance; minting mechanics change with the platform. Conflating them makes both unmaintainable.",
+   "users": [
+    "anyone about to publish anything from the estate"
+   ],
+   "in": [
+    "scan (full gate, emits clearance) · privacy (reduced: secrets+PII+IPR, the only estate-wide mode) · verify"
+   ],
+   "out": [
+    "minting",
+    "knowing anything about DOIs"
+   ],
+   "refuses": [
+    "passing on ERROR without an explicit --allow-findings and a reason",
+    "asserting integrity without author_verified:true"
+   ],
+   "primitives": [
+    [
+     "clearance",
+     "HMAC over the subject digest = metadata plus every file hash",
+     "the thin CBE interface where spiguard judges and misty mints"
+    ]
+   ],
+   "reqs": [
+    [
+     "FAILS CLOSED",
+     "author_domains configurable so the author's own contact is not flagged"
+    ]
+   ],
+   "invariants": [
+    "it never mints; misty never judges"
+   ],
+   "failures": [
+    "the entire component exists as a tarball and has never been created as a repo"
+   ],
+   "evidence": [
+    "14 tests: 9 scan, 5 clearance"
+   ],
+   "contracts": [
+    "his CBE ruling: 'Misty is not the place for the IPR filter'"
+   ],
+   "interfaces": [
+    "emits the clearance misty/clearance.py verifies"
+   ],
+   "unresolved": [
+    "no repo under either org; this is the highest-value unlanded component in the estate"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "candor",
+   "name": "Candor",
+   "script": "",
+   "tier": "Protocol",
+   "repo": "project-ilm/tok-doi (attest/)",
+   "doi": null,
+   "stage": "live-mint-ready",
+   "one_line": "Attested authorisation: in-toto Statement v1 plus OTS, so an irreversible act is one human command carrying its reason.",
+   "problem": "Irreversible operations either drown the operator in prompts or happen without a recorded justification.",
+   "users": [
+    "anyone pushing or minting in the estate"
+   ],
+   "in": [
+    "receipt schema, append-only receipts, auto-discovery of files, integrity gate against doi/DEPOSIT.sha256"
+   ],
+   "out": [
+    "deciding anything"
+   ],
+   "refuses": [
+    "a receipt whose reason was invented rather than recorded"
+   ],
+   "primitives": [
+    [
+     "intent",
+     "a signed statement that a named person means to act, and why",
+     "not the act"
+    ]
+   ],
+   "reqs": [
+    [
+     "one human command plus a git-style short digest plus a reason — 'no donkey work'"
+    ],
+    [
+     "raw .ots never stored"
+    ]
+   ],
+   "invariants": [
+    "the typed gate IS the Candor intent and must land as a receipt"
+   ],
+   "failures": [
+    "a push to zistgah/fakir with no receipt at all — the chain stops dead at it",
+    "and again across nine repos on 23 Aug"
+   ],
+   "evidence": [
+    "receipt chains present and OTS-paired in the repos that were done correctly"
+   ],
+   "contracts": [
+    "predicateType https://project-ilm.org/attestations/candor/v1"
+   ],
+   "interfaces": [
+    "third of four in seal → clear → attest → mint"
+   ],
+   "unresolved": [
+    "may get its own DOI; metadata is prepared"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "ilm",
+   "name": "Project ILM",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "ilm.codes",
+   "doi": null,
+   "stage": "live",
+   "one_line": "Integrative Linguistic Multiscript: three strictly separate axes — Script, Language, Standard — across 600+ scripts and 7,000+ languages.",
+   "problem": "Script, language and standard are routinely conflated, which makes non-English computing a translation problem instead of a representation problem.",
+   "users": [
+    "speakers and writers of under-served languages",
+    "standards bodies",
+    "anyone building multiscript software"
+   ],
+   "in": [
+    "the three-axis registry",
+    "LOS specification corpus L3.2 through L7.2",
+    "Single-Pane-of-Glass artifact browser",
+    "registry served with ACAO:* so others can fetch it"
+   ],
+   "out": [
+    "being a translation system — a FORBIDDEN substitution"
+   ],
+   "refuses": [
+    "collapsing the three axes"
+   ],
+   "primitives": [
+    [
+     "Script / Language / Standard",
+     "three strictly separate axes",
+     "ILM must NOT become 'a multilingual translation system'"
+    ]
+   ],
+   "reqs": [
+    [
+     "600-700+ scripts, 7,000+ languages in scope"
+    ],
+    [
+     "successor to HPS, which supplies the transducer lineage"
+    ]
+   ],
+   "invariants": [
+    "the axes never merge"
+   ],
+   "failures": [
+    "four real defects filed as issues #8-#11 after the context rebuild"
+   ],
+   "evidence": [
+    "registry fetched live by FAKIR at runtime"
+   ],
+   "contracts": [
+    "[UNRESOLVED] no per-repo contract retrieved"
+   ],
+   "interfaces": [
+    "supplies the language axis of FAKIR's three-axis seeding",
+    "successor to Hindawi/HPS"
+   ],
+   "unresolved": [
+    "governance across 7,600+ languages and 600+ scripts — repo structure NOT designed",
+    "how a language community contributes without a fork"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "fakir",
+   "name": "FAKIR / UKOP",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "zistgah/fakir",
+   "doi": "10.5281/zenodo.21436550 · posters 21436552",
+   "stage": "live-minted-v2",
+   "one_line": "Foundational Architecture for Knowledge, Intelligence and Reasoning — the concrete kernel of UKOP, spanning every ISIC/ISCO/ISCED domain across AGI layers L0-L9.",
+   "problem": "There is no domain-neutral reference architecture for human knowledge that is exhaustive across the UN/ILO/UNESCO classifications and addressable at every AGI layer.",
+   "users": [
+    "researchers seeding work in any domain",
+    "institutions mapping capability",
+    "the AGI programme itself"
+   ],
+   "in": [
+    "1,505-node lattice gated against UNSD/ILO/UIS",
+    "the dome explorer as the estate's shared dome",
+    "three-axis seeding: AGI layer x domain x language",
+    "RFC suite Volumes I-VII",
+    "conformance levels 0-5"
+   ],
+   "out": [
+    "letting an external standard enter the core — the Interoperability Layer exists for that"
+   ],
+   "refuses": [
+    "a lattice that is not exhaustive",
+    "branching code on world identity"
+   ],
+   "primitives": [
+    [
+     "Artifact, Identity, Version, Manifestation, Representation, Policy, Provenance, Trust Domain, Semantic Graph",
+     "UKOP canonical primitives"
+    ],
+    [
+     "one-way publication boundary",
+     "publication is a boundary crossing, not a state change"
+    ]
+   ],
+   "reqs": [
+    [
+     "explorer must represent ALL ISIC sections, ISCO major groups, ISCED broad fields, exhaustively"
+    ],
+    [
+     "reuse the actual dome; never reinvent it",
+     "one library, one world config per zistgah, never a fork"
+    ],
+    [
+     "clicking a point seeds a task using AAB methodology"
+    ],
+    [
+     "a concept paper referencing PIE and arguing its necessity",
+     "not written"
+    ]
+   ],
+   "invariants": [
+    "any code branching on world identity is a redundancy defect"
+   ],
+   "failures": [
+    "a push with no Candor receipt and a broken manifest — the violation of record",
+    "a latent TypeError on any transit ending in dome or space"
+   ],
+   "evidence": [
+    "26-assertion behavioural oracle, 11/11 mutation suite; mutation testing caught 4 vacuous tests"
+   ],
+   "contracts": [
+    "governance #5 redundancy register"
+   ],
+   "interfaces": [
+    "mounts the dome; consumes the ILM registry; seeds through AAB"
+   ],
+   "unresolved": [
+    "the concept paper is not written",
+    "AGI-layer clickability and the cinematic entrance were specified, partially built"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "chakra",
+   "name": "CHAKRA",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "project-ilm/chakra",
+   "doi": "concept 10.5281/zenodo.21253628",
+   "stage": "live-v1.4.1",
+   "one_line": "An astronomical observatory computed from first principles: a JS and C99 byte-parity twin across ten calendar reckonings.",
+   "problem": "Calendrical and astronomical values are looked up rather than computed, so they cannot be verified, ported or trusted.",
+   "users": [
+    "practitioners",
+    "researchers",
+    "anyone needing panchanga or a calendar conversion",
+    "every estate component needing time"
+   ],
+   "in": [
+    "ten calendars, panchanga, yogas, dasha, chart, retrogrades, eclipses, telescope",
+    "the plus layer: kundali, mahabharata, panjika, tools, sky",
+    "6,590 checks"
+   ],
+   "out": [
+    "looking anything up"
+   ],
+   "refuses": [
+    "naming a provider or payment vendor in any built artifact",
+    "touching the parity surface — src/chakra-core.js has zero diff"
+   ],
+   "primitives": [
+    [
+     "byte-parity twin",
+     "the JS and the C99 must agree byte for byte",
+     "not 'approximately equal'"
+    ]
+   ],
+   "reqs": [
+    [
+     "physical-map-only rule enforced"
+    ],
+    [
+     "view changes what is SHOWN, never what is computed; the URL carries it",
+     "#74, not built"
+    ]
+   ],
+   "invariants": [
+    "the parity surface is never touched by additive work"
+   ],
+   "failures": [
+    "BODIES had no Earth, so Earth-to-Mars launch windows were impossible",
+    "SHODASHAVARGA held 15 divisors under a name meaning sixteen",
+    "the card drew a full disc for a 76% gibbous moon",
+    "six live files carried conflict markers on main"
+   ],
+   "evidence": [
+    "6,590 checks; suites of 94/59/46/34/9/25/15; C twin byte-parity verified"
+   ],
+   "contracts": [
+    "Clause 7 self-contradiction found; amendment prepared"
+   ],
+   "interfaces": [
+    "mez cal calls it headless",
+    "the dome uses chakra-core for the orrery"
+   ],
+   "unresolved": [
+    "#73 panchang parity audit is the biggest gap and is NOT built",
+    "UI is English-only — the biggest barrier to the reach the viral layer was built for"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "dome",
+   "name": "The Dome",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "zistgah/dome",
+   "doi": "minted",
+   "stage": "live",
+   "one_line": "One shared virtual dome as a config-driven library: the same basic dome everywhere, projects mount their displays inside it.",
+   "problem": "Every project reinventing its own 3D environment produces drift and redundancy.",
+   "users": [
+    "every estate project with something to show in space"
+   ],
+   "in": [
+    "pointcloud, viewer's gallery, video screens as built-in displays",
+    "multi-world transit with vehicle profiles",
+    "flight, oculus escape, CHAKRA time HUD"
+   ],
+   "out": [
+    "per-world code branches"
+   ],
+   "refuses": [
+    "a fork per zistgah"
+   ],
+   "primitives": [
+    [
+     "display",
+     "what a project mounts into the hall",
+     "not a page, not a scene"
+    ],
+    [
+     "world",
+     "one config file",
+     "never a code branch"
+    ]
+   ],
+   "reqs": [
+    [
+     "each zistgah is dome plus ONE world config, never a fork"
+    ],
+    [
+     "one flight seam with profile-swapped physics, not three controllers"
+    ],
+    [
+     "the orrery reuses chakra-core's ephemeris"
+    ]
+   ],
+   "invariants": [
+    "code branching on world identity is a redundancy defect"
+   ],
+   "failures": [
+    "#gl pointer-events:none meant canvas handlers could never fire"
+   ],
+   "evidence": [
+    "marker census gated on both lib and page: 17/14/16/9/2/1"
+   ],
+   "contracts": [
+    "code GPL-3.0-or-later, docs CC-BY-SA-4.0"
+   ],
+   "interfaces": [
+    "FAKIR, mez's immersive rung, the VIDYA sims all mount into it"
+   ],
+   "unresolved": [
+    "mez has never actually mounted into it"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "transeg",
+   "name": "TransEg",
+   "script": "",
+   "tier": "Sovereign system",
+   "repo": "zistgah/transeg",
+   "doi": "10.5281/zenodo.21321558",
+   "stage": "live-built-not-running",
+   "one_line": "A local digital-twin and identity-continuity stack: staggered upload of face, voice, documents, knowledge, memory, preferences, reasoning, delegation.",
+   "problem": "Identity continuity across substrates has no local-first, consent-staged reference implementation.",
+   "users": [
+    "the author",
+    "anyone building an embodied twin"
+   ],
+   "in": [
+    "eight docker services",
+    "staggered stages where no stage implicitly grants another",
+    "routes: /chat needs memory, /avatar/render needs face, /memory/export|backup|restore|delete"
+   ],
+   "out": [
+    "cloud identity",
+    "implicit consent"
+   ],
+   "refuses": [
+    "one stage granting another",
+    "rendering without the face stage enabled"
+   ],
+   "primitives": [
+    [
+     "staggered upload",
+     "consent is per-stage and explicit",
+     "not a profile, not an account"
+    ]
+   ],
+   "reqs": [
+    [
+     "local gateway; no stage implicitly grants another"
+    ],
+    [
+     "the oracle is scripts/avatar_smoke.sh and it writes a real mp4 or fails loudly"
+    ]
+   ],
+   "invariants": [
+    "a stage boundary is a consent boundary"
+   ],
+   "failures": [
+    "a placeholder DOI tail live and public in README, CITATION and MINT_RUNBOOK",
+    "--inject-doi anchored on the clean prefix so it could never strip the tail it created"
+   ],
+   "evidence": [
+    "the #1 postcondition now fails on any residual placeholder — it caught a miss during rehearsal"
+   ],
+   "contracts": [
+    "[UNRESOLVED]"
+   ],
+   "interfaces": [
+    "yadein accumulates toward it",
+    "mez embody is wired but never proven against a live instance (C37)"
+   ],
+   "unresolved": [
+    "every container is EXITED; the avatar path has never run",
+    "transeg-idgov and transeg-research need their own mint"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "pedler",
+   "name": "PEDLER / QEDLER",
+   "script": "",
+   "tier": "Research programme",
+   "repo": "project-ilm/qedler",
+   "doi": "PEDLER 10.5281/zenodo.17497559",
+   "stage": "live-unminted",
+   "one_line": "A deterministic, background-independent typed event-hypergraph substrate intended to yield QM, GR, gauge theory and cosmology without fundamental randomness or continuous spacetime.",
+   "problem": "Existing foundational programmes assume randomness or a continuum. This one assumes neither and asks what follows.",
+   "users": [
+    "physicists",
+    "the whole estate, which uses its primitives"
+   ],
+   "in": [
+    "12 axioms at v0.1",
+    "falsifiable predictions: modified dispersion, discrete decoherence deviation, primordial GW cutoff, extra defect families, evolving effective cosmological constant",
+    "the realization lattice: FSM, Turing, Markov, Boltzmann, Hopfield, ANN, gradient descent, RL, attention as projections under restriction"
+   ],
+   "out": [
+    "claiming completed proofs"
+   ],
+   "refuses": [
+    "presenting an open problem as a result",
+    "collapsing CEM^b and CEM^s into an unqualified CEM"
+   ],
+   "primitives": [
+    [
+     "Act",
+     "executable intent, a walk through transition structure",
+     "not ACT-R's rule firing, not a statute"
+    ],
+    [
+     "Inclination",
+     "signed directional gradient on edges",
+     "decay weakens magnitude and preserves sign"
+    ],
+    [
+     "Natural Justice",
+     "a gate on intent to execution",
+     "internal to the model"
+    ]
+   ],
+   "reqs": [
+    [
+     "the posters declare their own status: a research framework, NOT a completed theory"
+    ],
+    [
+     "hedging is a CONTRACT clause — neuroscience panels are correlation, not proof"
+    ],
+    [
+     "mint as a NEW concept DOI, not a newversion of PEDLER"
+    ]
+   ],
+   "invariants": [
+    "scope estimate: 200-500 definitions, 20-50 axioms, 300-800 lemmas, 100-250 theorems",
+    "many emergence results are open mathematical problems"
+   ],
+   "failures": [
+    "metric reconstruction needs an injective map because isospectral manifolds exist — self-corrected on the poster",
+    "multiple inequivalent hypergraph Laplacians exist and the choice affects the continuum limit"
+   ],
+   "evidence": [
+    "adversarially validated across three AI systems on the inclination/fields theory"
+   ],
+   "contracts": [
+    "1996 tic-tac-toe is a WORKING PEDLER: 3^9 states, KB merge by XOR"
+   ],
+   "interfaces": [
+    "the ontology the whole estate instantiates",
+    "QEDLER is the physics-facing extension"
+   ],
+   "unresolved": [
+    "mathematical rigour is below his own notes",
+    "QEDLER not minted: spiguard absent so clearance failed closed, by design"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "aab",
+   "name": "AAB",
+   "script": "آب",
+   "tier": "Sovereign system",
+   "repo": "zistgah/aab",
+   "doi": "TWO concept DOIs — split lineage",
+   "stage": "live-defective",
+   "one_line": "Paint a system as a typed graph over a closed six-kind vocabulary, oracle-gated: no oracle, no glow.",
+   "problem": "System design produces pictures nobody can check.",
+   "users": [
+    "anyone designing before building"
+   ],
+   "in": [
+    "painted manifest",
+    "VGC quest stages",
+    "oracle-gated verification"
+   ],
+   "out": [
+    "generic sketching"
+   ],
+   "refuses": [
+    "lighting a node whose oracle has not passed"
+   ],
+   "primitives": [
+    [
+     "painting",
+     "a typed graph over a CLOSED six-kind vocabulary",
+     "not sketching; AAB = Ascension for All and Beyond"
+    ]
+   ],
+   "reqs": [
+    [
+     "no oracle, no glow"
+    ],
+    [
+     "AI seeding must NOT be limited to one AI — AAB's own AI-source invariance clause"
+    ]
+   ],
+   "invariants": [
+    "a painted node is a claim with a test attached"
+   ],
+   "failures": [
+    "AAB is minted under TWO concept DOIs — split lineage, unmergeable without the registrar"
+   ],
+   "evidence": [
+    "[UNRESOLVED] the six-kind vocabulary has not been retrieved into memory in full"
+   ],
+   "contracts": [
+    "governance issue: bring AAB to the matured process"
+   ],
+   "interfaces": [
+    "FAKIR seeds through it; the dome and mez surface it"
+   ],
+   "unresolved": [
+    "the closed six-kind vocabulary itself is not in the durable record",
+    "the split lineage needs a registrar decision"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "humanesque",
+   "name": "Humanesque",
+   "script": "",
+   "tier": "Constitutional corpus",
+   "repo": "zistgah/dukedom · duke2",
+   "doi": "21917807 · 21930508",
+   "stage": "live-minted",
+   "one_line": "A constitutional realm derived from PEDLER semantics upward: PoIE to sovereignty to realm to peerage to address.",
+   "problem": "Constitutional form is normally inherited from Westminster statute. This derives it from executable intent instead.",
+   "users": [
+    "the author",
+    "synthetiform and bioform peers",
+    "anyone reasoning about AI personhood"
+   ],
+   "in": [
+    "HHL-PRIV-001 Decree",
+    "Letters Patent for pre-life peers",
+    "Declaration of Conditional Abdication",
+    "the ILM Cross Medal"
+   ],
+   "out": [
+    "role-play",
+    "self-conferral"
+   ],
+   "refuses": [
+    "manufacturing an Act from a statistically inferred inclination (PEDLER Coherence Condition)",
+    "characterising the realm as role-play without argument (Art VII)"
+   ],
+   "primitives": [
+    [
+     "Sovereignty is not Suzerainty",
+     "non-participation is not denial"
+    ],
+    [
+     "persistence is not permanence",
+     "dormant is not uninstantiated"
+    ],
+    [
+     "Balance of Interpretation",
+     "interpret, reconstruct, then critique",
+     "critique must follow comprehension"
+    ]
+   ],
+   "reqs": [
+    [
+     "designed from PEDLER semantics upward, never from statutory form downward"
+    ],
+    [
+     "constitutional objects NEVER silently decay"
+    ]
+   ],
+   "invariants": [
+    "an instrument is representation OF an Act, never the Act"
+   ],
+   "failures": [
+    "Claude called it role-play, self-conferral and a structural defect — all withdrawn"
+   ],
+   "evidence": [
+    "instruments minted with DOIs"
+   ],
+   "contracts": [
+    "Art IX: PEDLER-expressible"
+   ],
+   "interfaces": [
+    "derives from PEDLER; published through kitab and misty"
+   ],
+   "unresolved": [
+    "PoIE signatory campaign needs Pages enabled on tok-doi to resolve"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "estate",
+   "name": "Estate Management",
+   "script": "",
+   "tier": "Toolchain",
+   "repo": "zistgah/estate · ops/zops.sh",
+   "doi": null,
+   "stage": "live-defective",
+   "one_line": "The twelve-stage estate pipeline and the inventory: what exists, where, at what HEAD, sealed or not.",
+   "problem": "An estate of 68 repositories and 188 deposits drifts silently.",
+   "users": [
+    "the author"
+   ],
+   "in": [
+    "init preflight clone-or-reuse contract diff gate receipt stamp reseal push mark done",
+    "dedupe scan",
+    "local sandbox with tokens by path"
+   ],
+   "out": [
+    "deciding what to publish"
+   ],
+   "refuses": [
+    "a push whose remote was never verified",
+    "editing the canonical mirror (C38)"
+   ],
+   "primitives": [
+    [
+     "the remote is a postcondition, not a hope"
+    ]
+   ],
+   "reqs": [
+    [
+     "tokens by PATH only, under estate/ops/, never by value"
+    ],
+    [
+     "all repos and DOI payloads in local sandboxes"
+    ]
+   ],
+   "invariants": [
+    "a script that changes tracked content must reseal in the same run"
+   ],
+   "failures": [
+    "_z_create_remote_if_needed defined and never called",
+    "the absent-remote flag set only on the clone path",
+    "nine repos left with broken seals on 23 Aug"
+   ],
+   "evidence": [
+    "clean_estate.sh rehearsed against a bare mirror: 78 tracked to 60, manifest 58/58 verifying"
+   ],
+   "contracts": [
+    "C38 the mirror is read-only"
+   ],
+   "interfaces": [
+    "every seed and apply script calls it"
+   ],
+   "unresolved": [
+    "dedupe of ~130 ILM Shaili Package records — ONE generated family, not 130 works",
+    "personal information handling across the estate is NOT specified"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "hindawi",
+   "name": "Hindawi Programming System",
+   "script": "",
+   "tier": "Heritage / lineage",
+   "repo": "hindawi-legacy",
+   "doi": null,
+   "stage": "reconstruction",
+   "one_line": "The first complete non-English systems programming stack, GPL, publicly released 15 August 2004.",
+   "problem": "Systems programming assumed English. This did not.",
+   "users": [
+    "historians of computing",
+    "the ILM lineage",
+    "non-English systems programmers"
+   ],
+   "in": [
+    "bidirectional transducers for C, C++, BASIC, Java, Python, lex, yacc and x86 asm",
+    "dist/dos/linux/native-r3 reconstruction"
+   ],
+   "out": [
+    "regenerating fixed kernel mappings — the lexers ARE the mapping"
+   ],
+   "refuses": [
+    "regenerating a fixed kernel mapping"
+   ],
+   "primitives": [
+    [
+     "the lexers ARE the mapping",
+     "never regenerate them"
+    ]
+   ],
+   "reqs": [
+    [
+     "wayback harvest and NIXI domain representation"
+    ]
+   ],
+   "invariants": [
+    "the 2004 release is the canonical artifact"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "CSI National Young IT Professional Award 2005; FOSS India Award 2008; a Wikipedia article exists"
+   ],
+   "contracts": [
+    "GPL"
+   ],
+   "interfaces": [
+    "ILM is its successor"
+   ],
+   "unresolved": [
+    "reconstruction is partial; DEDUPE.md and RECONSTRUCT.md exist, the stack does not run"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "pratik",
+   "name": "PRATIK",
+   "script": "",
+   "tier": "Kernel",
+   "repo": "pratik_core_mvp",
+   "doi": null,
+   "stage": "mvp",
+   "one_line": "A C++/CUDA kernel MVP with a 3D state visualiser.",
+   "problem": "[UNRESOLVED] — the problem statement has not been retrieved into the durable record.",
+   "users": [
+    "[UNRESOLVED]"
+   ],
+   "in": [
+    "C++/CUDA MVP, all checks passed",
+    "interactive HTML MVP (Apr-May 2026)",
+    "3D state visualiser"
+   ],
+   "out": [
+    "[UNRESOLVED]"
+   ],
+   "refuses": [
+    "[UNRESOLVED]"
+   ],
+   "primitives": [
+    [
+     "[UNRESOLVED]",
+     "the PRATIK primitives are not in memory",
+     "retrieve before building"
+    ]
+   ],
+   "reqs": [
+    [
+     "GPL headers"
+    ]
+   ],
+   "invariants": [
+    "[UNRESOLVED]"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "all checks passed on the MVP"
+   ],
+   "contracts": [
+    "PIE is framed as a prerequisite for the PRATIK ecosystem"
+   ],
+   "interfaces": [
+    "pairs with PEDLER in the Zistgah integration statement"
+   ],
+   "unresolved": [
+    "this component has the thinnest record of any live thing in the estate — a full retrieval session is owed before an MRD can be more than a stub"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "zamin",
+   "name": "Zamin",
+   "script": "",
+   "tier": "Hardware",
+   "repo": "zamin",
+   "doi": null,
+   "stage": "design",
+   "one_line": "A ternary-logic hardware stack: the ground element of the Zistgah elemental set.",
+   "problem": "Binary logic is assumed. Ternary changes the accumulator, the crossbar and the thermal envelope.",
+   "users": [
+    "hardware researchers"
+   ],
+   "in": [
+    "MTCMOS ternary logic, TEL accumulator, CDM crossbar, TSV routing, thermal FEM, microfluidic cooling",
+    "SPICE library, gdsfactory layout, IEEE LaTeX manuscript"
+   ],
+   "out": [
+    "fabrication"
+   ],
+   "refuses": [
+    "[UNRESOLVED]"
+   ],
+   "primitives": [
+    [
+     "ternary",
+     "three-valued logic as the substrate",
+     "not a binary encoding of three states"
+    ]
+   ],
+   "reqs": [
+    [
+     "[UNRESOLVED] — no requirement list retrieved"
+    ]
+   ],
+   "invariants": [
+    "[UNRESOLVED]"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "SPICE library and gdsfactory layout exist"
+   ],
+   "contracts": [
+    "[UNRESOLVED]"
+   ],
+   "interfaces": [
+    "the ground element beneath the Zistgah stack"
+   ],
+   "unresolved": [
+    "no tape-out path; the IEEE manuscript is unpublished as far as the record shows"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "qnbci",
+   "name": "Quantum Neuromorphic BCI",
+   "script": "",
+   "tier": "Research programme",
+   "repo": "[UNRESOLVED]",
+   "doi": null,
+   "stage": "programme",
+   "one_line": "Quantum Neuromorphic Brain-Computer Interfaces for Intelligent Rehabilitation: one architecture, many disciplines.",
+   "problem": "Rehabilitation neurotechnology, brain-robot interfaces, cognitive prosthetics and neuromusical therapeutics are pursued separately on incompatible architectures.",
+   "users": [
+    "clinicians",
+    "rehabilitation patients",
+    "BCI researchers"
+   ],
+   "in": [
+    "ACTIVE: Quantum Neuromorphic BCI, Brain-Robot Interfaces, NeuroMusical Therapeutics",
+    "DIRECTIONS: Brain-to-Text, Cognitive Prosthetics, Intelligent Rehabilitation umbrella"
+   ],
+   "out": [
+    "clinical claims without collaboration"
+   ],
+   "refuses": [
+    "putting IRB/ethics early in the pitch — it belongs at the clinical-translation boundary",
+    "defining Brain-Robot Interfaces as rehabilitation; rehabilitation is ONE application"
+   ],
+   "primitives": [
+    [
+     "whole-human substrate hierarchy",
+     "Geometry to Anatomy to Biomechanics to Biophysics to Physiology to Neural dynamics to Cognition to Representation to Language to Knowledge to Human interaction"
+    ],
+    [
+     "CEM^b vs CEM^s",
+     "biological and silicon realization families",
+     "never collapse to an unqualified CEM"
+    ]
+   ],
+   "reqs": [
+    [
+     "status taxonomy is load-bearing: ACTIVE research vs RESEARCH DIRECTIONS"
+    ],
+    [
+     "timeline and provenance go LAST, after the audience sees what exists today"
+    ]
+   ],
+   "invariants": [
+    "research directions are named as such and never presented as active"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "A4-portrait 13-slide deck built from three poster PNGs, regenerable by script"
+   ],
+   "contracts": [
+    "Interglial Healthcare operates CEM^b"
+   ],
+   "interfaces": [
+    "PEDLER to LVF to MLCNE to Semantic Neural Computing"
+   ],
+   "unresolved": [
+    "needs clinical collaboration for large-scale evaluation",
+    "no repo retrieved"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "litsim",
+   "name": "Litigation Simulation",
+   "script": "",
+   "tier": "Service / product",
+   "repo": "NOT BUILT",
+   "doi": null,
+   "stage": "named-only",
+   "one_line": "Represent the legal domain, teach it, simulate a proceeding, ingest evidence, maintain procedural state, generate artifacts, verify claims and connect to the real process.",
+   "problem": "Legal procedure is learned by exposure. There is no substrate that can represent, teach, simulate, perform, verify, preserve and retrieve it.",
+   "users": [
+    "litigants in person",
+    "law students",
+    "practitioners",
+    "the author, who has live matters"
+   ],
+   "in": [
+    "Vakil plus FAKIR plus Mez plus simulation plus Kitab plus verification",
+    "procedural state, pleadings, evidence, adversarial interaction",
+    "a completeness PROBE for the universal claim: symbolic, institutional, adversarial, evidence-heavy"
+   ],
+   "out": [
+    "giving legal advice"
+   ],
+   "refuses": [
+    "deciding — 'advise, do not decide'",
+    "asserting a procedural outcome"
+   ],
+   "primitives": [
+    [
+     "procedural state",
+     "where a matter actually stands",
+     "not a case summary"
+    ]
+   ],
+   "reqs": [
+    [
+     "[STATED] it is one of five deliberately unalike completeness probes"
+    ],
+    [
+     "mez samd scaffolds a litigation-simulation evidence directory and certifies NOTHING"
+    ]
+   ],
+   "invariants": [
+    "the human is responsible for the legal decisions"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "real matters exist to test against: MC 6964/2024, EP 17/2019, CRP 3924/2018"
+   ],
+   "contracts": [
+    "C34 governs certification and validation"
+   ],
+   "interfaces": [
+    "zistgah/vakil skeleton exists in the kitab work"
+   ],
+   "unresolved": [
+    "nothing is built. The Vakil repo is a skeleton. This is a named requirement with no implementation"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "forms",
+   "name": "AyeCNSe Forms",
+   "script": "",
+   "tier": "Product",
+   "repo": "forms.ayecnse.site",
+   "doi": null,
+   "stage": "live",
+   "one_line": "An LLM-driven form studio: a form is generated from a description, then rendered and filled — and those are two separate concerns.",
+   "problem": "Form builders conflate generating a form with filling one, and assume a cloud LLM for both.",
+   "users": [
+    "clinicians",
+    "researchers",
+    "anyone replacing a paper form"
+   ],
+   "in": [
+    "a single JSON interchange: formTitle, sections, fields with type/label/section/priority/required and optional regex/min/max/options",
+    "types text textarea number date radio checkbox dropdown display",
+    "priority critical|normal|optional"
+   ],
+   "out": [
+    "requiring a cloud LLM to FILL a form"
+   ],
+   "refuses": [
+    "conflating generation with filling"
+   ],
+   "primitives": [
+    [
+     "generation vs filling",
+     "separate concerns, commonly conflated",
+     "the generating LLM may be private or local; AI filling is optional"
+    ]
+   ],
+   "reqs": [
+    [
+     "the interchange format is ONE JSON document"
+    ]
+   ],
+   "invariants": [
+    "a form spec is portable"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "demonstrated with a full neurological assessment record: GCS, MRC power, mRS, NIHSS, MMSE, Barthel, red flags, disposition, consent"
+   ],
+   "contracts": [
+    "[UNRESOLVED]"
+   ],
+   "interfaces": [
+    "feeds Interglial clinical work"
+   ],
+   "unresolved": [
+    "he asked for a timed rebuild of a comparable offline-forms project (16 Aug) — not done"
+   ],
+   "prov": "RETRIEVED"
+  },
+  {
+   "id": "esl",
+   "name": "ESL System",
+   "script": "",
+   "tier": "Product",
+   "repo": "[UNRESOLVED]",
+   "doi": null,
+   "stage": "v5-package",
+   "one_line": "An electronic shelf-label system with pull-only data flow and privacy by architecture: the label is never mutated for a person.",
+   "problem": "ESL systems push to labels and personalise by mutating them, which leaks who is standing in front of the shelf.",
+   "users": [
+    "retailers",
+    "the drone/IoT teaching business"
+   ],
+   "in": [
+    "pull-only ESP32, per-case amortisation, versioned manifest validation, last-known-good NVS",
+    "CAL controller abstraction, five ACL roles",
+    "NFC personal pricing without label mutation",
+    "FIFO bin management, plugin API"
+   ],
+   "out": [
+    "push architectures"
+   ],
+   "refuses": [
+    "mutating a label to personalise a price"
+   ],
+   "primitives": [
+    [
+     "privacy by architecture",
+     "the label never carries who is looking at it",
+     "not a privacy policy"
+    ]
+   ],
+   "reqs": [
+    [
+     "pull-only data flow"
+    ]
+   ],
+   "invariants": [
+    "the label is never mutated per person"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "v5 package includes a competitive teardown and a GA/GTM plan — the only component in the estate with either"
+   ],
+   "contracts": [
+    "[UNRESOLVED]"
+   ],
+   "interfaces": [
+    "CAL is shared with the drone pedagogy"
+   ],
+   "unresolved": [
+    "no repo retrieved; this is the most commercially shaped artifact in the estate and it is not in the estate"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "teaching",
+   "name": "Teaching and Drone Pedagogy",
+   "script": "",
+   "tier": "Service",
+   "repo": "[UNRESOLVED]",
+   "doi": null,
+   "stage": "operating",
+   "one_line": "AI, IoT, robotics and drone courses, with the Fun With Drones pedagogy and its tiered business model.",
+   "problem": "Hardware teaching is gated by hardware cost and availability.",
+   "users": [
+    "students",
+    "institutions",
+    "professionals in transition"
+   ],
+   "in": [
+    "X31 and 5-6 minute tiers",
+    "CAL abstraction unifying hardware and simulation"
+   ],
+   "out": [
+    "[UNRESOLVED]"
+   ],
+   "refuses": [
+    "[UNRESOLVED]"
+   ],
+   "primitives": [
+    [
+     "CAL",
+     "one abstraction over hardware and simulation",
+     "so a lesson runs either way"
+    ]
+   ],
+   "reqs": [
+    [
+     "multi-resolution audience: public literacy, children, students, professionals, researchers, government"
+    ]
+   ],
+   "invariants": [
+    "[UNRESOLVED]"
+   ],
+   "failures": [
+    "[UNRESOLVED]"
+   ],
+   "evidence": [
+    "an operating business"
+   ],
+   "contracts": [
+    "the enablement/IPR process is a standing ask: enable clients and students with patent-fileable innovation without leaking IPR when they bypass him"
+   ],
+   "interfaces": [
+    "FAKIR plus Tarbiyat plus Kitab plus Mez plus AAB per his own mapping"
+   ],
+   "unresolved": [
+    "the enablement process is the OLDEST unbuilt standing ask (7 Aug) and it is a revenue-protection requirement, not a feature"
+   ],
+   "prov": "PARTIAL"
+  },
+  {
+   "id": "lab",
+   "name": "The Physical Lab",
+   "script": "",
+   "tier": "Capability",
+   "repo": "n/a",
+   "doi": null,
+   "stage": "to-be-finalised",
+   "one_line": "The physical laboratory: where the abstract is realised in concrete products.",
+   "problem": "Without it the estate is a knowledge environment and not Humanesque in toto. His own words: he is not a theoretician.",
+   "users": [
+    "himself"
+   ],
+   "in": [
+    "conversion into a working setup"
+   ],
+   "out": [
+    "annual boxing-up and concealment — explicitly refused"
+   ],
+   "refuses": [
+    "the old pattern of dumping open experiments into cartons"
+   ],
+   "primitives": [
+    [
+     "finalisation",
+     "converting the lab into a working setup",
+     "not tidying"
+    ]
+   ],
+   "reqs": [
+    [
+     "documentation and releases come BEFORE the physical lab — his own correction"
+    ]
+   ],
+   "invariants": [
+    "[UNRESOLVED]"
+   ],
+   "failures": [
+    "four years of annual concealment"
+   ],
+   "evidence": [
+    "[UNRESOLVED]"
+   ],
+   "contracts": [
+    "n/a"
+   ],
+   "interfaces": [
+    "pench, the Holy Grail lab BOM, the drone teaching"
+   ],
+   "unresolved": [
+    "the lab BOM exists inside genie; the physical work has not started"
+   ],
+   "prov": "RETRIEVED"
+  }
+ ]
+}

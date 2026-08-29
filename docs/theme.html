@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — themes</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .sw { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.5rem; }
+    .sw button { min-height:4.5rem; cursor:pointer; border:1px solid #c9a227; color:#e8d9a8; }
+    label { display:block; margin:.4rem 0; }
+    input[type=color], input[type=text] { margin-left:.4rem; }
+    textarea { width:100%; min-height:8rem; background:#0e1a28; color:#e8d9a8; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="console.html">Console</a>
+    <a href="workbench.html">Workbench</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Theme editor</h1>
+  <p>Kitab-style: pick a preset, tweak variables, store in the browser (<code>localStorage</code> — it survives refresh, not other machines). Download JSON. Open a GitHub issue with the payload if you want it in the tree.</p>
+  <p>Jazz is the default 2D landing. <strong>Paper/white is gone</strong> — use Manuscript (warm fibre). Bells is Jazz plus motion. Home in the top bar is always <code>index.html</code> (the 2D landing). Estate explorer is a different projection, not Home.</p>
+  <div class="sw" id="sw"></div>
+  <h2>Custom (localStorage)</h2>
+  <label>--navy <input type="color" id="navy" value="#07040e" /></label>
+  <label>--gold <input type="color" id="gold" value="#c9a227" /></label>
+  <label>--ink <input type="color" id="ink" value="#e8d9a8" /></label>
+  <p>
+    <button type="button" id="save">Save in this browser</button>
+    <button type="button" id="clear">Clear custom</button>
+    <button type="button" id="dl">Download JSON</button>
+    <button type="button" id="gh">GitHub issue</button>
+  </p>
+  <textarea id="json" readonly></textarea>
+</main>
+<script src="skins/skins.js"></script>
+<script>
+(function () {
+  var T = window.PANINI_THEME;
+  var sw = document.getElementById("sw");
+  Object.keys(T.presets).forEach(function (k) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = T.presets[k].label;
+    b.style.background = k === "manuscript" ? "#e4d5b7" : k === "terminal" ? "#001400" : "#1a1028";
+    b.style.color = k === "manuscript" ? "#2a1f12" : "#e8d9a8";
+    b.onclick = function () { T.apply(k); show(); };
+    sw.appendChild(b);
+  });
+  function show() { document.getElementById("json").value = T.exportJSON(); }
+  document.getElementById("save").onclick = function () {
+    T.saveCustom({
+      "--navy": document.getElementById("navy").value,
+      "--gold": document.getElementById("gold").value,
+      "--ink": document.getElementById("ink").value
+    });
+    show();
+  };
+  document.getElementById("clear").onclick = function () { T.clearCustom(); show(); };
+  document.getElementById("dl").onclick = function () {
+    var blob = new Blob([T.exportJSON()], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "panini-theme.json";
+    a.click();
+  };
+  document.getElementById("gh").onclick = function () {
+    var body = encodeURIComponent("Theme payload:\n\n```json\n" + T.exportJSON() + "\n```");
+    location.href = "https://github.com/zistgah/panini_by_grok/issues/new?title=" +
+      encodeURIComponent("theme: " + T.current()) + "&body=" + body;
+  };
+  show();
+})();
+</script>
+</body>
+</html>

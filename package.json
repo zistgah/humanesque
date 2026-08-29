@@ -1,0 +1,24 @@
+{
+  "name": "panini",
+  "version": "0.1.0",
+  "description": "PANINI self-hosting language + execution environment (JS bootstrap)",
+  "type": "module",
+  "bin": {
+    "panini": "./src/cli.js"
+  },
+  "scripts": {
+    "panini": "node src/cli.js",
+    "test": "node tests/test.mjs",
+    "test:core": "node tests/run.mjs",
+    "bootstrap": "node scripts/bootstrap.mjs",
+    "selfhost": "node scripts/selfhost.mjs",
+    "prove": "node scripts/prove_theorem.mjs",
+    "realize": "node scripts/realize_spec.mjs",
+    "prove:v2": "node scripts/prove_v2.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "GPL-3.0-or-later",
+  "_tree_rev": "2026.08.28"
+}

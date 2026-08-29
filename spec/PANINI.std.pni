@@ -1,0 +1,53 @@
+/*
+ PANINI.STD.2026.08
+ Machine-readable language standard (additive; does not replace
+ spec/PANINI_SELF_HOSTING_SPEC.pni).
+*/
+
+MODULE PANINI.STD
+
+CONSTITUTION
+    ID "PANINI.STD.2026.08"
+    TITLE "PANINI Language Standard"
+    VERSION "2026.08"
+    STATUS "SUBSET_STANDARD"
+END
+
+SECTION LEXICAL
+    ENCODING "UTF-8"
+    COMMENTS "//" "/* */"
+    IDENTIFIER "[A-Za-z_][A-Za-z0-9_]* | script-extended letters via ILM"
+    KEYWORDS MODULE END FUNCTION RETURN IF ELSE WHILE FOR FOREACH TRUE FALSE PRINT ASSERT
+END
+
+SECTION SYNTAX
+    PROGRAM := { DECL | STMT }
+    DECL := MODULE | FUNCTION | CONSTITUTION | CLASS
+    STMT := ASSIGN | CALL | IF | WHILE | RETURN | PRINT
+    BLOCK := STMT* END
+END
+
+SECTION SEMANTICS
+    EVALUATION "left-to-right"
+    SCOPE "lexical child environments"
+    TRUTH "non-empty / non-zero / TRUE"
+END
+
+SECTION IR
+    FORM "nested maps with op: const|load|bin|call|if|while|return"
+    CODEGEN_TARGETS js python c fortran torch wgsl
+END
+
+SECTION FRONTENDS
+    RULE "A frontend is a PANINI module exporting run_<lang>(source) -> {ok, value, frontend}"
+    RULE "Host toolchain invocation is optional via --host and is not a frontend"
+END
+
+SECTION CONFORMANCE
+    LEVEL0 "PRINT and arithmetic"
+    LEVEL1 "FUNCTION RETURN IF WHILE"
+    LEVEL2 "self-host lexer/parser subset"
+    LEVEL3 "foreign print-expr frontends"
+END
+
+END

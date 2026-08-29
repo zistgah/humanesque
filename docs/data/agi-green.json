@@ -1,0 +1,403 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "when": "2026-08-29T15:05:55.945Z",
+  "n": 27,
+  "ship_green": 24,
+  "standard_green": 1,
+  "note": "STANDARD GREEN on the AGI stack is not 27/27. Only layers with an issuing-body executable suite skip=0.",
+  "layers": [
+    {
+      "id": "L0",
+      "name": "Physical substrate",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/engine/esp32.js",
+      "test": "docs/engine/esp32.js",
+      "components": [
+        "esp32"
+      ],
+      "missing_registry": [],
+      "gap": "no JEDEC/IPC suite in this tree"
+    },
+    {
+      "id": "L1",
+      "name": "Device physics",
+      "ship": "GAP",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": null,
+      "test": null,
+      "components": [],
+      "missing_registry": [],
+      "gap": "device physics not in this tree"
+    },
+    {
+      "id": "L2",
+      "name": "Digital/compute primitives",
+      "ship": "SHIP GREEN",
+      "standard": "NOT GREEN",
+      "issuing_body": "WebAssembly Core",
+      "suite": null,
+      "artifact": "runtime/wat2wasm.js",
+      "test": "runtime/wasm_front.js",
+      "components": [
+        "wasm-front",
+        "wat2wasm"
+      ],
+      "missing_registry": [],
+      "gap": "WASM spec not skip=0 here; subset emitter frozen"
+    },
+    {
+      "id": "L3",
+      "name": "Hardware architecture",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/emu.html",
+      "test": "docs/emu.html",
+      "components": [
+        "isa-riscv",
+        "isa-arm"
+      ],
+      "missing_registry": [],
+      "gap": "x86 guest is v86; RISC-V/ARM slots are stubs"
+    },
+    {
+      "id": "L4",
+      "name": "Memory/storage",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "runtime/vfs.js",
+      "test": "tests/run.mjs",
+      "components": [
+        "vfs",
+        "monitor"
+      ],
+      "missing_registry": [],
+      "gap": "POSIX/VFS suite not run"
+    },
+    {
+      "id": "L5",
+      "name": "Interconnect/I/O",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "runtime/softmmu.js",
+      "test": "runtime/softmmu.js",
+      "components": [
+        "softmmu"
+      ],
+      "missing_registry": [],
+      "gap": "VirtIO/SoftMMU design, not a conformance suite"
+    },
+    {
+      "id": "L6",
+      "name": "Firmware/boot",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "retrieved/ayebios/src/boot.c.uhin",
+      "test": "tests/ayebios_flatten.mjs",
+      "components": [],
+      "missing_registry": [
+        "ayebios"
+      ],
+      "gap": "AyeBIOS .rom not built; SeaBIOS stand-in on VFS /bios/bios.bin"
+    },
+    {
+      "id": "L7",
+      "name": "Operating/runtime substrate",
+      "ship": "SHIP GREEN",
+      "standard": "NOT GREEN",
+      "issuing_body": "POSIX",
+      "suite": null,
+      "artifact": "runtime/shell.js",
+      "test": "tests/run.mjs",
+      "components": [
+        "shell",
+        "vt100"
+      ],
+      "missing_registry": [],
+      "gap": "POSIX test suite not run"
+    },
+    {
+      "id": "L8",
+      "name": "Execution frameworks",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "runtime/interpreter.js",
+      "test": "tests/run.mjs",
+      "components": [
+        "interp"
+      ],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L9",
+      "name": "Simulation/digital twins",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/sims.html",
+      "test": "docs/sims.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": "sims pages exist; no FMI/SysML suite"
+    },
+    {
+      "id": "L10",
+      "name": "Sensorimotor substrate",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/console.html",
+      "test": "docs/console.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": "LOGO/Shaili robot is console path; no ROS suite"
+    },
+    {
+      "id": "L11",
+      "name": "Data substrate",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "ontology/core.json",
+      "test": "docs/ontology.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L12",
+      "name": "Representation/language",
+      "ship": "SHIP GREEN",
+      "standard": "NOT GREEN",
+      "issuing_body": "ILM (retrieved)",
+      "suite": null,
+      "artifact": "runtime/romenagri.js",
+      "test": "retrieved/romenagri",
+      "components": [
+        "romenagri"
+      ],
+      "missing_registry": [],
+      "gap": "ILM is not an ISO suite; Romenagri retrieved, not invented"
+    },
+    {
+      "id": "L13",
+      "name": "Programming language",
+      "ship": "SHIP GREEN",
+      "standard": "STANDARD GREEN",
+      "issuing_body": "ISO/IEC 9899 (WG14 N1570)",
+      "suite": "c-testsuite single-exec 104",
+      "artifact": "src/panini/frontends/c.pni",
+      "test": "scripts/iso_c_harness.mjs",
+      "components": [
+        "c-frontend",
+        "python-frontend",
+        "cpp-frontend",
+        "rust-frontend",
+        "go-frontend",
+        "julia-frontend"
+      ],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L14",
+      "name": "Compiler/semantic realization",
+      "ship": "SHIP GREEN",
+      "standard": "NOT GREEN",
+      "issuing_body": "PANINI T0 (this spec)",
+      "suite": null,
+      "artifact": "spec/PANINI_SELF_HOSTING_SPEC.pni",
+      "test": "scripts/prove_theorem.mjs",
+      "components": [
+        "spec-v1",
+        "interp",
+        "clower"
+      ],
+      "missing_registry": [],
+      "gap": "T0 is our constitution, not an ISO compiler suite"
+    },
+    {
+      "id": "L15",
+      "name": "Tooling/workbench",
+      "ship": "SHIP GREEN",
+      "standard": "NOT GREEN",
+      "issuing_body": "LSP 3.17 (Microsoft)",
+      "suite": null,
+      "artifact": "spec/PANINI.V2.WORKBENCH.md",
+      "test": "docs/workbench.html",
+      "components": [
+        "spine",
+        "notebook-frozen"
+      ],
+      "missing_registry": [],
+      "gap": "Monaco + vscode.dev; no skip=0 LSP suite. Beginner surface remains PRINT."
+    },
+    {
+      "id": "L16",
+      "name": "Interaction/multimodality",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/story.html",
+      "test": "docs/llm.html",
+      "components": [
+        "vt100"
+      ],
+      "missing_registry": [],
+      "gap": "VT100 + llama.cpp WASM; no WebRTC suite"
+    },
+    {
+      "id": "L17",
+      "name": "Model substrate",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/engine/llm.js",
+      "test": "docs/llm.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": "stories15M GGUF fetched, not shipped"
+    },
+    {
+      "id": "L18",
+      "name": "Cognition",
+      "ship": "GAP",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": null,
+      "test": null,
+      "components": [],
+      "missing_registry": [],
+      "gap": "cognition layer is taxonomy, not a product claim"
+    },
+    {
+      "id": "L19",
+      "name": "Coherence/nervous-system layer",
+      "ship": "GAP",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": null,
+      "test": null,
+      "components": [],
+      "missing_registry": [],
+      "gap": "named interoperability slot"
+    },
+    {
+      "id": "L20",
+      "name": "Embodiment/action",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/console.html",
+      "test": "docs/console.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": "Shaili/LOGO → sim → robot named; no ROS/Arduino suite this turn"
+    },
+    {
+      "id": "L21",
+      "name": "Agent architecture",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "stdlib/cyclers.pni",
+      "test": "tests/run.mjs",
+      "components": [],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L22",
+      "name": "Collective/ecosystem intelligence",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/cyclers.html",
+      "test": "docs/cyclers.html",
+      "components": [],
+      "missing_registry": [],
+      "gap": "cycler harness exists; no multi-agent suite"
+    },
+    {
+      "id": "L23",
+      "name": "Metacognition/verification",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "scripts/prove_theorem.mjs",
+      "test": "scripts/prove_theorem.mjs",
+      "components": [
+        "spec-v1"
+      ],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L24",
+      "name": "Persistence/continuity",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/ARCHITECT_PROMPTS.md",
+      "test": "docs/ARCHITECT_PROMPTS.md",
+      "components": [],
+      "missing_registry": [],
+      "gap": "Misty OTS is the architect uploader, not a product API in this zip"
+    },
+    {
+      "id": "L25",
+      "name": "Sovereignty/governance",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "CONTRACT.md",
+      "test": "INDEPENDENCE.md",
+      "components": [
+        "license"
+      ],
+      "missing_registry": [],
+      "gap": null
+    },
+    {
+      "id": "L26",
+      "name": "Civilizational realization",
+      "ship": "SHIP GREEN",
+      "standard": "—",
+      "issuing_body": null,
+      "suite": null,
+      "artifact": "docs/fakir/index.html",
+      "test": "docs/fakir/domains.json",
+      "components": [],
+      "missing_registry": [],
+      "gap": "FAKIR taxonomy retrieved; UKOP is not a test suite"
+    }
+  ]
+}

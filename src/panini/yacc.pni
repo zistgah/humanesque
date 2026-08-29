@@ -1,0 +1,118 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * yacc(1)-style recursive-descent driver for:
+ *   expr := term {(+|-) term}
+ *   term := atom {(*|/) atom}
+ *   atom := NUMBER | IDENT | '(' expr ')'
+ */
+MODULE PANINI.Yacc
+
+FUNCTION yNew(tokens)
+    RETURN {tokens: tokens, i: 0}
+END
+
+FUNCTION yPeek(st)
+    IF st.i >= LEN(st.tokens)
+        RETURN {kind: "EOF", value: ""}
+    END
+    RETURN st.tokens[st.i]
+END
+
+FUNCTION yEat(st)
+    t = yPeek(st)
+    st.i = st.i + 1
+    RETURN t
+END
+
+FUNCTION yAtom(st)
+    t = yPeek(st)
+    IF t.kind == "NUMBER"
+        yEat(st)
+        RETURN {op: "num", value: INT(t.value)}
+    END
+    IF t.kind == "IDENT"
+        yEat(st)
+        IF yPeek(st).value == "("
+            yEat(st)
+            args = []
+            WHILE yPeek(st).value != ")" AND yPeek(st).kind != "EOF"
+                APPEND(args, yExpr(st))
+                IF yPeek(st).value == ","
+                    yEat(st)
+                END
+            END
+            IF yPeek(st).value == ")"
+                yEat(st)
+            END
+            RETURN {op: "call", name: t.value, args: args}
+        END
+        RETURN {op: "id", name: t.value}
+    END
+    IF t.value == "("
+        yEat(st)
+        e = yExpr(st)
+        IF yPeek(st).value == ")"
+            yEat(st)
+        END
+        RETURN e
+    END
+    yEat(st)
+    RETURN {op: "num", value: 0}
+END
+
+FUNCTION yTerm(st)
+    left = yAtom(st)
+    WHILE yPeek(st).value == "*" OR yPeek(st).value == "/"
+        op = yEat(st).value
+        left = {op: "bin", operator: op, left: left, right: yAtom(st)}
+    END
+    RETURN left
+END
+
+FUNCTION yExpr(st)
+    left = yTerm(st)
+    WHILE yPeek(st).value == "+" OR yPeek(st).value == "-"
+        op = yEat(st).value
+        left = {op: "bin", operator: op, left: left, right: yTerm(st)}
+    END
+    RETURN left
+END
+
+FUNCTION yEval(e)
+    IF e.op == "num"
+        RETURN e.value
+    END
+    IF e.op == "bin"
+        l = yEval(e.left)
+        r = yEval(e.right)
+        IF e.operator == "+"
+            RETURN l + r
+        END
+        IF e.operator == "-"
+            RETURN l - r
+        END
+        IF e.operator == "*"
+            RETURN l * r
+        END
+        RETURN l / r
+    END
+    IF e.op == "call"
+        IF e.name == "add"
+            RETURN yEval(e.args[0]) + yEval(e.args[1])
+        END
+    END
+    RETURN 0
+END
+
+FUNCTION yacc_parse(source)
+    tokens = lex_scan(source)
+    st = yNew(tokens)
+    RETURN yExpr(st)
+END
+
+FUNCTION main()
+    PRINT "use with PANINI.Lex"
+    RETURN 0
+END
+
+END

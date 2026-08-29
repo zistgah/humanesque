@@ -1,0 +1,8 @@
+MODULE T00034
+FUNCTION main()
+    IF 1 AND 1
+        PRINT "yes"
+    END
+    RETURN 0
+END
+END

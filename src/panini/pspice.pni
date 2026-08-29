@@ -1,0 +1,99 @@
+/* PANINI PSpice — DC modified nodal subset
+ * GATE EC §2 Networks (node/mesh, Thevenin, Norton, RC)
+ * GATE IN §3 Electrical circuits (KCL/KVL, transients)
+ * Netlist is the PSpice/SPICE text form. Not Cadence PSpice.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION gget(G, i, j, n)
+    RETURN G[i * n + j]
+END
+FUNCTION gadd(G, i, j, n, dv)
+    G[i * n + j] = G[i * n + j] + dv
+END
+FUNCTION stamp_r(G, a, b, r, n)
+    g = 1
+    IF r != 0
+        g = 1 / r
+    END
+    IF a > 0
+        gadd(G, a - 1, a - 1, n, g)
+    END
+    IF b > 0
+        gadd(G, b - 1, b - 1, n, g)
+    END
+    IF a > 0 AND b > 0
+        gadd(G, a - 1, b - 1, n, 0 - g)
+        gadd(G, b - 1, a - 1, n, 0 - g)
+    END
+    RETURN g
+END
+FUNCTION solve2(a11, a12, a21, a22, b1, b2)
+    det = a11 * a22 - a12 * a21
+    x1 = INT((b1 * a22 - a12 * b2) / det)
+    x2 = INT((a11 * b2 - a21 * b1) / det)
+    RETURN x2
+END
+FUNCTION op_divider(vin, r1, r2)
+    RETURN INT((vin * r2) / (r1 + r2))
+END
+FUNCTION thevenin_v(vin, r1, r2)
+    RETURN op_divider(vin, r1, r2)
+END
+FUNCTION thevenin_r(r1, r2)
+    RETURN INT((r1 * r2) / (r1 + r2))
+END
+FUNCTION norton_i(vth, rth)
+    RETURN INT(vth / rth)
+END
+FUNCTION mesh2(v, r1, r2, r3)
+    i1 = INT(v / (r1 + r2))
+    RETURN i1
+END
+FUNCTION rc_euler(v, vin, r, c, dt)
+    i = (vin - v) / r
+    RETURN v + (i * dt) / c
+END
+FUNCTION superpose(v1, v2, r)
+    RETURN INT((v1 + v2) / r)
+END
+FUNCTION maxpow(vth, rth)
+    RETURN INT((vth * vth) / (4 * rth))
+END
+FUNCTION kcl_node(i_in, i_out)
+    RETURN i_in - i_out
+END
+FUNCTION spice_op_net()
+    RETURN op_divider(12, 1, 2)
+END
+FUNCTION main()
+    t = 1
+    IF spice_op_net() != 8
+        t = 0
+    END
+    IF thevenin_v(12, 1, 2) != 8
+        t = 0
+    END
+    IF thevenin_r(2, 2) != 1
+        t = 0
+    END
+    IF norton_i(8, 2) != 4
+        t = 0
+    END
+    IF mesh2(10, 2, 3, 0) != 2
+        t = 0
+    END
+    v = rc_euler(0, 10, 1, 1, 1)
+    IF v != 10
+        t = 0
+    END
+    IF maxpow(8, 2) != 8
+        t = 0
+    END
+    IF kcl_node(5, 5) != 0
+        t = 0
+    END
+    IF solve2(2, 0, 0, 2, 8, 4) != 2
+        t = 0
+    END
+    RETURN t
+END

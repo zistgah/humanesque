@@ -1,0 +1,23 @@
+/* GATE CSE — Compiler Design: count identifier-like tokens
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION ntok(s)
+    n = 0
+    i = 0
+    WHILE i < LEN(s)
+        ch = s[i]
+        IF ch != " "
+            n = n + 1
+            WHILE i < LEN(s) AND s[i] != " "
+                i = i + 1
+            END
+        ELSE
+            i = i + 1
+        END
+    END
+    RETURN n
+END
+FUNCTION main()
+    PRINT ntok("int main void")
+    RETURN ntok("int main void")
+END

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V1.8 - Fluid Dynamics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050507; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-cyan-500 pointer-events-auto">
+            <h1 class="text-cyan-400 font-bold text-xl tracking-tighter">AyeCNSe <span class="text-white">FLUID_DYNAMIC V1.8</span></h1>
+            <p class="text-[10px] text-slate-400 uppercase mt-1">Physics: Interpolated | Gait: Natural Pendulum</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl pointer-events-auto flex gap-6 h-64">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-slate-950 p-4 jetbrains text-cyan-100 text-xs outline-none rounded-lg border border-slate-800 resize-none">
+// Fluid Movement Test
+WALK(6)
+ARM_L_SH_PITCH(60)
+ARM_R_SH_PITCH(-20)
+WAIT(1)
+RESET()</textarea>
+            </div>
+            <button onclick="sim.run()" class="w-48 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-all uppercase text-sm">Execute</button>
+        </div>
+    </div>
+
+    <script>
+        class FluidSim {
+            constructor() {
+                this.targets = {}; 
+                this.isWalking = false;
+                this.walkTime = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 4, 8);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(0, 2, 0);
+
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+                const light = new THREE.DirectionalLight(0xffffff, 1);
+                light.position.set(5, 10, 5);
+                this.scene.add(light);
+                this.scene.add(new THREE.GridHelper(30, 30, 0x1e293b, 0x0f172a));
+
+                this.buildBot();
+                this.animate();
+            }
+
+            buildBot() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155 });
+                const jointMat = new THREE.MeshStandardMaterial({ color: 0x22d3ee });
+
+                // Pelvis - The Dynamic Center
+                this.pelvis = new THREE.Group();
+                this.pelvis.position.y = 2.4;
+                this.bot.add(this.pelvis);
+                
+                const pelvisMesh = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.5), mat);
+                this.pelvis.add(pelvisMesh);
+
+                // Torso
+                this.torso = new THREE.Group();
+                this.torso.position.y = 0.3;
+                this.pelvis.add(this.torso);
+                this.torso.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.2, 0.6), mat));
+
+                // Arms & Legs using the same hierarchy as V1.7 but with target storage
+                this.legs = {
+                    L: this.createLeg(-0.3, this.pelvis, mat),
+                    R: this.createLeg(0.3, this.pelvis, mat)
+                };
+
+                this.arms = {
+                    L: this.createArm(-0.7, this.torso, mat),
+                    R: this.createArm(0.7, this.torso, mat)
+                };
+
+                this.scene.add(this.bot);
+            }
+
+            createLeg(x, parent, mat) {
+                const hip = new THREE.Group(); hip.position.set(x, -0.2, 0); parent.add(hip);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), mat); u.position.y = -0.6; hip.add(u);
+                const knee = new THREE.Group(); knee.position.y = -0.6; u.add(knee);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.2, 0.25), mat); l.position.y = -0.6; knee.add(l);
+                return { hip, knee };
+            }
+
+            createArm(x, parent, mat) {
+                const sh = new THREE.Group(); sh.position.set(x, 0.4, 0); parent.add(sh);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.8, 0.2), mat); u.position.y = -0.4; sh.add(u);
+                const eb = new THREE.Group(); eb.position.y = -0.4; u.add(eb);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.8, 0.18), mat); l.position.y = -0.4; eb.add(l);
+                return { sh, eb };
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for(let line of lines) {
+                    if (line.trim().startsWith('//') || !line.trim()) continue;
+                    const match = line.match(/(.+)\((.*)\)/);
+                    if(match) {
+                        const cmd = match[1].trim();
+                        const val = parseFloat(match[2]);
+                        const rad = (val * Math.PI) / 180;
+
+                        if(cmd.includes('SH_PITCH')) {
+                            const arm = cmd.includes('_L_') ? this.arms.L : this.arms.R;
+                            arm.sh.rotation.x = rad;
+                        }
+                        if(cmd === 'WALK') {
+                            this.isWalking = true;
+                            await new Promise(r => setTimeout(r, val * 400));
+                            this.isWalking = false;
+                        }
+                        if(cmd === 'WAIT') await new Promise(r => setTimeout(r, val*1000));
+                        if(cmd === 'RESET') this.reset();
+                    }
+                }
+            }
+
+            reset() {
+                this.isWalking = false;
+                this.bot.position.set(0,0,0);
+                this.arms.L.sh.rotation.x = 0;
+                this.arms.R.sh.rotation.x = 0;
+                this.pelvis.rotation.set(0,0,0);
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                if(this.isWalking) {
+                    this.walkTime += 0.08;
+                    const swing = Math.sin(this.walkTime) * 0.6;
+                    
+                    // LEG DYNAMICS: Natural arc
+                    this.legs.L.hip.rotation.x = swing;
+                    this.legs.R.hip.rotation.x = -swing;
+                    this.legs.L.knee.rotation.x = swing > 0 ? swing * 1.2 : 0.1;
+                    this.legs.R.knee.rotation.x = swing < 0 ? -swing * 1.2 : 0.1;
+
+                    // PELVIS DYNAMICS: Sway and Tilt
+                    this.pelvis.rotation.z = Math.sin(this.walkTime) * 0.1; // Hip drop
+                    this.pelvis.rotation.y = -swing * 0.2; // Pelvic twist
+                    
+                    // TORSO COUNTER-SWAY: Keeping head stable
+                    this.torso.rotation.y = swing * 0.3;
+                    this.torso.rotation.z = -this.pelvis.rotation.z;
+
+                    this.bot.position.z += 0.04;
+                    this.bot.position.y = Math.abs(Math.cos(this.walkTime)) * 0.12;
+                } else {
+                    // IDLE BREATHING
+                    const breathe = Math.sin(Date.now() * 0.002) * 0.02;
+                    this.torso.position.y = 0.3 + breathe;
+                }
+
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new FluidSim();
+    </script>
+</body>
+</html>

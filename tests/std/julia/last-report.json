@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(julia)",
+  "standard": "Julia 1.10 language — panini-julia-testsuite single-exec",
+  "subject": "PANINI.Frontend.Julia",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

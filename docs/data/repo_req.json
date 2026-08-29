@@ -1,0 +1,21 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Working subset from ESTATE.md correlated to REQ-* and legacy root. Not 105 orgs.",
+  "rows": [
+    {"repo": "zistgah/panini_by_grok", "req": "REQ-000–530", "legacy": "HPS 2004 samples + pipeline"},
+    {"repo": "zistgah/panini / panini_by_claude", "req": "REQ-400 cycler dialect", "legacy": "prompt-cycle sibling, not this tree"},
+    {"repo": "zistgah/mez", "req": "REQ-410", "legacy": "desk; post-2004 workbench"},
+    {"repo": "zistgah/fakir", "req": "L26 / FAKIR", "legacy": "civilizational lattice, not HPS"},
+    {"repo": "zistgah/cycles + PAT.AL GENIE", "req": "REQ-400", "legacy": "PAT.AL / PRATIK / VIDYA named entities"},
+    {"repo": "zistgah/pratik_core_mvp", "req": "REQ-230 PEDLER", "legacy": "ANGEL 2004 + 2011 cognitive-computing filing → ternary kernel"},
+    {"repo": "zistgah/transeg*", "req": "REQ-420 embodiment", "legacy": "TARA vehicles line"},
+    {"repo": "project-ilm/legacy", "req": "REQ-300", "legacy": "fork of Hindawi into ILM"},
+    {"repo": "project-ilm/romenagri", "req": "REQ-005 REQ-300", "legacy": "Romenagri 2003 C sources"},
+    {"repo": "project-ilm/chakra", "req": "REQ-320 REQ-321", "legacy": "observatory; build trivia kundali"},
+    {"repo": "project-ilm/research-kundali", "req": "REQ-520", "legacy": "scholarly chart; not Chakra natal"},
+    {"repo": "project-ilm/misty-doi tok-doi ops", "req": "provenance / patent_track.sh", "legacy": "2003 CSIR + 2011 IN/CHE filings"},
+    {"repo": "project-ilm/praat", "req": "linguist lab", "legacy": "Praat phonetics fork — NOT PAT.AL"},
+    {"repo": "hindawiai/hindawi-legacy hindawi2020", "req": "REQ-300", "legacy": "HPS DOS and Linux trees"},
+    {"repo": "HMSEI / RDK / Dr Rho", "req": "gap", "legacy": "CSIR 2003-02-10 — no repo slug in estate walk"}
+  ]
+}

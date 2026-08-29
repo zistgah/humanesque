@@ -1,0 +1,23 @@
+/* GATE CSE — Algorithms: binary search on a sorted list
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION bsearch(a, n, x)
+    lo = 0
+    hi = n - 1
+    WHILE lo <= hi
+        mid = (lo + hi) / 2
+        IF a[mid] == x
+            RETURN mid
+        ELSEIF a[mid] < x
+            lo = mid + 1
+        ELSE
+            hi = mid - 1
+        END
+    END
+    RETURN 0 - 1
+END
+FUNCTION main()
+    a = [1, 3, 5, 7, 9, 11]
+    PRINT bsearch(a, 6, 7)
+    RETURN bsearch(a, 6, 7)
+END

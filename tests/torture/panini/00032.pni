@@ -1,0 +1,10 @@
+MODULE T00032
+FUNCTION main()
+    n = 0
+    FOREACH x IN [1, 2, 3]
+        n = n + x
+    END
+    PRINT n
+    RETURN 0
+END
+END

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit a language / dialect CSV</title>
+  <link rel="stylesheet" href="../site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav><a href="index.html">Standards</a> <a href="../index.html">Home</a></nav>
+</header>
+<main class="site-main">
+  <h1>Call to action</h1>
+  <p>Hindi guru has been public since 15 August 2004. The keyword table is the standard. English ISO wording is not.</p>
+  <p>If you know a better word, a dialect, or a missing Eighth Schedule language: send a CSV. Do not send a <code>#define</code> header.</p>
+
+  <h2>What to send</h2>
+  <table>
+    <tr><th>Layer</th><th>File</th><th>Columns</th><th>Means</th></tr>
+    <tr><td>Word choice</td><td><code>deposits/csv/<lang>_c.tsv</code></td><td>native, romenagri, c</td><td>Keywords of the standard</td></tr>
+    <tr><td>Phonetic / script</td><td><code>deposits/dialects/<lang>/phonetic.tsv</code></td><td>from, to, unicode_name</td><td>Same method as Gurmukhi name-projection, or a retrieved map</td></tr>
+    <tr><td>Syntax</td><td><code>deposits/dialects/<lang>/syntax.tsv</code></td><td>native, romenagri, host, shaili</td><td>Extra forms; does not replace guru until accepted</td></tr>
+    <tr><td>Identifier glossary</td><td><code>deposits/glossary/<from>_to_<to>.csv</code></td><td>original, view</td><td>Presentation only. Compilation ignores this file.</td></tr>
+    <tr><td>Standard prose</td><td><code>deposits/standards/<lang>/TEMPLATE.csv</code></td><td>n, source, translation</td><td>Ten clauses. One sentence each.</td></tr>
+  </table>
+
+  <h2>How a standard is published</h2>
+  <ol>
+    <li>CSV lands in <code>deposits/inbox/</code> or the folders above.</li>
+    <li>A later turn checks: unique natives, no invented cuneiform, pipeline still Unicode → ACII → Romenagri → lex.</li>
+    <li><code>scripts/gen_standards.py</code> fills <code>docs/standards/<lang>-c.html</code>.</li>
+    <li>The page is the published standard. The TSV remains the normative table.</li>
+  </ol>
+
+  <h2>Viewing (not compiling)</h2>
+  <p>A program in Hebrew C can be <em>viewed</em> as Hindi C. Keywords follow the two standards. Variable names follow the identifier dictionary. Compilation still uses the original file.</p>
+  <p>If you do not know the author’s identifiers, you see <code>id_1</code> … and the original in the dictionary. You may attach a glossary. The system does not invent translations of names.</p>
+
+  <h2>Templates</h2>
+  <pre>native	romenagri	c
+यदि	yadi	if</pre>
+  <p>Copy <a href="TEMPLATE.md">TEMPLATE.md</a>. Eighth Schedule still missing TSVs: Bodo, Dogri, Konkani, Maithili, Manipuri, Santali — retrieve, do not invent.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,897 @@
+REM  awaz.pni
+REM  AWAZ — The Sonic Artefact Cycler
+REM  PANINI program / cycler definition
+REM
+REM  Purpose:
+REM    Construct a sonic artefact progressively from intention and conception
+REM    through composition, specification, realization, production, verification,
+REM    provenance, preservation and release.
+REM
+REM  Core invariant:
+REM    AUDIO IS A REALIZATION, NOT THE BEGINNING OF THE WORKFLOW.
+REM
+REM  AWAZ is a workflow/lifecycle program expressed in PANINI.
+REM  It is not an audio-generation prompt script.
+REM  The AI/model operation is subordinate to the lifecycle.
+
+PROGRAM AWAZ
+  VERSION "1.0.0"
+  LANGUAGE "PANINI"
+  DOMAIN "SONIC_ARTEFACT"
+  PURPOSE "Progressively construct, realize, verify and preserve sonic artefacts."
+
+  CONFIG
+    RESOLUTION DEFAULT MID
+    HUMAN_SOVEREIGNTY REQUIRED
+    PROVENANCE REQUIRED
+    PRESERVE_REVISIONS TRUE
+    PRESERVE_COMPOSITION TRUE
+    PRESERVE_REALIZATION TRUE
+    VERIFY_BEFORE_RELEASE TRUE
+    ALLOW_LOCAL_AI TRUE
+    ALLOW_REMOTE_AI TRUE
+    ALLOW_USER_API TRUE
+  END CONFIG
+
+
+  TYPE SONIC_ARTEFACT
+    fields
+      id
+      title
+      kind
+      concept
+      form
+      composition
+      structure
+      arrangement
+      realization
+      production
+      verification
+      metadata
+      provenance
+      status
+      version
+  END TYPE
+
+  TYPE COMPOSITION
+    fields
+      concept
+      theme
+      motifs
+      form
+      lyric
+      melody
+      harmony
+      rhythm
+      instrumentation
+      arrangement
+      performance
+      constraints
+      references
+  END TYPE
+
+  TYPE AUDIO
+    MIME "audio/*"
+    fields
+      source
+      duration
+      sample_rate
+      channels
+      format
+      hash
+      provenance
+  END TYPE
+
+  TYPE DELIVERABLE
+    fields
+      id
+      type
+      mime
+      version
+      status
+      source
+      dependencies
+      hash
+      provenance
+      signoff
+  END TYPE
+
+
+  ENUM STATUS
+    IDEA
+    CONCEPT
+    DRAFT
+    STRUCTURED
+    REVIEW
+    REVISED
+    APPROVED
+    REALIZED
+    PRODUCED
+    VERIFIED
+    SEALED
+    RELEASED
+    SUPERSEDED
+  END ENUM
+
+
+  ENUM KIND
+    SONG
+    INSTRUMENTAL
+    SOUNDSCAPE
+    SPOKEN
+    PODCAST
+    AUDIOBOOK
+    SCORE
+    EXPERIMENTAL
+    CUSTOM
+  END ENUM
+
+
+  CONTRACT AWAZ_CONTRACT
+
+    INVARIANT
+      "The sonic artefact is constructed before its final audio realization."
+
+    INVARIANT
+      "Composition, realization and production remain distinguishable artefacts."
+
+    INVARIANT
+      "A realization does not silently overwrite its composition."
+
+    INVARIANT
+      "Every released audio artefact has provenance."
+
+    INVARIANT
+      "Every material revision preserves ancestry."
+
+    INVARIANT
+      "Simulation, synthesis or generation is not equivalent to verification."
+
+    INVARIANT
+      "Human signoff is required at declared critical gates."
+
+    REFUSE
+      "Generate final audio before sufficient composition exists."
+
+    REFUSE
+      "Treat a generated audio file as proof that the intended composition was realized."
+
+    REFUSE
+      "Release an artefact whose provenance or verification state is incomplete."
+
+    REFUSE
+      "Discard superseded composition or realization history."
+
+  END CONTRACT
+
+
+  EVENT artefact.changed
+    INVALIDATE downstream.deliverables
+    PRESERVE previous.state
+  END EVENT
+
+
+  EVENT composition.changed
+    INVALIDATE arrangement
+    INVALIDATE realization
+    INVALIDATE production
+    INVALIDATE verification
+  END EVENT
+
+
+  EVENT arrangement.changed
+    INVALIDATE realization
+    INVALIDATE production
+    INVALIDATE verification
+  END EVENT
+
+
+  EVENT realization.changed
+    INVALIDATE production
+    INVALIDATE verification
+  END EVENT
+
+
+  FUNCTION require_review(item)
+    SET item.status = REVIEW
+    ASK HUMAN "Review {item.id}."
+    RETURN item
+  END FUNCTION
+
+
+  FUNCTION require_signoff(item)
+    ASK HUMAN "SIGNOFF {item.id}"
+    IF RESPONSE == APPROVED
+      SET item.status = APPROVED
+      RETURN TRUE
+    ELSE
+      SET item.status = REVISED
+      RETURN FALSE
+    END IF
+  END FUNCTION
+
+
+  FUNCTION revise_until_approved(item)
+    REPEAT
+      CALL require_review(item)
+      IF CALL require_signoff(item)
+        RETURN item
+      END IF
+      REVISE item
+    UNTIL item.status == APPROVED
+    RETURN item
+  END FUNCTION
+
+
+  FUNCTION preserve(item)
+    CAPTURE HASH item
+    RECORD PROVENANCE item
+    RECORD VERSION item
+    RETURN item
+  END FUNCTION
+
+
+  FUNCTION verify_audio(audio, composition)
+    VERIFY audio.exists
+    VERIFY audio.mime STARTS_WITH "audio/"
+    VERIFY audio.duration > 0
+    VERIFY audio.provenance EXISTS
+    VERIFY realization.fidelity TO composition
+    RETURN VERIFICATION_RESULT
+  END FUNCTION
+
+
+  STAGE INTENTION
+    RESOLUTION EASY
+    VERB ELICIT
+    EXPECT CONCEPT
+    ASK
+      What sonic artefact are you trying to make?
+      What should the listener experience?
+      What is the intended purpose, audience and context?
+      What constraints must remain invariant?
+    END ASK
+
+    CAPTURE intention
+    STRUCTURE intention
+    SET artefact.status = IDEA
+    PRESERVE intention
+  END STAGE
+
+
+  STAGE CONCEPT
+    RESOLUTION EASY
+    VERB STRUCTURE
+    FROM intention
+    INTO artefact.concept
+
+    ASK
+      Develop the sonic concept from the intention.
+      Identify subject, purpose, audience, context, mood,
+      sonic identity, boundaries and non-negotiable elements.
+    END ASK
+
+    VALIDATE concept EXISTS
+    SET artefact.status = CONCEPT
+    PRESERVE artefact.concept
+  END STAGE
+
+
+  STAGE KIND
+    RESOLUTION EASY
+    VERB CLASSIFY
+    FROM artefact.concept
+    INTO artefact.kind
+
+    ASK
+      Choose the principal sonic artefact pathway:
+      SONG, INSTRUMENTAL, SOUNDSCAPE, SPOKEN, PODCAST,
+      AUDIOBOOK, SCORE, EXPERIMENTAL, or CUSTOM.
+    END ASK
+
+    VALIDATE artefact.kind IN KIND
+  END STAGE
+
+
+  BRANCH SONG
+    WHEN artefact.kind == SONG
+
+    STAGE SONG_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT theme
+      ELICIT subject
+      ELICIT lyrical_intent
+
+      ASK
+        Develop the lyrical and musical conception.
+        Identify theme, subject, point of view, voice,
+        emotional trajectory, motifs and intended form.
+      END ASK
+
+      CAPTURE composition.theme
+      CAPTURE composition.lyric_concept
+    END STAGE
+
+    STAGE LYRIC
+      RESOLUTION MID
+      VERB CREATE
+      FROM composition.lyric_concept
+      INTO composition.lyric
+
+      ASK
+        Draft the lyric while preserving the approved concept,
+        voice, structure and constraints.
+      END ASK
+
+      REVIEW composition.lyric
+      REPEAT
+        REVISE composition.lyric
+      UNTIL lyric.status == APPROVED
+    END STAGE
+
+    STAGE SONG_FORM
+      RESOLUTION MID
+      VERB STRUCTURE
+      INTO composition.form
+
+      ASK
+        Define the song form and sectional relationships.
+        Identify verse, chorus, bridge, intro, outro,
+        transitions, repetitions and departures as appropriate.
+      END ASK
+
+      VALIDATE composition.form EXISTS
+      CALL revise_until_approved(composition.form)
+    END STAGE
+
+    STAGE MELODY
+      RESOLUTION MID
+      VERB COMPOSE
+      INTO composition.melody
+
+      ASK
+        Develop melodic conception, motifs, phrases,
+        contour, register and relationship to the lyric.
+      END ASK
+
+      CALL revise_until_approved(composition.melody)
+    END STAGE
+
+    STAGE HARMONY
+      RESOLUTION MID
+      VERB COMPOSE
+      INTO composition.harmony
+
+      ASK
+        Develop harmonic conception, tonal/modal organization,
+        progression, cadence and relationship to melody.
+      END ASK
+
+      CALL revise_until_approved(composition.harmony)
+    END STAGE
+
+    STAGE RHYTHM
+      RESOLUTION MID
+      VERB COMPOSE
+      INTO composition.rhythm
+
+      ASK
+        Define meter, tempo, rhythmic language, groove,
+        accents and relationship to form and melody.
+      END ASK
+
+      CALL revise_until_approved(composition.rhythm)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH INSTRUMENTAL
+    WHEN artefact.kind == INSTRUMENTAL
+
+    STAGE INSTRUMENTAL_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT concept
+      STRUCTURE motif
+      STRUCTURE melody
+      STRUCTURE harmony
+      STRUCTURE rhythm
+      STRUCTURE form
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH SOUNDSCAPE
+    WHEN artefact.kind == SOUNDSCAPE
+
+    STAGE SOUNDSCAPE_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT environment
+      STRUCTURE sonic_events
+      STRUCTURE spatial_structure
+      STRUCTURE temporal_structure
+      STRUCTURE acoustic_composition
+
+      ASK
+        Define the sonic environment, events, layers,
+        spatial relationships, temporal progression,
+        transitions and intended listener position.
+      END ASK
+
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH SPOKEN
+    WHEN artefact.kind == SPOKEN
+
+    STAGE SPOKEN_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT concept
+      STRUCTURE script
+      STRUCTURE narration
+      STRUCTURE performance
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH PODCAST
+    WHEN artefact.kind == PODCAST
+
+    STAGE PODCAST_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT concept
+      STRUCTURE editorial_structure
+      STRUCTURE script
+      STRUCTURE segments
+      STRUCTURE voices
+      STRUCTURE performance
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH AUDIOBOOK
+    WHEN artefact.kind == AUDIOBOOK
+
+    STAGE AUDIOBOOK_COMPOSITION
+      RESOLUTION MID
+      VERB COMPOSE
+
+      ELICIT source_text
+      STRUCTURE segmentation
+      STRUCTURE narration_specification
+      STRUCTURE performance
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH SCORE
+    WHEN artefact.kind == SCORE
+
+    STAGE SCORE_COMPOSITION
+      RESOLUTION PRO
+      VERB COMPOSE
+
+      STRUCTURE score
+      STRUCTURE instrumentation
+      STRUCTURE form
+      STRUCTURE notation
+      STRUCTURE performance_direction
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH EXPERIMENTAL
+    WHEN artefact.kind == EXPERIMENTAL
+
+    STAGE EXPERIMENTAL_COMPOSITION
+      RESOLUTION PRO
+      VERB COMPOSE
+
+      ELICIT user_defined_composition
+      STRUCTURE experimental_rules
+      STRUCTURE sonic_constraints
+      STRUCTURE realization_rules
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  BRANCH CUSTOM
+    WHEN artefact.kind == CUSTOM
+
+    STAGE CUSTOM_COMPOSITION
+      RESOLUTION PRO
+      VERB COMPOSE
+
+      ELICIT domain
+      ELICIT composition_model
+      STRUCTURE composition
+
+      REVIEW composition
+      CALL revise_until_approved(composition)
+    END STAGE
+
+  END BRANCH
+
+
+  STAGE COMPOSITION_SIGNOFF
+    RESOLUTION MID
+    GATE HUMAN "APPROVE COMPOSITION"
+
+    REQUIRE composition EXISTS
+    REQUIRE composition.status == APPROVED
+
+    CAPTURE composition.baseline
+    PRESERVE composition
+  END STAGE
+
+
+  STAGE STRUCTURE
+    RESOLUTION MID
+    VERB STRUCTURE
+    FROM composition
+    INTO artefact.structure
+
+    ASK
+      Convert the approved composition into an explicit,
+      ordered sonic structure. Preserve all approved
+      relationships and constraints.
+    END ASK
+
+    VALIDATE structure COMPLETE
+    CALL revise_until_approved(artefact.structure)
+    PRESERVE artefact.structure
+  END STAGE
+
+
+  STAGE ARRANGEMENT
+    RESOLUTION MID
+    VERB ARRANGE
+    FROM composition, artefact.structure
+    INTO composition.arrangement
+
+    ASK
+      Develop the arrangement from the approved composition.
+      Define instrumentation, layering, entrances, exits,
+      density, dynamics, texture, spatialization and transitions.
+    END ASK
+
+    REVIEW composition.arrangement
+    CALL revise_until_approved(composition.arrangement)
+    PRESERVE composition.arrangement
+  END STAGE
+
+
+  STAGE PERFORMANCE
+    RESOLUTION MID
+    VERB SPECIFY
+    FROM composition.arrangement
+    INTO composition.performance
+
+    ASK
+      Specify performance or synthesis requirements:
+      voices, instruments, articulation, expression, tempo,
+      dynamics, timing, pronunciation, interpretation and
+      other realization constraints.
+    END ASK
+
+    CALL revise_until_approved(composition.performance)
+    PRESERVE composition.performance
+  END STAGE
+
+
+  STAGE REALIZATION
+    RESOLUTION PRO
+    VERB REALIZE
+    FROM composition, artefact.structure, composition.arrangement,
+         composition.performance
+    INTO realization
+
+    MODEL AUTO
+
+    ASK
+      Realize the approved sonic composition.
+      Preserve the composition and arrangement as source artefacts.
+      Do not silently alter approved intent.
+    END ASK
+
+    CAPTURE realization
+    VALIDATE realization.exists
+    SET artefact.status = REALIZED
+    PRESERVE realization
+  END STAGE
+
+
+  STAGE LISTEN_REVIEW
+    RESOLUTION MID
+    VERB REVIEW
+    FROM realization
+
+    ASK HUMAN
+      Listen to the realization and identify:
+      faithful elements,
+      deviations,
+      defects,
+      unintended artefacts,
+      compositional problems,
+      production problems,
+      and required revisions.
+    END ASK
+
+    CAPTURE review
+  END STAGE
+
+
+  STAGE REALIZATION_REVISION
+    RESOLUTION MID
+    VERB REVISE
+    FROM review
+
+    IF review.requires_composition_change
+      GOTO COMPOSITION_SIGNOFF
+    ELSEIF review.requires_arrangement_change
+      GOTO ARRANGEMENT
+    ELSE
+      GOTO REALIZATION
+    END IF
+  END STAGE
+
+
+  STAGE PRODUCTION
+    RESOLUTION PRO
+    VERB PRODUCE
+    FROM realization
+    INTO production
+
+    MIX realization
+    MASTER production
+
+    VALIDATE production.exists
+    SET artefact.status = PRODUCED
+    PRESERVE production
+  END STAGE
+
+
+  STAGE TECHNICAL_REVIEW
+    RESOLUTION PRO
+    VERB VERIFY
+    FROM production
+
+    VERIFY format
+    VERIFY duration
+    VERIFY channels
+    VERIFY sample_rate
+    VERIFY clipping
+    VERIFY silence
+    VERIFY corruption
+    VERIFY metadata
+    VERIFY provenance
+
+    CAPTURE technical_verification
+  END STAGE
+
+
+  STAGE COMPOSITION_FIDELITY
+    RESOLUTION PRO
+    VERB VERIFY
+    FROM composition, production
+
+    VERIFY production AGAINST composition
+    VERIFY production AGAINST artefact.structure
+    VERIFY production AGAINST composition.arrangement
+    VERIFY production AGAINST composition.performance
+
+    IF verification == FAIL
+      GOTO LISTEN_REVIEW
+    END IF
+  END STAGE
+
+
+  STAGE HUMAN_VERIFICATION
+    RESOLUTION PRO
+    GATE HUMAN "VERIFY AWAZ"
+
+    ASK HUMAN
+      Confirm that the final realization is an acceptable
+      realization of the approved sonic composition and
+      that known deviations are intentional or resolved.
+    END ASK
+
+    IF RESPONSE != APPROVED
+      GOTO LISTEN_REVIEW
+    END IF
+
+    SET artefact.status = VERIFIED
+  END STAGE
+
+
+  STAGE METADATA
+    RESOLUTION MID
+    VERB INTEGRATE
+    INTO artefact.metadata
+
+    CAPTURE
+      title
+      creator
+      contributors
+      kind
+      language
+      duration
+      format
+      creation_date
+      version
+      dependencies
+      source_material
+      composition_reference
+      realization_reference
+    END CAPTURE
+
+    PRESERVE artefact.metadata
+  END STAGE
+
+
+  STAGE PROVENANCE
+    RESOLUTION PRO
+    VERB RECORD
+
+    HASH composition
+    HASH arrangement
+    HASH realization
+    HASH production
+    HASH metadata
+
+    RECORD
+      ancestry
+      transformations
+      model/provider
+      toolchain
+      human_actions
+      revisions
+      signoffs
+      verification
+      timestamps
+    END RECORD
+
+    REQUIRE provenance COMPLETE
+    PRESERVE provenance
+  END STAGE
+
+
+  STAGE PACKAGE
+    RESOLUTION PRO
+    VERB PACKAGE
+
+    FILE "awaz_manifest.json"
+      MIME "application/json"
+      CONTENT artefact.metadata + artefact.provenance
+    END FILE
+
+    FILE "composition"
+      MIME "application/json"
+      CONTENT composition
+    END FILE
+
+    FILE "audio"
+      MIME "audio/*"
+      CONTENT production
+    END FILE
+
+    VALIDATE PACKAGE COMPLETE
+  END STAGE
+
+
+  STAGE RELEASE
+    RESOLUTION PRO
+    GATE HUMAN "RELEASE AWAZ"
+
+    REQUIRE artefact.status == VERIFIED
+    REQUIRE provenance COMPLETE
+    REQUIRE package COMPLETE
+
+    SET artefact.status = SEALED
+    PRESERVE artefact
+
+    RELEASE production
+    RELEASE metadata
+    RELEASE provenance
+
+    SET artefact.status = RELEASED
+  END STAGE
+
+
+  ON RELEASED
+    EMIT
+      sonic_artefact
+      composition
+      realization
+      production
+      metadata
+      provenance
+    END EMIT
+  END ON
+
+
+  FUNCTION CHANGE_IMPACT(change)
+    IF change.affects composition
+      RETURN ["structure", "arrangement", "performance",
+              "realization", "production", "verification", "release"]
+    ELSEIF change.affects arrangement
+      RETURN ["performance", "realization", "production",
+              "verification", "release"]
+    ELSEIF change.affects realization
+      RETURN ["production", "verification", "release"]
+    ELSEIF change.affects production
+      RETURN ["verification", "release"]
+    ELSE
+      RETURN ["metadata"]
+    END IF
+  END FUNCTION
+
+
+  WATCH artefact.changed
+    LET affected = CHANGE_IMPACT(change)
+    INVALIDATE affected
+    PRESERVE previous_versions
+  END WATCH
+
+
+  RESOLUTION EASY
+    Produce a concise conceptual sonic specification and minimal
+    realization pathway while retaining human review and provenance.
+  END RESOLUTION
+
+  RESOLUTION MID
+    Produce structured composition, relationships, arrangement,
+    realization requirements, review cycles and deliverables.
+  END RESOLUTION
+
+  RESOLUTION PRO
+    Produce formal composition structures, dependencies,
+    verification criteria, provenance, package manifests,
+    release state and complete revision lineage.
+  END RESOLUTION
+
+
+  EXPORT AWAZ_CONTRACT
+  EXPORT SONIC_ARTEFACT
+  EXPORT COMPOSITION
+  EXPORT DELIVERABLE
+  EXPORT CHANGE_IMPACT
+
+END PROGRAM

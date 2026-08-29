@@ -1,0 +1,7 @@
+# literate heading must not fail parse
+MODULE T00007
+FUNCTION main()
+    PRINT "lit"
+    RETURN 0
+END
+END

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyeCNSe V11.2 - Temporal OS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Courier New', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box; }
+        .chronos-hud { background: rgba(20, 0, 40, 0.9); border: 2px solid #d946ef; padding: 20px; border-radius: 8px; pointer-events: auto; color: #f5d0fe; width: 340px; box-shadow: 0 0 25px rgba(217, 70, 239, 0.5); }
+        .console-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 900px; align-self: center; background: rgba(10, 0, 20, 0.95); padding: 15px; border-radius: 8px; border: 1px solid #d946ef; pointer-events: auto; box-sizing: border-box; }
+        textarea { flex-grow: 1; background: #000; color: #f0abfc; border: 1px solid #701a75; padding: 10px; font-size: 12px; outline: none; resize: none; font-family: 'JetBrains Mono', monospace; }
+        button { width: 160px; background: #d946ef; color: #fff; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        button:hover { background: #f472b6; box-shadow: 0 0 15px #f472b6; }
+        .stat { font-size: 13px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        #clock { font-size: 24px; font-weight: bold; color: #fff; text-align: center; margin: 10px 0; border: 1px dashed #d946ef; padding: 10px; background: rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="chronos-hud">
+            <h2 style="margin:0; font-size: 16px; letter-spacing: 1px;">CHRONOS_STABILIZER_v11.2</h2>
+            <div id="clock">YEAR: 2026</div>
+            <div class="stat"><span>FLUX_INTENSITY:</span><span id="flux">0%</span></div>
+            <div class="stat"><span>GEODESIC_CURVE:</span><span id="curve">0.00</span></div>
+            <div class="stat"><span>TIMELINE:</span><span id="status" style="color:#22c55e">STABLE</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// TEMPORAL JUMP SEQUENCE
+SPIN_UP_TIPLER_CYLINDER(100)
+WAIT(2.5)
+ENGAGE_FLUX_CAPACITOR(2.5)
+WAIT(1.5)
+TEMPORAL_INVERSION(-1000) // Travel to 1026
+WAIT(5.0)
+STABILIZE_TIMELINE()</textarea>
+            <button onclick="sim.run()">Initiate Jump</button>
+        </div>
+    </div>
+
+    <script>
+        class ParadoxProofSim {
+            constructor() {
+                // Initialize all variables to 0 to prevent NaN errors
+                this.year = 2026;
+                this.targetYear = 2026;
+                this.flux = 0;
+                this.targetFlux = 0;
+                this.fluxBoost = 1;
+                this.curvature = 0;
+                
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.camera.position.z = 60;
+                
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // Spacetime Fabric (Tipler Cylinder)
+                const gridGeo = new THREE.CylinderGeometry(25, 25, 300, 40, 30, true);
+                const gridMat = new THREE.MeshBasicMaterial({ 
+                    color: 0xd946ef, 
+                    wireframe: true, 
+                    transparent: true, 
+                    opacity: 0.2 
+                });
+                this.cylinder = new THREE.Mesh(gridGeo, gridMat);
+                this.cylinder.rotation.x = Math.PI / 2;
+                this.scene.add(this.cylinder);
+
+                // Add stars for depth
+                const starGeo = new THREE.BufferGeometry();
+                const starCoords = [];
+                for(let i=0; i<5000; i++) {
+                    starCoords.push((Math.random()-0.5)*1000, (Math.random()-0.5)*1000, (Math.random()-0.5)*1000);
+                }
+                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starCoords, 3));
+                this.stars = new THREE.Points(starGeo, new THREE.PointsMaterial({color: 0xffffff, size: 0.5}));
+                this.scene.add(this.stars);
+
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        
+                        if (cmd === 'SPIN_UP_TIPLER_CYLINDER') {
+                            this.targetFlux = val;
+                        } else if (cmd === 'ENGAGE_FLUX_CAPACITOR') {
+                            this.fluxBoost = val;
+                        } else if (cmd === 'TEMPORAL_INVERSION') {
+                            this.targetYear = this.year + val;
+                        } else if (cmd === 'STABILIZE_TIMELINE') {
+                            this.targetFlux = 0;
+                            this.fluxBoost = 1;
+                            this.targetYear = Math.round(this.year);
+                        } else if (cmd === 'WAIT') {
+                            await new Promise(r => setTimeout(r, val * 1000));
+                        }
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // Smooth Interpolation for Machine States
+                this.flux += (this.targetFlux - this.flux) * 0.05;
+                this.curvature = (this.flux / 50) * this.fluxBoost;
+                
+                // Rotate the Spacetime Manifold
+                this.cylinder.rotation.y += (this.flux * 0.01);
+                this.stars.rotation.z += (this.flux * 0.001);
+
+                // Spacetime Distortion Visual
+                let pulse = 1 + (Math.sin(Date.now() * 0.01) * this.curvature * 0.05);
+                this.cylinder.scale.set(pulse, 1, pulse);
+
+                // Temporal Drift Logic
+                if (Math.abs(this.targetYear - this.year) > 0.1) {
+                    this.year += (this.targetYear - this.year) * 0.03;
+                    document.getElementById('status').innerText = "DISPLACING";
+                    document.getElementById('status').style.color = "#f472b6";
+                    this.scene.background = new THREE.Color(0.02, 0, 0.05);
+                } else {
+                    document.getElementById('status').innerText = "STABLE";
+                    document.getElementById('status').style.color = "#22c55e";
+                    this.scene.background = new THREE.Color(0,0,0);
+                }
+
+                // Update HUD Elements
+                document.getElementById('clock').innerText = `YEAR: ${Math.round(this.year)}`;
+                document.getElementById('flux').innerText = `${Math.round(this.flux)}%`;
+                document.getElementById('curve').innerText = this.curvature.toFixed(2);
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Initialize Simulation
+        const sim = new ParadoxProofSim();
+    </script>
+</body>
+</html>

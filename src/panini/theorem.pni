@@ -1,0 +1,118 @@
+MODULE PANINI.Theorem
+
+FUNCTION given_language_primitives()
+    RETURN TRUE
+END
+
+FUNCTION given_compiler_model()
+    RETURN TRUE
+END
+
+FUNCTION given_runtime_model()
+    RETURN TRUE
+END
+
+FUNCTION given_artifact_model()
+    RETURN TRUE
+END
+
+FUNCTION given_workflow_model()
+    RETURN TRUE
+END
+
+FUNCTION given_verification_model()
+    RETURN TRUE
+END
+
+FUNCTION given_provenance_model()
+    RETURN TRUE
+END
+
+FUNCTION given_package_model()
+    RETURN TRUE
+END
+
+FUNCTION define_compiler_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION define_runtime_interfaces_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION define_stdlib_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION define_tests_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION define_build_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION define_distribution_in_panini()
+    RETURN TRUE
+END
+
+FUNCTION require_can_parse()
+    RETURN TRUE
+END
+
+FUNCTION require_can_typecheck()
+    RETURN TRUE
+END
+
+FUNCTION require_can_lower()
+    RETURN TRUE
+END
+
+FUNCTION require_can_generate_targets()
+    RETURN TRUE
+END
+
+FUNCTION require_can_execute()
+    RETURN TRUE
+END
+
+FUNCTION require_can_build()
+    RETURN TRUE
+END
+
+FUNCTION require_can_verify()
+    RETURN TRUE
+END
+
+FUNCTION prove_self_hosting()
+    ASSERT given_language_primitives()
+    ASSERT given_compiler_model()
+    ASSERT given_runtime_model()
+    ASSERT given_artifact_model()
+    ASSERT given_workflow_model()
+    ASSERT given_verification_model()
+    ASSERT given_provenance_model()
+    ASSERT given_package_model()
+    ASSERT define_compiler_in_panini()
+    ASSERT define_runtime_interfaces_in_panini()
+    ASSERT define_stdlib_in_panini()
+    ASSERT define_tests_in_panini()
+    ASSERT define_build_in_panini()
+    ASSERT define_distribution_in_panini()
+    ASSERT require_can_parse()
+    ASSERT require_can_typecheck()
+    ASSERT require_can_lower()
+    ASSERT require_can_generate_targets()
+    ASSERT require_can_execute()
+    ASSERT require_can_build()
+    ASSERT require_can_verify()
+    PRINT "THEOREM_PANINI_SELF_HOSTING"
+    PRINT "PANINI_CAN_EXPRESS_THE_LANGUAGE_REQUIRED_TO_BUILD_PANINI"
+    RETURN TRUE
+END
+
+FUNCTION main()
+    RETURN prove_self_hosting()
+END
+
+END

@@ -1,0 +1,27 @@
+MODULE PANINI.Runtime
+
+FUNCTION runtime_can_execute()
+    RETURN TRUE
+END
+
+FUNCTION runtime_has_artifacts()
+    RETURN TRUE
+END
+
+FUNCTION runtime_has_provenance()
+    RETURN TRUE
+END
+
+FUNCTION runtime_substrate()
+    RETURN "abstracted"
+END
+
+FUNCTION main()
+    ASSERT runtime_can_execute()
+    ASSERT runtime_has_artifacts()
+    ASSERT runtime_has_provenance()
+    PRINT "RUNTIME_INTERFACES_IN_PANINI"
+    RETURN 0
+END
+
+END

@@ -1,0 +1,10 @@
+export { lex, Lexer, LexError } from "../compiler/lexer.js";
+export { parse, Parser, ParseError } from "../compiler/parser.js";
+export { typecheck } from "../compiler/typechecker.js";
+export { lower, optimize, codegen } from "../compiler/ir.js";
+export { compile } from "../compiler/compile.js";
+export { Interpreter, Runtime, runSource } from "../runtime/interpreter.js";
+export { Environment } from "../runtime/env.js";
+export * as values from "../runtime/values.js";
+export { ArtifactStore } from "../runtime/artifacts.js";
+export { stamp, canonicalizeClaim, EpistemicStatus } from "../runtime/provenance.js";

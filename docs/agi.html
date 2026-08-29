@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — AGI stack (derived)</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Status is derived from <code>tests/test.mjs</code>. This page does not invent GREEN.</p>
+  <h1>AGI stack</h1>
+  <p class="lead">Workbench L0–L26 plus the last test report. WASM and GGUF are fetched by the test, not shipped in the zip. The test process never fails the uploader (exit 0); red rows stay red here.</p>
+  <p id="kpi" class="kpis"></p>
+  <h2>Last run</h2>
+  <p id="when" class="fine"></p>
+  <table>
+    <thead><tr><th>Section</th><th>pass</th><th>n</th></tr></thead>
+    <tbody id="sec"></tbody>
+  </table>
+  <h2>Frontends</h2>
+  <table>
+    <thead><tr><th>Lang</th><th>ok</th><th>detail</th></tr></thead>
+    <tbody id="fe"></tbody>
+  </table>
+  <h2>Round-trip</h2>
+  <table>
+    <thead><tr><th>Case</th><th>ok</th><th>detail</th></tr></thead>
+    <tbody id="rt"></tbody>
+  </table>
+  <h2>Human-language files</h2>
+  <p class="fine">Generated under <code>examples/hindawi/generated/</code>. AWAITING_TABLE means no kernel map in this tree — deposit a CSV, do not invent.</p>
+  <table>
+    <thead><tr><th>Id</th><th>ok</th><th>note</th></tr></thead>
+    <tbody id="lang"></tbody>
+  </table>
+  <h2>L0–L26 — SHIP GREEN and STANDARD GREEN</h2>
+  <p class="fine">Derived from <code>factory/agi_map.json</code> + registry. STANDARD GREEN is an issuing-body suite skip=0 — not 27/27. Named GAPs stay named.</p>
+  <p id="agikpi" class="kpis"></p>
+  <table>
+    <thead><tr><th>Layer</th><th>SHIP</th><th>STANDARD</th><th>Issuing body</th><th>Components</th><th>Gap</th></tr></thead>
+    <tbody id="agilayers"></tbody>
+  </table>
+
+  <p>
+    <a class="btn" href="dashboard.html">Programme dashboard</a>
+    <a class="btn" href="path/research.html">Exercise layers</a>
+    <a class="btn" href="data/test-report.json">Raw JSON</a>
+  </p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+function cell(ok) { return ok ? "<span class=met>ok</span>" : "<span class=planned>note</span>"; }
+function det(r) {
+  if (r.error) return String(r.error).slice(0, 80);
+  if (r.awaiting_table) return "awaiting table";
+  if (r.greenish) return r.greenish;
+  if (r.file) return r.file;
+  if (r.frontend) return r.frontend + " value=" + r.value;
+  if (r.bytes) return r.bytes + " B";
+  return r.detail || "";
+}
+Promise.all([
+  fetch("data/test-report.json").then(r => r.ok ? r.json() : null).catch(() => null),
+  fetch("data/agi-green.json").then(r => r.ok ? r.json() : null).catch(() => null)
+]).then(([T, G]) => {
+  if (G) {
+    document.getElementById("agikpi").innerHTML =
+      "<div class=kpi><b>" + G.ship_green + "/" + G.n + "</b>SHIP GREEN</div>" +
+      "<div class=kpi><b>" + G.standard_green + "/" + G.n + "</b>STANDARD GREEN</div>";
+    document.getElementById("agilayers").innerHTML = (G.layers || []).map(function (x) {
+      var ship = x.ship === "SHIP GREEN" ? "<span class=met>SHIP GREEN</span>" : "<span class=planned>" + x.ship + "</span>";
+      var st = x.standard === "STANDARD GREEN" ? "<span class=met>STANDARD GREEN</span>" : "<span class=planned>" + x.standard + "</span>";
+      return "<tr><td><code>" + x.id + "</code> " + x.name + "</td><td>" + ship + "</td><td>" + st + "</td><td class=fine>" +
+        (x.issuing_body || "—") + (x.suite ? " · " + x.suite : "") + "</td><td class=fine>" +
+        (x.components || []).join(", ") + "</td><td class=fine>" + (x.gap || "") + "</td></tr>";
+    }).join("");
+  }
+  if (!T) {
+    document.getElementById("when").textContent = "No test-report.json yet. Run node tests/test.mjs";
+    return;
+  }
+  document.getElementById("when").textContent = T.when + " · exit policy " + T.exit_policy;
+  const d = T.derived || {};
+  document.getElementById("kpi").innerHTML =
+    "<div class=kpi><b>" + (d.greenish || "?") + "</b>derived</div>" +
+    Object.keys(d).filter(k => d[k] && d[k].n != null).map(k =>
+      "<div class=kpi><b>" + d[k].pass + "/" + d[k].n + "</b>" + k + "</div>"
+    ).join("");
+  document.getElementById("sec").innerHTML = Object.keys(d).filter(k => d[k] && d[k].n != null).map(k =>
+    "<tr><td>" + k + "</td><td>" + d[k].pass + "</td><td>" + d[k].n + "</td></tr>"
+  ).join("");
+  document.getElementById("fe").innerHTML = (T.frontends || []).map(r =>
+    "<tr><td>" + r.name + "</td><td>" + cell(r.ok) + "</td><td class=fine>" + det(r) + "</td></tr>"
+  ).join("");
+  document.getElementById("rt").innerHTML = (T.roundtrip || []).map(r =>
+    "<tr><td>" + r.name + "</td><td>" + cell(r.ok) + "</td><td class=fine>" + det(r) + "</td></tr>"
+  ).join("");
+  document.getElementById("lang").innerHTML = (T.languages || []).map(r =>
+    "<tr><td>" + r.name + "</td><td>" + cell(r.ok) + "</td><td class=fine>" + det(r) + "</td></tr>"
+  ).join("");
+});
+</script>
+<style>
+.kpis { display:flex; flex-wrap:wrap; gap:.5rem; }
+.kpi { border:1px solid rgba(201,162,39,.35); padding:.6rem .8rem; }
+.kpi b { display:block; font-size:1.2rem; }
+.met { color:#8fd18f; } .planned { color:#e6c35c; }
+</style>
+</body>
+</html>

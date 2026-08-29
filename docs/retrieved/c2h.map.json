@@ -1,0 +1,1282 @@
+{
+ "source": "retrieved/legacy/Hindawi/guru/c2h.lex",
+ "invented": false,
+ "rules": [
+  {
+   "from": "main",
+   "to": "�ݴ��"
+  },
+  {
+   "from": "alloc\\.h",
+   "to": "�ڵ.�"
+  },
+  {
+   "from": "assert\\.h",
+   "to": "������.�"
+  },
+  {
+   "from": "bios\\.h",
+   "to": "�������.�"
+  },
+  {
+   "from": "conio\\.h",
+   "to": "Ƚ���.�"
+  },
+  {
+   "from": "ctype\\.h",
+   "to": "��ϳ��.�"
+  },
+  {
+   "from": "dir\\.h",
+   "to": "�޸�.�"
+  },
+  {
+   "from": "dos\\.h",
+   "to": "���.�"
+  },
+  {
+   "from": "errno\\.h",
+   "to": "���ݽ�ע.�"
+  },
+  {
+   "from": "float\\.h",
+   "to": "˵��.�"
+  },
+  {
+   "from": "io\\.h",
+   "to": "��.�"
+  },
+  {
+   "from": "limits\\.h",
+   "to": "����.�"
+  },
+  {
+   "from": "locale\\.h",
+   "to": "�������.�"
+  },
+  {
+   "from": "math\\.h",
+   "to": "����.�"
+  },
+  {
+   "from": "mem\\.h",
+   "to": "������.�"
+  },
+  {
+   "from": "process\\.h",
+   "to": "������.�"
+  },
+  {
+   "from": "setjmp\\.h",
+   "to": "���ڡ�.�"
+  },
+  {
+   "from": "signal\\.h",
+   "to": "ע���.�"
+  },
+  {
+   "from": "stdarg\\.h",
+   "to": "��Ƴ���.�"
+  },
+  {
+   "from": "stddef\\.h",
+   "to": "��Ƴ���.�"
+  },
+  {
+   "from": "stdio\\.h",
+   "to": "��Ƴ��.�"
+  },
+  {
+   "from": "stdlib\\.h",
+   "to": "��Ƴ���.�"
+  },
+  {
+   "from": "string\\.h",
+   "to": "����.�"
+  },
+  {
+   "from": "stat\\.h",
+   "to": "������.�"
+  },
+  {
+   "from": "time\\.h",
+   "to": "���.�"
+  },
+  {
+   "from": "timeb\\.h",
+   "to": "�_���.�"
+  },
+  {
+   "from": "\\#define",
+   "to": "#�����"
+  },
+  {
+   "from": "\\#elif",
+   "to": "#��_���"
+  },
+  {
+   "from": "\\#else",
+   "to": "#������"
+  },
+  {
+   "from": "\\#endif",
+   "to": "#�����_���"
+  },
+  {
+   "from": "\\#error",
+   "to": "#���ݽ�"
+  },
+  {
+   "from": "\\#if",
+   "to": "#���"
+  },
+  {
+   "from": "\\#ifdef",
+   "to": "#���_�����"
+  },
+  {
+   "from": "\\#ifndef",
+   "to": "#���_������"
+  },
+  {
+   "from": "\\#include",
+   "to": "#������"
+  },
+  {
+   "from": "\\#line",
+   "to": "#Ȣ����"
+  },
+  {
+   "from": "\\#pragma",
+   "to": "#���"
+  },
+  {
+   "from": "\\#undef",
+   "to": "#������"
+  },
+  {
+   "from": "BUFSIZ",
+   "to": "��_���"
+  },
+  {
+   "from": "CHAR_BIT",
+   "to": "�����_�۽"
+  },
+  {
+   "from": "CHAR_MAX",
+   "to": "�����_���"
+  },
+  {
+   "from": "CHAR_MIN",
+   "to": "�����_�����"
+  },
+  {
+   "from": "CHILD_MAX",
+   "to": "����_���"
+  },
+  {
+   "from": "CLK_TCK",
+   "to": "����_�۳"
+  },
+  {
+   "from": "DBL_DIG",
+   "to": "���۵_˵��"
+  },
+  {
+   "from": "DBL_EPSILON",
+   "to": "���۵_����"
+  },
+  {
+   "from": "DBL_MANT_DIG",
+   "to": "���۵_�����"
+  },
+  {
+   "from": "DBL_MAX",
+   "to": "���۵_���"
+  },
+  {
+   "from": "DBL_MIN",
+   "to": "���۵_�����"
+  },
+  {
+   "from": "DIR",
+   "to": "�޸�"
+  },
+  {
+   "from": "EDOM",
+   "to": "���_���"
+  },
+  {
+   "from": "EOF",
+   "to": "���������"
+  },
+  {
+   "from": "ERANGE",
+   "to": "������"
+  },
+  {
+   "from": "EXIT_FAILURE",
+   "to": "�۳��_���ݽ�"
+  },
+  {
+   "from": "EXIT_SUCCESS",
+   "to": "�۳��_���"
+  },
+  {
+   "from": "FILE",
+   "to": "����"
+  },
+  {
+   "from": "FILENAME_MAX",
+   "to": "�������_���"
+  },
+  {
+   "from": "FLT_DIG",
+   "to": "˵��_˵��"
+  },
+  {
+   "from": "FLT_EPSILON",
+   "to": "˵��_����"
+  },
+  {
+   "from": "FLT_MANT_DIG",
+   "to": "˵��_�����"
+  },
+  {
+   "from": "FLT_MAX",
+   "to": "˵��_���"
+  },
+  {
+   "from": "FLT_MIN",
+   "to": "˵��_�����"
+  },
+  {
+   "from": "FLT_RADIX",
+   "to": "˵��_����"
+  },
+  {
+   "from": "FOPEN_MAX",
+   "to": "�_����_���"
+  },
+  {
+   "from": "HUGE_VAL",
+   "to": "�����_���"
+  },
+  {
+   "from": "INFINITY",
+   "to": "�����"
+  },
+  {
+   "from": "INT_MAX",
+   "to": "�����ڢ�_���"
+  },
+  {
+   "from": "INT_MIN",
+   "to": "�����ڢ�_�����"
+  },
+  {
+   "from": "LDBL_DIG",
+   "to": "�_����_˵��"
+  },
+  {
+   "from": "LDBL_EPSILON",
+   "to": "�_����_����"
+  },
+  {
+   "from": "LDBL_MANT_DIG",
+   "to": "�_����_�����"
+  },
+  {
+   "from": "LDBL_MAX",
+   "to": "�_����_���"
+  },
+  {
+   "from": "LDBL_MIN",
+   "to": "�_����_�����"
+  },
+  {
+   "from": "LONG_MAX",
+   "to": "����_���"
+  },
+  {
+   "from": "LONG_MIN",
+   "to": "����_�����"
+  },
+  {
+   "from": "L_tmpnam",
+   "to": "�_����۳"
+  },
+  {
+   "from": "NAN",
+   "to": "�_���"
+  },
+  {
+   "from": "NDEBUG",
+   "to": "�_ע����"
+  },
+  {
+   "from": "NULL",
+   "to": "�����"
+  },
+  {
+   "from": "RAND_MAX",
+   "to": "�����_���"
+  },
+  {
+   "from": "SCHAR_MAX",
+   "to": "�_�����_���"
+  },
+  {
+   "from": "SCHAR_MIN",
+   "to": "�_�����_�����"
+  },
+  {
+   "from": "SEEK_CUR",
+   "to": "��������_��"
+  },
+  {
+   "from": "SEEK_END",
+   "to": "���_��"
+  },
+  {
+   "from": "SEEK_SET",
+   "to": "����_��"
+  },
+  {
+   "from": "SHRT_MAX",
+   "to": "Ѷ�_���"
+  },
+  {
+   "from": "SHRT_MIN",
+   "to": "Ѷ�_�����"
+  },
+  {
+   "from": "SIBGABRT",
+   "to": "ע�_���"
+  },
+  {
+   "from": "SIGFPE",
+   "to": "ע�_�_���ݽ�"
+  },
+  {
+   "from": "SIGILL",
+   "to": "ע�_����"
+  },
+  {
+   "from": "SIGINT",
+   "to": "ע�_�۶��"
+  },
+  {
+   "from": "SIGSEGV",
+   "to": "ע�_���"
+  },
+  {
+   "from": "SIGTERM",
+   "to": "ע�_���"
+  },
+  {
+   "from": "SIG_DFL",
+   "to": "ע�_�����"
+  },
+  {
+   "from": "SIG_ERR",
+   "to": "ע�_���ݽ�"
+  },
+  {
+   "from": "SIG_IGN",
+   "to": "ע�_����"
+  },
+  {
+   "from": "TMP_MAX",
+   "to": "����۳_���"
+  },
+  {
+   "from": "UCHAR_MAX",
+   "to": "��_�����_���"
+  },
+  {
+   "from": "UINT_MAX",
+   "to": "��_�����ڢ�_���"
+  },
+  {
+   "from": "ULONG_MAX",
+   "to": "��_����_���"
+  },
+  {
+   "from": "USHRT_MAX",
+   "to": "��_Ѷ�_���"
+  },
+  {
+   "from": "\\\\a",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\b",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\f",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\n",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\r",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\t",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\v",
+   "to": "\\\\�"
+  },
+  {
+   "from": "\\\\x",
+   "to": "\\\\�"
+  },
+  {
+   "from": "____DATE____",
+   "to": "__���__"
+  },
+  {
+   "from": "____FILE____",
+   "to": "__����__"
+  },
+  {
+   "from": "____LINE____",
+   "to": "__Ȣ����__"
+  },
+  {
+   "from": "____STDC____",
+   "to": "__��Ƴ__"
+  },
+  {
+   "from": "____TIME____",
+   "to": "__���__"
+  },
+  {
+   "from": "_exit",
+   "to": "_�۳��"
+  },
+  {
+   "from": "abort",
+   "to": "���"
+  },
+  {
+   "from": "abs",
+   "to": "���"
+  },
+  {
+   "from": "asctime",
+   "to": "���_�ܳ"
+  },
+  {
+   "from": "asm",
+   "to": "͢���"
+  },
+  {
+   "from": "assert",
+   "to": "������"
+  },
+  {
+   "from": "atexit",
+   "to": "�۳��_��"
+  },
+  {
+   "from": "atof",
+   "to": "�_��_�"
+  },
+  {
+   "from": "atoi",
+   "to": "�_��_�"
+  },
+  {
+   "from": "atol",
+   "to": "�_��_�"
+  },
+  {
+   "from": "auto",
+   "to": "���£"
+  },
+  {
+   "from": "break",
+   "to": "�����"
+  },
+  {
+   "from": "bsearch",
+   "to": "����_��"
+  },
+  {
+   "from": "calloc",
+   "to": "��������"
+  },
+  {
+   "from": "case",
+   "to": "���"
+  },
+  {
+   "from": "ceil",
+   "to": "������"
+  },
+  {
+   "from": "char",
+   "to": "�����"
+  },
+  {
+   "from": "chdir",
+   "to": "�_����"
+  },
+  {
+   "from": "clearerr",
+   "to": "���_���ݽ�"
+  },
+  {
+   "from": "clock",
+   "to": "����"
+  },
+  {
+   "from": "clock_t",
+   "to": "����_��ϳ��"
+  },
+  {
+   "from": "close",
+   "to": "ʢ�"
+  },
+  {
+   "from": "closedir",
+   "to": "ʢ�_�޸�"
+  },
+  {
+   "from": "const",
+   "to": "�����"
+  },
+  {
+   "from": "continue",
+   "to": "����"
+  },
+  {
+   "from": "ctime",
+   "to": "�_���"
+  },
+  {
+   "from": "default",
+   "to": "���"
+  },
+  {
+   "from": "difftime",
+   "to": "�_����"
+  },
+  {
+   "from": "dirname",
+   "to": "�_���"
+  },
+  {
+   "from": "div",
+   "to": "�ڵ"
+  },
+  {
+   "from": "div_t",
+   "to": "�ڵ_��ϳ��"
+  },
+  {
+   "from": "do",
+   "to": "���"
+  },
+  {
+   "from": "double",
+   "to": "���۵��"
+  },
+  {
+   "from": "else",
+   "to": "������"
+  },
+  {
+   "from": "enum",
+   "to": "����ڵ�"
+  },
+  {
+   "from": "errno",
+   "to": "���ݽ�_ע"
+  },
+  {
+   "from": "exit",
+   "to": "�۳��"
+  },
+  {
+   "from": "extern",
+   "to": "�����"
+  },
+  {
+   "from": "fabs",
+   "to": "�_���"
+  },
+  {
+   "from": "fclose",
+   "to": "�_ʢ�"
+  },
+  {
+   "from": "feof",
+   "to": "�_�����"
+  },
+  {
+   "from": "ferror",
+   "to": "�_���ݽ�"
+  },
+  {
+   "from": "fflush",
+   "to": "�_���"
+  },
+  {
+   "from": "fgetc",
+   "to": "�_�����_��"
+  },
+  {
+   "from": "fgetpos",
+   "to": "�_�����_��"
+  },
+  {
+   "from": "fgets",
+   "to": "�_����_��"
+  },
+  {
+   "from": "float",
+   "to": "˵��"
+  },
+  {
+   "from": "floor",
+   "to": "��������"
+  },
+  {
+   "from": "fmod",
+   "to": "�_���"
+  },
+  {
+   "from": "fopen",
+   "to": "�_����"
+  },
+  {
+   "from": "for",
+   "to": "����"
+  },
+  {
+   "from": "fork",
+   "to": "���ں�"
+  },
+  {
+   "from": "fpos_t",
+   "to": "�_�����_��ϳ��"
+  },
+  {
+   "from": "fprintf",
+   "to": "�_�۴�"
+  },
+  {
+   "from": "fputc",
+   "to": "�_�����_��"
+  },
+  {
+   "from": "fputs",
+   "to": "�_����_��"
+  },
+  {
+   "from": "fread",
+   "to": "�_����"
+  },
+  {
+   "from": "free",
+   "to": "�ݳ��"
+  },
+  {
+   "from": "freopen",
+   "to": "�_�_����"
+  },
+  {
+   "from": "friend",
+   "to": "�����"
+  },
+  {
+   "from": "fscanf",
+   "to": "�_�޹�"
+  },
+  {
+   "from": "fseek",
+   "to": "�_�ڰ"
+  },
+  {
+   "from": "fsetpos",
+   "to": "�_�����_��"
+  },
+  {
+   "from": "fstat",
+   "to": "�_������"
+  },
+  {
+   "from": "ftell",
+   "to": "�_��ڰ"
+  },
+  {
+   "from": "fwrite",
+   "to": "�_����"
+  },
+  {
+   "from": "getc",
+   "to": "�_��"
+  },
+  {
+   "from": "getchar",
+   "to": "�����_��"
+  },
+  {
+   "from": "getenv",
+   "to": "��_�����"
+  },
+  {
+   "from": "gets",
+   "to": "����_��"
+  },
+  {
+   "from": "gettime",
+   "to": "���_��"
+  },
+  {
+   "from": "gmtime",
+   "to": "�_�̽"
+  },
+  {
+   "from": "goto",
+   "to": "�ڰ"
+  },
+  {
+   "from": "if",
+   "to": "���"
+  },
+  {
+   "from": "inline",
+   "to": "�������"
+  },
+  {
+   "from": "int",
+   "to": "�����ڢ�"
+  },
+  {
+   "from": "isalnum",
+   "to": "��_�����_���"
+  },
+  {
+   "from": "isalpha",
+   "to": "��_�����"
+  },
+  {
+   "from": "iscntrl",
+   "to": "��_��͢����"
+  },
+  {
+   "from": "isdigit",
+   "to": "��_���"
+  },
+  {
+   "from": "isfinite",
+   "to": "��_�����"
+  },
+  {
+   "from": "isgraph",
+   "to": "��_�����"
+  },
+  {
+   "from": "islower",
+   "to": "��_���"
+  },
+  {
+   "from": "isodigit",
+   "to": "��_��轳"
+  },
+  {
+   "from": "isprint",
+   "to": "��_���"
+  },
+  {
+   "from": "ispunct",
+   "to": "��_�����"
+  },
+  {
+   "from": "isspace",
+   "to": "��_����"
+  },
+  {
+   "from": "isupper",
+   "to": "��_ʿ��"
+  },
+  {
+   "from": "isxdigit",
+   "to": "��_�����ճ"
+  },
+  {
+   "from": "jmp_buf",
+   "to": "�ڡ�_��"
+  },
+  {
+   "from": "kill",
+   "to": "������"
+  },
+  {
+   "from": "labs",
+   "to": "�_���"
+  },
+  {
+   "from": "lconv",
+   "to": "����_���"
+  },
+  {
+   "from": "ldiv",
+   "to": "�_�ڵ"
+  },
+  {
+   "from": "ldiv_t",
+   "to": "�_�ڵ_��ϳ��"
+  },
+  {
+   "from": "localeconv",
+   "to": "�������_����"
+  },
+  {
+   "from": "localtime",
+   "to": "�_�������"
+  },
+  {
+   "from": "long",
+   "to": "����"
+  },
+  {
+   "from": "longjmp",
+   "to": "����_�ڡ�"
+  },
+  {
+   "from": "malloc",
+   "to": "��_������"
+  },
+  {
+   "from": "memchr",
+   "to": "�_�����"
+  },
+  {
+   "from": "memcmp",
+   "to": "�_���"
+  },
+  {
+   "from": "memcpy",
+   "to": "�_Ƴ�"
+  },
+  {
+   "from": "memmove",
+   "to": "�_ؽڰ"
+  },
+  {
+   "from": "memset",
+   "to": "�_ϴ�"
+  },
+  {
+   "from": "mkdir",
+   "to": "�޸�_����"
+  },
+  {
+   "from": "mktime",
+   "to": "�_����"
+  },
+  {
+   "from": "offsetof",
+   "to": "������"
+  },
+  {
+   "from": "open",
+   "to": "����"
+  },
+  {
+   "from": "opendir",
+   "to": "�޸�_����"
+  },
+  {
+   "from": "operator",
+   "to": "��ѳ"
+  },
+  {
+   "from": "pause",
+   "to": "����"
+  },
+  {
+   "from": "perror",
+   "to": "�۴�_���ݽ�"
+  },
+  {
+   "from": "pow",
+   "to": "���"
+  },
+  {
+   "from": "printf",
+   "to": "�_�۴�"
+  },
+  {
+   "from": "private",
+   "to": "�ۺ�"
+  },
+  {
+   "from": "protected",
+   "to": "ϳ����"
+  },
+  {
+   "from": "ptrdiff_t",
+   "to": "�޸�_���_��ϳ��"
+  },
+  {
+   "from": "public",
+   "to": "����"
+  },
+  {
+   "from": "putc",
+   "to": "�_��"
+  },
+  {
+   "from": "putchar",
+   "to": "�����_��"
+  },
+  {
+   "from": "puts",
+   "to": "����_��"
+  },
+  {
+   "from": "qsort",
+   "to": "���۳"
+  },
+  {
+   "from": "raise",
+   "to": "��ڰ"
+  },
+  {
+   "from": "rand",
+   "to": "�����"
+  },
+  {
+   "from": "read",
+   "to": "����"
+  },
+  {
+   "from": "readdir",
+   "to": "�޸�_����"
+  },
+  {
+   "from": "realloc",
+   "to": "��ƣ_������"
+  },
+  {
+   "from": "register",
+   "to": "������"
+  },
+  {
+   "from": "remove",
+   "to": "ؽڰ"
+  },
+  {
+   "from": "rename",
+   "to": "���"
+  },
+  {
+   "from": "return",
+   "to": "����"
+  },
+  {
+   "from": "rewind",
+   "to": "���ݥ�"
+  },
+  {
+   "from": "rewinddir",
+   "to": "�޸�_����"
+  },
+  {
+   "from": "rmdir",
+   "to": "�޸�_ؽڰ"
+  },
+  {
+   "from": "scanf",
+   "to": "�_�޹�"
+  },
+  {
+   "from": "setbuf",
+   "to": "ϴ�_��"
+  },
+  {
+   "from": "setjmp",
+   "to": "��ڰ_�ڡ�"
+  },
+  {
+   "from": "setlocale",
+   "to": "ϴ�_�������"
+  },
+  {
+   "from": "settime",
+   "to": "���_ϴ�"
+  },
+  {
+   "from": "setvbuf",
+   "to": "ϴ�_���"
+  },
+  {
+   "from": "short",
+   "to": "Ѷ�"
+  },
+  {
+   "from": "sig_atomic_t",
+   "to": "ע�_�����_��ϳ��"
+  },
+  {
+   "from": "signal",
+   "to": "ע���"
+  },
+  {
+   "from": "signed",
+   "to": "�������"
+  },
+  {
+   "from": "sigpending",
+   "to": "ע�_�ڳ�"
+  },
+  {
+   "from": "sigsuspend",
+   "to": "ע�_���"
+  },
+  {
+   "from": "size_t",
+   "to": "���_��ϳ��"
+  },
+  {
+   "from": "sizeof",
+   "to": "���"
+  },
+  {
+   "from": "sprintf",
+   "to": "���_�۴�"
+  },
+  {
+   "from": "sqrt",
+   "to": "���_���"
+  },
+  {
+   "from": "srand",
+   "to": "�����"
+  },
+  {
+   "from": "sscanf",
+   "to": "����_�޹�"
+  },
+  {
+   "from": "static",
+   "to": "���"
+  },
+  {
+   "from": "stderr",
+   "to": "��Ƴ_���ݽ�"
+  },
+  {
+   "from": "stdin",
+   "to": "��Ƴ_�����"
+  },
+  {
+   "from": "stdout",
+   "to": "��Ƴ_�۳��"
+  },
+  {
+   "from": "strcat",
+   "to": "�_����"
+  },
+  {
+   "from": "strchr",
+   "to": "�_�����"
+  },
+  {
+   "from": "strcmp",
+   "to": "�_���"
+  },
+  {
+   "from": "strcpy",
+   "to": "�_Ƴ�"
+  },
+  {
+   "from": "strcspn",
+   "to": "�_��"
+  },
+  {
+   "from": "strerror",
+   "to": "�_���ݽ�"
+  },
+  {
+   "from": "strftime",
+   "to": "�_����"
+  },
+  {
+   "from": "strlen",
+   "to": "�_���"
+  },
+  {
+   "from": "strncat",
+   "to": "�_����"
+  },
+  {
+   "from": "strncmp",
+   "to": "�_����"
+  },
+  {
+   "from": "strncpy",
+   "to": "�_Ƴ��"
+  },
+  {
+   "from": "strrchr",
+   "to": "�_���"
+  },
+  {
+   "from": "strspn",
+   "to": "�_���"
+  },
+  {
+   "from": "strstr",
+   "to": "�_����"
+  },
+  {
+   "from": "strtod",
+   "to": "�_��_˵��"
+  },
+  {
+   "from": "strtok",
+   "to": "�_����"
+  },
+  {
+   "from": "strtol",
+   "to": "�_��_����"
+  },
+  {
+   "from": "strtoul",
+   "to": "�_��_�����"
+  },
+  {
+   "from": "struct",
+   "to": "�����"
+  },
+  {
+   "from": "switch",
+   "to": "���"
+  },
+  {
+   "from": "system",
+   "to": "�������"
+  },
+  {
+   "from": "template",
+   "to": "�ڡ��"
+  },
+  {
+   "from": "time",
+   "to": "���"
+  },
+  {
+   "from": "time_t",
+   "to": "���_��ϳ��"
+  },
+  {
+   "from": "times",
+   "to": "���"
+  },
+  {
+   "from": "tm",
+   "to": "Ȣ�ڢ�"
+  },
+  {
+   "from": "tmpfile",
+   "to": "����۳_�"
+  },
+  {
+   "from": "tmpnam",
+   "to": "����۳"
+  },
+  {
+   "from": "tolower",
+   "to": "���"
+  },
+  {
+   "from": "toupper",
+   "to": "ʿ��"
+  },
+  {
+   "from": "typedef",
+   "to": "��ϳ��"
+  },
+  {
+   "from": "ungetc",
+   "to": "�����_����"
+  },
+  {
+   "from": "union",
+   "to": "���"
+  },
+  {
+   "from": "unsigned",
+   "to": "��������"
+  },
+  {
+   "from": "va_arg",
+   "to": "���_���"
+  },
+  {
+   "from": "va_end",
+   "to": "���_�����"
+  },
+  {
+   "from": "va_list",
+   "to": "���_�޸�"
+  },
+  {
+   "from": "va_start",
+   "to": "���_����"
+  },
+  {
+   "from": "vfprintf",
+   "to": "˴_�۴�"
+  },
+  {
+   "from": "virtual",
+   "to": "��"
+  },
+  {
+   "from": "void",
+   "to": "�����"
+  },
+  {
+   "from": "volatile",
+   "to": "������"
+  },
+  {
+   "from": "vprintf",
+   "to": "�_�۴�"
+  },
+  {
+   "from": "vsprintf",
+   "to": "��_�۴�"
+  },
+  {
+   "from": "wait",
+   "to": "�ݳ�"
+  },
+  {
+   "from": "wchar_t",
+   "to": "�_�����_��ϳ��"
+  },
+  {
+   "from": "while",
+   "to": "��³"
+  },
+  {
+   "from": "write",
+   "to": "�_�۴�"
+  }
+ ]
+}

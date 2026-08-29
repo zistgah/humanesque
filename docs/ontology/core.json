@@ -1,0 +1,34 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "id": "panini.ontology.core",
+  "note": "Project graph. Overlays from other AIs merge by node id. Labels are views; id is identity.",
+  "nodes": [
+    {"id": "sys:panini", "kind": "language", "labels": {"en": "PANINI", "hi": "पाणिनि", "sa": "पाणिनिः"}, "layer": "L13"},
+    {"id": "sys:ilm", "kind": "substrate", "labels": {"en": "ILM", "hi": "इल्म"}, "layer": "L12"},
+    {"id": "sys:hindawi", "kind": "system", "labels": {"en": "Hindawi Programming System", "hi": "हिन्दवी"}, "layer": "L14"},
+    {"id": "sys:ayeai", "kind": "triad", "labels": {"en": "AyeAI", "hi": "अय AI"}, "layer": "L18"},
+    {"id": "sys:ayecnse", "kind": "triad", "labels": {"en": "AyeCNSe"}, "layer": "L19"},
+    {"id": "sys:ayeam", "kind": "triad", "labels": {"en": "AyeAM"}, "layer": "L20"},
+    {"id": "sys:fakir", "kind": "guide", "labels": {"en": "FAKIR", "hi": "फ़क़ीर"}, "layer": "L26"},
+    {"id": "sys:chakra", "kind": "observatory", "labels": {"en": "CHAKRA", "hi": "चक्र"}, "layer": "L11"},
+    {"id": "sys:romenagri", "kind": "channel", "labels": {"en": "Romenagri", "hi": "रोमेनागरी"}, "layer": "L12"},
+    {"id": "shaili:guru", "kind": "shaili", "labels": {"en": "C", "hi": "गुरु"}, "layer": "L13"},
+    {"id": "shaili:soochee", "kind": "shaili", "labels": {"en": "Python", "hi": "सूची"}, "layer": "L8"},
+    {"id": "shaili:jala", "kind": "shaili", "labels": {"en": "JavaScript", "hi": "जाल"}, "layer": "L8"},
+    {"id": "shaili:sutra", "kind": "shaili", "labels": {"en": "SQL", "hi": "सूत्र"}, "layer": "L11"},
+    {"id": "shaili:praatha", "kind": "shaili", "labels": {"en": "BASIC", "hi": "प्राथमिक"}, "layer": "L16"},
+    {"id": "shaili:rekha", "kind": "shaili", "labels": {"en": "Logo", "hi": "रेखा"}, "layer": "L16"},
+    {"id": "concept:factorial", "kind": "function", "labels": {"en": "factorial", "hi": "क्रमगुण", "sa": "क्रमगुणनम्"}, "example": "examples/क्रमगुण.pni"},
+    {"id": "concept:double", "kind": "function", "labels": {"en": "double", "hi": "द्विगुण"}, "example": "examples/double.py"},
+    {"id": "fest:raksha-bandhana", "kind": "festival", "labels": {"en": "Raksha Bandhan", "hi": "रक्षा बंधन", "iast": "Rakṣā Bandhana"}, "computed_by": "sys:chakra"}
+  ],
+  "edges": [
+    {"from": "sys:panini", "rel": "uses", "to": "sys:ilm"},
+    {"from": "sys:panini", "rel": "continues", "to": "sys:hindawi"},
+    {"from": "sys:ayeai", "rel": "loopWith", "to": "sys:ayecnse"},
+    {"from": "sys:ayeai", "rel": "loopWith", "to": "sys:ayeam"},
+    {"from": "concept:factorial", "rel": "writtenIn", "to": "sys:panini"},
+    {"from": "fest:raksha-bandhana", "rel": "computedBy", "to": "sys:chakra"},
+    {"from": "shaili:guru", "rel": "hostOf", "to": "sys:hindawi"}
+  ]
+}

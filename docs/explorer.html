@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estate instrument — Humanesque → AyeAI → Zistgah</title>
+  <style>
+    html,body { margin:0; background:#0b0b0b; color:#e6e6e6; font:16px/1.55 system-ui,sans-serif; }
+    a { color:#9fd3ff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header { padding:1rem 1.2rem; border-bottom:1px solid #333; display:flex; flex-wrap:wrap; gap:.8rem; align-items:baseline; }
+    header strong { letter-spacing:.12em; font-weight:500; }
+    header nav { display:flex; flex-wrap:wrap; gap:.8rem; font-size:.9rem; }
+    main { max-width:1120px; margin:0 auto; padding:1.5rem 1.2rem 4rem; }
+    h1 { font-weight:500; font-size:1.6rem; margin:.2rem 0; }
+    h2 { font-weight:500; margin:1.4rem 0 .5rem; }
+    .cite { color:#888; font-size:.9rem; }
+    .triad { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1.2rem 0; }
+    .card { border:1px solid #333; background:#111; padding:1rem; border-radius:12px; }
+    .card h3 { margin:.1rem 0 .4rem; font-weight:500; }
+    .card p { margin:0; color:#ccc; font-size:.95rem; }
+    .live { color:#9fd3ff; font-size:.75rem; letter-spacing:.08em; }
+    .chips { display:flex; flex-wrap:wrap; gap:.35rem; margin:.5rem 0 1rem; }
+    .chips button {
+      background:#111; color:#e6e6e6; border:1px solid #333; border-radius:999px;
+      padding:.25rem .7rem; cursor:pointer; font:13px system-ui,sans-serif;
+    }
+    .chips button.on { border-color:#9fd3ff; color:#9fd3ff; }
+    .axis { width:100%; border-collapse:collapse; font-size:.92rem; }
+    .axis th,.axis td { border-bottom:1px solid #333; padding:.4rem .5rem; text-align:left; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr)); gap:.6rem; }
+    .panel { border:1px solid #333; background:#111; border-radius:12px; padding:.7rem .8rem; cursor:pointer; text-align:left; color:inherit; width:100%; }
+    .panel:hover, .panel.on { border-color:#9fd3ff; }
+    .panel .n { color:#9fd3ff; font-size:.75rem; }
+    .panel h3 { margin:.15rem 0; font-size:1rem; font-weight:500; }
+    .panel p { margin:0; color:#ccc; font-size:.82rem; }
+    .detail { border:1px solid #333; background:#111; border-radius:12px; padding:1rem; margin-top:1rem; }
+    .detail img { width:100%; max-height:28rem; object-fit:contain; background:#000; border-radius:8px; }
+    input#q { width:100%; max-width:28rem; background:#111; color:#e6e6e6; border:1px solid #333; border-radius:8px; padding:.45rem .6rem; }
+    .row { display:block; padding:.4rem 0; border-bottom:1px solid #222; color:inherit; }
+    footer { color:#888; font-size:.85rem; margin-top:2.5rem; }
+    .warn { color:#ccc; }
+  </style>
+</head>
+<body>
+<header>
+  <strong>ESTATE INSTRUMENT</strong>
+  <nav>
+    <a href="index.html">PANINI</a>
+    <a href="#triad">AyeAI triad</a>
+    <a href="#axis">Execution axis</a>
+    <a href="#panels">31 panels</a>
+    <a href="#repos">Repos</a>
+    <a href="https://doi.org/10.5281/zenodo.22122422">DOI</a>
+    <a href="https://icansee.life">icansee.life</a>
+  </nav>
+</header>
+<main>
+  <p class="cite" id="cite"></p>
+  <h1>Humanesque → AyeAI → Zistgah</h1>
+  <p>A correlated system of constitution · domain · cognition · execution · ecosystem. AyeAI is <em>not</em> historical. It is the living triad.</p>
+
+  <h2 id="triad">AyeAI triad — live</h2>
+  <div class="triad" id="triad-cards"></div>
+  <p id="triad-inv" class="warn"></p>
+
+  <h2 id="axis">Execution architecture (orthogonal axis)</h2>
+  <table class="axis" id="axis"></table>
+
+  <h2 id="panels">Thirty-one panels (the poster)</h2>
+  <p class="cite">Instrument of the overview poster. Related posters from the same DOI (91 PNGs). 322 MB payload is not inlined.</p>
+  <div class="chips" id="nodes"></div>
+  <div class="grid" id="panels-grid"></div>
+  <div class="detail" id="pdetail"><p class="cite">Select a panel.</p></div>
+
+  <h2 id="repos">Repositories hanging on this architecture</h2>
+  <p><input id="q" placeholder="filter repos…" /></p>
+  <div id="repolist"></div>
+
+  <footer>
+    Choudhary, A. Affiliation: AyeAI. ORCID 0009-0002-0684-8320.
+    Style tokens from <a href="https://icansee.life">icansee.life</a>.
+    Posters CC-BY-SA-4.0. This tree GPL-3.0-or-later.
+    Not IBM, not HP.
+  </footer>
+</main>
+<script>
+const Z = "https://zenodo.org/api/records/22122422/files/";
+const localPoster = (name) => "explorer/posters/" + name;
+Promise.all([
+  fetch("explorer/architecture.json").then(r=>r.json()),
+  fetch("explorer/estate.json").then(r=>r.json())
+]).then(([A, E]) => {
+  document.getElementById("cite").innerHTML =
+    A.citation + " · <a href='https://doi.org/"+A.doi.replace('https://doi.org/','')+"'>doi</a>";
+  document.getElementById("triad-cards").innerHTML = A.ayeai.triad.map(t =>
+    "<div class='card'><div class='live'>LIVE</div><h3>"+t.id+"</h3><p>"+t.what+"</p><p><a href='"+t.url+"'>"+t.url.replace('https://','')+"</a></p></div>"
+  ).join("");
+  document.getElementById("triad-inv").textContent = A.ayeai.invariant;
+
+  document.getElementById("axis").innerHTML =
+    "<thead><tr><th>Facet</th><th>System</th><th>Asks</th></tr></thead><tbody>" +
+    A.orthogonal_axis.map(r => "<tr data-sys='"+r.system+"'><td>"+r.facet+"</td><td>"+r.system+"</td><td>"+r.asks+"</td></tr>").join("") +
+    "</tbody>";
+
+  const nodes = [...new Set(A.panels.map(p=>p.node))];
+  document.getElementById("nodes").innerHTML =
+    "<button type='button' class='on' data-node=''>all</button>" +
+    nodes.map(n=>"<button type='button' data-node='"+n+"'>"+n+"</button>").join("");
+
+  let node = "";
+  function postersrc(name) {
+    /* prefer local copy when present; zenodo otherwise */
+    return localPoster(name);
+  }
+  function showPanel(p) {
+    document.querySelectorAll(".panel").forEach(el => el.classList.toggle("on", +el.dataset.n === p.n));
+    const repos = (p.repos||[]).map(k => {
+      const it = E.items.find(x => x.key === k);
+      const href = it && it.inlined ? it.href : (it ? it.html_url : "https://github.com/"+k);
+      return "<a class='row' href='"+href+"'><b>"+k+"</b> — "+((it&&(it.what||it.description))||"")+"</a>";
+    }).join("") || "<p class='cite'>No repo on this panel (AyeAI triad is the loop, not a GitHub org dump).</p>";
+    document.getElementById("pdetail").innerHTML =
+      "<p class='n'>Panel "+p.n+" · "+p.node+"</p><h3>"+p.title+"</h3><p>"+p.text+"</p>"+
+      "<p><img alt='"+p.title+"' src='"+postersrc(p.poster)+"' onerror=\"this.src='"+Z+p.poster+"/content'\"></p>"+
+      "<p class='cite'>Poster file: "+p.poster+" · same DOI</p>"+repos;
+  }
+  function drawPanels() {
+    const list = A.panels.filter(p => !node || p.node === node);
+    document.getElementById("panels-grid").innerHTML = list.map(p =>
+      "<button type='button' class='panel' data-n='"+p.n+"'><div class='n'>"+p.n+" · "+p.node+"</div><h3>"+p.title+"</h3><p>"+p.text.slice(0,110)+"…</p></button>"
+    ).join("");
+    document.querySelectorAll(".panel").forEach(el => {
+      el.onclick = () => showPanel(A.panels.find(x => x.n === +el.dataset.n));
+    });
+  }
+  document.getElementById("nodes").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    document.querySelectorAll("#nodes button").forEach(x => x.classList.remove("on"));
+    b.classList.add("on"); node = b.dataset.node || ""; drawPanels();
+  };
+  drawPanels();
+  showPanel(A.panels[0]);
+
+  document.querySelectorAll("#axis tr[data-sys]").forEach(tr => {
+    tr.style.cursor = "pointer";
+    tr.onclick = () => {
+      const sys = tr.dataset.sys;
+      const p = A.panels.find(x => sys.indexOf(x.node) >= 0 || x.node.indexOf(sys.split(" ")[0]) >= 0);
+      if (p) { node = p.node; drawPanels(); showPanel(p); location.hash = "#panels"; }
+    };
+  });
+
+  function hay(i){ return (i.key+" "+i.what+" "+i.description+" "+i.family).toLowerCase(); }
+  function drawRepos(q) {
+    const rows = E.items.filter(i => !q || hay(i).includes(q)).slice(0, 80);
+    document.getElementById("repolist").innerHTML = rows.map(i => {
+      const href = i.inlined ? i.href : i.html_url;
+      return "<a class='row' href='"+href+"'><b>"+i.key+"</b> · "+i.family+(i.inlined?" · inlined":"")+"<br><span class='cite'>"+(i.what||i.description||"")+"</span></a>";
+    }).join("");
+  }
+  document.getElementById("q").oninput = e => drawRepos(e.target.value.trim().toLowerCase());
+  drawRepos("");
+});
+</script>
+</body>
+</html>

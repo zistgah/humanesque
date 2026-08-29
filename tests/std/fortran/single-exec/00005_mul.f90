@@ -1,0 +1,6 @@
+PROGRAM P
+  IF ((6 * 7) .EQ. 42) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

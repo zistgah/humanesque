@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V11.0 - Time Machine</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Courier New', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; }
+        .chronos-hud { background: rgba(20, 0, 40, 0.85); border: 1px solid #d946ef; padding: 20px; border-radius: 4px; pointer-events: auto; color: #f5d0fe; width: 340px; box-shadow: 0 0 25px rgba(217, 70, 239, 0.4); }
+        .console-box { display: flex; gap: 10px; height: 160px; width: 100%; max-width: 900px; align-self: center; background: rgba(10, 0, 20, 0.95); padding: 15px; border-radius: 8px; border: 1px solid #d946ef; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #f0abfc; border: 1px solid #701a75; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 160px; background: #d946ef; color: #fff; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+        .stat { font-size: 13px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        #clock { font-size: 18px; font-weight: bold; color: #fff; text-align: center; margin: 10px 0; border: 1px dashed #d946ef; padding: 5px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="chronos-hud">
+            <h2 style="margin:0; font-size: 16px;">TEMPORAL_DRIVE_v11.0</h2>
+            <div id="clock">YEAR: 2026</div>
+            <div class="stat"><span>FLUX_DENSITY:</span><span id="flux">0%</span></div>
+            <div class="stat"><span>SPACETIME_CURVE:</span><span id="curve">0.00</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// TEMPORAL JUMP SEQUENCE
+SPIN_UP_TIPLER_CYLINDER(80)
+WAIT(3.0)
+ENGAGE_FLUX_CAPACITOR(1.21)
+WAIT(2.0)
+TEMPORAL_INVERSION(-500) // Jump 500 years back
+WAIT(4.0)
+STABILIZE_TIMELINE()</textarea>
+            <button onclick="sim.run()">Initiate Jump</button>
+        </div>
+    </div>
+
+    <script>
+        class TimeSim {
+            constructor() {
+                this.year = 2026;
+                this.targetYear = 2026;
+                this.flux = 0;
+                this.curvature = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.camera.position.z = 50;
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // Spacetime Grid (Tipler Cylinder representation)
+                const gridGeo = new THREE.CylinderGeometry(20, 20, 200, 32, 20, true);
+                const gridMat = new THREE.MeshBasicMaterial({ color: 0xd946ef, wireframe: true, transparent: true, opacity: 0.3 });
+                this.cylinder = new THREE.Mesh(gridGeo, gridMat);
+                this.cylinder.rotation.x = Math.PI / 2;
+                this.scene.add(this.cylinder);
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'SPIN_UP_TIPLER_CYLINDER') this.targetFlux = val;
+                        else if (cmd === 'TEMPORAL_INVERSION') this.targetYear = this.year + val;
+                        else if (cmd === 'STABILIZE_TIMELINE') { this.targetFlux = 0; this.curvature = 0; }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                // Machine Physics
+                this.flux += (this.targetFlux - this.flux) * 0.05;
+                this.curvature = this.flux / 50;
+                
+                // Rotate Spacetime
+                this.cylinder.rotation.y += this.flux * 0.01;
+                this.cylinder.scale.set(1 + Math.sin(Date.now()*0.01)*this.curvature*0.1, 1, 1);
+
+                // Temporal Drift
+                if (Math.abs(this.targetYear - this.year) > 1) {
+                    this.year += (this.targetYear - this.year) * 0.05;
+                    this.scene.background = new THREE.Color(Math.random()*0.1, 0, Math.random()*0.1); // Paradox flashes
+                } else {
+                    this.scene.background = new THREE.Color(0,0,0);
+                }
+
+                // Update HUD
+                document.getElementById('clock').innerText = `YEAR: ${Math.round(this.year)}`;
+                document.getElementById('flux').innerText = `${Math.round(this.flux)}%`;
+                document.getElementById('curve').innerText = this.curvature.toFixed(2);
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new TimeSim();
+    </script>
+</body>
+</html>

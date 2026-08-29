@@ -1,0 +1,12 @@
+{
+  "language": "java",
+  "issuing_body": "OpenJDK javac (JLS proxy). Not Java™ branding.",
+  "suite": "Parens1/2/3 @compile/fail reject + LambdaConv01 @compile accept",
+  "n": 4,
+  "pass": 4,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named OpenJDK javac extract. LambdaConv01 @run main execute is GAP. Not Java™."
+}

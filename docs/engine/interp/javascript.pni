@@ -1,0 +1,25 @@
+/* PANINI.Frontend.JavaScript — STANDARD GREEN on Test262 language extract.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.JavaScript
+FUNCTION run_javascript(source)
+    r = TEST262RUN(source)
+    IF r.ok
+        r.frontend = "PANINI.Frontend.JavaScript"
+        RETURN r
+    END
+    IF r.error
+        r.frontend = "PANINI.Frontend.JavaScript"
+        RETURN r
+    END
+    lowered = JSLOWER(source)
+    cr = run_c(lowered)
+    cr.frontend = "PANINI.Frontend.JavaScript"
+    cr.lowered = lowered
+    RETURN cr
+END
+FUNCTION main()
+    r = run_javascript("function main(){ return 0; }")
+    RETURN r.value
+END
+END

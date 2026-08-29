@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyeCNSe V13.3 - Omniverse Architect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Courier New', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box; }
+        .core-hud { background: rgba(5, 5, 15, 0.95); border: 2px solid #4ade80; padding: 20px; border-radius: 8px; pointer-events: auto; color: #4ade80; width: 360px; box-shadow: 0 0 30px rgba(74, 222, 128, 0.2); }
+        .console-box { display: flex; gap: 10px; height: 200px; width: 100%; max-width: 900px; align-self: center; background: rgba(5, 5, 5, 0.98); padding: 15px; border-radius: 8px; border: 1px solid #4ade80; pointer-events: auto; box-sizing: border-box; }
+        textarea { flex-grow: 1; background: #000; color: #4ade80; border: 1px solid #064e3b; padding: 10px; font-size: 12px; outline: none; resize: none; font-family: 'JetBrains Mono', monospace; }
+        button { width: 160px; background: #4ade80; color: #064e3b; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .stat { font-size: 13px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        #log-display { font-size: 11px; color: #2dd4bf; margin-top: 10px; border-top: 1px solid #064e3b; padding-top: 5px; }
+        .kardashev-glow { text-shadow: 0 0 10px #4ade80; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="core-hud">
+            <h2 style="margin:0; font-size: 16px; color: #fff;">ARCHITECT_CORE_v13.3</h2>
+            <div id="log-display">ITERATION: 1</div>
+            <hr style="border: 0.5px solid #064e3b; margin: 10px 0;">
+            <div class="stat"><span>DIMENSION:</span><span id="dim">3D</span></div>
+            <div class="stat"><span>PHYSICS_SEED:</span><span id="seed">0.500</span></div>
+            <div class="stat"><span>SENTIENT_PROB:</span><span id="life-stat">0.00%</span></div>
+            <div class="stat"><span>CIV_TYPE:</span><span id="k-scale" class="kardashev-glow">NONE</span></div>
+            <div class="stat"><span>ENTROPY:</span><span id="entropy">STABLE</span></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// THE ULTIMATE GENESIS CYCLE
+COLLAPSE_TO_SINGULARITY()
+WAIT(2.0)
+BIG_BANG()
+WAIT(1.0)
+GENERATE_NEW_REALITY_SEED(0.455) 
+WAIT(2.0)
+INITIATE_DIMENSIONAL_SHIFT(3)</textarea>
+            <button onclick="sim.run()">Shift Reality</button>
+        </div>
+    </div>
+
+    <script>
+        class ArchitectSim {
+            constructor() {
+                this.dimension = 3;
+                this.seed = 0.5;
+                this.iteration = 1;
+                this.isFolding = false;
+                this.lifeProb = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.camera.position.z = 150;
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // The Quantum Lattice
+                const geo = new THREE.TorusKnotGeometry(40, 15, 300, 40);
+                this.mat = new THREE.PointsMaterial({ color: 0x4ade80, size: 0.6 });
+                this.realityMesh = new THREE.Points(geo, this.mat);
+                this.scene.add(this.realityMesh);
+
+                // Background Void
+                const bgGeo = new THREE.BufferGeometry();
+                const bgCoords = [];
+                for(let i=0; i<10000; i++) {
+                    bgCoords.push((Math.random()-0.5)*2500, (Math.random()-0.5)*2500, (Math.random()-0.5)*2500);
+                }
+                bgGeo.setAttribute('position', new THREE.Float32BufferAttribute(bgCoords, 3));
+                this.dust = new THREE.Points(bgGeo, new THREE.PointsMaterial({color: 0x4ade80, size: 0.2, transparent: true, opacity: 0.1}));
+                this.scene.add(this.dust);
+
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        
+                        if (cmd === 'INITIATE_DIMENSIONAL_SHIFT') this.dimension = val;
+                        else if (cmd === 'GENERATE_NEW_REALITY_SEED') {
+                            this.seed = val;
+                            this.mat.color.setHSL(val, 0.7, 0.6);
+                        }
+                        else if (cmd === 'RECURSIVE_FOLDING_ON') this.isFolding = true;
+                        else if (cmd === 'COLLAPSE_TO_SINGULARITY') {
+                            this.isFolding = false;
+                            this.dimension = 0;
+                        }
+                        else if (cmd === 'BIG_BANG') {
+                            this.iteration++;
+                            this.dimension = 3;
+                            this.seed = Math.random();
+                            this.mat.color.setHSL(this.seed, 1, 0.8);
+                            this.camera.position.z = 20; 
+                        }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                this.realityMesh.rotation.x += 0.005;
+                this.realityMesh.rotation.y += 0.008;
+
+                // Scale Logic
+                if (this.dimension === 0) {
+                    this.realityMesh.scale.lerp(new THREE.Vector3(0.001, 0.001, 0.001), 0.1);
+                } else {
+                    this.realityMesh.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
+                    this.camera.position.z += ((100 + (this.dimension * 15)) - this.camera.position.z) * 0.02;
+                }
+
+                // Sentient Life Math
+                if (this.dimension > 0) {
+                    // Goldilocks zone is roughly 0.4 to 0.5
+                    let stability = 1 - Math.abs(0.45 - this.seed) * 4;
+                    this.lifeProb = Math.max(0, stability * 100);
+                } else {
+                    this.lifeProb = 0;
+                }
+
+                // Kardashev Scale Logic
+                let kType = "NONE";
+                if (this.lifeProb > 95) kType = "TYPE III (Galactic)";
+                else if (this.lifeProb > 80) kType = "TYPE II (Stellar)";
+                else if (this.lifeProb > 60) kType = "TYPE I (Planetary)";
+                else if (this.lifeProb > 40) kType = "MICROBIAL";
+
+                // Update HUD
+                document.getElementById('dim').innerText = Math.round(this.dimension) + "D";
+                document.getElementById('seed').innerText = this.seed.toFixed(3);
+                document.getElementById('life-stat').innerText = this.lifeProb.toFixed(2) + "%";
+                document.getElementById('k-scale').innerText = kType;
+                document.getElementById('entropy').innerText = this.dimension === 0 ? "SINGULARITY" : "STABLE";
+                document.getElementById('log-display').innerText = `ITERATION: ${this.iteration}`;
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        const sim = new ArchitectSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Language standards</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head"><strong>PANINI</strong>
+  <nav><a href="index.html">Overview</a><a href="languages.html">Languages</a><a href="workbench.html">Workbench</a></nav>
+</header>
+<main class="site-main">
+  <h1>Official standards (retrieved)</h1>
+  <p class="lead">Fetched from the issuing bodies. A 20-case homemade file is factory smoke, not a standard. See <a href="STANDARD_GREEN.md">STANDARD GREEN</a> and <a href="SOURCES_STANDARDS.md">SOURCES</a>.</p>
+  <table>
+    <tr><th>Language</th><th>Retrieved spec</th><th>Official suite</th><th>STANDARD GREEN</th></tr>
+    <tr><td>C</td><td>WG14 N1570</td><td>c-testsuite 104</td><td>YES</td></tr>
+    <tr><td>C++</td><td>WG21 N4296 (fetched; not in zip)</td><td>g++.dg/expr named extract 5</td><td>YES on that extract</td></tr>
+    <tr><td>ECMAScript</td><td>ECMA-262 HTML</td><td>Test262 language extract 13</td><td>YES on that extract</td></tr>
+    <tr><td>TypeScript</td><td>Handbook + ECMA-262</td><td>tsc v5.4.5 compiler extract 2</td><td>YES on that extract</td></tr>
+    <tr><td>Python</td><td>PSF 3.12 grammar + reference</td><td>CPython Lib/test language extract 68</td><td>YES on that extract</td></tr>
+    <tr><td>Pascal</td><td>ISO 7185 via Pascal-P5</td><td>iso7185prt + hello 10</td><td>YES on that extract</td></tr>
+    <tr><td>BASIC / QB64</td><td>QB64 Phoenix Edition</td><td>expression.bas 38</td><td>YES</td></tr>
+    <tr><td>Java</td><td>OpenJDK javac (not Java™)</td><td>Parens + LambdaConv01 4</td><td>YES on that extract</td></tr>
+    <tr><td>Smalltalk</td><td>GNU Smalltalk / ANSI</td><td>intmath Eval 31</td><td>YES on that extract</td></tr>
+    <tr><td>Haskell</td><td>Haskell 2010 via GHC</td><td>codeGen cgrun 3</td><td>YES on that extract</td></tr>
+    <tr><td>Common Lisp</td><td>ANSI INCITS 226-1994 / CLHS</td><td>ansi-test self-contained deftest 19</td><td>YES on that extract</td></tr>
+    <tr><td>Prolog</td><td>ISO/IEC 13211-1</td><td>Ciao iso_tests ISO 8.6/8.7 arith 23</td><td>YES on that extract</td></tr>
+    <tr><td>Fortran</td><td>WG5 N2146</td><td>gfortran.dg execute</td><td>NO — named GAP</td></tr>
+    <tr><td>Go</td><td>go.dev/ref/spec</td><td>all.bash not claimed</td><td>NO</td></tr>
+    <tr><td>Lua</td><td>5.4 manual</td><td>lua.org 5.4.7 tests (retrieved)</td><td>NO — low-hanging</td></tr>
+    <tr><td>Rust</td><td>The Rust Reference</td><td>rustc ui not claimed</td><td>NO</td></tr>
+    <tr><td>Zig</td><td>ziglang.org langref</td><td>—</td><td>NO</td></tr>
+  </table>
+
+  <ul>
+    <li>C — ISO/IEC 9899, gcc torture, c-testsuite</li>
+    <li>C++ — ISO/IEC 14882, libc++ / libstdc++</li>
+    <li>Python — CPython Lib/test, PEPs</li>
+    <li>Fortran — ISO/IEC 1539, gfortran torture</li>
+    <li>Julia — Julia test/</li>
+    <li>Rust — rustc ui</li>
+    <li>Go — Go spec + go test</li>
+    <li>TypeScript / JS — TS tests + ECMA-262 Test262</li>
+    <li>Zig, Java (JLS), Kotlin, Scala, C# (ECMA-334), F#, Swift</li>
+    <li>Ruby spec, PHPT, perl harness, R Language Definition, Octave test/</li>
+    <li>Haskell 2010, OCaml, OTP, Elixir, Lua</li>
+    <li>COBOL ISO 1989, Ada ACATS, Pascal ISO 7185, BASIC ECMA-116</li>
+    <li>R7RS, Prolog ISO 13211, SQL ISO 9075, WASM spec, WGSL</li>
+    <li>PANINI — tests/panini/ (owned)</li>
+  </ul>
+  <p>Full table: <a href="view.html?src=SUPPORTED_LANGUAGES.md">supported languages</a></p>
+  <p>PANINI standard: <a href="view.html?src=PANINI_STANDARD.md">PANINI.STD.2026.08</a></p>
+  <p>ISO C (NOT GREEN): <a href="view.html?src=HINDAWI_RETRIEVED.md">retrieved notes</a></p>
+</main>
+<script src="i18n/gt.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "language": "pascal",
+  "issuing_body": "ISO 7185 via Pascal-P5 standard_tests",
+  "suite": "iso7185prt (reject) + sample_programs/hello.pas (accept)",
+  "n": 10,
+  "pass": 10,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named P5 extract. Full iso7185pat.pas (123 KB PAT) is GAP."
+}

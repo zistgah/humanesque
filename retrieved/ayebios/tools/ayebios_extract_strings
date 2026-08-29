@@ -1,0 +1,4 @@
+find . -type f | grep '\.[ch]' | xargs grep -B2 -A2 printf | grep -v "#include" | sed 's/\\"/__quote__/g; s/,/__comma__/g; s/"/\n"/g' | grep '^"' | grep -v '^",\|" //' | grep '[a-z]' | sort -u | cut -c2- > out/ayetrans.inp
+
+cat out/ayetrans.inp | grep -v '^__comma__' | sed 's/[a-z]\{1\}[A-Z]/\n/g' | sed 's/\\n/\n/g; s/__quote__\|__comma__/\n/g; s/[^a-zA-Z0-9_\ ]/\n/g; s/0x/\n/g; s/\\t/\n/g; s/\\x0d/\n/g' | sed 's/^[a-z]\ //g; s/^\ *//g; s/\ *$//g; s/^[A-Za-z0-9]$//g; s/\ \{2\}/\n/g; s/\\/\n/g;' | sed 's/[0-9]/\n/g; s/[A-Z]\{2\}/\n/g' | sed 's/^[a-z] //g; s/ [a-z]$//g; s/^[A-Za-z]$//g; s/_/\n/g; s/^\ *//g; s/\ *$//g;' | sed 's/^[a-zA-Z] //g;' | grep -v '^[_ ]*$' | awk '{if(NF<3) printf $1 "\n" $2 "\n"; else print}' | sed 's/^[a-z] //g; s/ [a-z]$//g; s/^[A-Za-z]$//g;' | awk '{print length($0) " " $0}' | sort -u | sort -rn | cut -d' ' -f2- >out/ayetrans.txt
+

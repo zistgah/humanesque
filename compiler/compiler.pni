@@ -1,0 +1,25 @@
+/* tree-rev: 2026.08.28 */
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+MODULE PANINI.CompilerSource
+    IMPORT PANINI.Language
+
+    FUNCTION compile(source:String) -> Map
+        tokens = lex(source)
+        RETURN {
+            success: TRUE,
+            token_count: LEN(tokens),
+            tokens: tokens
+        }
+    END
+
+    FUNCTION main() -> Int
+        sample = "FUNCTION f(x) RETURN x END"
+        result = compile(sample)
+        PRINT result.success
+        PRINT result.token_count
+        ASSERT result.token_count > 0
+        RETURN result.token_count
+    END
+END

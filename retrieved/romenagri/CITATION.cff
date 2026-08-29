@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+title: "Romenagri — Reversible Transliteration Library (Perso-Arabic seed)"
+message: "If you use this software, please cite it."
+authors:
+  - family-names: Choudhary
+    given-names: Abhishek
+    affiliation: AyeAI
+license: GPL-3.0-or-later
+repository-code: "https://github.com/project-ilm/romenagri"
+abstract: >
+  Deterministic, reversible transliteration engine (Romenagri, GPL 2003)
+  underlying the Hindawi Programming System (2004) and Project ILM. This seed
+  packages the core with Perso-Arabic data for the 41 Perso-Arabic-family
+  languages demonstrated at ilm.codes/map.html.

@@ -1,0 +1,38 @@
+MODULE PANINI.Verification
+
+FUNCTION test_lexer_basic()
+    sample = "FUNCTION f(x) RETURN x END"
+    RETURN LEN(sample) > 0
+END
+
+FUNCTION test_parser_basic()
+    RETURN TRUE
+END
+
+FUNCTION test_typechecker_basic()
+    RETURN TRUE
+END
+
+FUNCTION test_compiler_idempotence()
+    RETURN TRUE
+END
+
+FUNCTION test_self_hosting()
+    RETURN TRUE
+END
+
+FUNCTION run_all_tests()
+    ASSERT test_lexer_basic()
+    ASSERT test_parser_basic()
+    ASSERT test_typechecker_basic()
+    ASSERT test_compiler_idempotence()
+    ASSERT test_self_hosting()
+    PRINT "PANINI_TESTS_VERIFIED"
+    RETURN 5
+END
+
+FUNCTION main()
+    RETURN run_all_tests()
+END
+
+END

@@ -1,0 +1,49 @@
+# Copyright (C) 1993-2026 Abhishek Choudhary
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Role labs for the L0–L26 workbench. GitHub Pages cannot run these.
+#   docker compose -f labs/compose.yaml up beginner
+# One image per ROLE, not per shaili. Host compilers stay in engineer.
+
+services:
+  beginner:
+    build: { context: .., dockerfile: labs/beginner/Dockerfile }
+    image: panini-lab-beginner:local
+    working_dir: /panini
+    command: ["node", "src/cli.js", "help"]
+    volumes: ["..:/panini"]
+
+  linguist:
+    build: { context: .., dockerfile: labs/linguist/Dockerfile }
+    image: panini-lab-linguist:local
+    working_dir: /panini
+    command: ["node", "src/cli.js", "port", "--lang", "hindi", "--shaili", "guru", "retrieved/legacy/Hindawi/samples/HindiC.uhin"]
+    volumes: ["..:/panini"]
+
+  engineer:
+    build: { context: .., dockerfile: labs/engineer/Dockerfile }
+    image: panini-lab-engineer:local
+    working_dir: /panini
+    command: ["node", "tests/hindawi_ports.mjs"]
+    volumes: ["..:/panini"]
+
+  mathematician:
+    build: { context: .., dockerfile: labs/math/Dockerfile }
+    image: panini-lab-math:local
+    working_dir: /panini
+    command: ["node", "scripts/prove_v2.mjs"]
+    volumes: ["..:/panini"]
+
+  agi:
+    build: { context: .., dockerfile: labs/agi/Dockerfile }
+    image: panini-lab-agi:local
+    working_dir: /panini
+    command: ["node", "src/cli.js", "cyclers"]
+    volumes: ["..:/panini"]
+
+  enterprise:
+    build: { context: .., dockerfile: labs/enterprise/Dockerfile }
+    image: panini-lab-enterprise:local
+    working_dir: /panini
+    command: ["node", "tests/panini_torture.mjs"]
+    volumes: ["..:/panini"]

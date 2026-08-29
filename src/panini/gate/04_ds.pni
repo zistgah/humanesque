@@ -1,0 +1,114 @@
+/* GATE CS §4 Programming and Data Structures
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION recsum(n)
+    IF n <= 0
+        RETURN 0
+    END
+    RETURN n + recsum(n - 1)
+END
+FUNCTION amax(a)
+    m = a[0]
+    i = 1
+    WHILE i < LEN(a)
+        IF a[i] > m
+            m = a[i]
+        END
+        i = i + 1
+    END
+    RETURN m
+END
+FUNCTION stack_top(s)
+    RETURN s[LEN(s) - 1]
+END
+FUNCTION qfront(q)
+    RETURN q[0]
+END
+FUNCTION ll_sum(vals)
+    s = 0
+    i = 0
+    WHILE i < LEN(vals)
+        s = s + vals[i]
+        i = i + 1
+    END
+    RETURN s
+END
+FUNCTION bst_search(keys, x)
+    i = 0
+    n = LEN(keys)
+    WHILE i < n
+        IF keys[i] == x
+            RETURN 1
+        END
+        IF x < keys[i]
+            i = 2 * i + 1
+        ELSE
+            i = 2 * i + 2
+        END
+    END
+    RETURN 0
+END
+FUNCTION heap_parent(i)
+    RETURN INT((i - 1) / 2)
+END
+FUNCTION bfs_count()
+    seen0 = 1
+    seen1 = 0
+    seen2 = 0
+    q = [0]
+    WHILE LEN(q) > 0
+        u = q[0]
+        nq = []
+        i = 1
+        WHILE i < LEN(q)
+            APPEND(nq, q[i])
+            i = i + 1
+        END
+        q = nq
+        IF u == 0
+            IF seen1 == 0
+                seen1 = 1
+                APPEND(q, 1)
+            END
+        END
+        IF u == 1
+            IF seen2 == 0
+                seen2 = 1
+                APPEND(q, 2)
+            END
+        END
+    END
+    RETURN seen0 + seen1 + seen2
+END
+FUNCTION main()
+    t = 1
+    IF recsum(4) != 10
+        t = 0
+    END
+    a = [3, 9, 1, 7]
+    IF amax(a) != 9
+        t = 0
+    END
+    s = [1, 2, 5]
+    IF stack_top(s) != 5
+        t = 0
+    END
+    q = [8, 9]
+    IF qfront(q) != 8
+        t = 0
+    END
+    IF ll_sum([4, 5, 6]) != 15
+        t = 0
+    END
+    keys = [8, 3, 10, 1, 6]
+    IF bst_search(keys, 6) != 1
+        t = 0
+    END
+    IF heap_parent(5) != 2
+        t = 0
+    END
+    IF bfs_count() != 3
+        t = 0
+    END
+    RETURN t
+END

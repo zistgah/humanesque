@@ -1,0 +1,20 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * Lekhak keymap from retrieved LEKHAK.C (hindawi3.zip src/lekhak).
+ */
+MODULE PANINI.Lekhak
+FUNCTION keys()
+    RETURN [
+        "F1", "Alt-F1", "F2", "F3", "F4", "F5", "F6", "F7", "F9", "F10",
+        "Ctrl-ins", "Ctrl-del", "Shift-ins", "Shift-del", "Ctrl-Y",
+        "Ctrl-end", "Ctrl-home", "Shift-up", "Shift-dn", "esc",
+        "Alt-F3", "Alt-K", "Alt-C", "Alt-M", "Alt-X",
+        "ins", "tab", "dn", "up", "Ctrl-lf", "Ctrl-rt", "lf", "rt",
+        "end", "home", "pgup", "pgdn", "del", "bksp", "ret"
+    ]
+END
+FUNCTION main()
+    k = keys()
+    PRINT LEN(k)
+    RETURN LEN(k)
+END
+END

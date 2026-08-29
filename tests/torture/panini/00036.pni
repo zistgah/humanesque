@@ -1,0 +1,6 @@
+MODULE T00036
+FUNCTION main()
+    PRINT 0 - 1
+    RETURN 0
+END
+END

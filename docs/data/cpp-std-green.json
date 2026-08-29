@@ -1,0 +1,12 @@
+{
+  "language": "cpp",
+  "issuing_body": "WG21 N4296 (C++14 CD) + GCC g++.dg (ISO-C++ proxy, same role as c-testsuite for C)",
+  "suite": "g++.dg/expr enum1.C { dg-do run } + bool2/bool4/for1/cast1 { dg-error }",
+  "n": 5,
+  "pass": 5,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named g++.dg/expr extract. Homemade tests/iso/cxx is CORE GREEN only. Full libstdc++ / gcc torture is GAP."
+}

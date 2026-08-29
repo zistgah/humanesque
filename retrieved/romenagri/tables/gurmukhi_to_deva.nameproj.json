@@ -1,0 +1,610 @@
+{
+ "method": "Unicode name-projection GURMUKHI→DEVANAGARI",
+ "invented": false,
+ "mapped": 67,
+ "unmapped": [
+  {
+   "gurmukhi": "ਁ",
+   "name": "GURMUKHI SIGN ADAK BINDI",
+   "cp": "0xa01"
+  },
+  {
+   "gurmukhi": "ਂ",
+   "name": "GURMUKHI SIGN BINDI",
+   "cp": "0xa02"
+  },
+  {
+   "gurmukhi": "ਏ",
+   "name": "GURMUKHI LETTER EE",
+   "cp": "0xa0f"
+  },
+  {
+   "gurmukhi": "ਓ",
+   "name": "GURMUKHI LETTER OO",
+   "cp": "0xa13"
+  },
+  {
+   "gurmukhi": "ੇ",
+   "name": "GURMUKHI VOWEL SIGN EE",
+   "cp": "0xa47"
+  },
+  {
+   "gurmukhi": "ੋ",
+   "name": "GURMUKHI VOWEL SIGN OO",
+   "cp": "0xa4b"
+  },
+  {
+   "gurmukhi": "ੑ",
+   "name": "GURMUKHI SIGN UDAAT",
+   "cp": "0xa51"
+  },
+  {
+   "gurmukhi": "ੰ",
+   "name": "GURMUKHI TIPPI",
+   "cp": "0xa70"
+  },
+  {
+   "gurmukhi": "ੱ",
+   "name": "GURMUKHI ADDAK",
+   "cp": "0xa71"
+  },
+  {
+   "gurmukhi": "ੲ",
+   "name": "GURMUKHI IRI",
+   "cp": "0xa72"
+  },
+  {
+   "gurmukhi": "ੳ",
+   "name": "GURMUKHI URA",
+   "cp": "0xa73"
+  },
+  {
+   "gurmukhi": "ੴ",
+   "name": "GURMUKHI EK ONKAR",
+   "cp": "0xa74"
+  },
+  {
+   "gurmukhi": "ੵ",
+   "name": "GURMUKHI SIGN YAKASH",
+   "cp": "0xa75"
+  }
+ ],
+ "rows": [
+  {
+   "gurmukhi": "ਃ",
+   "deva": "ः",
+   "name": "GURMUKHI SIGN VISARGA",
+   "deva_name": "DEVANAGARI SIGN VISARGA",
+   "cp": "0xa03",
+   "dcp": "0x903"
+  },
+  {
+   "gurmukhi": "ਅ",
+   "deva": "अ",
+   "name": "GURMUKHI LETTER A",
+   "deva_name": "DEVANAGARI LETTER A",
+   "cp": "0xa05",
+   "dcp": "0x905"
+  },
+  {
+   "gurmukhi": "ਆ",
+   "deva": "आ",
+   "name": "GURMUKHI LETTER AA",
+   "deva_name": "DEVANAGARI LETTER AA",
+   "cp": "0xa06",
+   "dcp": "0x906"
+  },
+  {
+   "gurmukhi": "ਇ",
+   "deva": "इ",
+   "name": "GURMUKHI LETTER I",
+   "deva_name": "DEVANAGARI LETTER I",
+   "cp": "0xa07",
+   "dcp": "0x907"
+  },
+  {
+   "gurmukhi": "ਈ",
+   "deva": "ई",
+   "name": "GURMUKHI LETTER II",
+   "deva_name": "DEVANAGARI LETTER II",
+   "cp": "0xa08",
+   "dcp": "0x908"
+  },
+  {
+   "gurmukhi": "ਉ",
+   "deva": "उ",
+   "name": "GURMUKHI LETTER U",
+   "deva_name": "DEVANAGARI LETTER U",
+   "cp": "0xa09",
+   "dcp": "0x909"
+  },
+  {
+   "gurmukhi": "ਊ",
+   "deva": "ऊ",
+   "name": "GURMUKHI LETTER UU",
+   "deva_name": "DEVANAGARI LETTER UU",
+   "cp": "0xa0a",
+   "dcp": "0x90a"
+  },
+  {
+   "gurmukhi": "ਐ",
+   "deva": "ऐ",
+   "name": "GURMUKHI LETTER AI",
+   "deva_name": "DEVANAGARI LETTER AI",
+   "cp": "0xa10",
+   "dcp": "0x910"
+  },
+  {
+   "gurmukhi": "ਔ",
+   "deva": "औ",
+   "name": "GURMUKHI LETTER AU",
+   "deva_name": "DEVANAGARI LETTER AU",
+   "cp": "0xa14",
+   "dcp": "0x914"
+  },
+  {
+   "gurmukhi": "ਕ",
+   "deva": "क",
+   "name": "GURMUKHI LETTER KA",
+   "deva_name": "DEVANAGARI LETTER KA",
+   "cp": "0xa15",
+   "dcp": "0x915"
+  },
+  {
+   "gurmukhi": "ਖ",
+   "deva": "ख",
+   "name": "GURMUKHI LETTER KHA",
+   "deva_name": "DEVANAGARI LETTER KHA",
+   "cp": "0xa16",
+   "dcp": "0x916"
+  },
+  {
+   "gurmukhi": "ਗ",
+   "deva": "ग",
+   "name": "GURMUKHI LETTER GA",
+   "deva_name": "DEVANAGARI LETTER GA",
+   "cp": "0xa17",
+   "dcp": "0x917"
+  },
+  {
+   "gurmukhi": "ਘ",
+   "deva": "घ",
+   "name": "GURMUKHI LETTER GHA",
+   "deva_name": "DEVANAGARI LETTER GHA",
+   "cp": "0xa18",
+   "dcp": "0x918"
+  },
+  {
+   "gurmukhi": "ਙ",
+   "deva": "ङ",
+   "name": "GURMUKHI LETTER NGA",
+   "deva_name": "DEVANAGARI LETTER NGA",
+   "cp": "0xa19",
+   "dcp": "0x919"
+  },
+  {
+   "gurmukhi": "ਚ",
+   "deva": "च",
+   "name": "GURMUKHI LETTER CA",
+   "deva_name": "DEVANAGARI LETTER CA",
+   "cp": "0xa1a",
+   "dcp": "0x91a"
+  },
+  {
+   "gurmukhi": "ਛ",
+   "deva": "छ",
+   "name": "GURMUKHI LETTER CHA",
+   "deva_name": "DEVANAGARI LETTER CHA",
+   "cp": "0xa1b",
+   "dcp": "0x91b"
+  },
+  {
+   "gurmukhi": "ਜ",
+   "deva": "ज",
+   "name": "GURMUKHI LETTER JA",
+   "deva_name": "DEVANAGARI LETTER JA",
+   "cp": "0xa1c",
+   "dcp": "0x91c"
+  },
+  {
+   "gurmukhi": "ਝ",
+   "deva": "झ",
+   "name": "GURMUKHI LETTER JHA",
+   "deva_name": "DEVANAGARI LETTER JHA",
+   "cp": "0xa1d",
+   "dcp": "0x91d"
+  },
+  {
+   "gurmukhi": "ਞ",
+   "deva": "ञ",
+   "name": "GURMUKHI LETTER NYA",
+   "deva_name": "DEVANAGARI LETTER NYA",
+   "cp": "0xa1e",
+   "dcp": "0x91e"
+  },
+  {
+   "gurmukhi": "ਟ",
+   "deva": "ट",
+   "name": "GURMUKHI LETTER TTA",
+   "deva_name": "DEVANAGARI LETTER TTA",
+   "cp": "0xa1f",
+   "dcp": "0x91f"
+  },
+  {
+   "gurmukhi": "ਠ",
+   "deva": "ठ",
+   "name": "GURMUKHI LETTER TTHA",
+   "deva_name": "DEVANAGARI LETTER TTHA",
+   "cp": "0xa20",
+   "dcp": "0x920"
+  },
+  {
+   "gurmukhi": "ਡ",
+   "deva": "ड",
+   "name": "GURMUKHI LETTER DDA",
+   "deva_name": "DEVANAGARI LETTER DDA",
+   "cp": "0xa21",
+   "dcp": "0x921"
+  },
+  {
+   "gurmukhi": "ਢ",
+   "deva": "ढ",
+   "name": "GURMUKHI LETTER DDHA",
+   "deva_name": "DEVANAGARI LETTER DDHA",
+   "cp": "0xa22",
+   "dcp": "0x922"
+  },
+  {
+   "gurmukhi": "ਣ",
+   "deva": "ण",
+   "name": "GURMUKHI LETTER NNA",
+   "deva_name": "DEVANAGARI LETTER NNA",
+   "cp": "0xa23",
+   "dcp": "0x923"
+  },
+  {
+   "gurmukhi": "ਤ",
+   "deva": "त",
+   "name": "GURMUKHI LETTER TA",
+   "deva_name": "DEVANAGARI LETTER TA",
+   "cp": "0xa24",
+   "dcp": "0x924"
+  },
+  {
+   "gurmukhi": "ਥ",
+   "deva": "थ",
+   "name": "GURMUKHI LETTER THA",
+   "deva_name": "DEVANAGARI LETTER THA",
+   "cp": "0xa25",
+   "dcp": "0x925"
+  },
+  {
+   "gurmukhi": "ਦ",
+   "deva": "द",
+   "name": "GURMUKHI LETTER DA",
+   "deva_name": "DEVANAGARI LETTER DA",
+   "cp": "0xa26",
+   "dcp": "0x926"
+  },
+  {
+   "gurmukhi": "ਧ",
+   "deva": "ध",
+   "name": "GURMUKHI LETTER DHA",
+   "deva_name": "DEVANAGARI LETTER DHA",
+   "cp": "0xa27",
+   "dcp": "0x927"
+  },
+  {
+   "gurmukhi": "ਨ",
+   "deva": "न",
+   "name": "GURMUKHI LETTER NA",
+   "deva_name": "DEVANAGARI LETTER NA",
+   "cp": "0xa28",
+   "dcp": "0x928"
+  },
+  {
+   "gurmukhi": "ਪ",
+   "deva": "प",
+   "name": "GURMUKHI LETTER PA",
+   "deva_name": "DEVANAGARI LETTER PA",
+   "cp": "0xa2a",
+   "dcp": "0x92a"
+  },
+  {
+   "gurmukhi": "ਫ",
+   "deva": "फ",
+   "name": "GURMUKHI LETTER PHA",
+   "deva_name": "DEVANAGARI LETTER PHA",
+   "cp": "0xa2b",
+   "dcp": "0x92b"
+  },
+  {
+   "gurmukhi": "ਬ",
+   "deva": "ब",
+   "name": "GURMUKHI LETTER BA",
+   "deva_name": "DEVANAGARI LETTER BA",
+   "cp": "0xa2c",
+   "dcp": "0x92c"
+  },
+  {
+   "gurmukhi": "ਭ",
+   "deva": "भ",
+   "name": "GURMUKHI LETTER BHA",
+   "deva_name": "DEVANAGARI LETTER BHA",
+   "cp": "0xa2d",
+   "dcp": "0x92d"
+  },
+  {
+   "gurmukhi": "ਮ",
+   "deva": "म",
+   "name": "GURMUKHI LETTER MA",
+   "deva_name": "DEVANAGARI LETTER MA",
+   "cp": "0xa2e",
+   "dcp": "0x92e"
+  },
+  {
+   "gurmukhi": "ਯ",
+   "deva": "य",
+   "name": "GURMUKHI LETTER YA",
+   "deva_name": "DEVANAGARI LETTER YA",
+   "cp": "0xa2f",
+   "dcp": "0x92f"
+  },
+  {
+   "gurmukhi": "ਰ",
+   "deva": "र",
+   "name": "GURMUKHI LETTER RA",
+   "deva_name": "DEVANAGARI LETTER RA",
+   "cp": "0xa30",
+   "dcp": "0x930"
+  },
+  {
+   "gurmukhi": "ਲ",
+   "deva": "ल",
+   "name": "GURMUKHI LETTER LA",
+   "deva_name": "DEVANAGARI LETTER LA",
+   "cp": "0xa32",
+   "dcp": "0x932"
+  },
+  {
+   "gurmukhi": "ਲ਼",
+   "deva": "ळ",
+   "name": "GURMUKHI LETTER LLA",
+   "deva_name": "DEVANAGARI LETTER LLA",
+   "cp": "0xa33",
+   "dcp": "0x933"
+  },
+  {
+   "gurmukhi": "ਵ",
+   "deva": "व",
+   "name": "GURMUKHI LETTER VA",
+   "deva_name": "DEVANAGARI LETTER VA",
+   "cp": "0xa35",
+   "dcp": "0x935"
+  },
+  {
+   "gurmukhi": "ਸ਼",
+   "deva": "श",
+   "name": "GURMUKHI LETTER SHA",
+   "deva_name": "DEVANAGARI LETTER SHA",
+   "cp": "0xa36",
+   "dcp": "0x936"
+  },
+  {
+   "gurmukhi": "ਸ",
+   "deva": "स",
+   "name": "GURMUKHI LETTER SA",
+   "deva_name": "DEVANAGARI LETTER SA",
+   "cp": "0xa38",
+   "dcp": "0x938"
+  },
+  {
+   "gurmukhi": "ਹ",
+   "deva": "ह",
+   "name": "GURMUKHI LETTER HA",
+   "deva_name": "DEVANAGARI LETTER HA",
+   "cp": "0xa39",
+   "dcp": "0x939"
+  },
+  {
+   "gurmukhi": "਼",
+   "deva": "़",
+   "name": "GURMUKHI SIGN NUKTA",
+   "deva_name": "DEVANAGARI SIGN NUKTA",
+   "cp": "0xa3c",
+   "dcp": "0x93c"
+  },
+  {
+   "gurmukhi": "ਾ",
+   "deva": "ा",
+   "name": "GURMUKHI VOWEL SIGN AA",
+   "deva_name": "DEVANAGARI VOWEL SIGN AA",
+   "cp": "0xa3e",
+   "dcp": "0x93e"
+  },
+  {
+   "gurmukhi": "ਿ",
+   "deva": "ि",
+   "name": "GURMUKHI VOWEL SIGN I",
+   "deva_name": "DEVANAGARI VOWEL SIGN I",
+   "cp": "0xa3f",
+   "dcp": "0x93f"
+  },
+  {
+   "gurmukhi": "ੀ",
+   "deva": "ी",
+   "name": "GURMUKHI VOWEL SIGN II",
+   "deva_name": "DEVANAGARI VOWEL SIGN II",
+   "cp": "0xa40",
+   "dcp": "0x940"
+  },
+  {
+   "gurmukhi": "ੁ",
+   "deva": "ु",
+   "name": "GURMUKHI VOWEL SIGN U",
+   "deva_name": "DEVANAGARI VOWEL SIGN U",
+   "cp": "0xa41",
+   "dcp": "0x941"
+  },
+  {
+   "gurmukhi": "ੂ",
+   "deva": "ू",
+   "name": "GURMUKHI VOWEL SIGN UU",
+   "deva_name": "DEVANAGARI VOWEL SIGN UU",
+   "cp": "0xa42",
+   "dcp": "0x942"
+  },
+  {
+   "gurmukhi": "ੈ",
+   "deva": "ै",
+   "name": "GURMUKHI VOWEL SIGN AI",
+   "deva_name": "DEVANAGARI VOWEL SIGN AI",
+   "cp": "0xa48",
+   "dcp": "0x948"
+  },
+  {
+   "gurmukhi": "ੌ",
+   "deva": "ौ",
+   "name": "GURMUKHI VOWEL SIGN AU",
+   "deva_name": "DEVANAGARI VOWEL SIGN AU",
+   "cp": "0xa4c",
+   "dcp": "0x94c"
+  },
+  {
+   "gurmukhi": "੍",
+   "deva": "्",
+   "name": "GURMUKHI SIGN VIRAMA",
+   "deva_name": "DEVANAGARI SIGN VIRAMA",
+   "cp": "0xa4d",
+   "dcp": "0x94d"
+  },
+  {
+   "gurmukhi": "ਖ਼",
+   "deva": "ख़",
+   "name": "GURMUKHI LETTER KHHA",
+   "deva_name": "DEVANAGARI LETTER KHHA",
+   "cp": "0xa59",
+   "dcp": "0x959"
+  },
+  {
+   "gurmukhi": "ਗ਼",
+   "deva": "ग़",
+   "name": "GURMUKHI LETTER GHHA",
+   "deva_name": "DEVANAGARI LETTER GHHA",
+   "cp": "0xa5a",
+   "dcp": "0x95a"
+  },
+  {
+   "gurmukhi": "ਜ਼",
+   "deva": "ज़",
+   "name": "GURMUKHI LETTER ZA",
+   "deva_name": "DEVANAGARI LETTER ZA",
+   "cp": "0xa5b",
+   "dcp": "0x95b"
+  },
+  {
+   "gurmukhi": "ੜ",
+   "deva": "ऱ",
+   "name": "GURMUKHI LETTER RRA",
+   "deva_name": "DEVANAGARI LETTER RRA",
+   "cp": "0xa5c",
+   "dcp": "0x931"
+  },
+  {
+   "gurmukhi": "ਫ਼",
+   "deva": "फ़",
+   "name": "GURMUKHI LETTER FA",
+   "deva_name": "DEVANAGARI LETTER FA",
+   "cp": "0xa5e",
+   "dcp": "0x95e"
+  },
+  {
+   "gurmukhi": "੦",
+   "deva": "०",
+   "name": "GURMUKHI DIGIT ZERO",
+   "deva_name": "DEVANAGARI DIGIT ZERO",
+   "cp": "0xa66",
+   "dcp": "0x966"
+  },
+  {
+   "gurmukhi": "੧",
+   "deva": "१",
+   "name": "GURMUKHI DIGIT ONE",
+   "deva_name": "DEVANAGARI DIGIT ONE",
+   "cp": "0xa67",
+   "dcp": "0x967"
+  },
+  {
+   "gurmukhi": "੨",
+   "deva": "२",
+   "name": "GURMUKHI DIGIT TWO",
+   "deva_name": "DEVANAGARI DIGIT TWO",
+   "cp": "0xa68",
+   "dcp": "0x968"
+  },
+  {
+   "gurmukhi": "੩",
+   "deva": "३",
+   "name": "GURMUKHI DIGIT THREE",
+   "deva_name": "DEVANAGARI DIGIT THREE",
+   "cp": "0xa69",
+   "dcp": "0x969"
+  },
+  {
+   "gurmukhi": "੪",
+   "deva": "४",
+   "name": "GURMUKHI DIGIT FOUR",
+   "deva_name": "DEVANAGARI DIGIT FOUR",
+   "cp": "0xa6a",
+   "dcp": "0x96a"
+  },
+  {
+   "gurmukhi": "੫",
+   "deva": "५",
+   "name": "GURMUKHI DIGIT FIVE",
+   "deva_name": "DEVANAGARI DIGIT FIVE",
+   "cp": "0xa6b",
+   "dcp": "0x96b"
+  },
+  {
+   "gurmukhi": "੬",
+   "deva": "६",
+   "name": "GURMUKHI DIGIT SIX",
+   "deva_name": "DEVANAGARI DIGIT SIX",
+   "cp": "0xa6c",
+   "dcp": "0x96c"
+  },
+  {
+   "gurmukhi": "੭",
+   "deva": "७",
+   "name": "GURMUKHI DIGIT SEVEN",
+   "deva_name": "DEVANAGARI DIGIT SEVEN",
+   "cp": "0xa6d",
+   "dcp": "0x96d"
+  },
+  {
+   "gurmukhi": "੮",
+   "deva": "८",
+   "name": "GURMUKHI DIGIT EIGHT",
+   "deva_name": "DEVANAGARI DIGIT EIGHT",
+   "cp": "0xa6e",
+   "dcp": "0x96e"
+  },
+  {
+   "gurmukhi": "੯",
+   "deva": "९",
+   "name": "GURMUKHI DIGIT NINE",
+   "deva_name": "DEVANAGARI DIGIT NINE",
+   "cp": "0xa6f",
+   "dcp": "0x96f"
+  },
+  {
+   "gurmukhi": "੶",
+   "deva": "॰",
+   "name": "GURMUKHI ABBREVIATION SIGN",
+   "deva_name": "DEVANAGARI ABBREVIATION SIGN",
+   "cp": "0xa76",
+   "dcp": "0x970"
+  }
+ ]
+}

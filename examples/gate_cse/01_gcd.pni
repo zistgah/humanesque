@@ -1,0 +1,15 @@
+/* GATE CSE — Programming / Discrete: Euclidean GCD
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION gcd(a, b)
+    WHILE b != 0
+        t = b
+        b = a % b
+        a = t
+    END
+    RETURN a
+END
+FUNCTION main()
+    PRINT gcd(48, 18)
+    RETURN gcd(48, 18)
+END

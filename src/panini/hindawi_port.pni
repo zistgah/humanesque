@@ -1,0 +1,59 @@
+REM hindawi_port.pni
+REM Copyright (C) 1993-2026 Abhishek Choudhary
+REM SPDX-License-Identifier: GPL-3.0-or-later
+REM
+REM Hindawi localization in PANINI. Not #define. Not keyword-for-keyword as the kernel.
+REM Three axes stay uncollapsed: script, language, standard (shaili).
+REM
+REM Pipeline (retrieved, not reconstructed):
+REM   lang-TSV → flatten_uni_dev OR urdu_map → unicode.h → acii2rmn → shaili lex
+REM
+REM Brahmi flatten is table-complete. Perso-Arabic is LOSSY (linguistics residue).
+
+MODULE HINDAWI_PORT
+  VERSION "1.0.0"
+  KIND FRONTEND
+  DOMAIN "localization"
+
+  CONTRACT
+    INVARIANT "shaili is host language, not spoken language"
+    INVARIANT "script flatten is not language translation"
+    INVARIANT "Romenagri is the ASCII-7 channel, not the authoring surface"
+    INVARIANT "macros are not localization"
+    INVARIANT "Perso-Arabic round-trip is not claimed"
+    INVARIANT "Sanskrit here is keyword-by-keyword, not a Paninian parser"
+  END CONTRACT
+
+  DATA SHAILIS
+    "guru"     "C"
+    "praatha"  "BASIC"
+    "shraeni"  "C++"
+    "kritrima" "Java"
+    "soochee"  "Python"
+    "shabda"   "lex"
+    "wyaaka"   "yacc"
+    "yantra"   "asm"
+  END DATA
+
+  DATA BRAHMI
+    "hindi" "nepali" "marathi" "sanskrit" "punjabi"
+    "bengali" "assamese" "gujarati" "odia" "tamil"
+    "telugu" "kannada" "malayalam" "pali" "prakrit"
+  END DATA
+
+  DATA PERSO
+    "urdu" "sindhi" "shahmukhi" "kashmiri"
+    "persian" "arabic" "dari" "pashto"
+  END DATA
+
+  FUNCTION port(lang$, shaili$)
+    PRINT "HINDAWI_PORT "; lang$; " "; shaili$
+    PRINT "pipeline lang-TSV flatten unicode.h acii2rmn shaili-lex"
+    RETURN 0
+  END FUNCTION
+END MODULE
+
+PROGRAM HINDAWI_PORT_MAIN
+  PRINT "guru praatha shraeni kritrima soochee shabda wyaaka yantra"
+  PRINT "brahmi complete; perso lossy"
+END PROGRAM

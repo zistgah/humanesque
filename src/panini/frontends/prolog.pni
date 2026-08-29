@@ -1,0 +1,14 @@
+/* PANINI.Frontend.Prolog — STANDARD GREEN on Ciao ISO 8.6/8.7 extract.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.Prolog
+FUNCTION run_prolog(source)
+    r = PROLOGRUN(source)
+    r.frontend = "PANINI.Frontend.Prolog"
+    RETURN r
+END
+FUNCTION main()
+    r = run_prolog("3 is 3")
+    RETURN r.value
+END
+END

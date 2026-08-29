@@ -1,0 +1,397 @@
+<!doctype html><meta charset="utf-8">
+<title>Kundali Reader — read a work, seed a conversation</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- Kundali Reader v1.0.0 (kundali) · built with Claude Opus 4.5 · third-party index, CC BY-NC-SA 4.0 -->
+<style>
+:root{--ink:#1a2730;--mut:#6b7f8d;--acc:#0a6a5c;--warm:#b4531f;--line:#e4dfd5;--bg:#faf8f4;--paper:#fffdf9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Iowan Old Style",Palatino,Georgia,serif}
+.top{position:sticky;top:0;z-index:9;background:rgba(250,248,244,.95);backdrop-filter:blur(8px);
+ border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.top h1{font-size:16px;margin:0;white-space:nowrap}
+.top input,.top select{padding:9px 13px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:15px;background:#fff}
+#url{flex:1;min-width:180px}
+#pick{font:13px system-ui;max-width:320px}
+#ai{font:13px system-ui}
+.top button{font:13px system-ui;padding:8px 13px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+.top button:hover{border-color:var(--acc);color:var(--acc)}
+main{max-width:760px;margin:0 auto;padding:26px 22px 90px}
+.hint{color:var(--mut);font-size:14px;background:var(--paper);border:1px solid var(--line);
+ border-left:3px solid var(--acc);border-radius:8px;padding:12px 15px;margin-bottom:14px}
+.hint b{color:var(--ink)}
+.aab{color:var(--mut);font-size:13.5px;background:var(--paper);border:1px solid var(--line);
+ border-left:3px solid var(--warm);border-radius:8px;padding:11px 15px;margin-bottom:22px}
+article{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:30px 34px;
+ box-shadow:0 1px 0 rgba(0,0,0,.03)}
+article h2{font-size:23px;line-height:1.25;margin:0 0 6px}
+.src{font:12px ui-monospace;color:var(--mut);margin-bottom:6px;word-break:break-all}
+.via{font:11.5px system-ui;color:var(--mut);margin-bottom:20px}
+.via b{color:var(--acc)}
+article p{margin:0 0 11px}
+article p.short{margin:0 0 3px}
+article h3{font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--acc);
+ margin:22px 0 8px;font-family:system-ui}
+article img{max-width:100%;border-radius:8px;border:1px solid var(--line);margin:8px 0}
+::selection{background:#bfe3db}
+#pop{position:absolute;display:none;z-index:20;background:#fff;border:1px solid var(--acc);
+ border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:5px;white-space:nowrap;
+ max-width:96vw;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#pop button{font:13px system-ui;border:0;background:none;cursor:pointer;padding:10px 13px;color:var(--acc);border-radius:6px;min-height:40px}
+#pop button:hover{background:#eef5f3}
+#pop .sep{display:inline-block;width:1px;height:16px;background:var(--line);margin:0 3px;vertical-align:-3px}
+.loading{color:var(--mut)}
+.warn{color:var(--warm)}
+footer{color:var(--mut);font-size:12.5px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+footer a{color:var(--mut)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);color:#fff;
+ font:13px system-ui;padding:10px 16px;border-radius:9px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+#toast.on{opacity:.95}
+</style>
+
+<div class="top">
+  <h1>Kundali Reader</h1>
+  <input id="url" placeholder="Paste a DOI or work URL, or pick one below">
+  <button id="load">Open</button>
+  <select id="pick"><option value="">— loading works —</option></select>
+  <select id="ai" title="Which assistant a seeded conversation opens in"></select>
+</div>
+
+<main>
+<div class="hint">Select any passage to seed a conversation about it — explain, differential,
+oracles, or critique. Nothing is stored or posted. The text belongs to its authors. Your selection
+opens in <b>whichever assistant you choose</b> above; the choice is remembered on this device.</div>
+
+<div class="aab">Reading through <b>AAB</b> (آب) — a paper is a <i>painting</i> of a claim and its
+support, and the method's rule is <b>no oracle, no glow</b>: a claim stays <i>named</i>,
+never <i>verified</i>, until an experiment has actually been run and returned a result. When you read, ask of each claim — which oracle was executed, and what did it return?</div>
+
+<article id="doc">
+  <h2 id="ttl">Choose a case report</h2>
+  <div class="src" id="src"></div>
+  <div class="via" id="via"></div>
+  <div id="body"><p class="loading">Pick a report from the dropdown, or paste a URL above.</p></div>
+</article>
+
+<footer>Kundali Reader · reads public case reports · stores nothing · seeds on your command ·
+a chart counts what the public record contains — it is not an assessment of quality or standing · <a href="docs/WHAT-THIS-IS-NOT.md">what this is not</a></footer>
+</main>
+
+<div id="pop">
+  <button data-a="explain">Explain</button>
+  <button data-a="diff">Related work</button>
+  <button data-a="oracle">Oracles</button>
+  <button data-a="critique">Critique</button>
+  <span class="sep"></span>
+  <button data-a="copy">Copy prompt</button>
+</div>
+<div id="toast"></div>
+
+<script>
+/* ==================================================================== *
+ * AI-source invariance (AAB §7): the seed is a prompt, and the method
+ * does not care which intelligence receives it. Providers are data.
+ * prefill:false -> no documented URL parameter, so the prompt goes to
+ * the clipboard. We do not invent query parameters.
+ * ==================================================================== */
+const PROVIDERS=[
+ {id:'claude',     name:'Claude',     url:'https://claude.ai/new?q=',            prefill:true},
+ {id:'chatgpt',    name:'ChatGPT',    url:'https://chatgpt.com/?q=',             prefill:true},
+ {id:'perplexity', name:'Perplexity', url:'https://www.perplexity.ai/search?q=', prefill:true},
+ {id:'copilot',    name:'Copilot',    url:'https://copilot.microsoft.com/?q=',   prefill:true},
+ {id:'mistral',    name:'Le Chat',    url:'https://chat.mistral.ai/chat?q=',     prefill:true},
+ {id:'grok',       name:'Grok',       url:'https://grok.com/?q=',                prefill:true},
+ {id:'gemini',     name:'Gemini',     url:'https://gemini.google.com/app',       prefill:false},
+ {id:'deepseek',   name:'DeepSeek',   url:'https://chat.deepseek.com/',          prefill:false},
+ {id:'qwen',       name:'Qwen',       url:'https://chat.qwen.ai/',               prefill:false},
+ {id:'kimi',       name:'Kimi',       url:'https://www.kimi.com/',               prefill:false},
+ {id:'local',      name:'Local model (copy only)', url:'',                       prefill:false}
+];
+const AI=document.getElementById('ai');
+AI.innerHTML=PROVIDERS.map(p=>'<option value="'+p.id+'">'+p.name+(p.prefill?'':' \u00b7copy')+'</option>').join('');
+try{const s=localStorage.getItem('pajr.ai'); if(s&&PROVIDERS.some(p=>p.id===s))AI.value=s;}catch(e){}
+AI.onchange=()=>{try{localStorage.setItem('pajr.ai',AI.value)}catch(e){}};
+const provider=()=>PROVIDERS.find(p=>p.id===AI.value)||PROVIDERS[0];
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');
+  clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove('on'),2600);}
+
+/* ---- report picker: slim manifest, not the whole term index -------- */
+let CUR={url:'',title:''};
+fetch('kundali.json').then(r=>{if(!r.ok)throw new Error('kundali.json '+r.status);return r.json()})
+ .then(d=>{ const list=(d.works||d).map(w=>({u: w.doi ? 'https://doi.org/'+w.doi : (w.url||''), t: [w.title, w.year].filter(Boolean).join(' · '), a: w.venue||''})).filter(w=>w.u);
+   $('pick').innerHTML='<option value="">\u2014 pick one of '+list.length+' reports \u2014</option>'+
+     list.map(r=>'<option value="'+esc(r.u)+'">'+esc(r.t||r.u).slice(0,90)+'</option>').join('');
+   $('pick').onchange=()=>{if($('pick').value){$('url').value=$('pick').value;load($('pick').value)}};
+ })
+ .catch(err=>{                                  /* fail loudly; the old page swallowed this */
+   $('pick').innerHTML='<option value="">\u2014 works list unavailable \u2014</option>';
+   $('body').innerHTML='<p class="warn">The works list could not be loaded ('+esc(err.message)+
+     '). You can still paste any DOI or work URL above.</p>';
+ });
+
+/* ==================================================================== *
+ * READING AN ORIGINAL
+ *
+ * These are Blogger sites, and Blogger publishes every blog's own Atom
+ * feed with a JSONP callback. A <script> include is not an XHR, so no
+ * CORS and no relay is involved: the post HTML comes from the author's
+ * own domain, exactly as the harvester reads it. That is the first and
+ * preferred path, and no third party learns which report you opened.
+ *
+ * A public text relay remains as a fallback. The previous version put
+ * that relay FIRST, and r.jina.ai answers with MARKDOWN. Parsing
+ * markdown as text/html yields a document with no <title> and no <p> —
+ * which is exactly why the title showed the URL and the body read
+ * "No readable body found". Sniff the payload; never assume HTML.
+ * ==================================================================== */
+/* OpenAlex is keyless, CORS-open and covers the same ground as the
+   commercial indexes under an open licence. A DOI resolves there directly; the
+   abstract arrives as an inverted index and is reassembled below. Google Scholar
+   is deliberately not queried: no API, and its terms prohibit automated access,
+   which would make every downstream artefact legally contingent (assumption K4). */
+function doiOf(u){
+  const m = String(u).match(/10\.\d{4,9}\/[^\s"'<>]+/);
+  return m ? m[0].replace(/[.,;]$/, '') : null;
+}
+function unInvert(inv){
+  if(!inv) return '';
+  const out=[]; for(const w in inv) for(const i of inv[w]) out[i]=w;
+  return out.filter(Boolean).join(' ');
+}
+async function viaOpenAlex(u){
+  const doi = doiOf(u);
+  if(!doi) throw new Error('no DOI in that address');
+  const r = await fetch('https://api.openalex.org/works/doi:' + encodeURIComponent(doi));
+  if(!r.ok) throw new Error('OpenAlex ' + r.status);
+  const w = await r.json();
+  const abs = unInvert(w.abstract_inverted_index);
+  const authors = (w.authorships||[]).map(a => a.author && a.author.display_name)
+                                     .filter(Boolean).join(', ');
+  const venue = (w.primary_location && w.primary_location.source
+                 && w.primary_location.source.display_name) || '';
+  const oa = w.open_access && w.open_access.oa_url;
+  let body = '';
+  if(abs) body += '<h3>Abstract</h3><p>' + abs + '</p>';
+  body += '<h3>Record</h3>';
+  if(venue) body += '<p>' + venue + (w.publication_year ? ', ' + w.publication_year : '') + '</p>';
+  if(w.cited_by_count != null) body += '<p>Cited by ' + w.cited_by_count + '</p>';
+  if(!abs) body += '<p>OpenAlex holds no abstract for this record. That is a gap in the '
+                 + 'index, not a statement about the work.</p>';
+  if(oa) body += '<p>Open-access copy: <a href="' + oa + '">' + oa + '</a></p>';
+  return { html: body, title: w.display_name || doi, author: authors,
+           published: (w.publication_date || '').slice(0,10),
+           via: 'OpenAlex', oa: oa || null };
+}
+
+const RELAYS=[u=>'https://r.jina.ai/'+u,
+              u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u)];
+async function viaRelay(u){
+  let last;
+  for(let i=0;i<RELAYS.length;i++){
+    try{const r=await fetch(RELAYS[i](u));
+        if(r.ok) return {text:await r.text(), via:'a public text relay'};}
+    catch(e){last=e;}
+  }
+  throw last||new Error('no relay reachable');
+}
+
+/* Platform furniture that is never part of a case report. */
+const CHROME=new RegExp('^('+[
+ 'get link','facebook','x','twitter','pinterest','email','other apps','comments?',
+ 'post a comment','read more','popular posts from this blog','powered by blogger',
+ 'report abuse','visit profile','skip to main content','search this blog','archive',
+ 'labels','share','no comments:','newer post','older post','home','subscribe to:',
+ 'posts \\(atom\\)','view my complete profile','about me','followers','blog archive'
+].join('|')+')$','i');
+
+function fromHTML(html){
+  const d=new DOMParser().parseFromString(html,'text/html');
+  d.querySelectorAll('script,style,nav,header,footer,noscript,iframe,svg,form,.comments,#comments')
+   .forEach(n=>n.remove());
+  const root=d.querySelector('.post-body,.entry-content,article')||d.body;
+  const out=[];
+  root.querySelectorAll('p,li,h1,h2,h3,h4,div,span,img').forEach(n=>{
+    if(n.tagName==='IMG'){ if(n.getAttribute('src')) out.push({img:n.getAttribute('src')}); return; }
+    if(n.querySelector('p,li,div,img,h1,h2,h3,h4')) return;      /* container, not a leaf */
+    const t=(n.textContent||'').replace(/\u00a0/g,' ').replace(/\s+/g,' ').trim();
+    if(t) out.push({text:t, head:/^H[1-4]$/.test(n.tagName)||isHeading(t)});
+  });
+  return out;
+}
+function fromMarkdown(md){
+  const out=[];
+  md=md.replace(/^---\n[\s\S]*?\n---\n/,'');            /* relay frontmatter block */
+  md.split(/\n{2,}|\n(?=[#*\-|])/).forEach(function(block){
+    let b=block.trim(); if(!b) return;
+    b=b.replace(/^[-*+]\s+/,'').replace(/^\d+\.\s+/,'');  /* list marker */
+    /* Blogger wraps images in a link: [![](thumb)](full) — take the full-size href */
+    const li=b.match(/^\[!\[[^\]]*\]\([^)]*\)\]\(([^)\s]+)/);
+    const im=li||b.match(/^!\[[^\]]*\]\(([^)\s]+)/);
+    if(im){ out.push({img:im[1]}); return; }
+    const t=b.replace(/^#{1,6}\s*/,'')
+             .replace(/\[?!\[[^\]]*\]\([^)]*\)\]?(\([^)]*\))?/g,'')
+             .replace(/\[([^\]]*)\]\([^)]*\)/g,'$1')
+             .replace(/[*_`>]/g,'').replace(/\s+/g,' ').trim();
+    if(t) out.push({text:t, head:/^#{1,6}\s/.test(block.trim())||isHeading(t)});
+  });
+  return out;
+}
+/* Clinical e-logs mark sections in caps with a trailing colon, not with <h> tags. */
+function isHeading(t){
+  return t.length<44 && /:\s*$/.test(t) && t.replace(/[^A-Za-z]/g,'').length>2 &&
+         t===t.toUpperCase();
+}
+function looksHTML(s){ return /<\s*(html|body|div|p|br|img|h[1-6])[\s>/]/i.test(s.slice(0,4000)); }
+
+/* The previous version dropped every line under 25 characters. Measured against
+   the harvested corpus that discarded 42% of a typical report — every section
+   heading and the whole examination: "No pallor", "S1 S2 present", "no thrills",
+   "Married", "Diet: mixed", "CHIEF COMPLAINTS:". Those ARE the report. Keep them;
+   drop the platform furniture and the duplicates instead. */
+function clean(nodes){
+  const seen={}, out=[];
+  for(let i=0;i<nodes.length;i++){
+    const n=nodes[i];
+    if(n.img){ out.push(n); continue; }
+    const t=n.text;
+    if(!t||t.length<2) continue;
+    if(CHROME.test(t)) continue;
+    if(/^https?:\/\/\S+$/.test(t)) continue;
+    const k=t.toLowerCase();
+    if(seen[k]) continue;
+    seen[k]=1; out.push(n);
+  }
+  return out;
+}
+
+async function load(u){
+  CUR.url=u; CUR.title='';
+  $('ttl').textContent='Loading\u2026';
+  $('src').innerHTML=esc(u)+' \u00b7 <a href="'+esc(u)+'" target="_blank" rel="noopener">open the original \u2197</a>';
+  $('via').textContent='';
+  $('body').innerHTML='<p class="loading">Looking the work up in OpenAlex\u2026</p>';
+
+  let nodes=null,title='',via='',byline='';
+  try{
+    const f=await viaOpenAlex(u);
+    nodes=clean(fromHTML(f.html)); title=f.title; via=f.via;
+    byline=[f.author,f.published].filter(Boolean).join(' \u00b7 ');
+  }catch(e1){
+    $('body').innerHTML='<p class="loading">Not in OpenAlex \u2014 trying the landing page\u2026</p>';
+    try{
+      const r=await viaRelay(u);
+      const isHtml=looksHTML(r.text);
+      nodes=clean(isHtml?fromHTML(r.text):fromMarkdown(r.text));
+      via=r.via+(isHtml?'':' (markdown)');
+      const m=r.text.match(/<title[^>]*>([^<]+)/i)||r.text.match(/^title:\s*(.+)$/m)
+             ||r.text.match(/^#\s+(.+)$/m);
+      title=m?m[1].trim():u;
+    }catch(e2){
+      $('ttl').textContent='Could not read this report';
+      $('body').innerHTML='<p class="warn">Neither OpenAlex nor the landing page could be reached ('+
+        esc(e1.message)+'; '+esc(e2.message)+').</p><p>Open the original: <a href="'+esc(u)+
+        '" target="_blank" rel="noopener">'+esc(u)+'</a>, select a passage there, and use '+
+        '<b>Copy prompt</b> with your own text.</p>';
+      return;
+    }
+  }
+
+  CUR.title=title;
+  $('ttl').textContent=title;
+  const np=nodes.filter(n=>n.text).length, ni=nodes.length-np;
+  $('via').innerHTML='read via <b>'+esc(via)+'</b>'+(byline?' \u00b7 '+esc(byline):'')+
+    ' \u00b7 '+np+' passages'+(ni?', '+ni+' images':'');
+  if(!nodes.length){
+    $('body').innerHTML='<p class="warn">The report was reached but held no readable text \u2014 it may '+
+      'be entirely images. <a href="'+esc(u)+'" target="_blank" rel="noopener">Open the original \u2197</a></p>';
+    return;
+  }
+  $('body').innerHTML=nodes.map(function(n){
+    if(n.img) return '<img src="'+esc(n.img)+'" loading="lazy" alt="">';
+    if(n.head) return '<h3>'+esc(n.text.replace(/:\s*$/,''))+'</h3>';
+    return '<p'+(n.text.length<30?' class="short"':'')+'>'+esc(n.text)+'</p>';
+  }).join('');
+}
+$('load').onclick=function(){const u=$('url').value.trim(); if(u)load(u);};
+$('url').addEventListener('keydown',function(e){if(e.key==='Enter')$('load').click();});
+
+/* ---- selection -> seed --------------------------------------------- */
+const pop=$('pop');
+function preamble(sel,mode){
+  const base='From the research work "'+(CUR.title||'(untitled)')+'" at '+
+    (CUR.url||'(url not set)')+
+    ' \u2014 published by its authors under CC BY-NC-SA 4.0. This is a selected passage, not the full text.';
+  const ask={
+    explain :'Explain this passage plainly, for a researcher new to the field:',
+    diff    :'What related work should I read next, and why? Name specific papers.',
+    oracle  :'Separate what is claimed here from what was actually demonstrated. For each claim, '+
+             'name the experiment or analysis that would settle it, say whether the passage '+
+             'shows it was done, and give the result if so. Mark anything untested as unverified.',
+    critique:'What would an informed sceptic question about this reasoning?'
+  }[mode]||'Discuss this passage:';
+  return base+'\n\n'+ask+'\n\n"'+sel+'"';
+}
+/* Touch devices never deliver a useful `mouseup` after a text selection: the OS
+   shows its own handles and the user adjusts with those. Binding the seed popup
+   to mouseup meant select-and-seed was dead on every phone and tablet. The event
+   that actually describes what the user is doing is `selectionchange`, debounced
+   so it lands once the selection settles rather than on every handle drag.
+   Position against visualViewport — on mobile innerWidth ignores pinch zoom and
+   the on-screen keyboard, so the popup lands off-screen. */
+let SEL_T=null;
+function placePop(){
+  const sel=window.getSelection();
+  const s=(sel?sel.toString():'').trim();
+  if(s.length<12 || !sel.rangeCount){ pop.style.display='none'; return; }
+  const r=sel.getRangeAt(0).getBoundingClientRect();
+  if(!r || (!r.width && !r.height)){ pop.style.display='none'; return; }
+  const vv=window.visualViewport;
+  const vw=vv?vv.width:window.innerWidth;
+  const offX=vv?vv.offsetLeft:0, offY=vv?vv.offsetTop:0;
+  pop.style.display='block';
+  const pw=pop.offsetWidth||360, ph=pop.offsetHeight||44;
+  let left=r.left+offX+(r.width/2)-(pw/2);
+  left=Math.max(8, Math.min(left, vw-pw-8));
+  /* below the selection where the OS callout usually is not; above if no room */
+  const belowOk=(r.bottom+offY+ph+12) < (vv?vv.height:window.innerHeight);
+  const top=belowOk ? (window.scrollY+r.bottom+offY+10)
+                    : (window.scrollY+r.top+offY-ph-10);
+  pop.style.left=left+'px';
+  pop.style.top=Math.max(window.scrollY+4, top)+'px';
+  pop.dataset.s=s;
+}
+function scheduleSel(delay){
+  clearTimeout(SEL_T);
+  SEL_T=setTimeout(placePop, delay);
+}
+document.addEventListener('selectionchange',()=>scheduleSel(320));
+document.addEventListener('mouseup',()=>scheduleSel(0));
+document.addEventListener('touchend',()=>scheduleSel(360),{passive:true});
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',()=>scheduleSel(0));
+  window.visualViewport.addEventListener('scroll',()=>scheduleSel(0));
+}
+async function toClipboard(t){
+  try{await navigator.clipboard.writeText(t);return true}
+  catch(e){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';
+    ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch(_){}
+    document.body.removeChild(ta);return ok}
+}
+pop.querySelectorAll('button').forEach(function(b){b.onclick=async function(){
+  const s=pop.dataset.s||'', a=b.dataset.a, P=provider();
+  const prompt=preamble(s, a==='copy'?'explain':a);
+  if(a==='copy'){ b.textContent=(await toClipboard(prompt))?'Copied':'Copy failed';
+    setTimeout(function(){b.textContent='Copy prompt'},1400); return; }
+  if(P.prefill&&P.url){ window.open(P.url+encodeURIComponent(prompt),'_blank','noopener'); }
+  else{ const ok=await toClipboard(prompt);
+    toast(ok?'Prompt copied \u2014 paste it into '+P.name:'Could not copy \u2014 use \u201cCopy prompt\u201d');
+    if(P.url) window.open(P.url,'_blank','noopener'); }
+  pop.style.display='none';
+};});
+function maybeDismiss(e){ if(!pop.contains(e.target)) pop.style.display='none'; }
+document.addEventListener('mousedown',maybeDismiss);
+document.addEventListener('touchstart',maybeDismiss,{passive:true});
+</script>

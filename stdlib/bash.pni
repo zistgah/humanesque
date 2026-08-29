@@ -1,0 +1,130 @@
+MODULE PANINI.Bash
+
+FUNCTION bash_split(line)
+    parts = []
+    cur = ""
+    i = 0
+    n = LEN(line)
+    WHILE i < n
+        ch = line[i]
+        IF ch == " " OR ch == TAB()
+            IF LEN(cur) > 0
+                APPEND(parts, cur)
+                cur = ""
+            END
+        ELSE
+            cur = cur + ch
+        END
+        i = i + 1
+    END
+    IF LEN(cur) > 0
+        APPEND(parts, cur)
+    END
+    RETURN parts
+END
+
+FUNCTION bash_join(xs, sep)
+    out = ""
+    i = 0
+    WHILE i < LEN(xs)
+        IF i > 0
+            out = out + sep
+        END
+        out = out + xs[i]
+        i = i + 1
+    END
+    RETURN out
+END
+
+FUNCTION bash_exec(line)
+    parts = bash_split(line)
+    IF LEN(parts) == 0
+        RETURN ""
+    END
+    cmd = parts[0]
+    IF cmd == "pwd"
+        RETURN VFS_PWD()
+    END
+    IF cmd == "ls"
+        names = VFS_LS(".")
+        IF LEN(parts) > 1
+            names = VFS_LS(parts[1])
+        END
+        RETURN bash_join(names, NEWLINE())
+    END
+    IF cmd == "cat"
+        IF LEN(parts) < 2
+            RETURN "cat: missing file"
+        END
+        RETURN VFS_READ(parts[1])
+    END
+    IF cmd == "echo"
+        i = 1
+        bits = []
+        WHILE i < LEN(parts)
+            APPEND(bits, parts[i])
+            i = i + 1
+        END
+        RETURN bash_join(bits, " ")
+    END
+    IF cmd == "mkdir"
+        VFS_MKDIR(parts[1])
+        RETURN ""
+    END
+    IF cmd == "cd"
+        r = VFS_CD(parts[1])
+        RETURN VFS_PWD()
+    END
+    IF cmd == "rm"
+        VFS_RM(parts[1])
+        RETURN ""
+    END
+    IF cmd == "tree"
+        RETURN VFS_TREE()
+    END
+    IF cmd == "touch"
+        VFS_WRITE(parts[1], "")
+        RETURN ""
+    END
+    RETURN "bash: " + cmd + ": command not found"
+END
+
+FUNCTION bash_script(text)
+    last = ""
+    lines = []
+    cur = ""
+    i = 0
+    n = LEN(text)
+    WHILE i < n
+        ch = text[i]
+        IF ch == NEWLINE()
+            APPEND(lines, cur)
+            cur = ""
+        ELSE
+            cur = cur + ch
+        END
+        i = i + 1
+    END
+    IF LEN(cur) > 0
+        APPEND(lines, cur)
+    END
+    k = 0
+    WHILE k < LEN(lines)
+        line = lines[k]
+        IF LEN(line) > 0 AND line[0] != "#"
+            last = bash_exec(line)
+            IF LEN(last) > 0
+                PRINT last
+            END
+        END
+        k = k + 1
+    END
+    RETURN last
+END
+
+FUNCTION main()
+    bash_script("pwd\nls /home/panini\ncat /home/panini/readme.txt\nmkdir /tmp/work\ncd /tmp/work\necho hello\ntouch a.txt\nls\n")
+    RETURN 0
+END
+
+END

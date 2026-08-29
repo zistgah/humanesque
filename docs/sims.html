@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — VIDYA / AyeCNSe sims</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="console.html">Console</a>
+    <a href="sims/kernel.html">Diff-drive kernel</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Project VIDYA simulations</h1>
+  <p>Retrieved from <a href="https://github.com/AyeCNSe/sims">AyeCNSe/sims</a> (CNAME <code>sims.ayecnse.site</code>). HTML is vendor. The physical kernel in PANINI is differential-drive kinematics — two wheels, one axle — not a restyle of the Three.js scenes.</p>
+  <p><a href="sims/index.html">Original VIDYA index</a> · <a href="sims/kernel.html">PANINI kernel view</a></p>
+  <div id="list"></div>
+</main>
+<script src="skins/skins.js"></script>
+<script>
+fetch("sims/catalog.json").then(r => r.json()).then(c => {
+  document.getElementById("list").innerHTML = "<table><thead><tr><th>File</th><th>Title</th></tr></thead><tbody>" +
+    c.items.map(function (x) {
+      return "<tr><td><a href='sims/" + x[0] + "'>" + x[0] + "</a></td><td>" + x[1] + "</td></tr>";
+    }).join("") + "</tbody></table>";
+});
+</script>
+</body>
+</html>

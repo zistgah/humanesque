@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyeCNSe V13.4 - The Chronicle</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Courier New', monospace; color: #4ade80; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box; }
+        .core-hud { background: rgba(5, 5, 15, 0.9); border: 1px solid #4ade80; padding: 20px; border-radius: 4px; pointer-events: auto; width: 340px; }
+        .gallery { position: absolute; right: 30px; top: 30px; background: rgba(0,0,0,0.8); border: 1px solid #4ade80; padding: 15px; width: 200px; pointer-events: auto; max-height: 400px; overflow-y: auto; }
+        .console-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 900px; align-self: center; background: rgba(0,0,0,0.9); padding: 15px; border-radius: 4px; border: 1px solid #4ade80; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #4ade80; border: 1px solid #064e3b; padding: 10px; font-size: 11px; outline: none; }
+        button { width: 150px; background: #4ade80; color: #000; border: none; font-weight: bold; cursor: pointer; }
+        .stat { font-size: 12px; margin-bottom: 4px; display: flex; justify-content: space-between; }
+        .archive-item { font-size: 10px; padding: 5px; border-bottom: 1px solid #064e3b; cursor: pointer; }
+        .archive-item:hover { background: #064e3b; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="core-hud">
+            <h2 style="margin:0; font-size: 14px;">OMNIVERSE_CHRONICLE_v13.4</h2>
+            <hr style="border:0.5px solid #064e3b; margin:10px 0;">
+            <div class="stat"><span>ITERATION:</span><span id="iter">1</span></div>
+            <div class="stat"><span>PHYSICS_SEED:</span><span id="seed">0.500</span></div>
+            <div class="stat"><span>SENTIENT_PROB:</span><span id="life">0%</span></div>
+            <div class="stat"><span>K-SCALE:</span><span id="kscale">NONE</span></div>
+        </div>
+        <div class="gallery">
+            <div style="font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #4ade80;">TYPE_III_ARCHIVE</div>
+            <div id="archive-list"></div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// FIND TYPE III LIFE
+COLLAPSE_TO_SINGULARITY()
+WAIT(1.5)
+BIG_BANG()
+WAIT(1.0)
+GENERATE_NEW_REALITY_SEED(0.448) 
+INITIATE_DIMENSIONAL_SHIFT(3)</textarea>
+            <button onclick="sim.run()">Execute Genesis</button>
+        </div>
+    </div>
+
+    <script>
+        class ChronicleSim {
+            constructor() {
+                this.dimension = 3; this.seed = 0.5; this.iteration = 1; this.archived = new Set();
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5000);
+                this.renderer = new THREE.WebGLRenderer({antialias: true});
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                
+                const geo = new THREE.TorusKnotGeometry(40, 15, 200, 32);
+                this.mat = new THREE.PointsMaterial({color: 0x4ade80, size: 0.7});
+                this.mesh = new THREE.Points(geo, this.mat);
+                this.scene.add(this.mesh);
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (!m) continue;
+                    const cmd = m[1].trim(), val = parseFloat(m[2]) || 0;
+                    if (cmd === 'COLLAPSE_TO_SINGULARITY') this.dimension = 0;
+                    else if (cmd === 'BIG_BANG') { this.iteration++; this.dimension = 3; this.seed = Math.random(); this.camera.position.z = 20; }
+                    else if (cmd === 'GENERATE_NEW_REALITY_SEED') { this.seed = val; this.mat.color.setHSL(val, 0.8, 0.5); }
+                    else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.mesh.rotation.y += 0.01;
+                
+                if (this.dimension === 0) this.mesh.scale.lerp(new THREE.Vector3(0.01,0.01,0.01), 0.1);
+                else {
+                    this.mesh.scale.lerp(new THREE.Vector3(1,1,1), 0.05);
+                    this.camera.position.z += (150 - this.camera.position.z) * 0.02;
+                }
+
+                let stability = 1 - Math.abs(0.45 - this.seed) * 4;
+                let life = Math.max(0, stability * 100);
+                let k = life > 95 ? "TYPE III" : life > 70 ? "TYPE II" : life > 30 ? "TYPE I" : "NONE";
+
+                if (life > 95 && !this.archived.has(this.seed.toFixed(3))) {
+                    this.archived.add(this.seed.toFixed(3));
+                    const item = document.createElement('div');
+                    item.className = 'archive-item';
+                    item.innerText = `SEED_${this.seed.toFixed(3)} (Iter: ${this.iteration})`;
+                    document.getElementById('archive-list').appendChild(item);
+                }
+
+                document.getElementById('iter').innerText = this.iteration;
+                document.getElementById('seed').innerText = this.seed.toFixed(3);
+                document.getElementById('life').innerText = life.toFixed(2) + "%";
+                document.getElementById('kscale').innerText = k;
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new ChronicleSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+MODULE PANINI.Language
+
+FUNCTION typecheck(ast)
+    types = {}
+    fns = ast.functions
+    i = 0
+    WHILE i < LEN(fns)
+        fn = fns[i]
+        types[fn.name] = "Function"
+        i = i + 1
+    END
+    RETURN {ok: TRUE, types: types}
+END
+
+END

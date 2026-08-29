@@ -1,0 +1,65 @@
+{
+  "source": "retrieved/legacy/Romenagri/iso15919_map.csv",
+  "invented": false,
+  "rows": 94,
+  "per_script": {
+    "Deva": {
+      "glyphs_in_table": 81,
+      "have_iso_key": 81,
+      "no_iso_key": 0
+    },
+    "Aran": {
+      "glyphs_in_table": 62,
+      "have_iso_key": 62,
+      "no_iso_key": 0
+    },
+    "Beng": {
+      "glyphs_in_table": 60,
+      "have_iso_key": 60,
+      "no_iso_key": 0
+    },
+    "Guru": {
+      "glyphs_in_table": 53,
+      "have_iso_key": 53,
+      "no_iso_key": 0
+    },
+    "Gujr": {
+      "glyphs_in_table": 59,
+      "have_iso_key": 59,
+      "no_iso_key": 0
+    },
+    "Orya": {
+      "glyphs_in_table": 56,
+      "have_iso_key": 56,
+      "no_iso_key": 0
+    },
+    "Taml": {
+      "glyphs_in_table": 37,
+      "have_iso_key": 37,
+      "no_iso_key": 0
+    },
+    "Telu": {
+      "glyphs_in_table": 59,
+      "have_iso_key": 59,
+      "no_iso_key": 0
+    },
+    "Knda": {
+      "glyphs_in_table": 59,
+      "have_iso_key": 59,
+      "no_iso_key": 0
+    },
+    "Mlym": {
+      "glyphs_in_table": 58,
+      "have_iso_key": 58,
+      "no_iso_key": 0
+    },
+    "Sinh": {
+      "glyphs_in_table": 60,
+      "have_iso_key": 60,
+      "no_iso_key": 0
+    }
+  },
+  "aran_rows_with_deva": 62,
+  "aran_rows": 62,
+  "note": "Perso-Arabic round-trip improvement uses this retrieved table plus Unicode NFKC folding of presentation forms. Residue remains (abjad)."
+}

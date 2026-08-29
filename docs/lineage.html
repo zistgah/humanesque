@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — lineage</title>
+  <style>
+    article.node { border:1px solid #345; padding:.7rem 1rem; margin:.6rem 0; }
+  </style>
+
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>LINEAGE</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="legacy.html">Legacy</a>
+    <a href="mentions.html">Mentions</a>
+    <a href="research.html">Research</a>
+    <a href="explorer.html">Estate</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Decades, named entities, open requirements</h1>
+  <p>CDAC/NRC-FOSS sponsored the <strong>FOSS India Award</strong> (Open Source India Week, Delhi, <time>17 Feb 2008</time>). Lead award: Hindawi, Abhishek Chaudhary and Sweta Chaudhary — “system level programming in Indic languages.” Source: <a href="https://www.cdac.in/index.aspx?id=print_page&print=pk_itn_spot620">cdac.in pk_itn_spot620</a>.</p>
+  <p>Names below are distinct. Do not flatten PAT.AL, PRATIK, VIDYA, HMSEI, Research Kundali, or Chakra into one product.</p>
+
+  <h2>Programmes</h2>
+  <div id="prog"></div>
+
+  <h2>Repos × requirements × legacy</h2>
+  <table id="corr"><thead><tr><th>Repo</th><th>REQ</th><th>Legacy root</th></tr></thead><tbody></tbody></table>
+</main>
+<script>
+Promise.all([
+  fetch("data/lineage.json").then(r=>r.json()),
+  fetch("data/repo_req.json").then(r=>r.json())
+]).then(([L,R]) => {
+  document.getElementById("prog").innerHTML = L.programmes.map(p =>
+    "<article class='node'><h3>"+p.name+"</h3><p><b>"+p.start+"</b> · "+p.source+
+    "</p><p>"+p.path+"</p><p>Now: "+p.current+"</p><p>REQ "+(p.req||[]).join(", ")+"</p></article>"
+  ).join("");
+  document.querySelector("#corr tbody").innerHTML = R.rows.map(x =>
+    "<tr><td>"+x.repo+"</td><td>"+x.req+"</td><td>"+x.legacy+"</td></tr>"
+  ).join("");
+});
+</script>
+</body>
+</html>

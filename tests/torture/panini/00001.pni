@@ -1,0 +1,6 @@
+MODULE T00001
+FUNCTION main()
+    PRINT "hello"
+    RETURN 0
+END
+END

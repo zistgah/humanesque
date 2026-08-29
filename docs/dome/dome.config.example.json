@@ -1,0 +1,7 @@
+{
+  "_": "zistgah/dome example configuration. Copy beside your page as dome.config.json (or set window.ZISTGAH_DOME.configUrl). Data only — callbacks belong in your page script. Full schema: docs/CONFIG.md.",
+  "flight": { "spawn": { "zone": "space", "pos": [0, 20, 26], "yaw": 3.14159 } },
+  "worlds": { "patch": [ { "id": "moon", "gravity": 0.165 }, { "id": "mars", "gravity": 0.38 } ] },
+  "gallery": { "title": "Gallery", "slots": 4, "intervalS": 20, "images": [] },
+  "videos":  { "items": [] }
+}

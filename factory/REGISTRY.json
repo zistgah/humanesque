@@ -1,0 +1,455 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "note": "Software and systems factory. Browse this before writing a file. Frozen hashes are 16-hex SHA-256 prefixes. Adapters are allowed copies; silent duplicates are not.",
+  "extends": [
+    "docs/MODULES.md",
+    "SPINOFF.json"
+  ],
+  "frozen_rule": "Do not edit freeze:true without factory/DELIBERATION.md.",
+  "languages_index": "factory/languages.json",
+  "groups": {
+    "frozen": ["spec-v1", "vfs", "shell", "interp", "vt100", "romenagri", "wasm-front", "wat2wasm", "c-frontend", "python-frontend", "cpp-frontend", "rust-frontend", "go-frontend", "julia-frontend", "notebook-frozen", "license", "retrieved"],
+    "frontends-live": ["javascript-frontend", "typescript-frontend", "java-frontend", "haskell-frontend", "smalltalk-frontend", "lisp-frontend", "prolog-frontend"],
+    "runtimes-live": ["clower", "gnuc", "cpplower", "stdlower", "cinterp", "ccpp", "qb64", "js262", "steval", "hseval", "cleval", "pleval", "vga"],
+    "factory": ["factory-scan", "factory-sync", "agi-map", "agi-green", "languages-index", "spine"],
+    "estate": ["monitor", "wgsl", "softmmu", "esp32", "isa-riscv", "isa-arm", "sysml", "micro-libc", "workbench-spec"]
+  },
+  "components": [
+    {
+      "id": "spec-v1",
+      "path": "spec/PANINI_SELF_HOSTING_SPEC.pni",
+      "owns": "self-hosting spec text",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "13384078bb1478c2",
+      "reuse": "never rewrite"
+    },
+    {
+      "id": "vfs",
+      "path": "runtime/vfs.js",
+      "owns": "in-memory VFS",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "903f1e37c751dd41",
+      "adapter": [
+        "docs/console.js",
+        "stdlib/vfs.pni"
+      ]
+    },
+    {
+      "id": "shell",
+      "path": "runtime/shell.js",
+      "owns": "bash + COMMAND.COM",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "e35c1c2c1c365036",
+      "adapter": [
+        "docs/console.js",
+        "stdlib/bash.pni"
+      ]
+    },
+    {
+      "id": "interp",
+      "path": "runtime/interpreter.js",
+      "owns": "PANINI eval",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "0566fb06971c1637"
+    },
+    {
+      "id": "vt100",
+      "path": "runtime/vt100.js",
+      "owns": "VT100 terminal",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "da3914e2c937bb26"
+    },
+    {
+      "id": "romenagri",
+      "path": "runtime/romenagri.js",
+      "owns": "Romenagri retrieve, not invent",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "50a7f1467bdbdbe7"
+    },
+    {
+      "id": "wasm-front",
+      "path": "runtime/wasm_front.js",
+      "owns": "WASM CFG / Maṇḍūkapluti",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "32646d5f9d03cbeb",
+      "note": "WASM emitter frozen per REQ-13"
+    },
+    {
+      "id": "wat2wasm",
+      "path": "runtime/wat2wasm.js",
+      "owns": "WAT binary",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "9c497f7f4f91cc80"
+    },
+    {
+      "id": "c-frontend",
+      "path": "src/panini/frontends/c.pni",
+      "owns": "PANINI.Frontend.C ISO/STANDARD GREEN",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "dca2f8cf45dc8386",
+      "note": "C work goes in clower.js / gnuc.js, not here"
+    },
+    {
+      "id": "python-frontend",
+      "path": "src/panini/frontends/python.pni",
+      "owns": "Python STANDARD GREEN on CPython 3.12 language extract",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "cc90e61d44605fa1"
+    },
+    {
+      "id": "cpp-frontend",
+      "path": "src/panini/frontends/cpp.pni",
+      "owns": "C++ lex in PANINI",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "6373fafd1c9250af",
+      "note": "lowering in cpplower.js"
+    },
+    {
+      "id": "rust-frontend",
+      "path": "src/panini/frontends/rust.pni",
+      "owns": "STANDARD GREEN Rust",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "335711a2b0f29008"
+    },
+    {
+      "id": "go-frontend",
+      "path": "src/panini/frontends/go.pni",
+      "owns": "STANDARD GREEN Go",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "9d7e5b18c66511e8"
+    },
+    {
+      "id": "julia-frontend",
+      "path": "src/panini/frontends/julia.pni",
+      "owns": "STANDARD GREEN Julia",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "cb4af36bfa1f5489"
+    },
+    {
+      "id": "notebook-frozen",
+      "path": "docs/nb.frozen.html",
+      "owns": "accepted notebook chrome",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "57b1a9a1096d02b6"
+    },
+    {
+      "id": "license",
+      "path": "LICENSE",
+      "owns": "GPL-3.0-or-later text",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "0accb9d755420488"
+    },
+    {
+      "id": "retrieved",
+      "path": "retrieved/READ_ONLY.md",
+      "owns": "vendor tree is read-only",
+      "status": "optimized",
+      "freeze": true,
+      "hash": "a9b4af5990191562"
+    },
+    {
+      "id": "clower",
+      "path": "runtime/clower.js",
+      "owns": "C four-pass lowering",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "gnuc",
+      "path": "runtime/gnuc.js",
+      "owns": "GNU C pre-pass",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "cpplower",
+      "path": "runtime/cpplower.js",
+      "owns": "C++ → C",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "stdlower",
+      "path": "runtime/stdlower.js",
+      "owns": "Rust/Go/Julia → C",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "cinterp",
+      "path": "runtime/cinterp.js",
+      "owns": "host-speed C heap eval",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "ccpp",
+      "path": "runtime/ccpp.js",
+      "owns": "C preprocessor lite",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "monitor",
+      "path": "runtime/monitor.js",
+      "owns": "resource monitor",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "wgsl",
+      "path": "runtime/wgsl.js",
+      "owns": "WGSL matmul emit",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "softmmu",
+      "path": "runtime/softmmu.js",
+      "owns": "SoftMMU design",
+      "status": "stub",
+      "freeze": false
+    },
+    {
+      "id": "esp32",
+      "path": "docs/engine/esp32.js",
+      "owns": "Web Serial SLIP",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "isa-riscv",
+      "path": "runtime/isa/riscv.js",
+      "owns": "Shakti/RV32IMAC slot",
+      "status": "stub",
+      "freeze": false
+    },
+    {
+      "id": "isa-arm",
+      "path": "runtime/isa/arm.js",
+      "owns": "Cortex slot",
+      "status": "stub",
+      "freeze": false
+    },
+    {
+      "id": "sysml",
+      "path": "languages/sysml.pni",
+      "owns": "SysML v2 stub",
+      "status": "stub",
+      "freeze": false
+    },
+    {
+      "id": "micro-libc",
+      "path": "include/",
+      "owns": "micro-headers, not /usr/include",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "spine",
+      "path": "docs/spine.json",
+      "owns": "canonical menu",
+      "status": "live",
+      "freeze": false,
+      "note": "add entries; do not flatten"
+    },
+    {
+      "id": "factory-scan",
+      "path": "scripts/factory_scan.mjs",
+      "owns": "browse + freeze verify + ship-green",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "factory-sync",
+      "path": "scripts/factory_sync.mjs",
+      "owns": "canonical → adapter copy",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "workbench-spec",
+      "path": "spec/PANINI.V2.WORKBENCH.md",
+      "owns": "L15 workbench spec; does not alter T0",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "agi-map",
+      "path": "factory/agi_map.json",
+      "owns": "L0–L26 → registry components",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "agi-green",
+      "path": "scripts/agi_green.mjs",
+      "owns": "derived SHIP/STANDARD per layer",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "qb64",
+      "path": "runtime/qb64.js",
+      "owns": "QB64 CONST/PRINT STANDARD GREEN on expression.bas",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "vga",
+      "path": "runtime/vga.js",
+      "owns": "VGA Mode 13h/12h and SVGA 101/103 on the VT100 CRT",
+      "status": "live",
+      "freeze": false,
+      "adapter": [
+        "docs/console.html"
+      ]
+    },
+    {
+      "id": "js262",
+      "path": "runtime/js262.js",
+      "owns": "Test262 language extract eval (ECMAScript STANDARD GREEN)",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "steval",
+      "path": "runtime/steval.js",
+      "owns": "GNU Smalltalk intmath Eval subset",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "hseval",
+      "path": "runtime/hseval.js",
+      "owns": "GHC codeGen should_run subset",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "javascript-frontend",
+      "path": "src/panini/frontends/javascript.pni",
+      "owns": "ECMAScript STANDARD GREEN on Test262 language extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "typescript-frontend",
+      "path": "src/panini/frontends/typescript.pni",
+      "owns": "TypeScript STANDARD GREEN on tsc compiler extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "java-frontend",
+      "path": "src/panini/frontends/java.pni",
+      "owns": "Java STANDARD GREEN on OpenJDK javac Parens extract. Not Java™.",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "haskell-frontend",
+      "path": "src/panini/frontends/haskell.pni",
+      "owns": "Haskell STANDARD GREEN on GHC codeGen should_run extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "smalltalk-frontend",
+      "path": "src/panini/frontends/smalltalk.pni",
+      "owns": "Smalltalk STANDARD GREEN on GNU Smalltalk intmath extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "lisp-frontend",
+      "path": "src/panini/frontends/lisp.pni",
+      "owns": "Common Lisp STANDARD GREEN on ansi-test named extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "prolog-frontend",
+      "path": "src/panini/frontends/prolog.pni",
+      "owns": "Prolog STANDARD GREEN on Ciao ISO 8.6/8.7 arith extract",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "cleval",
+      "path": "runtime/cleval.js",
+      "owns": "ANSI Common Lisp subset eval (ansi-test extract)",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "pleval",
+      "path": "runtime/pleval.js",
+      "owns": "ISO Prolog arith subset eval (Ciao iso_tests extract)",
+      "status": "live",
+      "freeze": false
+    },
+    {
+      "id": "languages-index",
+      "path": "factory/languages.json",
+      "owns": "Language factory index. Browse before adding a frontend.",
+      "status": "live",
+      "freeze": false
+    }
+  ],
+  "adapters": [
+    {
+      "from": "runtime/vfs.js",
+      "to": "docs/console.js",
+      "why": "Pages UMD"
+    },
+    {
+      "from": "runtime/shell.js",
+      "to": "docs/console.js",
+      "why": "Pages UMD"
+    },
+    {
+      "from": "src/panini/frontends/*.pni",
+      "to": "languages/",
+      "why": "AGI-layer name catalog; do not grow a second interpreter"
+    },
+    {
+      "from": "src/panini/frontends/*.pni",
+      "to": "docs/engine/interp/",
+      "why": "browser interp copies"
+    },
+    {
+      "from": "ontology/core.json",
+      "to": "docs/ontology/core.json",
+      "why": "Pages copy"
+    },
+    {
+      "from": "stdlib/vfs.pni",
+      "why": "PANINI surface, not a second VFS"
+    }
+  ],
+  "do_not_add": [
+    "another inlined VFS",
+    "another ontology graph in markdown",
+    "another homepage",
+    "GCC headers",
+    "invented Romenagri maps"
+  ]
+}

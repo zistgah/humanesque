@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>हिंदवी अभ्यास अनुभाग</title>
+  <style>
+    /* Chrome from हिंदवी_2022_8_स्मरण_पुस्तिका.ipynb — paper, not the estate navy. */
+    body { margin: 0; font: 15px/1.45 "Noto Sans Devanagari", Georgia, sans-serif; background: #f7f7f7; color: #111; }
+    header { background: #0b1c2c; color: #e8d9a8; padding: 8px 12px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    header a { color: #e8d9a8; }
+    .wrap { display: flex; gap: 8px; padding: 8px; max-width: 1200px; margin: 0 auto; }
+    .editors { flex: 3; min-width: 0; }
+    .actions { flex: 1; min-width: 11rem; }
+    label { font-weight: 700; display: block; margin-top: 6px; }
+    textarea { width: 100%; font-family: ui-monospace, monospace; font-size: 13px; }
+    #prog { height: 180px; }
+    #inp { height: 80px; }
+    #out, #rmn, #host, #flat { height: 110px; }
+    .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px; }
+    .stage { background: #fff; border: 1px solid #ccc; padding: 6px; }
+    .stage h3 { margin: 0 0 4px; font-size: 13px; }
+    .why { font-size: 12px; color: #444; margin: 0 0 4px; }
+    .warn { background: #fff3cd; border: 1px solid #c9a227; padding: 6px 12px; margin: 8px; }
+    @media (max-width: 720px) { .wrap, .io, .stages { flex-direction: column; grid-template-columns: 1fr; } }
+    .io { display: flex; gap: 8px; }
+    .io > div { flex: 1; min-width: 0; }
+    button { height: 30px; font-weight: 700; border: 0; padding: 0 10px; cursor: pointer; width: 100%; margin: 3px 0; }
+    .b-build { background: orange; }
+    .b-run { background: #2e7d32; color: #fff; }
+    .b-new { background: pink; }
+    .b-io { background: cyan; }
+    .b-x { background: lightgreen; }
+    .b-demo { background: lightblue; }
+    select { width: 100%; height: 25px; }
+    .fine { font-size: 12px; color: #444; padding: 0 12px 12px; }
+    @media (max-width: 720px) { .wrap, .io { flex-direction: column; } }
+  </style>
+</head>
+<body>
+<header>
+  <strong>हिंदवी अभ्यास अनुभाग</strong>
+  <a href="index.html">PANINI</a>
+  <a href="hindawi.html">Devanagari flow</a>
+</header>
+<div class="wrap">
+  <div class="editors">
+    <label>परोग्राम (Code):</label>
+    <textarea id="prog"><शैली गुरु>
+#समावेश <मानकपन.स>
+पूर्णांक मुख्य()
+{
+	अक्षर अ[८०];
+	पूर्णांक क;
+	क्रम(क=1; क<=10; क++)
+		म_लिखो("%d\n",क);
+	वापस 0;
+}
+</textarea>
+    <div class="io">
+      <div>
+        <label>निविष्ट (Input):</label>
+        <textarea id="inp">राम</textarea>
+      </div>
+      <div>
+        <label>उत्पादन (Output):</label>
+        <textarea id="out" readonly placeholder="कार्यक्रम का छपा हुआ परिणाम"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div>क्रिया (Do):</div>
+    <button class="b-build" id="build">संकलन (Compile)</button>
+    <button class="b-run" id="run">प्रसार (Run)</button>
+    <button class="b-new" id="neu">नया (New)</button>
+    <button class="b-io" id="up">निवेश (Upload)</button>
+    <button class="b-io" id="down">संचय (Download)</button>
+    <button class="b-x" id="h2s">हिंदवी → Standard</button>
+    <button class="b-x" id="s2h">Standard → हिंदवी</button>
+    <div>उदाहरण (Demo):</div>
+    <select id="demo">
+      <option value="HindiBASIC.uhin">शैली प्राथमिक (Hindi Basic)</option>
+      <option value="HindiC.uhin" selected>शैली गुरु (Hindi C)</option>
+      <option value="HindiCPP.uhin">शैली श्रेणी (Hindi C++)</option>
+      <option value="HindiLEX.uhin">शैली शब्द (Hindi Lex)</option>
+      <option value="HindiYACC.uhin">शैली व्याक (Hindi Yacc)</option>
+      <option value="HindiASM.uhin">शैली यांत्रिक (Hindi Asm)</option>
+      <option value="HindiJAVA.uhin">शैली कृत्रिम (Hindi Java)</option>
+    </select>
+    <button class="b-demo" id="load">डेमो खोलें (Load demo)</button>
+    <label>भाषा (22 + Perso-Arabic)</label>
+    <select id="lang"></select>
+    <button class="b-demo" id="loadlang">इस भाषा का गुरु डेमो</button>
+    <label>देखें (View as) — संकलन नहीं</label>
+    <select id="viewlang"></select>
+    <button class="b-x" id="doView">दृश्य दिखाएँ</button>
+  </div>
+</div>
+<p class="warn" id="perso-warn" hidden>Perso-Arabic does not round-trip. Lowest-layer debug (gdb, nm) will not reconstruct the original letters. That is named, not hidden.</p>
+<div class="stages">
+  <div class="stage">
+    <h3>दृश्य (View) — dictionary overlay</h3>
+    <p class="why">Keywords follow the other standard. Names are a dictionary. Compile still uses the file on the left.</p>
+    <textarea id="view" readonly placeholder="View as…"></textarea>
+    <table id="dict" style="font-size:12px;width:100%"><thead><tr><th>original</th><th>view</th><th>Romenagri</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="stage">
+    <h3>1. एक लिपि — Devanagari hub</h3>
+    <p class="why">आपकी लिपि यहाँ एक जगह मिलती है। पुराने औज़ार यहीं से चलते हैं।</p>
+    <textarea id="flat" readonly></textarea>
+  </div>
+  <div class="stage">
+    <h3>2. रोमननागरी — ASCII-7 kernel</h3>
+    <p class="why">gcc और gdb यही देखते हैं। यूनिकोड से सीधा छलांग नहीं।</p>
+    <textarea id="rmn" readonly></textarea>
+  </div>
+  <div class="stage">
+    <h3>3. मेज़बान भाषा — C / ASM / BASIC / Java</h3>
+    <p class="why">शैली का शब्दकोश रोमननागरी पर चलता है, 2004 की तरह।</p>
+    <textarea id="host" readonly></textarea>
+  </div>
+  <div class="stage">
+    <h3>4. परतें (AGI / workbench)</h3>
+    <p class="why" id="layerwhy">L13 representation → L14 PANINI → host. Same maps in console, paper, dome.</p>
+    <ol id="layerlist" style="font-size:13px;margin:0;padding-left:1.2rem"></ol>
+  </div>
+</div>
+<p class="fine">Frozen chrome: <a href="nb.frozen.html">nb.frozen.html</a> (do not restyle). Compile is Unicode → ACII → Romenagri → shaili lex. Native gurucc then gcc. This page only <em>shows</em> those boxes. Original Colab: retrieved/legacy/Notebooks.</p>
+<input id="file" type="file" hidden />
+<script src="engine/nb.js"></script>
+<script src="i18n/gt.js"></script>
+<script>
+function shailiOf(src){
+  if (/प्राथमिक|praatha/.test(src)) return "praatha";
+  if (/श्रेणी/.test(src)) return "shraeni";
+  if (/शब्द/.test(src)) return "shabda";
+  if (/व्याकरण|व्याक/.test(src)) return "wyaaka";
+  if (/यांत्रिक/.test(src)) return "yantra";
+  if (/कृत्रिम/.test(src)) return "kritrima";
+  return "guru";
+}
+PANINI_NB.load("engine/bundle.json").then((B) => {
+  const lang = document.getElementById("lang");
+  Object.keys(B.langs).sort().forEach((k) => {
+    const o = document.createElement("option");
+    o.value = k; o.textContent = k + (B.perso_family.includes(k) ? " (lossy)" : "");
+    if (k === "hindi") o.selected = true;
+    lang.appendChild(o);
+    const v = o.cloneNode(true);
+    document.getElementById("viewlang").appendChild(v);
+  });
+  document.getElementById("viewlang").value = "hindi";
+  const q = new URLSearchParams(location.search);
+  if (q.get("lang") && B.langs[q.get("lang")]) {
+    lang.value = q.get("lang");
+    document.getElementById("viewlang").value = q.get("lang");
+  }
+  if (q.get("demo")) {
+    const name = q.get("demo");
+    fetch("demos/"+name).then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+      if (!/^\s*<!DOCTYPE html/i.test(t)) document.getElementById("prog").value = t;
+    }).catch(() => fetch("demos/langs/"+name).then(r=>r.ok?r.text():"").then(t => {
+      if (t && !/^\s*<!DOCTYPE html/i.test(t)) document.getElementById("prog").value = t;
+    }));
+  }
+  function show(r, exec) {
+    document.getElementById("flat").value = r.flattened || "";
+    document.getElementById("rmn").value = r.romenagri || "";
+    document.getElementById("host").value = r.host || "";
+    document.getElementById("out").value = exec ? exec.out : "";
+    document.getElementById("perso-warn").hidden = !r.perso;
+    const ol = document.getElementById("layerlist");
+    ol.innerHTML = (r.layers || []).map((L) => "<li><strong>"+L.title+"</strong> — "+(L.why||"")+"</li>").join("");
+    if (r.notes && r.notes.length) ol.innerHTML += "<li>"+r.notes.join(" ")+"</li>";
+    ol.innerHTML += "<li>Romenagri lex used: "+(r.usedRmn?"yes":"fallback labelled")+"</li>";
+  }
+  function compile() {
+    const src = document.getElementById("prog").value;
+    const r = PANINI_NB.compile({ src, lang: lang.value, shaili: shailiOf(src) });
+    show(r, null);
+    return r;
+  }
+  document.getElementById("build").onclick = compile;
+  document.getElementById("run").onclick = () => {
+    const r = compile();
+    const exec = PANINI_NB.run(r, document.getElementById("inp").value);
+    show(r, exec);
+  };
+  document.getElementById("h2s").onclick = () => {
+    const r = compile();
+    document.getElementById("prog").value = r.host;
+  };
+  document.getElementById("s2h").onclick = () => {
+    document.getElementById("prog").value = PANINI_NB.std2hin(
+      document.getElementById("prog").value, lang.value);
+  };
+  document.getElementById("neu").onclick = () => {
+    document.getElementById("prog").value = "";
+    document.getElementById("inp").value = "";
+    document.getElementById("out").value = "";
+  };
+  document.getElementById("load").onclick = () => {
+    const name = document.getElementById("demo").value;
+    function take(t, label) {
+      if (/^\s*<!DOCTYPE html/i.test(t) || /^\s*<html[\s>]/i.test(t)) {
+        document.getElementById("out").value = "Demo " + label + " is missing (server returned HTML). Not loaded.";
+        return;
+      }
+      document.getElementById("prog").value = t;
+      document.getElementById("out").value = "Loaded " + label;
+    }
+    fetch("demos/"+name).then(r => {
+      if (!r.ok) throw new Error("no demo");
+      return r.text();
+    }).then(t => take(t, name)).catch(() =>
+      fetch("../retrieved/legacy/Hindawi/samples/"+name).then(r => {
+        if (!r.ok) throw new Error("no sample");
+        return r.text();
+      }).then(t => take(t, name)).catch(() => {
+        document.getElementById("out").value = "No retrieved demo named " + name + ". See deposits/TASKS.md.";
+      })
+    );
+  };
+  document.getElementById("down").onclick = () => {
+    const blob = new Blob([document.getElementById("prog").value], {type:"text/plain"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "hindawi-code.uhin";
+    a.click();
+  };
+  document.getElementById("loadlang").onclick = () => {
+    const k = lang.value;
+    fetch("demos/langs/"+k+"_guru.uhin").then((r) => {
+      if (!r.ok) throw new Error("no demo");
+      return r.text();
+    }).then((t) => {
+      document.getElementById("prog").value = t;
+      document.getElementById("out").value = "";
+    }).catch(() => {
+      document.getElementById("out").value = "No retrieved demo for "+k+". Not invented. See deposits/TASKS.md.";
+    });
+  };
+  document.getElementById("doView").onclick = () => {
+    const src = document.getElementById("prog").value;
+    const r = PANINI_NB.projectView(src, lang.value, document.getElementById("viewlang").value);
+    document.getElementById("view").value = r.view;
+    document.getElementById("dict").querySelector("tbody").innerHTML =
+      r.dictionary.map((d) => "<tr><td>"+d.original+"</td><td>"+d.view+"</td><td>"+(d.romenagri||"")+"</td></tr>").join("");
+  };
+  document.getElementById("up").onclick = () => document.getElementById("file").click();
+  document.getElementById("file").onchange = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    f.text().then(t => { document.getElementById("prog").value = t; });
+  };
+});
+</script>
+</body>
+</html>

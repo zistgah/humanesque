@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V14.5 - Phenotype Architect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020617; font-family: 'JetBrains Mono', monospace; color: #34d399; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 25px; box-sizing: border-box; }
+        .bio-hud { background: rgba(2, 6, 23, 0.9); border: 1px solid #34d399; padding: 15px; border-radius: 8px; pointer-events: auto; width: 340px; box-shadow: 0 0 20px rgba(52, 211, 153, 0.2); }
+        .phenotype-preview { border-top: 1px solid #064e3b; margin-top: 10px; padding-top: 10px; font-size: 11px; }
+        .editor-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 900px; align-self: center; background: rgba(0,0,0,0.9); padding: 15px; border-radius: 8px; border: 1px solid #34d399; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #34d399; border: 1px solid #064e3b; padding: 10px; font-size: 11px; outline: none; }
+        button { width: 150px; background: #34d399; color: #020617; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .dna-tag { color: #fbbf24; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="bio-hud">
+            <h2 style="margin:0; font-size: 14px;">PHENOTYPE_ARCHITECT_v14.5</h2>
+            <div class="phenotype-preview">
+                <div style="margin-bottom:5px;">GENOTYPE: <span id="genotype" class="dna-tag">---</span></div>
+                <div style="margin-bottom:5px;">PROTEIN_FOLD: <span id="protein">IDLE</span></div>
+                <div>EXPRESSION: <span id="expression">LATENT</span></div>
+            </div>
+        </div>
+        <div class="editor-box">
+            <textarea id="ilmInput">
+// PROTEIN SYNTHESIS SEQUENCE
+GENERATE_DNA_STRAND("ATGCCTAGGTGA")
+WAIT(2.0)
+FOLD_PROTEIN()
+WAIT(1.5)
+EXPRESS_PHENOTYPE("CELLULAR_GROWTH")
+WAIT(3.0)
+EDIT_DNA_SEQUENCE("ATGCCTAAATGA") // Mutation test</textarea>
+            <button onclick="sim.run()">Synthesize Life</button>
+        </div>
+    </div>
+
+    <script>
+        class PhenotypeSim {
+            constructor() {
+                this.dna = "ATGCCTAGGTGA";
+                this.isExpressing = false;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.z = 40;
+                this.renderer = new THREE.WebGLRenderer({antialias: true});
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                
+                // The Phenotype Model (A procedural blob representing a cell)
+                const geo = new THREE.IcosahedronGeometry(10, 4);
+                this.mat = new THREE.MeshPhongMaterial({color: 0x34d399, wireframe: true, transparent: true, opacity: 0.6});
+                this.cell = new THREE.Mesh(geo, this.mat);
+                this.scene.add(this.cell);
+
+                const light = new THREE.PointLight(0xffffff, 1, 100);
+                light.position.set(10, 10, 10);
+                this.scene.add(light);
+                this.scene.add(new THREE.AmbientLight(0x404040));
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (!m) continue;
+                    const cmd = m[1].trim(), val = m[2].replace(/['"]/g, '');
+                    
+                    if (cmd === 'GENERATE_DNA_STRAND' || cmd === 'EDIT_DNA_SEQUENCE') {
+                        this.dna = val;
+                        document.getElementById('genotype').innerText = this.dna;
+                        this.isExpressing = false;
+                    }
+                    else if (cmd === 'FOLD_PROTEIN') {
+                        document.getElementById('protein').innerText = "COMPUTING...";
+                        await new Promise(r => setTimeout(r, 1000));
+                        document.getElementById('protein').innerText = "FOLDED_ALPHA_HELIX";
+                    }
+                    else if (cmd === 'EXPRESS_PHENOTYPE') {
+                        this.isExpressing = true;
+                        document.getElementById('expression').innerText = val;
+                    }
+                    else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, parseFloat(val) * 1000));
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                // Biological Jitter (Metabolism)
+                const time = Date.now() * 0.001;
+                if (this.isExpressing) {
+                    this.cell.rotation.y += 0.01;
+                    this.cell.scale.setScalar(1 + Math.sin(time * 2) * 0.1);
+                    this.mat.opacity = 0.8;
+                } else {
+                    this.cell.rotation.y += 0.002;
+                    this.mat.opacity = 0.3;
+                }
+
+                // Deform cell based on DNA "health"
+                const positions = this.cell.geometry.attributes.position;
+                for (let i = 0; i < positions.count; i++) {
+                    const x = positions.getX(i);
+                    const y = positions.getY(i);
+                    const z = positions.getZ(i);
+                    // Modulate shape based on DNA string length
+                    const wave = Math.sin(x + time) * (this.dna.length * 0.05);
+                    positions.setZ(i, z + (this.isExpressing ? wave * 0.1 : 0));
+                }
+                positions.needsUpdate = true;
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new PhenotypeSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1580 @@
+# VARZISH.pni
+# PANINI Source Representation
+# Canonical Working Specification
+# Humanesque / Zistgah
+# Status: Canonical working specification
+# Principle: RETRIEVE, DON'T RECONSTRUCT
+
+TITLE: VARZISH
+SUBTITLE: The Experience–Assessment–Production Environment
+ROLE: Zistgah learning-execution / practice-development layer
+CORE PRINCIPLE: Do not automate away the developmental process.
+AUTOMATION PRINCIPLE: Automate construction, orchestration, observation and adaptation of the developmental process while keeping expert correction inside the architecture.
+
+---
+
+## 1. CONSTITUTIONAL POSITION
+
+VARZISH is the practice, development, assessment, simulation and production environment through which capability is developed, exercised, evidenced, corrected and advanced.
+
+FAKIR -> retrieves domainal reality
+FAKIR -> locates mission
+FAKIR -> identifies domain(s)
+FAKIR -> permits composite domainal configurations
+FAKIR -> retrieves/orients toward appropriate VARZISH
+
+FAKIR = WHERE / WHAT DOMAINAL REALITY
+VARZISH = HOW CAPABILITY IS DEVELOPED, EXERCISED AND EVIDENCED WITHIN THAT DOMAIN
+
+Varzish is not merely:
+- an LMS
+- a course catalogue
+- a quiz engine
+- a credential generator
+- a static content repository
+
+Varzish is the Experience–Assessment–Production Environment.
+
+Varzish may encompass:
+- practices
+- disciplines
+- methods
+- traditions
+- techniques
+- institutions
+- knowledge
+
+Invariant:
+RETRIEVE, DON'T RECONSTRUCT.
+
+---
+
+## 2. ARCHITECTURAL STACK
+
+INDUS
+  -> invariant-preserving intelligence architecture
+
+HUMANESQUE
+  -> human capability / developmental architecture
+
+ZISTGAH
+  -> learning-and-development environment
+
+GENIE / PEDLER
+  -> experience construction + developmental adaptation
+
+VARZISH
+  -> practice / assessment / simulation / production
+  -> learning-execution / orchestration layer
+
+Varzish is where the developmental architecture becomes operationally deliverable at scale.
+
+---
+
+## 3. ORTHOGONAL HUMANESQUE ARCHITECTURE
+
+Layer | Function
+
+FAKIR
+  Domain / Activity Coordinates
+  Retrieves domainal reality; guides mission-to-domain orientation.
+
+ILM
+  Linguistic / Representational Coordinates
+  Supports representation independently of language.
+
+PEDLER
+  Transition / Agency Dynamics
+  Governs movement, transition, inclination and developmental dynamics.
+
+CEM
+  Substrate Realisation
+  Provides realization substrate.
+
+CYCLER
+  Execution / Orchestration
+  Enacts operational cycles.
+
+KITAB
+  Persistent Artefact
+  Preserves executable / persistent outputs.
+
+ZISTGAH
+  Ecosystem
+  Provides the living environment for enabled agency.
+
+HUMANESQUE
+  Sovereignty / Civilizational Envelope
+
+MAHAJANAPAD
+  Many Sovereigns, One Civilizational Space
+
+Rule:
+These layers interoperate without collapsing into one another.
+
+---
+
+## 4. FAKIR -> VARZISH
+
+FAKIR retrieves; Varzish develops.
+
+FAKIR:
+  retrieve domainal reality
+  locate mission
+  identify domain(s)
+  allow composite domainal configurations
+  retrieve/orient toward appropriate Varzish
+
+VARZISH:
+  instantiate appropriate practices
+  instantiate disciplines
+  instantiate methods
+  instantiate traditions
+  instantiate techniques
+  instantiate institutions
+  instantiate knowledge environments
+  develop capability through experience
+  assess capability
+  produce evidence
+  guide correction
+  advance the learner state
+
+A mission may map to:
+MISSION -> DOMAIN
+or:
+MISSION -> DOMAIN(S)
+and:
+DOMAIN A x DOMAIN B x DOMAIN C -> COMPOSITE DOMAINAL CONFIGURATION
+
+Varzish must not force a composite mission into a single occupational or educational box.
+
+---
+
+## 5. FUNDAMENTAL UNIT: THE DEVELOPMENTAL CYCLE
+
+A course is a structured collection of developmental cycles.
+
+Varzish asks:
+"What developmental cycle should this learner enter next?"
+
+Core cycle:
+
+1. STATE — learner
+2. OBJECTIVE
+3. EXPERIENCE — partial world
+4. ACTION — learner
+5. CONSEQUENCE — emerges
+6. REFLECTION — what happened?
+7. FEEDBACK — multi-level
+8. CORRECTION — human / AI
+9. REATTEMPT
+10. EVIDENCE — captured
+11. STATE UPDATE — learner model
+
+Then:
+STATE UPDATE -> NEXT CYCLE
+NEXT CYCLE -> increased complexity + targeted adaptation
+
+The cycle is recursive rather than terminal.
+
+---
+
+## 6. PARAMETERIZED CYCLE TEMPLATE
+
+Same cycle.
+Different parameters.
+Different experience.
+
+1. Establish current capability state.
+2. Introduce a partially specified situation.
+3. Give constraints.
+4. Give incomplete/conflicting information.
+5. Require learner action.
+6. Allow consequences to emerge.
+7. Capture learner representation.
+8. Capture decision/action.
+9. Evaluate outcome.
+10. Identify violated/preserved invariants.
+11. Provide feedback.
+12. Allow human intervention.
+13. Require reconstruction.
+14. Reattempt.
+15. Update learner model.
+16. Generate next experience.
+
+Parameters:
+- competency
+- domain
+- level / difficulty
+- learner state / A-I profile
+- scenario type
+- constraints
+- failure mode
+- evidence rules
+- human-review point
+- feedback timing
+- next-cycle focus
+
+Difficulty is structural and multidimensional, not merely harder questions.
+
+---
+
+## 7. OPERATIONAL FLOW
+
+COURSES
+  -> ACTIVITIES
+  -> SCENARIOS
+  -> ATTEMPTS
+  -> CONSEQUENCES
+  -> EVIDENCE
+  -> FEEDBACK
+  -> CORRECTION
+  -> RECONSTRUCTION
+  -> LEARNER MODEL UPDATED
+  -> NEXT CYCLE GENERATED
+
+Expanded production flow:
+
+ROLE / SITUATION
+  -> ACTION
+  -> CONSEQUENCE
+  -> EVIDENCE
+  -> FEEDBACK
+  -> CORRECTION
+  -> RECONSTRUCTION
+  -> VALIDATED OUTPUT
+
+---
+
+## 8. ASSESSMENT / EXPERIENCE SPECTRUM
+
+Varzish contains multiple evidence regimes. These are not interchangeable; each changes what capability is observed.
+
+A. CLASSROOM PRACTICE
+Purpose:
+  low-consequence, high-feedback rehearsal
+Includes:
+  - exercises
+  - guided problems
+  - board work
+  - collaboration
+  - short assignments
+  - representation exercises
+  - oral questioning
+Function:
+  establish and rehearse operators
+
+B. CLASS TESTS
+Purpose:
+  short-duration independent performance
+Tests:
+  - retrieval
+  - representation
+  - reasoning
+  - time-limited execution
+  - immediate transfer
+Important:
+  capture HOW the learner arrived at the answer, not only correctness
+
+C. UNIT TESTS
+Purpose:
+  integrate a bounded competency cluster
+Operations may include:
+  - ontology construction
+  - provenance
+  - compression
+  - reconstruction
+Function:
+  compositional capability
+
+D. SEMESTER EXAMS
+Purpose:
+  longer-horizon integration
+Parameters:
+  - intervening learning
+  - domain switching
+  - increased complexity
+  - reduced scaffolding
+Evidence:
+  retention + integration
+
+E. FINAL EXAMS
+Purpose:
+  high-level integration
+Operations:
+  - construct
+  - transform
+  - defend
+  - realize
+Observation:
+  multiple A-I dimensions simultaneously
+
+F. ENTRANCE EXAMS
+Purpose:
+  initialize current capability state
+Question:
+  "What can this person currently do?"
+Not:
+  "What has this person completed?"
+Function:
+  diagnostic initialization of learner model
+
+G. TIMED TESTS
+Constrain:
+  - time
+  - attention
+  - representation
+  - prioritization
+  - decision-making
+Question:
+  "What survives under cognitive and temporal constraints?"
+
+H. PROCTORED EXAMS
+Purpose:
+  controlled evidence of independent capability
+Relation:
+  complements scaffolded learning without equating the two
+
+I. OPEN-BOOK EXAMS
+Remove memory as the bottleneck.
+Require:
+  - locate information
+  - evaluate information
+  - integrate information
+  - apply information
+Observe:
+  C semantic intelligence
+  B structural intelligence
+  D executable/lived knowledge
+  provenance
+  source discrimination
+  synthesis
+Principle:
+  open-book is not necessarily easier; it changes the capability being observed
+
+J. VIVA / ORAL EXAMINATION
+Mode:
+  interactive adversarial interrogation
+Questions:
+  - Why?
+  - What if this changed?
+  - Source?
+  - Why represented this way?
+  - What breaks?
+  - Defend the distinction.
+Function:
+  stability under interrogation
+
+K. PRACTICAL EXAMINATION
+Transition:
+  "Do you know the procedure?"
+  ->
+  "Can you execute it?"
+Primary capability:
+  D = executable / lived knowledge
+
+L. SIMULATED PRACTICAL
+Used when consequential real-world practice is unsafe, inaccessible or impractical.
+Possible environments:
+  - laboratories
+  - systems
+  - datasets
+  - codebases
+  - workflows
+  - documentation
+  - organizational structures
+  - simulated clients
+Critical principle:
+  THE ENVIRONMENT SUPPLIES CONSEQUENCES.
+
+---
+
+## 9. PEDAGOGICAL / EXERCISE PRIMITIVES
+
+Exercises are developmental operators, not merely questions.
+
+A. DISCOVER
+  observe -> hypothesize -> test -> revise
+
+B. REPRESENT
+  observe -> type -> relate -> constrain -> validate
+
+C. COMPRESS
+  represent -> compress -> preserve invariant -> reconstruct -> verify
+
+D. TRANSFER
+  source -> extract structure -> map -> test -> identify mismatch
+
+E. REALIZE
+  concept -> specification -> implement -> fail -> diagnose -> revise
+
+F. RECOVER
+  attempt -> fail -> preserve work -> diagnose -> alter strategy -> resume
+
+G. TRANSLATE
+  system A -> native representation -> correspondence -> non-equivalence -> translate
+
+H. NAVIGATE
+  options -> uncertainty -> opportunity cost -> experiment -> decide
+
+I. STEWARD
+  architecture -> migrate -> detect drift -> provenance -> continuity test -> repair
+
+Rule:
+COURSES = COMPOSITIONS OF THESE PRIMITIVES.
+
+---
+
+## 10. SCENARIO LADDER
+
+The scenario ladder is a 13-level progression, levels 0-12.
+It functions both as an experience progression and as a course compiler.
+
+LEVEL 0 — RELATIONAL / CONTROLLED STRUCTURAL PUZZLES
+  patterns
+  transformations
+  graphs
+  rules
+  analogies
+  constraints
+Purpose:
+  develop A + B before heavy semantics
+Operations:
+  find representations
+  compress without losing invariants
+  reconstruct faithfully
+
+LEVEL 1 — SMALL ONTOLOGY CONSTRUCTION
+Example:
+  hospital
+Entities may include:
+  documents, states, diagnoses, procedures, medications, sources, conflicts, provenance
+Construct:
+  entities -> types -> relations -> states -> provenance
+
+LEVEL 2 — LOSSY COMPRESSION
+Example:
+  500-node structure -> 50 units in 20 minutes
+Measure:
+  compression ratio
+  x invariant preservation
+  x reconstruction fidelity
+
+LEVEL 3 — CROSS-DOMAIN TRANSFER
+Domains may include:
+  hospital
+  legal
+  research
+  civilizational
+  software
+Question:
+  "What invariant survives?"
+Requirement:
+  map structure without confusing surface form with underlying structure
+
+LEVEL 4 — PROVENANCE TRAP
+Material may mix:
+  retrieved material
+  inference
+  hypotheses
+  contradictions
+  transformations
+Task:
+  reconstruct provenance chain
+  discover that cleaning is not necessarily preserving
+
+LEVEL 5 — EXECUTABILITY
+Flow:
+  concept -> specification -> implementation -> failure -> diagnosis -> revision
+
+LEVEL 6 — AMBIGUOUS REAL-WORLD PROBLEMS
+No clean problem statement.
+Inputs:
+  conflicting requirements
+  documents
+  logs
+  interviews
+  constraints
+Task:
+  discover what problem actually exists
+  identify which information matters
+
+LEVEL 7 — FAILURE-RICH LONGITUDINAL PROJECT
+Time:
+  weeks rather than hours
+Milestones:
+  1 model
+  2 new evidence
+  3 contradiction
+  4 failure
+  5 revision
+  6 new constraint
+  7 second revision
+Principle:
+  FAILURE IS INFORMATION.
+
+LEVEL 8 — OPPORTUNITY NAVIGATION
+Navigate an opportunity manifold.
+Example:
+  choose 3 of 12 opportunities in six months
+Evaluate:
+  uncertain payoff
+  costs
+  prerequisites
+  dependencies
+Example opportunity classes:
+  - research projects
+  - new technical domains
+  - linguistic collaboration
+  - implementation
+  - unfamiliar civilizations
+  - unresolved problems
+  - competitions
+  - methodological publication
+  - open-source development
+  - expert interviews
+  - speculative hypotheses
+  - abandoning an existing project
+
+LEVEL 9 — MULTICULTURAL / CIVILIZATIONAL TRANSLATION
+Examples:
+  Persian/Islamicate <-> Indic <-> Greek/European systems
+Requirement:
+  translate without collapse
+  map native categories
+  preserve internal relations
+  identify correspondences
+  identify divergences
+
+LEVEL 10 — ADVERSARIAL ARCHITECTURE
+Deliberately attack a seemingly correct ontology or architecture.
+Find:
+  - collapse
+  - drift
+  - invalid analogy
+  - boundary violations
+  - cycles
+  - structural failures
+
+LEVEL 11 — MULTI-AGENT ARCHITECTURE
+Multiple conceptual agents:
+  - engineer
+  - historian
+  - scientist
+  - policy
+  - domain expert
+  - manager
+Task:
+  integrate models without destroying distinctions
+  negotiate meaning
+
+LEVEL 12 — LONG-HORIZON CIVILIZATION-SCALE PROJECT
+Time horizon:
+  100 -> 500 -> 1,000+ years
+Confront:
+  - drift
+  - succession
+  - technological change
+  - migration
+  - archival continuity
+  - identity
+  - long-term knowledge architecture
+
+---
+
+## 11. MULTIDIMENSIONAL DIFFICULTY
+
+Difficulty has at least ten independent axes:
+
+1. relational complexity
+2. semantic breadth
+3. semantic depth
+4. ambiguity
+5. consequence
+6. temporal depth
+7. uncertainty
+8. social complexity
+9. representation instability
+10. adversarial pressure
+
+Therefore:
+LEVEL != DIFFICULTY
+
+Difficulty may be increased by changing experience structure rather than merely adding information.
+
+Examples:
+  Level 3 -> increase ambiguity
+  Level 5 -> increase consequence
+  Level 11 -> increase incompatibility between agents
+  Level 12 -> increase temporal depth and continuity burden
+
+---
+
+## 12. ROLE SIMULATION WITH AI AGENTS
+
+Principle:
+THE LEARNER PRACTICES INTERACTION WITH A WORLD, NOT CONVERSATION WITH AN LLM.
+
+Learner occupies the role.
+AI agents populate the environment.
+
+Agents possess:
+  - state
+  - objectives
+  - partial information
+  - consequences
+
+Role -> AI-agent environment:
+
+RESEARCHER
+  supervisor
+  collaborator
+  reviewer
+  domain expert
+  research assistant
+  competitor
+  stakeholder
+
+ENGINEER
+  product manager
+  systems engineer
+  client
+  tester
+  security reviewer
+  operations engineer
+  user
+
+TEACHER
+  students
+  parents
+  administrators
+  fellow teachers
+  difficult participants
+
+MANAGER
+  employees
+  executives
+  clients
+  suppliers
+  regulators
+  competing teams
+
+LAWYER / VAKIL
+  client
+  opposing counsel
+  judge
+  witness
+  investigator
+  regulator
+
+ENTREPRENEUR
+  cofounders
+  investors
+  customers
+  competitors
+  employees
+  technology partners
+
+SCIENTIST
+  collaborators
+  reviewers
+  technicians
+  competing laboratories
+  institutional authorities
+
+CONSULTANT / EXPERT
+  client
+  subject-matter experts
+  stakeholders
+  implementation teams
+
+---
+
+## 13. ROLE x SCENARIO MATRIX
+
+INCOMPLETE INFORMATION:
+  student -> solve
+  researcher -> investigate
+  engineer -> diagnose
+  teacher -> assess
+  lawyer -> establish facts
+  manager -> decide
+
+CONFLICTING SOURCES:
+  student -> evaluate
+  researcher -> synthesize
+  engineer -> reconcile specifications
+  teacher -> reconcile accounts
+  lawyer -> assess evidence
+  manager -> resolve reports
+
+PROVENANCE FAILURE:
+  student -> trace
+  researcher -> document
+  engineer -> debug
+  teacher -> identify source
+  lawyer -> establish chain
+  manager -> audit
+
+IMPLEMENTATION FAILURE:
+  student -> practical
+  researcher -> experiment
+  engineer -> deploy
+  teacher -> execute lesson
+  lawyer -> operationalize advice
+  manager -> implement policy
+
+ADVERSARIAL INTERACTION:
+  student -> viva
+  researcher -> peer review
+  engineer -> design review
+  teacher -> difficult class
+  lawyer -> opposition
+  manager -> negotiation
+
+LONG PROJECT:
+  student -> assignment
+  researcher -> research
+  engineer -> project
+  teacher -> curriculum
+  lawyer -> case
+  manager -> organization
+
+Same developmental operators.
+Different roles.
+Different consequences.
+
+---
+
+## 14. A-I DEVELOPMENTAL COMPETENCY MAP
+
+Every Varzish experience is also an observation point on the learner's developmental configuration.
+
+A — RELATIONAL WORKING MEMORY
+  hold multiple constraints simultaneously
+
+B — FLUID STRUCTURAL INTELLIGENCE
+  identify underlying structure
+
+C — SEMANTIC INTELLIGENCE
+  possess and deploy required knowledge
+
+D — EXECUTABLE / LIVED KNOWLEDGE
+  make the solution actually work
+
+E — OPPORTUNITY STRUCTURE
+  discover and exploit resources
+
+F — SUSTAINED STRIVING
+  continue iterating
+
+G — MULTICULTURAL / CROSS-SYSTEM CAPABILITY
+  translate between systems without collapse
+
+H — RESILIENCE
+  respond to failure and continue
+
+I — RISK TRAJECTORY
+  navigate uncertainty and opportunity
+
+Rule:
+AN EXPERIENCE DOES NOT MERELY PRODUCE A SCORE.
+It generates observations about developmental configuration.
+
+---
+
+## 15. SIMULATION -> REALITY PROGRESSION
+
+1. ARTIFICIAL EXERCISE
+2. STRUCTURED SIMULATION
+3. OPEN-ENDED SIMULATION
+4. AI-AGENT PROFESSIONAL ENVIRONMENT
+5. HUMAN-SUPERVISED PROJECT
+6. REAL ORGANIZATIONAL PROJECT
+7. PUBLICLY VALIDATED ARTIFACT
+8. ACTUAL PROFESSIONAL OPPORTUNITY
+
+Direction:
+  lower consequence / more scaffolding
+  ->
+  higher consequence / greater reality
+
+Simulation and reality are not treated as identical.
+Simulation is a controlled route toward real capability.
+
+---
+
+## 16. ARTIFACT PRODUCTION AND PUBLIC EVIDENCE
+
+Canonical Misty chain:
+
+1. PERFORM TASK
+2. ARTIFACT PRODUCED
+3. VALIDATE — expert / system
+4. CORRECT ARTIFACT
+5. VERSION CONTROL
+6. PUBLISH — Misty
+7. PROVENANCE ESTABLISHED
+8. PUBLIC PORTFOLIO
+
+Outcome:
+DURABLE, INSPECTABLE EVIDENCE OF CAPABILITY
+not merely:
+CERTIFICATE
+
+Evidence may include:
+  - projects
+  - publications
+  - software
+  - datasets
+  - experiments
+  - case studies
+  - validated competencies
+  - demonstrations
+  - documentation
+  - contributions
+
+---
+
+## 17. DEVELOPMENT TRAJECTORY AS EVIDENCE
+
+GitHub-like development history is evidence, not merely a storage destination.
+
+Evidence can include:
+  - repositories
+  - commits
+  - issues
+  - pull requests
+  - releases
+  - documentation
+  - tests
+  - datasets
+  - notebooks
+  - examples
+  - version histories
+
+Preserved trajectory:
+
+ATTEMPT
+  -> FAILURE
+  -> REVISION
+  -> IMPROVEMENT
+  -> VALIDATED ARTIFACT
+
+Principle:
+TRAJECTORY PRESERVED, NOT JUST FINAL ANSWER.
+
+---
+
+## 18. PROVENANCE ARCHITECTURE
+
+Evidence provenance may include independent layers:
+
+SCHOLARLY IDENTITY
+  -> DOI / Misty
+
+INTEGRITY
+  -> checksum / manifest
+
+TEMPORAL EVIDENCE
+  -> OpenTimestamps
+
+DEVELOPMENT HISTORY
+  -> Git / GitHub
+
+ARCHIVAL PRESERVATION
+  -> repository / archive
+
+DISCOVERABILITY
+  -> website / index / catalog
+
+LEGAL PROVENANCE
+  -> IPR / licensing records
+
+These layers are complementary.
+Their combination creates stronger, independently verifiable evidence.
+
+---
+
+## 19. IPR AS A DEVELOPMENTAL PRACTICE
+
+Varzish may require learners to reason about:
+
+  - private work
+  - educational work
+  - open-source work
+  - publishable work
+  - potentially protectable IP
+  - collaborative work
+  - third-party material
+  - licensed material
+  - derivative work
+
+Canonical question:
+"You have created this artifact. Can you publish it?"
+
+Required reasoning:
+  - ownership
+  - provenance
+  - licenses
+  - third-party dependencies
+  - contributor rights
+  - publication consequences
+  - possible IP implications
+
+IPR reasoning is a professional practice exercise, not an administrative afterthought.
+
+---
+
+## 20. HUMAN CORRECTION IS INSIDE THE ARCHITECTURE
+
+GENIE generates scenario
+  ->
+VARZISH delivers scenario
+  ->
+LEARNER acts
+  ->
+SYSTEM captures evidence
+  ->
+AUTOMATED ANALYSIS
+  ->
+CONFIDENCE SUFFICIENT?
+
+YES
+  -> automated feedback
+
+NO
+  -> human review
+  -> correction
+
+Both paths:
+  -> learner feedback
+  -> reattempt
+
+Principle:
+HUMAN EXPERTISE IS INSIDE THE ARCHITECTURE.
+
+Human review is especially important for:
+  - tacit knowledge
+  - high-consequence judgments
+  - ambiguous evidence
+  - constitutional or inherited knowledge
+  - low-confidence automated interpretation
+
+---
+
+## 21. DYNAMIC COURSE GENERATION
+
+Same competency.
+Different learners.
+Different experiences.
+
+Personalization means:
+DEVELOPMENTAL EXPERIENCE PERSONALIZATION
+
+not merely:
+ADAPTIVE QUESTION DIFFICULTY.
+
+Example:
+
+Learner A:
+  strong B
+  weak D
+Next experience:
+  elegant but non-executable ontology -> implementation failure
+
+Learner B:
+  strong D
+  weak B
+Next experience:
+  working implementation -> hidden conceptual collapse
+
+Learner C:
+  strong A/B/C
+  weak F
+Next experience:
+  multi-week architecture -> successive failures
+
+Learner D:
+  strong C/B
+  weak G
+Next experience:
+  competing conceptual systems -> non-collapsing translation requirement
+
+---
+
+## 22. RECURSIVE COURSE GENERATION
+
+Failure is diagnostic information.
+
+Example:
+
+REPEATED FAILURE:
+  preserving identity through transformation
+
+-> OBSERVED FAILURE:
+  identity collision
+
+-> HYPOTHESIZED OPERATOR WEAKNESS
+
+-> GENERATE PREREQUISITE EXPERIENCE
+
+-> SIMPLIFY RELATIONAL COMPLEXITY
+
+-> PRACTICE IDENTITY PRESERVATION
+
+-> REINTRODUCE ORIGINAL SCENARIO
+
+-> TEST TRANSFER
+
+Therefore:
+failure does not simply reduce score.
+failure modifies the next developmental experience.
+
+---
+
+## 23. DEVELOPMENTAL STATE
+
+Varzish maintains a learner model rather than a grade alone.
+
+The state may include observations about:
+  A relational working memory
+  B structural intelligence
+  C semantic intelligence
+  D executable knowledge
+  E opportunity structure
+  F sustained striving
+  G cross-system capability
+  H resilience
+  I risk trajectory
+
+State update is evidence-based.
+
+STATE_t
+  + OBSERVED EXPERIENCE
+  + ACTION
+  + CONSEQUENCE
+  + FEEDBACK
+  + CORRECTION
+  + EVIDENCE
+  ->
+STATE_t+1
+
+The next cycle is generated from the updated state.
+
+---
+
+## 24. CONSEQUENCE-CENTRIC DESIGN
+
+A scenario is not only a prompt.
+
+It is a partial world with:
+  - constraints
+  - incomplete information
+  - agents
+  - resources
+  - possible actions
+  - consequences
+  - evidence requirements
+
+The environment supplies consequences.
+
+The learner's action changes the experienced state.
+
+Therefore:
+PROMPT -> RESPONSE
+is insufficient.
+
+The desired model is:
+WORLD STATE -> LEARNER ACTION -> CONSEQUENCE -> OBSERVATION -> FEEDBACK -> ADAPTATION
+
+---
+
+## 25. REPRESENTATION, INVARIANTS AND RECONSTRUCTION
+
+Many Varzish exercises deliberately test whether the learner can preserve structure through transformation.
+
+Core operation:
+REPRESENT
+  -> COMPRESS
+  -> PRESERVE INVARIANT
+  -> RECONSTRUCT
+  -> VERIFY
+
+The system can test:
+  - representation fidelity
+  - invariant preservation
+  - compression quality
+  - reconstruction fidelity
+  - provenance continuity
+  - semantic drift
+
+This is especially important in:
+  - ontology construction
+  - cross-domain transfer
+  - translation
+  - archival work
+  - systems engineering
+  - knowledge compression
+
+---
+
+## 26. FAILURE AS INFORMATION
+
+Varzish treats failure as a developmental observation.
+
+Failure can reveal:
+  - operator weakness
+  - missing prerequisite
+  - representation instability
+  - semantic gap
+  - provenance confusion
+  - execution weakness
+  - poor strategy
+  - resilience limitation
+  - risk miscalibration
+  - agent-interaction failure
+
+The appropriate response is not automatically:
+"make the next question easier."
+
+The appropriate response may be:
+  - change representation
+  - change scenario
+  - isolate an operator
+  - add a prerequisite experience
+  - introduce controlled consequences
+  - add human correction
+  - reattempt
+  - test transfer
+
+---
+
+## 27. VARZISH AS PRODUCTION ENVIRONMENT
+
+Capability is not complete when the learner can answer.
+
+Capability is increasingly evidenced by:
+  understanding
+  -> representation
+  -> decision
+  -> execution
+  -> artifact
+  -> validation
+  -> correction
+  -> provenance
+  -> public evidence
+  -> sustained performance
+
+Thus:
+EDUCATION -> PRACTICE -> ARTIFACT -> VALIDATION -> PROVENANCE -> PUBLIC EVIDENCE
+
+rather than:
+EDUCATION -> EXAM -> CERTIFICATE -> DISAPPEARANCE
+
+---
+
+## 28. RELATION TO CHARBAGH
+
+CHARBAGH = Humanesque triage and wayfinding cycler
+FAKIR = epistemic retrieval / evidence / governance substrate
+VARZISH = practice / development environment
+
+Triad:
+FAKIR -> RETRIEVE
+CHARBAGH -> ROUTE
+VARZISH -> DEVELOP / PRACTICE / EVIDENCE
+
+Charbagh routes a sovereign to an existing, composite, or derivative estate/configuration.
+FAKIR retrieves the relevant domainal reality.
+Varzish provides the appropriate developmental environment.
+
+---
+
+## 29. RELATION TO GENIE
+
+GENIE is the experience-construction and creative/meta-cycler layer.
+
+GENIE is invoked when:
+  - a scenario must be conceived
+  - a destination/configuration is not yet conceptualized
+  - cross-cycler orchestration is required
+  - composite cycles must be constructed
+  - a higher-order developmental experience must be generated
+
+Relationship:
+FAKIR -> RETRIEVE
+CHARBAGH -> ROUTE
+GENIE -> CONCEIVE
+VARZISH -> DELIVER / DEVELOP / EVIDENCE
+
+GENIE must not silently become the authoritative source of domainal reality.
+FAKIR remains the retrieval-first epistemic substrate.
+
+---
+
+## 30. RELATION TO PEDLER
+
+FAKIR = WHERE / WHAT DOMAIN
+PEDLER = HOW DOES IT MOVE
+
+FAKIR establishes the domain coordinate space.
+PEDLER governs transitions, inclinations, choices and action dynamics.
+
+FAKIR x PEDLER is orthogonal.
+
+This applies across:
+  history
+  geography
+  cartography
+  science
+  engineering
+  arts
+  education
+  occupations
+  economic activities
+  other erudition
+
+Varzish instantiates developmental experiences in the resulting domainal/transition space.
+
+---
+
+## 31. RELATION TO ILM
+
+FAKIR:
+  What activity / domain?
+
+ILM:
+  How is it represented independently of language?
+
+PEDLER:
+  How do transitions, choices and actions evolve?
+
+Therefore:
+FAKIR = domain semantics
+ILM = linguistic / representational independence
+PEDLER = dynamic agency
+
+Language must not be confused with domain.
+
+---
+
+## 32. RELATION TO CEM, CYCLER AND KITAB
+
+FAKIR establishes domainal ground.
+CEM provides substrate realization.
+Cyclers enact execution and orchestration.
+Kitab preserves persistent artifacts.
+Zistgah provides the living ecosystem.
+
+Varzish is the operational developmental environment within Zistgah.
+
+Varzish does not replace the execution substrate.
+Varzish uses the substrate to deliver developmental cycles and capture their evidence.
+
+---
+
+## 33. RELATION TO HUMANESQUE CONSTITUTIONAL WALK
+
+HUMANESQUE
+  ->
+SOVEREIGNTY
+  ->
+FAKIR
+  ->
+DOMAIN / ACTIVITY / LIVELIHOOD SPACE
+  ->
+EPISTEMOLOGICAL DUKEDOM
+  ->
+ABDICATION
+  ->
+POST-IDENTITY
+  ->
+MISSION
+  ->
+DOMAIN(S)
+  ->
+APPROPRIATE VARZISH
+  ->
+MAHAJANAPAD
+
+The Dukedom is not destroyed by abdication.
+Active exercise is suspended.
+The domainal sovereignty may re-arise.
+
+After abdication:
+"Who am I?" -> "What is my mission?"
+
+FAKIR guides again.
+Varzish is then selected/retrieved as the developmental environment appropriate to the mission-domain configuration.
+
+---
+
+## 34. MAHAJANAPAD RELATION
+
+MAHAJANAPAD:
+  Many Sovereigns
+  Many Domains
+  One Interoperable Civilizational Space
+
+Varzish provides developmental environments without requiring homogenization.
+
+Different sovereigns may:
+  - inhabit different domains
+  - combine domains
+  - use different Varzish environments
+  - develop different capabilities
+  - produce different artifacts
+  - participate in the same interoperable civilizational space
+
+---
+
+## 35. DERIVATIVE ESTATES
+
+When an existing estate cannot truthfully represent a sovereign's configuration:
+
+CHARBAGH
+  -> triage / route
+
+FAKIR
+  -> retrieve authentic domainal / inherited material
+
+CORRELATE / INTERPRET
+  -> identify compatibilities, tensions, gaps and complementarities
+
+HUMAN REVIEW
+  -> accuracy
+  -> respect
+  -> sovereignty
+  -> consent
+
+CONSTITUTE ESTATE
+  -> grammar
+  -> values
+  -> governance
+  -> scope
+  -> relations
+
+ENTER HUMANESQUE
+
+Canonical example:
+BAZMI
+
+Varzish may then become the practice/development environment for the resulting composite or derivative configuration.
+
+---
+
+## 36. CULTURAL AND INHERITED KNOWLEDGE GUARDRAILS
+
+Retrieve before assumption.
+Read before interpretation.
+Verify before claim.
+Preserve provenance before transformation.
+Prevent premature assimilation or erasure.
+Keep human-in-the-loop sovereignty.
+Prefer plurality over uniformity.
+
+When inherited knowledge is involved:
+FAKIR retrieves rather than reconstructs.
+Varzish develops capability from the retrieved material.
+GENIE may construct experiences around it but must not fabricate the inheritance.
+
+---
+
+## 37. COURSE COMPILATION MODEL
+
+COURSE
+  =
+  composition of developmental cycles
+  +
+  exercise primitives
+  +
+  scenarios
+  +
+  evidence regimes
+  +
+  feedback/correction
+  +
+  learner-state adaptation
+
+Possible compiler dimensions:
+  competency
+  domain
+  learner state
+  A-I profile
+  scenario level
+  difficulty axes
+  role
+  agent population
+  consequence structure
+  evidence rules
+  provenance requirements
+  human-review point
+  next-cycle focus
+
+The compiler should optimize for developmental progression, not content volume.
+
+---
+
+## 38. EVIDENCE MODEL
+
+A Varzish experience may produce:
+
+PROCESS EVIDENCE
+  how the learner reasoned
+
+DECISION EVIDENCE
+  what the learner selected
+
+ACTION EVIDENCE
+  what the learner did
+
+CONSEQUENCE EVIDENCE
+  what followed
+
+REFLECTION EVIDENCE
+  how the learner interpreted the result
+
+CORRECTION EVIDENCE
+  how the learner changed strategy
+
+REATTEMPT EVIDENCE
+  whether capability improved
+
+ARTIFACT EVIDENCE
+  what was produced
+
+VALIDATION EVIDENCE
+  expert / system confirmation
+
+PROVENANCE EVIDENCE
+  origin, history, integrity, licensing and temporal anchoring
+
+TRAJECTORY EVIDENCE
+  longitudinal improvement rather than isolated final performance
+
+---
+
+## 39. VALIDATION PRINCIPLE
+
+A certificate is a claim.
+
+Varzish seeks observable evidence for the capability underlying the claim.
+
+Preferred hierarchy:
+  participation
+  ->
+  knowledge acquisition
+  ->
+  demonstrated competence
+  ->
+  current proficiency
+  ->
+  longitudinally evidenced capability
+
+Education is an input.
+Competence is an observed property.
+Certification is a claim about that property.
+
+---
+
+## 40. IMPLEMENTATION CONTRACT
+
+A conformant Varzish implementation should preserve:
+
+- developmental-cycle semantics
+- experience rather than question-only design
+- consequence-bearing environments
+- evidence capture
+- process as well as outcome
+- human correction
+- reattempt
+- learner-state update
+- adaptive next-cycle generation
+- multidimensional difficulty
+- scenario progression
+- role simulation
+- AI-agent environmental state
+- provenance
+- artifact history
+- public evidence where appropriate
+- IPR reasoning
+- distinction between simulation and reality
+- compatibility with FAKIR retrieval
+- compatibility with Charbagh routing
+- compatibility with GENIE experience construction
+- compatibility with PEDLER transition dynamics
+- compatibility with CEM realization
+- compatibility with Cycler orchestration
+- compatibility with Kitab persistence
+- compatibility with Zistgah ecosystem
+- preservation of sovereign choice
+
+Non-conformant:
+- reducing Varzish to a quiz bank
+- treating grades as sufficient evidence of capability
+- replacing consequence-bearing experience with conversation alone
+- removing human review where needed
+- erasing trajectory
+- discarding provenance
+- treating simulation as equivalent to reality
+- forcing every learner through identical experiences
+- reconstructing authoritative domainal or inherited knowledge instead of retrieving it
+
+---
+
+## 41. CANONICAL COMPRESSED MODEL
+
+FAKIR
+  -> RETRIEVE DOMAINAL REALITY
+  -> LOCATE MISSION
+  -> DOMAIN(S)
+  -> APPROPRIATE VARZISH
+
+VARZISH
+  -> STATE
+  -> OBJECTIVE
+  -> EXPERIENCE
+  -> ACTION
+  -> CONSEQUENCE
+  -> REFLECTION
+  -> FEEDBACK
+  -> CORRECTION
+  -> REATTEMPT
+  -> EVIDENCE
+  -> STATE UPDATE
+  -> NEXT CYCLE
+
+DEVELOPMENT
+  -> PRACTICE
+  -> ASSESSMENT
+  -> SIMULATION
+  -> PRODUCTION
+  -> VALIDATION
+  -> PROVENANCE
+  -> PUBLIC EVIDENCE
+  -> CONTINUED CAPABILITY
+
+---
+
+## 42. CANONICAL FORMULA
+
+FAKIR retrieves.
+CHARBAGH routes.
+GENIE conceives.
+VARZISH develops and evidences.
+PEDLER governs transition dynamics.
+CYCLERS execute.
+CEM realizes.
+KITAB preserves.
+ZISTGAH hosts.
+HUMANESQUE provides sovereign/civilizational ground.
+MAHAJANAPAD enables interoperable plurality.
+
+VARZISH:
+WHERE CAPABILITY IS DEVELOPED, EXERCISED, EVIDENCED AND ADVANCED.
+
+CORE PRINCIPLE:
+RETRIEVE, DON'T RECONSTRUCT.
+
+END OF VARZISH.pni

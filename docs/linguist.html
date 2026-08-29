@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — linguist laboratory</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="nb.html">Notebook</a>
+    <a href="hindawi.html">Devanagari flow</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Linguist laboratory</h1>
+  <p class="lead">Same mechanism as Hindawi 2004. Script ≠ language ≠ shaili. Nothing here is a <code>#define</code>.</p>
+  <h2>Axes</h2>
+  <table>
+    <tr><th>Axis</th><th>Mechanism</th><th>Round-trip</th></tr>
+    <tr><td>Brahmi-derived script</td><td>Unicode <em>name-projection</em> onto Devanagari hub (as the Gurmukhi TSV header states)</td><td>Measured per table</td></tr>
+    <tr><td>Nine common Indic (flatten_uni_dev.lex)</td><td>Retrieved lex, 793 pairs</td><td>Table-complete for those blocks</td></tr>
+    <tr><td>Perso-Arabic language</td><td>retrieved <code>urdu_map.csv</code> / <code>fltr_ur_hi</code></td><td><strong>Lossy</strong> (abjad, tashkil)</td></tr>
+    <tr><td>Hebrew, Phoenician, Aramaic, Syriac</td><td><strong>Direct</strong> Unicode inventory — not through Devanagari</td><td>Identity on encoded signs</td></tr>
+    <tr><td>Arabic signs</td><td>Unicode inventory + lossy language map</td><td>Signs identity; language lossy</td></tr>
+    <tr><td>Cuneiform, Egyptian hieroglyphs</td><td>Unicode name inventory only</td><td>Signs encoded; <em>language keywords not in this tree</em></td></tr>
+    <tr><td>Language (keywords)</td><td>retrieved <code>*_c.tsv</code> native → C</td><td>Uniqueness measured</td></tr>
+  </table>
+  <h2>Counts (this clone)</h2>
+  <div id="k"></div>
+  <h2>Name-projection tables</h2>
+  <table><thead><tr><th>Table</th><th>Rows</th><th>Unique reverse</th><th>Rate</th></tr></thead><tbody id="np"></tbody></table>
+  <h2>Keyword TSVs</h2>
+  <table><thead><tr><th>Language</th><th>n</th><th>native unique</th><th>lossy</th></tr></thead><tbody id="kw"></tbody></table>
+  <p class="fine">Data: <a href="data/roundtrip.json">roundtrip.json</a> ·
+     Semitic TSVs under <code>linguist/semitic/</code> ·
+     Inventories <code>linguist/undeciphered/</code> ·
+     Test: <code>node tests/roundtrip.mjs</code></p>
+  <p class="fine">7000 languages and dialects are the <em>programme</em>. This clone has 27 language TSVs and no dialect layer. Do not report otherwise.</p>
+  <h2>Eighth Schedule (keyword TSVs only if retrieved)</h2>
+  <table><thead><tr><th>Language</th><th>Script</th><th>Keyword TSV</th></tr></thead><tbody id="in8"></tbody></table>
+  <p class="fine">Perso-Arabic improvement this turn: retrieved ISO 15919 Aran↔Deva (62/62 co-rows) plus NFKC folding of presentation forms. Abjad residue remains. Sinhala uses ISO 15919 (60 keys); name-projection cannot see AYANNA. Dome: <a href="dome/">zistgah/dome</a>.</p>
+</main>
+<script>
+fetch("data/roundtrip.json").then(r=>r.json()).then(S=>{
+  document.getElementById("k").innerHTML =
+    "<p>Name-projection: "+S.nameproj_nonzero+" / "+S.nameproj_total+" tables nonempty. "+
+    "flatten_uni_dev pairs: "+S.flatten_pairs+". "+
+    "Hebrew "+S.inventories.hebrew+", Phoenician "+S.inventories.phoenician+
+    ", Cuneiform signs "+S.inventories.cuneiform_signs+", Egyptian "+S.inventories.egyptian_hieroglyphs+".</p>";
+  document.getElementById("np").innerHTML = S.nameproj_tables
+    .filter(t=>t.n>0)
+    .sort((a,b)=>b.n-a.n)
+    .map(t=>"<tr><td>"+t.file+"</td><td>"+t.n+"</td><td>"+t.roundtrip_unique+"</td><td>"+(t.rate==null?"":(t.rate*100).toFixed(0)+"%" )+"</td></tr>")
+    .join("");
+  document.getElementById("kw").innerHTML = S.keywords.map(k=>
+    "<tr><td>"+k.lang+"</td><td>"+k.n+"</td><td>"+k.native_unique+"</td><td>"+(k.lossy?"lossy":"")+"</td></tr>"
+  ).join("");
+});
+fetch("data/india.json").then(r=>r.json()).then(I=>{
+  document.getElementById("in8").innerHTML = I.eighth_schedule.map(r=>
+    "<tr><td>"+r.lang+"</td><td>"+r.script+"</td><td>"+(r.tsv||"<em>[no retrieved TSV — not invented]</em>")+"</td></tr>"
+  ).join("");
+});
+</script>
+<script src="skins/skins.js"></script>
+</body>
+</html>
+

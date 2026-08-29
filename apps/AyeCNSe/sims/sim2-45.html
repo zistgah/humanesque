@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V15.0 - Synthesis Engine</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #010103; font-family: 'JetBrains Mono', monospace; color: #00ffcc; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 25px; box-sizing: border-box; }
+        .bio-hud { background: rgba(0, 15, 15, 0.9); border: 1px solid #00ffcc; padding: 20px; border-radius: 12px; pointer-events: auto; width: 360px; box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
+        .editor-box { display: flex; gap: 10px; height: 180px; width: 100%; max-width: 950px; align-self: center; background: rgba(0,0,0,0.95); padding: 15px; border-radius: 12px; border: 1px solid #00ffcc; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #00ffcc; border: 1px solid #004444; padding: 10px; font-size: 11px; outline: none; border-radius: 4px; }
+        button { width: 150px; background: #00ffcc; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .status-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; background: #004444; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="bio-hud">
+            <h2 style="margin:0; font-size: 16px; letter-spacing: 2px;">SYNTHESIS_CORE_v15.0</h2>
+            <div class="status-pill" id="cell-state">DORMANT</div>
+            <div style="margin-top:15px; font-size: 11px;">
+                <div class="stat">DNA_STABILITY: <span id="stab">100%</span></div>
+                <div class="stat">METABOLIC_RATE: <span id="rate">0.0</span></div>
+                <div class="stat">NEURAL_ADAPT: <span id="adapt">OFF</span></div>
+            </div>
+        </div>
+        <div class="console-box editor-box">
+            <textarea id="ilmInput">
+// NEURAL BIOLOGY SEQUENCE
+INIT_CELLULAR_STRUCTURE()
+LOAD_DNA("ATGCGTAAATGCGGC")
+WAIT(2.0)
+ENABLE_NEURAL_ADAPTATION()
+WAIT(3.0)
+SIMULATE_STRESS_TEST(0.8) // High environment pressure
+WAIT(4.0)
+EVOLVE_DNA_FOR_SURVIVAL()</textarea>
+            <button onclick="sim.run()">Initiate</button>
+        </div>
+    </div>
+
+    <script>
+        class EngineV15 {
+            constructor() {
+                this.dna = "";
+                this.stress = 0;
+                this.isAdapting = false;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.z = 45;
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // Organic Cell Mesh
+                const geo = new THREE.IcosahedronGeometry(12, 6);
+                this.mat = new THREE.MeshStandardMaterial({
+                    color: 0x00ffcc,
+                    wireframe: false,
+                    roughness: 0.3,
+                    metalness: 0.1,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                this.cell = new THREE.Mesh(geo, this.mat);
+                this.scene.add(this.cell);
+
+                // Lighting for organic look
+                const p1 = new THREE.PointLight(0x00ffcc, 1, 100); p1.position.set(20, 20, 20);
+                const p2 = new THREE.PointLight(0xff00ff, 0.5, 100); p2.position.set(-20, -20, 20);
+                this.scene.add(p1, p2, new THREE.AmbientLight(0x111111));
+
+                this.animate();
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (!m) continue;
+                    const cmd = m[1].trim(), val = m[2];
+
+                    if (cmd === 'LOAD_DNA') {
+                        this.dna = val;
+                        document.getElementById('cell-state').innerText = "ACTIVE";
+                    }
+                    else if (cmd === 'ENABLE_NEURAL_ADAPTATION') this.isAdapting = true;
+                    else if (cmd === 'SIMULATE_STRESS_TEST') this.stress = parseFloat(val);
+                    else if (cmd === 'EVOLVE_DNA_FOR_SURVIVAL') {
+                        this.dna += "GGCC"; // Simplified mutation
+                        this.stress *= 0.2;
+                    }
+                    else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, parseFloat(val) * 1000));
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                const time = Date.now() * 0.002;
+                
+                // Visualization logic: Organic pulse
+                this.cell.rotation.y += 0.005;
+                let pulse = 1 + Math.sin(time) * (0.05 + this.stress * 0.2);
+                this.cell.scale.setScalar(pulse);
+
+                // Deformation - Neural Network effect
+                const pos = this.cell.geometry.attributes.position;
+                for(let i=0; i<pos.count; i++) {
+                    let x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+                    let noise = Math.sin(x * 0.5 + time) * (this.stress * 2);
+                    pos.setZ(i, z + noise * 0.1);
+                }
+                pos.needsUpdate = true;
+
+                // Color shift based on stress
+                this.mat.color.setHSL(0.45 - (this.stress * 0.4), 1, 0.5);
+
+                // Update HUD
+                document.getElementById('rate').innerText = (1.0 + this.stress).toFixed(2);
+                document.getElementById('adapt').innerText = this.isAdapting ? "ACTIVE" : "OFF";
+                document.getElementById('stab').innerText = (100 - (this.stress * 50)).toFixed(0) + "%";
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new EngineV15();
+    </script>
+</body>
+</html>

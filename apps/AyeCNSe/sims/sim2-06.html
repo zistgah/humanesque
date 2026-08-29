@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V1.5 - K9 Quadruped</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020617; }
+        /* CRITICAL: Ensure the container occupies the screen */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .ui-layer { position: relative; z-index: 10; pointer-events: none; height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; }
+        .pointer-auto { pointer-events: auto; }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <div class="ui-layer">
+        <div class="flex justify-between items-start pointer-auto">
+            <div class="glass p-5 rounded-xl border-l-4 border-orange-500">
+                <h1 class="text-orange-400 font-bold text-xl tracking-tighter">AyeCNSe <span class="text-white">K9_UNIT</span></h1>
+                <p id="debug-info" class="text-[10px] text-slate-400 uppercase mt-1">Engine: Initializing...</p>
+            </div>
+
+            <div class="glass p-4 rounded-xl w-64">
+                <h2 class="text-xs font-bold mb-2 text-slate-300 uppercase">System Health</h2>
+                <div class="jetbrains text-orange-300 space-y-1">
+                    <div class="flex justify-between"><span>GAIT:</span> <span id="tel-gait">IDLE</span></div>
+                    <div class="flex justify-between"><span>BATTERY:</span> <span>94%</span></div>
+                    <div class="flex justify-between"><span>LOAD:</span> <span>BALANCED</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass p-4 rounded-xl pointer-auto flex gap-6 h-64">
+            <div class="flex-grow flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Gait Command Script</span>
+                </div>
+                <textarea id="ilmInput" class="flex-grow bg-slate-950 p-4 jetbrains text-orange-100 outline-none rounded-lg border border-slate-800 resize-none">
+// K9 Patrol Loop
+STAND()
+WAIT(1)
+WALK(4)
+TURN(180)
+WALK(4)
+CROUCH()
+WAIT(2)
+STAND()</textarea>
+            </div>
+            <div class="w-48 flex flex-col gap-2">
+                <button onclick="sim.runSequence()" class="flex-grow bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-lg transition-all text-sm">EXECUTE MISSION</button>
+                <button onclick="sim.resetView()" class="p-2 bg-slate-800 hover:bg-slate-700 text-[10px] rounded uppercase font-bold">Reset Camera</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AyeK9 {
+            constructor() {
+                this.legs = [];
+                this.isWalking = false;
+                this.walkTime = 0;
+                this.init();
+            }
+
+            init() {
+                // 1. Scene Setup
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x020617);
+
+                // 2. Camera Setup
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 4, 8);
+
+                // 3. Renderer Setup
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.shadowMap.enabled = true;
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // 4. Controls
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+
+                // 5. Lighting (CRITICAL for visibility)
+                const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+                this.scene.add(ambient);
+                const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+                sun.position.set(10, 20, 10);
+                sun.castShadow = true;
+                this.scene.add(sun);
+
+                // 6. Floor
+                const grid = new THREE.GridHelper(40, 40, 0x1e293b, 0x0f172a);
+                this.scene.add(grid);
+
+                this.buildRobot();
+                this.animate();
+                
+                document.getElementById('debug-info').innerText = "Engine: 12-DOF Quadruped Active";
+            }
+
+            buildRobot() {
+                this.k9Group = new THREE.Group();
+                const bodyMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.4 });
+                const jointMat = new THREE.MeshStandardMaterial({ color: 0xf97316, metalness: 0.8 });
+
+                // Main Body
+                const torso = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.7, 1.0), bodyMat);
+                torso.castShadow = true;
+                this.k9Group.add(torso);
+
+                // Head
+                const head = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.5, 0.6), bodyMat);
+                head.position.set(1.4, 0.3, 0);
+                this.k9Group.add(head);
+
+                // Leg Generation
+                const positions = [
+                    {x: 0.9, z: 0.6}, {x: 0.9, z: -0.6}, // Front
+                    {x: -0.9, z: 0.6}, {x: -0.9, z: -0.6} // Back
+                ];
+
+                positions.forEach((pos, i) => {
+                    const legRoot = new THREE.Group();
+                    legRoot.position.set(pos.x, 0, pos.z);
+                    this.k9Group.add(legRoot);
+
+                    // Shoulder
+                    const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.18), jointMat);
+                    legRoot.add(shoulder);
+
+                    // Upper Leg
+                    const upper = new THREE.Group();
+                    shoulder.add(upper);
+                    const upperMesh = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.0, 0.25), bodyMat);
+                    upperMesh.position.y = -0.5;
+                    upper.add(upperMesh);
+
+                    // Knee
+                    const knee = new THREE.Group();
+                    knee.position.y = -1.0;
+                    upper.add(knee);
+                    const kneeMesh = new THREE.Mesh(new THREE.SphereGeometry(0.14), jointMat);
+                    knee.add(kneeMesh);
+
+                    // Lower Leg
+                    const lower = new THREE.Group();
+                    knee.add(lower);
+                    const lowerMesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.0, 0.2), bodyMat);
+                    lowerMesh.position.y = -0.5;
+                    lower.add(lowerMesh);
+
+                    this.legs.push({ upper, knee, id: i });
+                });
+
+                this.k9Group.position.y = 1.6;
+                this.scene.add(this.k9Group);
+            }
+
+            resetView() {
+                this.camera.position.set(6, 4, 8);
+                this.controls.target.set(0, 0, 0);
+            }
+
+            async runSequence() {
+                if (this.isProcessing) return;
+                this.isProcessing = true;
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    if (line.trim().startsWith('//') || !line.trim()) continue;
+                    const match = line.match(/(.+)\((.*)\)/);
+                    if (match) {
+                        const cmd = match[1].trim();
+                        const val = match[2].trim();
+                        await this.execute(cmd, val);
+                    }
+                }
+                this.isProcessing = false;
+            }
+
+            async execute(cmd, val) {
+                document.getElementById('tel-gait').innerText = cmd;
+                if (cmd === 'WALK') {
+                    this.isWalking = true;
+                    let dist = parseFloat(val) || 2;
+                    let traveled = 0;
+                    const stepSize = 0.04;
+                    while (traveled < dist) {
+                        this.k9Group.translateX(stepSize);
+                        traveled += stepSize;
+                        await new Promise(r => setTimeout(r, 16));
+                    }
+                    this.isWalking = false;
+                    this.resetLegs();
+                } else if (cmd === 'TURN') {
+                    const target = (parseFloat(val) * Math.PI) / 180;
+                    this.k9Group.rotation.y += target;
+                    await new Promise(r => setTimeout(r, 500));
+                } else if (cmd === 'CROUCH') {
+                    await this.tweenHeight(1.0);
+                } else if (cmd === 'STAND') {
+                    await this.tweenHeight(1.6);
+                } else if (cmd === 'WAIT') {
+                    await new Promise(r => setTimeout(r, parseFloat(val) * 1000));
+                }
+                document.getElementById('tel-gait').innerText = "IDLE";
+            }
+
+            async tweenHeight(target) {
+                const diff = (target - this.k9Group.position.y) / 20;
+                for (let i = 0; i < 20; i++) {
+                    this.k9Group.position.y += diff;
+                    // Simple IK bending
+                    const bend = (1.6 - this.k9Group.position.y);
+                    this.legs.forEach(leg => {
+                        leg.upper.rotation.z = bend;
+                        leg.knee.rotation.z = -bend * 2;
+                    });
+                    await new Promise(r => setTimeout(r, 20));
+                }
+            }
+
+            resetLegs() {
+                this.legs.forEach(leg => {
+                    leg.upper.rotation.z = 0;
+                    leg.knee.rotation.z = 0;
+                });
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                if (this.isWalking) {
+                    this.walkTime += 0.15;
+                    this.legs.forEach((leg, i) => {
+                        const offset = (i === 0 || i === 3) ? 0 : Math.PI;
+                        const stride = Math.sin(this.walkTime + offset);
+                        leg.upper.rotation.z = stride * 0.4;
+                        leg.knee.rotation.z = stride > 0 ? -stride * 0.6 : 0;
+                    });
+                    this.k9Group.position.y += Math.sin(this.walkTime * 2) * 0.02; // Body bob
+                }
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        const sim = new AyeK9();
+        window.addEventListener('resize', () => {
+            sim.camera.aspect = window.innerWidth / window.innerHeight;
+            sim.camera.updateProjectionMatrix();
+            sim.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,9 @@
+MODULE T00028
+FUNCTION add(a, b)
+    RETURN a + b
+END
+FUNCTION main()
+    PRINT add(20, 22)
+    RETURN 0
+END
+END

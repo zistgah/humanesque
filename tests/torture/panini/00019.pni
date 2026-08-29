@@ -1,0 +1,6 @@
+MODULE T00019
+FUNCTION main()
+    PRINT 2 * (3 + 4)
+    RETURN 0
+END
+END

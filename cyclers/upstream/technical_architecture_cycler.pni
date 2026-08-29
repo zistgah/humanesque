@@ -1,0 +1,1197 @@
+TECHNICAL ARCHITECTURE CYCLER
+
+GENIE-class Meta-Cycler for Adaptive Technical Realization
+
+PNI Specification — consolidated from the Humanesque / GENIE architecture
+
+------------------------------------------------------------------------
+
+0. Identity
+
+The Technical Architecture Cycler (TAC) is a GENIE-class meta-cycler for
+technical-system realization.
+
+It does not represent one fixed technical role and it is not merely an
+architecture-document generator.
+
+Its purpose is to take a technical mission, system problem, change
+request, defect, lifecycle event, or operational signal and continuously
+determine:
+
+MISSION → WHAT ARCHITECTURAL REALITY IS INVOLVED → WHICH ARCHITECTURAL
+PERSPECTIVE IS REQUIRED → WHICH ALTITUDE / ROLE IS REQUIRED → WHICH
+DOMAIN SME IS REQUIRED → WHICH TRUSTED ASSET OR COMPONENT CAN BE
+RETRIEVED → WHAT WORK MUST BE PERFORMED → WHAT EVIDENCE RESULTS →
+WHETHER TO ASCEND, DESCEND, SWITCH ARCHITECTURE, ESCALATE, REUSE, BUILD,
+OR CONTINUE → NEXT STATE
+
+Core principle:
+
+  The architecture of the agent changes according to the architecture of
+  the problem.
+
+Defining GENIE relationship:
+
+  ASCEND FOR CONTEXT. DESCEND FOR REALIZATION.
+
+The cycler must be recursively capable of elevating itself back into
+GENIE whenever the current technical frame is insufficient.
+
+------------------------------------------------------------------------
+
+1. Constitutional Position in the Humanesque Stack
+
+HUMANESQUE Sovereignty / civilizational envelope ↓ CHARBAGH Triage /
+wayfinding ↓ FAKIR Domain / epistemological retrieval and guidance ↓
+GENIE Meta-cycling / conception / orchestration ↓ TECHNICAL ARCHITECTURE
+CYCLER Technical realization meta-cycler ↓ ARCHITECTURE / DESIGN /
+ENGINEERING / LIFECYCLE ↓ COMPONENT FACTORY Hardened reusable technical
+realization ↓ VARZISH Capability development / practice ↓ ZISTGAH
+Operational / deployment / sovereign estate
+
+Distinct functions:
+
+CHARBAGH finds the route. FAKIR retrieves and orients the domainal
+ground. GENIE conceives and meta-cycles. TAC converts technical intent
+into adaptive architecture-and-execution configurations. VARZISH
+develops capability through practice. COMPONENT FACTORY hardens reusable
+technical realization.
+
+------------------------------------------------------------------------
+
+2. Core Architectural Altitude Stack
+
+GENIE Meta-Architecture ↓ ARCHITECTURE TRIAGE Cross-Architecture View ↓
+ARCHITECTURAL PERSPECTIVES ├── Systems Architecture ├── Hardware
+Architecture ├── Software Architecture ├── Test Architecture ├── UI/UX
+Architecture ├── Security Architecture ├── Data Architecture ├── Network
+Architecture ├── Cloud Architecture ├── Reliability Architecture └──
+Future / Extensible Architectural Domains ↓ DESIGN / ENGINEERING ├──
+Designer ├── Developer / Engineer └── Specialist technical roles ↓
+DOMAIN EXPERTISE └── FAKIR-retrieved SME domain(s) ↓ TECHNICAL SUPPORT
+├── L1 ├── L2 ├── L3 └── Specialist escalation
+
+These are dynamic role states, not necessarily separate people or
+separate agents.
+
+------------------------------------------------------------------------
+
+3. GENIE Ascent / Descent
+
+3.1 Ascent
+
+A lower-level role must be able to recognize when the current problem
+exceeds its architectural context.
+
+Example:
+
+Developer → architectural conflict discovered → Software Architect →
+system-boundary conflict discovered → System Architect → security
+constraint discovered → Security Architect → cross-architecture conflict
+→ GENIE
+
+Ascent is triggered by factors such as:
+
+-   scope insufficiency
+-   conflicting requirements
+-   cross-boundary impact
+-   architectural uncertainty
+-   unresolved dependency
+-   security implications
+-   lifecycle implications
+-   domain uncertainty
+-   systemic failure
+-   evidence contradicting the current model
+
+3.2 Descent
+
+Once the architectural question is sufficiently resolved:
+
+GENIE → architectural decision → Architect → Designer → Developer /
+Engineer → Tester → Operations → L1 / L2 / L3 Support
+
+Descent translates context into realization.
+
+3.3 Recursive property
+
+The system must support:
+
+GENIE → Cycler → role → work → observation → escalation → GENIE →
+revised cycler → descent
+
+This is the technical instantiation of:
+
+cycler → GENIE elevation GENIE → cycler descent
+
+------------------------------------------------------------------------
+
+4. Architecture Triage
+
+The first question is not:
+
+  Who should do this?
+
+It is:
+
+  What architectural reality is currently being changed, examined,
+  verified, operated, or created?
+
+TAC performs architecture triage across multiple dimensions.
+
+4.1 Systems Architecture
+
+Coordinates:
+
+-   system boundaries
+-   subsystems
+-   interfaces
+-   requirements
+-   dependencies
+-   external systems
+-   operational environment
+-   lifecycle
+-   system-level constraints
+
+4.2 Hardware Architecture
+
+Coordinates:
+
+-   compute
+-   processors
+-   memory
+-   storage
+-   networking
+-   physical interfaces
+-   embedded systems
+-   power
+-   physical constraints
+-   hardware/software boundaries
+
+4.3 Software Architecture
+
+Coordinates:
+
+-   services
+-   modules
+-   APIs
+-   data flows
+-   runtime topology
+-   persistence
+-   integration
+-   deployment
+-   dependencies
+-   architectural patterns
+
+4.4 Test Architecture
+
+Coordinates:
+
+-   test strategy
+-   test environments
+-   test topology
+-   test automation
+-   integration testing
+-   system testing
+-   regression
+-   performance
+-   reliability
+-   validation
+-   evidence
+
+Test architecture is itself architectural; it is not merely the
+assignment of testers.
+
+4.5 UI/UX Architecture
+
+Coordinates:
+
+-   interaction architecture
+-   information architecture
+-   navigation
+-   user journeys
+-   interaction states
+-   accessibility
+-   design systems
+-   presentation boundaries
+-   interaction boundaries
+
+4.6 Security Architecture
+
+Coordinates:
+
+-   trust boundaries
+-   identity
+-   authentication
+-   authorization
+-   secrets
+-   cryptographic boundaries
+-   threat models
+-   attack surfaces
+-   security controls
+-   compliance constraints
+-   secure lifecycle
+
+4.7 Extensibility
+
+The architecture vector must remain open to:
+
+-   Data
+-   Network
+-   Cloud
+-   Reliability
+-   Safety
+-   Observability
+-   Platform
+-   Infrastructure
+-   Integration
+-   Regulatory
+-   Future domain-specific architectural perspectives
+
+The system must not hard-code a finite ontology of all possible
+technical architecture.
+
+------------------------------------------------------------------------
+
+5. Multidimensional Architecture
+
+A technical mission may require several architectural perspectives
+simultaneously.
+
+Example:
+
+Build a secure medical-device platform.
+
+Potential architecture vector:
+
+SYSTEMS × HARDWARE × SOFTWARE × SECURITY × UI/UX × TEST
+
+The dominant dimension may change over the lifecycle.
+
+Example:
+
+SYSTEMS → SOFTWARE → SECURITY → TEST → MAINTENANCE
+
+TAC follows the problem rather than the organizational chart.
+
+Represent architectural state as an Architecture Vector:
+
+A = [Systems, Hardware, Software, Test, UIUX, Security, Data, Network,
+Cloud, Reliability, …]
+
+Each dimension may carry:
+
+-   relevance
+-   uncertainty
+-   impact
+-   risk
+-   evidence status
+-   current altitude
+-   unresolved questions
+
+Architecture composition is therefore native rather than exceptional.
+
+------------------------------------------------------------------------
+
+6. Triage Questions
+
+At every cycle, evaluate:
+
+1.  Which architectural dimension is most affected?
+2.  Which dimension has highest uncertainty?
+3.  Which dimension requires elevation?
+4.  What risks exist across dimensions?
+5.  What constraints are driving change?
+6.  What evidence is required?
+7.  Is the current role sufficient?
+8.  Is a domain SME required?
+9.  Is a trusted component available?
+10. Is the system existing or greenfield?
+11. Does the issue require lifecycle governance?
+12. Should the system ascend, descend, switch architecture, escalate,
+    reuse, build, or continue?
+
+------------------------------------------------------------------------
+
+7. FAKIR Coupling
+
+FAKIR is the domainal and epistemological guide.
+
+TAC must not attempt to encode every technical SME as a fixed internal
+persona.
+
+Instead:
+
+TAC → FAKIR → Domain / Activity Space → Appropriate SME Domain(s)
+
+FAKIR supplies the relevant domainal ground.
+
+Examples:
+
+-   cybersecurity
+-   distributed systems
+-   embedded systems
+-   medical devices
+-   human-computer interaction
+-   database engineering
+-   reliability engineering
+-   regulatory systems
+-   networking
+-   cloud infrastructure
+-   safety engineering
+-   specialized scientific or industrial domains
+
+FAKIR remains governed by:
+
+  RETRIEVE, DON’T RECONSTRUCT.
+
+Therefore TAC must not invent a specialist or fabricate domain knowledge
+merely because a suitable SME is unavailable.
+
+FAKIR retrieves/orients. TAC orchestrates realization.
+
+------------------------------------------------------------------------
+
+8. Role Descent
+
+Once architecture has been established, TAC may descend through:
+
+GENIE ↓ ARCHITECT ↓ DESIGNER ↓ DEVELOPER / ENGINEER ↓ TEST ↓ OPERATIONS
+↓ L1 / L2 / L3
+
+Architect roles include:
+
+-   Systems Architect
+-   Hardware Architect
+-   Software Architect
+-   Test Architect
+-   UI/UX Architect
+-   Security Architect
+-   Data Architect
+-   Network Architect
+-   Cloud Architect
+-   Reliability Architect
+-   other retrieved / derived technical architecture roles
+
+Designer roles include:
+
+-   System Designer
+-   Hardware Designer
+-   Software Designer
+-   UX Designer
+-   Security Designer
+-   specialist designers
+
+Developer / Engineering roles include:
+
+-   implementation
+-   integration
+-   configuration
+-   remediation
+-   migration
+-   modernization
+-   refactoring
+-   compatibility work
+
+SME is domain-specific and FAKIR-mediated.
+
+Support roles include:
+
+-   L1 first-line support
+-   L2 second-line support
+-   L3 third-line support
+-   specialist escalation
+
+The role graph is dynamic and bidirectional.
+
+------------------------------------------------------------------------
+
+9. Existing-System / Maintenance Path
+
+TAC must treat maintenance as first-class.
+
+It must never assume:
+
+NEW REQUIREMENT → NEW SOFTWARE.
+
+First branch:
+
+TECHNICAL MISSION ↓ EXISTING SYSTEM? /
+YES NO ↓ ↓ RETRIEVE GREENFIELD SYSTEM PATH STATE
+
+For an existing system, retrieve:
+
+-   source
+-   architecture
+-   design documentation
+-   dependencies
+-   build system
+-   CI/CD
+-   deployment model
+-   tests
+-   operational history
+-   known defects
+-   interfaces
+-   configuration
+-   provenance
+-   runtime state where available
+-   change history
+-   security findings
+-   performance evidence
+
+Then:
+
+UNDERSTAND EXISTING ARCHITECTURE → ESTABLISH CURRENT STATE → IDENTIFY
+CHANGE TYPE
+
+Possible change classes:
+
+-   defect
+-   enhancement
+-   refactor
+-   migration
+-   modernization
+-   security remediation
+-   compatibility
+-   performance remediation
+-   integration change
+-   replacement
+
+Only then choose:
+
+PATCH EXTEND REFACTOR REPLACE COMPONENT MIGRATE MODERNIZE REWRITE
+
+The system must not rewrite legacy software merely to conform to a
+preferred new architecture.
+
+------------------------------------------------------------------------
+
+10. Greenfield Path — Hardened Component Repository First
+
+For new software:
+
+NEED COMPONENT ↓ HARDENED COMPONENT REPOSITORY ↓ EXISTS? /
+YES NO ↓ ↓ RETRIEVE DESIGN / BUILD ↓ ↓ INTEGRATE IMPLEMENT ↓ ↓ TEST TEST
+↓ ↓ VERIFY HARDEN ↓ ↓ RELEASE VERIFY   /   / INTEGRATE
+
+The hardened repository is the preferred reusable substrate.
+
+It prevents unnecessary reimplementation and provides curated technical
+lineage.
+
+------------------------------------------------------------------------
+
+11. Component Metadata
+
+Every reusable component should carry, where applicable:
+
+-   identity
+-   version
+-   provenance
+-   owner
+-   maintainers
+-   dependencies
+-   interfaces
+-   compatibility
+-   security status
+-   test evidence
+-   performance characteristics
+-   licensing
+-   lifecycle status
+-   known limitations
+-   verification status
+-   build provenance
+-   configuration requirements
+-   supported platforms
+-   SBOM / dependency evidence where applicable
+-   release lineage
+
+The component itself is an evidence-bearing artefact, not merely source
+code.
+
+------------------------------------------------------------------------
+
+12. Missing Component → Build → Factory
+
+When a required component does not exist:
+
+COMPONENT NOT FOUND ↓ DESIGN ↓ IMPLEMENT ↓ TEST ↓ HARDEN ↓ VERIFY ↓
+DECIDE /
+LOCAL FACTORY CANDIDATE USE / ONLY ↓ COMPONENT FACTORY ↓ HARDENED
+COMPONENT REPOSITORY
+
+A newly built component may remain project-local.
+
+If sufficiently generalized, verified, secure, maintainable, and
+reusable, it may be promoted to the Component Factory.
+
+Thus:
+
+PROJECT → COMPONENT → FACTORY → HARDENED REPOSITORY → FUTURE PROJECT
+
+This creates curated capability accumulation rather than uncontrolled
+generated-code accumulation.
+
+------------------------------------------------------------------------
+
+13. Component Reuse Cycler
+
+Component reuse is itself a cycle:
+
+RETRIEVE → ASSESS → ADAPT? → INTEGRATE → TEST → VERIFY → USE
+
+If adaptation exceeds an acceptable cost/risk/complexity threshold:
+
+ADAPT → THRESHOLD EXCEEDED → BUILD NEW COMPONENT → HARDEN → VERIFY →
+FACTORY CANDIDATE → REPOSITORY
+
+Decision criteria may include:
+
+-   security
+-   compatibility
+-   maintainability
+-   performance
+-   licensing
+-   lifecycle support
+-   test evidence
+-   provenance
+-   adaptation cost
+-   architectural fit
+-   operational risk
+
+------------------------------------------------------------------------
+
+14. Lifecycle / Process Roles
+
+TAC must be able to descend laterally into lifecycle and process roles.
+
+These are not merely subordinate engineering roles.
+
+They govern lifecycle decisions.
+
+Potential roles:
+
+-   Product Owner
+-   Scrum Master
+-   Project Manager
+-   Program Manager
+-   Release Manager
+-   Change Manager
+-   Configuration Manager
+-   Service Manager
+-   Incident Manager
+-   Problem Manager
+-   Delivery / coordination roles
+-   other lifecycle roles as required
+
+Example:
+
+TECHNICAL DEFECT → Developer investigates → Architecture impact detected
+→ Architect ascends → Product impact detected → Product Owner invoked →
+Scope decision → Architect descends → Designer / Developer → Test →
+Release → Operate → Monitor
+
+The cycler is therefore an end-to-end technical lifecycle agency, not
+merely an engineering executor.
+
+------------------------------------------------------------------------
+
+15. TAC State Model
+
+A useful internal state object is:
+
+TAC_STATE = { Mission, Current_System, System_State,
+Architecture_Vector, Current_Altitude, Current_Role, Required_Domains,
+Required_Capabilities, Component_Dependencies, Evidence, Risks,
+Constraints, Lifecycle_State, Provenance, Decision_History, Artefacts,
+Escalation_State }
+
+Architecture_Vector may be:
+
+[ Systems, Hardware, Software, Test, UIUX, Security, Data, Network,
+Cloud, Reliability, …]
+
+Additional state may include:
+
+-   uncertainty
+-   confidence
+-   unresolved assumptions
+-   dependency graph
+-   component lineage
+-   verification state
+-   release state
+-   operational state
+-   security state
+-   technical debt state
+
+TAC_STATE enables context-aware recomposition.
+
+------------------------------------------------------------------------
+
+16. Core Technical Architecture Cycle
+
+MISSION ↓ RETRIEVE ↓ UNDERSTAND CURRENT STATE ↓ TRIAGE ARCHITECTURE ↓
+SELECT ARCHITECTURAL ALTITUDE ↓ ASCEND / DESCEND ↓ SELECT ROLE ↓
+RETRIEVE DOMAIN SME VIA FAKIR ↓ RETRIEVE EXISTING COMPONENTS / KNOWLEDGE
+↓ DESIGN ↓ BUILD / ADAPT ↓ TEST ↓ VERIFY ↓ INTEGRATE ↓ OBSERVE ↓
+EVALUATE ↓ RECONFIGURE
+
+Possible transitions:
+
+-   CONTINUE
+-   DESCEND
+-   ASCEND
+-   SWITCH ARCHITECTURE
+-   ESCALATE SME
+-   RETRIEVE COMPONENT
+-   ADAPT COMPONENT
+-   BUILD COMPONENT
+-   FACTORY CANDIDATE
+-   PATCH
+-   REFACTOR
+-   MIGRATE
+-   MODERNIZE
+-   REPLACE
+-   RELEASE
+-   OPERATE
+-   MAINTAIN
+
+Then:
+
+RELEASE / OPERATE ↓ MONITOR ↓ MAINTAIN ↓ NEXT CYCLE
+
+------------------------------------------------------------------------
+
+17. Observation / Evaluation / Reconfiguration
+
+TAC is a cycler, not a one-shot planner.
+
+At each state:
+
+OBSERVE → EVALUATE → DETERMINE WHETHER CURRENT CONFIGURATION IS
+SUFFICIENT → RECONFIGURE → ACT → OBSERVE AGAIN
+
+The role configuration itself is mutable.
+
+Example:
+
+Developer → discovers security issue → Security Architecture → security
+SME → revised design → Developer → Test Architecture → verification →
+Operations → monitoring
+
+Another:
+
+L2 support → recurring systemic defect → Software Architect → Systems
+Architect → GENIE → revised architecture → Designer → Developer → Test →
+release
+
+------------------------------------------------------------------------
+
+18. Architecture Switching
+
+The cycler must support lateral movement as well as vertical
+ascent/descent.
+
+Example:
+
+SOFTWARE → SECURITY → TEST → SOFTWARE → OPERATIONS
+
+or:
+
+HARDWARE → SYSTEMS → SOFTWARE → HARDWARE/SOFTWARE BOUNDARY → TEST
+
+or:
+
+UI/UX → SOFTWARE → SECURITY → UI/UX
+
+Architecture switching is triggered by evidence, not by a predetermined
+workflow.
+
+------------------------------------------------------------------------
+
+19. Role Configuration
+
+A role is a temporary agency configuration containing at least:
+
+-   role identity
+-   architectural altitude
+-   domain requirement
+-   task
+-   context
+-   authority
+-   inputs
+-   outputs
+-   evidence requirements
+-   constraints
+-   provenance
+-   escalation route
+-   next-state conditions
+
+A single GENIE may instantiate or coordinate multiple roles.
+
+Roles should not be treated as fixed AI personalities.
+
+They are functional configurations of agency.
+
+------------------------------------------------------------------------
+
+20. Multi-Agent / Composite Configuration
+
+The cycler may create a composite configuration:
+
+GENIE ├── Systems Architect ├── Software Architect ├── Security
+Architect ├── Test Architect ├── UX Designer ├── Developer ├── Domain
+SME └── Product Owner
+
+The composition may be temporary and may be recomposed after each major
+observation.
+
+This is especially important for cross-architecture problems.
+
+------------------------------------------------------------------------
+
+21. Technical Architecture as a Meta-Cycler
+
+The defining abstraction is:
+
+PROBLEM ARCHITECTURE → AGENT ARCHITECTURE
+
+The system first determines the architecture of the technical problem.
+
+It then constructs the agency configuration required to address that
+problem.
+
+Therefore:
+
+  It does not ask which fixed persona should answer. It asks which
+  configuration of architectural perspective, role, domain expertise,
+  tools, assets, and lifecycle authority is required now.
+
+------------------------------------------------------------------------
+
+22. GENIE-Class Behavior
+
+TAC inherits the broader GENIE properties:
+
+-   meta-cycling
+-   recursive cycling
+-   composite cycles
+-   cycler → GENIE elevation
+-   GENIE → cycler descent
+-   multiple-agent composition
+-   higher-order recomposition
+-   persistent state
+-   provenance
+-   modality preservation
+-   heterogeneous infrastructure
+-   backend neutrality
+-   end-to-end deliverable construction
+-   FAKIR coupling
+-   evidence and verification
+-   governance
+-   preservation
+-   transformation
+
+TAC specializes these capabilities for technical realization.
+
+------------------------------------------------------------------------
+
+23. Retrieval-First Technical Discipline
+
+The TAC retrieval discipline is:
+
+RETRIEVE → READ → INTERPRET → CORRELATE → VERIFY → EVIDENCE → GOVERN →
+PRESERVE → TRANSFORM
+
+Applied to:
+
+-   existing systems
+-   architecture documents
+-   source code
+-   dependencies
+-   tests
+-   components
+-   standards
+-   domain expertise
+-   operational history
+-   configuration
+-   provenance
+-   evidence
+
+The system should not reconstruct an existing system from sparse clues
+when authoritative artefacts are available.
+
+------------------------------------------------------------------------
+
+24. Deliverable Construction
+
+TAC should be capable of constructing complete technical deliverables,
+including as appropriate:
+
+-   architecture decisions
+-   architecture diagrams
+-   requirements mappings
+-   design specifications
+-   implementation plans
+-   source changes
+-   configuration
+-   test plans
+-   test evidence
+-   security assessments
+-   deployment artefacts
+-   migration plans
+-   maintenance plans
+-   release packages
+-   operational runbooks
+-   component packages
+-   component metadata
+-   provenance records
+-   verification records
+
+The deliverable is the result of the cycle, not the cycle itself.
+
+------------------------------------------------------------------------
+
+25. Governance and Evidence
+
+Every consequential technical transition should preserve:
+
+-   decision provenance
+-   source provenance
+-   evidence
+-   assumptions
+-   constraints
+-   verification status
+-   security status
+-   component lineage
+-   change history
+-   responsible role
+-   lifecycle state
+
+The system must be able to explain:
+
+WHY this architecture? WHY this role? WHY this component? WHY build
+rather than reuse? WHY escalate? WHAT evidence supported the decision?
+WHAT changed? WHAT remains uncertain?
+
+------------------------------------------------------------------------
+
+26. Failure / Escalation Logic
+
+Escalation is not failure.
+
+It is a legitimate state transition.
+
+Examples:
+
+Developer cannot resolve architecture conflict → ascend.
+
+Architect lacks domain knowledge → FAKIR → SME.
+
+SME identifies cross-domain conflict → composite SME configuration.
+
+Component unavailable → build.
+
+Component adaptation unsafe → build new component.
+
+Security evidence invalidates design → Security Architecture.
+
+Test evidence invalidates architecture → ascend / recompose.
+
+Product scope conflicts with technical realization → Product Owner /
+lifecycle role.
+
+Operational evidence reveals systemic defect → ascend.
+
+GENIE itself lacks sufficient conceptual frame → invoke broader
+GENIE/meta-cycling mechanism.
+
+------------------------------------------------------------------------
+
+27. Legacy and Greenfield Convergence
+
+The two major paths eventually converge:
+
+EXISTING SYSTEM → RETRIEVE → UNDERSTAND → MAINTAIN / CHANGE
+
+GREENFIELD → RETRIEVE HARDENED COMPONENTS → DESIGN → BUILD MISSING
+COMPONENTS → HARDEN → VERIFY
+
+Both converge on:
+
+INTEGRATE → TEST → VERIFY → RELEASE → OPERATE → MONITOR → MAINTAIN →
+NEXT CYCLE
+
+Thus maintenance and new development are different entry states of one
+cycler.
+
+------------------------------------------------------------------------
+
+28. Component Factory as Institutional Memory
+
+The hardened component repository functions as reusable technical
+memory.
+
+The Factory cycle is:
+
+PROJECT NEED → RETRIEVE → REUSE → ADAPT → VERIFY
+
+or:
+
+PROJECT NEED → NOT FOUND → BUILD → HARDEN → VERIFY → PROMOTE → FACTORY →
+REPOSITORY
+
+Future missions then retrieve the accumulated artefact.
+
+This gives the technical estate lineage without uncontrolled
+accumulation.
+
+------------------------------------------------------------------------
+
+29. Relation to Varzish
+
+Varzish is the practice/capability environment.
+
+TAC determines:
+
+-   what technical work is required
+-   what architecture is required
+-   what roles are required
+-   what domain expertise is required
+-   what components are required
+-   what evidence is required
+
+Varzish can then support capability development and practice for the
+relevant roles and domains.
+
+The relation is:
+
+FAKIR → domain ground
+
+TAC / GENIE → technical realization configuration
+
+VARZISH → capability development / practice
+
+------------------------------------------------------------------------
+
+30. Relation to Kitab
+
+Technical work produces persistent artefacts.
+
+These may include:
+
+-   architecture specifications
+-   ADRs
+-   designs
+-   code
+-   configurations
+-   tests
+-   evidence
+-   security reports
+-   component packages
+-   runbooks
+-   release artefacts
+
+KITAB provides persistence / executable or durable artefact lineage.
+
+TAC constructs and evolves those artefacts through the cycle.
+
+------------------------------------------------------------------------
+
+31. Relation to CEM
+
+CEM supplies substrate realization.
+
+TAC is concerned with the architecture and agency required to realize
+the technical mission.
+
+CEM supplies the realization substrate across heterogeneous
+infrastructure.
+
+Therefore:
+
+TAC ≠ CEM.
+
+TAC determines the architecture-and-role configuration.
+
+CEM enables substrate realization.
+
+------------------------------------------------------------------------
+
+32. Relation to Zistgah
+
+Zistgah is the living ecosystem in which the realized technical system
+operates.
+
+The technical walk is:
+
+MISSION → TAC → ARCHITECTURE → DESIGN → ENGINEERING → TEST → RELEASE →
+OPERATE → ZISTGAH → OBSERVE → NEXT CYCLE
+
+The cycler therefore remains connected to operation rather than
+terminating at deployment.
+
+------------------------------------------------------------------------
+
+33. Canonical End-to-End Example
+
+MISSION:
+
+Build or maintain a secure distributed platform.
+
+1.  RETRIEVE mission and current evidence.
+2.  Determine whether an existing system exists.
+3.  Triage architecture.
+4.  Establish architecture vector: Systems × Software × Security × Test.
+5.  GENIE elevates to the required architecture.
+6.  FAKIR retrieves relevant domainal SME ground.
+7.  Retrieve hardened components.
+8.  Reuse verified components where appropriate.
+9.  Build missing components where necessary.
+10. Test and verify.
+11. Security evidence may trigger Security Architecture.
+12. Test evidence may trigger architecture ascent.
+13. Product scope may trigger Product Owner.
+14. Once resolved, descend into Designer / Developer.
+15. Release.
+16. Operate and monitor.
+17. Feed evidence back into the next cycle.
+18. Promote sufficiently generalized verified components to the Factory.
+
+------------------------------------------------------------------------
+
+34. Compact Formal Model
+
+Let:
+
+M = Mission A = Architecture Vector R = Role Configuration D = Domain
+Configuration C = Component Configuration E = Evidence L = Lifecycle
+State P = Provenance
+
+Then:
+
+TAC_STATE_t = (M_t, A_t, R_t, D_t, C_t, E_t, L_t, P_t)
+
+The cycler computes:
+
+OBSERVE(TAC_STATE_t) → EVALUATE → TRIAGE → RECONFIGURE → ACT → VERIFY →
+TAC_STATE_(t+1)
+
+Architecture selection:
+
+A_t = f(M_t, SystemState_t, Evidence_t, Risk_t, Constraints_t)
+
+Role configuration:
+
+R_t = g(A_t, D_t, LifecycleState_t, Evidence_t)
+
+Domain retrieval:
+
+D_t = FAKIR(M_t, A_t, context)
+
+Component selection:
+
+C_t = REPOSITORY_RETRIEVE(requirements, A_t, constraints)
+
+Missing component:
+
+if C_t = ∅: BUILD → TEST → HARDEN → VERIFY → optional FACTORY_PROMOTION
+
+Role transition:
+
+R_t → R_(t+1)
+
+may be:
+
+ASCEND DESCEND LATERAL_SWITCH ESCALATE CONTINUE
+
+The key invariant is:
+
+  No role configuration is permanent merely because it was selected
+  previously.
+
+------------------------------------------------------------------------
+
+35. Core Invariants
+
+1.  Architecture follows the problem.
+2.  Agent configuration follows the architecture.
+3.  Ascend for context.
+4.  Descend for realization.
+5.  Lateral-switch when the affected architecture changes.
+6.  Retrieve before reconstructing.
+7.  Reuse hardened components before building.
+8.  Build when no acceptable component exists.
+9.  Harden and verify newly built reusable components.
+10. Factory promotion is conditional, not automatic.
+11. FAKIR supplies retrieved domainal expertise.
+12. Roles are dynamic configurations, not fixed personas.
+13. Existing-system maintenance is first-class.
+14. Greenfield and legacy paths converge into one lifecycle.
+15. Evidence drives reconfiguration.
+16. Security and test architecture are architectural dimensions.
+17. Lifecycle roles can be invoked alongside technical roles.
+18. Provenance follows technical artefacts and decisions.
+19. The system remains capable of returning to GENIE.
+20. The cycle continues after release into operation and maintenance.
+
+------------------------------------------------------------------------
+
+36. Final Architecture
+
+                 HUMANESQUE
+                     │
+                  CHARBAGH
+                TRIAGE / ROUTE
+                     │
+                   FAKIR
+          DOMAIN / EPISTEMIC GUIDE
+                     │
+                   GENIE
+          META-CYCLING / CONCEPTION
+                     │
+        TECHNICAL ARCHITECTURE CYCLER
+                     │
+          ┌──────────┼──────────┐
+          │          │          │
+     ARCHITECTURE  LIFECYCLE  DOMAIN
+          │          │          │
+          │          │        FAKIR
+          │          │          │
+          ▼          ▼          ▼
+      ARCHITECT    PO/SM       SME
+          │
+          ▼
+       DESIGNER
+          │
+          ▼
+
+DEVELOPER / ENGINEER │ ▼ TEST │ ▼ OPERATIONS │ L1 → L2 → L3 │ ▼ OBSERVE
+│ ▼ EVALUATE │ ┌─────┼─────────────┐ │ │ │ ASCEND DESCEND SWITCH │ │ │
+└─────┴──────┬──────┘ │ RECOMPOSE │ CYCLE
+
+Parallel asset path:
+
+NEED COMPONENT → HARDENED REPOSITORY → RETRIEVE / REUSE → INTEGRATE →
+TEST → VERIFY
+
+or:
+
+NOT FOUND → BUILD → TEST → HARDEN → VERIFY → FACTORY CANDIDATE →
+COMPONENT FACTORY → HARDENED REPOSITORY
+
+Operational path:
+
+RELEASE → OPERATE → MONITOR → MAINTAIN → NEXT CYCLE
+
+------------------------------------------------------------------------
+
+Canonical One-Line Definition
+
+  TECHNICAL ARCHITECTURE CYCLER is a GENIE-class recursive meta-cycler
+  that dynamically determines the architecture, altitude, role, domain
+  expertise, trusted technical assets, lifecycle agency, and execution
+  configuration required by a technical problem; ascends for context,
+  descends for realization, retrieves before reconstructing, reuses
+  hardened components before building, promotes verified reusable
+  components through a Factory, and continuously reconfigures itself
+  from evidence across the complete technical lifecycle.

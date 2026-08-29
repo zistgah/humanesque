@@ -1,0 +1,358 @@
+MODULE PANINI.Language
+
+FUNCTION stNew(tokens)
+    RETURN {tokens: tokens, i: 0}
+END
+
+FUNCTION stPeek(st)
+    toks = st.tokens
+    i = st.i
+    IF i >= LEN(toks)
+        RETURN {kind: "EOF", value: ""}
+    END
+    RETURN toks[i]
+END
+
+FUNCTION stEat(st)
+    t = stPeek(st)
+    st.i = st.i + 1
+    RETURN t
+END
+
+FUNCTION stAt(st, kind, value)
+    t = stPeek(st)
+    IF value == ""
+        RETURN t.kind == kind
+    END
+    RETURN t.kind == kind AND t.value == value
+END
+
+FUNCTION stAtVal(st, value)
+    t = stPeek(st)
+    RETURN t.value == value
+END
+
+FUNCTION ops()
+    RETURN "()[]{},.:;=+-*/%"
+END
+
+FUNCTION stOp(st, idx)
+    s = ops()
+    RETURN stAt(st, "OP", s[idx])
+END
+
+FUNCTION parseTypeName(st)
+    t = stPeek(st)
+    IF t.kind == "IDENT" OR t.kind == "KEYWORD"
+        stEat(st)
+        RETURN t.value
+    END
+    RETURN "Any"
+END
+
+FUNCTION parseParams(st)
+    params = []
+    stEat(st)
+    WHILE NOT stOp(st, 1) AND NOT stAt(st, "EOF", "")
+        t = stEat(st)
+        name = t.value
+        IF stOp(st, 8)
+            stEat(st)
+            parseTypeName(st)
+        END
+        params = APPEND(params, name)
+        IF stOp(st, 6)
+            stEat(st)
+        END
+    END
+    IF stOp(st, 1)
+        stEat(st)
+    END
+    RETURN params
+END
+
+FUNCTION parsePrimary(st)
+    t = stPeek(st)
+    IF t.kind == "NUMBER"
+        stEat(st)
+        RETURN {op: "const", value: t.value}
+    END
+    IF t.kind == "STRING"
+        stEat(st)
+        RETURN {op: "const", value: t.value}
+    END
+    IF t.kind == "KEYWORD" AND t.value == "TRUE"
+        stEat(st)
+        RETURN {op: "const", value: TRUE}
+    END
+    IF t.kind == "KEYWORD" AND t.value == "FALSE"
+        stEat(st)
+        RETURN {op: "const", value: FALSE}
+    END
+    IF t.kind == "KEYWORD" AND t.value == "NULL"
+        stEat(st)
+        RETURN {op: "const", value: NULL}
+    END
+    IF t.kind == "KEYWORD" AND t.value == "NOT"
+        stEat(st)
+        RETURN {op: "un", operator: "NOT", arg: parsePostfix(st)}
+    END
+    IF stOp(st, 2)
+        stEat(st)
+        els = []
+        WHILE NOT stOp(st, 3) AND NOT stAt(st, "EOF", "")
+            els = APPEND(els, parseExpression(st))
+            IF stOp(st, 6)
+                stEat(st)
+            END
+        END
+        IF stOp(st, 3)
+            stEat(st)
+        END
+        RETURN {op: "list", elements: els}
+    END
+    IF stOp(st, 4)
+        stEat(st)
+        entries = []
+        WHILE NOT stOp(st, 5) AND NOT stAt(st, "EOF", "")
+            kt = stEat(st)
+            key = kt.value
+            IF stOp(st, 8)
+                stEat(st)
+            END
+            entries = APPEND(entries, {key: key, value: parseExpression(st)})
+            IF stOp(st, 6)
+                stEat(st)
+            END
+        END
+        IF stOp(st, 5)
+            stEat(st)
+        END
+        RETURN {op: "map", entries: entries}
+    END
+    IF stOp(st, 0)
+        stEat(st)
+        e = parseExpression(st)
+        IF stOp(st, 1)
+            stEat(st)
+        END
+        RETURN e
+    END
+    IF t.kind == "IDENT" OR t.kind == "KEYWORD"
+        stEat(st)
+        RETURN {op: "load", name: t.value}
+    END
+    stEat(st)
+    RETURN {op: "const", value: NULL}
+END
+
+FUNCTION parsePostfix(st)
+    e = parsePrimary(st)
+    keep = TRUE
+    WHILE keep
+        IF stOp(st, 0)
+            stEat(st)
+            args = []
+            WHILE NOT stOp(st, 1) AND NOT stAt(st, "EOF", "")
+                args = APPEND(args, parseExpression(st))
+                IF stOp(st, 6)
+                    stEat(st)
+                END
+            END
+            IF stOp(st, 1)
+                stEat(st)
+            END
+            e = {op: "call", callee: e, args: args}
+        ELSE
+            IF stOp(st, 7)
+                stEat(st)
+                p = stEat(st)
+                e = {op: "member", object: e, property: p.value}
+            ELSE
+                IF stOp(st, 2)
+                    stEat(st)
+                    idx = parseExpression(st)
+                    IF stOp(st, 3)
+                        stEat(st)
+                    END
+                    e = {op: "index", object: e, index: idx}
+                ELSE
+                    keep = FALSE
+                END
+            END
+        END
+    END
+    RETURN e
+END
+
+FUNCTION parseUnary(st)
+    IF stAt(st, "OP", "-")
+        stEat(st)
+        RETURN {op: "un", operator: "-", arg: parseUnary(st)}
+    END
+    RETURN parsePostfix(st)
+END
+
+FUNCTION parseMul(st)
+    e = parseUnary(st)
+    WHILE stOp(st, 13) OR stOp(st, 14) OR stOp(st, 15)
+        op = stEat(st).value
+        e = {op: "bin", operator: op, left: e, right: parseUnary(st)}
+    END
+    RETURN e
+END
+
+FUNCTION parseAdd(st)
+    e = parseMul(st)
+    WHILE stOp(st, 11) OR stOp(st, 12)
+        op = stEat(st).value
+        e = {op: "bin", operator: op, left: e, right: parseMul(st)}
+    END
+    RETURN e
+END
+
+FUNCTION parseCmp(st)
+    e = parseAdd(st)
+    WHILE stAtVal(st, "==") OR stAtVal(st, "!=") OR stAtVal(st, "<") OR stAtVal(st, ">") OR stAtVal(st, "<=") OR stAtVal(st, ">=")
+        op = stEat(st).value
+        e = {op: "bin", operator: op, left: e, right: parseAdd(st)}
+    END
+    RETURN e
+END
+
+FUNCTION parseAnd(st)
+    e = parseCmp(st)
+    WHILE stAtVal(st, "AND")
+        stEat(st)
+        e = {op: "bin", operator: "AND", left: e, right: parseCmp(st)}
+    END
+    RETURN e
+END
+
+FUNCTION parseOr(st)
+    e = parseAnd(st)
+    WHILE stAtVal(st, "OR")
+        stEat(st)
+        e = {op: "bin", operator: "OR", left: e, right: parseAnd(st)}
+    END
+    RETURN e
+END
+
+FUNCTION parseExpression(st)
+    RETURN parseOr(st)
+END
+
+FUNCTION parseBlock(st)
+    body = []
+    WHILE NOT stAtVal(st, "END") AND NOT stAtVal(st, "ELSE") AND NOT stAt(st, "EOF", "")
+        body = APPEND(body, parseStmt(st))
+    END
+    RETURN body
+END
+
+FUNCTION parseStmt(st)
+    t = stPeek(st)
+    IF t.value == "RETURN"
+        stEat(st)
+        RETURN {op: "return", arg: parseExpression(st)}
+    END
+    IF t.value == "ASSERT"
+        stEat(st)
+        RETURN {op: "assert", test: parseExpression(st)}
+    END
+    IF t.value == "PRINT"
+        stEat(st)
+        RETURN {op: "expr", value: {op: "call", callee: {op: "load", name: "PRINT"}, args: [parseExpression(st)]}}
+    END
+    IF t.value == "IF"
+        stEat(st)
+        test = parseExpression(st)
+        thenb = parseBlock(st)
+        elseb = []
+        IF stAtVal(st, "ELSE")
+            stEat(st)
+            elseb = parseBlock(st)
+        END
+        IF stAtVal(st, "END")
+            stEat(st)
+        END
+        RETURN {op: "if", test: test, then: thenb, else: elseb}
+    END
+    IF t.value == "WHILE"
+        stEat(st)
+        test = parseExpression(st)
+        body = parseBlock(st)
+        IF stAtVal(st, "END")
+            stEat(st)
+        END
+        RETURN {op: "while", test: test, body: body}
+    END
+    IF t.value == "FUNCTION"
+        fn = parseFunction(st)
+        RETURN {op: "def", fn: fn}
+    END
+    left = parseExpression(st)
+    IF stOp(st, 10)
+        stEat(st)
+        RETURN {op: "assign", target: left, value: parseExpression(st)}
+    END
+    RETURN {op: "expr", value: left}
+END
+
+FUNCTION parseFunction(st)
+    stEat(st)
+    nameTok = stEat(st)
+    name = nameTok.value
+    params = []
+    IF stOp(st, 0)
+        params = parseParams(st)
+    END
+    IF stAtVal(st, "->")
+        stEat(st)
+        parseTypeName(st)
+    END
+    body = parseBlock(st)
+    IF stAtVal(st, "END")
+        stEat(st)
+    END
+    RETURN {name: name, params: params, body: body}
+END
+
+FUNCTION skipBlock(st)
+    stEat(st)
+    depth = 1
+    WHILE depth > 0 AND NOT stAt(st, "EOF", "")
+        t = stPeek(st)
+        IF t.value == "FUNCTION" OR t.value == "CLASS" OR t.value == "MODULE" OR t.value == "CYCLER" OR t.value == "IF" OR t.value == "WHILE" OR t.value == "FOR"
+            depth = depth + 1
+            stEat(st)
+        ELSE
+            IF t.value == "END"
+                depth = depth - 1
+                stEat(st)
+            ELSE
+                stEat(st)
+            END
+        END
+    END
+END
+
+FUNCTION parse(tokens)
+    st = stNew(tokens)
+    functions = []
+    WHILE NOT stAt(st, "EOF", "")
+        t = stPeek(st)
+        IF t.value == "FUNCTION"
+            functions = APPEND(functions, parseFunction(st))
+        ELSE
+            IF t.value == "CLASS" OR t.value == "CYCLER" OR t.value == "META_CYCLER" OR t.value == "CONSTITUTION" OR t.value == "ARTIFACT" OR t.value == "CONFIGURATION" OR t.value == "BOOTSTRAP" OR t.value == "ENUM" OR t.value == "SCHEMA" OR t.value == "TRAIT" OR t.value == "INTERFACE" OR t.value == "TEST" OR t.value == "PROGRAM" OR t.value == "RUNTIME" OR t.value == "ESTATE" OR t.value == "AGENT" OR t.value == "MODEL"
+                skipBlock(st)
+            ELSE
+                stEat(st)
+            END
+        END
+    END
+    RETURN {kind: "Program", functions: functions}
+END
+
+END

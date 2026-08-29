@@ -1,0 +1,8 @@
+MODULE T00020
+FUNCTION main()
+    x = 1
+    x = x + 41
+    PRINT x
+    RETURN 0
+END
+END

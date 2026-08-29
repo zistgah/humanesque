@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "zistgah/dome — the Zistgah virtual dome as a reusable app/lib"
+type: software
+authors:
+  - family-names: Choudhary
+    given-names: Abhishek
+    affiliation: AyeAI
+    orcid: "https://orcid.org/0009-0002-0684-8320"
+repository-code: "https://github.com/zistgah/dome"
+license: GPL-3.0-or-later
+notes: "10.5281/zenodo.21449034 — injected post-mint via misty-doi. Built with Claude Fable 5 (Anthropic)."

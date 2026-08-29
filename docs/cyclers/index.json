@@ -1,0 +1,194 @@
+[
+  {
+    "file": "Amanat_bar_Zamin.pni",
+    "kind": "CYCLER",
+    "bytes": 8275,
+    "purpose": ""
+  },
+  {
+    "file": "Bureaucrat_Diplomat_GENIE_v1.0.0.pni",
+    "kind": "GENIE",
+    "bytes": 23029,
+    "purpose": "PRIMARY PURPOSE:"
+  },
+  {
+    "file": "CHIRAG.pni",
+    "kind": "CYCLER",
+    "bytes": 20695,
+    "purpose": ""
+  },
+  {
+    "file": "CYCLER_SHELL.pni",
+    "kind": "CYCLER",
+    "bytes": 24126,
+    "purpose": "REM  PANINI representation of a general-purpose Cycler Shell."
+  },
+  {
+    "file": "Charbagh.pni",
+    "kind": "CYCLER",
+    "bytes": 8435,
+    "purpose": "purpose = \"Help a person discover where and how they may participate in the Humanesque Estate.\""
+  },
+  {
+    "file": "FAKIR.pni",
+    "kind": "CYCLER",
+    "bytes": 17619,
+    "purpose": ""
+  },
+  {
+    "file": "FINANCIAL-AND-ECONOMICS-GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 45457,
+    "purpose": ""
+  },
+  {
+    "file": "FRIEND-PHILOSOPHER-SPIRITUAL-GUIDE-GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 38299,
+    "purpose": "purpose"
+  },
+  {
+    "file": "Fallah.pni",
+    "kind": "CYCLER",
+    "bytes": 24738,
+    "purpose": "2. CONSTITUTIONAL PURPOSE"
+  },
+  {
+    "file": "GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 25324,
+    "purpose": "PURPOSE \"Persistent creative intelligence and artifact-construction operating environment.\""
+  },
+  {
+    "file": "House_GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 18862,
+    "purpose": ""
+  },
+  {
+    "file": "ILM-GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 39265,
+    "purpose": "The purpose is to preserve the identity of an expressive system without"
+  },
+  {
+    "file": "Khak.pni",
+    "kind": "CYCLER",
+    "bytes": 37950,
+    "purpose": "REM  Purpose:"
+  },
+  {
+    "file": "MARHAM.pni",
+    "kind": "CYCLER",
+    "bytes": 15051,
+    "purpose": "# 0. PURPOSE"
+  },
+  {
+    "file": "Misty_MASI.pni",
+    "kind": "CYCLER",
+    "bytes": 22519,
+    "purpose": ""
+  },
+  {
+    "file": "PANINI_SELF_HOSTING_SPEC.pni",
+    "kind": "CYCLER",
+    "bytes": 37051,
+    "purpose": "KIND GENERAL_PURPOSE_COMPUTATIONAL_LANGUAGE"
+  },
+  {
+    "file": "PAT.AL_PRATIK_VIDYA_GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 27651,
+    "purpose": ""
+  },
+  {
+    "file": "PROFESSOR-RESEARCHER-GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 36766,
+    "purpose": ""
+  },
+  {
+    "file": "PSC_Provenance_Stamping_Cycler_v1.0.0.pni",
+    "kind": "CYCLER",
+    "bytes": 31852,
+    "purpose": "## 0. PURPOSE"
+  },
+  {
+    "file": "SYSADMIN_CYCLER.pni",
+    "kind": "CYCLER",
+    "bytes": 53654,
+    "purpose": "REM  Purpose:"
+  },
+  {
+    "file": "TWISHA-GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 30169,
+    "purpose": ""
+  },
+  {
+    "file": "VAKIL.pni",
+    "kind": "CYCLER",
+    "bytes": 13961,
+    "purpose": "The purpose is not to replace sovereign agency."
+  },
+  {
+    "file": "Varzish.pni",
+    "kind": "CYCLER",
+    "bytes": 31889,
+    "purpose": ""
+  },
+  {
+    "file": "awaz.pni",
+    "kind": "CYCLER",
+    "bytes": 18030,
+    "purpose": "REM  Purpose:"
+  },
+  {
+    "file": "genie.pni",
+    "kind": "GENIE",
+    "bytes": 2627,
+    "purpose": "PURPOSE \"Make something to be heard: a song, a podcast, a lecture, an oral history, an audiobook.\""
+  },
+  {
+    "file": "khwab.pni",
+    "kind": "CYCLER",
+    "bytes": 20289,
+    "purpose": "END PURPOSE"
+  },
+  {
+    "file": "man_at_ease_GENIE.pni",
+    "kind": "GENIE",
+    "bytes": 41772,
+    "purpose": "PURPOSE \"Persistent management and leadership intelligence for enabling coordinated human capability across roles, functions, organizations and institutional fo"
+  },
+  {
+    "file": "matba.pni",
+    "kind": "CYCLER",
+    "bytes": 16521,
+    "purpose": "END PURPOSE"
+  },
+  {
+    "file": "pench.pni",
+    "kind": "CYCLER",
+    "bytes": 24130,
+    "purpose": "PURPOSE \"Take a human conception through conceptualization, requirements, architecture, design, simulation, realization strategy, BOM and build/buy decisions, p"
+  },
+  {
+    "file": "technical_architecture_cycler.pni",
+    "kind": "CYCLER",
+    "bytes": 30824,
+    "purpose": "Its purpose is to take a technical mission, system problem, change"
+  },
+  {
+    "file": "tilasm.pni",
+    "kind": "CYCLER",
+    "bytes": 23078,
+    "purpose": "REM PURPOSE"
+  },
+  {
+    "file": "yadein.pni",
+    "kind": "CYCLER",
+    "bytes": 10122,
+    "purpose": "PURPOSE \"Capture, preserve, connect and progressively consolidate lived experience.\""
+  }
+]

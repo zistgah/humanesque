@@ -1,0 +1,959 @@
+# MISTY MASI — PANINI CYCER SPECIFICATION
+# Version: 1.0.0
+# Status: Cycler construction from the retrieved/supplied MASI description
+#
+# PURPOSE
+# -------
+# Misty MASI is the research / IPR / publication / provenance cycler for the
+# Humanesque architecture.
+#
+# It is NOT merely a DOI generator.
+# It governs the transition from research material and human contribution
+# toward verifiable, attributable, temporally registered, reviewable and
+# publishable records.
+#
+# The cycler is designed to operate across Humanesque cyclers and Epistemic
+# Realms while preserving provenance, identity, temporal ordering, evidence,
+# review state and publication state.
+#
+# PRIMARY DOI PATHS
+# -----------------
+# MISTY DOI:
+#   Scholarly/publication path.
+#   The workflow can obtain a conventional Zenodo DOI as part of the
+#   publication/research workflow.
+#
+# TOK DOI:
+#   Lightweight web-native temporal-registration path.
+#   No token is intrinsically required.
+#   The web record receives an OTS timestamp.
+#   The record may be entered into a public registry if desired.
+#   Registry material can subsequently be turned into a DOI according to
+#   registry frequency / occupancy policy.
+#
+# GOVERNING INVARIANT
+# -------------------
+# MASI SHALL preserve and mark the provenance of human-originated inputs
+# across Humanesque cyclers and their transformations, sufficient to support
+# temporal-realm IPR attribution and evidentiary reconstruction within the
+# Epistemic Realms.
+#
+# The provenance chain MUST NOT terminate at:
+#   human -> cycler -> artifact
+#
+# It MUST remain traceable through relevant:
+#   composition
+#   transformation
+#   branching
+#   merging
+#   editing
+#   revision
+#   versioning
+#   publication
+#   registration
+#   downstream reuse
+#
+# ARCHITECTURAL POSITION
+# ----------------------
+# Human / Society
+#       |
+#       v
+#   Epistemic Realm
+#       |
+#       +--> Research Kundali
+#       |
+#       v
+#   Humanesque Cyclers
+#       |
+#       v
+#   MEZ / Cycler Substrate
+#       |
+#       v
+#   MISTY MASI
+#       |
+#       +--> Research / Publication
+#       +--> Peer Review
+#       +--> Journal
+#       +--> Conference
+#       +--> IPR / G3
+#       +--> Provenance
+#       +--> Temporal Registration
+#       +--> Repository / DOI
+#
+# The production cyclers remain independent. Interoperability is provided
+# through the shared cycler substrate / MEZ rather than by collapsing all
+# cyclers into one workflow.
+#
+# RELATIONSHIPS
+# ------------
+# MASI
+#   Research / IPR / publication process and governance cycler.
+#
+# MISTY
+#   Publication / identity / provenance infrastructure associated with MASI.
+#
+# G3
+#   Specific IPR / pre-filing gate within the MASI / IPR process.
+#
+# RESEARCH_KUNDALI
+#   Research trajectory, provenance, review, lineage and epistemic-governance
+#   structure used to keep Epistemic Realms clean.
+#
+# CYCLERS
+#   Independent Humanesque production cyclers whose inputs and outputs can
+#   enter MASI-governed research / IPR / publication workflows.
+#
+# MEZ
+#   Shared interoperability / orchestration substrate. It does not erase
+#   domain-specific cycler identity.
+#
+# DOMAIN SCOPE
+# ------------
+# MASI is domain-general at the governance/process level.
+# It supports research artifacts and IPR/publication processes without
+# requiring the domain to be enumerated as a fixed list of professions.
+#
+# FIRST-CLASS OBJECTS
+# -------------------
+# HUMAN_INPUT
+# RESEARCH_OBJECT
+# EVIDENCE_RECORD
+# PROVENANCE_RECORD
+# EPISTEMIC_RECORD
+# RESEARCH_KUNDALI
+# REVIEW_RECORD
+# JOURNAL_RECORD
+# CONFERENCE_RECORD
+# IPR_RECORD
+# G3_GATE
+# REPOSITORY_RECORD
+# MISTY_DOI_RECORD
+# TOK_RECORD
+# OTS_TIMESTAMP
+# PUBLIC_REGISTRY_RECORD
+# VERSION
+# PUBLICATION_PACKAGE
+# AUDIT_RECORD
+# CLEARANCE_RECORD
+#
+# EPISTEMIC STATUS
+# ---------------
+# Every substantive assertion/material record SHOULD carry an epistemic
+# status compatible with the surrounding Humanesque epistemic architecture:
+#
+# [RETRIEVED]    obtained from a trusted source
+# [INFERRED]     logically derived from retrieved material
+# [PROPOSED]     hypothesis / design / suggested construction
+# [UNRESOLVED]   unknown, inconsistent or insufficiently evidenced
+#
+# An untagged epistemic statement MUST NOT enter canonical output where
+# epistemic tagging is required.
+#
+# CORE STAGES
+# -----------
+# The canonical MASI lifecycle is:
+#
+#   INTAKE
+#   IDENTIFY
+#   CAPTURE
+#   PROVENANCE
+#   EPISTEMIC_CLASSIFY
+#   EVIDENCE
+#   VERIFY
+#   GOVERN
+#   REVIEW
+#   IPR_GATE
+#   REGISTER
+#   PUBLISH
+#   PRESERVE
+#
+# The lifecycle is not necessarily linear. A stage may cause revision,
+# branching, additional evidence collection, or return to an earlier stage.
+#
+# STAGE 01 — INTAKE
+# -----------------
+STAGE INTAKE {
+    ELICIT research.input
+    CAPTURE research.material
+    CAPTURE source.context
+    CAPTURE submission.mode
+    CAPTURE received_at
+    CAPTURE actor.identity
+    CAPTURE actor.authorization
+    CAPTURE originating_cycler
+    CAPTURE originating_realm
+    END STAGE
+}
+#
+# STAGE 02 — IDENTIFY
+# -------------------
+STAGE IDENTIFY {
+    IDENTIFY research.object
+    IDENTIFY artifact.type
+    IDENTIFY domain
+    IDENTIFY authors
+    IDENTIFY contributors
+    IDENTIFY source.material
+    IDENTIFY parent.records
+    IDENTIFY related.cycler.states
+    IDENTIFY existing.versions
+    END STAGE
+}
+#
+# STAGE 03 — CAPTURE
+# ------------------
+STAGE CAPTURE {
+    CAPTURE content
+    CAPTURE metadata
+    CAPTURE attachments
+    CAPTURE references
+    CAPTURE source
+    CAPTURE acquisition.time
+    CAPTURE event.time WHEN KNOWN
+    CAPTURE modality
+    CAPTURE representation
+    CAPTURE initial.state
+    END STAGE
+}
+#
+# STAGE 04 — PROVENANCE
+# --------------------
+# Critical MASI invariant: human provenance propagates across cyclers.
+#
+STAGE PROVENANCE {
+    CAPTURE human.contributor
+    CAPTURE contribution.kind
+    CAPTURE contribution.content
+    CAPTURE contribution.time
+    CAPTURE contribution.source
+    CAPTURE contribution.location WHEN AVAILABLE
+    CAPTURE contribution.authorization
+    CAPTURE contribution.relationship.to_artifact
+    CAPTURE originating.cycler
+    CAPTURE originating.cycler.state
+    CAPTURE upstream.provenance
+    CAPTURE downstream.provenance
+    CAPTURE transformation.lineage
+    CAPTURE branch.lineage
+    CAPTURE merge.lineage
+    CAPTURE revision.lineage
+    CAPTURE version.lineage
+    CAPTURE derivative.lineage
+    LINK provenance.to.artifact
+    LINK provenance.to.human
+    LINK provenance.to.cycler
+    LINK provenance.to.time
+    LINK provenance.to.realm
+    LINK provenance.to.evidence
+    END STAGE
+}
+#
+# PROVENANCE PROPAGATION RULE
+# ---------------------------
+RULE HUMAN_PROVENANCE_PERSISTS {
+    WHEN artifact.is_derived
+    THEN PRESERVE upstream.human.provenance
+    AND PRESERVE transformation.lineage
+    AND PRESERVE temporal.position
+    AND PRESERVE originating.cycler
+    AND PRESERVE relevant.intermediate.states
+}
+#
+RULE PROVENANCE_ON_COMPOSITION {
+    WHEN artifacts.are_merged
+    THEN PRESERVE provenance.of.each.constituent
+    AND CREATE composition.record
+    AND LINK composition.to.result
+}
+#
+RULE PROVENANCE_ON_BRANCH {
+    WHEN artifact.is_branched
+    THEN PRESERVE parent.provenance
+    AND CREATE branch.relationship
+}
+#
+RULE PROVENANCE_ON_REVISION {
+    WHEN artifact.is_revised
+    THEN PRESERVE ancestry
+    AND CREATE new.version
+    AND LINK revision.to.predecessor
+}
+#
+# STAGE 05 — EPISTEMIC CLASSIFICATION
+# -----------------------------------
+STAGE EPISTEMIC_CLASSIFY {
+    CLASSIFY claims AS [RETRIEVED]
+    CLASSIFY claims AS [INFERRED]
+    CLASSIFY claims AS [PROPOSED]
+    CLASSIFY claims AS [UNRESOLVED]
+    PRESERVE epistemic.status
+    LINK claims.to.sources
+    LINK claims.to.evidence
+    END STAGE
+}
+#
+# STAGE 06 — EVIDENCE
+# -------------------
+STAGE EVIDENCE {
+    CAPTURE supporting.sources
+    CAPTURE evidence.records
+    CAPTURE measurements
+    CAPTURE references
+    CAPTURE checksums WHEN AVAILABLE
+    CAPTURE integrity.records
+    DISTINGUISH evidence FROM provenance
+    DISTINGUISH evidence FROM registration
+    DISTINGUISH evidence FROM interpretation
+    END STAGE
+}
+#
+# STAGE 07 — VERIFY
+# -----------------
+STAGE VERIFY {
+    VERIFY identity
+    VERIFY provenance
+    VERIFY integrity
+    VERIFY evidence
+    VERIFY temporal.records
+    VERIFY epistemic.status
+    VERIFY authorization
+    VERIFY publication.constraints
+    VERIFY IPR.constraints
+    VERIFY repository.constraints
+    END STAGE
+}
+#
+# STAGE 08 — GOVERN
+# -----------------
+# Research Kundali provides the organizing research trajectory / lineage
+# structure used in the Epistemic Realms.
+#
+STAGE GOVERN {
+    UPDATE RESEARCH_KUNDALI
+    LINK research.object
+    LINK research.trajectory
+    LINK research.milestones
+    LINK evidence.lineage
+    LINK provenance.lineage
+    LINK review.history
+    LINK revisions
+    LINK IPR.events
+    LINK registration.events
+    LINK publication.events
+    CHECK epistemic.cleanliness
+    CHECK provenance.completeness
+    CHECK unresolved.items
+    END STAGE
+}
+#
+# EPISTEMIC REALM CLEANLINESS
+# ---------------------------
+RULE REALM_CLEANLINESS {
+    BEFORE canonical.publication
+        VERIFY epistemic.status
+        VERIFY source/evidence links
+        VERIFY provenance
+        VERIFY unresolved.items
+        VERIFY review.state
+}
+#
+# STAGE 09 — REVIEW
+# -----------------
+# Supports peer review, journal review, conference review and equivalent
+# research-quality gates.
+#
+STAGE REVIEW {
+    SELECT review.mode
+    # review.mode MAY be:
+    #   PEER
+    #   JOURNAL
+    #   CONFERENCE
+    #   EDITORIAL
+    #   IPR
+    #   INTERNAL
+    CAPTURE reviewer.identity
+    CAPTURE reviewer.role
+    CAPTURE review.criteria
+    CAPTURE review.comments
+    CAPTURE review.decision
+    CAPTURE review.time
+    LINK review.to.version
+    LINK review.to.evidence
+    LINK review.to.provenance
+    PRESERVE review.history
+    END STAGE
+}
+#
+# STAGE 10 — IPR GATE
+# -------------------
+STAGE IPR_GATE {
+    IDENTIFY intellectual.property.claims
+    IDENTIFY human.contributions
+    IDENTIFY temporal.positions
+    IDENTIFY derivative.relationships
+    IDENTIFY disclosure.status
+    IDENTIFY filing.status
+    VERIFY provenance.chain
+    VERIFY evidence.chain
+    VERIFY authorization
+    DETERMINE required.gates
+    END STAGE
+}
+#
+# G3 PRE-FILING GATE
+# ------------------
+STAGE G3 {
+    # G3 is a specific pre-filing / disclosure gate within the IPR process.
+    CAPTURE invention.or.claim
+    CAPTURE contributors
+    CAPTURE provenance
+    CAPTURE temporal.evidence
+    CAPTURE disclosure.state
+    CAPTURE supporting.records
+    VERIFY prefiling.constraints
+    REVIEW IPR.material
+    SIGNOFF G3
+    END STAGE
+}
+#
+# G3 IS NOT THE WHOLE MASI SYSTEM.
+# It is one specific IPR gate within MASI.
+#
+# TEMPORAL-REALM IPR INVARIANT
+# ----------------------------
+RULE TEMPORAL_REALM_IPR {
+    WHEN humanesque.cycler.operates.inside epistemic.realm
+    THEN PRESERVE human.input.identity
+    AND PRESERVE human.input.time
+    AND PRESERVE input.content.relationship
+    AND PRESERVE cycler.identity
+    AND PRESERVE cycler.state
+    AND PRESERVE transformation.history
+    AND PRESERVE derivative.history
+    AND PRESERVE evidence.references
+    AND MAKE lineage.reconstructible
+}
+#
+# STAGE 11 — REGISTER
+# -------------------
+STAGE REGISTER {
+    ASK registration.path
+    IF registration.path == "MISTY_DOI"
+        GOTO MISTY_DOI
+    ELSE IF registration.path == "TOK_DOI"
+        GOTO TOK_DOI
+    ELSE
+        CAPTURE registration.choice
+    END STAGE
+}
+#
+# MISTY DOI — SCHOLARLY / PUBLICATION PATH
+# ----------------------------------------
+STAGE MISTY_DOI {
+    PREPARE publication.metadata
+    PREPARE repository.package
+    PREPARE provenance.record
+    PREPARE integrity.record
+    PREPARE version.record
+    SELECT repository
+    IF repository == "ZENODO"
+        SUBMIT repository.package
+        CAPTURE zenodo.record
+        CAPTURE zenodo.doi
+    END
+    CREATE misty.doi.record
+    LINK misty.doi.record TO artifact
+    LINK misty.doi.record TO version
+    LINK misty.doi.record TO provenance
+    LINK misty.doi.record TO publication
+    PRESERVE registration.event
+    END STAGE
+}
+#
+# TOK DOI — WEB-NATIVE TEMPORAL REGISTRATION PATH
+# ------------------------------------------------
+STAGE TOK_DOI {
+    # "No sugar added":
+    # no token is intrinsically required.
+    CAPTURE web.record
+    CAPTURE web.content
+    CAPTURE web.metadata
+    CAPTURE web.source
+    CAPTURE registration.time
+    REQUEST OTS_TIMESTAMP
+    CAPTURE ots.timestamp
+    LINK ots.timestamp TO web.record
+    LINK web.record TO provenance
+    LINK web.record TO artifact
+    ASK public.registry
+    IF public.registry == TRUE
+        SUBMIT registry.record
+        CAPTURE registry.state
+        CAPTURE registry.position
+        CAPTURE registry.occupancy
+        CAPTURE registry.frequency
+    END
+    IF registry.doi.condition == TRUE
+        CONVERT registry.state TO DOI
+        CAPTURE resulting.doi
+    END
+    CREATE tok.record
+    LINK tok.record TO timestamp
+    LINK tok.record TO registry WHEN PRESENT
+    LINK tok.record TO artifact
+    LINK tok.record TO provenance
+    PRESERVE registration.event
+    END STAGE
+}
+#
+# TOK REGISTRY POLICY
+# -------------------
+RULE TOK_REGISTRY_ACCUMULATION {
+    # DOI creation is not mandatory for every Tok event.
+    # Registry material may accumulate until the configured registry
+    # frequency / occupancy condition is met.
+    WHEN registry.frequency_or_occupancy.threshold_reached
+        THEN CREATE DOI_FROM_REGISTRY_STATE
+}
+#
+# STAGE 12 — PUBLISH
+# ------------------
+STAGE PUBLISH {
+    SELECT publication.target
+    # publication.target MAY include:
+    #   JOURNAL
+    #   CONFERENCE
+    #   PREPRINT
+    #   REPOSITORY
+    #   PATENT/IPR RECORD
+    #   PUBLIC REGISTRY
+    PREPARE publication.package
+    INCLUDE metadata
+    INCLUDE provenance
+    INCLUDE version
+    INCLUDE integrity
+    INCLUDE review.history WHEN APPLICABLE
+    INCLUDE epistemic.status WHEN REQUIRED
+    INCLUDE registration.records
+    SUBMIT publication.package
+    CAPTURE publication.identity
+    CAPTURE publication.time
+    END STAGE
+}
+#
+# STAGE 13 — PRESERVE
+# -------------------
+STAGE PRESERVE {
+    SEAL artifact.version
+    PRESERVE content
+    PRESERVE metadata
+    PRESERVE provenance
+    PRESERVE evidence
+    PRESERVE epistemic.history
+    PRESERVE review.history
+    PRESERVE IPR.history
+    PRESERVE registration.history
+    PRESERVE publication.history
+    PRESERVE checksums WHEN AVAILABLE
+    CREATE audit.record
+    END STAGE
+}
+#
+# RESEARCH KUNDALI
+# ----------------
+OBJECT RESEARCH_KUNDALI {
+    identity
+    research.object
+    domain
+    trajectory
+    milestones
+    events
+    claims
+    evidence
+    sources
+    provenance
+    contributors
+    cycler.states
+    versions
+    reviews
+    revisions
+    IPR.events
+    G3.events
+    registration.events
+    publication.events
+    preservation.events
+    unresolved.items
+    epistemic.status
+}
+#
+# RESEARCH KUNDALI OPERATIONS
+# ---------------------------
+STAGE KUNDALI_UPDATE {
+    CAPTURE event
+    ORDER event temporally
+    LINK event TO research.object
+    LINK event TO actor
+    LINK event TO cycler
+    LINK event TO evidence
+    LINK event TO provenance
+    LINK event TO prior.events
+    LINK event TO subsequent.events
+    PRESERVE event
+    END STAGE
+}
+#
+# HUMAN CONTRIBUTION RECORD
+# -------------------------
+OBJECT HUMAN_CONTRIBUTION {
+    contributor.identity
+    contributor.role
+    contribution.type
+    contribution.content.reference
+    contribution.time
+    contribution.context
+    originating.cycler
+    originating.cycler.state
+    originating.realm
+    authorization
+    transformation.lineage
+    derivative.lineage
+    publication.lineage
+    IPR.lineage
+}
+#
+# CROSS-CYCLER PROVENANCE RECORD
+# -----------------------------
+OBJECT CROSS_CYCLER_PROVENANCE {
+    human.inputs[]
+    source.cycler
+    source.state
+    target.cycler
+    target.state
+    operation
+    transformation
+    composition
+    branch
+    merge
+    revision
+    version
+    temporal.order
+    evidence[]
+    integrity[]
+    authorization[]
+}
+#
+# CYCLER INTEROPERABILITY
+# -----------------------
+STAGE IMPORT_FROM_CYCLER {
+    CAPTURE source.cycler
+    CAPTURE source.state
+    CAPTURE source.artifact
+    CAPTURE source.provenance
+    CAPTURE source.temporal.records
+    CAPTURE source.epistemic.status
+    CAPTURE source.version
+    VERIFY imported.records
+    LINK imported.artifact TO MASI_RECORD
+    PRESERVE source.identity
+    END STAGE
+}
+#
+STAGE EXPORT_TO_CYCLER {
+    PREPARE approved.material
+    INCLUDE provenance
+    INCLUDE epistemic.status
+    INCLUDE registration.state
+    INCLUDE version
+    INCLUDE review.state
+    LINK export TO source.record
+    PRESERVE MASI lineage
+    END STAGE
+}
+#
+# PUBLICATION BRANCHES
+# --------------------
+STAGE JOURNAL {
+    CAPTURE manuscript
+    CAPTURE journal.target
+    REVIEW peer
+    REVIEW editorial
+    REVISE manuscript
+    APPROVE manuscript
+    PUBLISH manuscript
+    PRESERVE publication.record
+    END STAGE
+}
+#
+STAGE CONFERENCE {
+    CAPTURE submission
+    CAPTURE conference.target
+    REVIEW peer
+    REVISE submission
+    APPROVE submission
+    PUBLISH conference.record
+    PRESERVE publication.record
+    END STAGE
+}
+#
+STAGE PEER_REVIEW {
+    CAPTURE review.request
+    ASSIGN reviewer
+    CAPTURE review
+    LINK review TO artifact.version
+    CAPTURE decision
+    PRESERVE review
+    END STAGE
+}
+#
+# IPR / DISCLOSURE BRANCH
+# -----------------------
+STAGE IPR {
+    CAPTURE claim
+    CAPTURE contributors
+    CAPTURE provenance
+    CAPTURE temporal.records
+    CAPTURE disclosure.state
+    GOTO G3
+    IF G3 == APPROVED
+        PREPARE filing.package
+    ELSE
+        REVISE IPR_RECORD
+    END
+    PRESERVE IPR_RECORD
+    END STAGE
+}
+#
+# ITERATION / REVISION
+# --------------------
+STAGE REVISE {
+    CAPTURE revision.reason
+    CAPTURE changed.material
+    PRESERVE predecessor
+    CREATE new.version
+    PROPAGATE provenance
+    PROPAGATE epistemic.status
+    INVALIDATE dependent.records WHEN REQUIRED
+    RETURN REVIEW
+    END STAGE
+}
+#
+# AUDIT
+# -----
+STAGE AUDIT {
+    CHECK identity
+    CHECK provenance
+    CHECK evidence
+    CHECK temporal.order
+    CHECK version.history
+    CHECK review.history
+    CHECK IPR.history
+    CHECK registration.history
+    CHECK publication.history
+    CHECK preservation.state
+    CREATE audit.record
+    END STAGE
+}
+#
+# FAILURE / SAFETY RULES
+# ----------------------
+RULE NEVER_DROP_HUMAN_PROVENANCE {
+    IF transformation.removes_human.attribution
+        THEN HALT
+        AND RETURN PROVENANCE
+}
+#
+RULE NEVER_CONFUSE_REGISTRATION_WITH_PROVENANCE {
+    registration.record != provenance.record
+}
+#
+RULE NEVER_CONFUSE_EVIDENCE_WITH_PROVENANCE {
+    evidence.record != provenance.record
+}
+#
+RULE NEVER_CONFUSE_TIMESTAMP_WITH_IPR_OWNERSHIP {
+    timestamp.record != ownership.determination
+}
+#
+RULE NEVER_TREAT_TOK_AS_MANDATORY_DOI {
+    Tok.registration MAY EXIST without immediate DOI
+}
+#
+RULE NEVER_TREAT_G3_AS_WHOLE_MASI {
+    G3 IS_SUBPROCESS_OF MASI
+}
+#
+RULE PRESERVE_ANCESTRY {
+    revision OR branch OR merge OR transformation
+        MUST preserve relevant predecessor links
+}
+#
+RULE NO_UNTAGGED_CANONICAL_CLAIM {
+    IF claim.epistemic_status == NULL
+        THEN HOLD_FOR_CLASSIFICATION
+}
+#
+# CANONICAL END-TO-END FLOWS
+# --------------------------
+#
+# A. RESEARCH / SCHOLARLY PUBLICATION
+#
+FLOW SCHOLARLY {
+    INTAKE
+    IDENTIFY
+    CAPTURE
+    PROVENANCE
+    EPISTEMIC_CLASSIFY
+    EVIDENCE
+    VERIFY
+    GOVERN
+    REVIEW
+    IPR_GATE WHEN APPLICABLE
+    REGISTER
+    PUBLISH
+    PRESERVE
+}
+#
+# B. TOK TEMPORAL REGISTRATION
+#
+FLOW TOK {
+    INTAKE
+    IDENTIFY
+    CAPTURE
+    PROVENANCE
+    EPISTEMIC_CLASSIFY
+    VERIFY
+    GOVERN
+    TOK_DOI
+    PRESERVE
+}
+#
+# C. MISTY DOI
+#
+FLOW MISTY {
+    INTAKE
+    IDENTIFY
+    CAPTURE
+    PROVENANCE
+    EPISTEMIC_CLASSIFY
+    EVIDENCE
+    VERIFY
+    GOVERN
+    REVIEW WHEN APPLICABLE
+    MISTY_DOI
+    PUBLISH
+    PRESERVE
+}
+#
+# D. IPR / G3
+#
+FLOW IPR_G3 {
+    INTAKE
+    IDENTIFY
+    CAPTURE
+    PROVENANCE
+    EVIDENCE
+    VERIFY
+    GOVERN
+    IPR_GATE
+    G3
+    AUDIT
+    PRESERVE
+}
+#
+# E. CROSS-CYCLER HUMAN CONTRIBUTION
+#
+FLOW CROSS_CYCLER {
+    IMPORT_FROM_CYCLER
+    PROVENANCE
+    EPISTEMIC_CLASSIFY
+    EVIDENCE
+    VERIFY
+    GOVERN
+    REVIEW WHEN APPLICABLE
+    REGISTER WHEN APPLICABLE
+    EXPORT_TO_CYCLER WHEN APPLICABLE
+    PRESERVE
+}
+#
+# F. PUBLICATION REVIEW LOOP
+#
+FLOW REVIEW_LOOP {
+    REVIEW
+    IF decision == "REVISE"
+        GOTO REVISE
+    IF decision == "APPROVE"
+        GOTO REGISTER
+    IF decision == "REJECT"
+        PRESERVE review.record
+        END
+}
+#
+# OUTPUTS
+# -------
+# MASI can produce / govern:
+#
+#   research records
+#   provenance records
+#   epistemic records
+#   review records
+#   journal packages
+#   conference packages
+#   repository packages
+#   IPR records
+#   G3 records
+#   Misty DOI records
+#   Tok temporal-registration records
+#   public registry records
+#   publication identities
+#   audit records
+#   preservation packages
+#
+# CONFORMANCE
+# -----------
+# A Misty MASI implementation conforms only if it can:
+#
+#   1. distinguish human input from cycler transformation;
+#   2. preserve human provenance across cycler boundaries;
+#   3. maintain temporal ordering / event history;
+#   4. maintain artifact/version ancestry;
+#   5. distinguish evidence, provenance, registration and interpretation;
+#   6. support epistemic governance through Research Kundali;
+#   7. support research review workflows;
+#   8. support IPR workflows and G3 pre-filing gating;
+#   9. support both Misty DOI and Tok DOI paths;
+#  10. preserve records after publication/registration;
+#  11. remain interoperable with independent Humanesque cyclers;
+#  12. preserve provenance through composition, branching, merging and revision.
+#
+# CANONICAL SUMMARY
+# -----------------
+# MISTY MASI =
+#   identity
+# + provenance
+# + epistemic governance
+# + research trajectory
+# + evidence
+# + review
+# + IPR gating
+# + temporal registration
+# + publication
+# + preservation
+#
+# MISTY DOI:
+#   scholarly/publication route -> repository/Zenodo -> DOI
+#
+# TOK DOI:
+#   web record -> OTS timestamp -> optional public registry
+#   -> DOI when registry policy triggers conversion
+#
+# CORE INVARIANT:
+#   HUMAN INPUT
+#       -> CYCLER
+#       -> TRANSFORMATION(S)
+#       -> COMPOSITION / REVISION / DERIVATION
+#       -> REGISTER / PUBLISH
+#       -> PRESERVE
+#
+#   HUMAN PROVENANCE MUST REMAIN TRACEABLE THROUGH THE ENTIRE CHAIN.
+#
+# END MISTY MASI PNI

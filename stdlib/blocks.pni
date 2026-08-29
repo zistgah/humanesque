@@ -1,0 +1,13 @@
+MODULE PANINI.Blocks
+
+FUNCTION block_print(text)
+    PRINT text
+    RETURN text
+END
+
+FUNCTION main()
+    PRINT "BLOCKS_FRONTEND"
+    RETURN 0
+END
+
+END

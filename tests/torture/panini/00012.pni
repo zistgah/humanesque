@@ -1,0 +1,10 @@
+MODULE T00012
+FUNCTION main()
+    n = 0
+    WHILE n < 3
+        n = n + 1
+    END
+    PRINT n
+    RETURN 0
+END
+END

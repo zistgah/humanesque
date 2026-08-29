@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>mez — the desk</title>
+<meta name=description content="A desk you own. Local-first, no key, no cloud. The bench lights up when the desk on your own machine is answering.">
+<meta name=theme-color content="#0a1020">
+<link rel=manifest href="manifest.webmanifest">
+<link rel=icon href="icon-192.png">
+<style>
+:root{
+  /* a draughtsman's table: cyanotype ground, white linework, one brass lamp.
+     Deliberately not the pressroom's vermilion, nor the cutting room's magenta —
+     this is where you SIT, not what comes out. */
+  --ground:#0a1020; --plate:#0d1526; --line:rgba(176,205,232,.16);
+  --ink:#dce6f0; --dim:rgba(220,230,240,.52);
+  --blue:#6ea8d8; --brass:#c9973f; --lit:#f0c063;
+  --live:#5fa88c; --idle:#c9973f; --gone:#a8564a;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.6 var(--mono);
+  background:
+    linear-gradient(rgba(110,168,216,.055) 1px,transparent 1px) 0 0/100% 2.25rem,
+    linear-gradient(90deg,rgba(110,168,216,.055) 1px,transparent 1px) 0 0/2.25rem 100%,
+    radial-gradient(120% 70% at 50% -10%,#12203a 0%,var(--ground) 62%);
+  background-attachment:fixed}
+a{color:var(--ink);text-decoration-color:var(--brass);text-underline-offset:.2em}
+a:hover{color:#fff}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+
+/* ── the lamp ─────────────────────────────────────────────────────────── */
+header{padding:4rem 0 2.2rem;position:relative}
+.top{display:flex;align-items:flex-end;gap:1.1rem;flex-wrap:wrap}
+h1{font-family:var(--disp);font-size:clamp(3.6rem,13vw,7.5rem);line-height:.8;margin:0;
+  font-weight:400;letter-spacing:-.055em}
+.ar{font-size:clamp(1.5rem,4.5vw,2.6rem);color:var(--brass);padding-bottom:.55rem;line-height:1}
+.lamp{margin-left:auto;display:flex;align-items:center;gap:.75rem;
+  border:1px solid var(--line);padding:.7rem 1rem;background:rgba(13,21,38,.7)}
+.bulb{width:.9rem;height:.9rem;border-radius:50%;background:#2a3446;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .5s,background .5s}
+.lamp.on .bulb{background:var(--lit);
+  box-shadow:0 0 0 1px rgba(240,192,99,.4),0 0 14px 3px rgba(240,192,99,.42),0 0 34px 10px rgba(240,192,99,.14)}
+.lamp .txt{font:600 .66rem/1.35 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.lamp.on .txt{color:var(--lit)}
+.lamp .txt small{display:block;letter-spacing:.04em;text-transform:none;font-weight:400;
+  color:var(--dim);font-size:.68rem;margin-top:.15rem}
+.rule{border-top:1px solid var(--line);margin-top:1.4rem;padding-top:.7rem;
+  display:flex;gap:1.1rem;flex-wrap:wrap;font:500 .64rem/1 var(--mono);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.lede{font-family:var(--disp);font-size:clamp(1.2rem,2.6vw,1.65rem);line-height:1.4;
+  max-width:38ch;margin:2rem 0 .6rem}
+.lede em{font-style:normal;color:var(--brass)}
+.sub{color:var(--dim);max-width:52ch;margin:0}
+
+/* ── seats ────────────────────────────────────────────────────────────── */
+section{padding:3.2rem 0;border-top:1px solid var(--line)}
+.eyebrow{font:600 .64rem/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 .7rem}
+h2{font-family:var(--disp);font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:400;
+  margin:0 0 .5rem;letter-spacing:-.02em}
+.say{color:var(--dim);max-width:56ch;margin:0 0 1.6rem}
+.seats{display:grid;gap:.55rem;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr))}
+.seat{background:rgba(13,21,38,.72);border:1px solid var(--line);padding:.9rem .85rem;
+  cursor:pointer;text-align:left;color:inherit;font:inherit;transition:border-color .18s}
+.seat:hover{border-color:var(--brass)}
+.seat[aria-pressed=true]{border-color:var(--brass);
+  box-shadow:inset 0 0 0 1px rgba(201,151,63,.35),0 0 18px rgba(201,151,63,.08)}
+.seat b{display:block;font-family:var(--disp);font-weight:400;font-size:1.15rem;margin-bottom:.15rem}
+.seat span{font-size:.72rem;color:var(--dim);line-height:1.4;display:block}
+
+/* ── the bench ────────────────────────────────────────────────────────── */
+.bench{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr))}
+.tool{background:rgba(13,21,38,.72);border:1px solid var(--line);padding:.95rem;
+  display:flex;flex-direction:column;gap:.4rem;position:relative;overflow:hidden}
+.tool::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--line)}
+.tool.live::before{background:var(--live)}
+.tool.present::before{background:var(--idle)}
+.tool.absent::before{background:var(--gone)}
+.tool.unknown::before{background:var(--line)}
+.tool .hd{display:flex;align-items:baseline;gap:.5rem}
+.tool .hd b{font-family:var(--disp);font-weight:400;font-size:1.2rem}
+.tool .hd i{font-style:normal;color:var(--brass);font-size:.9rem}
+.tool .hd em{font-style:normal;margin-left:auto;font:600 .58rem/1 var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.tool.live .hd em{color:var(--live)}
+.tool.present .hd em{color:var(--idle)}
+.tool.absent .hd em{color:var(--gone)}
+.tool p{margin:0;font-size:.8rem;color:var(--dim);line-height:1.5;flex:1}
+.tool .go{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
+.tool .go a{font:600 .6rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);padding:.42rem .6rem;text-decoration:none;color:var(--brass)}
+.tool .go a:hover{border-color:var(--brass)}
+.tool code{font-size:.7rem;color:var(--blue);word-break:break-all}
+
+pre{background:#070c17;border:1px solid var(--line);border-left:2px solid var(--brass);
+  padding:1rem 1.1rem;overflow-x:auto;font:13px/1.85 var(--mono);margin:0}
+pre .p{color:var(--brass);user-select:none}pre .c{color:var(--dim)}
+.grid2{display:grid;gap:2rem}@media(min-width:52rem){.grid2{grid-template-columns:1fr 1fr}}
+dt{font:600 .64rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brass);margin:1.2rem 0 .3rem}dt:first-child{margin-top:0}
+dd{margin:0;color:var(--dim);max-width:50ch}
+footer{padding:2.5rem 0 4rem;border-top:1px solid var(--line);color:var(--dim);font-size:.8rem}
+footer em{color:var(--brass);font-style:italic}
+.note{color:var(--dim);font-size:.85rem;max-width:60ch}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+
+<div class=wrap>
+<header>
+  <div class=top>
+    <h1>mez</h1><span class=ar>&#1605;&#1740;&#1586;</span>
+    <div class=lamp id=lamp aria-live=polite>
+      <span class=bulb aria-hidden=true></span>
+      <span class=txt id=lamptxt>Desk dark<small>checking&#8230;</small></span>
+    </div>
+  </div>
+  <div class=rule><span>the desk</span><span>local-first</span>
+    <span>standard library only</span><span>no key &middot; no cloud</span></div>
+  <p class=lede>A desk you <em>own</em>, that runs with the network unplugged.</p>
+  <p class=sub>This page is the published face of it. Everything it can reach lives in its own
+    repository with its own contract — this is a place to stand, not another application.</p>
+</header>
+
+<section>
+  <p class=eyebrow>Take a seat</p>
+  <h2>Your role changes what is shown. Never what is computed.</h2>
+  <p class=say>Seven seats at the same table, reading the same numbers. Pick one and the bench
+    below reorders around what you actually do; nothing is hidden that you could otherwise reach,
+    and nothing is calculated differently.</p>
+  <div class=seats id=seats></div>
+</section>
+
+<section>
+  <p class=eyebrow>The bench</p>
+  <h2 id=benchhead>What is laid out.</h2>
+  <p class=say id=benchsay>Each tool keeps its own repository, its own studio and its own contract.
+    Start the desk on your own machine and the lamp lights: every tool then reports whether it is
+    answering, sitting on disk unstarted, or not here at all.</p>
+  <div class=bench id=bench></div>
+  <p class=note id=benchnote style="margin-top:1rem"></p>
+</section>
+
+<section>
+  <p class=eyebrow>Start the desk</p>
+  <h2>Two lines, and the lamp comes on.</h2>
+  <pre><span class=p>$</span> git clone https://github.com/zistgah/mez &amp;&amp; cd mez
+<span class=p>$</span> python3 bin/mez_studio.py serve   <span class=c># http://127.0.0.1:7373</span></pre>
+  <p class=note style="margin-top:1rem">Then reload this page. It probes <code>127.0.0.1:7373</code>
+    from your own browser — nothing is sent anywhere, and if the desk is silent this page says so
+    rather than guessing.</p>
+  <div class=grid2 style="margin-top:2rem">
+    <dl>
+      <dt>Where your things live</dt>
+      <dd><code>$MEZ_HOME</code>, default <code>~/.mez</code>. Plain CSV and JSON — the export
+        format <em>is</em> the storage format, and a cell you set by hand is never overwritten by
+        an import.</dd>
+      <dt>Three rungs</dt>
+      <dd>The console over ssh with no display; this 2D surface; and the immersive rung mounted
+        into the dome. The same numbers on all three.</dd>
+    </dl>
+    <dl>
+      <dt>Never pretend</dt>
+      <dd>A stub that looks alive is worse than an honest gap. Anything absent says so, says where
+        it looked, and gives you the line to type.</dd>
+      <dt>No vendor</dt>
+      <dd>Components are data in <code>components.json</code>. Delete every one and the desk still
+        runs.</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <p>Copyright &copy; 1993&ndash;2026 Abhishek Choudhary &middot; AyeAI &middot;
+     ORCID 0009-0002-0684-8320 &middot;
+     <a href="https://github.com/zistgah/mez">source</a></p>
+  <p><em>Kaivalyik Immutabilis</em></p>
+</footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* Seven seats, carried forward from the desk's own PWA. The seat picks an emphasis;
+   it never gates a capability. */
+const SEATS = [
+  ['engineer',    'build, seal, push, mint',            ['cycler','make','operate','compose']],
+  ['researcher',  'ask, verify, falsify, publish',      ['compose','operate','cycler','make']],
+  ['clinician',   'record, review, keep',               ['cycler','operate','compose','make']],
+  ['teacher',     'set work, mark it, certify',         ['compose','cycler','make','operate']],
+  ['learner',     'read, try, be marked',               ['compose','cycler','make','operate']],
+  ['institution', 'inventory, provenance, standing',    ['operate','compose','cycler','make']],
+  ['visitor',     'look around, take nothing',          ['make','compose','cycler','operate']]
+];
+let seat = localStorage.getItem('mez.seat') || 'engineer';
+let desk = null, comps = [];
+
+const DESK = 'http://127.0.0.1:7373';
+
+/* THE LAMP IS A REAL PROBE. It reports what it found and nothing else. */
+async function probe() {
+  const ac = new AbortController();
+  const t = setTimeout(() => ac.abort(), 900);
+  try {
+    const r = await fetch(DESK + '/api/state', { signal: ac.signal, cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    desk = await r.json();
+    $('#lamp').classList.add('on');
+    const live = (desk.summary.find(s => s[0] === 'answering now') || [,'0'])[1];
+    $('#lamptxt').innerHTML = 'Desk answering<small>' + esc(live) +
+      ' of ' + desk.components.length + ' tools live on this machine</small>';
+  } catch (e) {
+    desk = null;
+    $('#lamp').classList.remove('on');
+    $('#lamptxt').innerHTML = 'Desk dark<small>not running here &mdash; ' +
+      'nothing on this page claims to know what is</small>';
+  } finally { clearTimeout(t); }
+  bench();
+}
+
+/* The bench is DATA. It is read from the registry, never written into this page. */
+async function load() {
+  try {
+    const r = await fetch('components.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    comps = (await r.json()).components || [];
+    if (!comps.length) throw new Error('the registry is empty');
+  } catch (e) {
+    $('#benchnote').textContent =
+      'The registry could not be read (' + e.message + '), so the bench is not shown. ' +
+      'It is not empty — it is unknown, and those are different things.';
+    return;
+  }
+  seats(); bench(); probe();
+}
+
+function seats() {
+  const el = $('#seats'); el.innerHTML = '';
+  for (const [id, what] of SEATS) {
+    const b = document.createElement('button');
+    b.className = 'seat'; b.type = 'button';
+    b.setAttribute('aria-pressed', String(id === seat));
+    b.innerHTML = '<b>' + esc(id) + '</b><span>' + esc(what) + '</span>';
+    b.onclick = () => { seat = id; localStorage.setItem('mez.seat', id); seats(); bench(); };
+    el.append(b);
+  }
+}
+
+function bench() {
+  const order = (SEATS.find(s => s[0] === seat) || SEATS[0])[2];
+  const rank = c => { const i = order.indexOf(c.group); return i < 0 ? order.length : i; };
+  const byId = desk ? Object.fromEntries(desk.components.map(c => [c.id, c])) : {};
+  const el = $('#bench'); el.innerHTML = '';
+  for (const c of [...comps].sort((a, b) => rank(a) - rank(b) || a.title.localeCompare(b.title))) {
+    if (!(c.rungs || []).includes('ide')) continue;
+    const d = byId[c.id];
+    const st = d ? d.status : 'unknown';
+    const label = { live: 'answering', present: 'on disk, idle', absent: 'not here',
+                    unknown: '' }[st];
+    const owner = (c.repo || '/').split('/')[0];
+    const name = (c.repo || '/').split('/')[1] || '';
+    const pages = 'https://' + owner + '.github.io/' + name + '/';
+    const t = document.createElement('article');
+    t.className = 'tool ' + st;
+    t.innerHTML =
+      '<div class=hd><b>' + esc(c.title) + '</b><i>' + esc(c.script || '') + '</i>' +
+        '<em>' + esc(label) + '</em></div>' +
+      '<p>' + esc(c.what) + '</p>' +
+      '<div class=go>' +
+        (d && d.url && st === 'live'
+          ? '<a href="' + esc(d.url) + '" target=_blank rel=noopener>open here</a>' : '') +
+        '<a href="' + esc(pages) + '" target=_blank rel=noopener>its own page</a>' +
+        '<a href="https://github.com/' + esc(c.repo) + '" target=_blank rel=noopener>source</a>' +
+      '</div>' +
+      (st === 'present' && c.port
+        ? '<code>python3 ' + esc(c.entry || 'app.py') + ' serve &nbsp;#&nbsp;:' + c.port + '</code>'
+        : '');
+    el.append(t);
+  }
+  $('#benchhead').textContent = desk
+    ? 'What is laid out, and what is answering.'
+    : 'What is laid out.';
+  $('#benchnote').textContent = desk
+    ? 'Green is answering now. Amber is on disk with its server not started — that is a wiring gap, not a missing build. Red is not on this machine at all.'
+    : 'The desk is not running here, so this page shows what exists without claiming to know its state. Start it and reload.';
+}
+
+load();
+setInterval(probe, 15000);
+if ('serviceWorker' in navigator)
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+find . | grep uhin$ | grep 2 | xargs cat | grep printf | grep -v ",yytext" | grep -v orict | cut -d" " -f1 | grep -ve "[a-zA-Z]" | tr "_\\." "\n" | sort -u > keywords

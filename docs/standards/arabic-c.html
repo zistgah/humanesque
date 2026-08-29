@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="und">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>arabic guru / C — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/academic.css"/>
+</head>
+<body class="site">
+<header class="site-head"><strong>PANINI</strong>
+<nav><a href="index.html">Standards</a> <a href="../nb.html">Notebook</a> <a href="CONTRIBUTE.html">Submit</a></nav>
+</header>
+<main class="site-main">
+<h1>arabic · गुरु · C</h1>
+<p>Released lineage: Hindawi 15 August 2004. This file is the first filled standard for this pair in this tree.</p>
+<p class='warn'>Perso-Arabic: round-trip is not guaranteed.</p>
+<h2>1–10 · clauses</h2>
+<ol><li>यह दस्तावेज़ arabic guru / C का मानक है।</li><li>यह दस्तावेज़ अंग्रेज़ी ISO पाठ का अनुवाद नहीं है।</li><li>इस फ़ाइल की कुंजी-सारणी आधिकारिक है।</li><li>संकलन पथ है: यूनिकोड, फिर ACII, फिर रोमननागरी, फिर शैली लेक्स, फिर मेज़बान।</li><li>इस मानक में लिखा कार्यक्रम उसी शैली के किसी अन्य प्रकाशित मानक में देखा जा सकता है।</li><li>देखना संकलन की पहचान नहीं बदलता।</li><li>नामकोश के द्वारा पहचानकर्ता दिखते हैं। संकलन मूल पहचानकर्ता लेता है।</li><li>कुंजी-सारणी के अंतर सूचीबद्ध हैं। स्मृति से नहीं भरे गए।</li><li>बोली फ़ाइलें ध्वनि, शब्द-चयन, या वाक्य-रचना पंक्तियाँ जोड़ सकती हैं। स्वीकृति से पहले वे इस सारणी की जगह नहीं लेतीं।</li><li>सुधार deposits/csv और deposits/standards में CSV के रूप में भेजें।</li></ol>
+<ol><li>This document is the standard of arabic guru / C.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri, then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+<h2>Keyword table (normative)</h2>
+<p>Source: retrieved <code>langs/arabic_c.tsv</code>. Not invented this turn.</p>
+<table><thead><tr><th>native</th><th>Romenagri</th><th>host C</th></tr></thead>
+<tbody><tr><td>إذا</td><td><code>izaa</code></td><td><code>if</code></td></tr><tr><td>وإلا</td><td><code>vaillaa</code></td><td><code>else</code></td></tr><tr><td>طالما</td><td><code>taalamaa</code></td><td><code>while</code></td></tr><tr><td>افعل</td><td><code>ifaela</code></td><td><code>do</code></td></tr><tr><td>لكل</td><td><code>likulli</code></td><td><code>for</code></td></tr><tr><td>اكسر</td><td><code>iksira</code></td><td><code>break</code></td></tr><tr><td>استمر</td><td><code>istamirra</code></td><td><code>continue</code></td></tr><tr><td>بدل</td><td><code>baddila</code></td><td><code>switch</code></td></tr><tr><td>حالة</td><td><code>haalah</code></td><td><code>case</code></td></tr><tr><td>افتراضي</td><td><code>iftiraadii</code></td><td><code>default</code></td></tr><tr><td>أرجع</td><td><code>arjie</code></td><td><code>return</code></td></tr><tr><td>ثابت</td><td><code>saabita</code></td><td><code>const</code></td></tr><tr><td>صحيح</td><td><code>sahiiha</code></td><td><code>int</code></td></tr><tr><td>عائم</td><td><code>aaima</code></td><td><code>float</code></td></tr><tr><td>مزدوج</td><td><code>muzdavija</code></td><td><code>double</code></td></tr><tr><td>حرف</td><td><code>harfa</code></td><td><code>char</code></td></tr><tr><td>فراغ</td><td><code>faraagha</code></td><td><code>void</code></td></tr><tr><td>دالة</td><td><code>daalah</code></td><td><code>void</code></td></tr><tr><td>صنف</td><td><code>sanfa</code></td><td><code>class</code></td></tr><tr><td>جديد</td><td><code>jadiida</code></td><td><code>new</code></td></tr><tr><td>عام</td><td><code>aamma</code></td><td><code>public</code></td></tr><tr><td>خاص</td><td><code>khaassa</code></td><td><code>private</code></td></tr><tr><td>ساكن</td><td><code>saakina</code></td><td><code>static</code></td></tr><tr><td>افتراضي</td><td><code>iftiraadii</code></td><td><code>virtual</code></td></tr><tr><td>عندما</td><td><code>indamaa</code></td><td><code>case</code></td></tr><tr><td>بنية</td><td><code>binyah</code></td><td><code>struct</code></td></tr><tr><td>ضمن</td><td><code>dammina</code></td><td><code>include</code></td></tr><tr><td>اقرأ</td><td><code>iqraa</code></td><td><code>scanf</code></td></tr><tr><td>اكتب</td><td><code>uktuba</code></td><td><code>printf</code></td></tr></tbody></table>
+<h2>Gaps toward C17 keywords</h2>
+<p><code>auto</code>, <code>enum</code>, <code>extern</code>, <code>goto</code>, <code>inline</code>, <code>long</code>, <code>register</code>, <code>restrict</code>, <code>short</code>, <code>signed</code>, <code>sizeof</code>, <code>typedef</code>, <code>union</code>, <code>unsigned</code>, <code>volatile</code>, <code>_Bool</code>, <code>_Complex</code>, <code>_Generic</code>, <code>_Atomic</code>, <code>_Alignas</code>, <code>_Alignof</code>, <code>_Noreturn</code>, <code>_Static_assert</code>, <code>_Thread_local</code></p>
+<p>C17 have 19 / 43. Extra host tokens in TSV: class, include, new, printf, private, public, scanf, virtual</p>
+<p class="fine">View this program in another standard: notebook → View as. Identifiers use the dictionary. Compilation identity does not follow the view.</p>
+<p class="fine"><a href="CONTRIBUTE.html">Correct this table</a></p>
+</main></body></html>

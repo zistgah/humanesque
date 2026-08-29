@@ -1,0 +1,89 @@
+/*
+ PANINI v3 — Workbench / L15 Tooling Specification
+ Additive. Does not alter T0 or v2 theorem status tags.
+ Hosting: GitHub Pages static site. No privileged backend.
+ AGI layers L0–L26: RETRIEVED from the ILM/PANINI interoperability record.
+ Misty DOI/OTS: client-side hash + OpenTimestamps-compatible receipt file.
+*/
+
+MODULE PANINI.V3.WORKBENCH
+
+CONSTITUTION
+    TITLE "PANINI Workbench L15"
+    HOSTING "GitHub Pages"
+    BACKEND "NONE"
+    BEGINNER_SURFACE "BASIC/Shaili progressive disclosure"
+END
+
+CONFIGURATION SURFACES
+    vscode_extension "tools/vscode-panini"
+    language_server "tools/panini-lsp"
+    pages_workbench "website/"
+    language_museum "languages/"
+    sanskrit_lab "tools/sanskrit"
+    shaili "examples/shaili"
+    provenance "tools/provenance"
+END
+
+/*
+ Three communities share one artifact, many projections.
+ Technologist: code AST IR deploy
+ Linguist: script morphology grammar ILM
+ Mathematician: equation proof object
+ Beginner: PRINT / say / forward
+*/
+
+LAYER AGI_INTEROPERABILITY STATUS RETRIEVED
+    L0 Physical_substrate
+    L1 Device_physics
+    L2 Digital_compute_primitives
+    L3 Hardware_architecture
+    L4 Memory_storage
+    L5 Interconnect_IO
+    L6 Firmware_boot
+    L7 Operating_runtime_substrate
+    L8 Execution_frameworks
+    L9 Simulation_digital_twins
+    L10 Sensorimotor_substrate
+    L11 Data_substrate
+    L12 Representation_language
+    L13 Programming_language
+    L14 Compiler_semantic_realization
+    L15 Tooling_workbench
+    L16 Interaction_multimodality
+    L17 Model_substrate
+    L18 Cognition
+    L19 Coherence_nervous_system
+    L20 Embodiment_action
+    L21 Agent_architecture
+    L22 Collective_ecosystem_intelligence
+    L23 Metacognition_verification
+    L24 Persistence_continuity
+    L25 Sovereignty_governance
+    L26 Civilizational_realization
+END
+
+INVARIANT BEGINNER_SURFACE_SMALL
+    LEVEL0_NEEDS_NO_AXES == TRUE
+END
+
+INVARIANT PAGES_STATIC
+    NO_CUSTOM_SERVER == TRUE
+END
+
+THEOREM W1_WORKBENCH_SERVES_STATIC
+    STATUS F
+    REQUIRE GITHUB_PAGES_HOSTABLE
+END
+
+THEOREM W2_BEGINNER_RUNS_WITHOUT_ANNOTATIONS
+    STATUS F
+    REQUIRE PRINT_AND_SHAILI_EXECUTE
+END
+
+THEOREM W3_PROJECTION_SWITCH_SAME_IR
+    STATUS F
+    REQUIRE VIEW_CHANGE_NOT_NEW_PROGRAM
+END
+
+END MODULE PANINI.V3.WORKBENCH

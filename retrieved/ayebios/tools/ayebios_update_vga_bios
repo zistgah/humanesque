@@ -1,0 +1,1 @@
+sudo cp out/vgabios.bin /usr/share/seabios/vgabios-stdvga.bin

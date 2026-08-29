@@ -1,0 +1,12 @@
+{
+  "scopeName": "source.panini",
+  "patterns": [
+    { "name": "comment.line.double-slash.panini", "match": "//.*$" },
+    { "name": "comment.block.panini", "begin": "/\\*", "end": "\\*/" },
+    { "name": "string.quoted.double.panini", "begin": "\"", "end": "\"" },
+    { "name": "constant.language.panini", "match": "\\b(TRUE|FALSE|NULL|UNIT)\\b" },
+    { "name": "keyword.control.panini", "match": "\\b(MODULE|SCOPE|FUNCTION|RETURN|IF|ELSE|FOR|FOREACH|WHILE|END|PRINT|ASSERT)\\b" },
+    { "name": "keyword.other.annotation.panini", "match": "@[A-Za-z_]+" },
+    { "name": "constant.numeric.panini", "match": "\\b\\d+(\\.\\d+)?\\b" }
+  ]
+}

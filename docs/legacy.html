@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — legacy</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>LEGACY</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="mentions.html">Mentions</a>
+    <a href="research.html">Research</a>
+    <a href="nb.html">Notebook</a>
+    <a href="console.html">Console</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Establish the legacy</h1>
+  <p>2004 Hindawi on FreeDOS+DJGPP is the bar. This page dated the retrieved tree, says what we reuse, and runs those samples through the PANINI pipeline (Unicode → ACII → Romenagri → shaili → host). Machine code via gcc was already the 2004 fact; the browser host is a view, not a replacement.</p>
+  <p><a href="mentions.html">Internet mentions</a> · <a href="research.html">Journals, conferences, patent search</a> · <a href="view.html?src=PROCESS.md">Process</a></p>
+
+  <h2>What we reuse from the DOS era</h2>
+  <table>
+    <tr><th>Artifact</th><th>Dated</th><th>Role now</th></tr>
+    <tr><td><code>guru/h2c.uhin</code> / <code>h2c.lex</code></td><td>mod-section 31 Jul 2006; copyright 2003–</td><td>kernel mapping. Not <code>#define</code>.</td></tr>
+    <tr><td><code>Romenagri/acii2rmn.c</code></td><td>copyright 2003–</td><td>ASCII-7 kernel. Notebook ports the stack.</td></tr>
+    <tr><td><code>APCISR/acii2csr.c</code></td><td>mod 24 Jan 2006</td><td>script representation. Read, don’t rewrite.</td></tr>
+    <tr><td><code>samples/HindiC.uhin</code> etc.</td><td>15 Aug 2004 suite</td><td>executable below via PANINI.</td></tr>
+    <tr><td>DJGPP / FreeDOS / DOSBox</td><td>2004 host</td><td>historical. Browser is not DOSBox. Lab image later.</td></tr>
+  </table>
+
+  <h2>Timeline</h2>
+  <table id="tl"><thead><tr><th>Date</th><th>Kind</th><th>What</th><th>Source</th></tr></thead><tbody></tbody></table>
+
+  <h2>Execute 2004 samples (PANINI method)</h2>
+  <p>Same engine as the frozen notebook. Pick a sample, compile, run. Host is the C/BASIC subset, not gcc in this tab.</p>
+  <p>
+    <button type="button" data-f="HindiC.uhin" data-s="guru">Hindi C</button>
+    <button type="button" data-f="HindiBASIC.uhin" data-s="praatha">Hindi BASIC</button>
+    <button type="button" data-f="TeluguC.uhin" data-s="guru">Telugu C</button>
+  </p>
+  <pre id="src" style="max-height:12rem;overflow:auto"></pre>
+  <p>stdin <input id="stdin" value="राम" /> <button type="button" id="go">Compile + run</button></p>
+  <pre id="out"></pre>
+</main>
+<script src="engine/nb.js"></script>
+<script>
+fetch("data/legacy_timeline.json").then(r=>r.json()).then(j=>{
+  document.querySelector("#tl tbody").innerHTML = j.events.map(e =>
+    "<tr><td>"+e.date+"</td><td>"+e.kind+"</td><td>"+e.title+"</td><td>"+e.source+"</td></tr>"
+  ).join("");
+});
+let cur = { file: "HindiC.uhin", shaili: "guru", text: "" };
+PANINI_NB.load("engine/bundle.json").then(()=>{
+  document.querySelectorAll("button[data-f]").forEach(b => b.onclick = async () => {
+    cur.file = b.dataset.f; cur.shaili = b.dataset.s;
+    cur.text = await (await fetch("demos/"+cur.file)).text();
+    document.getElementById("src").textContent = cur.text;
+  });
+  document.querySelector("button[data-f]").click();
+  document.getElementById("go").onclick = () => {
+    const c = PANINI_NB.compile({ src: cur.text, lang: "hindi", shaili: cur.shaili });
+    const r = PANINI_NB.run(c, document.getElementById("stdin").value+"\n");
+    document.getElementById("out").textContent =
+      "=== Romenagri ===\n"+(c.romenagri||"").slice(0,800)+
+      "\n\n=== host ===\n"+(c.host||"").slice(0,800)+
+      "\n\n=== run ===\n"+(r.ok?r.out:r.error);
+  };
+});
+</script>
+</body>
+</html>

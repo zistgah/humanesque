@@ -1,0 +1,668 @@
+/* PANINI.Backend.Wasm — AST → WAT (stack machine, linear memory)
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ *
+ * C AST (from PANINI.Frontend.C) lowers to postfix i32 ops.
+ * Pointers are i32 offsets into exported linear memory.
+ * calloc is a bump of global $heap. Frames grow down from $sp.
+ */
+MODULE PANINI.Backend.Wasm
+
+FUNCTION watNL()
+    RETURN NEWLINE()
+END
+
+FUNCTION watOp(op)
+    IF op == "+" RETURN "i32.add"
+    END
+    IF op == "-" RETURN "i32.sub"
+    END
+    IF op == "*" RETURN "i32.mul"
+    END
+    IF op == "/" RETURN "i32.div_s"
+    END
+    IF op == "%" RETURN "i32.rem_s"
+    END
+    IF op == "==" RETURN "i32.eq"
+    END
+    IF op == "!=" RETURN "i32.ne"
+    END
+    IF op == "<" RETURN "i32.lt_s"
+    END
+    IF op == ">" RETURN "i32.gt_s"
+    END
+    IF op == "<=" RETURN "i32.le_s"
+    END
+    IF op == ">=" RETURN "i32.ge_s"
+    END
+    IF op == "&" RETURN "i32.and"
+    END
+    IF op == "|" RETURN "i32.or"
+    END
+    IF op == "^" RETURN "i32.xor"
+    END
+    IF op == "<<" RETURN "i32.shl"
+    END
+    IF op == ">>" RETURN "i32.shr_s"
+    END
+    RETURN "i32.add"
+END
+
+FUNCTION watPad()
+    RETURN "    "
+END
+
+FUNCTION watLine(s)
+    RETURN watPad() + s + watNL()
+END
+
+FUNCTION watOff(frame, name)
+    v = frame[name]
+    IF v == NULL
+        RETURN 0
+    END
+    RETURN v
+END
+
+FUNCTION watAddr(frame, name)
+    off = watOff(frame, name)
+    RETURN watLine("(global.get $sp)") + watLine("(i32.const " + STR(off) + ")") + watLine("(i32.add)")
+END
+
+FUNCTION watCollect(s, frame, n)
+    IF s == NULL
+        RETURN n
+    END
+    IF s.op == "decl"
+        IF frame[s.name] == NULL
+            frame[s.name] = n * 4
+            n = n + 1
+        END
+        RETURN n
+    END
+    IF s.op == "block"
+        k = 0
+        WHILE k < LEN(s.body)
+            n = watCollect(s.body[k], frame, n)
+            k = k + 1
+        END
+        RETURN n
+    END
+    IF s.op == "if"
+        n = watCollect(s.then, frame, n)
+        n = watCollect(s.else, frame, n)
+        RETURN n
+    END
+    IF s.op == "while" OR s.op == "do"
+        RETURN watCollect(s.body, frame, n)
+    END
+    IF s.op == "for"
+        n = watCollect(s.init, frame, n)
+        RETURN watCollect(s.body, frame, n)
+    END
+    IF s.op == "label" OR s.op == "case" OR s.op == "default"
+        RETURN watCollect(s.stmt, frame, n)
+    END
+    RETURN n
+END
+
+FUNCTION watEmitExpr(e, frame)
+    IF e == NULL
+        RETURN watLine("(i32.const 0)")
+    END
+    IF e.op == "const"
+        RETURN watLine("(i32.const " + STR(INT(e.value)) + ")")
+    END
+    IF e.op == "load"
+        RETURN watAddr(frame, e.name) + watLine("(i32.load)")
+    END
+    IF e.op == "addr"
+        IF e.e.op == "load"
+            RETURN watAddr(frame, e.e.name)
+        END
+        IF e.e.op == "index"
+            RETURN watEmitExpr(e.e.base, frame) + watEmitExpr(e.e.index, frame) + watLine("(i32.const 4)") + watLine("(i32.mul)") + watLine("(i32.add)")
+        END
+        RETURN watLine("(i32.const 0)")
+    END
+    IF e.op == "deref"
+        RETURN watEmitExpr(e.e, frame) + watLine("(i32.load)")
+    END
+    IF e.op == "index"
+        RETURN watEmitExpr(e.base, frame) + watEmitExpr(e.index, frame) + watLine("(i32.const 4)") + watLine("(i32.mul)") + watLine("(i32.add)") + watLine("(i32.load)")
+    END
+    IF e.op == "bin"
+        RETURN watEmitExpr(e.left, frame) + watEmitExpr(e.right, frame) + watLine("(" + watOp(e.operator) + ")")
+    END
+    IF e.op == "and"
+        RETURN watEmitExpr(e.left, frame) + watEmitExpr(e.right, frame) + watLine("(i32.and)")
+    END
+    IF e.op == "or"
+        RETURN watEmitExpr(e.left, frame) + watEmitExpr(e.right, frame) + watLine("(i32.or)")
+    END
+    IF e.op == "neg"
+        RETURN watLine("(i32.const 0)") + watEmitExpr(e.e, frame) + watLine("(i32.sub)")
+    END
+    IF e.op == "not"
+        RETURN watEmitExpr(e.e, frame) + watLine("(i32.eqz)")
+    END
+    IF e.op == "bnot"
+        RETURN watEmitExpr(e.e, frame) + watLine("(i32.const -1)") + watLine("(i32.xor)")
+    END
+    IF e.op == "cast" OR e.op == "sizeof"
+        IF e.op == "sizeof"
+            RETURN watLine("(i32.const 4)")
+        END
+        RETURN watEmitExpr(e.e, frame)
+    END
+    IF e.op == "tern"
+        RETURN watEmitExpr(e.c, frame) + watLine("(if (result i32)") + watLine("  (then") + watEmitExpr(e.t, frame) + watLine("  )") + watLine("  (else") + watEmitExpr(e.f, frame) + watLine("  )") + watLine(")")
+    END
+    IF e.op == "preinc" OR e.op == "postinc" OR e.op == "predec" OR e.op == "postdec"
+        d = 1
+        IF e.op == "predec" OR e.op == "postdec"
+            d = 0 - 1
+        END
+        a = ""
+        IF e.e.op == "load"
+            a = watAddr(frame, e.e.name)
+        ELSE
+            IF e.e.op == "deref"
+                a = watEmitExpr(e.e.e, frame)
+            ELSE
+                IF e.e.op == "index"
+                    a = watEmitExpr(e.e.base, frame) + watEmitExpr(e.e.index, frame) + watLine("(i32.const 4)") + watLine("(i32.mul)") + watLine("(i32.add)")
+                ELSE
+                    a = watLine("(i32.const 0)")
+                END
+            END
+        END
+        body = a + watLine("(i32.load)") + watLine("(local.set $t0)") + a + watLine("(local.get $t0)") + watLine("(i32.const " + STR(d) + ")") + watLine("(i32.add)") + watLine("(i32.store)")
+        IF e.op == "preinc" OR e.op == "predec"
+            RETURN body + a + watLine("(i32.load)")
+        END
+        RETURN body + watLine("(local.get $t0)")
+    END
+    IF e.op == "assign"
+        RETURN watEmitAssign(e, frame)
+    END
+    IF e.op == "call"
+        k = 0
+        args = ""
+        WHILE k < LEN(e.args)
+            args = args + watEmitExpr(e.args[k], frame)
+            k = k + 1
+        END
+        nm = e.name
+        IF nm == NULL
+            nm = "unknown"
+        END
+        RETURN args + watLine("(call $" + nm + ")")
+    END
+    RETURN watLine("(i32.const 0)")
+END
+
+FUNCTION watEmitAssign(e, frame)
+    v = watEmitExpr(e.value, frame)
+    t = e.target
+    IF t.op == "load"
+        RETURN watAddr(frame, t.name) + v + watLine("(i32.store)") + watAddr(frame, t.name) + watLine("(i32.load)")
+    END
+    IF t.op == "deref"
+        RETURN watEmitExpr(t.e, frame) + v + watLine("(i32.store)") + watEmitExpr(t.e, frame) + watLine("(i32.load)")
+    END
+    IF t.op == "index"
+        a = watEmitExpr(t.base, frame) + watEmitExpr(t.index, frame) + watLine("(i32.const 4)") + watLine("(i32.mul)") + watLine("(i32.add)")
+        RETURN a + v + watLine("(i32.store)") + watLine("(i32.const 0)")
+    END
+    RETURN v
+END
+
+FUNCTION watEpilogue(framesize)
+    RETURN watLine("(local.set $ret)") + watLine("(global.get $sp)") + watLine("(i32.const " + STR(framesize) + ")") + watLine("(i32.add)") + watLine("(global.set $sp)") + watLine("(local.get $ret)") + watLine("(return)")
+END
+
+FUNCTION watEmitStmt(s, frame, framesize)
+    IF s == NULL
+        RETURN ""
+    END
+    IF s.op == "nop"
+        RETURN watLine("(nop)")
+    END
+    IF s.op == "return"
+        RETURN watEmitExpr(s.arg, frame) + watEpilogue(framesize)
+    END
+    IF s.op == "block"
+        k = 0
+        o = ""
+        WHILE k < LEN(s.body)
+            o = o + watEmitStmt(s.body[k], frame, framesize)
+            k = k + 1
+        END
+        RETURN o
+    END
+    IF s.op == "decl"
+        IF s.init != NULL AND s.init.op != "none"
+            RETURN watAddr(frame, s.name) + watEmitExpr(s.init, frame) + watLine("(i32.store)")
+        END
+        RETURN ""
+    END
+    IF s.op == "expr"
+        IF s.value.op == "assign"
+            RETURN watEmitAssign(s.value, frame) + watLine("(drop)")
+        END
+        RETURN watEmitExpr(s.value, frame) + watLine("(drop)")
+    END
+    IF s.op == "if"
+        RETURN watEmitExpr(s.cond, frame) + watLine("(if") + watLine("  (then") + watEmitStmt(s.then, frame, framesize) + watLine("  )") + watLine("  (else") + watEmitStmt(s.else, frame, framesize) + watLine("  )") + watLine(")")
+    END
+    IF s.op == "while"
+        RETURN watLine("(block $brk") + watLine("  (loop $cnt") + watEmitExpr(s.cond, frame) + watLine("(i32.eqz)") + watLine("(br_if $brk)") + watEmitStmt(s.body, frame, framesize) + watLine("(br $cnt)") + watLine("  )") + watLine(")")
+    END
+    IF s.op == "do"
+        RETURN watLine("(block $brk") + watLine("  (loop $cnt") + watEmitStmt(s.body, frame, framesize) + watEmitExpr(s.cond, frame) + watLine("(i32.eqz)") + watLine("(br_if $brk)") + watLine("(br $cnt)") + watLine("  )") + watLine(")")
+    END
+    IF s.op == "for"
+        RETURN watEmitStmt(s.init, frame, framesize) + watLine("(block $brk") + watLine("  (loop $cnt") + watEmitExpr(s.cond, frame) + watLine("(i32.eqz)") + watLine("(br_if $brk)") + watEmitStmt(s.body, frame, framesize) + watEmitStmt(s.inc, frame, framesize) + watLine("(br $cnt)") + watLine("  )") + watLine(")")
+    END
+    IF s.op == "label" OR s.op == "case" OR s.op == "default"
+        RETURN watEmitStmt(s.stmt, frame, framesize)
+    END
+    IF s.op == "break"
+        RETURN watLine("(br $brk)")
+    END
+    IF s.op == "continue"
+        RETURN watLine("(br $cnt)")
+    END
+    IF s.op == "goto"
+        RETURN watLine("(unreachable)")
+    END
+    RETURN ""
+END
+
+FUNCTION watHasGoto(s)
+    IF s == NULL
+        RETURN 0
+    END
+    IF s.op == "goto" OR s.op == "label"
+        RETURN 1
+    END
+    IF s.op == "block"
+        k = 0
+        WHILE k < LEN(s.body)
+            IF watHasGoto(s.body[k])
+                RETURN 1
+            END
+            k = k + 1
+        END
+        RETURN 0
+    END
+    IF s.op == "if"
+        IF watHasGoto(s.then)
+            RETURN 1
+        END
+        RETURN watHasGoto(s.else)
+    END
+    IF s.op == "while" OR s.op == "do"
+        RETURN watHasGoto(s.body)
+    END
+    IF s.op == "for"
+        IF watHasGoto(s.init)
+            RETURN 1
+        END
+        RETURN watHasGoto(s.body)
+    END
+    RETURN 0
+END
+
+FUNCTION cfgPush(st, item)
+    i = LEN(st.ir)
+    st.ir[i] = item
+    RETURN st
+END
+
+FUNCTION cfgGen(st, prefix)
+    st.n = st.n + 1
+    RETURN prefix + "_" + STR(st.n)
+END
+
+FUNCTION cfgVisit(st, node)
+    IF node == NULL
+        RETURN st
+    END
+    IF node.op == "block"
+        k = 0
+        WHILE k < LEN(node.body)
+            st = cfgVisit(st, node.body[k])
+            k = k + 1
+        END
+        RETURN st
+    END
+    IF node.op == "if"
+        el = cfgGen(st, "IF_ELSE")
+        en = cfgGen(st, "IF_END")
+        st = cfgPush(st, {op: "brfalse", cond: node.cond, target: el})
+        st = cfgVisit(st, node.then)
+        st = cfgPush(st, {op: "jump", target: en})
+        st = cfgPush(st, {op: "label", name: el})
+        st = cfgVisit(st, node.else)
+        st = cfgPush(st, {op: "label", name: en})
+        RETURN st
+    END
+    IF node.op == "while"
+        stt = cfgGen(st, "WHILE_START")
+        en = cfgGen(st, "WHILE_END")
+        st = cfgPush(st, {op: "label", name: stt})
+        st = cfgPush(st, {op: "brfalse", cond: node.cond, target: en})
+        st.loopn = st.loopn + 1
+        st.conts[st.loopn] = stt
+        st.brks[st.loopn] = en
+        st = cfgVisit(st, node.body)
+        st.loopn = st.loopn - 1
+        st = cfgPush(st, {op: "jump", target: stt})
+        st = cfgPush(st, {op: "label", name: en})
+        RETURN st
+    END
+    IF node.op == "for"
+        st = cfgVisit(st, node.init)
+        stt = cfgGen(st, "FOR_START")
+        en = cfgGen(st, "FOR_END")
+        ct = cfgGen(st, "FOR_CONT")
+        st = cfgPush(st, {op: "label", name: stt})
+        IF node.cond != NULL
+            st = cfgPush(st, {op: "brfalse", cond: node.cond, target: en})
+        END
+        st.loopn = st.loopn + 1
+        st.conts[st.loopn] = ct
+        st.brks[st.loopn] = en
+        st = cfgVisit(st, node.body)
+        st.loopn = st.loopn - 1
+        st = cfgPush(st, {op: "label", name: ct})
+        st = cfgVisit(st, node.inc)
+        st = cfgPush(st, {op: "jump", target: stt})
+        st = cfgPush(st, {op: "label", name: en})
+        RETURN st
+    END
+    IF node.op == "goto"
+        RETURN cfgPush(st, {op: "jump", target: node.label})
+    END
+    IF node.op == "label"
+        st = cfgPush(st, {op: "label", name: node.name})
+        RETURN cfgVisit(st, node.stmt)
+    END
+    IF node.op == "return"
+        RETURN cfgPush(st, {op: "return", value: node.arg})
+    END
+    IF node.op == "break"
+        RETURN cfgPush(st, {op: "jump", target: st.brks[st.loopn]})
+    END
+    IF node.op == "continue"
+        RETURN cfgPush(st, {op: "jump", target: st.conts[st.loopn]})
+    END
+    RETURN cfgPush(st, {op: "stmt", stmt: node})
+END
+
+FUNCTION cfgFlattenBody(stmts)
+    st = {ir: [], n: 0, loopn: -1, conts: [], brks: []}
+    k = 0
+    WHILE k < LEN(stmts)
+        st = cfgVisit(st, stmts[k])
+        k = k + 1
+    END
+    RETURN st.ir
+END
+
+FUNCTION cfgBuild(ir)
+    blocks = []
+    cur = {id: 0, name: "ENTRY", ins: [], term: NULL}
+    blocks[0] = cur
+    k = 0
+    WHILE k < LEN(ir)
+        op = ir[k]
+        IF op.op == "label"
+            IF cur.term == NULL
+                cur.term = {op: "jump", target: op.name}
+            END
+            nid = LEN(blocks)
+            cur = {id: nid, name: op.name, ins: [], term: NULL}
+            blocks[nid] = cur
+        ELSE
+            IF op.op == "stmt"
+                i = LEN(cur.ins)
+                cur.ins[i] = op.stmt
+            ELSE
+                IF op.op == "jump" OR op.op == "return"
+                    IF cur.term == NULL
+                        cur.term = op
+                    END
+                    IF k + 1 < LEN(ir)
+                        nid = LEN(blocks)
+                        cur = {id: nid, name: "UNREACH_" + STR(nid), ins: [], term: NULL}
+                        blocks[nid] = cur
+                    END
+                ELSE
+                    IF op.op == "brfalse"
+                        nid = LEN(blocks)
+                        fall = "FALL_" + STR(nid)
+                        op.fall = fall
+                        cur.term = op
+                        cur = {id: nid, name: fall, ins: [], term: NULL}
+                        blocks[nid] = cur
+                    END
+                END
+            END
+        END
+        k = k + 1
+    END
+    IF cur.term == NULL
+        cur.term = {op: "return", value: NULL}
+    END
+    ids = {}
+    k = 0
+    WHILE k < LEN(blocks)
+        ids[blocks[k].name] = blocks[k].id
+        k = k + 1
+    END
+    k = 0
+    WHILE k < LEN(blocks)
+        t = blocks[k].term
+        IF t != NULL
+            IF t.op == "jump"
+                t.target_id = ids[t.target]
+            END
+            IF t.op == "brfalse"
+                t.target_id = ids[t.target]
+                t.fall_id = ids[t.fall]
+            END
+        END
+        k = k + 1
+    END
+    RETURN blocks
+END
+
+FUNCTION cfgOpt(blocks)
+    k = 0
+    last = LEN(blocks) - 1
+    WHILE k < last
+        t = blocks[k].term
+        IF t != NULL
+            IF t.op == "jump"
+                IF t.target_id == blocks[k + 1].id
+                    blocks[k].term = {op: "fall"}
+                END
+            END
+        END
+        k = k + 1
+    END
+    RETURN blocks
+END
+
+FUNCTION watEmitTerm(blocks, k, frame, framesize)
+    t = blocks[k].term
+    IF t == NULL
+        RETURN ""
+    END
+    IF t.op == "fall"
+        RETURN ""
+    END
+    IF t.op == "jump"
+        RETURN watLine("(i32.const " + STR(t.target_id) + ")") + watLine("(local.set $ip)") + watLine("(br $dispatcher)")
+    END
+    IF t.op == "brfalse"
+        c = watEmitExpr(t.cond, frame)
+        nxt = -1
+        IF k + 1 < LEN(blocks)
+            nxt = blocks[k + 1].id
+        END
+        IF t.fall_id == nxt
+            RETURN c + watLine("(i32.eqz)") + watLine("(if") + watLine("  (then") + watLine("    (i32.const " + STR(t.target_id) + ")") + watLine("    (local.set $ip)") + watLine("    (br $dispatcher)") + watLine("  )") + watLine(")")
+        END
+        RETURN c + watLine("(i32.eqz)") + watLine("(if") + watLine("  (then") + watLine("    (i32.const " + STR(t.target_id) + ")") + watLine("    (local.set $ip)") + watLine("  )") + watLine("  (else") + watLine("    (i32.const " + STR(t.fall_id) + ")") + watLine("    (local.set $ip)") + watLine("  )") + watLine(")") + watLine("(br $dispatcher)")
+    END
+    IF t.op == "return"
+        IF t.value != NULL
+            RETURN watEmitExpr(t.value, frame) + watEpilogue(framesize)
+        END
+        RETURN watLine("(i32.const 0)") + watEpilogue(framesize)
+    END
+    RETURN ""
+END
+
+FUNCTION watEmitDispatcher(stmts, frame, framesize)
+    ir = cfgFlattenBody(stmts)
+    blocks = cfgOpt(cfgBuild(ir))
+    n = LEN(blocks)
+    o = watLine("(i32.const 0)") + watLine("(local.set $ip)")
+    o = o + watLine("(loop $dispatcher")
+    o = o + watLine("  (block $Bd")
+    k = n - 1
+    WHILE k >= 0
+        o = o + watLine("  (block $B" + STR(k))
+        k = k - 1
+    END
+    tg = ""
+    k = 0
+    WHILE k < n
+        tg = tg + " $B" + STR(k)
+        k = k + 1
+    END
+    o = o + watLine("    (local.get $ip)")
+    o = o + watLine("    (br_table" + tg + " $Bd)")
+    k = 0
+    WHILE k < n
+        o = o + watLine("  )")
+        ins = blocks[k].ins
+        j = 0
+        WHILE j < LEN(ins)
+            o = o + watEmitStmt(ins[j], frame, framesize)
+            j = j + 1
+        END
+        o = o + watEmitTerm(blocks, k, frame, framesize)
+        k = k + 1
+    END
+    o = o + watLine("  )")
+    o = o + watLine("  (unreachable)")
+    o = o + watLine(")")
+    o = o + watLine("(unreachable)")
+    RETURN o
+END
+
+FUNCTION watHasGotoList(stmts)
+    IF stmts == NULL
+        RETURN 0
+    END
+    k = 0
+    WHILE k < LEN(stmts)
+        IF watHasGoto(stmts[k])
+            RETURN 1
+        END
+        k = k + 1
+    END
+    RETURN 0
+END
+
+FUNCTION watEmitFunc(fn)
+    frame = {}
+    n = 0
+    k = 0
+    WHILE k < LEN(fn.params)
+        frame[fn.params[k]] = n * 4
+        n = n + 1
+        k = k + 1
+    END
+    n = watCollect({op: "block", body: fn.body}, frame, n)
+    IF n < 1
+        n = 1
+    END
+    framesize = n * 4
+    ps = ""
+    k = 0
+    WHILE k < LEN(fn.params)
+        ps = ps + " (param $" + fn.params[k] + " i32)"
+        k = k + 1
+    END
+    head = "  (func $" + fn.name + " (export " + QUOTE() + fn.name + QUOTE() + ")" + ps + " (result i32)" + watNL()
+    head = head + "    (local $t0 i32)" + watNL()
+    head = head + "    (local $ret i32)" + watNL()
+    hasg = watHasGotoList(fn.body)
+    emitted = ""
+    tail = ""
+    IF hasg
+        head = head + "    (local $ip i32)" + watNL()
+    END
+    pro = watLine("(global.get $sp)") + watLine("(i32.const " + STR(framesize) + ")") + watLine("(i32.sub)") + watLine("(global.set $sp)")
+    k = 0
+    WHILE k < LEN(fn.params)
+        pro = pro + watAddr(frame, fn.params[k]) + watLine("(local.get $" + fn.params[k] + ")") + watLine("(i32.store)")
+        k = k + 1
+    END
+    IF hasg
+        emitted = watEmitDispatcher(fn.body, frame, framesize)
+        tail = ""
+    ELSE
+        emitted = watEmitStmt({op: "block", body: fn.body}, frame, framesize)
+        tail = watLine("(i32.const 0)") + watEpilogue(framesize)
+    END
+    RETURN head + pro + emitted + tail + "  )" + watNL()
+END
+
+FUNCTION watCalloc()
+    o = "  (func $calloc (export " + QUOTE() + "calloc" + QUOTE() + ") (param $n i32) (param $sz i32) (result i32)" + watNL()
+    o = o + "    (local $p i32)" + watNL()
+    o = o + watLine("(global.get $heap)")
+    o = o + watLine("(local.set $p)")
+    o = o + watLine("(global.get $heap)")
+    o = o + watLine("(local.get $n)")
+    o = o + watLine("(local.get $sz)")
+    o = o + watLine("(i32.mul)")
+    o = o + watLine("(i32.add)")
+    o = o + watLine("(global.set $heap)")
+    o = o + watLine("(local.get $p)")
+    o = o + watLine("(return)")
+    o = o + "  )" + watNL()
+    RETURN o
+END
+
+FUNCTION watEmitModule(ast)
+    o = "(module" + watNL()
+    o = o + "  (memory (export \"memory\") 2)" + watNL()
+    o = o + "  (global $heap (mut i32) (i32.const 4096))" + watNL()
+    o = o + "  (global $sp (mut i32) (i32.const 131072))" + watNL()
+    o = o + watCalloc()
+    k = 0
+    WHILE k < LEN(ast.body)
+        s = ast.body[k]
+        IF s.op == "def"
+            o = o + watEmitFunc(s)
+        END
+        k = k + 1
+    END
+    o = o + ")" + watNL()
+    RETURN o
+END
+
+FUNCTION emit_c_wat(source)
+    ast = cParse(CPP(source))
+    RETURN watEmitModule(ast)
+END
+
+END

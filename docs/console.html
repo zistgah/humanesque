@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI console</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .crt { max-width: 52rem; margin: 1rem auto 3rem; }
+    .bezel {
+      background: linear-gradient(180deg, #2a2a2a, #111);
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      box-shadow: 0 18px 40px #000, inset 0 1px 0 #555;
+    }
+    .led { width: 8px; height: 8px; border-radius: 50%; background: #3f3; box-shadow: 0 0 8px #3f3; margin: 0 0 8px auto; }
+    #glass { display: block; width: 100%; height: auto; background: #001400; border-radius: 4px; image-rendering: pixelated; }
+    .kbd {
+      display: flex; align-items: center; gap: .4rem;
+      margin-top: 10px; background: #1a1a1a; border-radius: 6px;
+      padding: .35rem .55rem; font: 14px ui-monospace, monospace; color: #8f8;
+    }
+    .kbd input { flex: 1; background: transparent; border: 0; color: #cfc; font: inherit; outline: none; }
+    .deck { margin: .6rem 0; font-size: .9rem; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <h1>Console</h1>
+  <p>One monitor. The glass is the VT100, and VGA / Super VGA pixels on the same CRT. Not two screens.</p>
+  <p class="deck">
+    Shell
+    <select id="shsel">
+      <option value="bash">bash</option>
+      <option value="sh">sh</option>
+      <option value="dash">dash</option>
+      <option value="zsh">zsh</option>
+      <option value="ksh">ksh</option>
+      <option value="csh">csh</option>
+      <option value="command.com">COMMAND.COM</option>
+      <option value="cmd">cmd</option>
+      <option value="4dos">4DOS</option>
+      <option value="panini">panini</option>
+    </select>
+  </p>
+  <section class="crt" aria-label="VT100 monitor">
+    <div class="bezel">
+      <div class="led" title="power"></div>
+      <canvas id="glass" width="640" height="384"></canvas>
+      <div class="kbd"><span id="ps1">panini$ </span><input id="cmd" autocomplete="off" autofocus /></div>
+    </div>
+  </section>
+</main>
+<script src="engine/llm.js"></script>
+<script>
+(function () {
+  function dir() { return { type: "dir", children: Object.create(null) }; }
+  function file(x) { return { type: "file", content: String(x || "") }; }
+  var root = dir();
+  root.children.home = dir();
+  root.children.home.children.panini = dir();
+  root.children.home.children.panini.children["readme.txt"] = file("PANINI VFS\nType help.\n");
+  root.children.tmp = dir();
+  root.children.bin = dir();
+  root.children.bin.children["llama-cli"] = file("PANINI VFS exec: llama.cpp WASM (wllama)\n");
+  root.children.bios = dir();
+  root.children.bios.children["bios.bin"] = file("(fetching SeaBIOS stand-in for AyeBIOS)\n");
+  root.children.bios.children["README.txt"] = file("AyeBIOS: retrieved/ayebios — SeaBIOS × Hindawi Guru. ROM at /bios/bios.bin.\n");
+  root.children.models = dir();
+  root.children.models.children["stories15M.Q4_0.gguf"] = file("(binary on /models/ — fetch via llama-cli)\n");
+  var state = { cwd: "/home/panini", root: root };
+  function split(p) { return String(p).split("/").filter(Boolean); }
+  function abs(path) {
+    if (!path || path === ".") return state.cwd;
+    if (path === "..") { var a = split(state.cwd); a.pop(); return "/" + a.join("/"); }
+    if (path.charAt(0) === "/" || /^[A-Za-z]:/.test(path)) return "/" + split(path.replace(/^[A-Za-z]:/, "")).join("/");
+    return (state.cwd.replace(/\/$/, "") + "/" + path).replace(/\/+/g, "/");
+  }
+  function walk(parts, create) {
+    var cur = root;
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (!cur.children[p]) { if (!create) return null; cur.children[p] = dir(); }
+      cur = cur.children[p];
+      if (cur.type !== "dir") return null;
+    }
+    return cur;
+  }
+  function resolve(path) {
+    var full = abs(path);
+    if (full === "/" || full === "") return { path: "/", node: root };
+    var parts = split(full);
+    var name = parts.pop();
+    var d = walk(parts, false);
+    if (!d || !d.children[name]) return null;
+    return { path: "/" + parts.concat([name]).join("/"), node: d.children[name] };
+  }
+  var fs = {
+    pwd: function () { return state.cwd; },
+    cd: function (path) {
+      var n = resolve(path || "/home/panini");
+      if (!n || n.node.type !== "dir") return { ok: false };
+      state.cwd = n.path; return { ok: true };
+    },
+    ls: function (path) {
+      var n = resolve(path || ".");
+      if (!n || n.node.type !== "dir") return { ok: false, names: [] };
+      return { ok: true, names: Object.keys(n.node.children).sort() };
+    },
+    read: function (path) {
+      var n = resolve(path);
+      if (!n || n.node.type !== "file") return { ok: false, content: "" };
+      return { ok: true, content: n.node.content };
+    },
+    write: function (path, content) {
+      var parts = split(abs(path)); var name = parts.pop();
+      var d = walk(parts, true); if (!d) return { ok: false };
+      d.children[name] = file(content); return { ok: true };
+    },
+    mkdir: function (path) { walk(split(abs(path)), true); return { ok: true }; },
+    rm: function (path) {
+      var parts = split(abs(path)); var name = parts.pop();
+      var d = walk(parts, false);
+      if (!d || !d.children[name]) return { ok: false };
+      delete d.children[name]; return { ok: true };
+    }
+  };
+  function tokenize(line) {
+    var out = [], cur = "", q = null, i, ch, s = String(line);
+    for (i = 0; i < s.length; i++) {
+      ch = s.charAt(i);
+      if (q) { if (ch === q) q = null; else cur += ch; }
+      else if (ch === '"' || ch === "'") q = ch;
+      else if (/\s/.test(ch)) { if (cur) { out.push(cur); cur = ""; } }
+      else cur += ch;
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+  function bash(line) {
+    var raw = String(line || "").trim();
+    if (!raw) return "";
+    var toks = tokenize(raw), mode = null, target = null, cut = toks.length, i;
+    for (i = 0; i < toks.length; i++) {
+      if (toks[i] === ">" || toks[i] === ">>") { mode = toks[i]; target = toks[i + 1]; cut = i; break; }
+    }
+    var args = toks.slice(0, cut);
+    var c = String(args[0] || "").toLowerCase();
+    var a = args.slice(1), out = "", r, s;
+    if (c === "pwd") out = fs.pwd();
+    else if (c === "ls") { r = fs.ls(a.filter(function (x) { return x.charAt(0) !== "-"; })[0] || "."); out = r.ok ? r.names.join("\n") : "ls: No such file"; }
+    else if (c === "cd") { r = fs.cd(a[0] || "/home/panini"); out = r.ok ? "" : "bash: cd: No such file"; }
+    else if (c === "cat") { out = a.map(function (p) { var rr = fs.read(p); return rr.ok ? rr.content : "cat: " + p; }).join(""); }
+    else if (c === "echo") out = a.join(" ");
+    else if (c === "mkdir") fs.mkdir(a[0] || "");
+    else if (c === "bios") { r = fs.read("/bios/README.txt"); out = (r.ok ? r.content : "") + "ls /bios\n" + (fs.ls("/bios").names || []).join("\n"); }
+    else if (c === "help") out = "pwd ls cd cat echo mkdir bios llama robot lekhak emu clear\nvga | screen 13|12|101|103|0   pset x y [c]   line x0 y0 x1 y1 [c]\nOne glass. VT100 text or VGA / Super VGA pixels on this CRT.";
+    else if (c === "vga") out = vgaMode(13);
+    else if (c === "screen") out = vgaMode(parseInt(a[0] || "13", 10));
+    else if (c === "pset") { vgaDoPset(+a[0] || 0, +a[1] || 0, a[2] != null ? +a[2] : null); out = ""; }
+    else if (c === "line") { vgaDoLine(+a[0] || 0, +a[1] || 0, +a[2] || 0, +a[3] || 0, a[4] != null ? +a[4] : null); out = ""; }
+    else if (c === "emu" || c === "v86") out = "__EMU__";
+    else if (c === "llama-cli" || c === "llama" || c === "llm") out = "__LLAMA__:" + a.join("\x1f");
+    else if (c === "robot" || c === "रोबोट") out = "__ROBOT__";
+    else if (c === "lekhak" || c === "लेखक") out = "__LEKHAK__:" + (a[0] || "lekhak.uhin");
+    else if (c === "clear" || c === "cls") {
+      if (typeof vga !== "undefined" && vga.on && vga.pix) { vga.pix.fill(0); paint(); out = ""; }
+      else out = "\x1b[2J";
+    }
+    else out = c + ": command not found";
+    if (target) { fs.write(target, out + "\n"); return ""; }
+    return out;
+  }
+  function commandCom(line) {
+    var t = tokenize(line);
+    var c = String(t[0] || "").toUpperCase();
+    if (!c) return "";
+    if (c === "DIR") return bash("ls " + (t[1] || ""));
+    if (c === "CD") return bash("cd " + (t[1] || ""));
+    if (c === "TYPE") return bash("cat " + (t[1] || ""));
+    if (c === "ECHO") return bash("echo " + t.slice(1).join(" "));
+    if (c === "CLS") return "\x1b[2J";
+    if (c === "HELP") return "DIR CD TYPE ECHO CLS HELP SCREEN VGA PSET LINE";
+    if (c === "SCREEN" || c === "VGA") return bash("screen " + (t[1] || "13"));
+    if (c === "PSET") return bash("pset " + t.slice(1).join(" "));
+    if (c === "LINE") return bash("line " + t.slice(1).join(" "));
+    return "Bad command or file name";
+  }
+  function family(sh) {
+    sh = String(sh || "bash").toLowerCase();
+    if (sh === "command.com" || sh === "cmd" || sh === "4dos") return "command.com";
+    if (sh === "panini") return "panini";
+    return "bash";
+  }
+  function exec(sh, line) {
+    var f = family(sh);
+    if (f === "command.com") return commandCom(line);
+    if (f === "panini") {
+      if (/^PRINT\s+/i.test(line)) return String(line).replace(/^PRINT\s+/i, "");
+      return "pni: PRINT …";
+    }
+    return bash(line);
+  }
+  window.PANINI_CONSOLE = { bash: bash, commandCom: commandCom, exec: exec };
+
+  /* Shaili Robot — retrieved ROBOT.C cardinal moves on this same glass. */
+  var robot = { x: 320, y: 192, pen: 1, color: "#33ff66", heading: 0, gfx: false };
+  var lek = {
+    on: false, lines: [""], row: 0, col: 0, top: 0,
+    path: "untitled.uhin", insert: true, changed: false
+  };
+  var LMAX = 127, ROWS = 22;
+  function lekStatus() {
+    return (lek.changed ? "*" : " ") + lek.path + "  " + (lek.row + 1) + " of " + lek.lines.length +
+      "  col " + (lek.col + 1) + (lek.insert ? "  INS" : "  OVR");
+  }
+  function lekPaint() {
+    initVt();
+    vtWrite("Hindawi Programming System  Lekhak\n");
+    vtWrite(lekStatus() + "\n");
+    var i, vis, line, mark;
+    for (i = 0; i < ROWS; i++) {
+      vis = lek.top + i;
+      line = vis < lek.lines.length ? lek.lines[vis] : "";
+      mark = vis === lek.row ? (lek.insert ? "|" : "#") : " ";
+      if (vis === lek.row) {
+        line = line.slice(0, lek.col) + mark + line.slice(lek.col);
+      }
+      if (line.length > 78) line = line.slice(0, 78);
+      vtWrite((vis === lek.row ? ">" : " ") + line + "\n");
+    }
+    vtWrite("F1 help  F2 save  F3 load  F4 search  F5 run  F9 compile  Alt-X exit\n");
+  }
+  function lekHelp() {
+    initVt();
+    vtWrite("LEKHAK  retrieved src/lekhak/LEKHAK.C (2004)\n");
+    vtWrite("F1 help-word   Alt-F1 help-hist\n");
+    vtWrite("F2 file_save   F3 file_list_box/open\n");
+    vtWrite("Ctrl-ins/del  Shift-ins/del  Ctrl-Y\n");
+    vtWrite("Ctrl-home/end  pgup/pgdn  home/end\n");
+    vtWrite("Ctrl-lf/rt  Alt-K Alt-C Alt-M  Alt-X file_exit\n");
+    vtWrite("F4 search  F5 compile+run  F9 compile  (README 2004)\n");
+    vtWrite("First line of a .hin program: shaili tag. .hin = ISCII.\n");
+  }
+  function lekOpen(p) {
+    lek.path = p || lek.path;
+    var rf = fs.read(lek.path);
+    if (rf.ok) {
+      lek.lines = rf.content.split("\n");
+    } else {
+      lek.lines = ["<शैली गुरु>", "/* fetch demos/lekhak.uhin */", ""];
+      fetch("demos/lekhak.uhin").then(function (r) { return r.ok ? r.text() : ""; }).then(function (t) {
+        if (!t) return;
+        fs.write("lekhak.uhin", t);
+        lek.lines = t.split("\n");
+        lekPaint();
+      }).catch(function () {});
+    }
+    if (!lek.lines.length) lek.lines = [""];
+    lek.row = 0; lek.col = 0; lek.top = 0; lek.changed = false;
+  }
+  function lekSave() {
+    fs.write(lek.path, lek.lines.join("\n"));
+    lek.changed = false;
+  }
+  function lekKey(e) {
+    var k = e.key, ctrl = e.ctrlKey, alt = e.altKey, sh = e.shiftKey;
+    e.preventDefault();
+    if (k === "F1") { lekHelp(); return; }
+    if (k === "F2") { lekSave(); lekPaint(); return; }
+    if (k === "F3") {
+      var p = window.prompt("open", lek.path);
+      if (p) lekOpen(p);
+      lekPaint(); return;
+    }
+    if (k === "F4") {
+      var q = window.prompt("search", "");
+      if (q) {
+        var n;
+        for (n = 0; n < lek.lines.length; n++) {
+          if ((lek.lines[n] || "").indexOf(q) >= 0) { lek.row = n; lek.col = lek.lines[n].indexOf(q); break; }
+        }
+      }
+      lekPaint(); return;
+    }
+    if (k === "F5" || k === "F9") {
+      var src = lek.lines.join("\n");
+      var tag = (lek.lines[0] || "").trim();
+      initVt();
+      vtWrite("Lekhak " + (k === "F5" ? "compile+run" : "compile") + "\n");
+      vtWrite("file " + lek.path + "\n");
+      vtWrite("line1 " + tag + "\n");
+      vtWrite(".hin = ISCII; guru.bat: rmshaili | acii2cf | h2c | gcc\n");
+      vtWrite(".uhin = UTF-8; hincc: iconv utf-16 | uni2acii | acii2cf | h2c\n");
+      vtWrite("F5 outside this CRT is the 2004 binary path (lekhakx.exe + DPMI).\n");
+      return;
+    }
+    if ((alt && (k === "x" || k === "X")) || (k === "Escape" && sh)) {
+      if (lek.changed) lekSave();
+      lek.on = false; initVt(); paint(); vtWrite("lekhak file_exit\n");
+      ps1.textContent = prompt();
+      return;
+    }
+    if (k === "Escape") { lekPaint(); return; }
+    if (ctrl && (k === "y" || k === "Y")) {
+      lek.lines[lek.row] = "";
+      lek.col = 0; lek.changed = true; lekPaint(); return;
+    }
+    if (ctrl && k === "Home") { lek.row = 0; lek.col = 0; lek.top = 0; lekPaint(); return; }
+    if (ctrl && k === "End") { lek.row = lek.lines.length - 1; lek.col = 0; lekPaint(); return; }
+    if (k === "Home") { lek.col = 0; lekPaint(); return; }
+    if (k === "End") { lek.col = (lek.lines[lek.row] || "").length; lekPaint(); return; }
+    if (k === "PageDown") { lek.row = Math.min(lek.lines.length - 1, lek.row + ROWS); lekPaint(); return; }
+    if (k === "PageUp") { lek.row = Math.max(0, lek.row - ROWS); lekPaint(); return; }
+    if (k === "ArrowUp" || k === "up") { lek.row = Math.max(0, lek.row - 1); lekPaint(); return; }
+    if (k === "ArrowDown") { lek.row = Math.min(lek.lines.length - 1, lek.row + 1); lekPaint(); return; }
+    if (k === "ArrowLeft") { lek.col = Math.max(0, lek.col - 1); lekPaint(); return; }
+    if (k === "ArrowRight") { lek.col = Math.min((lek.lines[lek.row] || "").length, lek.col + 1); lekPaint(); return; }
+    if (k === "Insert") { lek.insert = !lek.insert; lekPaint(); return; }
+    if (k === "Enter") {
+      var L = lek.lines[lek.row] || "";
+      lek.lines.splice(lek.row + 1, 0, L.slice(lek.col));
+      lek.lines[lek.row] = L.slice(0, lek.col);
+      lek.row++; lek.col = 0; lek.changed = true; lekPaint(); return;
+    }
+    if (k === "Backspace") {
+      var L = lek.lines[lek.row] || "";
+      if (lek.col > 0) {
+        lek.lines[lek.row] = L.slice(0, lek.col - 1) + L.slice(lek.col);
+        lek.col--;
+      } else if (lek.row > 0) {
+        var prev = lek.lines[lek.row - 1];
+        lek.col = prev.length;
+        lek.lines[lek.row - 1] = prev + L;
+        lek.lines.splice(lek.row, 1);
+        lek.row--;
+      }
+      lek.changed = true; lekPaint(); return;
+    }
+    if (k === "Delete") {
+      var L = lek.lines[lek.row] || "";
+      lek.lines[lek.row] = L.slice(0, lek.col) + L.slice(lek.col + 1);
+      lek.changed = true; lekPaint(); return;
+    }
+    if (k === "Tab") {
+      var sp = "        ".slice(0, 8 - (lek.col % 8));
+      k = sp; /* fall through as insert */
+    }
+    if (k && k.length === 1 && !ctrl && !alt) {
+      var L = lek.lines[lek.row] || "";
+      if (L.length >= LMAX) return;
+      if (lek.insert) lek.lines[lek.row] = L.slice(0, lek.col) + k + L.slice(lek.col);
+      else lek.lines[lek.row] = L.slice(0, lek.col) + k + L.slice(lek.col + 1);
+      lek.col += k.length; lek.changed = true; lekPaint();
+    }
+    if (lek.row < lek.top) lek.top = lek.row;
+    if (lek.row >= lek.top + ROWS) lek.top = lek.row - ROWS + 1;
+  }
+  function gfxClear() {
+    var ctx = glass.getContext("2d");
+    glass.width = 640; glass.height = 384;
+    ctx.fillStyle = "#001400";
+    ctx.fillRect(0, 0, 640, 384);
+  }
+  function gfxDot(x, y) {
+    var ctx = glass.getContext("2d");
+    ctx.fillStyle = robot.color;
+    ctx.fillRect(x, y, 2, 2);
+  }
+  function gfxLine(x0, y0, x1, y1) {
+    var dx = Math.abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+    var dy = -Math.abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+    var err = dx + dy, e2;
+    while (true) {
+      if (robot.pen) gfxDot(x0, y0);
+      if (x0 === x1 && y0 === y1) break;
+      e2 = 2 * err;
+      if (e2 >= dy) { err += dy; x0 += sx; }
+      if (e2 <= dx) { err += dx; y0 += sy; }
+    }
+  }
+  function robotCmd(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return "";
+    if (/^(exit|quit|इति|बाहर)$/i.test(s)) { robot.gfx = false; initVt(); paint(); return "robot: text"; }
+    if (/^(साफ|cls|clear)$/i.test(s)) { gfxClear(); return ""; }
+    if (/^(घर|home)$/i.test(s)) { robot.x = 320; robot.y = 192; return ""; }
+    var m, n, x1, y1, nx, ny;
+    function go(dx, dy) {
+      nx = robot.x + dx; ny = robot.y + dy;
+      gfxLine(Math.round(robot.x), Math.round(robot.y), Math.round(nx), Math.round(ny));
+      robot.x = nx; robot.y = ny;
+    }
+    if ((m = s.match(/^(आगे|उत्तर|fd|forward)\s+(-?\d+)/i))) { n = +m[2]; go(0, -n); return ""; }
+    if ((m = s.match(/^(पीछे|दक्षिण|bk|back)\s+(-?\d+)/i))) { n = +m[2]; go(0, n); return ""; }
+    if ((m = s.match(/^(दाएं|दाएँ|पूर्व|rt|right)\s+(-?\d+)/i))) { n = +m[2]; go(n, 0); return ""; }
+    if ((m = s.match(/^(बाएं|बाएँ|पश्चिम|lt|left)\s+(-?\d+)/i))) { n = +m[2]; go(-n, 0); return ""; }
+    if ((m = s.match(/^(कलम|pen)\s+([01])/i))) { robot.pen = +m[2]; return ""; }
+    if ((m = s.match(/^(स्थान|setxy)\s+(-?\d+)\s*,\s*(-?\d+)/i))) {
+      x1 = +m[2]; y1 = +m[3];
+      gfxLine(Math.round(robot.x), Math.round(robot.y), x1, y1);
+      robot.x = x1; robot.y = y1; return "";
+    }
+    if (/^help|सहायता$/i.test(s)) return "आगे n  पीछे n  बाएं n  दाएं n  कलम 0|1  घर  साफ  इति\nShaili Robot 2004 (ROBOT.C). Cardinal pixels, one glass.";
+    return "robot: " + s;
+  }
+  function lekPaint() {
+    initVt();
+    vtWrite("LEKHAK  " + lek.path + "  ESC=quit  Ctrl-S=save\n");
+    var i, line;
+    for (i = 0; i < lek.lines.length && i < vt.rows - 2; i++) {
+      line = lek.lines[i] || "";
+      vtWrite((i === lek.row ? ">" : " ") + line + "\n");
+    }
+  }
+  function lekKey(e) {
+    if (e.key === "Escape") { lek.on = false; initVt(); paint(); vtWrite("lekhak saved? use Ctrl-S first. text mode.\n"); return; }
+    if (e.key === "s" && e.ctrlKey) {
+      fs.write(lek.path, lek.lines.join("\n"));
+      vtWrite("saved " + lek.path + "\n");
+      e.preventDefault(); return;
+    }
+    if (e.key === "Enter") {
+      lek.lines.splice(lek.row + 1, 0, "");
+      lek.row++; lek.col = 0; lekPaint(); e.preventDefault(); return;
+    }
+    if (e.key === "Backspace") {
+      var L = lek.lines[lek.row] || "";
+      lek.lines[lek.row] = L.slice(0, -1); lekPaint(); e.preventDefault(); return;
+    }
+    if (e.key.length === 1 && !e.ctrlKey) {
+      lek.lines[lek.row] = (lek.lines[lek.row] || "") + e.key;
+      lekPaint(); e.preventDefault();
+    }
+  }
+
+  var glass = document.getElementById("glass");
+  var cmd = document.getElementById("cmd");
+  var ps1 = document.getElementById("ps1");
+  var shsel = document.getElementById("shsel");
+  var sh = "bash";
+  var hist = [], hi = 0;
+  var vt = { cols: 80, rows: 24, r: 0, c: 0, grid: [] };
+  var vga = { on: false, mode: 13, w: 320, h: 200, pix: null, c: 15 };
+  function vgaMode(mode) {
+    mode = mode | 0;
+    if (mode === 0 || mode === 3) {
+      vga.on = false; vga.pix = null;
+      initVt(); paint();
+      return "VGA text (VT100)";
+    }
+    var spec = { 13: [320, 200], 12: [640, 480], 18: [640, 480], 101: [640, 480], 103: [800, 600] };
+    if (!spec[mode]) mode = 13;
+    var s = spec[mode];
+    vga.on = true; vga.mode = mode; vga.w = s[0]; vga.h = s[1]; vga.c = 15;
+    vga.pix = new Uint8Array(vga.w * vga.h);
+    paint();
+    return "mode " + mode + " " + vga.w + "x" + vga.h;
+  }
+  function vgaPut(x, y, c) {
+    x |= 0; y |= 0;
+    if (c != null && !isNaN(c)) vga.c = c & 255;
+    if (!vga.pix) return;
+    if (x >= 0 && y >= 0 && x < vga.w && y < vga.h) vga.pix[y * vga.w + x] = vga.c;
+  }
+  function vgaDoPset(x, y, c) {
+    if (!vga.on) vgaMode(13);
+    vgaPut(x, y, c);
+    paint();
+  }
+  function vgaDoLine(x0, y0, x1, y1, c) {
+    if (!vga.on) vgaMode(13);
+    if (c != null && !isNaN(c)) vga.c = c & 255;
+    x0 |= 0; y0 |= 0; x1 |= 0; y1 |= 0;
+    var dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0);
+    var sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    var err = dx - dy, x = x0, y = y0;
+    for (;;) {
+      vgaPut(x, y, vga.c);
+      if (x === x1 && y === y1) break;
+      var e2 = 2 * err;
+      if (e2 > -dy) { err -= dy; x += sx; }
+      if (e2 < dx) { err += dx; y += sy; }
+    }
+    paint();
+  }
+  function blankRow() { var r = []; for (var x = 0; x < vt.cols; x++) r.push(" "); return r; }
+  function initVt() {
+    vt.grid = [];
+    for (var y = 0; y < vt.rows; y++) vt.grid.push(blankRow());
+    vt.r = 0; vt.c = 0;
+  }
+  function scroll() {
+    vt.grid.shift();
+    vt.grid.push(blankRow());
+    vt.r = vt.rows - 1;
+    vt.c = 0;
+  }
+  function paint() {
+    var ctx = glass.getContext("2d");
+    if (vga.on && vga.pix) {
+      glass.width = vga.w;
+      glass.height = vga.h;
+      var img = ctx.createImageData(vga.w, vga.h);
+      var pal16 = [[0,0,0],[0,0,170],[0,170,0],[0,170,170],[170,0,0],[170,0,170],[170,85,0],[170,170,170],[85,85,85],[85,85,255],[85,255,85],[85,255,255],[255,85,85],[255,85,255],[255,255,85],[255,255,255]];
+      for (var i = 0; i < vga.pix.length; i++) {
+        var ci = vga.pix[i] & 255;
+        var rgb = ci < 16 ? pal16[ci] : [ci, ci, ci];
+        img.data[i * 4] = rgb[0];
+        img.data[i * 4 + 1] = rgb[1];
+        img.data[i * 4 + 2] = rgb[2];
+        img.data[i * 4 + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      return;
+    }
+    var cw = 8, ch = 16;
+    glass.width = vt.cols * cw;
+    glass.height = vt.rows * ch;
+    ctx.fillStyle = "#001400";
+    ctx.fillRect(0, 0, glass.width, glass.height);
+    ctx.fillStyle = "#33ff66";
+    ctx.font = "14px ui-monospace,monospace";
+    for (var y = 0; y < vt.rows; y++) ctx.fillText(vt.grid[y].join(""), 1, 13 + y * ch);
+    ctx.fillRect(vt.c * cw, vt.r * ch, 7, 14);
+  }
+  function vtPut(ch) {
+    if (ch === "\n") {
+      if (vt.r >= vt.rows - 1) scroll();
+      else { vt.r++; vt.c = 0; }
+      return;
+    }
+    if (ch === "\r") { vt.c = 0; return; }
+    vt.grid[vt.r][vt.c] = ch;
+    vt.c++;
+    if (vt.c >= vt.cols) {
+      vt.c = 0;
+      if (vt.r >= vt.rows - 1) scroll();
+      else vt.r++;
+    }
+  }
+  function vtWrite(s) {
+    s = String(s);
+    for (var i = 0; i < s.length; i++) {
+      if (s.charAt(i) === "\x1b" && s.substr(i, 4) === "\x1b[2J") { initVt(); i += 3; continue; }
+      vtPut(s.charAt(i));
+    }
+    paint();
+  }
+  function prompt() {
+    var f = family(sh);
+    if (f === "command.com") return "C:\\> ";
+    if (f === "panini") return "pni> ";
+    if (sh === "csh") return "% ";
+    return "panini$ ";
+  }
+  initVt();
+  vtWrite("VT100 80x24  VGA/SVGA on this glass\nType help. ls  cat  vga  screen 13  pset x y\n");
+  if (shsel) shsel.onchange = function () { sh = shsel.value; ps1.textContent = prompt(); vtWrite("[shell " + sh + "]\n"); };
+  cmd.onkeydown = function (e) {
+    if (lek.on) { lekKey(e); return; }
+    if (e.key === "ArrowUp") {
+      if (hist.length) { hi = Math.max(0, hi - 1); cmd.value = hist[hi] || ""; }
+      e.preventDefault(); return;
+    }
+    if (e.key === "ArrowDown") {
+      hi = Math.min(hist.length, hi + 1); cmd.value = hist[hi] || "";
+      e.preventDefault(); return;
+    }
+    if (e.key !== "Enter") return;
+    var line = cmd.value;
+    hist.push(line); hi = hist.length;
+    cmd.value = "";
+    if (robot.gfx) {
+      var rr = robotCmd(line);
+      if (rr) {
+        var ctx = glass.getContext("2d");
+        ctx.fillStyle = "#001400";
+        ctx.fillRect(0, 0, 640, 16);
+        ctx.fillStyle = "#33ff66";
+        ctx.font = "12px ui-monospace,monospace";
+        ctx.fillText(String(rr).split("\n")[0], 8, 12);
+      }
+      ps1.textContent = "robot> ";
+      return;
+    }
+    vtWrite(prompt() + line + "\n");
+    var res = "";
+    try { res = exec(sh, line); } catch (err) { res = String(err); }
+    if (res === "__ROBOT__") {
+      robot.gfx = true; robot.x = 320; robot.y = 192; gfxClear(); gfxDot(robot.x, robot.y);
+      ps1.textContent = "robot> ";
+      return;
+    }
+    if (String(res).indexOf("__LEKHAK__:") === 0) {
+      lek.on = true;
+      lekOpen(String(res).slice(11));
+      lekPaint();
+      ps1.textContent = "";
+      return;
+    }
+    if (res === "__EMU__") {
+      vtWrite("x86: opening emulator (v86 guest)\n");
+      window.location.href = "emu.html";
+      return;
+    }
+    if (String(res).indexOf("__LLAMA__:") === 0) {
+      var argv = String(res).slice(10).split("\x1f").filter(Boolean);
+      vtWrite("llama-cli: loading llama.cpp WASM + GGUF on the VFS…\n");
+      (window.PANINI_LLM ? window.PANINI_LLM.llamaCli(argv) : Promise.reject(new Error("llm.js missing")))
+        .then(function (t) { vtWrite(t.charAt(t.length - 1) === "\n" ? t : t + "\n"); })
+        .catch(function (err) { vtWrite(String(err.message || err) + "\n"); });
+      return;
+    }
+    else if (res) vtWrite(res.charAt(res.length - 1) === "\n" ? res : res + "\n");
+  };
+  fetch("https://github.com/copy/v86/raw/master/bios/seabios.bin")
+    .then(function (r) { return r.ok ? r.arrayBuffer() : Promise.reject(new Error("bios " + r.status)); })
+    .then(function (buf) {
+      var u = new Uint8Array(buf), s = "", i;
+      for (i = 0; i < u.length; i++) s += String.fromCharCode(u[i]);
+      fs.write("/bios/bios.bin", s);
+    })
+    .catch(function () { fs.write("/bios/bios.bin", "AYEB SeaBIOS stand-in (offline)\n"); });
+})();
+</script>
+</body>
+</html>

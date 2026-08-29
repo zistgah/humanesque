@@ -1,0 +1,7 @@
+MODULE T00011
+FUNCTION main()
+    s = "pan" + "ini"
+    PRINT s
+    RETURN 0
+END
+END

@@ -1,0 +1,391 @@
+{
+  "shailis": [
+    {
+      "id": "guru",
+      "name": "गुरु",
+      "host": "C",
+      "rules": 352
+    },
+    {
+      "id": "shraeni",
+      "name": "श्रेणी",
+      "host": "C++",
+      "rules": 908
+    },
+    {
+      "id": "praatha",
+      "name": "प्राथमिक",
+      "host": "BASIC",
+      "rules": 172
+    },
+    {
+      "id": "kritrima",
+      "name": "कृत्रिम",
+      "host": "Java",
+      "rules": 214
+    },
+    {
+      "id": "soochee",
+      "name": "सूची",
+      "host": "Python",
+      "rules": 66
+    },
+    {
+      "id": "shabda",
+      "name": "शब्द",
+      "host": "lex",
+      "rules": 34
+    },
+    {
+      "id": "wyaaka",
+      "name": "व्याकरण",
+      "host": "yacc",
+      "rules": 36
+    },
+    {
+      "id": "yantra",
+      "name": "यांत्रिक",
+      "host": "asm",
+      "rules": 549
+    }
+  ],
+  "brahmi": [
+    "hindi",
+    "nepali",
+    "marathi",
+    "sanskrit",
+    "punjabi",
+    "bengali",
+    "assamese",
+    "gujarati",
+    "odia",
+    "tamil",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "pali",
+    "prakrit"
+  ],
+  "perso": [
+    "urdu",
+    "persian",
+    "arabic",
+    "pashto",
+    "dari",
+    "sindhi",
+    "kashmiri",
+    "shahmukhi"
+  ],
+  "langs": [
+    "arabic",
+    "aramaic",
+    "assamese",
+    "bengali",
+    "gujarati",
+    "hebrew",
+    "hindi",
+    "kannada",
+    "malayalam",
+    "marathi",
+    "nepali",
+    "odia",
+    "pali",
+    "persian",
+    "phoenician",
+    "prakrit",
+    "punjabi",
+    "sanskrit",
+    "syriac",
+    "tamil",
+    "telugu",
+    "urdu",
+    "pashto",
+    "dari",
+    "sindhi",
+    "kashmiri",
+    "shahmukhi"
+  ],
+  "generated": {
+    "invented_maps": false,
+    "script": [
+      "examples/hindawi/script/hindi_guru.uhin",
+      "examples/hindawi/script/nepali_guru.uhin",
+      "examples/hindawi/script/marathi_guru.uhin",
+      "examples/hindawi/script/sanskrit_guru.uhin",
+      "examples/hindawi/script/punjabi_guru.uhin",
+      "examples/hindawi/script/bengali_guru.uhin",
+      "examples/hindawi/script/assamese_guru.uhin",
+      "examples/hindawi/script/gujarati_guru.uhin",
+      "examples/hindawi/script/odia_guru.uhin",
+      "examples/hindawi/script/tamil_guru.uhin",
+      "examples/hindawi/script/telugu_guru.uhin",
+      "examples/hindawi/script/kannada_guru.uhin",
+      "examples/hindawi/script/malayalam_guru.uhin",
+      "examples/hindawi/script/pali_guru.uhin",
+      "examples/hindawi/script/prakrit_guru.uhin",
+      "examples/hindawi/script/hindi_praatha.uhin",
+      "examples/hindawi/script/nepali_praatha.uhin",
+      "examples/hindawi/script/marathi_praatha.uhin",
+      "examples/hindawi/script/sanskrit_praatha.uhin",
+      "examples/hindawi/script/punjabi_praatha.uhin",
+      "examples/hindawi/script/bengali_praatha.uhin",
+      "examples/hindawi/script/assamese_praatha.uhin",
+      "examples/hindawi/script/gujarati_praatha.uhin",
+      "examples/hindawi/script/odia_praatha.uhin",
+      "examples/hindawi/script/tamil_praatha.uhin",
+      "examples/hindawi/script/telugu_praatha.uhin",
+      "examples/hindawi/script/kannada_praatha.uhin",
+      "examples/hindawi/script/malayalam_praatha.uhin",
+      "examples/hindawi/script/pali_praatha.uhin",
+      "examples/hindawi/script/prakrit_praatha.uhin",
+      "examples/hindawi/script/hindi_kritrima.uhin",
+      "examples/hindawi/script/nepali_kritrima.uhin",
+      "examples/hindawi/script/marathi_kritrima.uhin",
+      "examples/hindawi/script/sanskrit_kritrima.uhin",
+      "examples/hindawi/script/punjabi_kritrima.uhin",
+      "examples/hindawi/script/bengali_kritrima.uhin",
+      "examples/hindawi/script/assamese_kritrima.uhin",
+      "examples/hindawi/script/gujarati_kritrima.uhin",
+      "examples/hindawi/script/odia_kritrima.uhin",
+      "examples/hindawi/script/tamil_kritrima.uhin",
+      "examples/hindawi/script/telugu_kritrima.uhin",
+      "examples/hindawi/script/kannada_kritrima.uhin",
+      "examples/hindawi/script/malayalam_kritrima.uhin",
+      "examples/hindawi/script/pali_kritrima.uhin",
+      "examples/hindawi/script/prakrit_kritrima.uhin",
+      "examples/hindawi/script/hindi_yantra.uhin",
+      "examples/hindawi/script/nepali_yantra.uhin",
+      "examples/hindawi/script/marathi_yantra.uhin",
+      "examples/hindawi/script/sanskrit_yantra.uhin",
+      "examples/hindawi/script/punjabi_yantra.uhin",
+      "examples/hindawi/script/bengali_yantra.uhin",
+      "examples/hindawi/script/assamese_yantra.uhin",
+      "examples/hindawi/script/gujarati_yantra.uhin",
+      "examples/hindawi/script/odia_yantra.uhin",
+      "examples/hindawi/script/tamil_yantra.uhin",
+      "examples/hindawi/script/telugu_yantra.uhin",
+      "examples/hindawi/script/kannada_yantra.uhin",
+      "examples/hindawi/script/malayalam_yantra.uhin",
+      "examples/hindawi/script/pali_yantra.uhin",
+      "examples/hindawi/script/prakrit_yantra.uhin",
+      "examples/hindawi/script/hindi_shabda.uhin",
+      "examples/hindawi/script/nepali_shabda.uhin",
+      "examples/hindawi/script/marathi_shabda.uhin",
+      "examples/hindawi/script/sanskrit_shabda.uhin",
+      "examples/hindawi/script/punjabi_shabda.uhin",
+      "examples/hindawi/script/bengali_shabda.uhin",
+      "examples/hindawi/script/assamese_shabda.uhin",
+      "examples/hindawi/script/gujarati_shabda.uhin",
+      "examples/hindawi/script/odia_shabda.uhin",
+      "examples/hindawi/script/tamil_shabda.uhin",
+      "examples/hindawi/script/telugu_shabda.uhin",
+      "examples/hindawi/script/kannada_shabda.uhin",
+      "examples/hindawi/script/malayalam_shabda.uhin",
+      "examples/hindawi/script/pali_shabda.uhin",
+      "examples/hindawi/script/prakrit_shabda.uhin",
+      "examples/hindawi/script/hindi_wyaaka.uhin",
+      "examples/hindawi/script/nepali_wyaaka.uhin",
+      "examples/hindawi/script/marathi_wyaaka.uhin",
+      "examples/hindawi/script/sanskrit_wyaaka.uhin",
+      "examples/hindawi/script/punjabi_wyaaka.uhin",
+      "examples/hindawi/script/bengali_wyaaka.uhin",
+      "examples/hindawi/script/assamese_wyaaka.uhin",
+      "examples/hindawi/script/gujarati_wyaaka.uhin",
+      "examples/hindawi/script/odia_wyaaka.uhin",
+      "examples/hindawi/script/tamil_wyaaka.uhin",
+      "examples/hindawi/script/telugu_wyaaka.uhin",
+      "examples/hindawi/script/kannada_wyaaka.uhin",
+      "examples/hindawi/script/malayalam_wyaaka.uhin",
+      "examples/hindawi/script/pali_wyaaka.uhin",
+      "examples/hindawi/script/prakrit_wyaaka.uhin"
+    ],
+    "bhasha": [
+      "examples/hindawi/bhasha/hindi_guru.uhin",
+      "examples/hindawi/bhasha/nepali_guru.uhin",
+      "examples/hindawi/bhasha/marathi_guru.uhin",
+      "examples/hindawi/bhasha/sanskrit_guru.uhin",
+      "examples/hindawi/bhasha/punjabi_guru.uhin",
+      "examples/hindawi/bhasha/bengali_guru.uhin",
+      "examples/hindawi/bhasha/assamese_guru.uhin",
+      "examples/hindawi/bhasha/gujarati_guru.uhin",
+      "examples/hindawi/bhasha/odia_guru.uhin",
+      "examples/hindawi/bhasha/tamil_guru.uhin",
+      "examples/hindawi/bhasha/telugu_guru.uhin",
+      "examples/hindawi/bhasha/kannada_guru.uhin",
+      "examples/hindawi/bhasha/malayalam_guru.uhin",
+      "examples/hindawi/bhasha/pali_guru.uhin",
+      "examples/hindawi/bhasha/prakrit_guru.uhin",
+      "examples/hindawi/bhasha/urdu_guru.uhin",
+      "examples/hindawi/bhasha/persian_guru.uhin",
+      "examples/hindawi/bhasha/arabic_guru.uhin",
+      "examples/hindawi/bhasha/pashto_guru.uhin",
+      "examples/hindawi/bhasha/dari_guru.uhin",
+      "examples/hindawi/bhasha/sindhi_guru.uhin",
+      "examples/hindawi/bhasha/kashmiri_guru.uhin",
+      "examples/hindawi/bhasha/shahmukhi_guru.uhin"
+    ],
+    "ports": [
+      {
+        "lang": "hindi",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tma_printf(\"आपका नाम क्या है?\\n\");\n\tsca"
+      },
+      {
+        "lang": "nepali",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "marathi",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "sanskrit",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tma_printf(\"आपका नाम क्या है?\\n\");\n\tsca"
+      },
+      {
+        "lang": "punjabi",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "bengali",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "assamese",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "gujarati",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "odia",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "tamil",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "telugu",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "kannada",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "malayalam",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "pali",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "prakrit",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": true,
+        "preview": "<shailee guru>\n#samaawaeesha <maanakapana.sa>\n\nint main()\n{\n\tchar _a[];\n\tint ka;\n\tprintf(\"आपका नाम क्या है?\\n\");\n\tscanf("
+      },
+      {
+        "lang": "urdu",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "persian",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "arabic",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "pashto",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "dari",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "sindhi",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "kashmiri",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      },
+      {
+        "lang": "shahmukhi",
+        "shaili": "guru",
+        "host": "C",
+        "flatten_complete": false,
+        "preview": "[object Object]"
+      }
+    ]
+  }
+}

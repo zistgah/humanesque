@@ -1,0 +1,11 @@
+@imperative @eval(operational) @state(mutable) @type(dynamic_gradual) @mem(tracing_gc)
+MODULE PythonCharacter
+    FUNCTION main()
+        xs = [1, 2, 3]
+        acc = 0
+        FOREACH x IN xs
+            acc = acc + x
+        END
+        RETURN acc
+    END
+END

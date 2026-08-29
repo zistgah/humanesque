@@ -1,0 +1,9 @@
+@imperative @eval(operational)
+MODULE LogoCharacter
+    FUNCTION main()
+        FORWARD 100
+        RIGHT 90
+        FORWARD 100
+        RETURN 0
+    END
+END

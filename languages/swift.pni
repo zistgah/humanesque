@@ -1,0 +1,6 @@
+@imperative
+MODULE SwiftCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

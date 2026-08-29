@@ -1,0 +1,794 @@
+REM  matba.pni
+REM  MATBA — PANINI Print / Publication Cycler
+REM  Version 1.0.0
+REM
+REM  MATBA is not merely a publishing pipeline.
+REM  It is a programmable lifecycle for conceptualizing, specifying,
+REM  developing, validating, composing, publishing, minting and preserving
+REM  print-oriented and publication-oriented artefacts.
+REM
+REM  Governing invariant:
+REM    MATBA does not require a publication to exist before the cycle begins.
+REM    The cycle itself may create the publication concept.
+REM
+REM  Entry may be:
+REM    INTENTION  — nothing but an intention
+REM    CONCEPT    — partially formed idea/material
+REM    ARTIFACT   — existing manuscript/publication/material
+REM
+REM  The three major semantic questions are:
+REM    CONCEPTUALIZE — What are we trying to make?
+REM    SPECIFY      — What exactly are we going to make?
+REM    COMPOSE      — How do we realize the specified publication?
+REM
+REM  MATBA is a PANINI program, not a special syntax built into PANINI.
+
+MODULE MATBA
+  VERSION "1.0.0"
+  DOMAIN "print/publication"
+  KIND CYCLER
+
+  PURPOSE
+    "Conceptualize, specify, develop, validate, compose, publish,
+     mint and preserve publication-oriented artefacts."
+  END PURPOSE
+
+  CONTRACT
+    INVARIANT "publication may be conceived inside the cycle"
+    INVARIANT "conceptualization is a first-class lifecycle"
+    INVARIANT "concept, specification and publication remain distinct objects"
+    INVARIANT "revisions preserve provenance"
+    INVARIANT "branches may be compared, merged, forked or discarded"
+    INVARIANT "discarded alternatives remain recoverable unless explicitly purged"
+    INVARIANT "human signoff may gate irreversible transitions"
+    INVARIANT "epistemic status is preserved"
+    INVARIANT "AI output is not publication merely because it was generated"
+  END CONTRACT
+
+
+  REM  ================================================================
+  REM  ENTRY MODEL
+  REM  ================================================================
+
+  INPUT intention
+    TYPE TEXT
+    OPTIONAL
+  END INPUT
+
+  INPUT concept
+    TYPE CONCEPT
+    OPTIONAL
+  END INPUT
+
+  INPUT artifact
+    TYPE ARTIFACT
+    OPTIONAL
+  END INPUT
+
+  ENTRY
+    ALLOW intention
+    ALLOW concept
+    ALLOW artifact
+    ALLOW COMBINATION
+  END ENTRY
+
+
+  REM  ================================================================
+  REM  FIRST-CLASS DATA OBJECTS
+  REM  ================================================================
+
+  TYPE CONCEPT
+    identity
+    intention
+    purpose
+    subject
+    thesis
+    questions
+    audience
+    scope
+    form
+    voice
+    constraints
+    assumptions
+    alternatives
+    decisions
+    unresolved
+    relationships
+    sources
+    iterations
+    history
+    confidence
+    epistemic_status
+    status
+  END TYPE
+
+  TYPE SPECIFICATION
+    identity
+    publication_type
+    structure
+    sections
+    content_requirements
+    assets
+    metadata
+    editorial_rules
+    acceptance_criteria
+    dependencies
+    evidence_requirements
+    publication_constraints
+    version
+    revision
+    provenance
+    status
+  END TYPE
+
+  TYPE PUBLICATION
+    identity
+    title
+    subtitle
+    type
+    specification
+    content
+    assets
+    metadata
+    citations
+    edition
+    version
+    revision
+    dependencies
+    provenance
+    status
+  END TYPE
+
+  TYPE DELIVERABLE
+    identity
+    type
+    format
+    mime
+    source
+    derivation
+    version
+    revision
+    hash
+    provenance
+    status
+    owner
+    signoff
+  END TYPE
+
+  TYPE DECISION
+    question
+    alternatives
+    selected
+    rationale
+    authority
+    timestamp
+    provenance
+  END TYPE
+
+  TYPE REVIEW
+    target
+    reviewer
+    findings
+    objections
+    required_changes
+    disposition
+    timestamp
+  END TYPE
+
+
+  REM  ================================================================
+  REM  STATE MACHINE
+  REM  ================================================================
+
+  STATES
+    CONCEPTUALIZING
+    CONCEPT_REVIEW
+    CONCEPT_APPROVED
+
+    SPECIFYING
+    SPECIFICATION_REVIEW
+    SPECIFICATION_APPROVED
+
+    DEVELOPING
+    VERIFYING
+    COMPOSING
+    EDITING
+
+    PUBLICATION_REVIEW
+    PUBLICATION_APPROVED
+
+    SEALED
+    PUBLISHED
+    MINTED
+    PRESERVED
+  END STATES
+
+
+  REM  ================================================================
+  REM  CONCEPTUALIZATION
+  REM  ================================================================
+
+  STAGE CONCEPTUALIZE
+    RESOLUTION EASY
+    VERB CAPTURE
+    EXPECT CONCEPT
+    INTO concept
+
+    IF intention EXISTS
+      ELICIT intention
+      CAPTURE intention
+    END IF
+
+    ELICIT purpose
+    ELICIT subject
+    ELICIT desired_outcome
+    ELICIT audience
+    ELICIT scope
+    ELICIT constraints
+    ELICIT unknowns
+
+    EXPLORE alternatives
+    COMPARE alternatives
+    CAPTURE decisions
+
+    INTEGRATE selected_concepts
+    STRUCTURE concept
+
+    VALIDATE concept
+      REQUIRE concept.identity
+      REQUIRE concept.purpose
+      REQUIRE concept.subject
+    END VALIDATE
+
+    SET concept.status = "DRAFT"
+    INCREMENT concept.iterations
+  END STAGE
+
+
+  STAGE CONCEPT_REVIEW
+    RESOLUTION MID
+    FROM concept
+    REVIEW concept
+
+    IDENTIFY
+      missing_information
+      contradictions
+      assumptions
+      unresolved_questions
+      competing_interpretations
+      structural_options
+    END IDENTIFY
+
+    IF unresolved_questions NOT EMPTY
+      REVISE concept
+      GOTO CONCEPTUALIZE
+    END IF
+
+    IF concept.iterations >= 3
+      GENERATE concept.summary
+      GENERATE concept.delta
+      REQUEST HUMAN REVIEW
+    END IF
+  END STAGE
+
+
+  STAGE CONCEPT_SIGNOFF
+    RESOLUTION PRO
+    GATE HUMAN
+    REQUIRE concept.status == "REVIEWED"
+
+    SIGNOFF concept
+
+    IF SIGNOFF == APPROVED
+      SET concept.status = "APPROVED"
+    ELSE
+      REVISE concept
+      GOTO CONCEPTUALIZE
+    END IF
+  END STAGE
+
+
+  REM  ================================================================
+  REM  CONCEPT BRANCHING
+  REM  ================================================================
+
+  STAGE EXPLORE_CONCEPTS
+    FOR EACH alternative IN concept.alternatives
+      FORK concept INTO alternative
+    END FOR
+
+    COMPARE concept.branches
+      ON purpose
+      ON scope
+      ON audience
+      ON feasibility
+      ON evidence
+      ON structure
+    END COMPARE
+
+    ALLOW
+      MERGE
+      FORK
+      DEVELOP
+      DISCARD
+    END ALLOW
+
+    PRESERVE provenance
+  END STAGE
+
+
+  REM  ================================================================
+  REM  SPECIFICATION
+  REM  ================================================================
+
+  STAGE SPECIFY
+    RESOLUTION MID
+    REQUIRE concept.status == "APPROVED"
+
+    CREATE specification
+
+    DERIVE specification.publication_type FROM concept
+    DERIVE specification.structure FROM concept
+    DERIVE specification.audience FROM concept
+    DERIVE specification.scope FROM concept
+
+    DEFINE
+      sections
+      content_requirements
+      assets
+      metadata
+      editorial_rules
+      acceptance_criteria
+      dependencies
+      evidence_requirements
+      publication_constraints
+    END DEFINE
+
+    VALIDATE specification
+      REQUIRE specification.publication_type
+      REQUIRE specification.structure
+      REQUIRE specification.acceptance_criteria
+    END VALIDATE
+
+    SET specification.status = "DRAFT"
+  END STAGE
+
+
+  STAGE SPECIFICATION_REVIEW
+    RESOLUTION PRO
+    REVIEW specification
+
+    CHECK
+      completeness
+      consistency
+      traceability
+      feasibility
+      dependencies
+      evidence
+      acceptance_criteria
+    END CHECK
+
+    IF FAIL
+      REVISE specification
+      GOTO SPECIFY
+    END IF
+  END STAGE
+
+
+  STAGE SPECIFICATION_SIGNOFF
+    GATE HUMAN
+    SIGNOFF specification
+
+    IF SIGNOFF == APPROVED
+      SET specification.status = "APPROVED"
+    ELSE
+      REVISE specification
+      GOTO SPECIFY
+    END IF
+  END STAGE
+
+
+  REM  ================================================================
+  REM  REALIZATION ENTRY / INTAKE
+  REM  ================================================================
+
+  STAGE INTAKE
+    RESOLUTION EASY
+    OPTIONAL
+
+    IF artifact EXISTS
+      CAPTURE artifact
+    END IF
+
+    IF files EXIST
+      IMPORT files
+    END IF
+
+    REGISTER sources
+    REGISTER dependencies
+    REGISTER metadata
+    RECORD provenance
+  END STAGE
+
+
+  STAGE INSPECT
+    RESOLUTION MID
+    FOR EACH source IN sources
+      IDENTIFY
+        type
+        format
+        mime
+        integrity
+        provenance
+        version
+        revision
+      END IDENTIFY
+    END FOR
+
+    VALIDATE source.integrity
+  END STAGE
+
+
+  STAGE ORGANIZE
+    RESOLUTION MID
+    MAP sources TO specification
+    BUILD publication.structure
+    ASSIGN sources TO sections
+    REGISTER dependencies
+  END STAGE
+
+
+  STAGE DESCRIBE
+    RESOLUTION EASY
+    FOR EACH section IN publication.structure
+      CREATE section.description
+    END FOR
+
+    GENERATE publication.summary
+  END STAGE
+
+
+  REM  ================================================================
+  REM  DEVELOPMENT / CONTENT CREATION
+  REM  ================================================================
+
+  STAGE DEVELOP
+    RESOLUTION MID
+
+    FOR EACH requirement IN specification.content_requirements
+      IF requirement.source EXISTS
+        DERIVE content FROM requirement.source
+      ELSE
+        ELICIT missing_content
+        GENERATE candidate_content
+      END IF
+
+      VALIDATE candidate_content AGAINST requirement
+      CAPTURE candidate_content
+    END FOR
+  END STAGE
+
+
+  STAGE COMPOSE
+    RESOLUTION PRO
+    REQUIRE specification.status == "APPROVED"
+
+    CREATE publication
+    DERIVE publication FROM specification
+
+    FOR EACH section IN specification.sections
+      COMPOSE section
+      INTEGRATE approved_content
+      INTEGRATE approved_assets
+    END FOR
+
+    APPLY editorial_rules
+    APPLY metadata
+    APPLY citations
+  END STAGE
+
+
+  REM  ================================================================
+  REM  REVIEW / ITERATION
+  REM  ================================================================
+
+  STAGE CHECK
+    RESOLUTION MID
+
+    ASSERT publication EXISTS
+
+    VERIFY
+      structure
+      completeness
+      consistency
+      citations
+      references
+      metadata
+      assets
+      formatting
+      acceptance_criteria
+    END VERIFY
+
+    IF FAIL
+      CREATE review.findings
+    END IF
+  END STAGE
+
+
+  STAGE REVIEW
+    RESOLUTION PRO
+    REVIEW publication
+
+    CHECK
+      conceptual_fidelity
+      specification_fidelity
+      factual_integrity
+      editorial_integrity
+      provenance
+      citation_integrity
+      format_integrity
+      accessibility
+    END CHECK
+
+    IF findings NOT EMPTY
+      REVISE publication
+      INCREMENT publication.revision
+      GOTO CHECK
+    END IF
+  END STAGE
+
+
+  STAGE SIGNOFF_PUBLICATION
+    GATE HUMAN
+
+    REQUEST HUMAN SIGNOFF publication
+
+    IF SIGNOFF != APPROVED
+      REVISE publication
+      GOTO REVIEW
+    END IF
+
+    SET publication.status = "APPROVED"
+  END STAGE
+
+
+  REM  ================================================================
+  REM  SEAL / PUBLISH / MINT
+  REM  ================================================================
+
+  STAGE SEAL
+    RESOLUTION PRO
+    REQUIRE publication.status == "APPROVED"
+
+    FREEZE publication
+    COMPUTE publication.hash
+    RECORD final_provenance
+    RECORD dependency_snapshot
+    RECORD specification.version
+    RECORD publication.version
+
+    SET publication.status = "SEALED"
+  END STAGE
+
+
+  STAGE PUBLISH
+    RESOLUTION PRO
+    REQUIRE publication.status == "SEALED"
+
+    PACKAGE publication
+    EMIT publication.files
+    REGISTER publication.metadata
+    RELEASE publication
+
+    SET publication.status = "PUBLISHED"
+  END STAGE
+
+
+  STAGE MINT
+    RESOLUTION PRO
+    OPTIONAL
+    GATE HUMAN "MINT MATBA"
+
+    REQUIRE publication.status == "PUBLISHED"
+
+    COMPUTE content_hash
+    COMPUTE artifact_manifest
+
+    EMIT
+      DOI
+      CITATION
+      MANIFEST
+      PROVENANCE_RECORD
+    END EMIT
+
+    SET publication.status = "MINTED"
+  END STAGE
+
+
+  STAGE PRESERVE
+    RESOLUTION PRO
+
+    ARCHIVE publication
+    ARCHIVE concept
+    ARCHIVE specification
+    ARCHIVE reviews
+    ARCHIVE decisions
+    ARCHIVE provenance
+    ARCHIVE manifests
+
+    SET publication.status = "PRESERVED"
+  END STAGE
+
+
+  REM  ================================================================
+  REM  CONFIGURATION MANAGEMENT
+  REM  ================================================================
+
+  WATCH concept.changed
+    INVALIDATE specification
+    INVALIDATE affected publication.sections
+    INVALIDATE downstream deliverables
+    REBUILD affected dependencies
+  END WATCH
+
+  WATCH specification.changed
+    INVALIDATE affected content
+    INVALIDATE affected publication.sections
+    INVALIDATE downstream deliverables
+  END WATCH
+
+  WATCH publication.changed
+    INVALIDATE publication.hash
+    INVALIDATE seal
+    INVALIDATE mint
+  END WATCH
+
+  ON revision.created
+    RECORD revision.provenance
+    RECORD revision.delta
+    PRESERVE previous_revision
+  END ON
+
+  CHECKPOINT concept
+  CHECKPOINT specification
+  CHECKPOINT publication
+
+
+  REM  ================================================================
+  REM  ARTIFACT / MIME MODEL
+  REM  ================================================================
+
+  ARTIFACT publication_source
+    MIME "auto"
+    PROVENANCE REQUIRED
+  END ARTIFACT
+
+  FILE publication_manifest
+    MIME "application/json"
+    DERIVED FROM publication
+  END FILE
+
+  FILE publication_markdown
+    MIME "text/markdown"
+    DERIVED FROM publication
+  END FILE
+
+  REM  Other MIME types are permitted by PANINI's general artifact model:
+  REM  text/plain, text/html, application/pdf, image/svg+xml,
+  REM  image/png, audio/*, video/*, application/xml, application/json, etc.
+
+
+  REM  ================================================================
+  REM  AI / HUMAN EXECUTION MODEL
+  REM  ================================================================
+
+  MODEL AI
+    PROVIDER AGNOSTIC
+    ALLOW REMOTE
+    ALLOW LOCAL
+    ALLOW USER_API
+  END MODEL
+
+  STAGE ASSIST
+    ASK AI
+    CAPTURE result
+    VALIDATE result
+    RECORD epistemic_status
+    RECORD provenance
+  END STAGE
+
+  REM  AI suggestions never bypass workflow state, validation or signoff.
+
+
+  REM  ================================================================
+  REM  EPISTEMIC DISCIPLINE
+  REM  ================================================================
+
+  EPISTEMIC
+    RETRIEVED
+    INFERRED
+    PROPOSED
+    UNRESOLVED
+  END EPISTEMIC
+
+  RULE epistemic_integrity
+    REQUIRE every_canonical_claim HAS epistemic_status
+    REQUIRE UNRESOLVED != INFERRED
+    REQUIRE INFERRED != RETRIEVED
+    REQUIRE PROPOSED != VERIFIED
+  END RULE
+
+
+  REM  ================================================================
+  REM  RESOLUTION
+  REM  ================================================================
+
+  REM  Resolution is orthogonal to lifecycle state.
+  REM  EASY = low-resolution conception / outline / minimal realization.
+  REM  MID  = structured specification / relationships / dependencies.
+  REM  PRO  = formal specification / verification / provenance / release.
+
+  RESOLUTION EASY
+    DETAIL "conceptual outline and lightweight artifact"
+  END RESOLUTION
+
+  RESOLUTION MID
+    DETAIL "structured artifact, dependencies and verification criteria"
+  END RESOLUTION
+
+  RESOLUTION PRO
+    DETAIL "formal artifact, tests, provenance, signoff and release package"
+  END RESOLUTION
+
+
+  REM  ================================================================
+  REM  ITERATION / COMBINED NARRATIVE LOGIC
+  REM  ================================================================
+
+  RULE periodic_synthesis
+    WHEN concept.iterations MOD 3 == 0
+      GENERATE concept.summary
+      GENERATE concept.delta
+      GENERATE concept.unresolved
+      REQUEST HUMAN REVIEW
+    END WHEN
+  END RULE
+
+  RULE convergence
+    WHEN alternatives CONVERGE
+      INTEGRATE common_structure
+      CREATE higher_order_concept
+      PRESERVE all predecessor provenance
+      ALLOW REEXPANSION
+    END WHEN
+  END RULE
+
+
+  REM  ================================================================
+  REM  TERMINAL FLOW
+  REM  ================================================================
+
+  WORKFLOW MATBA
+    ENTRY
+    CONCEPTUALIZE
+    CONCEPT_REVIEW
+    CONCEPT_SIGNOFF
+    SPECIFY
+    SPECIFICATION_REVIEW
+    SPECIFICATION_SIGNOFF
+    INTAKE
+    INSPECT
+    ORGANIZE
+    DESCRIBE
+    DEVELOP
+    COMPOSE
+    CHECK
+    REVIEW
+    SIGNOFF_PUBLICATION
+    SEAL
+    PUBLISH
+    MINT
+    PRESERVE
+  END WORKFLOW
+
+END MODULE

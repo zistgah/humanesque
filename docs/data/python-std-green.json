@@ -1,0 +1,12 @@
+{
+  "language": "python",
+  "issuing_body": "PSF / CPython 3.12",
+  "suite": "Lib/test/{test_unary,test_bool,test_grammar}.py self-contained asserts",
+  "n": 68,
+  "pass": 68,
+  "skip": 0,
+  "skip0": true,
+  "excluded": 172,
+  "fails": [],
+  "standard_green": true
+}

@@ -1,0 +1,16 @@
+MODULE PANINI.GFX
+
+FUNCTION draw_square()
+    GFX_CLEAR()
+    GFX_RECT(20, 20, 80, 80)
+    GFX_LINE(20, 20, 100, 100)
+    GFX_CIRCLE(60, 60, 20)
+    RETURN "ok"
+END
+
+FUNCTION main()
+    PRINT draw_square()
+    RETURN 0
+END
+
+END

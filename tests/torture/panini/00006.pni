@@ -1,0 +1,7 @@
+MODULE T00006
+FUNCTION main()
+    items = [1, 2, 3]
+    PRINT LEN(items)
+    RETURN 0
+END
+END

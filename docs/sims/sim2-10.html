@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V1.9 - Articulated Head</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050507; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-emerald-500 pointer-events-auto">
+            <h1 class="text-emerald-400 font-bold text-xl tracking-tighter">AyeCNSe <span class="text-white">SENSOR_HEAD V1.9</span></h1>
+            <p class="text-[10px] text-slate-400 uppercase mt-1">Joints: 20-DOF Total | Sensory: Active</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl pointer-events-auto flex gap-6 h-64">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-slate-950 p-4 jetbrains text-emerald-100 text-xs outline-none rounded-lg border border-slate-800 resize-none">
+// 1. Greet Sequence
+HEAD_PAN(30)
+WAIT(0.5)
+HEAD_PAN(-30)
+HEAD_TILT(20)
+
+// 2. Action
+WALK(4)
+ARM_L_SH_PITCH(45)
+HEAD_PAN(0)
+HEAD_TILT(0)</textarea>
+            </div>
+            <button onclick="sim.run()" class="w-48 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition-all uppercase text-sm">Execute Protocol</button>
+        </div>
+    </div>
+
+    <script>
+        class SensorHeadSim {
+            constructor() {
+                this.isWalking = false;
+                this.walkTime = 0;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(4, 5, 6);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(0, 3, 0);
+
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+                const light = new THREE.DirectionalLight(0xffffff, 1);
+                light.position.set(5, 10, 5);
+                this.scene.add(light);
+                this.scene.add(new THREE.GridHelper(30, 30, 0x1e293b, 0x0f172a));
+
+                this.buildBot();
+                this.animate();
+            }
+
+            buildBot() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155 });
+                const sensorMat = new THREE.MeshStandardMaterial({ color: 0x10b981, emissive: 0x065f46 });
+
+                // Core Pelvis
+                this.pelvis = new THREE.Group();
+                this.pelvis.position.y = 2.4;
+                this.bot.add(this.pelvis);
+                this.pelvis.add(new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.5), mat));
+
+                // Torso
+                this.torso = new THREE.Group();
+                this.torso.position.y = 0.3;
+                this.pelvis.add(this.torso);
+                this.torso.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.3, 0.6), mat));
+
+                // NECK & HEAD (2-DOF)
+                this.neck = new THREE.Group();
+                this.neck.position.y = 0.75; // Top of torso
+                this.torso.add(this.neck);
+
+                this.head = new THREE.Group();
+                this.neck.add(this.head);
+
+                const headMesh = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.45, 0.45), mat);
+                this.head.add(headMesh);
+
+                // "Eyes" / Sensors
+                const eye = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.1, 0.05), sensorMat);
+                eye.position.set(0, 0.05, 0.23);
+                this.head.add(eye);
+
+                // Append Legs and Arms (Fluid Logic)
+                this.legs = {
+                    L: this.createLeg(-0.3, this.pelvis, mat),
+                    R: this.createLeg(0.3, this.pelvis, mat)
+                };
+                this.arms = {
+                    L: this.createArm(-0.7, this.torso, mat),
+                    R: this.createArm(0.7, this.torso, mat)
+                };
+
+                this.scene.add(this.bot);
+            }
+
+            createLeg(x, parent, mat) {
+                const hip = new THREE.Group(); hip.position.set(x, -0.2, 0); parent.add(hip);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), mat); u.position.y = -0.6; hip.add(u);
+                const knee = new THREE.Group(); knee.position.y = -0.6; u.add(knee);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.2, 0.25), mat); l.position.y = -0.6; knee.add(l);
+                return { hip, knee };
+            }
+
+            createArm(x, parent, mat) {
+                const sh = new THREE.Group(); sh.position.set(x, 0.4, 0); parent.add(sh);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.8, 0.2), mat); u.position.y = -0.4; sh.add(u);
+                const eb = new THREE.Group(); eb.position.y = -0.4; u.add(eb);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.8, 0.18), mat); l.position.y = -0.4; eb.add(l);
+                return { sh, eb };
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for(let line of lines) {
+                    if (line.trim().startsWith('//') || !line.trim()) continue;
+                    const match = line.match(/(.+)\((.*)\)/);
+                    if(match) {
+                        const cmd = match[1].trim();
+                        const val = parseFloat(match[2]);
+                        const rad = (val * Math.PI) / 180;
+
+                        if(cmd === 'HEAD_PAN') this.neck.rotation.y = rad;
+                        if(cmd === 'HEAD_TILT') this.head.rotation.x = -rad;
+                        if(cmd.includes('SH_PITCH')) {
+                            const arm = cmd.includes('_L_') ? this.arms.L : this.arms.R;
+                            arm.sh.rotation.x = rad;
+                        }
+                        if(cmd === 'WALK') {
+                            this.isWalking = true;
+                            await new Promise(r => setTimeout(r, val * 450));
+                            this.isWalking = false;
+                        }
+                        if(cmd === 'WAIT') await new Promise(r => setTimeout(r, val*1000));
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                if(this.isWalking) {
+                    this.walkTime += 0.08;
+                    const swing = Math.sin(this.walkTime) * 0.6;
+                    this.legs.L.hip.rotation.x = swing;
+                    this.legs.R.hip.rotation.x = -swing;
+                    this.legs.L.knee.rotation.x = swing > 0 ? swing * 1.2 : 0.1;
+                    this.legs.R.knee.rotation.x = swing < 0 ? -swing * 1.2 : 0.1;
+                    
+                    this.pelvis.rotation.z = Math.sin(this.walkTime) * 0.08;
+                    this.pelvis.rotation.y = -swing * 0.2;
+                    this.torso.rotation.y = swing * 0.3;
+                    
+                    this.bot.position.z += 0.04;
+                    this.bot.position.y = Math.abs(Math.cos(this.walkTime)) * 0.12;
+                }
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new SensorHeadSim();
+    </script>
+</body>
+</html>

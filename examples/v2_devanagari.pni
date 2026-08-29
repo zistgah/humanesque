@@ -1,0 +1,12 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+@ilm(devanagari_hi)
+@functional
+कार्य double(x)
+    लौटाओ x * 2
+अंत
+
+कार्य main()
+    लौटाओ double(21)
+अंत

@@ -1,0 +1,9 @@
+{
+ "arabic_letters": 200,
+ "base_map": 42,
+ "base_covered": 42,
+ "heuristic_filled": 158,
+ "total_covered": 200,
+ "coverage_pct": 100.0,
+ "note": "BASE unchanged where it suffices; heuristic fills the remainder; short-vowel residue documented."
+}

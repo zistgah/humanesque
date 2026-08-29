@@ -1,0 +1,7 @@
+; semicolon comment
+MODULE T00014
+FUNCTION main()
+    PRINT 7 * 6
+    RETURN 0
+END
+END

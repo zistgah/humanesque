@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V7.0 - Moon Lander</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050505; font-family: 'Courier New', monospace; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-overlay { position: relative; z-index: 10; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+        .hud { background: rgba(0, 40, 0, 0.7); border: 1px solid #0f0; padding: 15px; border-radius: 4px; pointer-events: auto; color: #0f0; width: 250px; text-shadow: 0 0 5px #0f0; }
+        .console-box { display: flex; gap: 10px; height: 200px; width: 100%; max-width: 800px; align-self: center; background: rgba(0, 20, 0, 0.9); padding: 15px; border-radius: 4px; border: 1px solid #0f0; pointer-events: auto; }
+        textarea { flex-grow: 1; background: #000; color: #0f0; border: 1px solid #0f0; padding: 10px; font-size: 11px; outline: none; resize: none; }
+        button { width: 140px; background: #0f0; color: #000; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-overlay">
+        <div class="hud">
+            <h2 style="margin:0; font-size: 14px;">APOLLO_LM_v7.0</h2>
+            <hr style="border: 0.5px solid #0f0;">
+            <div id="telemetry">ALT: 0m | H_VEL: 0 | V_VEL: 0</div>
+            <div id="fuel" style="margin-top: 5px;">FUEL: 100%</div>
+        </div>
+        <div class="console-box">
+            <textarea id="ilmInput">
+// LUNAR DESCENT PROFILE
+IGNITION(5.0)    // Initial descent slow-down
+WAIT(1.0)
+PITCH(20)        // Kill horizontal velocity
+WAIT(2.0)
+PITCH(0)         // Vertical orientation
+WAIT(1.5)
+THROTTLE(1.6)    // Lunar Hover (Thrust = Gravity)
+WAIT(2.0)
+THROTTLE(1.2)    // Final Touchdown
+WAIT(3.0)</textarea>
+            <button onclick="sim.run()">Initiate De-Orbit</button>
+        </div>
+    </div>
+
+    <script>
+        class MoonLanderSim {
+            constructor() {
+                this.velocity = new THREE.Vector3(5, -1, 0); // Start with orbital speed
+                this.thrust = 0;
+                this.gravity = -0.0162; // 1/6th Earth Gravity
+                this.fuel = 100;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 10000);
+                this.camera.position.set(50, 30, 50);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                
+                // Moon Surface
+                const grid = new THREE.GridHelper(2000, 100, 0x444444, 0x222222);
+                this.scene.add(grid);
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+                const earthshine = new THREE.DirectionalLight(0xccccff, 0.5); earthshine.position.set(-100, 100, -100); this.scene.add(earthshine);
+
+                this.buildLander();
+                this.animate();
+            }
+
+            buildLander() {
+                this.lander = new THREE.Group();
+                const goldMat = new THREE.MeshStandardMaterial({color: 0xaa9900, metalness: 0.8, roughness: 0.2});
+                const greyMat = new THREE.MeshStandardMaterial({color: 0x888888});
+                
+                // Descent Stage (Octagon)
+                const base = new THREE.Mesh(new THREE.CylinderGeometry(2, 2.5, 1.5, 8), goldMat);
+                this.lander.add(base);
+
+                // Legs
+                for(let i=0; i<4; i++) {
+                    const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 4), greyMat);
+                    leg.rotation.z = (i % 2 === 0) ? 0.7 : -0.7;
+                    leg.rotation.x = (i > 1) ? 0.7 : -0.7;
+                    leg.position.set(Math.cos(i*Math.PI/2)*2, -1, Math.sin(i*Math.PI/2)*2);
+                    this.lander.add(leg);
+                }
+
+                this.flame = new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 8), new THREE.MeshBasicMaterial({color: 0x44aaff, transparent: true, opacity: 0}));
+                this.flame.position.y = -1.5; this.flame.rotation.x = Math.PI;
+                this.lander.add(this.flame);
+
+                this.lander.position.y = 100; // Start at altitude
+                this.scene.add(this.lander);
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const m = line.trim().match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]) || 0;
+                        if (cmd === 'IGNITION' || cmd === 'THROTTLE') this.thrust = val * 0.01;
+                        else if (cmd === 'PITCH') this.targetPitch = THREE.MathUtils.degToRad(val);
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                        else if (cmd === 'RESET') location.reload();
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                if (this.targetPitch !== undefined) this.lander.rotation.z += (this.targetPitch - this.lander.rotation.z) * 0.05;
+
+                if (this.thrust > 0 && this.fuel > 0) {
+                    const tVec = new THREE.Vector3(0, 1, 0).applyQuaternion(this.lander.quaternion);
+                    this.velocity.addScaledVector(tVec, this.thrust);
+                    this.fuel -= 0.05;
+                    this.flame.opacity = 0.7;
+                    this.flame.scale.set(1, this.thrust * 100, 1);
+                } else {
+                    this.flame.opacity = 0;
+                }
+
+                this.velocity.y += this.gravity;
+                this.lander.position.add(this.velocity);
+
+                // Telemetry
+                document.getElementById('telemetry').innerText = `ALT: ${Math.round(this.lander.position.y)}m | H_VEL: ${this.velocity.x.toFixed(1)} | V_VEL: ${this.velocity.y.toFixed(1)}`;
+                document.getElementById('fuel').innerText = `FUEL: ${Math.max(0, Math.round(this.fuel))}%`;
+
+                if (this.lander.position.y <= 0) {
+                    this.lander.position.y = 0;
+                    const impact = this.velocity.length();
+                    if (impact > 0.3) {
+                        this.lander.rotation.x = 1.5; // Tip over on crash
+                        document.getElementById('telemetry').innerText = "CRASH DETECTED";
+                    } else {
+                        document.getElementById('telemetry').innerText = "LANDING SUCCESSFUL";
+                    }
+                    this.velocity.set(0,0,0);
+                    this.thrust = 0;
+                }
+
+                this.controls.target.copy(this.lander.position);
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new MoonLanderSim();
+    </script>
+</body>
+</html>

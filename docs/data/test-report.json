@@ -1,0 +1,541 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "theorem": "DASHBOARD_DERIVED",
+  "when": "2026-08-29T15:05:54.124Z",
+  "exit_policy": "nonzero_on_failure",
+  "assets": [
+    {
+      "name": "wllama.wasm",
+      "ok": false,
+      "status": 403,
+      "url": "https://cdn.jsdelivr.net/npm/@wllama/wllama@2.3.1/esm/single-thread/wllama.wasm"
+    },
+    {
+      "name": "stories15M.Q4_0.gguf",
+      "ok": false,
+      "status": 403,
+      "url": "https://huggingface.co/ggml-org/models/resolve/main/tinyllamas/stories15M-q4_0.gguf"
+    }
+  ],
+  "frontends": [
+    {
+      "name": "c",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 42,
+      "frontend": "PANINI.Frontend.C"
+    },
+    {
+      "name": "cpp",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.Cpp"
+    },
+    {
+      "name": "python",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 42,
+      "frontend": "PANINI.Frontend.Python"
+    },
+    {
+      "name": "rust",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.Rust"
+    },
+    {
+      "name": "typescript",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.TypeScript"
+    },
+    {
+      "name": "go",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.Go"
+    },
+    {
+      "name": "zig",
+      "ok": false,
+      "error": "Undefined name: b"
+    },
+    {
+      "name": "fortran",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.Fortran"
+    },
+    {
+      "name": "lua",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.Lua"
+    },
+    {
+      "name": "javascript",
+      "ok": true,
+      "subsetOk": true,
+      "feOk": true,
+      "value": 0,
+      "frontend": "PANINI.Frontend.JavaScript"
+    }
+  ],
+  "roundtrip": [
+    {
+      "name": "romenagri_inventory",
+      "ok": true,
+      "code": 0,
+      "tail": "roglyphs inventoried\nok   urdu_map exists and is lossy (collisions named)\nok   27 language TSVs not reported as 7000\nok   Hindi keyword natives unique\nok   Hebrew TSV is NOT a Devanagari hub\nok   no fake Akkadian keywords file\nPASSED 15/15\n"
+    },
+    {
+      "name": "iso15919",
+      "ok": true,
+      "code": 0,
+      "tail": "d, not invented\nok   every Aran row has Deva\nok   Sinhala has ISO keys (name-projection cannot see AYANNA)\nok   Tamil present\nok   NFKC folds Arabic presentation meem\nok   Aran glyphs reach Deva via ISO key (≥90%; residue named)\nPASSED 6/6\n"
+    },
+    {
+      "name": "flatten_devanagari",
+      "ok": true,
+      "script": "devanagari",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_bengali",
+      "ok": false,
+      "script": "bengali",
+      "out_len": 229
+    },
+    {
+      "name": "flatten_gujarati",
+      "ok": true,
+      "script": "gujarati",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_gurmukhi",
+      "ok": true,
+      "script": "gurmukhi",
+      "out_len": 226
+    },
+    {
+      "name": "flatten_kannada",
+      "ok": true,
+      "script": "kannada",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_malayalam",
+      "ok": true,
+      "script": "malayalam",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_odia",
+      "ok": true,
+      "script": "odia",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_tamil",
+      "ok": true,
+      "script": "tamil",
+      "out_len": 224
+    },
+    {
+      "name": "flatten_telugu",
+      "ok": true,
+      "script": "telugu",
+      "out_len": 224
+    },
+    {
+      "name": "brahmi_count",
+      "ok": true,
+      "n": 15
+    },
+    {
+      "name": "perso_named_lossy",
+      "ok": true,
+      "n": 8
+    }
+  ],
+  "languages": [
+    {
+      "name": "bhasha_hindi",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/hindi_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_nepali",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/nepali_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_marathi",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/marathi_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_sanskrit",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/sanskrit_guru.uhin",
+      "bytes": 222
+    },
+    {
+      "name": "bhasha_punjabi",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/punjabi_guru.uhin",
+      "bytes": 221
+    },
+    {
+      "name": "bhasha_bengali",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/bengali_guru.uhin",
+      "bytes": 230
+    },
+    {
+      "name": "bhasha_assamese",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/assamese_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_gujarati",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/gujarati_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_odia",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/odia_guru.uhin",
+      "bytes": 234
+    },
+    {
+      "name": "bhasha_tamil",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/tamil_guru.uhin",
+      "bytes": 218
+    },
+    {
+      "name": "bhasha_telugu",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/telugu_guru.uhin",
+      "bytes": 227
+    },
+    {
+      "name": "bhasha_kannada",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/kannada_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_malayalam",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/malayalam_guru.uhin",
+      "bytes": 231
+    },
+    {
+      "name": "bhasha_pali",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/pali_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_prakrit",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/prakrit_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_urdu",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/urdu_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_persian",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/persian_guru.uhin",
+      "bytes": 216
+    },
+    {
+      "name": "bhasha_arabic",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/arabic_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_pashto",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/pashto_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_dari",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/dari_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_sindhi",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/sindhi_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_kashmiri",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/kashmiri_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_shahmukhi",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/shahmukhi_guru.uhin",
+      "bytes": 214
+    },
+    {
+      "name": "bhasha_hebrew",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/hebrew_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_aramaic",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/aramaic_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_syriac",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/syriac_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "bhasha_phoenician",
+      "ok": true,
+      "file": "examples/hindawi/generated/bhasha/phoenician_guru.uhin",
+      "bytes": 224
+    },
+    {
+      "name": "script_devanagari",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/devanagari_guru.uhin"
+    },
+    {
+      "name": "script_gurmukhi",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/gurmukhi_guru.uhin"
+    },
+    {
+      "name": "script_bengali",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/bengali_guru.uhin"
+    },
+    {
+      "name": "script_gujarati",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/gujarati_guru.uhin"
+    },
+    {
+      "name": "script_odia",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/odia_guru.uhin"
+    },
+    {
+      "name": "script_tamil",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/tamil_guru.uhin"
+    },
+    {
+      "name": "script_telugu",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/telugu_guru.uhin"
+    },
+    {
+      "name": "script_kannada",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/kannada_guru.uhin"
+    },
+    {
+      "name": "script_malayalam",
+      "ok": true,
+      "file": "examples/hindawi/generated/script/malayalam_guru.uhin"
+    },
+    {
+      "name": "awaiting_sinhala",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_tibetan",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_thai",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_khmer",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_lao",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_myanmar",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_meitei",
+      "ok": true,
+      "awaiting_table": true
+    },
+    {
+      "name": "bhasha_hebrew",
+      "ok": true,
+      "script": "hebrew"
+    },
+    {
+      "name": "bhasha_aramaic",
+      "ok": true,
+      "script": "aramaic"
+    },
+    {
+      "name": "bhasha_syriac",
+      "ok": true,
+      "script": "syriac"
+    },
+    {
+      "name": "bhasha_phoenician",
+      "ok": true,
+      "script": "phoenician"
+    },
+    {
+      "name": "awaiting_russian",
+      "ok": true,
+      "script": "cyrillic",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_ukrainian",
+      "ok": true,
+      "script": "cyrillic",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_greek",
+      "ok": true,
+      "script": "greek",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_georgian",
+      "ok": true,
+      "script": "georgian",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_armenian",
+      "ok": true,
+      "script": "armenian",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_amharic",
+      "ok": true,
+      "script": "ethiopic",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_korean",
+      "ok": true,
+      "script": "hangul",
+      "awaiting_table": true
+    },
+    {
+      "name": "awaiting_chinese",
+      "ok": true,
+      "script": "han",
+      "awaiting_table": true
+    }
+  ],
+  "panini_core": [
+    {
+      "name": "tests/run.mjs",
+      "ok": true,
+      "code": 0,
+      "tail": "  ok   python_standard_green_cpython_language |   ok   qb64_pascal_fortran_std_green |   ok   oop_standard_green_cpp_js_ts_java_st_hs |   ok   lisp_prolog_standard_green |   ok   console_one_glass_vga |  | 32 passed, 0 failed | "
+    },
+    {
+      "name": "c_last",
+      "ok": true,
+      "pass": 104,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "name": "cxx_last",
+      "ok": true,
+      "pass": 138,
+      "fail": 0,
+      "skip": 0
+    }
+  ],
+  "derived": {
+    "assets": {
+      "n": 2,
+      "pass": 0,
+      "fail": 2
+    },
+    "frontends": {
+      "n": 10,
+      "pass": 9,
+      "fail": 1
+    },
+    "roundtrip": {
+      "n": 13,
+      "pass": 12,
+      "fail": 1
+    },
+    "languages": {
+      "n": 55,
+      "pass": 55,
+      "fail": 0
+    },
+    "panini_core": {
+      "n": 3,
+      "pass": 3,
+      "fail": 0
+    },
+    "total_pass": 79,
+    "total_n": 83,
+    "greenish": "79/83"
+  }
+}

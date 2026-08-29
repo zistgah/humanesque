@@ -1,0 +1,7 @@
+MODULE T00031
+FUNCTION main()
+    xs = [1, 2, 3]
+    PRINT LEN(xs)
+    RETURN 0
+END
+END

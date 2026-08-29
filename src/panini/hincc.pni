@@ -1,0 +1,15 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * 2004 guru.bat stages. .hin = ISCII. No lekhak.hin in the zip.
+ */
+MODULE PANINI.Hincc
+FUNCTION stages_hin()
+    RETURN ["rmshaili", "acii2cf", "h2c", "gcc"]
+END
+FUNCTION stages_uhin()
+    RETURN ["fixuninum", "iconv_utf16", "uni2acii", "acii2cf", "h2c"]
+END
+FUNCTION main()
+    PRINT LEN(stages_hin())
+    RETURN LEN(stages_hin())
+END
+END

@@ -1,0 +1,8 @@
+MODULE T00015
+FUNCTION main()
+    FOREACH x IN [10, 20]
+        PRINT x
+    END
+    RETURN 0
+END
+END

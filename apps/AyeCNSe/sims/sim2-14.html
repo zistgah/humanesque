@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V2.3 - Hardwired</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: #020617; font-family: monospace; }
+        canvas { display: block; }
+        .ui { position: absolute; top: 20px; left: 20px; z-index: 100; pointer-events: none; }
+        .panel { background: rgba(15, 23, 42, 0.95); padding: 20px; border-radius: 12px; border: 1px solid #334155; pointer-events: auto; color: white; width: 320px; }
+        .btn { background: #ef4444; color: white; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
+        .btn:hover { background: #dc2626; }
+        .slider-group { margin-top: 15px; }
+        input[type=range] { width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="ui">
+        <div class="panel">
+            <h2 style="color: #ef4444; margin: 0;">AYECNSE V2.3</h2>
+            <p style="font-size: 10px; color: #94a3b8;">SYSTEM: BIPED_CORE_ACTIVE</p>
+            
+            <div class="slider-group">
+                <label style="font-size: 11px;">HIPS (SIT/STAND)</label>
+                <input type="range" min="-1.5" max="0" step="0.1" value="0" oninput="updateHip(this.value)">
+            </div>
+            
+            <div class="slider-group">
+                <label style="font-size: 11px;">BODY ROLL</label>
+                <input type="range" min="0" max="6.28" step="0.1" value="0" oninput="updateRoll(this.value)">
+            </div>
+
+            <button class="btn" onclick="startDance()">EXECUTE BHANGRA</button>
+        </div>
+    </div>
+
+    <script>
+        let scene, camera, renderer, bot, pelvis, hipL, hipR, kneeL, kneeR;
+
+        function init() {
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x020617);
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+            camera.position.set(5, 5, 8);
+            camera.lookAt(0, 2, 0);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(5, 10, 5);
+            scene.add(light);
+            scene.add(new THREE.AmbientLight(0x404040));
+            scene.add(new THREE.GridHelper(20, 20, 0x334155, 0x0f172a));
+
+            // BUILD ROBOT
+            bot = new THREE.Group();
+            
+            pelvis = new THREE.Mesh(new THREE.BoxGeometry(1, 0.5, 0.6), new THREE.MeshStandardMaterial({color: 0x475569}));
+            pelvis.position.y = 2.5;
+            bot.add(pelvis);
+
+            const torso = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.5, 0.7), new THREE.MeshStandardMaterial({color: 0x64748b}));
+            torso.position.y = 1;
+            pelvis.add(torso);
+
+            const head = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({color: 0xef4444}));
+            head.position.y = 1.1;
+            torso.add(head);
+
+            // Legs
+            hipL = new THREE.Group(); hipL.position.set(-0.4, -0.2, 0); pelvis.add(hipL);
+            const uL = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), new THREE.MeshStandardMaterial({color: 0x334155}));
+            uL.position.y = -0.6; hipL.add(uL);
+            
+            hipR = new THREE.Group(); hipR.position.set(0.4, -0.2, 0); pelvis.add(hipR);
+            const uR = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), new THREE.MeshStandardMaterial({color: 0x334155}));
+            uR.position.y = -0.6; hipR.add(uR);
+
+            scene.add(bot);
+            animate();
+        }
+
+        function updateHip(val) {
+            hipL.rotation.x = val;
+            hipR.rotation.x = val;
+            pelvis.position.y = 2.5 + (val * 1.2); // Sits as hips rotate
+        }
+
+        function updateRoll(val) {
+            pelvis.rotation.x = val;
+        }
+
+        function startDance() {
+            let t = 0;
+            const interval = setInterval(() => {
+                t += 0.1;
+                // Bhangra Bounce
+                const bounce = Math.abs(Math.sin(t * 2)) * 0.5;
+                pelvis.position.y = 2.5 + bounce;
+                hipL.rotation.x = Math.sin(t * 2) * 0.5;
+                hipR.rotation.x = -Math.sin(t * 2) * 0.5;
+
+                if (t > 10) {
+                    clearInterval(interval);
+                    pelvis.position.y = 2.5;
+                    hipL.rotation.x = 0;
+                    hipR.rotation.x = 0;
+                }
+            }, 30);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

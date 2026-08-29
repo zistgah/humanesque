@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(typescript)",
+  "standard": "ECMA-262 / TS 5 — panini-ts-testsuite single-exec",
+  "subject": "PANINI.Frontend.TypeScript",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

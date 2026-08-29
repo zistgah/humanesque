@@ -1,0 +1,18 @@
+/* Jazz — default 2D. Not white. Immersive-adjacent. */
+html[data-theme="jazz"] body.site,
+body.site {
+  background:
+    radial-gradient(90% 55% at 12% -10%, #5b2a9a 0%, transparent 52%),
+    radial-gradient(80% 50% at 110% 10%, #c45a12 0%, transparent 48%),
+    radial-gradient(60% 40% at 50% 110%, #1a2744 0%, transparent 50%),
+    #07040e !important;
+  color: #f3e6b6 !important;
+}
+.site-head { background: rgba(0,0,0,.55) !important; backdrop-filter: blur(8px); }
+.role {
+  background: rgba(255,255,255,.07) !important;
+  box-shadow: 0 0 28px rgba(201,162,39,.22);
+  border-color: rgba(201,162,39,.45) !important;
+}
+h1 { text-shadow: 0 0 36px rgba(201,162,39,.55); }
+a { color: #ffd56a !important; }

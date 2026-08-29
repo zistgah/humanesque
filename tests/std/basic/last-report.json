@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(basic)",
+  "standard": "Hindawi Shaili BASIC subset — panini-basic-testsuite single-exec",
+  "subject": "PANINI.Frontend.BASIC",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

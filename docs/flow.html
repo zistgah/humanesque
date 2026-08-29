@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — C → WASM end to end</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .pipe { display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; margin: 1rem 0; }
+    .pipe .st { border: 1px solid rgba(201,162,39,.35); padding: .45rem .5rem; font-size: .8rem; min-height: 3.4rem; }
+    .pipe .st.on { border-color: var(--gold); background: rgba(201,162,39,.12); }
+    .pipe .st b { display: block; color: var(--gold); font-size: .72rem; letter-spacing: .04em; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 800px) { .pipe, .grid2 { grid-template-columns: 1fr; } }
+    textarea.mono { width: 100%; min-height: 14rem; font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #0b1220; color: #e8d9a8; border: 1px solid rgba(201,162,39,.35); padding: .6rem; }
+    .out { padding: .7rem .8rem; background: #0b1220; border: 1px solid rgba(201,162,39,.35); color: #9fe6a0; font: 14px ui-monospace, Menlo, Consolas, monospace; white-space: pre-wrap; }
+    .row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: .6rem 0; }
+    button { background: #c9a227; color: #070d18; border: 0; padding: .45rem .9rem; font: 600 14px/1.2 inherit; cursor: pointer; }
+    button.ghost { background: transparent; color: #c9a227; border: 1px solid rgba(201,162,39,.45); }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="flow.html" class="now">C → WASM</a>
+    <a href="wasm.html">WASM</a>
+    <a href="nb.html">Notebook</a>
+    <a href="path/research.html">Researchers</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">Frontends in PANINI · host C · wasm.pni · your browser</p>
+  <h1>End to end</h1>
+  <p class="lead">Pick a frontend. It lowers to C (Python via AST; braced languages via a documented subset). Then the same <code>c.pni</code> + <code>wasm.pni</code> the tests use. No wabt. No server.</p>
+
+  <div class="pipe" id="pipe">
+    <div class="st" id="s0"><b>1 SOURCE</b>frontend</div>
+    <div class="st" id="s1"><b>2 HOST C</b>lower_to_c / flatten</div>
+    <div class="st" id="s3"><b>3 AST</b>c.pni</div>
+    <div class="st" id="s4"><b>4 WAT</b>wasm.pni</div>
+    <div class="st" id="s5"><b>5 WASM</b>instantiate · result</div>
+  </div>
+
+  <div class="row">
+    <label>kind
+      <select id="kind">
+        <option value="c">C</option>
+        <option value="hindi">Hindi C</option>
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+        <option value="rust">Rust</option>
+        <option value="go">Go</option>
+        <option value="ts">TypeScript</option>
+        <option value="zig">Zig</option>
+        <option value="lua">Lua</option>
+      </select>
+    </label>
+    <button type="button" id="lower">Lower</button>
+    <button type="button" id="run">Lower and run</button>
+    <button type="button" class="ghost" id="ex-compute">C compute(5)</button>
+    <button type="button" class="ghost" id="ex-goto">C goto</button>
+    <button type="button" class="ghost" id="ex-hindi">Hindi गण(5)</button>
+    <button type="button" class="ghost" id="ex-py">Python</button>
+    <button type="button" class="ghost" id="ex-rs">Rust</button>
+    <label>export <input id="exp" value="main" size="10" /></label>
+    <label>arg <input id="arg" value="" size="6" placeholder="optional" /></label>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3>Source</h3>
+      <textarea class="mono" id="src" spellcheck="false" translate="no">int compute(int x) {
+  int result;
+  result = x + 10 * 2;
+  return result;
+}
+int main() {
+  return compute(5);
+}
+</textarea>
+    </div>
+    <div>
+      <h3>Host C</h3>
+      <textarea class="mono" id="host" spellcheck="false" translate="no"></textarea>
+    </div>
+    <div>
+      <h3>WAT (PANINI.Backend.Wasm)</h3>
+      <textarea class="mono" id="wat" spellcheck="false" translate="no"></textarea>
+    </div>
+    <div>
+      <h3>Result</h3>
+      <div class="out" id="out">Load the emitter once, then Lower. First load parses c.pni + wasm.pni in this page.</div>
+      <h3>Notes</h3>
+      <div class="out" id="notes" style="color:#e8d9a8;min-height:4rem"></div>
+    </div>
+  </div>
+  <p class="fine">Sources: <a href="engine/interp/c.pni">c.pni</a> · <a href="engine/interp/wasm.pni">wasm.pni</a> · <a href="engine/interp/host.js">host.js</a> · assembler <a href="engine/wat2wasm.js">wat2wasm.js</a>. Hindi uses the same notebook flatten before this C. printf/stdio is not WASI here — numeric <code>main</code> / exported functions only.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="engine/nb.js"></script>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+<script type="module">
+import { emitCWat, runCWasm, parseCAst, loadCWasm, lowerToC, runLangWasm } from "./engine/interp/host.js";
+
+const COMPUTE = document.getElementById("src").value;
+const GOTO = `int main(){ int x; x=1; goto skip; x=2; skip: return x; }`;
+const HINDI = `<शैली गुरु>
+पूर्णांक गण(पूर्णांक x) {
+  पूर्णांक फल;
+  फल = x + 10 * 2;
+  वापस फल;
+}
+पूर्णांक मुख्य() {
+  वापस गण(5);
+}
+`;
+
+function mark(n) {
+  for (let i = 0; i <= 5; i++) {
+    const el = document.getElementById("s" + i) || document.getElementById("s" + (i === 2 ? 3 : i));
+  }
+  ["s0","s1","s3","s4","s5"].forEach((id, i) => {
+    document.getElementById(id).classList.toggle("on", i < n);
+  });
+}
+
+const PY = `def compute(x):
+    result = x + 10 * 2
+    return result
+def main():
+    return compute(5)
+`;
+const RS = `fn compute(x: i32) -> i32 {
+  let mut result = 0;
+  result = x + 10 * 2;
+  return result;
+}
+fn main() -> i32 {
+  return compute(5);
+}
+`;
+
+async function toHost(src, kind) {
+  if (kind === "hindi") {
+    await PANINI_NB.load("engine/bundle.json");
+    const r = PANINI_NB.compile({ src, lang: "hindi", shaili: "guru" });
+    return { host: r.host, notes: (r.notes || []).concat(["Hindi C → flatten · shaili · lex"]), romenagri: r.romenagri };
+  }
+  if (kind === "c") return { host: src, notes: ["kind=C"] };
+  const host = await lowerToC(kind, src);
+  return { host, notes: ["PANINI.Frontend." + kind + " → host C (numeric subset)"] };
+}
+
+async function lower() {
+  const out = document.getElementById("out");
+  const notes = document.getElementById("notes");
+  out.textContent = "loading emitter…";
+  mark(1);
+  const src = document.getElementById("src").value;
+  const kind = document.getElementById("kind").value;
+  const h = await toHost(src, kind);
+  document.getElementById("host").value = h.host;
+  mark(2);
+  await loadCWasm();
+  const ast = await parseCAst(h.host);
+  const defs = [];
+  const body = ast && ast.body;
+  if (Array.isArray(body)) body.forEach((s) => { if (s && s.op === "def") defs.push(s.name); });
+  mark(3);
+  const wat = await emitCWat(h.host);
+  document.getElementById("wat").value = wat;
+  mark(4);
+  notes.textContent = (h.notes || []).join("\n") +
+    "\nAST defs: " + (defs.join(", ") || "(none)") +
+    (h.romenagri ? "\nRomenagri kernel (gdb sees this):\n" + String(h.romenagri).slice(0, 400) : "");
+  out.textContent = "Lowered. " + wat.length + " chars of WAT. Run to instantiate.";
+  return { wat, host: h.host };
+}
+
+document.getElementById("lower").onclick = () => lower().catch((e) => {
+  document.getElementById("out").textContent = String(e.message || e);
+});
+
+document.getElementById("run").onclick = async () => {
+  const out = document.getElementById("out");
+  try {
+    const { host } = await lower();
+    const name = document.getElementById("exp").value.trim() || "main";
+    const raw = document.getElementById("arg").value.trim();
+    const args = raw === "" ? [] : [Number(raw)];
+    const r = await runCWasm(host, name, args);
+    mark(5);
+    out.textContent = name + "(" + args.join(",") + ") = " + r.value +
+      "\n" + r.bytes.length + " bytes  ·  magic \\0asm" +
+      "\nfrontend PANINI.Frontend.C  ·  backend PANINI.Backend.Wasm";
+  } catch (e) {
+    out.textContent = String(e.message || e);
+  }
+};
+
+document.getElementById("ex-compute").onclick = () => {
+  document.getElementById("kind").value = "c";
+  document.getElementById("src").value = COMPUTE;
+  document.getElementById("exp").value = "compute";
+  document.getElementById("arg").value = "5";
+};
+document.getElementById("ex-goto").onclick = () => {
+  document.getElementById("kind").value = "c";
+  document.getElementById("src").value = GOTO;
+  document.getElementById("exp").value = "main";
+  document.getElementById("arg").value = "";
+};
+document.getElementById("ex-hindi").onclick = () => {
+  document.getElementById("kind").value = "hindi";
+  document.getElementById("src").value = HINDI;
+  document.getElementById("exp").value = "main";
+  document.getElementById("arg").value = "";
+};
+document.getElementById("ex-py").onclick = () => {
+  document.getElementById("kind").value = "python";
+  document.getElementById("src").value = PY;
+  document.getElementById("exp").value = "main";
+  document.getElementById("arg").value = "";
+};
+document.getElementById("ex-rs").onclick = () => {
+  document.getElementById("kind").value = "rust";
+  document.getElementById("src").value = RS;
+  document.getElementById("exp").value = "main";
+  document.getElementById("arg").value = "";
+};
+
+loadCWasm().then(() => {
+  document.getElementById("out").textContent = "Emitter ready (c.pni + wasm.pni parsed). Lower or Run.";
+}).catch((e) => {
+  document.getElementById("out").textContent = "emitter load: " + (e.message || e);
+});
+</script>
+</body>
+</html>

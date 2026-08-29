@@ -1,0 +1,14 @@
+/* PANINI.Frontend.Haskell — STANDARD GREEN on GHC codeGen should_run extract.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.Haskell
+FUNCTION run_haskell(source)
+    r = HASKELLRUN(source)
+    r.frontend = "PANINI.Frontend.Haskell"
+    RETURN r
+END
+FUNCTION main()
+    r = run_haskell("main = print (1+2)")
+    RETURN r.value
+END
+END

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V3.1 - 32-DOF Full Kinematic</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #050507; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); pointer-events: auto; }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="relative z-10 h-screen pointer-events-none flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-orange-500 w-fit">
+            <h1 class="text-orange-500 font-bold text-xl uppercase tracking-tighter">AyeCNSe <span class="text-white">FULL_SPEC_V3.1</span></h1>
+            <p class="text-[10px] text-slate-400 uppercase mt-1">Total DOF: 32 | Status: High-Fidelity Kinematics</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl flex gap-4 h-96 w-full max-w-6xl self-center">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-black p-4 jetbrains text-orange-200 outline-none rounded-lg border border-slate-800 resize-none">
+// BHANGRA HYPER-DOF SEQUENCE
+WAIST_Y(30)
+HEAD_PAN(-20)
+ARM_L_SHOULDER_ROLL(90)
+ARM_R_SHOULDER_ROLL(-90)
+ARM_L_WRIST_PITCH(45)
+ARM_R_WRIST_PITCH(45)
+WAIT(0.5)
+JUMP(2.5)
+WAIT(1)
+RESET()</textarea>
+            </div>
+            <div class="w-64 flex flex-col gap-2 overflow-y-auto pr-2 jetbrains">
+                <button onclick="sim.run()" class="bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-lg uppercase transition-all mb-2">Execute Batch</button>
+                <div class="text-orange-400 border-b border-orange-900 pb-1 mb-1">ARM DOF (L)</div>
+                <div id="telemetry" class="text-slate-400 text-[9px] grid grid-cols-2 gap-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class FullDOFSim {
+            constructor() {
+                this.joints = {};
+                this.velY = 0;
+                this.gravity = -0.015;
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(5, 5, 8);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(0, 2, 0);
+
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+                const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+                sun.position.set(5, 10, 5);
+                this.scene.add(sun);
+                this.scene.add(new THREE.GridHelper(30, 30, 0x1e293b, 0x0f172a));
+
+                this.buildBot();
+                this.animate();
+            }
+
+            buildBot() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155 });
+                const jointMat = new THREE.MeshStandardMaterial({ color: 0xf97316 });
+
+                // 1. Pelvis & Waist (1-DOF Waist Yaw)
+                this.pelvis = new THREE.Group();
+                this.pelvis.position.y = 2.4;
+                this.bot.add(this.pelvis);
+                
+                this.waist = new THREE.Group(); // Waist Yaw
+                this.pelvis.add(this.waist);
+                this.waist.add(new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.6), mat));
+                this.joints['WAIST_Y'] = { ref: this.waist.rotation, axis: 'y' };
+
+                // 2. Torso
+                this.torso = new THREE.Group();
+                this.torso.position.y = 0.3;
+                this.waist.add(this.torso);
+                this.torso.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.4, 0.7), mat));
+
+                // 3. Head & Neck (2-DOF: Pan, Tilt)
+                this.neck = new THREE.Group(); this.neck.position.y = 0.8; this.torso.add(this.neck);
+                this.head = new THREE.Group(); this.neck.add(this.head);
+                this.head.add(new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.45, 0.45), mat));
+                this.joints['HEAD_PAN'] = { ref: this.neck.rotation, axis: 'y' };
+                this.joints['HEAD_TILT'] = { ref: this.head.rotation, axis: 'x' };
+
+                // 4. Arms (6-DOF Each)
+                this.createArm(-0.75, this.torso, mat, jointMat, 'L');
+                this.createArm(0.75, this.torso, mat, jointMat, 'R');
+
+                // 5. Legs (4-DOF Each: Hip P/R, Knee, Ankle)
+                this.createLeg(-0.35, this.pelvis, mat, jointMat, 'L');
+                this.createLeg(0.35, this.pelvis, mat, jointMat, 'R');
+
+                this.scene.add(this.bot);
+            }
+
+            createArm(x, parent, mat, jMat, side) {
+                const sP = new THREE.Group(); sP.position.set(x, 0.5, 0); parent.add(sP); // Sh Pitch
+                const sR = new THREE.Group(); sP.add(sR); // Sh Roll
+                const sY = new THREE.Group(); sR.add(sY); // Sh Yaw
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.8, 0.2), mat); u.position.y = -0.4; sY.add(u);
+                const e = new THREE.Group(); e.position.y = -0.8; sY.add(e); // Elbow
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.8, 0.18), mat); l.position.y = -0.4; e.add(l);
+                const wP = new THREE.Group(); wP.position.y = -0.8; e.add(wP); // Wrist Pitch
+                const wR = new THREE.Group(); wP.add(wR); // Wrist Roll
+                const hand = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.2, 0.2), jMat); hand.position.y = -0.1; wR.add(hand);
+
+                this.joints[`ARM_${side}_SHOULDER_PITCH`] = { ref: sP.rotation, axis: 'x' };
+                this.joints[`ARM_${side}_SHOULDER_ROLL`] = { ref: sR.rotation, axis: 'z' };
+                this.joints[`ARM_${side}_SHOULDER_YAW`] = { ref: sY.rotation, axis: 'y' };
+                this.joints[`ARM_${side}_ELBOW`] = { ref: e.rotation, axis: 'x' };
+                this.joints[`ARM_${side}_WRIST_PITCH`] = { ref: wP.rotation, axis: 'x' };
+                this.joints[`ARM_${side}_WRIST_ROLL`] = { ref: wR.rotation, axis: 'y' };
+            }
+
+            createLeg(x, parent, mat, jMat, side) {
+                const hP = new THREE.Group(); hP.position.set(x, -0.2, 0); parent.add(hP); // Hip Pitch
+                const hR = new THREE.Group(); hP.add(hR); // Hip Roll
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), mat); u.position.y = -0.6; hR.add(u);
+                const k = new THREE.Group(); k.position.y = -1.2; hR.add(k); // Knee
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.2, 0.25), mat); l.position.y = -0.6; k.add(l);
+                const foot = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.15, 0.7), jMat); foot.position.set(0,-1.2,0.1); l.add(foot);
+
+                this.joints[`LEG_${side}_HIP_PITCH`] = { ref: hP.rotation, axis: 'x' };
+                this.joints[`LEG_${side}_HIP_ROLL`] = { ref: hR.rotation, axis: 'z' };
+                this.joints[`LEG_${side}_KNEE`] = { ref: k.rotation, axis: 'x' };
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    if (!line.trim() || line.startsWith('//')) continue;
+                    const m = line.match(/(.+)\((.*)\)/);
+                    if (m) {
+                        const cmd = m[1].trim();
+                        const val = parseFloat(m[2]);
+                        if (cmd === 'JUMP') { this.velY = val * 0.15; }
+                        else if (cmd === 'WAIT') await new Promise(r => setTimeout(r, val * 1000));
+                        else if (cmd === 'RESET') Object.values(this.joints).forEach(j => j.ref[j.axis] = 0);
+                        else if (this.joints[cmd]) this.joints[cmd].ref[this.joints[cmd].axis] = (val * Math.PI) / 180;
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                if (this.velY !== 0 || this.bot.position.y > 0) {
+                    this.bot.position.y += this.velY;
+                    this.velY += this.gravity;
+                    if (this.bot.position.y <= 0) { this.bot.position.y = 0; this.velY = 0; }
+                }
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new FullDOFSim();
+    </script>
+</body>
+</html>

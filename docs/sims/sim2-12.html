@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V2.1 - Ground Roll</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020617; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="relative z-10 h-screen pointer-events-none flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-red-500 pointer-events-auto w-fit">
+            <h1 class="text-red-500 font-bold text-xl uppercase">AyeCNSe <span class="text-white">Ground_Roll V2.1</span></h1>
+            <p class="text-[10px] text-slate-400 uppercase tracking-widest">Physics: Contact-Aware | Status: Multi-Axis Rotation</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl pointer-events-auto flex gap-4 h-72">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-slate-950 p-4 jetbrains text-red-100 outline-none rounded-lg border border-slate-800 resize-none">
+// SIT AND ROLL SEQUENCE
+SIT()
+WAIT(0.5)
+
+// THE ROLL
+// Tilt the whole body forward while sitting
+ROLL_FORWARD(360) 
+WAIT(1.2)
+
+// RECOVER
+STAND()
+RESET()</textarea>
+            </div>
+            <button onclick="sim.run()" class="w-48 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all uppercase">Execute Roll</button>
+        </div>
+    </div>
+
+    <script>
+        class RollSim {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(6, 4, 8);
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(0, 1, 0);
+
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+                const sun = new THREE.DirectionalLight(0xffffff, 1);
+                sun.position.set(5, 10, 5);
+                this.scene.add(sun);
+                this.scene.add(new THREE.GridHelper(30, 30, 0x1e293b, 0x0f172a));
+
+                this.buildHumanoid();
+                this.animate();
+            }
+
+            buildHumanoid() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155 });
+                const accent = new THREE.MeshStandardMaterial({ color: 0xef4444 });
+
+                // Master Pivot (Center of Body for rolling)
+                this.masterPivot = new THREE.Group();
+                this.masterPivot.position.y = 2.4; 
+                this.bot.add(this.masterPivot);
+
+                this.pelvis = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.6), mat);
+                this.masterPivot.add(this.pelvis);
+
+                this.torso = new THREE.Group();
+                this.torso.position.y = 0.2;
+                this.pelvis.add(this.torso);
+                this.torso.add(new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.4, 0.7), mat));
+
+                this.head = new THREE.Group(); this.head.position.y = 0.8; this.torso.add(this.head);
+                this.head.add(new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), mat));
+
+                this.legs = { L: this.createLeg(-0.35, mat), R: this.createLeg(0.35, mat) };
+                this.arms = { L: this.createArm(-0.8, mat), R: this.createArm(0.8, mat) };
+                
+                this.scene.add(this.bot);
+            }
+
+            createLeg(x, mat) {
+                const hip = new THREE.Group(); hip.position.set(x, -0.2, 0); this.pelvis.add(hip);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), mat); u.position.y = -0.6; hip.add(u);
+                const knee = new THREE.Group(); knee.position.y = -0.6; u.add(knee);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.2, 0.25), mat); l.position.y = -0.6; knee.add(l);
+                return { hip, knee };
+            }
+
+            createArm(x, mat) {
+                const sh = new THREE.Group(); sh.position.set(x, 0.5, 0); this.torso.add(sh);
+                const u = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.8, 0.2), mat); u.position.y = -0.4; sh.add(u);
+                const eb = new THREE.Group(); eb.position.y = -0.4; u.add(eb);
+                const l = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.8, 0.18), mat); l.position.y = -0.4; eb.add(l);
+                return { sh, eb };
+            }
+
+            async run() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for(let line of lines) {
+                    if (!line.trim() || line.startsWith('//')) continue;
+                    const match = line.match(/(.+)\((.*)\)/);
+                    if(match) {
+                        const cmd = match[1].trim();
+                        const val = match[2].trim();
+                        await this.execute(cmd, val);
+                    }
+                }
+            }
+
+            async execute(cmd, val) {
+                const num = parseFloat(val);
+                const rad = (num * Math.PI) / 180;
+
+                if(cmd === 'SIT') {
+                    // Lower body and kick legs out
+                    this.masterPivot.position.y = 0.6; 
+                    this.legs.L.hip.rotation.x = -Math.PI/2.2;
+                    this.legs.R.hip.rotation.x = -Math.PI/2.2;
+                    this.legs.L.knee.rotation.x = 0.5;
+                    this.legs.R.knee.rotation.x = 0.5;
+                }
+                if(cmd === 'ROLL_FORWARD') {
+                    const startPos = this.masterPivot.position.y;
+                    for(let i=0; i<=40; i++) {
+                        this.masterPivot.rotation.x -= (Math.PI*2)/40;
+                        // Move forward as it rolls
+                        this.bot.position.z += 0.1;
+                        // Adjust Y to keep it on ground during the roll
+                        this.masterPivot.position.y = 0.6 + Math.abs(Math.sin(i/6.3)*0.5);
+                        await new Promise(r => setTimeout(r, 30));
+                    }
+                }
+                if(cmd === 'STAND') {
+                    this.masterPivot.position.y = 2.4;
+                    this.masterPivot.rotation.x = 0;
+                    this.legs.L.hip.rotation.x = 0;
+                    this.legs.R.hip.rotation.x = 0;
+                    this.legs.L.knee.rotation.x = 0;
+                    this.legs.R.knee.rotation.x = 0;
+                }
+                if(cmd === 'RESET') { this.bot.position.set(0,0,0); }
+                await new Promise(r => setTimeout(r, 300));
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new RollSim();
+    </script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+{
+  "theorem": "SHIP_GREEN(requirements)",
+  "when": "2026-08-29T13:45:01.303Z",
+  "requirements": {
+    "total": 32,
+    "ship_green": 31,
+    "named": 0,
+    "gap": 1
+  },
+  "freeze": {
+    "locked": 17,
+    "drift": 0,
+    "items": [
+      {
+        "id": "spec-v1",
+        "path": "spec/PANINI_SELF_HOSTING_SPEC.pni",
+        "status": "FROZEN",
+        "expected": "13384078bb1478c2",
+        "got": "13384078bb1478c2"
+      },
+      {
+        "id": "vfs",
+        "path": "runtime/vfs.js",
+        "status": "FROZEN",
+        "expected": "903f1e37c751dd41",
+        "got": "903f1e37c751dd41"
+      },
+      {
+        "id": "shell",
+        "path": "runtime/shell.js",
+        "status": "FROZEN",
+        "expected": "e35c1c2c1c365036",
+        "got": "e35c1c2c1c365036"
+      },
+      {
+        "id": "interp",
+        "path": "runtime/interpreter.js",
+        "status": "FROZEN",
+        "expected": "0566fb06971c1637",
+        "got": "0566fb06971c1637"
+      },
+      {
+        "id": "vt100",
+        "path": "runtime/vt100.js",
+        "status": "FROZEN",
+        "expected": "da3914e2c937bb26",
+        "got": "da3914e2c937bb26"
+      },
+      {
+        "id": "romenagri",
+        "path": "runtime/romenagri.js",
+        "status": "FROZEN",
+        "expected": "50a7f1467bdbdbe7",
+        "got": "50a7f1467bdbdbe7"
+      },
+      {
+        "id": "wasm-front",
+        "path": "runtime/wasm_front.js",
+        "status": "FROZEN",
+        "expected": "32646d5f9d03cbeb",
+        "got": "32646d5f9d03cbeb"
+      },
+      {
+        "id": "wat2wasm",
+        "path": "runtime/wat2wasm.js",
+        "status": "FROZEN",
+        "expected": "9c497f7f4f91cc80",
+        "got": "9c497f7f4f91cc80"
+      },
+      {
+        "id": "c-frontend",
+        "path": "src/panini/frontends/c.pni",
+        "status": "FROZEN",
+        "expected": "dca2f8cf45dc8386",
+        "got": "dca2f8cf45dc8386"
+      },
+      {
+        "id": "python-frontend",
+        "path": "src/panini/frontends/python.pni",
+        "status": "FROZEN",
+        "expected": "cc90e61d44605fa1",
+        "got": "cc90e61d44605fa1"
+      },
+      {
+        "id": "cpp-frontend",
+        "path": "src/panini/frontends/cpp.pni",
+        "status": "FROZEN",
+        "expected": "6373fafd1c9250af",
+        "got": "6373fafd1c9250af"
+      },
+      {
+        "id": "rust-frontend",
+        "path": "src/panini/frontends/rust.pni",
+        "status": "FROZEN",
+        "expected": "335711a2b0f29008",
+        "got": "335711a2b0f29008"
+      },
+      {
+        "id": "go-frontend",
+        "path": "src/panini/frontends/go.pni",
+        "status": "FROZEN",
+        "expected": "9d7e5b18c66511e8",
+        "got": "9d7e5b18c66511e8"
+      },
+      {
+        "id": "julia-frontend",
+        "path": "src/panini/frontends/julia.pni",
+        "status": "FROZEN",
+        "expected": "cb4af36bfa1f5489",
+        "got": "cb4af36bfa1f5489"
+      },
+      {
+        "id": "notebook-frozen",
+        "path": "docs/nb.frozen.html",
+        "status": "FROZEN",
+        "expected": "57b1a9a1096d02b6",
+        "got": "57b1a9a1096d02b6"
+      },
+      {
+        "id": "license",
+        "path": "LICENSE",
+        "status": "FROZEN",
+        "expected": "0accb9d755420488",
+        "got": "0accb9d755420488"
+      },
+      {
+        "id": "retrieved",
+        "path": "retrieved/READ_ONLY.md",
+        "status": "FROZEN",
+        "expected": "a9b4af5990191562",
+        "got": "a9b4af5990191562"
+      }
+    ]
+  },
+  "duplicates_unexplained": [
+    {
+      "base": "chakra-core.js",
+      "paths": [
+        "docs/chakra/chakra-core.js",
+        "docs/dome/chakra-core.js"
+      ]
+    },
+    {
+      "base": "compiler.pni",
+      "paths": [
+        "compiler/compiler.pni",
+        "src/panini/compiler.pni"
+      ]
+    },
+    {
+      "base": "lexer.pni",
+      "paths": [
+        "compiler/lexer.pni",
+        "src/panini/lexer.pni"
+      ]
+    },
+    {
+      "base": "README.txt",
+      "paths": [
+        "dist/hindawi/examples/assamese/README.txt",
+        "dist/hindawi/examples/bengali/README.txt",
+        "dist/hindawi/examples/bodo/README.txt",
+        "dist/hindawi/examples/dogri/README.txt",
+        "dist/hindawi/examples/gujarati/README.txt",
+        "dist/hindawi/examples/hindi/README.txt"
+      ]
+    },
+    {
+      "base": "guru.uhin",
+      "paths": [
+        "dist/hindawi/examples/assamese/guru.uhin",
+        "dist/hindawi/examples/bengali/guru.uhin",
+        "dist/hindawi/examples/bodo/guru.uhin",
+        "dist/hindawi/examples/dogri/guru.uhin",
+        "dist/hindawi/examples/gujarati/guru.uhin",
+        "dist/hindawi/examples/hindi/guru.uhin"
+      ]
+    },
+    {
+      "base": "Dockerfile",
+      "paths": [
+        "docker/Dockerfile",
+        "labs/agi/Dockerfile",
+        "labs/beginner/Dockerfile",
+        "labs/engineer/Dockerfile",
+        "labs/enterprise/Dockerfile",
+        "labs/linguist/Dockerfile"
+      ]
+    },
+    {
+      "base": "CORRELATION.md",
+      "paths": [
+        "docs/CORRELATION.md",
+        "factory/CORRELATION.md"
+      ]
+    },
+    {
+      "base": "PANINI.V2.WORKBENCH.md",
+      "paths": [
+        "docs/PANINI.V2.WORKBENCH.md",
+        "spec/PANINI.V2.WORKBENCH.md"
+      ]
+    },
+    {
+      "base": "PANINI_LITERATE.md",
+      "paths": [
+        "docs/PANINI_LITERATE.md",
+        "spec/PANINI_LITERATE.md"
+      ]
+    },
+    {
+      "base": "PANINI_STANDARD.md",
+      "paths": [
+        "docs/PANINI_STANDARD.md",
+        "spec/PANINI_STANDARD.md"
+      ]
+    },
+    {
+      "base": "HindiC.uhin",
+      "paths": [
+        "docs/demos/HindiC.uhin",
+        "docs/retrieved/HindiC.uhin",
+        "examples/hindawi/HindiC.uhin"
+      ]
+    },
+    {
+      "base": "HindiCPP.uhin",
+      "paths": [
+        "docs/demos/HindiCPP.uhin",
+        "examples/hindawi/HindiCPP.uhin"
+      ]
+    },
+    {
+      "base": "gana.uhin",
+      "paths": [
+        "docs/demos/gana.uhin",
+        "examples/wasm/gana.uhin"
+      ]
+    },
+    {
+      "base": "guru_samavesh.uhin",
+      "paths": [
+        "docs/demos/guru_samavesh.uhin",
+        "examples/hindawi/guru_samavesh.uhin"
+      ]
+    },
+    {
+      "base": "assamese_guru.uhin",
+      "paths": [
+        "docs/demos/langs/assamese_guru.uhin",
+        "examples/hindawi/bhasha/assamese_guru.uhin",
+        "examples/hindawi/generated/bhasha/assamese_guru.uhin",
+        "examples/hindawi/script/assamese_guru.uhin"
+      ]
+    },
+    {
+      "base": "bengali_guru.uhin",
+      "paths": [
+        "docs/demos/langs/bengali_guru.uhin",
+        "examples/hindawi/bhasha/bengali_guru.uhin",
+        "examples/hindawi/generated/bhasha/bengali_guru.uhin",
+        "examples/hindawi/generated/script/bengali_guru.uhin",
+        "examples/hindawi/script/bengali_guru.uhin"
+      ]
+    },
+    {
+      "base": "gujarati_guru.uhin",
+      "paths": [
+        "docs/demos/langs/gujarati_guru.uhin",
+        "examples/hindawi/bhasha/gujarati_guru.uhin",
+        "examples/hindawi/generated/bhasha/gujarati_guru.uhin",
+        "examples/hindawi/generated/script/gujarati_guru.uhin",
+        "examples/hindawi/script/gujarati_guru.uhin"
+      ]
+    },
+    {
+      "base": "hindi_guru.uhin",
+      "paths": [
+        "docs/demos/langs/hindi_guru.uhin",
+        "examples/hindawi/bhasha/hindi_guru.uhin",
+        "examples/hindawi/generated/bhasha/hindi_guru.uhin",
+        "examples/hindawi/script/hindi_guru.uhin"
+      ]
+    },
+    {
+      "base": "kannada_guru.uhin",
+      "paths": [
+        "docs/demos/langs/kannada_guru.uhin",
+        "examples/hindawi/bhasha/kannada_guru.uhin",
+        "examples/hindawi/generated/bhasha/kannada_guru.uhin",
+        "examples/hindawi/generated/script/kannada_guru.uhin",
+        "examples/hindawi/script/kannada_guru.uhin"
+      ]
+    },
+    {
+      "base": "malayalam_guru.uhin",
+      "paths": [
+        "docs/demos/langs/malayalam_guru.uhin",
+        "examples/hindawi/bhasha/malayalam_guru.uhin",
+        "examples/hindawi/generated/bhasha/malayalam_guru.uhin",
+        "examples/hindawi/generated/script/malayalam_guru.uhin",
+        "examples/hindawi/script/malayalam_guru.uhin"
+      ]
+    },
+    {
+      "base": "marathi_guru.uhin",
+      "paths": [
+        "docs/demos/langs/marathi_guru.uhin",
+        "examples/hindawi/bhasha/marathi_guru.uhin",
+        "examples/hindawi/generated/bhasha/marathi_guru.uhin",
+        "examples/hindawi/script/marathi_guru.uhin"
+      ]
+    },
+    {
+      "base": "nepali_guru.uhin",
+      "paths": [
+        "docs/demos/langs/nepali_guru.uhin",
+        "docs/demos/nepali_guru.uhin",
+        "examples/hindawi/bhasha/nepali_guru.uhin",
+        "examples/hindawi/generated/bhasha/nepali_guru.uhin",
+        "examples/hindawi/script/nepali_guru.uhin"
+      ]
+    },
+    {
+      "base": "odia_guru.uhin",
+      "paths": [
+        "docs/demos/langs/odia_guru.uhin",
+        "examples/hindawi/bhasha/odia_guru.uhin",
+        "examples/hindawi/generated/bhasha/odia_guru.uhin",
+        "examples/hindawi/generated/script/odia_guru.uhin",
+        "examples/hindawi/script/odia_guru.uhin"
+      ]
+    },
+    {
+      "base": "punjabi_guru.uhin",
+      "paths": [
+        "docs/demos/langs/punjabi_guru.uhin",
+        "docs/demos/punjabi_guru.uhin",
+        "examples/hindawi/bhasha/punjabi_guru.uhin",
+        "examples/hindawi/generated/bhasha/punjabi_guru.uhin",
+        "examples/hindawi/script/punjabi_guru.uhin"
+      ]
+    },
+    {
+      "base": "sanskrit_guru.uhin",
+      "paths": [
+        "docs/demos/langs/sanskrit_guru.uhin",
+        "examples/hindawi/bhasha/sanskrit_guru.uhin",
+        "examples/hindawi/generated/bhasha/sanskrit_guru.uhin",
+        "examples/hindawi/script/sanskrit_guru.uhin"
+      ]
+    },
+    {
+      "base": "tamil_guru.uhin",
+      "paths": [
+        "docs/demos/langs/tamil_guru.uhin",
+        "examples/hindawi/bhasha/tamil_guru.uhin",
+        "examples/hindawi/generated/bhasha/tamil_guru.uhin",
+        "examples/hindawi/generated/script/tamil_guru.uhin",
+        "examples/hindawi/script/tamil_guru.uhin"
+      ]
+    },
+    {
+      "base": "telugu_guru.uhin",
+      "paths": [
+        "docs/demos/langs/telugu_guru.uhin",
+        "examples/hindawi/bhasha/telugu_guru.uhin",
+        "examples/hindawi/generated/bhasha/telugu_guru.uhin",
+        "examples/hindawi/generated/script/telugu_guru.uhin",
+        "examples/hindawi/script/telugu_guru.uhin"
+      ]
+    },
+    {
+      "base": "urdu_guru.uhin",
+      "paths": [
+        "docs/demos/langs/urdu_guru.uhin",
+        "examples/hindawi/bhasha/urdu_guru.uhin",
+        "examples/hindawi/generated/bhasha/urdu_guru.uhin"
+      ]
+    },
+    {
+      "base": "wat2wasm.js",
+      "paths": [
+        "docs/engine/wat2wasm.js",
+        "runtime/wat2wasm.js"
+      ]
+    },
+    {
+      "base": "index.js",
+      "paths": [
+        "docs/engine/wllama/index.js",
+        "src/index.js"
+      ]
+    }
+  ],
+  "reqs": [
+    {
+      "id": 1,
+      "text": "Do not modify the original self-hosting spec text.",
+      "status": "SHIP GREEN",
+      "artifact": "spec/PANINI_SELF_HOSTING_SPEC.pni",
+      "test": "tests/run.mjs",
+      "honesty": null
+    },
+    {
+      "id": 2,
+      "text": "License is GPL-3.0-or-later. Copyright 1993-2026 Abhishek Choudhary.",
+      "status": "SHIP GREEN",
+      "artifact": "LICENSE",
+      "test": "NOTICE",
+      "honesty": null
+    },
+    {
+      "id": 3,
+      "text": "Site lives in `docs/` (GitHub Pages). PWA. Desktop landscape + phone portrait tabs.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/index.html",
+      "test": "docs/manifest.webmanifest",
+      "honesty": null
+    },
+    {
+      "id": 4,
+      "text": "Editor is Monaco (VS Code engine, MIT). Blocks use Blockly (Apache-2.0). Name third parties.",
+      "status": "SHIP GREEN",
+      "artifact": "THIRD_PARTY.md",
+      "test": "docs/workbench.html",
+      "honesty": null
+    },
+    {
+      "id": 5,
+      "text": "Terminal **is** VT100. bash and COMMAND.COM are applications *on* that terminal, not a second widget.",
+      "status": "SHIP GREEN",
+      "artifact": "runtime/vt100.js",
+      "test": "runtime/shell.js",
+      "honesty": null
+    },
+    {
+      "id": 6,
+      "text": "“Standards” means official language suites (ISO C, CPython Lib/test, …). Do not claim CONFORMANCE until those run.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/STANDARD_GREEN.md",
+      "test": "scripts/iso_c_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 7,
+      "text": "Architect prompt log stays on the site, curated, no pejorative lexicon; mark affective register escalation.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/ARCHITECT_PROMPTS.md",
+      "test": "docs/ARCHITECT_PROMPTS.md",
+      "honesty": null
+    },
+    {
+      "id": 8,
+      "text": "Ship a zip of `artifacts/panini` whenever the tree changes.",
+      "status": "SHIP GREEN",
+      "artifact": "scripts/pack_zip.py",
+      "test": "scripts/pack_zip.py",
+      "honesty": null
+    },
+    {
+      "id": 9,
+      "text": "Engineer / linguist / mathematician views are tools, not labels.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/index.html",
+      "test": "docs/linguist.html",
+      "honesty": null
+    },
+    {
+      "id": 10,
+      "text": "ILM multilingual projection is first-class (not English-only).",
+      "status": "SHIP GREEN",
+      "artifact": "runtime/romenagri.js",
+      "test": "retrieved/romenagri",
+      "honesty": null
+    },
+    {
+      "id": 12,
+      "text": "STANDARD GREEN is the line: named corpus, skip=0, PANINI frontend. Not Lib/test / rustc ui / all.bash.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/STANDARD_GREEN.md",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 13,
+      "text": "`run_c` and WASM/WAT emission stay frozen. New C/C++/Rust/Go/Julia work is lowering pre-passes (REQ-L1…L4).",
+      "status": "SHIP GREEN",
+      "artifact": "runtime/wasm_front.js",
+      "test": "runtime/clower.js",
+      "honesty": null
+    },
+    {
+      "id": 14,
+      "text": "REQ-L1 C four passes: CPP, void* casts, designated-init flatten, tentative merge (`runtime/clower.js`).",
+      "status": "SHIP GREEN",
+      "artifact": "runtime/clower.js",
+      "test": "tests/clower.mjs",
+      "honesty": null
+    },
+    {
+      "id": 15,
+      "text": "REQ-L2 C++ five: mangling, this, monomorphize, vtable, RAII. Micro-STL not libstdc++ (`include/microstl/`).",
+      "status": "SHIP GREEN",
+      "artifact": "include/microstl/vector.hpp",
+      "test": "runtime/cpplower.js",
+      "honesty": null
+    },
+    {
+      "id": 16,
+      "text": "REQ-L3 GNU C for kernel: attributes, `?:`, range init, builtins. Statement-expr / asm / `.lds` named, not claimed.",
+      "status": "GAP",
+      "artifact": "runtime/gnuc.js",
+      "test": "tests/clower.mjs",
+      "honesty": "GNU C pre-pass is live; statement-expr / asm / .lds named, not kernel-complete"
+    },
+    {
+      "id": 17,
+      "text": "REQ-L4 Go tuples and Rust slices lower to synthetic C structs.",
+      "status": "SHIP GREEN",
+      "artifact": "runtime/stdlower.js",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 18,
+      "text": "Micro-libc headers live in `include/`. Do not parse `/usr/include`.",
+      "status": "SHIP GREEN",
+      "artifact": "include/stdio.h",
+      "test": "include/stdlib.h",
+      "honesty": null
+    },
+    {
+      "id": 19,
+      "text": "Roadmap 1–12 + ISA matrix (RISC-V/Shakti, ARM, ESP32, Arduino, SysML) is `docs/ROADMAP.md`. Honesty wall stands.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/ROADMAP.md",
+      "test": "docs/roadmap.html",
+      "honesty": null
+    },
+    {
+      "id": 20,
+      "text": "Zip never contains `.gguf` or `.wasm`. `tests/test.mjs` always exits 0.",
+      "status": "SHIP GREEN",
+      "artifact": "scripts/pack_zip.py",
+      "test": "tests/test.mjs",
+      "honesty": null
+    },
+    {
+      "id": 11,
+      "text": "One surface: distro CLI, Pages, PWA.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/manifest.webmanifest",
+      "test": "src/cli.js",
+      "honesty": null
+    },
+    {
+      "id": 22,
+      "text": "SHIP GREEN is the requirements bar (`docs/SHIP_GREEN.md`). Named ≠ green.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/SHIP_GREEN.md",
+      "test": "scripts/factory_scan.mjs",
+      "honesty": null
+    },
+    {
+      "id": 23,
+      "text": "The factory registry (`factory/REGISTRY.json`) is consulted before adding a file. Reuse first.",
+      "status": "SHIP GREEN",
+      "artifact": "factory/REGISTRY.json",
+      "test": "scripts/factory_scan.mjs",
+      "honesty": null
+    },
+    {
+      "id": 24,
+      "text": "Optimized components are FROZEN (hash-locked). Touch only with `factory/DELIBERATION.md`.",
+      "status": "SHIP GREEN",
+      "artifact": "factory/DELIBERATION.md",
+      "test": "factory/REGISTRY.json",
+      "honesty": null
+    },
+    {
+      "id": 26,
+      "text": "STANDARD GREEN TypeScript 20/20 (`scripts/std_green_harness.mjs typescript`).",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/typescript.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 27,
+      "text": "STANDARD GREEN JavaScript 20/20.",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/javascript.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 28,
+      "text": "STANDARD GREEN Zig 20/20.",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/zig.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 29,
+      "text": "STANDARD GREEN Lua 20/20.",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/lua.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 30,
+      "text": "STANDARD GREEN Fortran 20/20.",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/fortran.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 31,
+      "text": "STANDARD GREEN Pascal 20/20.",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/pascal.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 32,
+      "text": "STANDARD GREEN BASIC 20/20 (Hindawi Shaili BASIC subset).",
+      "status": "SHIP GREEN",
+      "artifact": "src/panini/frontends/basic.pni",
+      "test": "scripts/std_green_harness.mjs",
+      "honesty": null
+    },
+    {
+      "id": 34,
+      "text": "STANDARD GREEN means a retrieved issuing-body spec plus that body’s executable suite, skip=0. Homemade 20-case files are CORE GREEN only.",
+      "status": "SHIP GREEN",
+      "artifact": "docs/STANDARD_GREEN.md",
+      "test": "retrieved/standards/SOURCES.md",
+      "honesty": null
+    },
+    {
+      "id": 37,
+      "text": "PANINI.V2.WORKBENCH (L15) specified; T0 not altered. AGI stack reports SHIP GREEN and STANDARD GREEN per layer from factory/agi_map.json. ST",
+      "status": "SHIP GREEN",
+      "artifact": "spec/PANINI.V2.WORKBENCH.md",
+      "test": "scripts/agi_green.mjs",
+      "honesty": null
+    }
+  ],
+  "green": true,
+  "status": "SHIP GREEN 31/32 (gap 1 named 0)",
+  "reuse": "Browse factory/REGISTRY.json before adding a file. Frozen components are not restyled."
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project VIDYA Simulations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --panel: #12182b;
+      --accent: #6cf2ff;
+      --text: #e6e9ff;
+      --muted: #9aa4ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, monospace;
+      background: radial-gradient(circle at top, #111633, var(--bg));
+      color: var(--text);
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #1f2a55;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    main {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #141b3c, #0e1329);
+      border: 1px solid #222c5a;
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px rgba(108, 242, 255, 0.15);
+    }
+
+    .card h3 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 1.1rem;
+      word-break: break-all;
+    }
+
+    .card span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 20, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: block;
+    }
+
+    .modal-content {
+      position: absolute;
+      inset: 5%;
+      background: #050814;
+      border: 1px solid #2b3a77;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: #0d1433;
+      border-bottom: 1px solid #22306b;
+    }
+
+    .modal-header span {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .close {
+      cursor: pointer;
+      color: #ff6c6c;
+      font-size: 1.2rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: calc(100% - 42px);
+      border: none;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Project VIDYA Simulations</h1>
+  <p>Sci-fi, not very far from science</p>
+</header>
+
+<main>
+  <div class="card" onclick="openModal('sim2-01.html')">
+    <h3>sim2-01.html</h3>
+    <span>sim2-01.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-02.html')">
+    <h3>sim2-02.html</h3>
+    <span>sim2-02.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-03.html')">
+    <h3>sim2-03.html</h3>
+    <span>sim2-03.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-04.html')">
+    <h3>sim2-04.html</h3>
+    <span>sim2-04.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-05.html')">
+    <h3>sim2-05.html</h3>
+    <span>sim2-05.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-06.html')">
+    <h3>sim2-06.html</h3>
+    <span>sim2-06.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-07.html')">
+    <h3>sim2-07.html</h3>
+    <span>sim2-07.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-08.html')">
+    <h3>sim2-08.html</h3>
+    <span>sim2-08.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-09.html')">
+    <h3>sim2-09.html</h3>
+    <span>sim2-09.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-10.html')">
+    <h3>sim2-10.html</h3>
+    <span>sim2-10.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-11.html')">
+    <h3>sim2-11.html</h3>
+    <span>sim2-11.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-12.html')">
+    <h3>sim2-12.html</h3>
+    <span>sim2-12.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-13.html')">
+    <h3>sim2-13.html</h3>
+    <span>sim2-13.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-14.html')">
+    <h3>sim2-14.html</h3>
+    <span>sim2-14.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-15.html')">
+    <h3>sim2-15.html</h3>
+    <span>sim2-15.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-16.html')">
+    <h3>sim2-16.html</h3>
+    <span>sim2-16.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-17.html')">
+    <h3>sim2-17.html</h3>
+    <span>sim2-17.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-18.html')">
+    <h3>sim2-18.html</h3>
+    <span>sim2-18.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-19.html')">
+    <h3>sim2-19.html</h3>
+    <span>sim2-19.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-20.html')">
+    <h3>sim2-20.html</h3>
+    <span>sim2-20.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-21.html')">
+    <h3>sim2-21.html</h3>
+    <span>sim2-21.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-22.html')">
+    <h3>sim2-22.html</h3>
+    <span>sim2-22.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-23.html')">
+    <h3>sim2-23.html</h3>
+    <span>sim2-23.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-24.html')">
+    <h3>sim2-24.html</h3>
+    <span>sim2-24.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-25.html')">
+    <h3>sim2-25.html</h3>
+    <span>sim2-25.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-26.html')">
+    <h3>sim2-26.html</h3>
+    <span>sim2-26.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-27.html')">
+    <h3>sim2-27.html</h3>
+    <span>sim2-27.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-28.html')">
+    <h3>sim2-28.html</h3>
+    <span>sim2-28.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-29.html')">
+    <h3>sim2-29.html</h3>
+    <span>sim2-29.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-30.html')">
+    <h3>sim2-30.html</h3>
+    <span>sim2-30.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-31.html')">
+    <h3>sim2-31.html</h3>
+    <span>sim2-31.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-32.html')">
+    <h3>sim2-32.html</h3>
+    <span>sim2-32.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-33.html')">
+    <h3>sim2-33.html</h3>
+    <span>sim2-33.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-34.html')">
+    <h3>sim2-34.html</h3>
+    <span>sim2-34.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-35.html')">
+    <h3>sim2-35.html</h3>
+    <span>sim2-35.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-36.html')">
+    <h3>sim2-36.html</h3>
+    <span>sim2-36.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-37.html')">
+    <h3>sim2-37.html</h3>
+    <span>sim2-37.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-38.html')">
+    <h3>sim2-38.html</h3>
+    <span>sim2-38.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-39.html')">
+    <h3>sim2-39.html</h3>
+    <span>sim2-39.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-40.html')">
+    <h3>sim2-40.html</h3>
+    <span>sim2-40.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-41.html')">
+    <h3>sim2-41.html</h3>
+    <span>sim2-41.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-42.html')">
+    <h3>sim2-42.html</h3>
+    <span>sim2-42.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-43.html')">
+    <h3>sim2-43.html</h3>
+    <span>sim2-43.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-44.html')">
+    <h3>sim2-44.html</h3>
+    <span>sim2-44.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-45.html')">
+    <h3>sim2-45.html</h3>
+    <span>sim2-45.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-46.html')">
+    <h3>sim2-46.html</h3>
+    <span>sim2-46.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-47.html')">
+    <h3>sim2-47.html</h3>
+    <span>sim2-47.html</span>
+  </div>
+  <div class="card" onclick="openModal('sim2-48.html')">
+    <h3>sim2-48.html</h3>
+    <span>sim2-48.html</span>
+  </div>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="modal-title"></span>
+      <div class="close" onclick="closeModal()">✕</div>
+    </div>
+    <iframe id="modal-frame"></iframe>
+  </div>
+</div>
+
+<script>
+  function openModal(path) {
+    document.getElementById("modal-title").textContent = path;
+    document.getElementById("modal-frame").src = path;
+    document.getElementById("modal").classList.add("active");
+  }
+
+  function closeModal() {
+    document.getElementById("modal-frame").src = "";
+    document.getElementById("modal").classList.remove("active");
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>
+
+</body>
+</html>

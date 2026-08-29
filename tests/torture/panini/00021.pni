@@ -1,0 +1,8 @@
+# torture literate mix
+REM still a cycler-shaped file
+MODULE T00021
+FUNCTION main()
+    PRINT "ok"
+    RETURN 0
+END
+END

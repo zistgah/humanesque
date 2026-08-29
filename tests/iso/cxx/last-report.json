@@ -1,0 +1,15 @@
+{
+  "theorem": "ISO_GREEN(C++)",
+  "standard": "ISO/IEC 14882:2017 (C++17) — panini-cxx-testsuite single-exec + c-testsuite-as-C++ (C-only cases skipped)",
+  "subject": "PANINI.Frontend.Cpp",
+  "green": true,
+  "cases": 138,
+  "panini": {
+    "pass": 138,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 138,
+  "status": "ISO GREEN"
+}

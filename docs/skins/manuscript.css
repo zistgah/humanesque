@@ -1,0 +1,13 @@
+/* Manuscript — warm paper, not office white. */
+body.site, body.poster {
+  background: #e4d5b7 !important;
+  color: #2a1f12 !important;
+  font: 18px/1.65 Palatino, "Iowan Old Style", Georgia, serif !important;
+}
+.site-head { background: #d9c49a !important; color: #2a1f12 !important; border-bottom: 1px solid #8a7048 !important; }
+.site-head a, .site-head strong, h1, h2, h3 { color: #2a1f12 !important; text-shadow: none; }
+a { color: #6b2a12 !important; }
+.role { background: #efe3c9 !important; border-color: #8a7048 !important; color: #2a1f12 !important; }
+.role h2 { color: #2a1f12 !important; }
+table { background: #efe3c9; }
+.md td, .md th { border-color: #8a7048 !important; }

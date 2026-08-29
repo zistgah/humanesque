@@ -1,0 +1,25 @@
+{
+  "language": "fortran",
+  "issuing_body": "ISO/IEC JTC1/SC22/WG5 (N2146) + GCC gfortran.dg / fortran-torture execute",
+  "suite": "official { dg-do run } / torture execute (emptyif.f90, arithmeticif.f90, pr20124.f90)",
+  "n": 3,
+  "pass": 0,
+  "skip": 0,
+  "skip0": false,
+  "fails": [
+    {
+      "file": "emptyif.f90",
+      "error": "unlowered: implicit,elseif,endif"
+    },
+    {
+      "file": "arithmeticif.f90",
+      "error": "unlowered: implicit,goto"
+    },
+    {
+      "file": "pr20124.f90",
+      "error": "unlowered: write,character*"
+    }
+  ],
+  "standard_green": false,
+  "note": "Spec retrieved (N2146). Official execute files retrieved. PANINI.Frontend.Fortran does not run them skip=0 (elseif/arithmetic-IF/format I/O). Homemade tests/std/fortran is CORE GREEN only. Do not badge STANDARD GREEN."
+}

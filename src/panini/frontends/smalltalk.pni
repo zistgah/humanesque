@@ -1,0 +1,14 @@
+/* PANINI.Frontend.Smalltalk — STANDARD GREEN on GNU Smalltalk intmath.st extract.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.Smalltalk
+FUNCTION run_smalltalk(source)
+    r = SMALLTALKRUN(source)
+    r.frontend = "PANINI.Frontend.Smalltalk"
+    RETURN r
+END
+FUNCTION main()
+    r = run_smalltalk("Eval [ 3 + 4 ]")
+    RETURN r.value
+END
+END

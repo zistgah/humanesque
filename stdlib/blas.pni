@@ -1,0 +1,19 @@
+MODULE PANINI.BLAS
+
+FUNCTION axpy_demo()
+    y = AXPY(3, 2, [1, 2, 3], [0, 0, 0])
+    RETURN y
+END
+
+FUNCTION gemm_demo()
+    a = [1, 2, 3, 4]
+    b = [5, 6, 7, 8]
+    RETURN GEMM(2, 2, 2, a, b)
+END
+
+FUNCTION main()
+    PRINT GEMM(2, 2, 2, [1, 0, 0, 1], [2, 3, 4, 5])
+    RETURN 0
+END
+
+END

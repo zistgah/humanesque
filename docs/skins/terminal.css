@@ -1,0 +1,8 @@
+body.site, body.poster {
+  background: #001400 !important;
+  color: #7dff9a !important;
+  font: 16px/1.45 ui-monospace, Menlo, monospace !important;
+}
+.site-head { background: #001000 !important; border-bottom-color: #0a4 !important; }
+.site-head a, .site-head strong, h1, h2, h3, a { color: #9fffbb !important; text-shadow: none; }
+.role { background: #002000 !important; border-color: #0a4 !important; }

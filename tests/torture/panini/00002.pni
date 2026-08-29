@@ -1,0 +1,6 @@
+MODULE T00002
+FUNCTION main()
+    PRINT 40 + 2
+    RETURN 0
+END
+END

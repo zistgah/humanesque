@@ -1,0 +1,21 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * PANINI frontend for retrieved project-ilm/chakra (v1.4.1).
+ * Ephemeris is NOT reconstructed. Host is chakra-core.js / lib/chakra.c.
+ * Linguistic equity: festival and weekday names may be VIEWed in another
+ * script; compilation/computation identity stays the IAST in the library.
+ */
+@imperative
+MODULE Chakra
+    FUNCTION festivals(year)
+        RETURN CHAKRA_ANNUAL(year)
+    END
+    FUNCTION panchanga(year, month, day, ut)
+        RETURN CHAKRA_PANCHANGA(year, month, day, ut)
+    END
+    FUNCTION today()
+        PRINT CHAKRA_TODAY()
+        RETURN 0
+    END
+END

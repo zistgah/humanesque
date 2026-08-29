@@ -1,0 +1,6 @@
+MODULE T00029
+FUNCTION main()
+    PRINT "a" + "b"
+    RETURN 0
+END
+END

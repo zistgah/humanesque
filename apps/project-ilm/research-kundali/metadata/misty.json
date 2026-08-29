@@ -1,0 +1,12 @@
+{
+  "author_verified": true, "doi": null,
+  "metadata": {
+    "title": "Research Kundali: a deterministic chart of any researcher, lab or institute from the open scholarly record",
+    "upload_type": "software", "version": "0.1.0", "language": "eng", "license": "gpl-3.0",
+    "creators": [{"name": "Choudhary, Abhishek", "affiliation": "AyeAI",
+                  "orcid": "0009-0002-0684-8320"}],
+    "keywords": ["scholarly metadata","ORCID","OpenAlex","Crossref","DataCite",
+                 "provenance","OpenTimestamps","research navigator","attribution"],
+    "description": "Research Kundali computes a chart of a researcher, laboratory or institution from the open scholarly record by a fixed, reproducible procedure over ORCID, OpenAlex, Crossref and DataCite. It emits a chart of output by year, topics, venues and co-authors; a filterable list of works; a SHA-256 digest per work so each can carry its own OpenTimestamps proof rather than a single proof over a bundle; an explicit register of every assumption taken without asking; and a static navigator in which selecting any text seeds an AI conversation. Google Scholar is deliberately not queried, because it publishes no API and its terms prohibit automated access. Titles and metadata are indexed; full text never is. Nothing is minted on anyone's behalf. Copyright (c) 1993-2026 Abhishek Choudhary. All rights reserved."
+  }
+}

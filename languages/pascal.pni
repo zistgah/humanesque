@@ -1,0 +1,6 @@
+@imperative
+MODULE PascalCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

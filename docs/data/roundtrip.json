@@ -1,0 +1,848 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "method": "Unicode name-projection for Brahmi family (same as gurmukhi_to_deva.tsv header). Semitic = direct Unicode inventory, not Devanagari hub. Perso-Arabic language maps remain urdu_map (lossy).",
+  "nameproj_tables": [
+    {
+      "file": "ahom_to_deva.tsv",
+      "n": 43,
+      "injective_deva": 43,
+      "roundtrip_unique": 43,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "balinese_to_deva.tsv",
+      "n": 27,
+      "injective_deva": 27,
+      "roundtrip_unique": 27,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "batak_to_deva.tsv",
+      "n": 22,
+      "injective_deva": 22,
+      "roundtrip_unique": 22,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "bengali_to_deva.tsv",
+      "n": 79,
+      "injective_deva": 79,
+      "roundtrip_unique": 79,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "bhaiksuki_to_deva.tsv",
+      "n": 75,
+      "injective_deva": 75,
+      "roundtrip_unique": 75,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "brahmi_to_deva.tsv",
+      "n": 76,
+      "injective_deva": 76,
+      "roundtrip_unique": 76,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "buginese_to_deva.tsv",
+      "n": 23,
+      "injective_deva": 23,
+      "roundtrip_unique": 23,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "buhid_to_deva.tsv",
+      "n": 19,
+      "injective_deva": 19,
+      "roundtrip_unique": 19,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "chakma_to_deva.tsv",
+      "n": 28,
+      "injective_deva": 28,
+      "roundtrip_unique": 28,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "cham_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "devanagari_to_deva.tsv",
+      "n": 128,
+      "injective_deva": 128,
+      "roundtrip_unique": 128,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "dives_akuru_to_deva.tsv",
+      "n": 64,
+      "injective_deva": 64,
+      "roundtrip_unique": 64,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "dogra_to_deva.tsv",
+      "n": 60,
+      "injective_deva": 60,
+      "roundtrip_unique": 60,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "grantha_to_deva.tsv",
+      "n": 64,
+      "injective_deva": 64,
+      "roundtrip_unique": 64,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "gujarati_to_deva.tsv",
+      "n": 82,
+      "injective_deva": 82,
+      "roundtrip_unique": 82,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "gunjala_gondi_to_deva.tsv",
+      "n": 58,
+      "injective_deva": 58,
+      "roundtrip_unique": 58,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "gurmukhi_to_deva.tsv",
+      "n": 67,
+      "injective_deva": 67,
+      "roundtrip_unique": 67,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "gurung_khema_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "hanunoo_to_deva.tsv",
+      "n": 19,
+      "injective_deva": 19,
+      "roundtrip_unique": 19,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "javanese_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "kaithi_to_deva.tsv",
+      "n": 62,
+      "injective_deva": 62,
+      "roundtrip_unique": 62,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "kannada_to_deva.tsv",
+      "n": 79,
+      "injective_deva": 79,
+      "roundtrip_unique": 79,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "kawi_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "kayah_li_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "kharoshthi_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "khmer_to_deva.tsv",
+      "n": 34,
+      "injective_deva": 34,
+      "roundtrip_unique": 34,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "khojki_to_deva.tsv",
+      "n": 57,
+      "injective_deva": 57,
+      "roundtrip_unique": 57,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "khudawadi_to_deva.tsv",
+      "n": 69,
+      "injective_deva": 69,
+      "roundtrip_unique": 69,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "kirat_rai_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "lao_to_deva.tsv",
+      "n": 19,
+      "injective_deva": 19,
+      "roundtrip_unique": 19,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "lepcha_to_deva.tsv",
+      "n": 45,
+      "injective_deva": 45,
+      "roundtrip_unique": 45,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "limbu_to_deva.tsv",
+      "n": 42,
+      "injective_deva": 42,
+      "roundtrip_unique": 42,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "mahajani_to_deva.tsv",
+      "n": 37,
+      "injective_deva": 37,
+      "roundtrip_unique": 37,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "malayalam_to_deva.tsv",
+      "n": 79,
+      "injective_deva": 79,
+      "roundtrip_unique": 79,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "marchen_to_deva.tsv",
+      "n": 32,
+      "injective_deva": 32,
+      "roundtrip_unique": 32,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "masaram_gondi_to_deva.tsv",
+      "n": 67,
+      "injective_deva": 67,
+      "roundtrip_unique": 67,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "meetei_mayek_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "modi_to_deva.tsv",
+      "n": 77,
+      "injective_deva": 77,
+      "roundtrip_unique": 77,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "mongolian_to_deva.tsv",
+      "n": 36,
+      "injective_deva": 36,
+      "roundtrip_unique": 36,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "multani_to_deva.tsv",
+      "n": 37,
+      "injective_deva": 37,
+      "roundtrip_unique": 37,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "myanmar_to_deva.tsv",
+      "n": 69,
+      "injective_deva": 69,
+      "roundtrip_unique": 69,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "nag_mundari_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "nandinagari_to_deva.tsv",
+      "n": 63,
+      "injective_deva": 63,
+      "roundtrip_unique": 63,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "new_tai_lue_to_deva.tsv",
+      "n": 17,
+      "injective_deva": 17,
+      "roundtrip_unique": 17,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "newa_to_deva.tsv",
+      "n": 80,
+      "injective_deva": 80,
+      "roundtrip_unique": 80,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "ol_chiki_to_deva.tsv",
+      "n": 11,
+      "injective_deva": 11,
+      "roundtrip_unique": 11,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "ol_onal_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "oriya_to_deva.tsv",
+      "n": 80,
+      "injective_deva": 80,
+      "roundtrip_unique": 80,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "pau_cin_hau_to_deva.tsv",
+      "n": 26,
+      "injective_deva": 26,
+      "roundtrip_unique": 26,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "phags-pa_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "rejang_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "saurashtra_to_deva.tsv",
+      "n": 77,
+      "injective_deva": 77,
+      "roundtrip_unique": 77,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "sharada_to_deva.tsv",
+      "n": 83,
+      "injective_deva": 83,
+      "roundtrip_unique": 83,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "siddham_to_deva.tsv",
+      "n": 65,
+      "injective_deva": 65,
+      "roundtrip_unique": 65,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "sinhala_to_deva.tsv",
+      "n": 1,
+      "injective_deva": 1,
+      "roundtrip_unique": 1,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "soyombo_to_deva.tsv",
+      "n": 48,
+      "injective_deva": 48,
+      "roundtrip_unique": 48,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "sundanese_to_deva.tsv",
+      "n": 39,
+      "injective_deva": 39,
+      "roundtrip_unique": 39,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "sunuwar_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "syloti_nagri_to_deva.tsv",
+      "n": 9,
+      "injective_deva": 9,
+      "roundtrip_unique": 9,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tagalog_to_deva.tsv",
+      "n": 19,
+      "injective_deva": 19,
+      "roundtrip_unique": 19,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tagbanwa_to_deva.tsv",
+      "n": 17,
+      "injective_deva": 17,
+      "roundtrip_unique": 17,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tai_le_to_deva.tsv",
+      "n": 23,
+      "injective_deva": 23,
+      "roundtrip_unique": 23,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tai_tham_to_deva.tsv",
+      "n": 24,
+      "injective_deva": 24,
+      "roundtrip_unique": 24,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tai_viet_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "takri_to_deva.tsv",
+      "n": 66,
+      "injective_deva": 66,
+      "roundtrip_unique": 66,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tamil_to_deva.tsv",
+      "n": 56,
+      "injective_deva": 56,
+      "roundtrip_unique": 56,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tangsa_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "telugu_to_deva.tsv",
+      "n": 78,
+      "injective_deva": 78,
+      "roundtrip_unique": 78,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "thai_to_deva.tsv",
+      "n": 10,
+      "injective_deva": 10,
+      "roundtrip_unique": 10,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tibetan_to_deva.tsv",
+      "n": 56,
+      "injective_deva": 56,
+      "roundtrip_unique": 56,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "tirhuta_to_deva.tsv",
+      "n": 80,
+      "injective_deva": 80,
+      "roundtrip_unique": 80,
+      "collisions": 0,
+      "rate": 1.0
+    },
+    {
+      "file": "toto_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "wancho_to_deva.tsv",
+      "n": 0,
+      "injective_deva": 0,
+      "roundtrip_unique": 0,
+      "collisions": 0,
+      "rate": null
+    },
+    {
+      "file": "zanabazar_square_to_deva.tsv",
+      "n": 47,
+      "injective_deva": 47,
+      "roundtrip_unique": 47,
+      "collisions": 0,
+      "rate": 1.0
+    }
+  ],
+  "nameproj_nonzero": 57,
+  "nameproj_total": 74,
+  "flatten_reverse": [
+    {
+      "script": "devanagari",
+      "reverse_entries": 98
+    },
+    {
+      "script": "bengali",
+      "reverse_entries": 79
+    },
+    {
+      "script": "gurmukhi",
+      "reverse_entries": 72
+    },
+    {
+      "script": "gujarati",
+      "reverse_entries": 82
+    },
+    {
+      "script": "odia",
+      "reverse_entries": 80
+    },
+    {
+      "script": "tamil",
+      "reverse_entries": 59
+    },
+    {
+      "script": "telugu",
+      "reverse_entries": 81
+    },
+    {
+      "script": "kannada",
+      "reverse_entries": 82
+    },
+    {
+      "script": "malayalam",
+      "reverse_entries": 81
+    }
+  ],
+  "flatten_pairs": 793,
+  "keywords": [
+    {
+      "lang": "arabic",
+      "n": 29,
+      "native_unique": false,
+      "c_unique": false,
+      "lossy": true
+    },
+    {
+      "lang": "aramaic",
+      "n": 2,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "assamese",
+      "n": 8,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "bengali",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "gujarati",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "hebrew",
+      "n": 8,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "hindi",
+      "n": 29,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "kannada",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "malayalam",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "marathi",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "nepali",
+      "n": 11,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "odia",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "pali",
+      "n": 8,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "persian",
+      "n": 27,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": true
+    },
+    {
+      "lang": "phoenician",
+      "n": 2,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "prakrit",
+      "n": 4,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "punjabi",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "sanskrit",
+      "n": 29,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "syriac",
+      "n": 5,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": false
+    },
+    {
+      "lang": "tamil",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "telugu",
+      "n": 26,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": false
+    },
+    {
+      "lang": "urdu",
+      "n": 27,
+      "native_unique": true,
+      "c_unique": false,
+      "lossy": true
+    },
+    {
+      "lang": "pashto",
+      "n": 20,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": true
+    },
+    {
+      "lang": "dari",
+      "n": 20,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": true
+    },
+    {
+      "lang": "sindhi",
+      "n": 20,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": true
+    },
+    {
+      "lang": "kashmiri",
+      "n": 20,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": true
+    },
+    {
+      "lang": "shahmukhi",
+      "n": 20,
+      "native_unique": true,
+      "c_unique": true,
+      "lossy": true
+    }
+  ],
+  "urdu_map_rows": 91,
+  "urdu_deva_collisions": 4,
+  "inventories": {
+    "hebrew": 88,
+    "arabic_unicode": 1134,
+    "syriac": 77,
+    "phoenician": 29,
+    "aramaic": 31,
+    "cuneiform_signs": 1038,
+    "egyptian_hieroglyphs": 1071
+  },
+  "unresolved": [
+    "Cuneiform LANGUAGE layer (Sumerian/Akkadian keywords) — not in retrieved/",
+    "Egyptian LANGUAGE layer (Middle Egyptian keywords) — not in retrieved/",
+    "7000 languages programme — this clone has 27 TSVs",
+    "Dialect layer — no dialect TSVs retrieved; format = language TSV + dialect tag",
+    "73 name-projection stubs completed this turn by unicodedata; gurmukhi retrieved rows not overwritten"
+  ]
+}

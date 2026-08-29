@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Romenagri round-trip lab</title>
+  <link rel="stylesheet" href="../site.css" />
+  <link rel="stylesheet" href="../skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="../index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html">Stacks</a>
+    <a href="arabic.html">Arabic</a>
+    <a href="tamil.html">Tamil</a>
+    <a href="roundtrip.html" class="now">Round-trip</a>
+    <a href="research.html">Researchers</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">Flatten hub · Romenagri ASCII-7 · live in the browser</p>
+  <h1>Round-trip laboratory</h1>
+  <p class="lead">Brahmi-derived scripts flatten to Devanagari, then to Romenagri. Reverse flatten is table-complete for the retrieved blocks. Perso-Arabic is a different family: lossy, labelled. This page runs the maps. It does not invent them.</p>
+
+  <label>Script
+    <select id="script"></select>
+  </label>
+  <textarea id="src" class="rt-out" translate="no" placeholder="Paste letters or a .uhin fragment"></textarea>
+  <p>
+    <button id="across">Across scripts</button>
+    <button id="stress">Stress (Hindi C × all reverse scripts)</button>
+    <button id="torture">Torture (every flatten pair)</button>
+    <button id="rmn">Romenagri there and back</button>
+  </p>
+  <pre id="out" class="rt-out" translate="no">Load bundle…</pre>
+  <p class="fine">Data: <code>flatten_uni_dev.lex</code> · <code>acii2rmn</code> · <a href="../data/roundtrip.json">roundtrip.json</a> · test <code>node tests/roundtrip.mjs</code></p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../engine/nb.js"></script>
+<script src="../i18n/gt.js"></script>
+<script>
+const q = new URLSearchParams(location.search);
+PANINI_NB.load("../engine/bundle.json").then(async (B) => {
+  const sel = document.getElementById("script");
+  const scripts = Object.keys(B.flatten.reverse || {}).sort();
+  scripts.forEach(s => {
+    const o = document.createElement("option");
+    o.value = s; o.textContent = s;
+    if (s === (q.get("script") || "tamil")) o.selected = true;
+    sel.appendChild(o);
+  });
+  const hindi = await fetch("../demos/HindiC.uhin").then(r => r.text());
+  document.getElementById("src").value = hindi;
+  const out = document.getElementById("out");
+  function log(s) { out.textContent = s; }
+
+  document.getElementById("across").onclick = () => {
+    const src = document.getElementById("src").value;
+    const sc = sel.value;
+    const hub = PANINI_NB.flatten(src);
+    const there = PANINI_NB.unflatten(hub, sc);
+    const back = PANINI_NB.flatten(there);
+    const ok = hub === back;
+    log((ok ? "OK  " : "FAIL ") + sc + " hub identity\n--- " + sc + " ---\n" + there.slice(0, 800) + "\n--- hub ---\n" + hub.slice(0, 400));
+  };
+
+  document.getElementById("rmn").onclick = () => {
+    const src = document.getElementById("src").value;
+    const hub = PANINI_NB.flatten(src);
+    const rmn = PANINI_NB.devaToRmn(hub);
+    const back = PANINI_NB.rmnToDeva(rmn);
+    log("Romenagri (ASCII-7 kernel — gdb sees this)\n" + rmn.slice(0, 1200) + "\n--- back to Devanagari ---\n" + back.slice(0, 600));
+  };
+
+  document.getElementById("stress").onclick = () => {
+    const hub = PANINI_NB.flatten(hindi);
+    const rows = scripts.map(sc => {
+      const there = PANINI_NB.unflatten(hub, sc);
+      const back = PANINI_NB.flatten(there);
+      return { sc, ok: hub === back, n: [...there].length };
+    });
+    const fail = rows.filter(r => !r.ok);
+    log("STRESS HindiC × " + scripts.length + " reverse scripts\n" +
+      rows.map(r => (r.ok ? "ok   " : "FAIL ") + r.sc).join("\n") +
+      "\n" + (fail.length ? fail.length + " failed" : "ALL OK") +
+      "\nPerso-Arabic is not in this list. Use family=perso on the Arabic stack.");
+  };
+
+  document.getElementById("torture").onclick = () => {
+    const pairs = B.flatten.pairs || [];
+    let n = 0, fail = 0;
+    const samples = [];
+    for (const p of pairs) {
+      if (!p.from || !p.to) continue;
+      n++;
+      const hub = PANINI_NB.flatten(p.from);
+      if (hub !== p.to && hub !== p.from) {
+        /* pair may already be hub-to-hub identity */
+      }
+      const back = PANINI_NB.flatten(p.to);
+      /* to is already hub; flatten of hub letter should stay */
+      if (back !== p.to && back !== PANINI_NB.flatten(p.to)) { fail++; samples.push(p.from); }
+    }
+    /* per-script: unflatten each hub char that has a reverse */
+    let sN = 0, sFail = 0;
+    const sFailN = [];
+    for (const sc of scripts) {
+      const rev = B.flatten.reverse[sc] || {};
+      for (const [hubCh, native] of Object.entries(rev)) {
+        sN++;
+        const back = PANINI_NB.flatten(native);
+        if (back !== hubCh && back !== PANINI_NB.flatten(hubCh)) {
+          sFail++;
+          if (sFailN.length < 8) sFailN.push(sc + " " + native + " → " + back + " want " + hubCh);
+        }
+      }
+    }
+    log("TORTURE flatten pairs: " + n + " rows (retrieved lex)\n" +
+      "Reverse entries: " + sN + "  fails: " + sFail + "\n" +
+      (sFailN.join("\n") || "no reverse-entry failures in first report") +
+      "\nThis is identity on the retrieved table, not a claim about handwriting.");
+  };
+
+  if (q.get("script")) document.getElementById("across").click();
+  else log("Ready. " + scripts.length + " reverse scripts. Hindi C loaded. Run Stress or Torture.");
+});
+</script>
+</body>
+</html>

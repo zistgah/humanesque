@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(lua)",
+  "standard": "Lua 5.4 — panini-lua-testsuite single-exec",
+  "subject": "PANINI.Frontend.Lua",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

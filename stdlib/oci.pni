@@ -1,0 +1,12 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * tree-rev: 2026.08.28
+ */
+MODULE PANINI.OCI
+
+FUNCTION main()
+    PRINT OCI_ENGINE()
+    PRINT OCI_LIST()
+    RETURN 0
+END
+
+END

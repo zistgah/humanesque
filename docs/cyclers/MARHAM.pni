@@ -1,0 +1,684 @@
+MARHAM.pni
+Version: 1.0.0
+Status: Architecture / Domain Instantiation
+Parent Architecture: GENIE / Health GENIE / Triage Cycler
+Domain: Health technology
+Primary Front Door: Marham
+Principle: Orchestrate; do not collapse the underlying systems, modalities, cyclers, models, or human agency.
+
+# 0. PURPOSE
+
+Marham is a health-domain instantiation of the reusable TRIAGE CYCLER pattern.
+
+The Marham architecture provides a front-door health experience while allowing the triage layer to route a heterogeneous health situation into the appropriate health-domain cycler(s).
+
+The architecture is deliberately extensible:
+
+MARHAM
+  -> HEALTH TRIAGE CYCLER
+  -> HEALTH GENIE
+  -> SPECIALIZED HEALTH CYCLER(S)
+  -> SYSTEMS / MODELS / MODALITIES / HUMANS
+  -> HEALTH REALIZATION
+
+Marham does not need to expose the full Humanesque constitutional architecture to the user.
+
+# 1. CORE ARCHITECTURAL PRINCIPLE
+
+TRIAGE is a general primitive:
+
+TRIAGE = navigation through a heterogeneous configuration space.
+
+A triage cycler identifies:
+
+- what is happening;
+- what the person/system needs;
+- what information is available;
+- what information is missing;
+- which domains are implicated;
+- which modalities are required;
+- which cycler(s) should operate;
+- whether cyclers should operate sequentially, concurrently, recursively, or iteratively;
+- who or what must make consequential decisions.
+
+For Marham, this primitive is instantiated directly in the health domain.
+
+# 2. MARHAM FRONT-DOOR ARCHITECTURE
+
+MARHAM
+  |
+  v
+HEALTH TRIAGE CYCLER
+  |
+  v
+HEALTH GENIE
+  |
+  +--> Patient Journey
+  +--> Clinician Journey
+  +--> System / Operational Journey
+  |
+  v
+Appropriate Health-Domain Cycler(s)
+  |
+  v
+Human Agency + System Execution
+  |
+  v
+Realization
+
+Marham can therefore remain the user-facing/front-door experience while Health GENIE provides the multimodal orchestration intelligence behind increasingly complex workflows.
+
+# 3. HEALTH GENIE
+
+HEALTH GENIE = multimodal meta-cycler for health-domain orchestration.
+
+Health GENIE is invoked because health situations frequently cross:
+
+- domains;
+- modalities;
+- temporal contexts;
+- records;
+- operational systems;
+- evidence sources;
+- specialized cyclers;
+- medical models;
+- human actors.
+
+Health GENIE determines what needs to participate in a particular health situation and how those participants should be composed.
+
+It does not replace the participating systems.
+
+It composes them.
+
+# 4. HEALTH GENIE IS NOT
+
+Health GENIE is not itself:
+
+- an EMR;
+- an EHR;
+- an HMIS;
+- an LMIS;
+- a medical device;
+- a drug database;
+- a clinical-trial system;
+- a medical model;
+- a hospital-management system;
+- a diagnostic engine;
+- a triage classifier.
+
+It is the orchestration layer across them.
+
+# 5. MARHAM TRIAGE FLOW
+
+ARRIVE
+  -> ELICIT / OBSERVE
+  -> RETRIEVE RELEVANT SUBSTRATE
+  -> ASSEMBLE CONTEXT
+  -> IDENTIFY INTENT / SITUATION
+  -> MAP DOMAINS
+  -> MAP MODALITIES
+  -> SELECT CYCLER(S)
+  -> EXECUTE
+  -> RECONCILE
+  -> VERIFY
+  -> COMPOSE
+  -> NEXT STATE / NEXT ACTION
+
+The flow is cyclical rather than a one-shot classification pipeline.
+
+# 6. WHY A HEALTH TRIAGE CYCLER NEEDS HEALTH GENIE
+
+Healthcare is intrinsically heterogeneous.
+
+A single patient journey may involve:
+
+- natural-language conversation;
+- speech;
+- structured demographics;
+- symptoms;
+- clinical notes;
+- diagnoses;
+- medications;
+- prescriptions;
+- laboratory results;
+- pathology;
+- radiology;
+- medical images;
+- physiological waveforms;
+- device telemetry;
+- procedures;
+- longitudinal EMR/EHR history;
+- HMIS data;
+- LMIS / logistics data;
+- medical-device data;
+- drug information;
+- operational workflows;
+- clinical guidelines;
+- medical literature;
+- clinical-trial protocols;
+- predictive / diagnostic models;
+- clinicians;
+- institutions.
+
+A conventional router tends toward:
+
+INPUT -> CLASSIFY -> ONE DESTINATION
+
+Health GENIE supports:
+
+INPUT
+  -> INTERPRET CONFIGURATION
+  -> DECOMPOSE
+  -> IDENTIFY MODALITIES
+  -> IDENTIFY DOMAINS
+  -> SELECT CYCLERS
+  -> PARALLEL / SEQUENTIAL / RECURSIVE EXECUTION
+  -> RECONCILE
+  -> VERIFY
+  -> COMPOSE
+  -> NEXT STATE
+
+# 7. DOMAIN / MODALITY / CYCLER DISTINCTION
+
+DOMAIN = what kind of health reality is involved?
+
+Examples:
+
+- clinical;
+- pharmaceutical;
+- diagnostic;
+- operational;
+- epidemiological;
+- research;
+- logistics;
+- public-health;
+- administrative.
+
+MODALITY = in what form does relevant information exist?
+
+Examples:
+
+- text;
+- speech;
+- image;
+- video;
+- waveform;
+- structured record;
+- tabular data;
+- sensor stream;
+- molecular data;
+- document;
+- database;
+- human observation.
+
+CYCLER = what operation needs to happen?
+
+Examples:
+
+- retrieve;
+- interpret;
+- diagnose / support diagnosis;
+- monitor;
+- reconcile;
+- schedule;
+- coordinate;
+- verify;
+- learn;
+- execute;
+- escalate;
+- document.
+
+GENIE = how must heterogeneous domains, modalities, systems, cyclers, evidence and humans be composed into a coherent operation?
+
+# 8. HEALTH-TECH ESTATE
+
+HEALTH GENIE can orchestrate an entire health-technology ecosystem.
+
+Major participating systems include:
+
+CARE
+- EMR
+- EHR
+- clinical systems
+- pharmacy
+- imaging
+- laboratories
+
+DATA / INFRASTRUCTURE
+- HMIS
+- LMIS
+- devices
+- telemetry
+- longitudinal records
+
+RESEARCH
+- clinical trials
+- evidence
+- protocols
+- cohorts
+- medical literature
+
+PHARMACEUTICAL
+- drugs
+- medication knowledge
+- interactions
+- prescribing systems
+
+OPERATIONS
+- hospitals
+- clinics
+- pharmacies
+- laboratories
+- supply chains
+- scheduling
+- resource management
+
+MODELS
+- diagnostic models
+- imaging models
+- laboratory interpretation models
+- medication interaction models
+- predictive models
+- other medical models
+
+# 9. SPECIALIZED CYCLERS
+
+Health GENIE may invoke multiple specialized cyclers.
+
+Examples:
+
+- clinical cycler;
+- patient triage cycler;
+- imaging cycler;
+- laboratory cycler;
+- medication cycler;
+- pharmacy cycler;
+- device-monitoring cycler;
+- clinical-trial cycler;
+- evidence-retrieval cycler;
+- hospital operations cycler;
+- scheduling cycler;
+- logistics / supply cycler;
+- documentation cycler;
+- care-coordination cycler;
+- public-health cycler;
+- model-evaluation cycler.
+
+Cyclers may operate:
+
+- sequentially;
+- concurrently;
+- recursively;
+- iteratively;
+- conditionally.
+
+Their outputs can be reconciled and composed by Health GENIE.
+
+# 10. MEDICAL MODELS
+
+A medical model is a participant, not the architecture.
+
+Health GENIE may:
+
+- retrieve patient context;
+- invoke an imaging model;
+- invoke a laboratory interpretation model;
+- invoke a medication interaction model;
+- retrieve authoritative evidence;
+- invoke a clinician;
+- reconcile outputs;
+- preserve provenance;
+- determine the next cycler.
+
+A model must not silently become the health system.
+
+Model-derived inference remains distinguishable from:
+
+- authoritative records;
+- retrieved evidence;
+- device observations;
+- human observations;
+- clinician judgment;
+- operational state.
+
+# 11. MULTIMODAL COMPOSITION
+
+A single health journey may traverse:
+
+VOICE
+  -> TEXT
+  -> SYMPTOMS
+  -> STRUCTURED DATA
+  -> LONGITUDINAL EHR
+  -> LABS
+  -> IMAGE
+  -> DEVICE WAVEFORM
+  -> DRUG KNOWLEDGE
+  -> CLINICAL EVIDENCE
+  -> CLINICIAN
+  -> OPERATIONS
+  -> OUTCOME
+
+No single modality-native cycler should be required to own the entire walk.
+
+Health GENIE is the cross-modal composition layer.
+
+It preserves relationships among modalities without pretending that the modalities are equivalent.
+
+# 12. COMPOSITIONAL TRIAGE
+
+Without GENIE:
+
+INPUT
+  -> CLASSIFY
+  -> ONE DESTINATION
+
+With GENIE:
+
+INPUT
+  -> INTERPRET CONFIGURATION
+  -> DECOMPOSE
+  -> IDENTIFY DOMAINS
+  -> IDENTIFY MODALITIES
+  -> SELECT CYCLERS
+  -> PARALLEL / SEQUENTIAL EXECUTION
+  -> RECONCILE
+  -> VERIFY
+  -> COMPOSE
+  -> NEXT STATE
+
+GENIE may invoke another GENIE when the problem crosses architectural boundaries.
+
+Example:
+
+Health GENIE
+  -> Clinical GENIE
+       -> Imaging Cycler
+
+while simultaneously:
+
+Health GENIE
+  -> Medication Cycler
+
+Health GENIE
+  -> Operational Cycler
+
+Health GENIE
+  -> Clinical-Trial Cycler
+
+Outputs are subsequently reconciled and recombined.
+
+# 13. GENIE ESCALATION / DESCENT
+
+The general GENIE architecture applies directly:
+
+CYCLER
+  -> GENIE ELEVATION
+  -> META-ORCHESTRATION
+  -> CYCLER DESCENT
+
+Health GENIE may:
+
+- invoke multiple cyclers;
+- invoke multiple specialized GENIEs;
+- split into concurrent orchestration branches;
+- merge outputs;
+- recurse when the configuration changes;
+- elevate to a higher-order GENIE when cross-domain composition requires it.
+
+Thus Health GENIE is a domain instantiation of the existing GENIE meta-cycler architecture, not a separate conceptual mechanism.
+
+# 14. REUSABLE TRIAGE PRIMITIVE
+
+The triage cycler should remain domain-neutral at its primitive layer.
+
+The reusable pattern is:
+
+TRIAGE CYCLER
+  -> identify intent / situation / destination
+  -> retrieve relevant substrate
+  -> route to appropriate domainal cycler(s)
+  -> compose where necessary
+  -> return to user/system
+  -> observe next state
+  -> cycle
+
+Humanesque instantiation:
+
+HUMANESQUE
+  -> CHARBAGH
+  -> FAKIR / GENIE
+  -> ESTATE / CYCLER
+  -> REALIZATION
+
+Healthcare instantiation:
+
+HEALTH ECOSYSTEM
+  -> HEALTH TRIAGE CYCLER
+  -> HEALTH GENIE
+  -> SPECIALIZED HEALTH CYCLER(S)
+  -> REALIZATION
+
+# 15. MARHAM'S POSITION
+
+Marham is the front-door health experience.
+
+The triage architecture can be adapted directly to Marham without requiring the user to understand the entire Health GENIE architecture.
+
+At increasing complexity, the front door remains stable while orchestration expands behind it.
+
+MARHAM
+  -> TRIAGE
+  -> HEALTH GENIE
+  -> specialized orchestration
+  -> health systems / models / humans
+  -> realization
+
+# 16. HEALTH GENIE AS META-CYCLER
+
+A cycler operates within a configuration space.
+
+A GENIE operates when the configuration space becomes:
+
+- heterogeneous;
+- composite;
+- multimodal;
+- recursive;
+- cross-cycler;
+- cross-system;
+- cross-domain.
+
+Therefore:
+
+SIMPLE CONFIGURATION
+  -> CYCLER
+
+COMPOSITE CONFIGURATION
+  -> GENIE
+
+COMPOSITE GENIE CONFIGURATION
+  -> META-GENIE / HIGHER-ORDER GENIE
+
+This is the architectural reason Health GENIE is required.
+
+# 17. HUMAN AGENCY
+
+Health GENIE orchestrates; it does not erase consequential human agency.
+
+The architecture distinguishes:
+
+- patient;
+- clinician;
+- care team;
+- institution;
+- operational actors;
+- medical models;
+- authoritative systems;
+- evidence sources.
+
+Where a consequential decision requires human authority, the orchestration layer must route to the appropriate human actor rather than silently substituting model output.
+
+# 18. PROVENANCE / EVIDENCE / GOVERNANCE
+
+Because health information is heterogeneous and consequential, Health GENIE must preserve:
+
+- provenance;
+- source identity;
+- temporal context;
+- modality;
+- evidence status;
+- model status;
+- uncertainty;
+- transformations;
+- reconciliation history;
+- human decisions;
+- system actions.
+
+Retrieved material, model inference, human observation and generated synthesis must remain distinguishable.
+
+# 19. BACKEND NEUTRALITY
+
+Health GENIE is backend-neutral.
+
+It should not require a single:
+
+- EMR vendor;
+- EHR vendor;
+- HMIS;
+- LMIS;
+- device manufacturer;
+- imaging stack;
+- laboratory system;
+- drug database;
+- clinical-trial platform;
+- medical-model provider.
+
+Heterogeneous infrastructure remains underneath the orchestration layer.
+
+# 20. MODALITY PRESERVATION
+
+During composition, preserve:
+
+- modality semantics;
+- source provenance;
+- temporal ordering;
+- identity and context;
+- uncertainty;
+- state;
+- authorization;
+- clinical significance.
+
+Composition must not flatten unlike observations into an undifferentiated representation.
+
+# 21. GENERALIZATION
+
+The same triage + GENIE pattern can extend beyond healthcare.
+
+TRIAGE CYCLER
+  -> domain-specific GENIE
+  -> specialized cyclers
+  -> systems / models / modalities / humans
+  -> realization
+
+Possible domains include:
+
+- Humanesque;
+- healthcare;
+- education;
+- finance;
+- public administration;
+- research;
+- industrial operations;
+- other heterogeneous ecosystems.
+
+The domain-specific GENIE supplies the appropriate domain ontology, systems, governance and cycler substrate while retaining the general meta-cycler architecture.
+
+# 22. CORE FORMULA
+
+MARHAM
+  -> HEALTH TRIAGE CYCLER
+  -> HEALTH GENIE
+  -> DOMAIN / MODALITY MAP
+  -> SPECIALIZED CYCLER(S)
+  -> SYSTEMS / MODELS / HUMANS
+  -> RECONCILIATION
+  -> VERIFICATION
+  -> REALIZATION
+  -> NEXT STATE
+
+# 23. CONSTITUTIONAL BOUNDARIES
+
+Marham / Triage Cycler:
+- identifies and navigates the health situation.
+
+Health GENIE:
+- composes heterogeneous health-domain participation.
+
+Specialized Cyclers:
+- perform domain-specific operations.
+
+FAKIR-like retrieval infrastructure where applicable:
+- retrieves authoritative substrate rather than inventing it.
+
+Medical Models:
+- provide model-derived inference as bounded participants.
+
+Authoritative Systems:
+- provide records and operational state.
+
+Humans:
+- retain consequential agency where required.
+
+# 24. DESIGN AXIOMS
+
+1. TRIAGE IS NAVIGATION, NOT MERELY CLASSIFICATION.
+2. HEALTHCARE TRIAGE MUST HANDLE HETEROGENEITY.
+3. GENIE IS THE COMPOSITION LAYER FOR HETEROGENEOUS CONFIGURATIONS.
+4. MODALITIES MUST REMAIN DISTINGUISHABLE.
+5. DOMAINS MUST REMAIN DISTINGUISHABLE.
+6. SPECIALIZED CYCLERS SHOULD RETAIN THEIR OWN SEMANTICS.
+7. MEDICAL MODELS ARE PARTICIPANTS, NOT THE ARCHITECTURE.
+8. AUTHORITATIVE RECORDS AND MODEL INFERENCE MUST REMAIN DISTINCT.
+9. HUMAN CONSEQUENTIAL AGENCY MUST BE PRESERVED.
+10. PROVENANCE MUST SURVIVE COMPOSITION.
+11. BACKEND IMPLEMENTATIONS MUST REMAIN INTEROPERABLE AND REPLACEABLE.
+12. GENIE MAY ELEVATE, SPLIT, COMPOSE, MERGE, RECURSE AND DESCEND.
+13. THE FRONT DOOR MAY REMAIN SIMPLE WHILE THE BACKEND ORCHESTRATION IS COMPLEX.
+14. THE ARCHITECTURE MUST SUPPORT THE NEXT STATE, NOT ONLY THE CURRENT CLASSIFICATION.
+15. MARHAM IS AN INSTANTIATION OF THE PATTERN, NOT THE LIMIT OF THE PATTERN.
+
+# 25. CANONICAL HIERARCHY
+
+GENIE
+  -> HEALTH GENIE
+      -> HEALTH TRIAGE CYCLER
+          -> SPECIALIZED HEALTH CYCLERS
+              -> EMR / EHR / HMIS / LMIS / DEVICES
+              -> DRUGS / TRIALS / IMAGING / LABS
+              -> MEDICAL MODELS
+              -> CLINICIANS / PATIENTS / CARE TEAMS / INSTITUTIONS
+          -> RECONCILIATION / VERIFICATION
+      -> HEALTH REALIZATION
+
+MARHAM is the direct front-door instantiation of the Health Triage layer.
+
+# 26. SHORT DEFINITION
+
+MARHAM:
+A health-domain front door implementing the reusable Triage Cycler pattern.
+
+HEALTH TRIAGE CYCLER:
+A cyclical navigator through heterogeneous health situations, domains, modalities, and destinations.
+
+HEALTH GENIE:
+The multimodal meta-cycler that composes the specialized cyclers, systems, models, evidence and humans required by a health situation.
+
+Together:
+
+MARHAM provides the front door.
+TRIAGE provides navigation.
+HEALTH GENIE provides composition.
+SPECIALIZED CYCLERS provide execution.
+SYSTEMS / MODELS / HUMANS provide domain capabilities.
+RECONCILIATION + VERIFICATION preserve coherence.
+REALIZATION produces the next health state/action.

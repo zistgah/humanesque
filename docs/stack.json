@@ -1,0 +1,75 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "note": "L0–L26 is the workbench interoperability taxonomy. FAKIR MRD uses AGI L0–L9. Do not collapse.",
+  "web": {
+    "hosting": "GitHub Pages, docs/",
+    "pwa": true,
+    "backend": "none — Pages cannot run Docker. Labs run where a daemon exists.",
+    "surfaces": {
+      "landing": "index.html",
+      "l15": "workbench.html",
+      "beginner": "nb.html",
+      "linguist": "hindawi.html",
+      "cycler": "mez/",
+      "agi": "fakir/",
+      "estate": "explorer.html"
+    }
+  },
+  "labs": [
+    {
+      "id": "beginner",
+      "role": "Level 0 human-computing",
+      "image": "panini-lab-beginner",
+      "layers": ["L13", "L15", "L16"],
+      "shailis": ["praatha", "rekha", "soochee"],
+      "tools": ["node", "notebook", "PRINT/LOGO"],
+      "web": "nb.html"
+    },
+    {
+      "id": "linguist",
+      "role": "ILM / Hindawi / Sanskrit laboratory",
+      "image": "panini-lab-linguist",
+      "layers": ["L12", "L13", "L14"],
+      "shailis": ["guru", "praatha", "soochee", "shabda", "wyaaka"],
+      "tools": ["node", "retrieved unicode.h", "flatten_uni_dev", "TSVs", "icu-devtools"],
+      "web": "hindawi.html"
+    },
+    {
+      "id": "engineer",
+      "role": "Compiler / systems / DevOps",
+      "image": "panini-lab-engineer",
+      "layers": ["L7", "L8", "L13", "L14", "L15"],
+      "shailis": ["guru", "shraeni", "yantra", "shabda", "wyaaka", "gamana", "ayas", "vidhi"],
+      "tools": ["gcc", "g++", "gfortran", "flex", "bison", "python3", "node", "make"],
+      "web": "workbench.html"
+    },
+    {
+      "id": "mathematician",
+      "role": "Proof / tensor / Sanskrit mathematics",
+      "image": "panini-lab-math",
+      "layers": ["L13", "L14", "L23"],
+      "shailis": ["ganita", "ganana", "vidhi", "tarka", "aalasi"],
+      "tools": ["node", "python3", "prove_v2", "tensor subset"],
+      "web": "view.html?src=PANINI.V2.WORKBENCH.md"
+    },
+    {
+      "id": "agi",
+      "role": "GENIE / FAKIR / cycler laboratory",
+      "image": "panini-lab-agi",
+      "layers": ["L17", "L18", "L21", "L23", "L26"],
+      "shailis": [],
+      "tools": ["node", "cyclers/*.pni", "fakir domains", "mez harness"],
+      "web": "mez/"
+    },
+    {
+      "id": "enterprise",
+      "role": "CI / provenance / deploy gates",
+      "image": "panini-lab-enterprise",
+      "layers": ["L15", "L24", "L25"],
+      "shailis": [],
+      "tools": ["node", "git", "python3", "tests/", "Misty/OTS specified"],
+      "web": "view.html?src=CAN_COMPILE.md"
+    }
+  ]
+}

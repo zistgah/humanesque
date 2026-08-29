@@ -1,0 +1,13 @@
+{
+  "_tree_rev": "2026.08.28",
+  "note": "Standard environments are OCI images. PANINI launches them; it does not replace them.",
+  "environments": {
+    "env-c": { "image": "gcc:13", "standard": "ISO/IEC 9899", "suite": "gcc torture" },
+    "env-cxx": { "image": "gcc:13", "standard": "ISO/IEC 14882", "suite": "libstdc++" },
+    "env-python": { "image": "python:3.12", "standard": "CPython + PEPs", "suite": "Lib/test" },
+    "env-fortran": { "image": "gcc:13", "standard": "ISO/IEC 1539", "suite": "gfortran torture" },
+    "env-julia": { "image": "julia:1.10", "standard": "Julia manual", "suite": "test/" },
+    "env-rust": { "image": "rust:1.80", "standard": "Rust reference", "suite": "rustc ui" },
+    "env-go": { "image": "golang:1.23", "standard": "Go spec", "suite": "go test" }
+  }
+}

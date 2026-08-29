@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — document</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .md pre { overflow: auto; background: #0b1c2c; color: #eee; padding: 12px; }
+    .md code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; }
+    .md table { border-collapse: collapse; width: 100%; }
+    .md td, .md th { border: 1px solid rgba(201,162,39,.35); padding: 4px 8px; text-align: left; }
+    .missing { color: #a40; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>PANINI</strong>
+  <nav>
+    <a href="index.html">Overview</a>
+    <a href="standards.html">Standards</a>
+    <a href="languages.html">Languages</a>
+    <a href="hindawi.html">Hindawi</a>
+    <a href="cyclers.html">Cyclers</a>
+    <a href="workbench.html">Workbench</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="fine" id="src-name"></p>
+  <article class="md" id="md">Loading…</article>
+</main>
+<script>
+function esc(s) {
+  return String(s).replace(/&/g,"&").replace(/</g,"<").replace(/>/g,">");
+}
+function md(src) {
+  const lines = String(src).replace(/\r\n/g,"\n").split("\n");
+  const out = [];
+  let inCode = false, code = [];
+  let inTable = false, table = [];
+  function flushTable() {
+    if (!table.length) return;
+    const rows = table.map((r) => r.replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim()));
+    const head = rows[0] || [];
+    const body = rows.slice(2);
+    out.push("<table><thead><tr>" + head.map((c) => "<th>" + inline(c) + "</th>").join("") + "</tr></thead><tbody>");
+    body.forEach((r) => out.push("<tr>" + r.map((c) => "<td>" + inline(c) + "</td>").join("") + "</tr>"));
+    out.push("</tbody></table>");
+    table = []; inTable = false;
+  }
+  function inline(t) {
+    t = esc(t);
+    t = t.replace(/`([^`]+)`/g, "<code>$1</code>");
+    t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(_, a, b) {
+      let href = b;
+      if (/\.md($|#)/i.test(b) && !/^https?:/i.test(b)) {
+        href = "view.html?src=" + encodeURIComponent(b.replace(/^\.\.\//, "").replace(/^\.\//, ""));
+      }
+      return '<a href="' + href + '">' + a + "</a>";
+    });
+    return t;
+  }
+  for (const line of lines) {
+    if (line.startsWith("```")) {
+      if (inCode) { out.push("<pre><code>" + esc(code.join("\n")) + "</code></pre>"); code = []; inCode = false; }
+      else { flushTable(); inCode = true; }
+      continue;
+    }
+    if (inCode) { code.push(line); continue; }
+    if (/^\s*\|/.test(line)) { inTable = true; table.push(line); continue; }
+    flushTable();
+    if (/^### /.test(line)) out.push("<h3>" + inline(line.slice(4)) + "</h3>");
+    else if (/^## /.test(line)) out.push("<h2>" + inline(line.slice(3)) + "</h2>");
+    else if (/^# /.test(line)) out.push("<h1>" + inline(line.slice(2)) + "</h1>");
+    else if (/^[-*] /.test(line)) out.push("<li>" + inline(line.slice(2)) + "</li>");
+    else if (!line.trim()) out.push("");
+    else out.push("<p>" + inline(line) + "</p>");
+  }
+  flushTable();
+  if (inCode) out.push("<pre><code>" + esc(code.join("\n")) + "</code></pre>");
+  return out.join("\n").replace(/(<li>[\s\S]*?<\/li>\n?)+/g, (m) => "<ul>" + m + "</ul>");
+}
+const ALLOWED = [
+  "ARCHITECTURE.md","ARCHITECT_PROMPTS.md","CONTEXT.md","CONTRACT.md","CYCLERS.md",
+  "DOCUMENTATION.md","SPINOFF.md","AYESHA.md","ESTATE.md","DEFECTS.md","CAN_COMPILE.md","CONFORMANCE.md",
+  "CONVERSATION.md","GITHUB_DIFF.md","STATUS.md","PARADIGM.md","SHAILIS.md","LANGUAGE_STANDARDS.md","AGI_STACK.md","PANINI.V2.WORKBENCH.md","MRD.md","REQUIREMENTS.md",
+  "LINGUISTIC_EQUITY.md","RULINGS.md","WHY_DEFINE_IS_NOT_LOCALIZATION.md",
+  "HINDAWI_RETRIEVED.md","IMPLEMENTATION.md","KNOWLEDGE_TRANSFER_FOR_GROK.md",
+  "REPO_INDEX.md","REQUIREMENTS.md","SUPPORTED_LANGUAGES.md","V2.md","V3.md",
+  "PANINI_STANDARD.md","PANINI_LITERATE.md","WHY_DEFINE_IS_NOT_LOCALIZATION.md"
+];
+const q = new URLSearchParams(location.search).get("src") || "ARCHITECTURE.md";
+const name = q.replace(/^.*\//, "");
+document.getElementById("src-name").textContent = name;
+if (!ALLOWED.includes(name)) {
+  document.getElementById("md").innerHTML = '<p class="missing">Unknown document.</p>';
+} else {
+  fetch(name).then((r) => { if (!r.ok) throw r.status; return r.text(); })
+    .then((t) => { document.getElementById("md").innerHTML = md(t); document.title = "PANINI — " + name; })
+    .catch(() => { document.getElementById("md").innerHTML = '<p class="missing">Could not load ' + name + '. GitHub Pages only serves files under docs/.</p>'; });
+}
+</script>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+</body>
+</html>

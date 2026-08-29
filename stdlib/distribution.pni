@@ -1,0 +1,24 @@
+MODULE PANINI.Distribution
+
+FUNCTION dockerfile_text()
+    RETURN "FROM node:22-alpine\nWORKDIR /panini\nCOPY . .\nCMD [\"node\",\"scripts/selfhost.mjs\"]\n"
+END
+
+FUNCTION compose_text()
+    RETURN "services:\n  panini:\n    build: .\n"
+END
+
+FUNCTION ci_text()
+    RETURN "name: panini\non: [push]\njobs:\n  prove:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: node tests/run.mjs\n      - run: node scripts/selfhost.mjs\n      - run: node scripts/prove_theorem.mjs\n"
+END
+
+FUNCTION generate_distribution()
+    PRINT "DISTRIBUTION_IN_PANINI"
+    RETURN dockerfile_text()
+END
+
+FUNCTION main()
+    RETURN generate_distribution()
+END
+
+END

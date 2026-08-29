@@ -1,0 +1,6 @@
+@imperative
+MODULE ScalaCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

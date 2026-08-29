@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V2.2 - Safe Boot</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020617; color: white; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: #020617; }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); pointer-events: auto; }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div class="relative z-10 h-screen pointer-events-none flex flex-col justify-between p-6">
+        <div class="glass p-5 rounded-xl border-l-4 border-red-500 w-fit">
+            <h1 class="text-red-500 font-bold text-xl uppercase tracking-tighter">AyeCNSe <span class="text-white text-sm">V2.2 SYSTEM_RECOVERY</span></h1>
+            <p id="status-text" class="text-[10px] text-slate-400 uppercase mt-1">Engine Status: Checking Hardware...</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl flex gap-4 h-64 w-full max-w-4xl self-center">
+            <div class="flex-grow flex flex-col">
+                <textarea id="ilmInput" class="flex-grow bg-black p-3 jetbrains text-red-100 outline-none rounded-lg border border-slate-800 resize-none">
+// BHANGRA GROUND-ROLL
+SIT()
+WAIT(0.5)
+ROLL_FORWARD(360)
+WAIT(1)
+STAND()
+RESET()</textarea>
+            </div>
+            <div class="w-48 flex flex-col gap-2">
+                <button onclick="sim.runSequence()" class="flex-grow bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg transition-all uppercase text-sm">Execute</button>
+                <button onclick="location.reload()" class="p-2 bg-slate-800 text-[10px] rounded font-bold">REBOOT ENGINE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class HumanoidV2 {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                try {
+                    this.scene = new THREE.Scene();
+                    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    this.camera.position.set(6, 4, 8);
+
+                    this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                    this.renderer.setPixelRatio(window.devicePixelRatio);
+                    document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                    this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                    this.controls.target.set(0, 1.5, 0);
+
+                    this.scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+                    const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+                    sun.position.set(5, 10, 7);
+                    this.scene.add(sun);
+
+                    this.scene.add(new THREE.GridHelper(40, 40, 0x1e293b, 0x0f172a));
+
+                    this.buildModel();
+                    this.animate();
+                    document.getElementById('status-text').innerText = "Engine Status: ONLINE (V2.2)";
+                } catch (e) {
+                    document.getElementById('status-text').innerText = "CRITICAL ERROR: " + e.message;
+                }
+            }
+
+            buildModel() {
+                this.bot = new THREE.Group();
+                const mat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.5 });
+                
+                // Root Pivot for Rolling
+                this.pivot = new THREE.Group();
+                this.pivot.position.y = 2.4; 
+                this.bot.add(this.pivot);
+
+                // Torso & Head
+                const pelvis = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.4, 0.6), mat);
+                this.pivot.add(pelvis);
+
+                this.torso = new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.4, 0.7), mat);
+                this.torso.position.y = 0.9;
+                pelvis.add(this.torso);
+
+                this.head = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), mat);
+                this.head.position.y = 1.0;
+                this.torso.add(this.head);
+
+                // Legs
+                this.legs = {
+                    L: this.createLeg(-0.35, pelvis, mat),
+                    R: this.createLeg(0.35, pelvis, mat)
+                };
+
+                this.scene.add(this.bot);
+            }
+
+            createLeg(x, parent, mat) {
+                const hip = new THREE.Group(); hip.position.set(x, -0.2, 0); parent.add(hip);
+                const upper = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.2, 0.3), mat); upper.position.y = -0.6; hip.add(upper);
+                const knee = new THREE.Group(); knee.position.y = -0.6; upper.add(knee);
+                const lower = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.2, 0.25), mat); lower.position.y = -0.6; knee.add(lower);
+                return { hip, knee };
+            }
+
+            async runSequence() {
+                const lines = document.getElementById('ilmInput').value.split('\n');
+                for (let line of lines) {
+                    const l = line.trim();
+                    if (!l || l.startsWith('//')) continue;
+                    const match = l.match(/(.+)\((.*)\)/);
+                    if (match) await this.execute(match[1].trim(), parseFloat(match[2]));
+                }
+            }
+
+            async execute(cmd, val) {
+                if (cmd === 'SIT') {
+                    // Sit Pose logic
+                    this.pivot.position.y = 0.6;
+                    this.legs.L.hip.rotation.x = -1.4;
+                    this.legs.R.hip.rotation.x = -1.4;
+                    this.legs.L.knee.rotation.x = 0.6;
+                    this.legs.R.knee.rotation.x = 0.6;
+                }
+                if (cmd === 'ROLL_FORWARD') {
+                    // Progressive rotation animation
+                    for (let i = 0; i < 60; i++) {
+                        this.pivot.rotation.x -= (Math.PI * 2) / 60;
+                        this.bot.position.z += 0.08;
+                        // Height oscillation to simulate ground clearance
+                        this.pivot.position.y = 0.6 + Math.abs(Math.sin(i/9.5) * 0.7);
+                        await new Promise(r => setTimeout(r, 16));
+                    }
+                }
+                if (cmd === 'STAND') {
+                    this.pivot.position.y = 2.4;
+                    this.pivot.rotation.x = 0;
+                    this.legs.L.hip.rotation.x = 0;
+                    this.legs.R.hip.rotation.x = 0;
+                    this.legs.L.knee.rotation.x = 0;
+                    this.legs.R.knee.rotation.x = 0;
+                }
+                if (cmd === 'RESET') { this.bot.position.z = 0; }
+                await new Promise(r => setTimeout(r, 500));
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Safe loader
+        let sim;
+        window.onload = () => { sim = new HumanoidV2(); };
+    </script>
+</body>
+</html>

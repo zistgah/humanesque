@@ -1,0 +1,6 @@
+@imperative
+MODULE OcamlCharacter
+    FUNCTION main()
+        RETURN 0
+    END
+END

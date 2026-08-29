@@ -1,0 +1,23 @@
+MODULE PANINI.VT100
+
+FUNCTION cls()
+    VT_RESET()
+    RETURN VT_WRITE(ESC() + "[2J" + ESC() + "[H")
+END
+
+FUNCTION vt_green(text)
+    RETURN VT_WRITE(ESC() + "[32m" + text + ESC() + "[0m")
+END
+
+FUNCTION main()
+    VT_RESET()
+    VT_WRITE(ESC() + "[2J" + ESC() + "[H")
+    VT_WRITE(ESC() + "[1;36mVT100" + ESC() + "[0m ")
+    VT_WRITE("DOS 8x16\n")
+    VT_WRITE("ABCXYZ 0123456789\n")
+    PRINT VT_DUMP()
+    PRINT VT_FONTS()
+    RETURN 0
+END
+
+END

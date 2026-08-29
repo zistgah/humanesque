@@ -1,0 +1,10 @@
+MODULE T00039
+FUNCTION main()
+    i = 0
+    REPEAT 3
+        i = i + 1
+    END
+    PRINT i
+    RETURN 0
+END
+END

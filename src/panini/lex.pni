@@ -1,0 +1,70 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * lex(1)-style scanner generator implemented in PANINI.
+ */
+MODULE PANINI.Lex
+
+FUNCTION lex_match_literal(source, i, lit)
+    j = 0
+    WHILE j < LEN(lit)
+        IF i + j >= LEN(source)
+            RETURN 0
+        END
+        IF source[i + j] != lit[j]
+            RETURN 0
+        END
+        j = j + 1
+    END
+    RETURN LEN(lit)
+END
+
+FUNCTION lex_is_digit(ch)
+    RETURN ch >= "0" AND ch <= "9"
+END
+
+FUNCTION lex_is_alpha(ch)
+    RETURN (ch >= "A" AND ch <= "Z") OR (ch >= "a" AND ch <= "z") OR ch == "_"
+END
+
+FUNCTION lex_scan(source)
+    tokens = []
+    i = 0
+    n = LEN(source)
+    WHILE i < n
+        ch = source[i]
+        IF ch == " " OR ch == TAB() OR ch == NEWLINE() OR ch == CR()
+            i = i + 1
+        ELSE
+            IF lex_is_digit(ch)
+                raw = ""
+                WHILE i < n AND lex_is_digit(source[i])
+                    raw = raw + source[i]
+                    i = i + 1
+                END
+                APPEND(tokens, {kind: "NUMBER", value: raw})
+            ELSE
+                IF lex_is_alpha(ch)
+                    raw = ""
+                    WHILE i < n AND (lex_is_alpha(source[i]) OR lex_is_digit(source[i]))
+                        raw = raw + source[i]
+                        i = i + 1
+                    END
+                    APPEND(tokens, {kind: "IDENT", value: raw})
+                ELSE
+                    APPEND(tokens, {kind: "PUNCT", value: ch})
+                    i = i + 1
+                END
+            END
+        END
+    END
+    APPEND(tokens, {kind: "EOF", value: ""})
+    RETURN tokens
+END
+
+FUNCTION main()
+    t = lex_scan("add(40, 2)")
+    PRINT LEN(t)
+    RETURN LEN(t)
+END
+
+END

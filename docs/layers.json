@@ -1,0 +1,33 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Workbench interoperability taxonomy L0–L26. Distinct from FAKIR's AGI L0–L9 lattice (MRD fakir).",
+  "layers": [
+    {"id":"L0","name":"Physical substrate"},
+    {"id":"L1","name":"Device physics"},
+    {"id":"L2","name":"Digital/compute primitives"},
+    {"id":"L3","name":"Hardware architecture"},
+    {"id":"L4","name":"Memory/storage"},
+    {"id":"L5","name":"Interconnect/I/O"},
+    {"id":"L6","name":"Firmware/boot"},
+    {"id":"L7","name":"Operating/runtime substrate"},
+    {"id":"L8","name":"Execution frameworks"},
+    {"id":"L9","name":"Simulation/digital twins"},
+    {"id":"L10","name":"Sensorimotor substrate"},
+    {"id":"L11","name":"Data substrate"},
+    {"id":"L12","name":"Representation/language","mrd":"ilm"},
+    {"id":"L13","name":"Programming language","mrd":"panini (this repo)"},
+    {"id":"L14","name":"Compiler/semantic realization","mrd":"panini compiler"},
+    {"id":"L15","name":"Tooling/workbench","mrd":"mez"},
+    {"id":"L16","name":"Interaction/multimodality"},
+    {"id":"L17","name":"Model substrate"},
+    {"id":"L18","name":"Cognition"},
+    {"id":"L19","name":"Coherence/nervous-system layer"},
+    {"id":"L20","name":"Embodiment/action","mrd":"pench / transeg"},
+    {"id":"L21","name":"Agent architecture","mrd":"cyclers"},
+    {"id":"L22","name":"Collective/ecosystem intelligence"},
+    {"id":"L23","name":"Metacognition/verification","mrd":"genie"},
+    {"id":"L24","name":"Persistence/continuity","mrd":"yadein / misty"},
+    {"id":"L25","name":"Sovereignty/governance","mrd":"poie / humanesque"},
+    {"id":"L26","name":"Civilizational realization","mrd":"fakir / UKOP"}
+  ]
+}

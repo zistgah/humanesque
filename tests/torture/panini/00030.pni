@@ -1,0 +1,8 @@
+# literate heading
+REM documentation strand
+MODULE T00030
+FUNCTION main()
+    PRINT "lit"
+    RETURN 0
+END
+END

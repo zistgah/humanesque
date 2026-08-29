@@ -1,0 +1,14 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Yantra host: NASM-shaped subset. Browser run is tests/asm_run.mjs / docs/engine/nb.js runAsm.
+ * Not a #define. Keywords come from retrieved shaili yantra (526 rules) via Romenagri lex.
+ */
+@assembly
+@mem(manual_raw)
+MODULE AssemblyYantra
+    /* Recognised after shaili lex: MOV INT XOR DB SEGMENT FORMAT ENTRY */
+    FUNCTION interpret(host)
+        /* Implementation lives with the notebook engine so gdb-layer identity stays Romenagri. */
+        RETURN host
+    END
+END

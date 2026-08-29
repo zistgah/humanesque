@@ -1,0 +1,57 @@
+/* GATE CS §9 Databases
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION select_gt(vals, k)
+    n = 0
+    i = 0
+    WHILE i < LEN(vals)
+        IF vals[i] > k
+            n = n + 1
+        END
+        i = i + 1
+    END
+    RETURN n
+END
+FUNCTION project_count(n)
+    RETURN n
+END
+FUNCTION nf3_ok(fd_right_key)
+    RETURN fd_right_key
+END
+FUNCTION btree_order(m)
+    RETURN m
+END
+FUNCTION btree_min(m)
+    RETURN INT(m / 2)
+END
+FUNCTION lock_grant(held, req)
+    IF held == 0
+        RETURN 1
+    END
+    IF held == req
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION main()
+    t = 1
+    IF select_gt([1, 5, 9, 2], 4) != 2
+        t = 0
+    END
+    IF project_count(3) != 3
+        t = 0
+    END
+    IF nf3_ok(1) != 1
+        t = 0
+    END
+    IF btree_min(5) != 2
+        t = 0
+    END
+    IF lock_grant(0, 1) != 1
+        t = 0
+    END
+    IF lock_grant(1, 2) != 0
+        t = 0
+    END
+    RETURN t
+END

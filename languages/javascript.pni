@@ -1,0 +1,6 @@
+@imperative @type(dynamic_gradual) @mem(tracing_gc) @async(event_loop)
+MODULE JsCharacter
+    FUNCTION main()
+        RETURN 1 + 1
+    END
+END

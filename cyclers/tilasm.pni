@@ -1,0 +1,1227 @@
+REM ================================================================
+REM TILASM.PNI
+REM طلسم
+REM
+REM TILASM — Immersive Reality / Experiential Realization Cycler
+REM
+REM PANINI PROGRAM
+REM Cycler: TILASM
+REM Version: 1.0.0
+REM
+REM PURPOSE
+REM   Help a human conceive, elicit, specify, construct, test,
+REM   experience, evaluate, realize, publish and preserve an
+REM   immersive experience.
+REM
+REM FUNDAMENTAL PRINCIPLE
+REM   EXPERIENCE is primary.
+REM   WORLD, ENVIRONMENT, IMPLEMENTATION, RUNTIME and ARTIFACT
+REM   are derived/related realizations and MUST NOT be conflated.
+REM
+REM RESOLUTION
+REM   EASY / MID / PRO are execution-resolution parameters.
+REM   They do not constitute different lifecycle architectures.
+REM ================================================================
+
+
+MODULE TILASM
+
+  NAME        "Tilasm"
+  SCRIPT      "طلسم"
+  CLASS       CYCLER
+  DOMAIN      IMMERSIVE_EXPERIENCE
+  OUTPUT      IMMERSIVE
+
+  VERSION     "1.0.0"
+
+
+  PURPOSE
+    "Conceptualize, specify, construct, test, experience,
+     evaluate, realize, publish and preserve immersive experiences."
+  END PURPOSE
+
+
+  PRINCIPLES
+
+    PRINCIPLE EXPERIENCE_FIRST
+      "The experience being created is the primary object."
+    END PRINCIPLE
+
+    PRINCIPLE HUMAN_FIRST
+      "Technology must not substitute for experiential intent."
+    END PRINCIPLE
+
+    PRINCIPLE DERIVATION
+      "Worlds, environments and implementations are derived
+       from progressively specified experience states."
+    END PRINCIPLE
+
+    PRINCIPLE ITERATION
+      "Incomplete concepts are valid starting states."
+    END PRINCIPLE
+
+    PRINCIPLE RESOLUTION
+      "EASY, MID and PRO control depth of execution."
+    END PRINCIPLE
+
+    PRINCIPLE PRESERVATION
+      "Changes preserve ancestry, provenance and prior states."
+    END PRINCIPLE
+
+    PRINCIPLE VERIFICATION
+      "A realization is not equivalent to a verified experience."
+    END PRINCIPLE
+
+  END PRINCIPLES
+
+
+  ================================================================
+  REM
+  REM PRIMARY DOMAIN OBJECTS
+  ================================================================
+
+  OBJECT EXPERIENCE
+
+    FIELD purpose
+    FIELD audience
+    FIELD context
+    FIELD premise
+
+    FIELD experiential_intent
+    FIELD emotional_arc
+    FIELD temporal_structure
+
+    FIELD spatial_structure
+    FIELD interaction_model
+    FIELD participation_model
+
+    FIELD sensory_model
+    FIELD narrative_model
+    FIELD world_model
+    FIELD agency_model
+
+    FIELD accessibility_model
+    FIELD safety_model
+
+    FIELD state_model
+    FIELD journey_model
+
+    FIELD success_criteria
+    FIELD verification_criteria
+
+    FIELD status
+    FIELD revision
+    FIELD provenance
+
+  END OBJECT
+
+
+  OBJECT WORLD
+
+    FIELD identity
+    FIELD ontology
+    FIELD geography
+    FIELD entities
+    FIELD environments
+    FIELD rules
+    FIELD states
+    FIELD history
+    FIELD temporal_model
+
+    DERIVED_FROM EXPERIENCE
+
+  END OBJECT
+
+
+  OBJECT ENVIRONMENT
+
+    FIELD identity
+    FIELD spaces
+    FIELD spatial_graph
+    FIELD assets
+    FIELD sensory_layers
+    FIELD interaction_surfaces
+    FIELD runtime_requirements
+
+    DERIVED_FROM WORLD
+    DERIVED_FROM EXPERIENCE
+
+  END OBJECT
+
+
+  OBJECT ACTOR
+
+    FIELD identity
+    FIELD role
+    FIELD capabilities
+    FIELD goals
+    FIELD state
+    FIELD behaviour
+
+  END OBJECT
+
+
+  OBJECT PARTICIPANT
+
+    FIELD identity
+    FIELD role
+    FIELD permissions
+    FIELD capabilities
+    FIELD journey
+    FIELD state
+
+  END OBJECT
+
+
+  OBJECT INTERACTION
+
+    FIELD actor
+    FIELD participant
+    FIELD trigger
+    FIELD action
+    FIELD response
+    FIELD state_transition
+    FIELD constraints
+
+  END OBJECT
+
+
+  OBJECT EXPERIENCE_STATE
+
+    FIELD state
+    FIELD participants
+    FIELD actors
+    FIELD environment
+    FIELD sensory_state
+    FIELD narrative_state
+    FIELD interaction_state
+    FIELD temporal_position
+
+  END OBJECT
+
+
+  OBJECT ASSET
+
+    FIELD identity
+    FIELD MIME
+    FIELD format
+    FIELD source
+    FIELD provenance
+    FIELD hash
+    FIELD version
+
+  END OBJECT
+
+
+  OBJECT DELIVERABLE
+
+    FIELD identity
+    FIELD type
+    FIELD format
+    FIELD version
+    FIELD status
+    FIELD dependencies
+    FIELD provenance
+    FIELD evidence
+    FIELD signoff
+
+  END OBJECT
+
+
+  ================================================================
+  REM
+  REM STATE MODEL
+  ================================================================
+
+  ENUM STATUS
+
+    UNDEFINED
+    CONCEIVING
+    CAPTURED
+    STRUCTURED
+    REVIEW
+    APPROVED
+    SPECIFIED
+    DESIGNED
+    IMPLEMENTING
+    SIMULATING
+    EXPERIENCING
+    EVALUATING
+    REVISE
+    VERIFIED
+    PACKAGED
+    PUBLISHED
+    PRESERVED
+
+  END ENUM
+
+
+  ================================================================
+  REM
+  REM RESOLUTION
+  ================================================================
+
+  ENUM RESOLUTION
+
+    EASY
+    MID
+    PRO
+
+  END ENUM
+
+
+  ================================================================
+  REM
+  REM CONTRACT
+  ================================================================
+
+  CONTRACT TILASM_CONTRACT
+
+    INVARIANT
+      "Experience intent precedes realization."
+    END INVARIANT
+
+    INVARIANT
+      "A world is not an experience."
+    END INVARIANT
+
+    INVARIANT
+      "An environment is not an implementation."
+    END INVARIANT
+
+    INVARIANT
+      "An implementation is not evidence that an experience
+       has achieved its intended outcome."
+    END INVARIANT
+
+    INVARIANT
+      "Changes to upstream specifications propagate to
+       dependent artefacts."
+    END INVARIANT
+
+    INVARIANT
+      "Previous approved revisions remain addressable."
+    END INVARIANT
+
+    REQUIRE
+      "Human experiential intent must be captured before
+       realization begins."
+    END REQUIRE
+
+    REQUIRE
+      "Human approval is required at designated gates."
+    END REQUIRE
+
+  END CONTRACT
+
+
+  ================================================================
+  REM
+  REM STAGE 1 — CONCEIVE
+  REM
+  REM The user does NOT need to know what the final experience is.
+  REM TILASM helps discover it.
+  ================================================================
+
+  STAGE CONCEIVE
+
+    RESOLUTION EASY
+    VERB ELICIT
+    INTO experience.intent
+
+    ASK
+      """
+      What immersive experience are you trying to create?
+
+      Do not describe the technology yet.
+
+      Describe what you want a person to experience.
+
+      Explore, as appropriate:
+
+        what the experience is
+        who experiences it
+        why the experience exists
+        what the participant perceives
+        what the participant can do
+        what changes during the experience
+        what the participant should discover
+        what the experience should feel like
+        what should remain after the experience
+
+      The idea may be incomplete.
+      Begin wherever the concept currently exists.
+      """
+
+    CAPTURE experience.intent
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 2 — ELICIT
+  REM
+  REM Conceptual elicitation is itself iterative.
+  ================================================================
+
+  STAGE ELICIT
+
+    RESOLUTION EASY
+    VERB REFINE
+    FROM experience.intent
+    INTO experience.intent
+
+    REPEAT
+
+      REFLECT experience.intent
+
+      IDENTIFY GAPS
+        INTO experience.gaps
+
+      IF COUNT(experience.gaps) > 0
+
+        ASK
+          """
+          The following aspects of the proposed experience
+          remain insufficiently specified.
+
+          {experience.gaps}
+
+          Ask only the questions necessary to clarify them.
+          Do not invent answers for the participant.
+          """
+        END ASK
+
+        CAPTURE responses
+
+        INTEGRATE responses INTO experience.intent
+
+      END IF
+
+    UNTIL experience.intent.complete == TRUE
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 3 — CAPTURE
+  ================================================================
+
+  STAGE CAPTURE
+
+    RESOLUTION EASY
+    VERB CREATE
+    EXPECT EXPERIENCE
+    FROM experience.intent
+    INTO experience
+
+    ASK
+      """
+      Convert the elicited concept into a structured experience
+      definition.
+
+      Preserve the participant's intended meaning.
+
+      Identify:
+
+        PURPOSE
+        AUDIENCE
+        CONTEXT
+        PREMISE
+        PARTICIPANT EXPERIENCE
+        DESIRED CHANGES
+        EXPERIENCE BOUNDARY
+        SUCCESS CONDITIONS
+
+      Do not invent unresolved details.
+      Mark missing information explicitly.
+      """
+    END ASK
+
+    VALIDATE experience != NULL
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 4 — STRUCTURE
+  ================================================================
+
+  STAGE STRUCTURE
+
+    RESOLUTION MID
+    VERB DERIVE
+    FROM experience
+    INTO experience.model
+
+    DERIVE experience.emotional_arc
+    DERIVE experience.temporal_structure
+    DERIVE experience.spatial_structure
+    DERIVE experience.interaction_model
+    DERIVE experience.participation_model
+    DERIVE experience.sensory_model
+    DERIVE experience.narrative_model
+    DERIVE experience.world_model
+    DERIVE experience.agency_model
+    DERIVE experience.state_model
+    DERIVE experience.journey_model
+
+    IDENTIFY dependencies
+    IDENTIFY constraints
+    IDENTIFY assumptions
+    IDENTIFY unresolved
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 5 — EXPERIENCE REVIEW
+  ================================================================
+
+  STAGE EXPERIENCE_REVIEW
+
+    RESOLUTION MID
+    VERB REVIEW
+    FROM experience
+
+    ASK
+      """
+      Review the proposed experience definition.
+
+      Identify:
+
+        contradictions
+        omissions
+        ambiguities
+        unnecessary assumptions
+        inaccessible interactions
+        impossible transitions
+        undefined participant states
+        undefined success conditions
+
+      Do not redesign the experience without authorization.
+      """
+    END ASK
+
+    CAPTURE experience.review
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 6 — EXPERIENCE REVISION
+  ================================================================
+
+  STAGE EXPERIENCE_REVISE
+
+    IF experience.review.requires_revision == TRUE
+
+      REVISE experience
+      PRESERVE ancestry
+
+      GOTO EXPERIENCE_REVIEW
+
+    END IF
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 7 — EXPERIENCE SIGN-OFF
+  ================================================================
+
+  STAGE EXPERIENCE_SIGNOFF
+
+    GATE HUMAN
+      "SIGNOFF experience"
+
+    REQUIRE experience.complete == TRUE
+    REQUIRE experience.unresolved == EMPTY
+
+    SET experience.status = APPROVED
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 8 — WORLD SPECIFICATION
+  ================================================================
+
+  STAGE WORLD
+
+    RESOLUTION MID
+    VERB DERIVE
+    FROM experience
+    INTO world
+
+    DERIVE world.ontology
+    DERIVE world.geography
+    DERIVE world.entities
+    DERIVE world.rules
+    DERIVE world.states
+    DERIVE world.history
+    DERIVE world.temporal_model
+
+    VALIDATE world AGAINST experience
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 9 — WORLD REVIEW
+  ================================================================
+
+  STAGE WORLD_REVIEW
+
+    RESOLUTION MID
+    VERB REVIEW
+
+    VERIFY world AGAINST experience
+
+    IF verification.failed
+
+      REVISE world
+      GOTO WORLD_REVIEW
+
+    END IF
+
+    GATE HUMAN
+      "SIGNOFF world"
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 10 — SPATIAL DESIGN
+  ================================================================
+
+  STAGE SPATIAL_DESIGN
+
+    RESOLUTION MID
+    VERB DERIVE
+    FROM world
+    INTO environment.spatial_graph
+
+    DERIVE spaces
+    DERIVE navigation
+    DERIVE spatial_relationships
+    DERIVE points_of_interest
+    DERIVE transitions
+    DERIVE participant_positions
+
+    VALIDATE environment.spatial_graph
+      AGAINST experience.spatial_structure
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 11 — INTERACTION DESIGN
+  ================================================================
+
+  STAGE INTERACTION_DESIGN
+
+    RESOLUTION MID
+    VERB DERIVE
+    FROM experience.interaction_model
+    INTO interactions
+
+    FOR EACH interaction IN interactions
+
+      DEFINE trigger
+      DEFINE action
+      DEFINE response
+      DEFINE state_transition
+      DEFINE constraints
+
+      VALIDATE interaction
+
+    END FOR
+
+    VERIFY interactions AGAINST experience
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 12 — MULTIMODAL DESIGN
+  ================================================================
+
+  STAGE MULTIMODAL_DESIGN
+
+    RESOLUTION MID
+    VERB DERIVE
+    FROM experience.sensory_model
+    INTO media
+
+    MAP semantic_state TO:
+
+      TEXT
+      IMAGE
+      AUDIO
+      VIDEO
+      ANIMATION
+      MOVEMENT
+      SPATIAL_AUDIO
+      HAPTICS
+      PHYSICAL_ACTION
+
+    END MAP
+
+    VALIDATE media
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 13 — IMMERSIVE ARCHITECTURE
+  ================================================================
+
+  STAGE IMMERSIVE_ARCHITECTURE
+
+    RESOLUTION PRO
+    VERB SPECIFY
+
+    CREATE architecture
+
+    architecture
+      EXPERIENCE       = experience
+      WORLD            = world
+      ENVIRONMENT      = environment
+      INTERACTIONS     = interactions
+      MEDIA            = media
+      ACTORS           = actors
+      PARTICIPANTS     = participants
+      STATE_MODEL      = experience.state_model
+      JOURNEYS         = experience.journey_model
+      SAFETY           = experience.safety_model
+      ACCESSIBILITY    = experience.accessibility_model
+    END architecture
+
+    VERIFY architecture
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 14 — REALIZATION
+  ================================================================
+
+  STAGE REALIZE
+
+    RESOLUTION PRO
+    VERB CREATE
+
+    FROM architecture
+    INTO implementation
+
+    REQUIRE architecture.status == APPROVED
+
+    IMPLEMENT
+      runtime
+      rendering
+      interaction
+      state
+      media
+      spatialization
+      embodiment
+      input
+      output
+
+    REGISTER dependencies
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 15 — SIMULATION
+  ================================================================
+
+  STAGE SIMULATE
+
+    RESOLUTION PRO
+    VERB EXECUTE
+
+    RUN implementation
+      MODE SIMULATION
+
+    CAPTURE:
+
+      state_trace
+      interaction_trace
+      performance
+      errors
+      participant_path
+      state_transitions
+
+    INTO simulation.results
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 16 — EXPERIENCE
+  ================================================================
+
+  STAGE EXPERIENCE
+
+    RESOLUTION PRO
+    VERB EXECUTE
+
+    REQUIRE implementation != NULL
+
+    RUN implementation
+      MODE EXPERIENCE
+
+    CAPTURE participant.experience
+    CAPTURE experience_state
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 17 — OBSERVATION
+  ================================================================
+
+  STAGE OBSERVE
+
+    RESOLUTION PRO
+    VERB OBSERVE
+
+    CAPTURE:
+
+      participant_actions
+      participant_responses
+      interaction_events
+      navigation
+      state_changes
+      failures
+      qualitative_feedback
+      quantitative_measurements
+
+    INTO observation
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 18 — EVALUATION
+  ================================================================
+
+  STAGE EVALUATE
+
+    RESOLUTION PRO
+    VERB VERIFY
+
+    COMPARE observation
+      AGAINST experience.success_criteria
+
+    COMPARE observation
+      AGAINST experience.verification_criteria
+
+    IDENTIFY:
+
+      achieved
+      partially_achieved
+      failed
+      unknown
+
+    INTO evaluation
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM STAGE 19 — ITERATIVE REVISION
+  ================================================================
+
+  STAGE REVISE
+
+    IF evaluation.failed
+
+      CREATE revision FROM:
+
+        experience
+        world
+        environment
+        interactions
+        architecture
+        implementation
+
+      PRESERVE previous_revision
+
+      IDENTIFY affected_artifacts
+
+      INVALIDATE affected_artifacts
+
+      GOTO affected lifecycle stage
+
+    ELSE
+
+      SET experience.status = VERIFIED
+
+    END IF
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM DEPENDENCY PROPAGATION
+  ================================================================
+
+  WHEN experience.changed
+
+    INVALIDATE world
+    INVALIDATE environment
+    INVALIDATE interactions
+    INVALIDATE architecture
+    INVALIDATE implementation
+    INVALIDATE simulation
+    INVALIDATE evaluation
+
+  END WHEN
+
+
+  WHEN world.changed
+
+    INVALIDATE environment
+    INVALIDATE interactions
+    INVALIDATE architecture
+    INVALIDATE implementation
+    INVALIDATE simulation
+
+  END WHEN
+
+
+  WHEN environment.changed
+
+    INVALIDATE architecture
+    INVALIDATE implementation
+    INVALIDATE simulation
+
+  END WHEN
+
+
+  WHEN interaction.changed
+
+    INVALIDATE implementation
+    INVALIDATE simulation
+    INVALIDATE evaluation
+
+  END WHEN
+
+
+  ================================================================
+  REM
+  REM RESOLUTION PROJECTION
+  ================================================================
+
+  RESOLUTION EASY
+
+    EXECUTE:
+
+      CONCEIVE
+      ELICIT
+      CAPTURE
+      BASIC_REVIEW
+      HUMAN_SIGNOFF
+
+    PRODUCE:
+
+      concept
+      experience_summary
+      participant_journey
+      basic_specification
+
+  END RESOLUTION
+
+
+  RESOLUTION MID
+
+    EXECUTE:
+
+      CONCEIVE
+      ELICIT
+      CAPTURE
+      STRUCTURE
+      EXPERIENCE_REVIEW
+      EXPERIENCE_REVISE
+      EXPERIENCE_SIGNOFF
+      WORLD
+      WORLD_REVIEW
+      SPATIAL_DESIGN
+      INTERACTION_DESIGN
+      MULTIMODAL_DESIGN
+
+    PRODUCE:
+
+      experience_model
+      world_model
+      spatial_model
+      interaction_model
+      narrative_structure
+      sensory_structure
+      state_transitions
+      participant_journeys
+
+  END RESOLUTION
+
+
+  RESOLUTION PRO
+
+    EXECUTE:
+
+      CONCEIVE
+      ELICIT
+      CAPTURE
+      STRUCTURE
+      EXPERIENCE_REVIEW
+      EXPERIENCE_REVISE
+      EXPERIENCE_SIGNOFF
+
+      WORLD
+      WORLD_REVIEW
+      SPATIAL_DESIGN
+      INTERACTION_DESIGN
+      MULTIMODAL_DESIGN
+      IMMERSIVE_ARCHITECTURE
+
+      REALIZE
+      SIMULATE
+      EXPERIENCE
+      OBSERVE
+      EVALUATE
+      REVISE
+
+    PRODUCE:
+
+      formal_experience_schema
+      world_state
+      spatial_graph
+      interaction_contracts
+      asset_specifications
+      multimodal_mappings
+      runtime_requirements
+      hardware_requirements
+      performance_constraints
+      verification_criteria
+      test_scenarios
+      provenance
+      configuration
+      deployment_package
+
+  END RESOLUTION
+
+
+  ================================================================
+  REM
+  REM GENIE INTEGRATION
+  ================================================================
+
+  MODULE GENIE
+
+    OPERATION CONCEIVE
+    OPERATION IMAGINE
+    OPERATION ASSOCIATE
+    OPERATION ABSTRACT
+    OPERATION INTEGRATE
+    OPERATION NARRATE
+    OPERATION VISUALIZE
+    OPERATION SPATIALIZE
+    OPERATION DRAMATIZE
+    OPERATION CHARACTERIZE
+    OPERATION ITERATE
+    OPERATION CRITIQUE
+    OPERATION REMIX
+
+  END MODULE
+
+
+  STAGE CREATIVE_AUGMENTATION
+
+    USE GENIE
+
+    FOR:
+
+      CONCEIVE experience
+      IMAGINE world
+      NARRATE journey
+      VISUALIZE environment
+      SPATIALIZE spaces
+      DRAMATIZE events
+      CHARACTERIZE actors
+      ITERATE alternatives
+
+    PRESERVE original human intent
+
+  END STAGE
+
+
+  ================================================================
+  REM
+  REM ILM INTEGRATION
+  ================================================================
+
+  MODULE ILM
+
+    REPRESENT semantic_state
+
+    SUPPORT:
+
+      MULTISCRIPT
+      MULTILINGUAL
+      TRANSLITERATION
+      SEMANTIC_MAPPING
+      REPRESENTATION_MAPPING
+
+    PRESERVE semantic identity
+      ACROSS language
+      ACROSS script
+      ACROSS modality
+
+  END MODULE
+
+
+  ================================================================
+  REM
+  REM MIME / MULTIMODAL ARTEFACT SUPPORT
+  ================================================================
+
+  ARTEFACT experience_spec
+    MIME "application/panini-experience"
+    SOURCE experience
+  END ARTEFACT
+
+  ARTEFACT world_spec
+    MIME "application/panini-world"
+    SOURCE world
+  END ARTEFACT
+
+  ARTEFACT immersive_manifest
+    MIME "application/panini-immersive"
+    SOURCE architecture
+  END ARTEFACT
+
+
+  ================================================================
+  REM
+  REM VERIFICATION
+  ================================================================
+
+  ASSERT experience != NULL
+  ASSERT experience.intent != NULL
+  ASSERT experience.status == APPROVED
+       BEFORE REALIZE
+
+  ASSERT simulation.results != NULL
+       BEFORE EVALUATE
+
+  ASSERT observation != NULL
+       BEFORE VERIFY
+
+  ASSERT evaluation != NULL
+       BEFORE RELEASE
+
+
+  ================================================================
+  REM
+  REM RELEASE
+  ================================================================
+
+  STAGE VERIFY
+
+    VERIFY experience
+    VERIFY world
+    VERIFY environment
+    VERIFY interactions
+    VERIFY implementation
+    VERIFY provenance
+
+    IF ALL VERIFIED
+
+      SET implementation.status = VERIFIED
+
+    END IF
+
+  END STAGE
+
+
+  STAGE PACKAGE
+
+    CREATE DELIVERABLE tilasm_experience
+
+      TYPE IMMERSIVE_EXPERIENCE
+      SOURCE experience
+      DEPENDS_ON:
+
+        world
+        environment
+        interactions
+        media
+        implementation
+
+      INCLUDE:
+
+        specification
+        implementation
+        assets
+        configuration
+        tests
+        verification
+        provenance
+
+    END DELIVERABLE
+
+  END STAGE
+
+
+  STAGE PUBLISH
+
+    GATE HUMAN
+      "PUBLISH tilasm_experience"
+
+    PUBLISH tilasm_experience
+
+  END STAGE
+
+
+  STAGE PRESERVE
+
+    HASH tilasm_experience
+    RECORD provenance
+    RECORD ancestry
+    RECORD dependencies
+    RECORD configuration
+    RECORD verification
+    RECORD revision_history
+
+    ARCHIVE tilasm_experience
+
+  END STAGE
+
+
+END MODULE
+
+
+REM ================================================================
+REM END TILASM.PNI
+REM ================================================================

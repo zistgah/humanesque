@@ -1,0 +1,28 @@
+MODULE PANINI.CompilerSource
+
+FUNCTION compile(source)
+    tokens = lex(source)
+    ast = parse(tokens)
+    typed = typecheck(ast)
+    ir = optimize(lower(ast))
+    binary = codegen(ir)
+    RETURN {
+        success: typed.ok,
+        token_count: LEN(tokens),
+        function_count: LEN(ir.functions),
+        ast: ast,
+        ir: binary
+    }
+END
+
+FUNCTION main()
+    sample = "FUNCTION f(x) RETURN x + 1 END"
+    result = compile(sample)
+    PRINT result.success
+    PRINT result.function_count
+    ASSERT result.success
+    ASSERT result.function_count == 1
+    RETURN result.function_count
+END
+
+END

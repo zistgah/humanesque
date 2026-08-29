@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — AyeBIOS</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Retrieved · <a href="https://github.com/ayebios/ayebios">ayebios/ayebios</a> · SeaBIOS × Hindawi Shaili Guru · not reconstructed</p>
+  <h1>आईबायोस (AyeBIOS)</h1>
+  <p class="lead">Localized 16-bit x86 BIOS. The source is <code>.c.uhin</code> — the same Guru pipeline as Hindi C, all the way down to POST. That is why <code>#define</code> is not localization: gdb, nm, and the firmware strings have to survive.</p>
+  <ul>
+    <li>Upstream: QEMU SeaBIOS (LGPL). Branch <code>upstream</code> keeps original notices.</li>
+    <li>This tree: <code>retrieved/ayebios/</code> (read-only). Spin-off: <code>apps/ayebios/</code>.</li>
+    <li>Compiler: existing <code>tools/hincc.mjs</code> + frozen <code>PANINI.Frontend.C</code>. No second C.</li>
+    <li>16-bit ROM binary is <strong>not</strong> claimed this turn. Flatten of <code>boot.c.uhin</code> is.</li>
+  </ul>
+  <p>
+    <button type="button" id="go">Flatten boot.c.uhin</button>
+    <a class="btn" href="emu.html">x86 guest</a>
+    <a class="btn" href="nb.html">Notebook (do not change)</a>
+  </p>
+  <pre id="out">idle</pre>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later · SeaBIOS copyrights on upstream</footer>
+<script src="skins/skins.js"></script>
+<script src="engine/nb.js"></script>
+<script>
+document.getElementById("go").onclick = async function () {
+  const out = document.getElementById("out");
+  out.textContent = "loading retrieved AyeBIOS…";
+  try {
+    const src = await fetch("demos/ayebios-boot.c.uhin").then(function (r) {
+      if (!r.ok) throw new Error("boot.c.uhin " + r.status);
+      return r.text();
+    });
+    if (!window.PANINI_NB) throw new Error("PANINI_NB missing");
+    await PANINI_NB.load("engine/bundle.json");
+    const r = PANINI_NB.compile({ src: src, lang: "hindi", shaili: "guru" });
+    const host = r.host || r.host_text || "";
+    out.textContent = "shaili=" + (r.shaili || "guru") + "\n" + String(host).slice(0, 2500);
+  } catch (e) {
+    out.textContent = String(e.message || e);
+  }
+};
+</script>
+</body>
+</html>

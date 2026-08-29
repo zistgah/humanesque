@@ -1,0 +1,24 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Retrieved web mentions of THIS work (Hindawi / ILM / AyeAI / cognitist). Homonyms (other Abhishek Choudharys) are listed separately so they are not merged.",
+  "primary": [
+    {"title": "Hindawi Programming System", "where": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Hindawi_Programming_System", "date": "article; flags single-source", "what": "15 Aug 2004; APCISR; Romanagari; shailis; CSI 2005; Sarai 2006; TDIL; Manthan 2007"},
+    {"title": "Open Source has potential with solutions for the disabled", "where": "C-DAC / NRC-FOSS (FOSS India Awards at OSIW Delhi)", "url": "https://www.cdac.in/index.aspx?id=print_page&print=pk_itn_spot620", "date": "2008-02-17", "what": "Lead award: Hindawi (Abhishek Chaudhary, Sweta Chaudhary). System-level Indic programming. Award sponsored by NRC-FOSS, a unit of C-DAC."},
+    {"title": "Write Computer Programs in Indic Languages", "where": "TechWelkin", "url": "https://techwelkin.com/hindawi-now-write-computer-programs-in-indic-langauges", "date": "2011-11-03", "what": "Sarai talk; Hindi Bangla Gujarati; Linux/DOS/Windows"},
+    {"title": "Linux World News — Review of Hindawi", "where": "Linux Magazine", "url": "https://www.linux-magazine.com/index.php/content/download/63246/487546/version/1/file/Linux_World_News.pdf", "date": "cited on Wikipedia", "what": "PDF review"},
+    {"title": "The first ever complete Indic computer programming suite", "where": "VGLUG", "url": "https://groups.google.com/g/vglug/c/J2zYBlgoWZM", "date": "2006-08-27", "what": "announcement"},
+    {"title": "FLOSS Fellowship Programme 2005-2006", "where": "Sarai/CSDS", "url": "https://sarai.net/floss-fellowship/", "date": "2005-2006", "what": "Port Hindawi, Romenagri, APCISR to Linux — Abhishek Choudhary, Kolkata"},
+    {"title": "Hindawi Indic Programming System", "where": "SourceForge", "url": "https://sourceforge.net/projects/hindawi/", "date": "2014-04-26 listed", "what": "hi_pedler; C C++ lex yacc asm BASIC LOGO in Indian languages"},
+    {"title": "hindawi2020", "where": "GitHub", "url": "https://github.com/hindawiai/hindawi2020", "date": "2020", "what": "Hindawi@Linux GPL-2"},
+    {"title": "ILM research / Romenagri", "where": "ilm.codes", "url": "https://ilm.codes/research/", "date": "site migrating", "what": "Romenagri GPL 2003; HPS 15 Aug 2004; © 1993–2026"},
+    {"title": "I Can See Life", "where": "AyeAI triad", "url": "https://icansee.life", "date": "live", "what": "AyeAI · AyeCNSe · AyeAM"},
+    {"title": "Hindi-based programming languages (survey)", "where": "Vitraag", "url": "https://www.vitraag.com/2025/05/06/hindi-based-programming-languages/", "date": "2025-05-06", "what": "lists Hindawi among Indic PLs"},
+    {"title": "African native language PL paper citing HPS", "where": "IJAAS", "url": "https://ijaas.iaescore.com/index.php/IJAAS/article/download/20389/12935", "date": "paper", "what": "cites HPS as a suite"},
+    {"title": "Wikiwand mirror", "where": "Wikiwand", "url": "https://www.wikiwand.com/en/Hindawi_Programming_System", "date": "mirror", "what": "Wikipedia content"},
+    {"title": "Howdy glossary", "where": "Howdy", "url": "https://www.howdy.com/glossary/hindawi-programming-system", "date": "undated", "what": "glossary stub"}
+  ],
+  "homonyms": [
+    {"title": "Echoing Green / IDR Abhishek Choudhary", "url": "https://idronline.org/contributor/abhishek-choudhary/", "note": "Different person. Do not merge into this estate."},
+    {"title": "Getz Lab computational scientist", "url": "http://getzlab.org/team/associated%20scientist/choudhary-abhishek", "note": "Different person."}
+  ]
+}

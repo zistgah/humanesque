@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — WebAssembly backend</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .watbox { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 800px) { .watbox { grid-template-columns: 1fr; } }
+    textarea.mono { width: 100%; min-height: 16rem; font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #0b1220; color: #e8d9a8; border: 1px solid rgba(201,162,39,.35); padding: .6rem; }
+    .out { min-height: 2.5rem; padding: .6rem .8rem; background: #0b1220; border: 1px solid rgba(201,162,39,.35); color: #9fe6a0; font: 14px ui-monospace, Menlo, Consolas, monospace; }
+    .row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0; }
+    button { background: #c9a227; color: #070d18; border: 0; padding: .45rem .9rem; font: 600 14px/1.2 inherit; cursor: pointer; }
+    button.ghost { background: transparent; color: #c9a227; border: 1px solid rgba(201,162,39,.45); }
+    .pill { display: inline-block; padding: .15rem .5rem; border: 1px solid rgba(201,162,39,.4); font-size: .8rem; color: #c9a227; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="index.html"><strong>PANINI</strong></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="wasm.html">WASM</a>
+    <a href="grammar.html">Grammar</a>
+    <a href="nb.html">Notebook</a>
+    <a href="workbench.html">Workbench</a>
+    <a href="view.html?src=WASM.md">Spec</a>
+  </nav>
+</header>
+<main class="site-main">
+  <p class="cite">W3C WebAssembly · stack machine · linear memory</p>
+  <h1>WASM backend</h1>
+  <p class="lead">ISO C on the interpreter is done. The next host is a universal sandboxed binary. Emitter is PANINI. Assembler is in-tree. No wabt.</p>
+  <p>
+    <span class="pill">PANINI.Frontend.C</span>
+    <span class="pill">PANINI.Backend.Wasm</span>
+    <span class="pill">wat2wasm</span>
+    <span class="pill">goto skip = 1</span>
+  </p>
+
+  <h2>Three hurdles</h2>
+  <ol>
+    <li><strong>Stack vs memory.</strong> Trees become postfix. <code>x + 10 * 2</code> → <code>get x; const 10; const 2; mul; add</code>.</li>
+    <li><strong>Strict i32.</strong> The validator rejects C’s implicit casts. Lowering inserts typed ops.</li>
+    <li><strong>One linear memory.</strong> <code>$heap</code> bump is <code>calloc</code>. <code>$sp</code> grows down. Pointers are i32 offsets. <code>i32.load</code> / <code>i32.store</code>.</li>
+  </ol>
+  <p>Maṇḍūkapluti (<code>goto</code>): a function without it stays on structured <code>if</code>/<code>loop</code>. A function with it lowers to a CFG and a <code>br_table</code> dispatcher. Peephole deletes jumps to the next block. Relooper is named, not this turn. <a href="view.html?src=WASM_MANDUKAPLUTI.md">WASM_MANDUKAPLUTI.md</a> · <a href="view.html?src=wasm-cfg/README.md">wasm-cfg</a></p>
+
+  <h2>Run WAT in this browser</h2>
+  <p>The assembler is the same file the tests use. Instantiate is the W3C engine in your browser.</p>
+  <div class="row">
+    <button type="button" id="run">Instantiate and run</button>
+    <button type="button" id="lower">Lower C → WAT</button>
+    <button type="button" class="ghost" id="load-compute">Load compute(x)</button>
+    <label>export <input id="exp" value="compute" size="10" /></label>
+    <label>arg <input id="arg" value="5" size="6" /></label>
+  </div>
+  <div class="watbox">
+    <div>
+      <h3>WAT</h3>
+      <textarea class="mono" id="wat" spellcheck="false"></textarea>
+    </div>
+    <div>
+      <h3>C source — live emitter (c.pni → wasm.pni)</h3>
+      <textarea class="mono" id="c" spellcheck="false">int compute(int x) {
+  int result;
+  result = x + 10 * 2;
+  return result;
+}</textarea>
+      <h3>Examples from the PANINI emitter</h3>
+      <div id="ex" class="row"></div>
+    </div>
+  </div>
+  <div class="out" id="out">Ready.</div>
+
+  <h2>Pipeline</h2>
+  <p><code>C → c.pni AST → wasm.pni WAT → wat2wasm → .wasm → WebAssembly.instantiate</code></p>
+  <p>Hindi C and the other shailis flatten to this C, then to the same module. Representation stays independent of the binary.</p>
+  <p class="fine"><a href="view.html?src=WASM.md">WASM.md</a> · <a href="../src/panini/backends/wasm.pni">wasm.pni</a> · <a href="../examples/wasm/compute.c">compute.c</a></p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script src="i18n/gt.js"></script>
+<script type="module">
+import { wat2wasm, wasmRun } from "./engine/wat2wasm.js";
+import { emitCWat, runCWasm, loadCWasm } from "./engine/interp/host.js";
+
+const COMPUTE = `(module
+  (memory (export "memory") 1)
+  (func $compute (export "compute") (param $x i32) (result i32)
+    (local $result i32)
+    (local.get $x)
+    (i32.const 10)
+    (i32.const 2)
+    (i32.mul)
+    (i32.add)
+    (local.set $result)
+    (local.get $result)
+    (return)
+  )
+)`;
+document.getElementById("wat").value = COMPUTE;
+
+document.getElementById("load-compute").onclick = () => {
+  document.getElementById("wat").value = COMPUTE;
+  document.getElementById("exp").value = "compute";
+  document.getElementById("arg").value = "5";
+};
+
+document.getElementById("lower").onclick = async () => {
+  const out = document.getElementById("out");
+  out.textContent = "lowering via PANINI.Frontend.C + PANINI.Backend.Wasm…";
+  try {
+    await loadCWasm();
+    const wat = await emitCWat(document.getElementById("c").value);
+    document.getElementById("wat").value = wat;
+    out.textContent = "Lowered " + wat.length + " chars WAT. Instantiate to run.";
+  } catch (e) {
+    out.textContent = String(e.message || e);
+  }
+};
+
+document.getElementById("run").onclick = async () => {
+  const out = document.getElementById("out");
+  try {
+    const bytes = wat2wasm(document.getElementById("wat").value);
+    const name = document.getElementById("exp").value.trim() || "main";
+    const arg = Number(document.getElementById("arg").value || 0);
+    const { instance } = await WebAssembly.instantiate(bytes);
+    const fn = instance.exports[name];
+    if (typeof fn !== "function") throw new Error("no export " + name + " — have " + Object.keys(instance.exports).join(", "));
+    const arity = fn.length;
+    const v = arity ? fn(arg) : fn();
+    out.textContent = name + (arity ? "(" + arg + ")" : "()") + " = " + v + "   ·  " + bytes.length + " bytes  magic \\0asm";
+  } catch (e) {
+    out.textContent = String(e.message || e);
+  }
+};
+
+fetch("data/wasm-examples.json").then((r) => r.json()).then((j) => {
+  const box = document.getElementById("ex");
+  (j.examples || []).forEach((ex) => {
+    const b = document.createElement("button");
+    b.className = "ghost";
+    b.type = "button";
+    b.textContent = ex.name;
+    b.onclick = () => {
+      document.getElementById("c").value = ex.src;
+      document.getElementById("wat").value = ex.wat;
+      document.getElementById("exp").value = "main";
+      document.getElementById("arg").value = "0";
+    };
+    box.appendChild(b);
+  });
+}).catch(() => {});
+</script>
+</body>
+</html>

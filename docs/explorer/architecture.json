@@ -1,0 +1,69 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "citation": "Choudhary, A. (2026). Cycles :: Part 1 (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22122422",
+  "doi": "10.5281/zenodo.22122422",
+  "affiliation": "AyeAI",
+  "orcid": "0009-0002-0684-8320",
+  "style": "https://icansee.life",
+  "ayeai": {
+    "status": "LIVE",
+    "not_historical": true,
+    "triad": [
+      {"id": "AyeAI", "what": "Cognition, reasoning, learning. Models of the world and of the self.", "url": "https://icansee.life"},
+      {"id": "AyeCNSe", "what": "The nervous system. Timing, sensing, coherence, and transport.", "url": "https://ayecnse.net"},
+      {"id": "AyeAM", "what": "Embodiment. Action in the physical and simulated world.", "url": "https://icansee.life"}
+    ],
+    "invariant": "Remove any one element and intelligence collapses. Together they form a living loop."
+  },
+  "orthogonal_axis": [
+    {"facet": "DOMAIN", "system": "FAKIR", "asks": "What / Where / Domain", "repos": ["zistgah/fakir"]},
+    {"facet": "LANGUAGE", "system": "ILM", "asks": "How it is represented", "repos": ["project-ilm/ilm", "project-ilm/ilm.codes", "project-ilm/romenagri"]},
+    {"facet": "CONFIGURATION", "system": "STATE", "asks": "What is configured", "repos": ["zistgah/governance"]},
+    {"facet": "DYNAMICS", "system": "PEDLER", "asks": "How it moves", "repos": ["zistgah/pratik_core_mvp"]},
+    {"facet": "REALIZATION", "system": "CEM", "asks": "Substrate realization", "repos": ["zistgah/zamin"]},
+    {"facet": "EXECUTION", "system": "CYCLER SUBSTRATE", "asks": "Lifecycle execution", "repos": ["zistgah/cycles", "zistgah/panini", "zistgah/panini_by_grok", "zistgah/mez"]},
+    {"facet": "PERSISTENCE", "system": "KITAB", "asks": "Artefact / persistence", "repos": ["zistgah/kitab", "zistgah/matba"]},
+    {"facet": "VERIFICATION", "system": "ORACLE", "asks": "Truth / verification", "repos": ["project-ilm/qedler"]},
+    {"facet": "ECOSYSTEM", "system": "ZISTGAH", "asks": "Infrastructure / ecosystem", "repos": ["zistgah/zistgah.github.io", "zistgah/estate"]},
+    {"facet": "CIVILIZATION", "system": "HUMANESque / MAHAJANAPAD", "asks": "Civilizational envelope", "repos": ["zistgah/poie", "zistgah/dukedom"]}
+  ],
+  "panels": [
+    {"n": 1, "title": "Highest-level picture", "poster": "humanesque-estate.png", "node": "HUMANESque", "text": "Humanesque estate → epistemological ground → FAKIR → domainal formation / navigation → Varzish → Mahajanapad. Sovereignty, plurality, equity.", "repos": ["zistgah/poie", "zistgah/fakir", "zistgah/dukedom"]},
+    {"n": 2, "title": "Humanesque estate", "poster": "humanesque-estate.png", "node": "HUMANESque", "text": "Constitutional and civilizational envelope. Central concern is the sovereign human, not a profession, culture, modality, technology or AI model.", "repos": ["zistgah/poie"]},
+    {"n": 3, "title": "Epistemological dukedom", "poster": "epistemological-dukedom.png", "node": "DUKEDOM", "text": "A dukedom is a sovereign domainal/epistemological configuration. FAKIR retrieves the domainal ground from which it can be constituted.", "repos": ["zistgah/dukedom", "zistgah/duke2", "zistgah/fakir"]},
+    {"n": 4, "title": "FAKIR — the guide", "poster": "fakir-the-guide.png", "node": "FAKIR", "text": "Retrieve, don't reconstruct. Must not generate, assume, classify, assign.", "repos": ["zistgah/fakir"]},
+    {"n": 5, "title": "What FAKIR retrieves", "poster": "isic-domain-retrieval.png", "node": "FAKIR", "text": "ISIC economic activity, ISCO occupation, ISCED education, plus other erudition. Domain-space: activity × work × learning × erudition.", "repos": ["zistgah/fakir"]},
+    {"n": 6, "title": "FAKIR × PEDLER", "poster": "fakir-pedler.png", "node": "PEDLER", "text": "FAKIR: what/where. PEDLER: how it moves. Dynamic walk: state, observation, evaluation, inclination, selection, act, execution, new state.", "repos": ["zistgah/fakir", "zistgah/pratik_core_mvp"]},
+    {"n": 7, "title": "FAKIR × ILM", "poster": "fakir-ilm.png", "node": "ILM", "text": "ILM: how it is represented. Multiple languages and modalities can represent the same semantic state.", "repos": ["project-ilm/ilm", "project-ilm/ilm.codes", "project-ilm/romenagri", "zistgah/panini_by_grok"]},
+    {"n": 8, "title": "Abdication", "poster": "abdication.png", "node": "ABDICATION", "text": "Dukedom → abdication → dormant/suspended sovereignty (not destruction). The dukedom can re-arise when called forth.", "repos": ["zistgah/dukedom"]},
+    {"n": 9, "title": "Post-identity", "poster": "abdication.png", "node": "POST-IDENTITY", "text": "Not 'who am I?' but 'what is my mission?' A sovereign need not have one domain.", "repos": ["zistgah/fakir"]},
+    {"n": 10, "title": "FAKIR → Varzish", "poster": "fakir-varzish.png", "node": "VARZISH", "text": "Practice / development environment: traditions, techniques, institutions, knowledge, cycles, reflection.", "repos": ["zistgah/fakir"]},
+    {"n": 11, "title": "Mahajanapad", "poster": "estate-interoperability.png", "node": "MAHAJANAPAD", "text": "Many sovereigns, one civilizational space. Interoperability without homogenization.", "repos": ["zistgah/poie"]},
+    {"n": 12, "title": "CHARBAGH", "poster": "charbagh-humanesque-triage.png", "node": "CHARBAGH", "text": "Humanesque triage and wayfinding. Arrive, elicit, retrieve, map, navigate, compose, derive, enter, remember.", "repos": ["zistgah/cycles"]},
+    {"n": 13, "title": "Derivative estates", "poster": "derivative-estate.png", "node": "DERIVATIVE", "text": "Declare intent, retrieve with FAKIR, correlate, human review, constitute estate, enter Humanesque. Canonical example: BAZMI.", "repos": ["zistgah/estate"]},
+    {"n": 14, "title": "Zistgah estate", "poster": "fakir-zistgah.png", "node": "ZISTGAH", "text": "Infrastructure / ecosystem for enabled agency. Living ecosystem where enabled agency is instantiated and sustained.", "repos": ["zistgah/zistgah.github.io", "zistgah/governance", "zistgah/estate"]},
+    {"n": 15, "title": "AyeAI triad", "poster": "cover.png", "node": "AYEAI", "text": "Irreducible causal loop: AyeAI (think) · AyeAM (embody) · AyeCNSe (sense/coherence). Removing any member collapses the loop. LIVE.", "repos": []},
+    {"n": 16, "title": "Foundry", "poster": "architecture-specification.png", "node": "FOUNDRY", "text": "Realization infrastructure. Executable ontology. Foundry is not a member of the triad; it enables the triad.", "repos": ["project-ilm/ops"]},
+    {"n": 17, "title": "AyeAI × Humanesque", "poster": "humanesque-estate.png", "node": "AYEAI", "text": "Different axes, can intersect. Humanesque answers sovereign human/civilizational questions. AyeAI addresses computational/cognitive realization.", "repos": ["zistgah/poie"]},
+    {"n": 18, "title": "CEM", "poster": "cem-substrate-realization.png", "node": "CEM", "text": "Substrate realization coordinate. FAKIR→domain, ILM→representation, PEDLER→dynamics, CEM→realization.", "repos": ["zistgah/zamin", "zistgah/aab", "zistgah/fiza"]},
+    {"n": 19, "title": "Cycler substrate", "poster": "cycler-substrate.png", "node": "CYCLER", "text": "Common execution/orchestration protocol. A cycler is a programmable lifecycle: intent, structure, design, test, package, preserve. PANINI is the whole-structure language with ILM/Hindawi as deeper substrate.", "repos": ["zistgah/cycles", "zistgah/panini", "zistgah/panini_by_grok", "zistgah/mez"]},
+    {"n": 20, "title": "Six modality cyclers", "poster": "matba-print-cycler.png", "node": "CYCLERS6", "text": "MATBA press · KHWAB visual · AWAZ audio · TILASM immersive · PENCH embodied · YADEIN record.", "repos": ["zistgah/matba", "zistgah/khwab", "zistgah/awaz", "zistgah/tilasm", "zistgah/pench", "zistgah/yadein"]},
+    {"n": 21, "title": "GENIE", "poster": "genie-general-meta-cycler.png", "node": "GENIE", "text": "Meta-cycler / creative agency. Conceptualize, drive, orchestrate, compose, elevate, descend, split, merge.", "repos": ["zistgah/genie"]},
+    {"n": 22, "title": "GENIE five coupled loops", "poster": "genie-general-meta-cycler.png", "node": "GENIE", "text": "Creative cognition; affective-aesthetic regulation; experience-learning; memory reconstitution; embodiment-action.", "repos": ["zistgah/genie"]},
+    {"n": 23, "title": "GENIE two complementary loops", "poster": "genie-operational-cycle.png", "node": "GENIE", "text": "Operational (discover→specify→formalize→implement→verify→refine) and creative. Complementary, not competing.", "repos": ["zistgah/genie"]},
+    {"n": 24, "title": "Creative state (PCS)", "poster": "genie-general-meta-cycler.png", "node": "GENIE", "text": "Persistent creative state: unified semantic world, structure, narrative memory, creative identity, world model.", "repos": ["zistgah/genie"]},
+    {"n": 25, "title": "Convergence in GENIE", "poster": "convergence-creates-architecture.png", "node": "GENIE", "text": "GENIE × FAKIR × CHARBAGH × cyclers. Convergence creates architecture.", "repos": ["zistgah/genie", "zistgah/fakir"]},
+    {"n": 26, "title": "GENIE × FAKIR × CHARBAGH", "poster": "genie-charbagh.png", "node": "CHARBAGH", "text": "FAKIR retrieves domain; CHARBAGH routes; GENIE conceives.", "repos": ["zistgah/genie", "zistgah/fakir"]},
+    {"n": 27, "title": "FAKIR × CHARBAGH × GENIE", "poster": "genie-fakir.png", "node": "FAKIR", "text": "Mission → retrieve → route → conceive → cyclers / estate / derivation.", "repos": ["zistgah/fakir", "zistgah/genie"]},
+    {"n": 28, "title": "GENIE × Varzish", "poster": "genie-varzish.png", "node": "VARZISH", "text": "Practice environment under GENIE drive.", "repos": ["zistgah/genie"]},
+    {"n": 29, "title": "Provenance and configuration", "poster": "configuration-management.png", "node": "KITAB", "text": "Misty DOI, OTS, configuration management. Deliverable semantics.", "repos": ["project-ilm/misty-doi", "project-ilm/tok-doi", "zistgah/kitab"]},
+    {"n": 30, "title": "Deliverable semantics", "poster": "deliverable-semantics.png", "node": "KITAB", "text": "Typed lifecycle objects with status, version, provenance.", "repos": ["zistgah/kitab", "zistgah/matba"]},
+    {"n": 31, "title": "PANINI as whole-structure language", "poster": "ilm-as-representation-substrate.png", "node": "PANINI", "text": "PANINI with ILM/Hindawi as deeper linguistic/semantic substrate. This tree.", "repos": ["zistgah/panini_by_grok", "zistgah/panini", "zistgah/cycles"]}
+  ],
+  "related_dois": [
+    {"id": "10.5281/zenodo.17497559", "rel": "isDerivedFrom", "note": "PEDLER"},
+    {"id": "10.5281/zenodo.21397274", "rel": "references", "note": "POIE"},
+    {"id": "10.5281/zenodo.21917807", "rel": "references", "note": "book"}
+  ],
+  "corpus": {"posters": 91, "payload": "cycles-payload.zip not inlined (322 MB)"}
+}

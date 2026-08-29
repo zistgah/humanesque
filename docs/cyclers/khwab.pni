@@ -1,0 +1,786 @@
+REM ================================================================
+REM KHWAB.PNI
+REM PANINI program: KHWAB Visual Cycler
+REM
+REM KHWAB is a stateful visual-media lifecycle, not a prompt sequence.
+REM PANINI supplies computation; KHWAB supplies the visual lifecycle.
+REM This profile scales from a single image to episodic production.
+REM ================================================================
+
+PROGRAM KHWAB
+  VERSION "1.0.0"
+  TITLE "Khwab"
+  SCRIPT "خواب"
+  DOMAIN VISUAL_MEDIA
+
+  PURPOSE
+    "Transform human visual intention into a contextualized,
+     specified, realized, verified and packaged visual artefact."
+  END PURPOSE
+
+  OUTPUT
+    FAMILY IMAGE, SKIT, SHORT, FEATURE, SERIES
+    MIME IMAGE, VIDEO, VECTOR, PROJECT
+  END OUTPUT
+
+  RESOLUTION EASY, MID, PRO
+
+  REM ---------------------------------------------------------------
+  REM 1. PROVIDER / EXECUTION MODEL
+  REM ---------------------------------------------------------------
+
+  PROVIDER MODE CLICK, KEY, LOCAL, REMOTE, SIM, HUMAN
+
+  PROVIDER EXTERNAL
+    OPTIONAL TRUE
+    USER_SELECTED TRUE
+    CLICK_THROUGH TRUE
+    CAPTURE CLIPBOARD, PASTE, UPLOAD
+  END PROVIDER
+
+  PROVIDER LOCAL
+    OPTIONAL TRUE
+    OFFLINE TRUE
+    CAPABILITIES TEXT, IMAGE, AUDIO, VIDEO
+  END PROVIDER
+
+  REM The provider never owns KHWAB state.
+  INVARIANT creative_state.owner == "KHWAB"
+  INVARIANT workflow.owner == "KHWAB"
+
+  REM ---------------------------------------------------------------
+  REM 2. CORE WORK OBJECT
+  REM ---------------------------------------------------------------
+
+  OBJECT WORK
+    FIELD id             TYPE ID
+    FIELD title          TYPE TEXT
+    FIELD intention      TYPE TEXT
+    FIELD status         TYPE STATUS
+    FIELD resolution     TYPE RESOLUTION
+    FIELD output_family  TYPE ENUM
+    FIELD semantic_state TYPE SEMANTIC_STATE
+    FIELD visual_state   TYPE VISUAL_STATE
+    FIELD storyboard     TYPE STORYBOARD
+    FIELD scenes         TYPE LIST<SCENE>
+    FIELD shots          TYPE LIST<SHOT>
+    FIELD assets         TYPE LIST<ARTEFACT>
+    FIELD lineage        TYPE LINEAGE
+    FIELD evaluations    TYPE LIST<EVALUATION>
+    FIELD provenance     TYPE PROVENANCE
+    FIELD evidence       TYPE LIST<EVIDENCE>
+    FIELD unresolved     TYPE LIST<QUESTION>
+    FIELD revision       TYPE VERSION
+  END OBJECT
+
+  OBJECT SEMANTIC_STATE
+    FIELD spine
+    FIELD plot
+    FIELD framework
+    FIELD characters
+    FIELD context
+    FIELD viewpoint
+    FIELD temporal_structure
+    FIELD language
+    FIELD medium
+    FIELD purpose
+    FIELD audience
+    FIELD constraints
+  END OBJECT
+
+  OBJECT VISUAL_STATE
+    FIELD composition
+    FIELD palette
+    FIELD lighting
+    FIELD texture
+    FIELD camera
+    FIELD spatial_language
+    FIELD typography
+    FIELD motion_language
+    FIELD references
+    FIELD transformation_rules
+    FIELD continuity_facts
+    FIELD invariants
+  END OBJECT
+
+  REM ---------------------------------------------------------------
+  REM 3. CREATIVE ALGEBRA
+  REM ---------------------------------------------------------------
+
+  FUNCTION CREATIVE_FORMULA(P, F, A, C) RETURNS SEMANTIC_STATE
+    RETURN SYNTHESIZE(P, F, A, C)
+  END FUNCTION
+
+  FUNCTION EXTENDED_FORMULA(P, F, A, C, V, T, L, M, MORE...)
+    RETURN SYNTHESIZE(P, F, A, C, V, T, L, M, MORE...)
+  END FUNCTION
+
+  REM P = Plot
+  REM F = Framework
+  REM A = Characters / Architecture
+  REM C = Context
+  REM V = Viewpoint
+  REM T = Temporal Structure
+  REM L = Language / Style
+  REM M = Medium
+
+  REM ---------------------------------------------------------------
+  REM 4. ARTEFACT MODEL
+  REM ---------------------------------------------------------------
+
+  OBJECT ARTEFACT
+    FIELD id
+    FIELD name
+    FIELD MIME
+    FIELD profile
+    FIELD content
+    FIELD source
+    FIELD parent
+    FIELD generated_by
+    FIELD human_edits
+    FIELD version
+    FIELD hash
+    FIELD provenance
+    FIELD evidence
+    FIELD permissions
+    FIELD consent
+    FIELD repository
+    FIELD DOI
+  END OBJECT
+
+  OBJECT PROVENANCE
+    FIELD provider
+    FIELD model
+    FIELD operation
+    FIELD prompt_packet
+    FIELD references
+    FIELD seed
+    FIELD settings
+    FIELD timestamp
+    FIELD returned_identity
+  END OBJECT
+
+  OBJECT EVIDENCE
+    FIELD kind
+    FIELD source
+    FIELD reference
+    FIELD timestamp
+    FIELD assertion
+  END OBJECT
+
+  REM ---------------------------------------------------------------
+  REM 5. CONTRACT / SAFETY INVARIANTS
+  REM ---------------------------------------------------------------
+
+  CONTRACT KHWAB_CONTRACT
+
+    INVARIANT
+      "Creative state belongs to the cycler, not the external model."
+
+    INVARIANT
+      "Continuity is preserved across scenes and shots."
+
+    INVARIANT
+      "A local file is not attributed to an AI unless returned evidence exists."
+
+    INVARIANT
+      "Missing human intention is never silently invented."
+
+    INVARIANT
+      "Parent-child artefact lineage is preserved."
+
+    INVARIANT
+      "Simulation is not experiment."
+
+    INVARIANT
+      "Only verified artefacts may enter RELEASE."
+
+    REFUSE
+      "claiming provenance for an artefact not received by KHWAB"
+
+    REFUSE
+      "pointing to media that does not exist"
+
+    REFUSE
+      "silently resolving a required human creative decision"
+
+  END CONTRACT
+
+  REM ---------------------------------------------------------------
+  REM 6. STATE MACHINE
+  REM ---------------------------------------------------------------
+
+  STATES
+    IDEA
+    WORLD_CONTEXT
+    VISUAL_LANGUAGE
+    STORYBOARD
+    SHOT_CONSTRUCTION
+    GENERATION
+    CONTINUITY
+    EDIT
+    REVIEW
+    PACKAGE
+    RELEASED
+    BRANCHED
+  END STATES
+
+  TRANSITIONS
+    IDEA -> WORLD_CONTEXT
+    WORLD_CONTEXT -> VISUAL_LANGUAGE
+    VISUAL_LANGUAGE -> STORYBOARD
+    STORYBOARD -> SHOT_CONSTRUCTION
+    SHOT_CONSTRUCTION -> GENERATION
+    GENERATION -> CONTINUITY
+    CONTINUITY -> EDIT
+    EDIT -> REVIEW
+    REVIEW -> PACKAGE
+    PACKAGE -> RELEASED
+
+    REVIEW -> EDIT       WHEN decision == REFINE
+    REVIEW -> BRANCHED   WHEN decision == BRANCH
+    REVIEW -> IDEA       WHEN decision == RETURN_TO_IDEA
+    REVIEW -> WORLD_CONTEXT WHEN decision == RETURN_TO_CONTEXT
+    REVIEW -> VISUAL_LANGUAGE WHEN decision == RETURN_TO_VISUAL_LANGUAGE
+    REVIEW -> STORYBOARD WHEN decision == RETURN_TO_STORYBOARD
+    REVIEW -> SHOT_CONSTRUCTION WHEN decision == RETURN_TO_SHOT
+  END TRANSITIONS
+
+  REM ---------------------------------------------------------------
+  REM 7. STAGE IDEA
+  REM ---------------------------------------------------------------
+
+  STAGE IDEA
+    PURPOSE "Capture what the creator is trying to make before fixing implementation."
+
+    ELICIT intention
+    CAPTURE semantic_state.spine
+    CAPTURE semantic_state.purpose
+    CAPTURE semantic_state.audience
+    CAPTURE output_family
+
+    PRESERVE_UNRESOLVED medium
+    PRESERVE_UNRESOLVED style
+    PRESERVE_UNRESOLVED scene_count
+    PRESERVE_UNRESOLVED technology
+
+    VALIDATE EXISTS intention
+    VALIDATE EXISTS output_family
+
+    GATE HUMAN WHEN REQUIRED(intention, purpose, audience)
+    EMIT stage.result
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 8. STAGE WORLD / CONTEXT
+  REM ---------------------------------------------------------------
+
+  STAGE WORLD_CONTEXT
+    PURPOSE "Establish the world in which the visual work exists."
+
+    CAPTURE semantic_state.context
+
+    INCLUDE culture
+    INCLUDE time
+    INCLUDE place
+    INCLUDE environment
+    INCLUDE environmental_rules
+    INCLUDE social_assumptions
+    INCLUDE continuity_facts
+
+    INVARIANT "Explicit cultural context is not replaced by generic defaults."
+
+    VALIDATE CONTEXT_COHERENT(semantic_state.context)
+    EMIT stage.result
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 9. STAGE VISUAL LANGUAGE
+  REM ---------------------------------------------------------------
+
+  STAGE VISUAL_LANGUAGE
+    PURPOSE "Define the visual grammar as explicit parameters."
+
+    CAPTURE visual_state.composition
+    CAPTURE visual_state.palette
+    CAPTURE visual_state.lighting
+    CAPTURE visual_state.texture
+    CAPTURE visual_state.camera
+    CAPTURE visual_state.spatial_language
+    CAPTURE visual_state.typography
+    CAPTURE visual_state.motion_language
+    CAPTURE visual_state.references
+    CAPTURE visual_state.transformation_rules
+
+    INVARIANT "Style is a parameterized configuration."
+
+    VALIDATE VISUAL_LANGUAGE_COMPLETE(visual_state)
+    EMIT stage.result
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 10. STAGE STORYBOARD
+  REM ---------------------------------------------------------------
+
+  STAGE STORYBOARD
+    PURPOSE "Convert approved semantic state into ordered visual structure."
+
+    DERIVE scenes FROM semantic_state
+    DERIVE shots FROM scenes
+
+    FOR EACH scene IN scenes
+      REQUIRE scene.purpose
+      REQUIRE scene.subject
+      REQUIRE scene.action
+      REQUIRE scene.setting
+      REQUIRE scene.framing
+      REQUIRE scene.continuity_dependencies
+      REQUIRE scene.required_assets
+    END FOR
+
+    PRESERVE master_spine
+    VALIDATE ORDERED(storyboard)
+    EMIT storyboard
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 11. STAGE SHOT / SCENE CONSTRUCTION
+  REM ---------------------------------------------------------------
+
+  STAGE SHOT_CONSTRUCTION
+    PURPOSE "Turn each scene/shot into an executable visual specification."
+
+    FOREACH shot IN shots
+
+      CAPTURE shot.characters
+      CAPTURE shot.objects
+      CAPTURE shot.positions
+      CAPTURE shot.camera
+      CAPTURE shot.lighting
+      CAPTURE shot.environment
+      CAPTURE shot.action
+      CAPTURE shot.dialogue
+      CAPTURE shot.text
+      CAPTURE shot.sound_references
+      CAPTURE shot.continuity_dependencies
+
+      BUILD shot.work_ir
+      BUILD shot.generation_prompt FROM
+        semantic_state,
+        visual_state,
+        shot,
+        continuity_facts
+
+      VALIDATE shot.work_ir
+      EMIT shot.generation_prompt
+
+    END FOREACH
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 12. STAGE GENERATION / ACQUISITION
+  REM ---------------------------------------------------------------
+
+  STAGE GENERATION
+    PURPOSE "Prepare and execute visual realization or acquisition."
+
+    FOR EACH shot IN shots
+
+      SELECT provider
+        CASE CLICK
+          PREPARE prompt_packet
+          OPEN destination
+          WAIT HUMAN
+          CAPTURE paste, clipboard, upload
+        CASE KEY
+          EXECUTE configured API
+        CASE LOCAL
+          EXECUTE local backend
+        CASE REMOTE
+          EXECUTE configured remote backend
+        CASE SIM
+          SIMULATE operation
+        CASE HUMAN
+          REQUEST human realization
+      END SELECT
+
+      CAPTURE provenance.provider
+      CAPTURE provenance.model
+      CAPTURE provenance.operation
+      CAPTURE provenance.prompt_packet
+      CAPTURE provenance.references
+      CAPTURE provenance.seed
+      CAPTURE provenance.settings
+      CAPTURE provenance.returned_identity
+
+      REQUIRE returned_artifact EXISTS
+
+      REGISTER returned_artifact AS ARTEFACT
+
+      INVARIANT
+        "KHWAB never claims an artefact it did not receive."
+
+    END FOR
+
+    EMIT assets
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 13. STAGE CONTINUITY
+  REM ---------------------------------------------------------------
+
+  STAGE CONTINUITY
+    PURPOSE "Maintain a coherent visual world across scenes and shots."
+
+    FOREACH shot IN shots
+      COMPARE shot AGAINST visual_state
+
+      CHECK character_identity
+      CHECK costume
+      CHECK geometry
+      CHECK environment
+      CHECK lighting
+      CHECK camera_grammar
+      CHECK narrative_facts
+      CHECK temporal_progression
+      CHECK declared_invariants
+
+      IF continuity_break
+        RECORD break
+        PROPOSE repairs
+        DO NOT silently rewrite
+        GATE HUMAN IF repair changes declared intent
+      END IF
+    END FOREACH
+
+    UPDATE visual_state.continuity_facts
+    VALIDATE CONTINUITY
+    EMIT continuity_report
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 14. STAGE EDIT
+  REM ---------------------------------------------------------------
+
+  STAGE EDIT
+    PURPOSE "Assemble and transform accepted artefacts without destroying lineage."
+
+    IF output_family == IMAGE
+      SELECT variants
+      TRANSFORM composition
+      PRESERVE lineage
+    END IF
+
+    IF output_family IN VIDEO, SHORT, FEATURE, SERIES
+      ASSEMBLE shot.order
+      SET timing
+      SET transitions
+      ATTACH audio_references
+      VALIDATE continuity
+      PRESERVE lineage
+    END IF
+
+    RECORD parent_child_relationships
+    EMIT edited_artifact
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 15. STAGE REVIEW
+  REM ---------------------------------------------------------------
+
+  STAGE REVIEW
+    PURPOSE "Evaluate the current realization and determine the next transition."
+
+    EVALUATE coherence
+    EVALUATE context_adherence
+    EVALUATE continuity
+    EVALUATE visual_quality
+    EVALUATE edit_friction
+
+    SHOW raw_output
+    SHOW changes
+    SHOW provenance
+    SHOW unresolved
+
+    REQUEST HUMAN decision
+
+    IF decision == ACCEPT
+      CONTINUE PACKAGE
+    ELSE IF decision == REFINE
+      RETURN TO affected_stage
+    ELSE IF decision == BRANCH
+      FORK WORK PRESERVE lineage
+    ELSE IF decision == RETURN_TO_EARLIER_STAGE
+      RETURN affected_stage
+    ELSE
+      STOP
+    END IF
+
+    RECORD evaluation
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 16. STAGE PACKAGE
+  REM ---------------------------------------------------------------
+
+  STAGE PACKAGE
+    PURPOSE "Create the persistent delivery object."
+
+    PACKAGE visual_artifact
+    PACKAGE source_references
+    PACKAGE creative_DNA
+    PACKAGE execution_trace
+    PACKAGE provenance
+    PACKAGE evaluation
+    PACKAGE delivery_metadata
+
+    INCLUDE storyboard WHEN EXISTS
+    INCLUDE scene_graph WHEN EXISTS
+    INCLUDE shot_graph WHEN EXISTS
+    INCLUDE manifests
+    INCLUDE hashes
+    INCLUDE lineage
+    INCLUDE evidence
+
+    COMPUTE package.hash
+    VALIDATE PACKAGE_COMPLETE
+    GATE HUMAN "RELEASE KHWAB"
+
+    EMIT persistent_artifact
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 17. OPTIONAL MINT / PUBLICATION PROFILE
+  REM ---------------------------------------------------------------
+
+  STAGE MINT
+    OPTIONAL TRUE
+    PURPOSE "Commit a verified KHWAB artefact to persistent publication."
+
+    REQUIRE package.status == VERIFIED
+    REQUIRE HUMAN_APPROVAL
+
+    EMIT DOI
+    EMIT release_manifest
+    PRESERVE all source and lineage references
+  END STAGE
+
+  REM ---------------------------------------------------------------
+  REM 18. CREATIVE JOURNEY PROFILE
+  REM ---------------------------------------------------------------
+
+  PROFILE CREATIVE_JOURNEY
+
+    NODE SPINE        = semantic_state.spine
+    NODE PLOT         = semantic_state.plot
+    NODE FRAMEWORK    = semantic_state.framework
+    NODE CHARACTERS   = semantic_state.characters
+    NODE CONTEXT      = semantic_state.context
+    NODE SCENE        = scenes
+    NODE IMAGE        = assets WHERE MIME STARTS_WITH "image/"
+    NODE AUDIO        = assets WHERE MIME STARTS_WITH "audio/"
+    NODE VIDEO        = assets WHERE MIME STARTS_WITH "video/"
+    NODE ASSEMBLY     = edited_artifact
+    NODE PUBLISH      = persistent_artifact
+
+    ALLOW FEEDBACK_ARCS
+    ALLOW RETURN
+    ALLOW BRANCH
+    ALLOW RECOMBINE
+  END PROFILE
+
+  REM ---------------------------------------------------------------
+  REM 19. ONE SEMANTIC STATE / MANY REALIZATIONS
+  REM ---------------------------------------------------------------
+
+  OPERATION REALIZE
+    INPUT semantic_state
+    OUTPUT image, sound, video, text, movement, immersive, physical
+    PRESERVE semantic_identity
+  END OPERATION
+
+  REM KHWAB is the visual realization path.
+  INVARIANT "KHWAB is not the whole semantic state."
+
+  REM ---------------------------------------------------------------
+  REM 20. GENIE COMPOSITION
+  REM ---------------------------------------------------------------
+
+  COMPOSE GENIE
+    ROLE "creative cognition / creative operations"
+    OPERATIONS
+      CONCEIVE
+      OBSERVE
+      IMAGINE
+      ASSOCIATE
+      TRANSFORM
+      COMBINE
+      CONTRAST
+      ABSTRACT
+      CONCRETIZE
+      NARRATE
+      DRAMATIZE
+      VISUALIZE
+      CHARACTERIZE
+      SPATIALIZE
+      MUSICALIZE
+      EMBODY
+      ITERATE
+      CRITIQUE
+      REMIX
+      SERIALIZE
+      PUBLISH
+    END OPERATIONS
+  END COMPOSE
+
+  INVARIANT "GENIE may decorate KHWAB; GENIE does not replace KHWAB."
+
+  REM ---------------------------------------------------------------
+  REM 21. PEDLER-STYLE EXECUTION PIPELINE
+  REM ---------------------------------------------------------------
+
+  PIPELINE KHWAB_EXECUTION
+    CreativeFormula
+    -> CreativeCycler
+    -> ExecutionEngine
+    -> Observation
+    -> VerificationGate
+    -> EvaluationFeedback
+    -> Kitab
+    -> ForkLineage
+  END PIPELINE
+
+  COMPONENT CreativeCycler
+    state_manager
+    timekeeper
+    orchestrator
+    observation_surface
+  END COMPONENT
+
+  REM ---------------------------------------------------------------
+  REM 22. STAGE RESULT CONTRACT
+  REM ---------------------------------------------------------------
+
+  CONTRACT STAGE_RESULT
+    RETURN human_readable_result
+    RETURN structured_work_ir
+    RETURN unresolved_questions
+    RETURN validation_status
+    RETURN recommended_next_stages
+    RETURN evidence_references
+  END CONTRACT
+
+  INVARIANT "Every stage returns both human and machine-readable state."
+
+  REM ---------------------------------------------------------------
+  REM 23. RESOLUTION
+  REM ---------------------------------------------------------------
+
+  RESOLUTION EASY
+    HIDE implementation detail
+    EXPOSE one meaningful action per transition
+    DEFAULT provider CLICK
+    PRESENT essential state only
+  END RESOLUTION
+
+  RESOLUTION MID
+    EXPOSE stage graph
+    EXPOSE contextual controls
+    EXPOSE structured outputs
+    EXPOSE validation
+    EXPOSE provider selection
+  END RESOLUTION
+
+  RESOLUTION PRO
+    EXPOSE typed state
+    EXPOSE AST / Work IR
+    EXPOSE workflow graph
+    EXPOSE MIME
+    EXPOSE provenance
+    EXPOSE evidence
+    EXPOSE lineage
+    EXPOSE execution trace
+    EXPOSE verification
+    EXPOSE gates
+    EXPOSE backend configuration
+  END RESOLUTION
+
+  REM ---------------------------------------------------------------
+  REM 24. EVENT / REACTIVE RULES
+  REM ---------------------------------------------------------------
+
+  WHEN asset.returned
+    CAPTURE asset
+    REGISTER provenance
+    RUN CONTINUITY
+  END WHEN
+
+  WHEN continuity.break_detected
+    CREATE repair_proposal
+    REQUEST HUMAN IF intent_is_affected
+  END WHEN
+
+  WHEN deliverable.changed
+    INVALIDATE downstream.artifacts
+    PRESERVE previous revisions
+  END WHEN
+
+  WHEN requirements.changed
+    MARK storyboard STALE
+    MARK scenes STALE
+    MARK shots STALE
+    MARK generated_assets STALE
+    REQUIRE REVIEW
+  END WHEN
+
+  WHEN review.refine
+    RETURN affected_stage
+  END WHEN
+
+  WHEN review.branch
+    FORK WORK
+    PRESERVE lineage
+  END WHEN
+
+  REM ---------------------------------------------------------------
+  REM 25. CONTROL EXAMPLE: CONVERGENCE
+  REM ---------------------------------------------------------------
+
+  LOOP UNTIL review.status == ACCEPTED
+    RUN affected_stage
+    RUN downstream_stages
+    RUN REVIEW
+
+    IF review.iterations >= 3
+      GENERATE work.summary
+      REQUEST HUMAN SIGNOFF
+    END IF
+  END LOOP
+
+  REM ---------------------------------------------------------------
+  REM 26. PERSISTENCE
+  REM ---------------------------------------------------------------
+
+  CHECKPOINT WORK
+    SAVE semantic_state
+    SAVE visual_state
+    SAVE storyboard
+    SAVE scenes
+    SAVE shots
+    SAVE assets
+    SAVE evaluations
+    SAVE provenance
+    SAVE evidence
+    SAVE lineage
+    SAVE unresolved
+  END CHECKPOINT
+
+  PRESERVE
+    revisions
+    branches
+    parent_child_lineage
+    execution_history
+    evidence
+  END PRESERVE
+
+END PROGRAM KHWAB

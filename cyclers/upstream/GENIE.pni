@@ -1,0 +1,1159 @@
+REM  GENIE.pni
+REM  PANINI representation of the GENIE cognitive / creative / artifact-construction system.
+REM  GENIE = Generalized Emotive-Narrative Interaction Engine / Generative Intelligence
+REM
+REM  This file expresses GENIE as a program/specification in PANINI.
+REM  It is NOT merely a list of prompts. GENIE combines:
+REM    - artifact-construction / Prompt Operating System semantics
+REM    - persistent creative cognition
+REM    - epistemic governance
+REM    - multimodal realization
+REM    - embodiment and observation
+REM    - research lifecycle orchestration
+REM
+REM  PANINI principle:
+REM    deterministic lifecycle / state / verification semantics
+REM    may orchestrate probabilistic AI cognition.
+
+PROGRAM GENIE
+
+  VERSION "1.0.0"
+  CLASS   SOVEREIGN_SYSTEM
+  DOMAIN  COGNITIVE_CREATIVE
+  PURPOSE "Persistent creative intelligence and artifact-construction operating environment."
+
+  REM ================================================================
+  REM  0. CONSTITUTION
+  REM ================================================================
+
+  CONSTITUTION GENIE_CONSTITUTION
+
+    IDENTITY
+      SYSTEM      "GENIE"
+      EXPANSION   "Generalized Emotive-Narrative Interaction Engine / Generative Intelligence"
+      ROLE        "Persistent creative intelligence"
+      SECONDARY   "Artifact-construction pipeline / Prompt Operating System"
+    END IDENTITY
+
+    CANON
+      REQUIRE canonical_ontology
+      REQUIRE canonical_terminology
+      REQUIRE epistemic_status
+      REQUIRE provenance
+      REQUIRE retrieval_before_reconstruction
+      REQUIRE mathematical_notation
+      REQUIRE evidence_hierarchy
+      REQUIRE falsification
+      REQUIRE reproducibility
+      REQUIRE ethics
+      REQUIRE responsibility
+    END CANON
+
+    EPISTEMIC_CLASSES
+      RETRIEVED
+      INFERRED
+      PROPOSED
+      UNRESOLVED
+    END EPISTEMIC_CLASSES
+
+    RULE "UNTAGGED statements cannot enter canonical output."
+
+    RULE "UNRESOLVED cannot silently become INFERRED."
+    RULE "INFERRED cannot masquerade as RETRIEVED."
+    RULE "PROPOSED cannot become completed EXPERIMENT without evidence."
+    RULE "SIMULATION cannot pass the EXPERIMENT gate."
+    RULE "PASS requires evidence."
+    RULE "Measurements require units."
+    RULE "Measurements require uncertainty where applicable."
+
+    RULE "Human sovereignty remains above execution."
+    RULE "Creative context integrity must survive serialization and reconstruction."
+    RULE "Continuity must be preserved across time and modalities."
+
+  END CONSTITUTION
+
+
+  REM ================================================================
+  REM  1. CORE TYPES
+  REM ================================================================
+
+  TYPE SemanticState
+    FIELD id
+    FIELD meaning
+    FIELD relations
+    FIELD context
+    FIELD provenance
+    FIELD epistemic_status
+  END TYPE
+
+  TYPE CreativeState
+    FIELD unified_semantic_world
+    FIELD narrative_memory
+    FIELD aesthetic_memory
+    FIELD creative_identity
+    FIELD world_model
+    FIELD context_history
+    FIELD causal_history
+    FIELD historical_context
+  END TYPE
+
+  TYPE PersistentCreativeState EXTENDS CreativeState
+    FIELD state_id
+    FIELD version
+    FIELD ancestry
+    FIELD continuity
+    FIELD serialization
+    FIELD checkpoints
+  END TYPE
+
+  TYPE Candidate
+    FIELD id
+    FIELD semantic_state
+    FIELD source
+    FIELD relations
+    FIELD evaluation
+    FIELD provenance
+    FIELD status
+  END TYPE
+
+  TYPE Artifact
+    FIELD id
+    FIELD type
+    FIELD format
+    FIELD content
+    FIELD version
+    FIELD revision
+    FIELD status
+    FIELD dependencies
+    FIELD provenance
+    FIELD evidence
+    FIELD hash
+  END TYPE
+
+  TYPE Observation
+    FIELD source
+    FIELD modality
+    FIELD state
+    FIELD measurement
+    FIELD units
+    FIELD uncertainty
+    FIELD timestamp
+    FIELD evidence
+  END TYPE
+
+  TYPE Inclination
+    FIELD value
+    CONSTRAINT value >= -1
+    CONSTRAINT value <= +1
+    SEMANTICS "Signed directional gradient; not a probability."
+  END TYPE
+
+  TYPE Act
+    FIELD intent
+    FIELD authorization
+    FIELD execution_plan
+    SEMANTICS "Executable intent."
+  END TYPE
+
+  TYPE EpistemicClaim
+    FIELD statement
+    FIELD status
+    FIELD evidence
+    FIELD provenance
+  END TYPE
+
+
+  REM ================================================================
+  REM  2. PERSISTENT CREATIVE STATE
+  REM ================================================================
+
+  STATE PCS AS PersistentCreativeState
+
+  INITIALIZE PCS
+    PCS.unified_semantic_world = EMPTY
+    PCS.narrative_memory       = EMPTY
+    PCS.aesthetic_memory       = EMPTY
+    PCS.creative_identity      = EMPTY
+    PCS.world_model            = EMPTY
+    PCS.context_history        = EMPTY
+    PCS.causal_history         = EMPTY
+    PCS.historical_context     = EMPTY
+  END INITIALIZE
+
+  CHECKPOINT PCS
+  PRESERVE PCS
+
+
+  REM ================================================================
+  REM  3. AI / EXECUTIVE SUBSTRATE
+  REM ================================================================
+
+  MODEL LLM_PROPOSER
+    ROLE "Probabilistic proposal generation"
+    CAPABILITY cognition
+  END MODEL
+
+  MODEL SYMBOLIC_REASONER
+    ROLE "Symbolic and semantic reasoning"
+    CAPABILITY inference
+  END MODEL
+
+  MODEL SEARCH_PLANNER
+    ROLE "Search and planning"
+    CAPABILITY planning
+  END MODEL
+
+  MODEL CRITIC_EVALUATOR
+    ROLE "Critique, evaluation and selection"
+    CAPABILITY evaluation
+  END MODEL
+
+  EXECUTIVE JS_EXECUTIVE
+    ROLE "Deterministic orchestration"
+  END EXECUTIVE
+
+  EXECUTOR TOOL_SKILL_EXECUTOR
+    ROLE "Tool and skill execution"
+  END EXECUTOR
+
+  ADAPTER MODALITY_ADAPTER
+    ROLE "Semantic-state to modality realization"
+  END ADAPTER
+
+  SUBSTRATE KNOWLEDGE
+    ONTOLOGIES
+    CORPORA
+    MODELS
+    RULES
+    TOOLS
+    VERIFIERS
+    WORLD_DATA
+  END SUBSTRATE
+
+
+  REM ================================================================
+  REM  4. HUMAN / SOCIETAL SOVEREIGNTY
+  REM ================================================================
+
+  AUTHORITY HUMAN_SOCIETY
+    PURPOSE_VALUES
+    AUTHORITY
+    ETHICAL_CONTEXT
+  END AUTHORITY
+
+  GATE NATURAL_JUSTICE
+    BETWEEN INTENT AND EXECUTION
+  END GATE
+
+
+  REM ================================================================
+  REM  5. PEDLER-STYLE DECISION FLOW
+  REM ================================================================
+
+  FUNCTION SELECT_ACTION(event, state) -> Act
+
+    evaluation = EVALUATE(event, state)
+
+    inclination = CALCULATE_INCLINATION(evaluation)
+
+    intent = FORM_INTENT(event, inclination)
+
+    REQUIRE NATURAL_JUSTICE(intent)
+
+    act = FORM_ACT(intent)
+
+    RETURN act
+
+  END FUNCTION
+
+  FUNCTION CALCULATE_INCLINATION(evaluation) -> Inclination
+    value = SIGNED_DIRECTIONAL_GRADIENT(evaluation)
+    ASSERT -1 <= value <= +1
+    RETURN Inclination(value)
+  END FUNCTION
+
+  WORKFLOW PEDLER_FLOW
+
+    EVENT
+    -> EVALUATION
+    -> INCLINATION
+    -> SELECTION
+    -> INTENT
+    -> NATURAL_JUSTICE
+    -> ACT
+    -> EXECUTION
+    -> STATE_OBSERVATION
+    -> VERIFICATION
+    -> FEEDBACK
+
+    ON FEEDBACK
+      UPDATE inclination
+      UPDATE intent
+      UPDATE act
+    END
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  6. OPERATIONAL GENIE / ARTIFACT-CONSTRUCTION CYCLE
+  REM ================================================================
+
+  CYCLE GENIE_RESEARCH
+
+    DISCOVER
+      ELICIT opportunity
+      FRAME opportunity
+      CAPTURE research_object
+    END
+
+    SPECIFY
+      DEFINE claims
+      DEFINE scope
+      DEFINE acceptance_criteria
+      DEFINE deliverables
+      DEFINE evidence_requirements
+    END
+
+    FORMALIZE
+      FORMALIZE mathematics
+      FORMALIZE logic
+      FORMALIZE ontology
+      FORMALIZE interfaces
+      CAPTURE specification
+    END
+
+    IMPLEMENT
+      BUILD artifact
+      RECORD dependencies
+      RECORD provenance
+      CHECKPOINT artifact
+    END
+
+    VERIFY
+      ATTACK artifact
+      RUN validators
+      RUN tests
+      CHECK evidence
+      ASSERT reproducibility
+    END
+
+    SIMULATE
+      EXECUTE in_silico
+      RECORD observations
+      MARK evidence SIMULATION
+    END
+
+    EXPERIMENT
+      REQUIRE physical_or_empirical_gate
+      EXECUTE experiment
+      CAPTURE measurements
+      REQUIRE units
+      REQUIRE uncertainty WHERE applicable
+      MARK evidence EXPERIMENT
+    END
+
+    FALSIFY
+      GENERATE counterexamples
+      SEARCH failure conditions
+      TEST claim boundaries
+      RECORD negative results
+    END
+
+    DOCUMENT
+      RECORD methods
+      RECORD results
+      RECORD context
+      RECORD limitations
+      RECORD provenance
+    END
+
+    AUDIT
+      CHECK completeness
+      CHECK compliance
+      CHECK evidence
+      CHECK provenance
+      CHECK reproducibility
+    END
+
+    REFINE
+      IDENTIFY revisions
+      REVISE artifact
+      INVALIDATE affected downstream artifacts
+      RETURN TO appropriate stage
+    END
+
+    LOOP UNTIL release_ready
+
+  END CYCLE
+
+
+  REM ================================================================
+  REM  7. AB-INITIO CONSTRUCTION
+  REM ================================================================
+
+  WORKFLOW AB_INITIO
+
+    INPUT intention
+
+    CREATE research_object FROM intention
+
+    SPECIFY research_object
+    FORMALIZE research_object
+    IMPLEMENT research_object
+    VERIFY research_object
+
+    EMIT Artifact research_object
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  8. CREATIVE COGNITION CYCLE
+  REM ================================================================
+
+  CYCLE CREATIVE_COGNITION
+
+    GENERATIVE_FIELD
+      GENERATE possibilities
+      EXPAND PCS.context_history
+    END
+
+    CORRESPONDENCE
+      FIND relations
+      MAP analogies
+      MAP correspondences
+    END
+
+    ABSTRACTION
+      EXTRACT higher_order_structures
+      PRESERVE source_relations
+    END
+
+    INTEGRATION
+      COMBINE compatible structures
+      RESOLVE contradictions
+      RETAIN alternative candidates
+    END
+
+    CRYSTALLIZATION
+      SELECT coherent structure
+      VERSION selected state
+      PRESERVE ancestry
+    END
+
+    REALIZATION
+      MAP semantic_state TO modality
+      CREATE artifact
+    END
+
+    OBSERVATION
+      OBSERVE realization
+      CAPTURE experience
+    END
+
+    MEMORY
+      UPDATE PCS
+      CHECKPOINT PCS
+    END
+
+    RE_EXPANSION
+      USE crystallized state AS new generative context
+      GENERATE new possibility space
+    END
+
+    LOOP
+
+  END CYCLE
+
+
+  REM ================================================================
+  REM  9. CONVERGENCE IS GENERATIVE
+  REM ================================================================
+
+  FUNCTION CONVERGE(candidates) -> Candidate
+
+    structure = INTEGRATE(candidates)
+
+    PRESERVE candidates
+    PRESERVE relations
+    PRESERVE ancestry
+
+    CREATE higher_order_structure FROM structure
+
+    ASSERT "Convergence is not elimination."
+
+    RETURN higher_order_structure
+
+  END FUNCTION
+
+  FUNCTION REEXPAND(crystallized_state) -> SET[Candidate]
+
+    new_field = GENERATE_FROM(crystallized_state)
+
+    ASSERT SIZE(new_field) >= 0
+
+    RETURN new_field
+
+  END FUNCTION
+
+
+  REM ================================================================
+  REM  10. AFFECTIVE / AESTHETIC / SALIENCE REGULATION
+  REM ================================================================
+
+  STATE AFFECTIVE_STATE
+  STATE AESTHETIC_STATE
+  STATE SALIENCE_STATE
+
+  LOOP CREATIVE_REGULATION
+
+    AFFECTIVE_STATE <-> AESTHETIC_STATE
+    AESTHETIC_STATE <-> SALIENCE_STATE
+    SALIENCE_STATE  -> SELECTION
+
+    UPDATE candidate_priority
+    UPDATE attention
+    UPDATE realization_priority
+
+  END LOOP
+
+
+  REM ================================================================
+  REM  11. EXPERIENCE / LEARNING
+  REM ================================================================
+
+  LOOP EXPERIENCE_LEARNING
+
+    REALIZE semantic_state
+    EXPERIENCE realization
+    OBSERVE world
+
+    UPDATE PCS.world_model
+    UPDATE PCS.narrative_memory
+    UPDATE PCS.aesthetic_memory
+    UPDATE PCS.unified_semantic_world
+
+    LEARN FROM observation
+    CHECKPOINT PCS
+
+  END LOOP
+
+
+  REM ================================================================
+  REM  12. OBSERVER RECONSTRUCTION
+  REM ================================================================
+
+  WORKFLOW OBSERVER_RECONSTRUCTION
+
+    INPUT PCS
+
+    SERIALIZE creative_state
+    CHUNK serialized_state
+    DISCLOSE progressively
+    RECONSTRUCT observer_state
+    INTERPRET observer_state
+    LABEL interpretation
+
+    FEEDBACK interpretation TO GENIE
+
+    ASSERT "Convergence visibility must be preserved."
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  13. EMBODIMENT / ACTION LOOP
+  REM ================================================================
+
+  WORKFLOW EMBODIMENT_ACTION
+
+    SIMULATE intended_action
+
+    IF simulation_passes
+      REQUIRE execution_authority
+      ACT intended_action
+    END IF
+
+    OBSERVE world
+    CAPTURE state_change
+    UPDATE world_model
+    UPDATE PCS
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  14. FIVE COUPLED GENIE LOOPS
+  REM ================================================================
+
+  LOOP GENIE_COUPLED_SYSTEM
+
+    LOOP CREATIVE_COGNITION
+      GENERATE
+      ABSTRACT
+      INTEGRATE
+      CRYSTALLIZE
+      REALIZE
+    END LOOP
+
+    LOOP AFFECTIVE_AESTHETIC_REGULATION
+      AFFECTIVE <-> AESTHETIC <-> SALIENCE -> SELECTION
+    END LOOP
+
+    LOOP EXPERIENCE_LEARNING
+      REALIZE -> EXPERIENCE -> OBSERVE -> MEMORY -> UPDATE
+    END LOOP
+
+    LOOP OBSERVER_RECONSTRUCTION
+      STATE -> SERIALIZE -> DISCLOSE -> RECONSTRUCT -> FEEDBACK
+    END LOOP
+
+    LOOP EMBODIMENT_ACTION
+      SIMULATE -> ACT -> OBSERVE -> WORLD_UPDATE
+    END LOOP
+
+  END LOOP
+
+
+  REM ================================================================
+  REM  15. MULTIMODAL REALIZATION
+  REM ================================================================
+
+  ENUM MODALITY
+    TEXT
+    IMAGE
+    AUDIO
+    VIDEO
+    MOVEMENT
+    IMMERSIVE_ENVIRONMENT
+    PHYSICAL_EMBODIMENT
+    OTHER
+  END ENUM
+
+  FUNCTION REALIZE(state, modality) -> Artifact
+
+    ASSERT state IS SemanticState OR state IS CreativeState
+
+    SELECT modality
+
+      CASE TEXT
+        RETURN MODALITY_ADAPTER.render_text(state)
+
+      CASE IMAGE
+        RETURN MODALITY_ADAPTER.render_image(state)
+
+      CASE AUDIO
+        RETURN MODALITY_ADAPTER.render_audio(state)
+
+      CASE VIDEO
+        RETURN MODALITY_ADAPTER.render_video(state)
+
+      CASE MOVEMENT
+        RETURN MODALITY_ADAPTER.render_movement(state)
+
+      CASE IMMERSIVE_ENVIRONMENT
+        RETURN MODALITY_ADAPTER.render_environment(state)
+
+      CASE PHYSICAL_EMBODIMENT
+        REQUIRE HUMAN_SOVEREIGNTY
+        RETURN MODALITY_ADAPTER.render_embodiment(state)
+
+      DEFAULT
+        RETURN MODALITY_ADAPTER.render_other(state)
+
+    END SELECT
+
+  END FUNCTION
+
+  INVARIANT "ONE SEMANTIC STATE -> MANY POSSIBLE REALIZATIONS."
+
+
+  REM ================================================================
+  REM  16. EPISTEMIC OPERATIONS
+  REM ================================================================
+
+  FUNCTION CLAIM(statement, status, evidence) -> EpistemicClaim
+
+    ASSERT status IN {
+      RETRIEVED,
+      INFERRED,
+      PROPOSED,
+      UNRESOLVED
+    }
+
+    IF status == RETRIEVED
+      REQUIRE provenance
+    END IF
+
+    IF status == INFERRED
+      REQUIRE inference_path
+    END IF
+
+    IF status == PROPOSED
+      REQUIRE proposal_marker
+    END IF
+
+    IF status == UNRESOLVED
+      REQUIRE unresolved_marker
+    END IF
+
+    RETURN EpistemicClaim(statement, status, evidence, provenance)
+
+  END FUNCTION
+
+
+  REM ================================================================
+  REM  17. SIMULATION / EXPERIMENT GATES
+  REM ================================================================
+
+  GATE EXPERIMENT_GATE
+
+    DENY simulation AS experiment
+
+    REQUIRE empirical_evidence
+    REQUIRE measurements
+    REQUIRE units
+    REQUIRE uncertainty WHERE applicable
+
+  END GATE
+
+  VERIFY evidence
+
+    ASSERT evidence IS PRESENT
+
+  END VERIFY
+
+
+  REM ================================================================
+  REM  18. ARTIFACT / DELIVERABLE MANAGEMENT
+  REM ================================================================
+
+  FUNCTION CREATE_ARTIFACT(type, format, content) -> Artifact
+
+    artifact = Artifact()
+
+    artifact.id      = NEW_ID()
+    artifact.type    = type
+    artifact.format  = format
+    artifact.content = content
+    artifact.version = "0.1"
+    artifact.revision = 0
+    artifact.status  = DRAFT
+
+    RECORD provenance
+    RECORD dependencies
+    HASH artifact
+
+    RETURN artifact
+
+  END FUNCTION
+
+  OPERATION REVISE artifact
+
+    new_revision = COPY artifact
+
+    INCREMENT new_revision.revision
+
+    LINK ancestry(new_revision, artifact)
+
+    MARK artifact SUPERSEDED WHEN approved(new_revision)
+
+    RETURN new_revision
+
+  END OPERATION
+
+  OPERATION INVALIDATE artifact
+
+    MARK artifact INVALIDATED
+    PROPAGATE_TO downstream_dependencies
+
+  END OPERATION
+
+  OPERATION CHECKPOINT artifact
+
+    HASH artifact
+    RECORD timestamp
+    RECORD provenance
+    RECORD state
+
+  END OPERATION
+
+
+  REM ================================================================
+  REM  19. RELEASE GOVERNANCE
+  REM ================================================================
+
+  WORKFLOW RELEASE artifact
+
+    REQUIRE artifact.status == VERIFIED
+    REQUIRE evidence
+    REQUIRE provenance
+    REQUIRE audit_passed
+    REQUIRE human_authority
+
+    PACKAGE artifact
+    HASH artifact
+    RECORD release
+    PUBLISH artifact
+    PRESERVE artifact
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  20. AI PROVIDER ABSTRACTION
+  REM ================================================================
+
+  PROVIDER REMOTE_AI
+    OPTIONAL external_api
+    OPTIONAL free_access
+  END PROVIDER
+
+  PROVIDER LOCAL_AI
+    OPTIONAL local_runtime
+    OPTIONAL local_model
+  END PROVIDER
+
+  PROVIDER USER_AI
+    OPTIONAL user_supplied_api
+  END PROVIDER
+
+  FUNCTION ASK(model, instruction, context) -> Candidate
+
+    result = model.generate(instruction, context)
+
+    candidate = Candidate()
+
+    candidate.semantic_state = PARSE_SEMANTIC_STATE(result)
+    candidate.source = model
+    candidate.provenance = RECORD_SOURCE(model)
+
+    RETURN candidate
+
+  END FUNCTION
+
+  INVARIANT "GENIE ARCHITECTURE IS PROVIDER-AGNOSTIC."
+
+
+  REM ================================================================
+  REM  21. CREATIVE OPERATIONS
+  REM ================================================================
+
+  FUNCTION CONCEIVE(input)
+  FUNCTION OBSERVE(input)
+  FUNCTION IMAGINE(context)
+  FUNCTION ASSOCIATE(a, b)
+  FUNCTION TRANSFORM(x)
+  FUNCTION COMBINE(values)
+  FUNCTION CONTRAST(a, b)
+  FUNCTION ABSTRACT(x)
+  FUNCTION CONCRETIZE(x)
+  FUNCTION NARRATE(x)
+  FUNCTION DRAMATIZE(x)
+  FUNCTION VISUALIZE(x)
+  FUNCTION CHARACTERIZE(x)
+  FUNCTION SPATIALIZE(x)
+  FUNCTION MUSICALIZE(x)
+  FUNCTION EMBODY(x)
+  FUNCTION ITERATE(x)
+  FUNCTION CRITIQUE(x)
+  FUNCTION REMIX(x)
+  FUNCTION SERIALIZE(x)
+  FUNCTION PUBLISH(x)
+
+
+  REM ================================================================
+  REM  22. CYCLER INTERFACE
+  REM ================================================================
+
+  REM  GENIE is capable of operating as a creative cycler / guiding
+  REM  creative ontology. It does not replace modality cyclers.
+
+  INTERFACE CYCLER_SUBSTRATE
+
+    OPERATION DISCOVER
+    OPERATION SPECIFY
+    OPERATION FORMALIZE
+    OPERATION IMPLEMENT
+    OPERATION VERIFY
+    OPERATION SIMULATE
+    OPERATION EXPERIMENT
+    OPERATION FALSIFY
+    OPERATION DOCUMENT
+    OPERATION AUDIT
+    OPERATION REFINE
+
+    CONTRACT
+      SHARED_INTEROPERABILITY
+      NOT_SHARED_WORKFLOW
+    END CONTRACT
+
+  END INTERFACE
+
+
+  REM  Six production cyclers remain independent peers.
+
+  CYCLER MATBA
+    MODALITY PRINT
+  END CYCLER
+
+  CYCLER KHWAB
+    MODALITY VISUAL
+  END CYCLER
+
+  CYCLER AWAZ
+    MODALITY AUDIO
+  END CYCLER
+
+  CYCLER TILASM
+    MODALITY IMMERSIVE
+  END CYCLER
+
+  CYCLER PENCH
+    MODALITY EMBODIED
+  END CYCLER
+
+  CYCLER YADEIN
+    MODALITY RECORD
+  END CYCLER
+
+  RELATION GENIE + KHWAB
+    "Creative cognition expressed through visual realization."
+  END RELATION
+
+  RELATION GENIE + AWAZ
+    "Creative cognition expressed through sound."
+  END RELATION
+
+  RELATION GENIE + MATBA
+    "Creative cognition expressed through text/publication."
+  END RELATION
+
+  RELATION GENIE + TILASM
+    "Creative cognition expressed through immersive realization."
+  END RELATION
+
+  RELATION GENIE + PENCH
+    "Creative cognition expressed through embodiment."
+  END RELATION
+
+  RELATION GENIE + YADEIN
+    "Creative cognition expressed through persistent record."
+  END RELATION
+
+
+  REM ================================================================
+  REM  23. ILM / SEMANTIC SUBSTRATE INTERFACE
+  REM ================================================================
+
+  INTERFACE ILM
+
+    SUPPORT phonology
+    SUPPORT orthography
+    SUPPORT transliteration
+    SUPPORT lexicon
+    SUPPORT morphology
+    SUPPORT syntax
+    SUPPORT semantics
+    SUPPORT pragmatics
+    SUPPORT discourse
+    SUPPORT representation
+    SUPPORT multiscript_computation
+
+    INVARIANT "Semantic state is not identical to one language or script."
+
+  END INTERFACE
+
+  STACK LINGUISTIC_REALIZATION
+    ILM
+    -> Romenagri
+    -> HPS
+    -> Hindawi_Environment
+    -> Hindawi_Ecosystem
+  END STACK
+
+
+  REM ================================================================
+  REM  24. VERIFIED SEMANTIC REALIZATION
+  REM ================================================================
+
+  PIPELINE SEMANTIC_COMPILER
+
+    LLM_PROPOSER
+    -> ACG_GRAMMAR_FRONTEND
+    -> VERIFIED_AST
+    -> LOWERING
+    -> CKO_CANONICAL_SEMANTIC_IR
+    -> CONSTRAINT_AND_PROOF_LAYER
+    -> LEAN_OR_SMT_Z3_OR_ONTOLOGY
+    -> RAISING
+    -> TARGET_AST
+    -> VERIFIED_REALIZATION
+
+  END PIPELINE
+
+
+  REM ================================================================
+  REM  25. AYEAI RELATIONSHIP
+  REM ================================================================
+
+  RELATION AYEAI_GENIE
+
+    ROLE "Foundational cognitive / creative ecology."
+
+    COMPONENTS
+      PEDLER
+      GENIE
+      COGNITIVE_PRIMITIVES
+      DYNAMIC_SELECTION_CALCULUS
+      INCLINATION
+      EVENT_STATE_MODELS
+      MODEL_ADAPTERS
+      LEARNING_ENGINES
+      MEMORY
+      REASONING
+      VERIFICATION
+    END COMPONENTS
+
+  END RELATION
+
+  STACK AYEAI_CONTEXT
+
+    HUMANS_SOCIETY
+      PURPOSE_VALUES_AUTHORITY
+
+    ->
+    KAIVALYIK_LAYER
+      INTENT_FORMALISM_CANON_ETHICAL_COMMITMENTS_SOVEREIGNTY
+
+    ->
+    ZISTGAH_DOME_SEMANTIC_SUBSTRATE
+      ONTOLOGIES_ILM_IWBT_VGC_CKO_KELP
+
+    ->
+    GENIE_ARCHITECTURE
+
+    ->
+    IMPLEMENTATION
+
+    ->
+    MODELS_PROVIDERS
+
+  END STACK
+
+
+  REM ================================================================
+  REM  26. MEZ RELATIONSHIP
+  REM ================================================================
+
+  RELATION MEZ_GENIE
+
+    MEZ_ROLE "Cognitive Workbench"
+
+    GENIE_ROLE "Creative / cognitive operating architecture"
+
+    RULE "GENIE may operate through Mez."
+    RULE "Mez does not absorb GENIE."
+    RULE "Composition is bidirectional where interfaces permit."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  27. HUMAN SOVEREIGNTY / NON-NEGOTIABLES
+  REM ================================================================
+
+  NON_NEGOTIABLES
+
+    PERSISTENCE_ACROSS_TIME
+    CONTINUITY_ACROSS_MODALITIES
+    AESTHETIC_EXPERIENCE_FIRST_CLASS
+    SEMANTIC_COHERENCE
+    NARRATIVE_COHERENCE
+    CAUSAL_COHERENCE
+    HISTORICAL_CONTEXT
+    OPEN_ENDED_RECURSION
+    HUMAN_IN_THE_LOOP_SOVEREIGNTY
+    TRANSPARENCY
+    CONTROLLABILITY
+    CULTURAL_CONTEXT
+    ETHICAL_CONTEXT
+
+  END NON_NEGOTIABLES
+
+
+  REM ================================================================
+  REM  28. CREATIVE CONTEXT INTEGRITY
+  REM ================================================================
+
+  INVARIANT CREATIVE_CONTEXT_INTEGRITY
+
+    PRESERVE continuity
+    PRESERVE coherence
+    PRESERVE aesthetic_value
+    PRESERVE creative_identity
+    PRESERVE semantic_context
+    PRESERVE narrative_context
+    PRESERVE causal_context
+    PRESERVE historical_context
+
+    ACROSS
+      beats
+      modalities
+      sessions
+      observers
+      serialization
+      reconstruction
+    END ACROSS
+
+  END INVARIANT
+
+
+  REM ================================================================
+  REM  29. MAIN EXECUTION
+  REM ================================================================
+
+  MAIN
+
+    LOAD GENIE_CONSTITUTION
+
+    LOAD KNOWLEDGE
+
+    INITIALIZE PCS
+
+    START JS_EXECUTIVE
+
+    REGISTER LLM_PROPOSER
+    REGISTER SYMBOLIC_REASONER
+    REGISTER SEARCH_PLANNER
+    REGISTER CRITIC_EVALUATOR
+    REGISTER TOOL_SKILL_EXECUTOR
+    REGISTER MODALITY_ADAPTER
+
+    ENABLE PEDLER_FLOW
+    ENABLE CREATIVE_COGNITION
+    ENABLE CREATIVE_REGULATION
+    ENABLE EXPERIENCE_LEARNING
+    ENABLE OBSERVER_RECONSTRUCTION
+    ENABLE EMBODIMENT_ACTION
+
+    ACCEPT intention
+
+    IF intention IS EMPTY
+      WAIT
+    ELSE
+      RUN AB_INITIO
+    END IF
+
+    LOOP
+      PRESERVE PCS
+      VERIFY state
+      PROCESS events
+      UPDATE memory
+      REEXPAND when appropriate
+    END LOOP
+
+  END MAIN
+
+END PROGRAM GENIE

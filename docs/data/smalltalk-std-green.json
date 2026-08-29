@@ -1,0 +1,12 @@
+{
+  "language": "smalltalk",
+  "issuing_body": "GNU Smalltalk tests/intmath.st (ANSI Smalltalk proxy)",
+  "suite": "intmath.st Eval[] before LargeIntegers vs intmath.ok",
+  "n": 31,
+  "pass": 31,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named GST intmath integer-arithmetic extract. LargeIntegers / factorial / SmallInteger are GAP."
+}

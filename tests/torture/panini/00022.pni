@@ -1,0 +1,8 @@
+MODULE T00022
+FUNCTION main()
+    IF NOT FALSE
+        PRINT "t"
+    END
+    RETURN 0
+END
+END

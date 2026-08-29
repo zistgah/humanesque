@@ -1,0 +1,12 @@
+{
+  "language": "javascript",
+  "issuing_body": "Ecma TC39 ECMA-262 + Test262",
+  "suite": "Test262 language if/types/addition/unary/logical-not/subtraction named extract",
+  "n": 13,
+  "pass": 13,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named Test262 language extract. Full Test262 (annex, built-ins, async, modules) is GAP. Homemade tests/std/javascript is CORE GREEN only."
+}

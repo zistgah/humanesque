@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — x86 guest</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .bezel { background:#222; padding:12px; border-radius:12px; }
+    #screen { width:100%; min-height:70vh; background:#000; }
+    #screen canvas { width:100%; height:auto; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Guest, not a flattened iframe of copy.sh as the product</p>
+  <h1>x86 guest</h1>
+  <p>v86 is i386. Lekhak EXE and FreeDOS live here. llama.cpp we built is <strong>x86_64 ELF</strong> — it does not boot on this guest. That binary’s browser path is <a href="console.html">llama-cli on the VFS</a> (llama.cpp WASM).</p>
+  <p>Third-party: v86 (BSD, copy/v86 · hindawiai/v86). BIOS/VGA from copy.sh. Lekhak binaries from hindawi3.zip.</p>
+  <p>
+    <button type="button" id="boot">Boot FreeDOS (v86)</button>
+    <a class="btn" href="console.html">VFS console</a>
+    <a class="btn" href="llm.html">llama.cpp</a>
+    <a href="emu/lekhakx.exe">lekhakx.exe</a>
+    · <a href="emu/CWSDPMI.EXE">CWSDPMI.EXE</a>
+  </p>
+  <section class="bezel" aria-label="x86 monitor">
+    <div id="screen"></div>
+  </section>
+  <p class="fine" id="st">Idle. Boot loads v86 WASM + FreeDOS profile. Network required for BIOS blobs unless you vendor them.</p>
+</main>
+<script src="skins/skins.js"></script>
+<script type="module">
+  const st = document.getElementById("st");
+  document.getElementById("boot").onclick = async () => {
+    st.textContent = "loading v86…";
+    try {
+      const { V86 } = await import("https://copy.sh/v86/libv86.mjs").catch(() => import("https://unpkg.com/v86@0.5.10/build/libv86.mjs"));
+      window.__v86 = new V86({
+        wasm_path: "https://copy.sh/v86/v86.wasm",
+        memory_size: 64 * 1024 * 1024,
+        vga_memory_size: 2 * 1024 * 1024,
+        screen_container: document.getElementById("screen"),
+        bios: { url: "https://copy.sh/v86/bios/seabios.bin" },
+        vga_bios: { url: "https://copy.sh/v86/bios/vgabios.bin" },
+        fda: { url: "https://copy.sh/v86/images/freedos722.img", async: true },
+        autostart: true,
+      });
+      st.textContent = "running i386 FreeDOS. This is the x86 guest. llama-cli is not this guest.";
+    } catch (e) {
+      st.textContent = String(e.message || e);
+    }
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "zip_root": "panini/",
+  "automation": "Unzip. Split apps/<org>/<repo> into sibling checkouts. Do not push from this tree. Do not merge IBM/HP.",
+  "spinoff": [
+    {"path": "apps/project-ilm/chakra", "repo": "project-ilm/chakra"},
+    {"path": "apps/project-ilm/ilm.codes", "repo": "project-ilm/ilm.codes"},
+    {"path": "apps/zistgah/mez", "repo": "zistgah/mez"},
+    {"path": "apps/zistgah/fakir", "repo": "zistgah/fakir"},
+    {"path": "apps/zistgah/cycles", "repo": "zistgah/cycles"},
+    {"path": "apps/zistgah/dome", "repo": "zistgah/dome"},
+    {"path": "apps/hindawiai/hindawi-legacy", "repo": "hindawiai/hindawi-legacy"},
+    {"path": "retrieved/legacy", "repo": "project-ilm/legacy", "read_only": true},
+    {"path": "retrieved/ayebios", "repo": "ayebios/ayebios", "read_only": true},
+  ]
+}

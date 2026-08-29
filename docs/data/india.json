@@ -1,0 +1,28 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "Eighth Schedule languages. Keyword TSV only where retrieved. Scripts via name-projection or ISO 15919. Do not invent keywords.",
+  "eighth_schedule": [
+    {"lang":"Assamese","script":"Bengali","tsv":"assamese_c.tsv"},
+    {"lang":"Bengali","script":"Bengali","tsv":"bengali_c.tsv"},
+    {"lang":"Bodo","script":"Deva/Bangla","tsv":null},
+    {"lang":"Dogri","script":"Deva","tsv":null},
+    {"lang":"Gujarati","script":"Gujarati","tsv":"gujarati_c.tsv"},
+    {"lang":"Hindi","script":"Devanagari","tsv":"hindi_c.tsv"},
+    {"lang":"Kannada","script":"Kannada","tsv":"kannada_c.tsv"},
+    {"lang":"Kashmiri","script":"Perso-Arabic/Deva","tsv":"lang_kashmiri.csv","lossy":true},
+    {"lang":"Konkani","script":"Deva","tsv":null},
+    {"lang":"Maithili","script":"Deva/Tirhuta","tsv":null},
+    {"lang":"Malayalam","script":"Malayalam","tsv":"malayalam_c.tsv"},
+    {"lang":"Manipuri","script":"Meetei Mayek","tsv":null},
+    {"lang":"Marathi","script":"Devanagari","tsv":"marathi_c.tsv"},
+    {"lang":"Nepali","script":"Devanagari","tsv":"nepali_c.tsv"},
+    {"lang":"Odia","script":"Oriya","tsv":"odia_c.tsv"},
+    {"lang":"Punjabi","script":"Gurmukhi","tsv":"punjabi_c.tsv"},
+    {"lang":"Sanskrit","script":"Devanagari","tsv":"sanskrit_c.tsv"},
+    {"lang":"Santali","script":"Ol Chiki","tsv":null},
+    {"lang":"Sindhi","script":"Perso-Arabic/Deva","tsv":"lang_sindhi.csv","lossy":true},
+    {"lang":"Tamil","script":"Tamil","tsv":"tamil_c.tsv"},
+    {"lang":"Telugu","script":"Telugu","tsv":"telugu_c.tsv"},
+    {"lang":"Urdu","script":"Perso-Arabic","tsv":"urdu_c.tsv","lossy":true}
+  ]
+}

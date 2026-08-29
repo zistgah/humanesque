@@ -1,0 +1,9 @@
+MODULE T00009
+FUNCTION add(a, b)
+    RETURN a + b
+END
+FUNCTION main()
+    PRINT add(19, 23)
+    RETURN 0
+END
+END

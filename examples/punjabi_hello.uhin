@@ -1,0 +1,6 @@
+# Punjabi Gurmukhi sample — Hindawi-shaped localization
+# Retrieved keyword table: retrieved/romenagri/langs/punjabi_c.tsv
+# Script: Unicode name-projection Gurmukhi → Devanagari
+ਜੇ (1) {
+  ਵਾਪਸ 0;
+}

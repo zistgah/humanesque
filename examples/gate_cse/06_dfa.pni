@@ -1,0 +1,22 @@
+/* GATE CSE — TOC: DFA accepting even number of 1s over {0,1}
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * Returns 1 if accepted.
+ */
+FUNCTION even1s(s)
+    st = 0
+    i = 0
+    WHILE i < LEN(s)
+        IF s[i] == "1"
+            st = (st + 1) % 2
+        END
+        i = i + 1
+    END
+    IF st == 0
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION main()
+    PRINT even1s("11011")
+    RETURN even1s("11011")
+END

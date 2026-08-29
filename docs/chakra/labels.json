@@ -1,0 +1,21 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "note": "View labels of names already in chakra-core. Same lexical items, not new festivals. Computational identity remains IAST in the library.",
+  "festivals": {
+    "Rakṣā Bandhana": {"hi": "रक्षा बंधन", "pa": "ਰਕਸ਼ਾਬੰਧਨ"},
+    "Holikā Dahana / Holi pūrṇimā": {"hi": "होली / होलिका दहन"},
+    "Buddha Pūrṇimā": {"hi": "बुद्ध पूर्णिमा"},
+    "Guru Pūrṇimā": {"hi": "गुरु पूर्णिमा"},
+    "Kṛṣṇa Janmāṣṭamī": {"hi": "कृष्ण जन्माष्टमी"},
+    "Vijayadaśamī (Daśahrā)": {"hi": "विजयदशमी"},
+    "Dīpāvalī (Lakṣmī Pūjā)": {"hi": "दीपावली"},
+    "Mahāśivarātri": {"hi": "महाशिवरात्री"},
+    "Rāma Navamī": {"hi": "राम नवमी"},
+    "Ugadi / Gudi Padwa (luni-solar new year)": {"hi": "उगादि / गुड़ी पड़वा"},
+    "Vaisakhi · 1 Vaisakh": {"hi": "वैसाखी", "pa": "ਵਿਸਾਖੀ"}
+  },
+  "vara": {
+    "Ravivāra": "रविवार", "Somavāra": "सोमवार", "Maṅgalavāra": "मंगलवार",
+    "Budhavāra": "बुधवार", "Guruvāra": "गुरुवार", "Śukravāra": "शुक्रवार", "Śanivāra": "शनिवार"
+  }
+}

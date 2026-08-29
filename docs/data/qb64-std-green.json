@@ -1,0 +1,12 @@
+{
+  "language": "basic/qb64",
+  "issuing_body": "QB64 Phoenix Edition",
+  "suite": "tests/compile_tests/const/expression.bas vs expression.output",
+  "n": 38,
+  "pass": 38,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Not ECMA-116. Not VB.NET. Named QB64pe const-expression extract."
+}

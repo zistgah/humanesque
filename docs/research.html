@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — research & patents</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body class="site">
+<header class="site-head">
+  <strong>RESEARCH</strong>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="legacy.html">Legacy</a>
+    <a href="mentions.html">Mentions</a>
+  </nav>
+</header>
+<main class="site-main">
+  <h1>Journals, conferences, patent search</h1>
+  <p>End-state of this legacy arc: an index of <em>where to look</em>, plus filings already on the public profile. Not a live legal search. Not IBM. Not HP.</p>
+  <h2>Search</h2>
+  <ul id="s"></ul>
+  <h2>Known filings (profile)</h2>
+  <table id="p"><thead><tr><th>Id</th><th>Date</th><th>Title</th></tr></thead><tbody></tbody></table>
+  <h2>Other people’s work to cite, not claim</h2>
+  <ul id="o"></ul>
+</main>
+<script>
+fetch("data/research_index.json").then(r=>r.json()).then(j=>{
+  document.getElementById("s").innerHTML = j.searches.map(x =>
+    "<li><a href='"+x.url+"'>"+x.name+"</a> — "+x.use+"</li>"
+  ).join("");
+  document.querySelector("#p tbody").innerHTML = j.known_filings.map(x =>
+    "<tr><td>"+x.id+"</td><td>"+x.date+"</td><td>"+x.title+"</td></tr>"
+  ).join("");
+  document.getElementById("o").innerHTML = j.related_other_work.map(x =>
+    "<li>"+(x.url?("<a href='"+x.url+"'>"+x.title+"</a>"):x.title)+" — "+x.why+"</li>"
+  ).join("");
+});
+</script>
+</body>
+</html>

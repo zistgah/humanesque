@@ -1,0 +1,8 @@
+PROGRAM P
+  INTEGER X
+  X = 5 - 8
+  IF (X .EQ. (0 - 3)) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

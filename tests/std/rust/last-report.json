@@ -1,0 +1,15 @@
+{
+  "theorem": "STANDARD_GREEN(rust)",
+  "standard": "Rust Reference (edition 2021) — panini-rust-testsuite single-exec",
+  "subject": "PANINI.Frontend.Rust",
+  "green": true,
+  "cases": 20,
+  "panini": {
+    "pass": 20,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 20,
+  "status": "STANDARD GREEN"
+}

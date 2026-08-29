@@ -1,0 +1,19 @@
+/* SysML v2 textual → PANINI AST. Stub: parse package/part, not model-check.
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+MODULE PANINI.Frontend.SysML
+
+FUNCTION run_sysml(source)
+    n = LEN(source)
+    has_pkg = CONTAINS(source, "package")
+    has_part = CONTAINS(source, "part")
+    has_req = CONTAINS(source, "requirement")
+    RETURN {ok: TRUE, frontend: "PANINI.Frontend.SysML", bytes: n, package: has_pkg, part: has_part, requirement: has_req, note: "lowers to C AST later; not a model checker"}
+END
+
+FUNCTION main()
+    r = run_sysml("package Drone { part def Motor; }")
+    RETURN r.bytes
+END
+
+END

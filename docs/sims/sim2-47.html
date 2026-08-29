@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyeCNSe V17.0 - The Omni-Sim</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'JetBrains Mono', monospace; color: #fff; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .ui-panel { position: absolute; z-index: 10; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid #333; }
+        .top-left { top: 20px; left: 20px; width: 300px; }
+        .bottom-center { bottom: 20px; left: 50%; transform: translateX(-50%); width: 800px; }
+        .mode-btn { padding: 5px 10px; margin-right: 5px; cursor: pointer; background: #222; border: 1px solid #555; color: #aaa; }
+        .active-mode { border-color: #00ffcc; color: #00ffcc; }
+        textarea { width: 100%; height: 100px; background: #111; color: #00ffcc; border: 1px solid #333; margin-top: 10px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="ui-panel top-left">
+        <h2 style="font-size: 14px; margin: 0;">OMNI_SIM_CONTROL</h2>
+        <div style="margin-top: 10px;">
+            <span class="mode-btn" id="btn-bio">BIO</span>
+            <span class="mode-btn" id="btn-bot">BOT</span>
+            <span class="mode-btn" id="btn-space">SPACE</span>
+        </div>
+        <hr style="border: 0.1px solid #333; margin: 15px 0;">
+        <div id="telemetry" style="font-size: 11px;">
+            SYSTEM_INTEGRITY: 100%<br>
+            CURRENT_MODULE: [LUNAR_LANDER]
+        </div>
+    </div>
+    <div class="ui-panel bottom-center">
+        <textarea id="ilmInput">// GLOBAL SEQUENCE: FROM DNA TO MOON
+EVOLVE_PILOT("HUMANOID_TYPE_B")
+CONSTRUCT_ROCKET(FUEL_SOLID)
+LAUNCH_TO_ORBIT()
+INITIATE_HYPERSPACE_JUMP()
+LAND_ON_MOON()</textarea>
+        <button style="width:100%; padding:10px; background:#00ffcc; border:none; font-weight:bold; cursor:pointer;">RUN UNIVERSAL SEQUENCE</button>
+    </div>
+
+    <script>
+        // This script would act as a manager for the 4 sub-sims we built.
+        // It switches the Three.js 'Scene' based on the active command.
+        class OmniManager {
+            constructor() {
+                this.currentStage = "SPACE";
+                this.init();
+            }
+            init() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer({antialias: true});
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                
+                // Placeholder: Representing the "Lander" from Stage 1
+                const landerGeo = new THREE.CylinderGeometry(2, 3, 5, 4);
+                const landerMat = new THREE.MeshBasicMaterial({color: 0x00ffcc, wireframe: true});
+                this.lander = new THREE.Mesh(landerGeo, landerMat);
+                this.scene.add(this.lander);
+                this.camera.position.z = 20;
+
+                this.animate();
+            }
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                this.lander.rotation.y += 0.01;
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        const sim = new OmniManager();
+    </script>
+</body>
+</html>

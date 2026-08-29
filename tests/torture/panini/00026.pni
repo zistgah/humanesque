@@ -1,0 +1,12 @@
+MODULE T00026
+FUNCTION main()
+    s = 0
+    i = 1
+    WHILE i <= 4
+        s = s + i
+        i = i + 1
+    END
+    PRINT s
+    RETURN 0
+END
+END

@@ -1,0 +1,15 @@
+/* GATE CSE — Operating System: FCFS waiting time, 3 processes
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ * burst = 5, 3, 8 → wait 0, 5, 8 → avg 13/3
+ */
+FUNCTION main()
+    w = 0
+    total = 0
+    total = total + w
+    w = w + 5
+    total = total + w
+    w = w + 3
+    total = total + w
+    PRINT total
+    RETURN total
+END

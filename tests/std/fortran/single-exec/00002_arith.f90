@@ -1,0 +1,8 @@
+PROGRAM P
+  INTEGER X
+  X = 1 + 2 * 3
+  IF (X .EQ. 7) THEN
+    STOP 0
+  END IF
+  STOP 1
+END PROGRAM P

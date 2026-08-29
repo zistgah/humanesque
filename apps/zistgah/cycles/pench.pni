@@ -1,0 +1,795 @@
+REM  pench.pni — PENCH, the Physical Embodiment Cycler
+REM  PANINI program: a programmable lifecycle for taking a human conception
+REM  through physical-system specification, engineering, realization,
+REM  integration, packaging, commissioning, acceptance, operation and iteration.
+REM
+REM  PENCH is the lifecycle.
+REM  Holy Grail Labs is the realization substrate.
+REM  The cycler is NOT a sequence of prompts; prompts are operations inside stages.
+REM
+REM  Canonical family:
+REM    MATBA  print
+REM    KHWAB  visual
+REM    AWAZ   audio
+REM    TILASM  immersive
+REM    PENCH  physical embodiment
+REM    YADEIN  personal/life record
+REM
+REM  Resolution EASY / MID / PRO is orthogonal to lifecycle structure.
+REM  AI providers are replaceable execution resources.
+REM  Simulation is not experiment; proposed/derived results do not become
+REM  physical evidence without the appropriate evidence gate.
+
+CYCLER PENCH
+  TITLE   "PENCH"
+  SCRIPT  "پنچ"
+  OUTPUT  PHYSICAL
+  UNIT    "physical artefact"
+  PURPOSE "Take a human conception through conceptualization, requirements, architecture, design, simulation, realization strategy, BOM and build/buy decisions, procurement/fabrication, assembly, integration, verification, packaging, commissioning, acceptance, operation and maintenance."
+
+  CONTRACT
+    INVARIANT "The cycler builds and preserves thought before physical realization."
+    INVARIANT "Requirements, architecture, design and implementation are distinct artefacts."
+    INVARIANT "Every approved artefact is versioned and its provenance is preserved."
+    INVARIANT "Changing an approved upstream artefact may invalidate dependent downstream artefacts."
+    INVARIANT "BOM is a decision stage, not merely an output file."
+    INVARIANT "Every realizable component has an auditable realization strategy."
+    INVARIANT "Simulation evidence is distinct from physical measurement."
+    INVARIANT "A physical artefact is not operational merely because it has been assembled."
+    INVARIANT "Packaging and commissioning are lifecycle states."
+    INVARIANT "Human approval is required at configured lifecycle gates."
+    INVARIANT "Holy Grail Labs supplies realization capability; PENCH specifies and governs the lifecycle."
+    REFUSE    "treating a prompt response as proof of physical realization"
+    REFUSE    "claiming a component was fabricated, procured, tested or commissioned without evidence"
+    REFUSE    "promoting simulation results to physical experimental evidence"
+    REFUSE    "silently changing an approved requirement"
+  END CONTRACT
+
+  RESOURCE HOLY_GRAIL_LABS
+    TYPE REALIZATION_SUBSTRATE
+    PURPOSE "Provide heterogeneous physical and computational realization capabilities."
+    CAPABILITIES
+      FABRICATE
+      MACHINE
+      PRINT
+      ASSEMBLE
+      COMPUTE
+      ELECTRONICS
+      MECHANICS
+      SOFTWARE
+      INTEGRATION
+    END CAPABILITIES
+  END RESOURCE
+
+  STATE MACHINE PENCH_LIFECYCLE
+    STATE CONCEIVED
+    STATE CAPTURED
+    STATE SPECIFIED
+    STATE REQUIREMENTS_APPROVED
+    STATE ARCHITECTED
+    STATE ARCHITECTURE_APPROVED
+    STATE DESIGNED
+    STATE DESIGN_APPROVED
+    STATE SIMULATED
+    STATE REALIZATION_PLANNED
+    STATE PROCURED
+    STATE FABRICATED
+    STATE ASSEMBLED
+    STATE INTEGRATED
+    STATE VERIFIED
+    STATE PACKAGED
+    STATE COMMISSIONED
+    STATE ACCEPTED
+    STATE OPERATIONAL
+    STATE MAINTAINED
+    STATE RETIRED
+  END STATE MACHINE
+
+  STAGE CONCEPTUALIZE
+    RESOLUTION EASY
+    VERB   ELICIT
+    EXPECT CONCEPT
+    INTO   concept
+    ASK
+      Describe what you want the physical artefact to accomplish.
+      Do not design it yet. Capture the intended outcome, users or actors,
+      environment, capabilities and important constraints.
+    END ASK
+    VALIDATE EXISTS(concept)
+    ON FAIL REPAIR
+    SET STATE CONCEPTUALIZE -> CAPTURED
+  END STAGE
+
+  STAGE CAPTURE
+    RESOLUTION MID
+    VERB   STRUCTURE
+    EXPECT SPECIFICATION
+    FROM   concept
+    INTO   captured_concept
+    ASK
+      Convert the concept into a structured physical-system concept.
+      Capture:
+      purpose, users, use cases, operating environment, desired capabilities,
+      mobility, sensing, actuation, communication, autonomy, human interaction,
+      safety, dimensions, energy, maintainability, cost, availability,
+      lifetime and deployment context.
+      Preserve unresolved items explicitly.
+    END ASK
+    VALIDATE EXISTS(captured_concept)
+    VALIDATE NO_UNTAGGED_UNKNOWN(captured_concept)
+    ON FAIL REPAIR
+  END STAGE
+
+  STAGE USE_CASES
+    RESOLUTION MID
+    VERB   ELICIT
+    EXPECT LIST
+    FROM   captured_concept
+    INTO   use_cases
+    ASK
+      Derive the principal use cases for the proposed physical artefact.
+      For each use case identify actor, goal, environment, trigger,
+      expected behaviour and success condition.
+    END ASK
+    VALIDATE COUNT(use_cases) > 0
+    ON FAIL REPAIR
+  END STAGE
+
+  STAGE REQUIREMENTS
+    RESOLUTION PRO
+    VERB   FORMALIZE
+    EXPECT REQUIREMENTS
+    FROM   captured_concept, use_cases
+    INTO   requirements
+    ASK
+      Transform the captured concept and use cases into testable engineering
+      requirements. Every requirement must have an identifier, subject,
+      normative statement, priority, acceptance/test criterion and status.
+      Distinguish required, desired, constraint and unresolved requirements.
+    END ASK
+    VALIDATE UNIQUE_IDS(requirements)
+    VALIDATE TESTABLE(requirements)
+    VALIDATE TRACEABLE(requirements, captured_concept)
+    ON FAIL REPAIR
+  END STAGE
+
+  STAGE REQUIREMENTS_REVIEW
+    RESOLUTION PRO
+    VERB   REVIEW
+    EXPECT REVIEW_RECORD
+    FROM   requirements
+    INTO   requirements.review
+    ASK
+      Attack the requirements for ambiguity, contradiction, omission,
+      non-testability, hidden assumptions and unbounded scope.
+      Produce defects and proposed corrections.
+    END ASK
+    VALIDATE EXISTS(requirements.review)
+  END STAGE
+
+  STAGE REQUIREMENTS_REVISION
+    RESOLUTION PRO
+    VERB   REVISE
+    FROM   requirements, requirements.review
+    INTO   requirements
+    ASK
+      Apply only justified corrections. Preserve prior revision history,
+      provenance and unresolved items.
+    END ASK
+    VALIDATE VERSIONED(requirements)
+  END STAGE
+
+  STAGE REQUIREMENTS_SIGNOFF
+    VERB   GATE
+    GATE   HUMAN "SIGNOFF requirements"
+    REQUIRE requirements.review.status == COMPLETE
+    EMIT   requirements.baseline
+    SET    requirements.status = APPROVED
+    SET STATE REQUIREMENTS_APPROVED
+  END STAGE
+
+  STAGE EMBODIMENT_ARCHITECTURE
+    RESOLUTION PRO
+    VERB   DERIVE
+    FROM   requirements
+    INTO   architecture
+    ASK
+      Derive a physical-system architecture from the approved requirements.
+      Identify system boundaries and subsystems covering, as applicable:
+      mechanical structure, electronics, computation, sensors, actuators,
+      communications, power, thermal systems, structural elements, software,
+      firmware, control, human-machine interface, environmental interfaces,
+      safety systems, enclosure, tooling and manufacturing architecture.
+      Record interfaces and dependencies explicitly.
+    END ASK
+    VALIDATE TRACEABLE(architecture, requirements)
+    VALIDATE INTERFACES(architecture)
+    ON FAIL REPAIR
+  END STAGE
+
+  STAGE ARCHITECTURE_REVIEW
+    RESOLUTION PRO
+    VERB   REVIEW
+    FROM   architecture
+    INTO   architecture.review
+    ASK
+      Attack the architecture against every approved requirement.
+      Identify missing subsystems, incompatible interfaces, unsafe assumptions,
+      capacity constraints, single points of failure and unresolved dependencies.
+    END ASK
+    VALIDATE EXISTS(architecture.review)
+  END STAGE
+
+  STAGE ARCHITECTURE_REVISION
+    RESOLUTION PRO
+    VERB   REVISE
+    FROM   architecture, architecture.review
+    INTO   architecture
+    ASK
+      Revise the architecture while preserving traceability and revision ancestry.
+    END ASK
+    VALIDATE TRACEABLE(architecture, requirements)
+  END STAGE
+
+  STAGE ARCHITECTURE_SIGNOFF
+    VERB   GATE
+    GATE   HUMAN "SIGNOFF architecture"
+    REQUIRE architecture.review.status == COMPLETE
+    EMIT   architecture.baseline
+    SET    architecture.status = APPROVED
+    SET STATE ARCHITECTURE_APPROVED
+  END STAGE
+
+  STAGE DETAILED_DESIGN
+    RESOLUTION PRO
+    VERB   DERIVE
+    FROM   architecture, requirements
+    INTO   design
+    ASK
+      Produce the detailed engineering design.
+      Specify dimensions, interfaces, component characteristics, tolerances,
+      electrical and mechanical details, computational resources, software/
+      firmware boundaries, control interfaces, safety mechanisms, manufacturing
+      constraints, calibration requirements and verification methods.
+    END ASK
+    VALIDATE TRACEABLE(design, architecture)
+    VALIDATE TRACEABLE(design, requirements)
+    ON FAIL REPAIR
+  END STAGE
+
+  STAGE DESIGN_REVIEW
+    RESOLUTION PRO
+    VERB   REVIEW
+    FROM   design
+    INTO   design.review
+    ASK
+      Review the detailed design for requirement coverage, architectural
+      consistency, manufacturability, serviceability, safety, interfaces,
+      testability and realization feasibility.
+    END ASK
+    VALIDATE EXISTS(design.review)
+  END STAGE
+
+  STAGE DESIGN_REVISION
+    RESOLUTION PRO
+    VERB   REVISE
+    FROM   design, design.review
+    INTO   design
+    ASK
+      Apply justified design corrections and preserve complete revision ancestry.
+    END ASK
+    VALIDATE VERSIONED(design)
+  END STAGE
+
+  STAGE DESIGN_SIGNOFF
+    VERB   GATE
+    GATE   HUMAN "SIGNOFF design"
+    REQUIRE design.review.status == COMPLETE
+    EMIT   design.baseline
+    SET    design.status = APPROVED
+    SET STATE DESIGN_APPROVED
+  END STAGE
+
+  STAGE DIGITAL_TWIN
+    RESOLUTION PRO
+    VERB   CREATE
+    EXPECT MODEL
+    FROM   design
+    INTO   digital_twin
+    ASK
+      Construct a simulation-ready model or digital twin sufficient to evaluate
+      the relevant physical, mechanical, electrical, computational, thermal,
+      control and environmental behaviours of the design.
+    END ASK
+    VALIDATE TRACEABLE(digital_twin, design)
+  END STAGE
+
+  STAGE SIMULATE
+    RESOLUTION PRO
+    VERB   EXECUTE
+    EXPECT SIMULATION
+    FROM   digital_twin
+    INTO   simulation
+    ASK
+      Execute simulations relevant to the approved requirements and design.
+      Record configuration, assumptions, model version, parameters, outputs,
+      limitations, uncertainty and reproducibility information.
+    END ASK
+    VALIDATE EXISTS(simulation)
+    VALIDATE SIMULATION_LABELLED(simulation)
+    SET STATE SIMULATED
+  END STAGE
+
+  STAGE SIMULATION_ANALYSIS
+    RESOLUTION PRO
+    VERB   VERIFY
+    FROM   simulation, requirements
+    INTO   simulation.analysis
+    ASK
+      Determine which requirements are supported, contradicted or unresolved
+      by the simulation. Do not call a simulation a physical experiment.
+    END ASK
+    VALIDATE NO_PHYSICAL_CLAIM_FROM_SIMULATION(simulation.analysis)
+  END STAGE
+
+  STAGE REALIZATION_PLAN
+    RESOLUTION PRO
+    VERB   PLAN
+    FROM   design, simulation.analysis
+    INTO   realization_plan
+    ASK
+      Define how each required subsystem and component will be realized.
+      Select fabrication, procurement, modification, reuse, outsourcing or
+      other valid realization strategies and identify dependencies, lead times,
+      costs, tooling, certification and availability constraints.
+    END ASK
+    VALIDATE COVERAGE(realization_plan, design)
+    SET STATE REALIZATION_PLANNED
+  END STAGE
+
+  STAGE BOM
+    RESOLUTION PRO
+    VERB   GENERATE
+    EXPECT BOM
+    FROM   design, realization_plan
+    INTO   bom
+    ASK
+      Generate a complete bill of materials.
+      For every part capture identifier, description, quantity, requirement
+      trace, design trace, source options, estimated cost, lead time,
+      compatibility, reliability, maintainability, certification and status.
+    END ASK
+    VALIDATE UNIQUE_IDS(bom)
+    VALIDATE TRACEABLE(bom, design)
+  END STAGE
+
+  STAGE BUILD_BUY_ANALYSIS
+    RESOLUTION PRO
+    VERB   DECIDE
+    FROM   bom, requirements, realization_plan
+    INTO   bom.decisions
+    ASK
+      For every component compare BUILD, BUY, MODIFY, FABRICATE, PRINT,
+      MACHINE, ASSEMBLE, RECOVER, REUSE and OUTSOURCE where applicable.
+      Evaluate cost, lead time, capability, reliability, availability,
+      maintainability, compatibility and certification.
+      Record alternatives, rationale and decision authority.
+    END ASK
+    VALIDATE DECISION_AUDITABLE(bom.decisions)
+  END STAGE
+
+  STAGE BUILD_BUY_GATE
+    VERB   GATE
+    GATE   HUMAN "SIGNOFF realization strategy"
+    REQUIRE bom.decisions.status == COMPLETE
+    EMIT   realization.baseline
+  END STAGE
+
+  STAGE PROCUREMENT
+    RESOLUTION MID
+    VERB   EXECUTE
+    FROM   bom.decisions
+    INTO   procurement
+    ASK
+      Execute or prepare procurement actions for components whose realization
+      strategy is BUY, MODIFY, RECOVER, REUSE or OUTSOURCE.
+      Record supplier/source, order state, expected delivery, received evidence
+      and deviations from the approved BOM.
+    END ASK
+    VALIDATE NO_UNVERIFIED_RECEIPT(procurement)
+    SET STATE PROCURED
+  END STAGE
+
+  STAGE FABRICATION
+    RESOLUTION PRO
+    VERB   EXECUTE
+    FROM   bom.decisions, design
+    INTO   fabrication
+    ASK
+      Execute or prepare fabrication actions for BUILD, FABRICATE, PRINT,
+      MACHINE or equivalent strategies. Record process, material, tooling,
+      machine, operator/system, revision and inspection evidence.
+    END ASK
+    VALIDATE NO_UNVERIFIED_FABRICATION(fabrication)
+    SET STATE FABRICATED
+  END STAGE
+
+  STAGE ASSEMBLY
+    RESOLUTION PRO
+    VERB   EXECUTE
+    FROM   procurement, fabrication, design
+    INTO   assembly
+    ASK
+      Assemble realized components according to the approved design.
+      Record component identities, substitutions, deviations, assembly steps,
+      torque/calibration data where relevant and inspection evidence.
+    END ASK
+    VALIDATE TRACEABLE(assembly, bom)
+    SET STATE ASSEMBLED
+  END STAGE
+
+  STAGE SUBSYSTEM_TEST
+    RESOLUTION PRO
+    VERB   VERIFY
+    FROM   assembly, requirements
+    INTO   subsystem_tests
+    ASK
+      Test each relevant subsystem independently before full-system integration.
+      Record procedure, inputs, measurements, units, uncertainty where applicable,
+      expected result, observed result and evidence.
+    END ASK
+    VALIDATE MEASUREMENTS_HAVE_UNITS(subsystem_tests)
+  END STAGE
+
+  STAGE INTEGRATION
+    RESOLUTION PRO
+    VERB   INTEGRATE
+    FROM   assembly, subsystem_tests
+    INTO   integrated_system
+    ASK
+      Integrate mechanical, electrical, computational, software, firmware,
+      sensing, actuation, communications and power subsystems as applicable.
+      Verify interfaces during integration and record deviations.
+    END ASK
+    VALIDATE TRACEABLE(integrated_system, architecture)
+    SET STATE INTEGRATED
+  END STAGE
+
+  STAGE SYSTEM_TEST
+    RESOLUTION PRO
+    VERB   VERIFY
+    FROM   integrated_system, requirements
+    INTO   system_tests
+    ASK
+      Execute system-level tests against approved acceptance and verification
+      criteria. Record measured evidence, units, uncertainty, configuration,
+      procedure and result.
+    END ASK
+    VALIDATE MEASUREMENTS_HAVE_UNITS(system_tests)
+  END STAGE
+
+  STAGE VERIFICATION
+    RESOLUTION PRO
+    VERB   VERIFY
+    FROM   system_tests, requirements, architecture, design
+    INTO   verification
+    ASK
+      Establish traceable evidence for every applicable requirement.
+      Classify each requirement PASS, FAIL, PARTIAL or UNRESOLVED.
+      Do not convert inference or simulation into physical evidence.
+    END ASK
+    VALIDATE COMPLETE_TRACEABILITY(verification, requirements)
+    SET STATE VERIFIED
+  END STAGE
+
+  STAGE PACKAGING
+    RESOLUTION PRO
+    VERB   PACKAGE
+    FROM   integrated_system, verification, bom
+    INTO   release_package
+    ASK
+      Construct the complete release package.
+      Include physical packaging, enclosure/transport configuration,
+      mounting, cables/connectors, deployment kit, spares and tools;
+      software/firmware, configuration, calibration and manifests;
+      manuals, schematics, BOM, maintenance information, provenance,
+      test results, certificates and acceptance records.
+    END ASK
+    VALIDATE COMPLETE_RELEASE_PACKAGE(release_package)
+    SET STATE PACKAGED
+  END STAGE
+
+  STAGE DEPLOY
+    RESOLUTION MID
+    VERB   EXECUTE
+    FROM   release_package
+    INTO   deployment
+    ASK
+      Deploy the packaged physical artefact to its intended operational environment.
+      Record installation state, environmental conditions and configuration.
+    END ASK
+  END STAGE
+
+  STAGE CONFIGURE
+    RESOLUTION PRO
+    VERB   CONFIGURE
+    FROM   deployment, release_package
+    INTO   commissioning.configuration
+    ASK
+      Configure hardware, software, firmware, networking, operating parameters
+      and deployment-specific settings according to the approved release.
+    END ASK
+  END STAGE
+
+  STAGE CALIBRATE
+    RESOLUTION PRO
+    VERB   VERIFY
+    FROM   commissioning.configuration
+    INTO   commissioning.calibration
+    ASK
+      Perform required sensor, actuator, instrument and system calibration.
+      Record procedures, standards, values, tolerances and evidence.
+    END ASK
+    VALIDATE CALIBRATION_EVIDENCE(commissioning.calibration)
+  END STAGE
+
+  STAGE COMMISSION
+    RESOLUTION PRO
+    VERB   EXECUTE
+    FROM   deployment, commissioning.configuration, commissioning.calibration
+    INTO   commissioning
+    ASK
+      Commission the artefact. Verify installation, networking, safety,
+      functional operation, calibration, operator procedures and environmental
+      readiness. Record all commissioning evidence.
+    END ASK
+    VALIDATE COMPLETE(commissioning)
+    SET STATE COMMISSIONED
+  END STAGE
+
+  STAGE ACCEPTANCE
+    RESOLUTION PRO
+    VERB   GATE
+    FROM   verification, commissioning
+    INTO   acceptance
+    ASK
+      Conduct final acceptance against the approved requirements and agreed
+      operational criteria. Identify any deviations, waivers or open items.
+    END ASK
+    VALIDATE COMPLETE(acceptance)
+    GATE HUMAN "ACCEPT PENCH ARTEFACT"
+    SET STATE ACCEPTED
+  END STAGE
+
+  STAGE OPERATE
+    RESOLUTION MID
+    VERB   OPERATE
+    FROM   acceptance
+    INTO   operation
+    ASK
+      Establish operational use, monitoring, logging, maintenance scheduling,
+      incident handling and performance observation.
+    END ASK
+    SET STATE OPERATIONAL
+  END STAGE
+
+  STAGE OBSERVE
+    RESOLUTION MID
+    VERB   OBSERVE
+    FROM   operation
+    INTO   observations
+    ASK
+      Record operational observations, measurements, failures, maintenance
+      events, environmental changes and opportunities for improvement.
+    END ASK
+  END STAGE
+
+  STAGE MAINTAIN
+    RESOLUTION PRO
+    VERB   MAINTAIN
+    FROM   observations
+    INTO   maintenance
+    ASK
+      Determine required maintenance, repair, replacement, recalibration,
+      software/firmware update or engineering change. Preserve complete
+      provenance and dependency relationships.
+    END ASK
+    VALIDATE TRACEABLE(maintenance, release_package)
+    SET STATE MAINTAINED
+  END STAGE
+
+  STAGE ITERATE
+    RESOLUTION PRO
+    VERB   REVISE
+    FROM   observations, maintenance
+    INTO   next_revision
+    ASK
+      Determine whether observed evidence requires revision of requirements,
+      architecture, design, BOM, realization strategy, implementation,
+      packaging or commissioning. Generate the next controlled revision
+      without destroying predecessor states.
+    END ASK
+    VALIDATE VERSIONED(next_revision)
+  END STAGE
+
+  STAGE RETIRE
+    VERB   RETIRE
+    FROM   operation, maintenance
+    INTO   retirement
+    ASK
+      Retire the physical artefact while preserving provenance, configuration,
+      evidence, maintenance history, operational history and final status.
+    END ASK
+    SET STATE RETIRED
+  END STAGE
+
+  LOGIC
+    WHEN requirements.changed
+      INVALIDATE architecture, design, digital_twin, bom, realization_plan
+      INVALIDATE verification, release_package, commissioning
+      EMIT "downstream artefacts require impact analysis"
+    END
+
+    WHEN architecture.changed
+      INVALIDATE design, digital_twin, bom, realization_plan
+      INVALIDATE verification, release_package, commissioning
+    END
+
+    WHEN design.changed
+      INVALIDATE digital_twin, bom, realization_plan
+      INVALIDATE verification, release_package, commissioning
+    END
+
+    WHEN bom.changed
+      INVALIDATE realization_plan, procurement, fabrication, assembly
+      INVALIDATE integration, verification, release_package
+    END
+
+    WHEN verification.status == FAIL
+      ROUTE TO DESIGN_REVIEW
+    END
+
+    WHEN simulation.analysis.status == FAIL
+      ROUTE TO DESIGN_REVISION
+    END
+
+    WHEN acceptance.status != ACCEPTED
+      ROUTE TO ITERATE
+    END
+
+    AFTER requirements.ITERATIONS >= 3
+      GENERATE requirements.summary
+      REQUEST HUMAN "REVIEW REQUIREMENTS CONVERGENCE"
+    END
+
+    UNTIL requirements.status == APPROVED
+      REVIEW requirements
+      REVISE requirements
+    END
+
+    UNTIL architecture.status == APPROVED
+      REVIEW architecture
+      REVISE architecture
+    END
+
+    UNTIL design.status == APPROVED
+      REVIEW design
+      REVISE design
+    END
+
+    UNTIL verification.status == PASS
+      ANALYZE verification.failures
+      REVISE affected_artifacts
+      RETEST affected_requirements
+    END
+  END LOGIC
+
+  ARTIFACTS
+    ARTEFACT concept
+    ARTEFACT captured_concept
+    ARTEFACT use_cases
+    ARTEFACT requirements
+    ARTEFACT requirements.baseline
+    ARTEFACT architecture
+    ARTEFACT architecture.baseline
+    ARTEFACT design
+    ARTEFACT design.baseline
+    ARTEFACT digital_twin
+    ARTEFACT simulation
+    ARTEFACT realization_plan
+    ARTEFACT bom
+    ARTEFACT bom.decisions
+    ARTEFACT procurement
+    ARTEFACT fabrication
+    ARTEFACT assembly
+    ARTEFACT integrated_system
+    ARTEFACT subsystem_tests
+    ARTEFACT system_tests
+    ARTEFACT verification
+    ARTEFACT release_package
+    ARTEFACT deployment
+    ARTEFACT commissioning
+    ARTEFACT acceptance
+    ARTEFACT operation
+    ARTEFACT observations
+    ARTEFACT maintenance
+    ARTEFACT retirement
+  END ARTIFACTS
+
+  PROVENANCE
+    TRACK concept
+    TRACK requirements
+    TRACK architecture
+    TRACK design
+    TRACK bom
+    TRACK realization
+    TRACK tests
+    TRACK verification
+    TRACK packaging
+    TRACK commissioning
+    TRACK acceptance
+    TRACK operation
+    TRACK maintenance
+    HASH all_release_artifacts
+    PRESERVE revision_ancestry
+    PRESERVE dependency_graph
+    PRESERVE evidence_chain
+  END PROVENANCE
+
+  RESOLUTION
+    EASY
+      PURPOSE "Conceptualize and capture a physical artefact at low resolution."
+    END
+    MID
+      PURPOSE "Structure requirements, interfaces, workflows and realization planning."
+    END
+    PRO
+      PURPOSE "Formal engineering specification, verification, provenance and controlled realization."
+    END
+  END RESOLUTION
+
+  PROVIDERS
+    ALLOW REMOTE_AI
+    ALLOW LOCAL_AI
+    ALLOW USER_API
+    ALLOW HUMAN
+    ALLOW SYMBOLIC_ENGINE
+    ALLOW SIMULATOR
+    ALLOW HOLY_GRAIL_LABS
+  END PROVIDERS
+
+  EVIDENCE
+    CLASS RETRIEVED
+    CLASS INFERRED
+    CLASS PROPOSED
+    CLASS UNRESOLVED
+    CLASS SIMULATED
+    CLASS MEASURED
+    CLASS VERIFIED
+    RULE "simulation != measured"
+    RULE "proposed != verified"
+    RULE "unresolved remains unresolved until evidence resolves it"
+  END EVIDENCE
+
+  RELEASE
+    REQUIRE requirements.status == APPROVED
+    REQUIRE architecture.status == APPROVED
+    REQUIRE design.status == APPROVED
+    REQUIRE verification.status == PASS
+    REQUIRE commissioning.status == COMPLETE
+    REQUIRE acceptance.status == ACCEPTED
+    PACKAGE concept
+    PACKAGE requirements
+    PACKAGE architecture
+    PACKAGE design
+    PACKAGE bom
+    PACKAGE realization_plan
+    PACKAGE verification
+    PACKAGE commissioning
+    PACKAGE acceptance
+    PACKAGE provenance
+    HASH release_package
+    EMIT "PENCH physical artefact release"
+  END RELEASE
+
+END CYCLER

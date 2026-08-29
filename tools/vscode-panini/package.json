@@ -1,0 +1,20 @@
+{
+  "name": "panini",
+  "displayName": "PANINI",
+  "description": "PANINI + foreign frontend highlighting, launch configs, debug adapter",
+  "version": "0.3.0",
+  "publisher": "panini",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Programming Languages", "Debuggers"],
+  "activationEvents": ["onLanguage:panini"],
+  "contributes": {
+    "languages": [
+      { "id": "panini", "aliases": ["PANINI"], "extensions": [".pni", ".panini"], "configuration": "./language-configuration.json" }
+    ],
+    "grammars": [
+      { "language": "panini", "scopeName": "source.panini", "path": "./syntaxes/panini.tmLanguage.json" }
+    ],
+    "breakpoints": [{ "language": "panini" }],
+    "taskDefinitions": [{ "type": "panini", "required": ["command"] }]
+  }
+}

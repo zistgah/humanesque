@@ -1,0 +1,15 @@
+{
+  "theorem": "ISO_GREEN(C)",
+  "standard": "ISO/IEC 9899:2018 (C17) — corpus c-testsuite single-exec",
+  "subject": "PANINI.Frontend.C",
+  "green": true,
+  "cases": 104,
+  "panini": {
+    "pass": 104,
+    "fail": 0,
+    "skip": 0
+  },
+  "fails": [],
+  "attempted": 104,
+  "status": "ISO GREEN"
+}

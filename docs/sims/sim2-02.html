@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyeCNSe Simulator V1.1 - Interactive Digital Twin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; overflow: hidden; background: #050507; color: #fff; font-family: 'Inter', sans-serif; }
+        .jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); }
+        select, textarea { background: #0f172a !important; color: #60a5fa !important; border: 1px solid #1e293b !important; }
+    </style>
+</head>
+<body>
+
+    <div class="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-4">
+        <div class="flex justify-between items-start pointer-events-auto">
+            <div class="glass p-4 rounded-xl">
+                <h1 class="text-blue-400 font-bold tracking-tighter">AyeCNSe <span class="text-white">TWIN_SIM</span></h1>
+                <p class="text-[10px] uppercase text-slate-500">World Interaction: Left-Click (Rotate) | Right-Click (Pan)</p>
+            </div>
+            
+            <div class="glass p-4 rounded-xl w-64">
+                <h2 class="text-xs font-bold mb-2 text-slate-400">EMBODIMENT ENGINE</h2>
+                <select id="stageSelector" class="w-full p-2 rounded text-xs jetbrains cursor-pointer">
+                    <option value="0">STAGE 0: Basic Kit</option>
+                    <option value="1">STAGE 1: Arduino Wired</option>
+                    <option value="2">STAGE 2: WiFi Enabled</option>
+                    <option value="3">STAGE 3: Gripper System</option>
+                    <option value="4">STAGE 4: Full Sensor Suite</option>
+                </select>
+                <div id="telemetry" class="mt-4 text-[10px] jetbrains text-green-400 space-y-1">
+                    <div>MODE: <span id="tel-mode">IDLE</span></div>
+                    <div>POS: <span id="tel-pos">0, 0, 0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass p-4 rounded-xl pointer-events-auto flex gap-4 h-48">
+            <div class="flex-grow flex flex-col">
+                <div class="flex justify-between mb-2">
+                    <span class="text-[10px] font-bold text-slate-500">ILM CONSOLE</span>
+                    <select id="langSelect" class="text-[10px] px-2 rounded">
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                    </select>
+                </div>
+                <textarea id="ilmInput" class="flex-grow p-2 text-xs jetbrains outline-none rounded">MOVE(3)
+TURN(45)
+DANCE(BENCHMARK)</textarea>
+            </div>
+            <div class="w-1/3 flex flex-col">
+                <button onclick="sim.run()" class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded font-bold text-sm mb-2 transition-all">EXECUTE</button>
+                <div id="log" class="flex-grow overflow-y-auto text-[9px] jetbrains text-slate-400 p-2 bg-black/20 rounded">
+                    > System ready.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <script>
+        const LEXICON = {
+            en: { move: 'MOVE', turn: 'TURN', dance: 'DANCE' },
+            hi: { move: 'चलो', turn: 'मुड़ो', dance: 'नाचो' }
+        };
+
+        class AyeSim {
+            constructor() {
+                this.initEngine();
+                this.currentStage = -1;
+                this.isAnimating = false;
+                this.swapEmbodiment(0); // Default to Stage 0
+                this.setupListeners();
+                this.render();
+            }
+
+            initEngine() {
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x020617);
+                
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                this.camera.position.set(4, 4, 4);
+
+                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+
+                // IMPORTANT: World Interaction
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+
+                // Lighting
+                this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+                const light = new THREE.PointLight(0x3b82f6, 1, 100);
+                light.position.set(5, 5, 5);
+                this.scene.add(light);
+
+                const grid = new THREE.GridHelper(20, 20, 0x1e293b, 0x0f172a);
+                this.scene.add(grid);
+            }
+
+            // --- FUNCTIONAL EMBODIMENT SWAPPING ---
+            swapEmbodiment(stage) {
+                if (this.robotGroup) this.scene.remove(this.robotGroup);
+                
+                this.robotGroup = new THREE.Group();
+                const chassis = new THREE.Mesh(
+                    new THREE.BoxGeometry(1.2, 0.4, 1.5),
+                    new THREE.MeshPhongMaterial({ color: 0x334155 })
+                );
+                this.robotGroup.add(chassis);
+
+                // Logic-based Part Addition
+                if (stage >= 1) { // Add Arduino
+                    const mcu = new THREE.Mesh(
+                        new THREE.BoxGeometry(0.6, 0.1, 0.8),
+                        new THREE.MeshPhongMaterial({ color: 0x1d4ed8 })
+                    );
+                    mcu.position.y = 0.25;
+                    this.robotGroup.add(mcu);
+                }
+
+                if (stage >= 2) { // Add WiFi Module
+                    const wifi = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.1, 0.2), new THREE.MeshPhongMaterial({ color: 0xfff }));
+                    wifi.position.set(0.2, 0.3, -0.2);
+                    this.robotGroup.add(wifi);
+                }
+
+                if (stage >= 3) { // Add Gripper
+                    this.gripper = new THREE.Group();
+                    const finger = new THREE.BoxGeometry(0.1, 0.2, 0.5);
+                    this.fL = new THREE.Mesh(finger, new THREE.MeshPhongMaterial({color: 0x64748b}));
+                    this.fR = new THREE.Mesh(finger, new THREE.MeshPhongMaterial({color: 0x64748b}));
+                    this.fL.position.set(-0.3, 0, 0.9);
+                    this.fR.position.set(0.3, 0, 0.9);
+                    this.gripper.add(this.fL, this.fR);
+                    this.robotGroup.add(this.gripper);
+                }
+
+                if (stage >= 4) { // Add Lidar/Sensors
+                    const sensor = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.3), new THREE.MeshPhongMaterial({color: 0x000}));
+                    sensor.position.y = 0.4;
+                    this.robotGroup.add(sensor);
+                }
+
+                this.scene.add(this.robotGroup);
+                this.currentStage = stage;
+                this.log(`Embodiment Swapped: Stage ${stage}`);
+            }
+
+            setupListeners() {
+                document.getElementById('stageSelector').addEventListener('change', (e) => {
+                    this.swapEmbodiment(parseInt(e.target.value));
+                });
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            }
+
+            log(msg) {
+                const l = document.getElementById('log');
+                l.innerHTML += `<div>> ${msg}</div>`;
+                l.scrollTop = l.scrollHeight;
+            }
+
+            // --- EXECUTION ENGINE ---
+            async run() {
+                if (this.isAnimating) return;
+                this.isAnimating = true;
+                const code = document.getElementById('ilmInput').value;
+                const lang = document.getElementById('langSelect').value;
+                const lines = code.split('\n');
+
+                for (let line of lines) {
+                    const match = line.match(/(.+)\((.+)\)/);
+                    if (match) {
+                        const cmd = match[1].trim();
+                        const val = match[2].trim();
+                        await this.executeIntent(cmd, val, lang);
+                    }
+                }
+                this.isAnimating = false;
+                document.getElementById('tel-mode').innerText = "IDLE";
+            }
+
+            async executeIntent(cmd, val, lang) {
+                const dict = LEXICON[lang];
+                document.getElementById('tel-mode').innerText = cmd.toUpperCase();
+
+                if (cmd === dict.move) {
+                    await this.animateMove(parseFloat(val));
+                } else if (cmd === dict.turn) {
+                    await this.animateRotate(parseFloat(val));
+                } else if (cmd === dict.dance) {
+                    await this.animateDance();
+                }
+            }
+
+            animateMove(dist) {
+                return new Promise(res => {
+                    let traveled = 0;
+                    const speed = 0.05;
+                    const step = () => {
+                        this.robotGroup.translateZ(speed);
+                        traveled += speed;
+                        if (traveled < dist) requestAnimationFrame(step);
+                        else res();
+                    };
+                    step();
+                });
+            }
+
+            animateRotate(deg) {
+                return new Promise(res => {
+                    const target = (deg * Math.PI) / 180;
+                    let current = 0;
+                    const step = () => {
+                        this.robotGroup.rotation.y += 0.02;
+                        current += 0.02;
+                        if (current < target) requestAnimationFrame(step);
+                        else res();
+                    };
+                    step();
+                });
+            }
+
+            // FIXED DANCE: Finite loop
+            async animateDance() {
+                this.log("Starting Benchmark Dance...");
+                for(let i=0; i < 5; i++) { // 5 Cycles only
+                    this.robotGroup.position.y = 0.2;
+                    if(this.gripper) { this.fL.position.x = -0.5; this.fR.position.x = 0.5; }
+                    await new Promise(r => setTimeout(r, 200));
+                    this.robotGroup.position.y = 0;
+                    if(this.gripper) { this.fL.position.x = -0.3; this.fR.position.x = 0.3; }
+                    await new Promise(r => setTimeout(r, 200));
+                }
+                this.log("Dance Complete.");
+            }
+
+            render() {
+                requestAnimationFrame(() => this.render());
+                this.controls.update();
+                document.getElementById('tel-pos').innerText = 
+                    `${this.robotGroup.position.x.toFixed(1)}, ${this.robotGroup.position.z.toFixed(1)}`;
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        const sim = new AyeSim();
+    </script>
+</body>
+</html>

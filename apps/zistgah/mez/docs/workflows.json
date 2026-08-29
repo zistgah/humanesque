@@ -1,0 +1,742 @@
+{
+ "panini": {
+  "id": "PANINI",
+  "title": "PANINI",
+  "unit": null,
+  "output": "architecture",
+  "purpose": null,
+  "source": "cyclers/PANINI_SELF_HOSTING_SPEC.pni",
+  "derived": true,
+  "invariants": [],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "INTENT",
+    "title": "INTENT",
+    "verb": "INTENT",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "REQUIREMENTS",
+    "title": "REQUIREMENTS",
+    "verb": "REQUIREMENTS",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "ARCHITECTURE",
+    "title": "ARCHITECTURE",
+    "verb": "ARCHITECTURE",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "DESIGN",
+    "title": "DESIGN",
+    "verb": "DESIGN",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "IMPLEMENTATION",
+    "title": "IMPLEMENTATION",
+    "verb": "IMPLEMENTATION",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "VERIFICATION",
+    "title": "VERIFICATION",
+    "verb": "VERIFICATION",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "RELEASE",
+    "title": "RELEASE",
+    "verb": "RELEASE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "0",
+    "title": "0",
+    "verb": "0",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "1",
+    "title": "1",
+    "verb": "1",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "2",
+    "title": "2",
+    "verb": "2",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "3",
+    "title": "3",
+    "verb": "3",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "4",
+    "title": "4",
+    "verb": "4",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "5",
+    "title": "5",
+    "verb": "5",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "6",
+    "title": "6",
+    "verb": "6",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ },
+ "awaz": {
+  "id": "awaz",
+  "title": "awaz",
+  "unit": null,
+  "output": null,
+  "purpose": null,
+  "source": "cyclers/awaz.pni",
+  "derived": true,
+  "invariants": [],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "stage_1",
+    "title": "stage_1",
+    "verb": "STAGE_1",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ },
+ "genie": {
+  "id": "GENIE",
+  "title": "Genie",
+  "unit": "passage",
+  "output": "TEXT",
+  "purpose": "Make something to be heard: a song, a podcast, a lecture, an oral history, an audiobook.",
+  "source": "cyclers/genie.pni",
+  "derived": true,
+  "invariants": [
+   "passages are cues into one recording, never cut copies"
+  ],
+  "refuses": [
+   "a cue that ends before it starts or runs past the end",
+   "a transcript that invents a word it could not hear"
+  ],
+  "evidence": [
+   "the recording sha256 in the metadata",
+   "a waveform computed from the samples, not drawn"
+  ],
+  "stages": [
+   {
+    "id": "PASSAGES",
+    "title": "PASSAGES",
+    "verb": "CREATE",
+    "density": "EASY",
+    "boundary": false,
+    "produces": "passages",
+    "prompt": "A recording from \"{book}\", {duration} long. Divide it into passages.\n\nReply with ONLY a JSON array, in order:\n[{\"start\":\"0:00\",\"end\":\"1:20\",\"title\":\"…\",\"beat\":\"…\"}]\n\nbeat: what changes there — a key, a speaker, a section, a turn in the argument."
+   },
+   {
+    "id": "TRANSCRIBE",
+    "title": "TRANSCRIBE",
+    "verb": "MEASURE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "passage.transcript",
+    "prompt": "Transcribe passage {passage.title}, {passage.start} to {passage.end}. Verbatim.\nMark each speaker if there is more than one. Mark [inaudible] where it is, and\ndo not guess at it. Where it is not speech, describe what is heard in one line."
+   },
+   {
+    "id": "HEARD",
+    "title": "HEARD",
+    "verb": "CREATE",
+    "density": "EASY",
+    "boundary": false,
+    "produces": "passage.lead",
+    "prompt": "Passage {passage.title}, {passage.start} to {passage.end}.\nONE paragraph of 50 to 90 words describing what is heard, in the vocabulary the\nrecording itself uses."
+   },
+   {
+    "id": "LISTENFOR",
+    "title": "LISTENFOR",
+    "verb": "CREATE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "passage.explanation",
+    "prompt": "Same passage. Name the one thing a listener should attend to and why it carries\nthe passage. Preserve any hedging the recording uses. 50 to 90 words."
+   },
+   {
+    "id": "ABSTRACT",
+    "title": "ABSTRACT",
+    "verb": "INTEGRATE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "book.description",
+    "prompt": "Deposit abstract for \"{book}\", a recording of {duration} in {count} passages.\nTwo or three HTML paragraphs in <p> tags."
+   },
+   {
+    "id": "MINT",
+    "title": "MINT",
+    "verb": "INTEGRATE",
+    "density": "PRO",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ },
+ "khwab": {
+  "id": "khwab",
+  "title": "khwab",
+  "unit": null,
+  "output": [
+   "image",
+   "sound",
+   "video",
+   "text",
+   "movement",
+   "immersive",
+   "physical"
+  ],
+  "purpose": null,
+  "source": "cyclers/khwab.pni",
+  "derived": true,
+  "invariants": [],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "stage_1",
+    "title": "stage_1",
+    "verb": "STAGE_1",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ },
+ "matba": {
+  "id": "MATBA",
+  "title": "MATBA",
+  "unit": null,
+  "output": null,
+  "purpose": null,
+  "source": "cyclers/matba.pni",
+  "derived": true,
+  "invariants": [
+   "publication may be conceived inside the cycle",
+   "conceptualization is a first-class lifecycle",
+   "concept, specification and publication remain distinct objects",
+   "revisions preserve provenance",
+   "branches may be compared, merged, forked or discarded",
+   "discarded alternatives remain recoverable unless explicitly purged",
+   "human signoff may gate irreversible transitions",
+   "epistemic status is preserved",
+   "AI output is not publication merely because it was generated"
+  ],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "CONCEPTUALIZE",
+    "title": "CONCEPTUALIZE",
+    "verb": "CAPTURE",
+    "density": "EASY",
+    "boundary": false,
+    "produces": "concept",
+    "prompt": null
+   }
+  ]
+ },
+ "pench": {
+  "id": "PENCH",
+  "title": "PENCH",
+  "unit": "physical artefact",
+  "output": "PHYSICAL",
+  "purpose": "Take a human conception through conceptualization, requirements, architecture, design, simulation, realization strategy, BOM and build/buy decisions, procurement/fabrication, assembly, integration, verification, packaging, commissioning, acceptance, operation and maintenance.",
+  "source": "cyclers/pench.pni",
+  "derived": true,
+  "invariants": [
+   "The cycler builds and preserves thought before physical realization.",
+   "Requirements, architecture, design and implementation are distinct artefacts.",
+   "Every approved artefact is versioned and its provenance is preserved.",
+   "Changing an approved upstream artefact may invalidate dependent downstream artefacts.",
+   "BOM is a decision stage, not merely an output file.",
+   "Every realizable component has an auditable realization strategy.",
+   "Simulation evidence is distinct from physical measurement.",
+   "A physical artefact is not operational merely because it has been assembled.",
+   "Packaging and commissioning are lifecycle states.",
+   "Human approval is required at configured lifecycle gates.",
+   "Holy Grail Labs supplies realization capability; PENCH specifies and governs the lifecycle."
+  ],
+  "refuses": [
+   "treating a prompt response as proof of physical realization",
+   "claiming a component was fabricated, procured, tested or commissioned without evidence",
+   "promoting simulation results to physical experimental evidence",
+   "silently changing an approved requirement"
+  ],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "CONCEPTUALIZE",
+    "title": "CONCEPTUALIZE",
+    "verb": "ELICIT",
+    "density": "EASY",
+    "boundary": false,
+    "produces": "concept",
+    "prompt": "Describe what you want the physical artefact to accomplish.\nDo not design it yet. Capture the intended outcome, users or actors,\nenvironment, capabilities and important constraints."
+   },
+   {
+    "id": "CAPTURE",
+    "title": "CAPTURE",
+    "verb": "STRUCTURE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "captured_concept",
+    "prompt": "Convert the concept into a structured physical-system concept.\nCapture:\npurpose, users, use cases, operating environment, desired capabilities,\nmobility, sensing, actuation, communication, autonomy, human interaction,\nsafety, dimensions, energy, maintainability, cost, availability,\nlifetime and deployment context.\nPreserve unresolved items explicitly."
+   },
+   {
+    "id": "USE_CASES",
+    "title": "USE_CASES",
+    "verb": "ELICIT",
+    "density": "MID",
+    "boundary": false,
+    "produces": "use_cases",
+    "prompt": "Derive the principal use cases for the proposed physical artefact.\nFor each use case identify actor, goal, environment, trigger,\nexpected behaviour and success condition."
+   },
+   {
+    "id": "REQUIREMENTS",
+    "title": "REQUIREMENTS",
+    "verb": "FORMALIZE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "requirements",
+    "prompt": "Transform the captured concept and use cases into testable engineering\nrequirements. Every requirement must have an identifier, subject,\nnormative statement, priority, acceptance/test criterion and status.\nDistinguish required, desired, constraint and unresolved requirements."
+   },
+   {
+    "id": "REQUIREMENTS_REVIEW",
+    "title": "REQUIREMENTS_REVIEW",
+    "verb": "REVIEW",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "requirements.review",
+    "prompt": "Attack the requirements for ambiguity, contradiction, omission,\nnon-testability, hidden assumptions and unbounded scope.\nProduce defects and proposed corrections."
+   },
+   {
+    "id": "REQUIREMENTS_REVISION",
+    "title": "REQUIREMENTS_REVISION",
+    "verb": "REVISE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "requirements",
+    "prompt": "Apply only justified corrections. Preserve prior revision history,\nprovenance and unresolved items."
+   },
+   {
+    "id": "REQUIREMENTS_SIGNOFF",
+    "title": "REQUIREMENTS_SIGNOFF",
+    "verb": "GATE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "EMBODIMENT_ARCHITECTURE",
+    "title": "EMBODIMENT_ARCHITECTURE",
+    "verb": "DERIVE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "architecture",
+    "prompt": "Derive a physical-system architecture from the approved requirements.\nIdentify system boundaries and subsystems covering, as applicable:\nmechanical structure, electronics, computation, sensors, actuators,\ncommunications, power, thermal systems, structural elements, software,\nfirmware, control, human-machine interface, environmental interfaces,\nsafety systems, enclosure, tooling and manufacturing architecture.\nRecord interfaces and dependencies explicitly."
+   },
+   {
+    "id": "ARCHITECTURE_REVIEW",
+    "title": "ARCHITECTURE_REVIEW",
+    "verb": "REVIEW",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "architecture.review",
+    "prompt": "Attack the architecture against every approved requirement.\nIdentify missing subsystems, incompatible interfaces, unsafe assumptions,\ncapacity constraints, single points of failure and unresolved dependencies."
+   },
+   {
+    "id": "ARCHITECTURE_REVISION",
+    "title": "ARCHITECTURE_REVISION",
+    "verb": "REVISE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "architecture",
+    "prompt": "Revise the architecture while preserving traceability and revision ancestry."
+   },
+   {
+    "id": "ARCHITECTURE_SIGNOFF",
+    "title": "ARCHITECTURE_SIGNOFF",
+    "verb": "GATE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "DETAILED_DESIGN",
+    "title": "DETAILED_DESIGN",
+    "verb": "DERIVE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "design",
+    "prompt": "Produce the detailed engineering design.\nSpecify dimensions, interfaces, component characteristics, tolerances,\nelectrical and mechanical details, computational resources, software/\nfirmware boundaries, control interfaces, safety mechanisms, manufacturing\nconstraints, calibration requirements and verification methods."
+   },
+   {
+    "id": "DESIGN_REVIEW",
+    "title": "DESIGN_REVIEW",
+    "verb": "REVIEW",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "design.review",
+    "prompt": "Review the detailed design for requirement coverage, architectural\nconsistency, manufacturability, serviceability, safety, interfaces,\ntestability and realization feasibility."
+   },
+   {
+    "id": "DESIGN_REVISION",
+    "title": "DESIGN_REVISION",
+    "verb": "REVISE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "design",
+    "prompt": "Apply justified design corrections and preserve complete revision ancestry."
+   },
+   {
+    "id": "DESIGN_SIGNOFF",
+    "title": "DESIGN_SIGNOFF",
+    "verb": "GATE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "DIGITAL_TWIN",
+    "title": "DIGITAL_TWIN",
+    "verb": "CREATE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "digital_twin",
+    "prompt": "Construct a simulation-ready model or digital twin sufficient to evaluate\nthe relevant physical, mechanical, electrical, computational, thermal,\ncontrol and environmental behaviours of the design."
+   },
+   {
+    "id": "SIMULATE",
+    "title": "SIMULATE",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "simulation",
+    "prompt": "Execute simulations relevant to the approved requirements and design.\nRecord configuration, assumptions, model version, parameters, outputs,\nlimitations, uncertainty and reproducibility information."
+   },
+   {
+    "id": "SIMULATION_ANALYSIS",
+    "title": "SIMULATION_ANALYSIS",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "simulation.analysis",
+    "prompt": "Determine which requirements are supported, contradicted or unresolved\nby the simulation. Do not call a simulation a physical experiment."
+   },
+   {
+    "id": "REALIZATION_PLAN",
+    "title": "REALIZATION_PLAN",
+    "verb": "PLAN",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "realization_plan",
+    "prompt": "Define how each required subsystem and component will be realized.\nSelect fabrication, procurement, modification, reuse, outsourcing or\nother valid realization strategies and identify dependencies, lead times,\ncosts, tooling, certification and availability constraints."
+   },
+   {
+    "id": "BOM",
+    "title": "BOM",
+    "verb": "GENERATE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "bom",
+    "prompt": "Generate a complete bill of materials.\nFor every part capture identifier, description, quantity, requirement\ntrace, design trace, source options, estimated cost, lead time,\ncompatibility, reliability, maintainability, certification and status."
+   },
+   {
+    "id": "BUILD_BUY_ANALYSIS",
+    "title": "BUILD_BUY_ANALYSIS",
+    "verb": "DECIDE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "bom.decisions",
+    "prompt": "For every component compare BUILD, BUY, MODIFY, FABRICATE, PRINT,\nMACHINE, ASSEMBLE, RECOVER, REUSE and OUTSOURCE where applicable.\nEvaluate cost, lead time, capability, reliability, availability,\nmaintainability, compatibility and certification.\nRecord alternatives, rationale and decision authority."
+   },
+   {
+    "id": "BUILD_BUY_GATE",
+    "title": "BUILD_BUY_GATE",
+    "verb": "GATE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PROCUREMENT",
+    "title": "PROCUREMENT",
+    "verb": "EXECUTE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "procurement",
+    "prompt": "Execute or prepare procurement actions for components whose realization\nstrategy is BUY, MODIFY, RECOVER, REUSE or OUTSOURCE.\nRecord supplier/source, order state, expected delivery, received evidence\nand deviations from the approved BOM."
+   },
+   {
+    "id": "FABRICATION",
+    "title": "FABRICATION",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "fabrication",
+    "prompt": "Execute or prepare fabrication actions for BUILD, FABRICATE, PRINT,\nMACHINE or equivalent strategies. Record process, material, tooling,\nmachine, operator/system, revision and inspection evidence."
+   },
+   {
+    "id": "ASSEMBLY",
+    "title": "ASSEMBLY",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "assembly",
+    "prompt": "Assemble realized components according to the approved design.\nRecord component identities, substitutions, deviations, assembly steps,\ntorque/calibration data where relevant and inspection evidence."
+   },
+   {
+    "id": "SUBSYSTEM_TEST",
+    "title": "SUBSYSTEM_TEST",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "subsystem_tests",
+    "prompt": "Test each relevant subsystem independently before full-system integration.\nRecord procedure, inputs, measurements, units, uncertainty where applicable,\nexpected result, observed result and evidence."
+   },
+   {
+    "id": "INTEGRATION",
+    "title": "INTEGRATION",
+    "verb": "INTEGRATE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "integrated_system",
+    "prompt": "Integrate mechanical, electrical, computational, software, firmware,\nsensing, actuation, communications and power subsystems as applicable.\nVerify interfaces during integration and record deviations."
+   },
+   {
+    "id": "SYSTEM_TEST",
+    "title": "SYSTEM_TEST",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "system_tests",
+    "prompt": "Execute system-level tests against approved acceptance and verification\ncriteria. Record measured evidence, units, uncertainty, configuration,\nprocedure and result."
+   },
+   {
+    "id": "VERIFICATION",
+    "title": "VERIFICATION",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "verification",
+    "prompt": "Establish traceable evidence for every applicable requirement.\nClassify each requirement PASS, FAIL, PARTIAL or UNRESOLVED.\nDo not convert inference or simulation into physical evidence."
+   },
+   {
+    "id": "PACKAGING",
+    "title": "PACKAGING",
+    "verb": "PACKAGE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "release_package",
+    "prompt": "Construct the complete release package.\nInclude physical packaging, enclosure/transport configuration,\nmounting, cables/connectors, deployment kit, spares and tools;\nsoftware/firmware, configuration, calibration and manifests;\nmanuals, schematics, BOM, maintenance information, provenance,\ntest results, certificates and acceptance records."
+   },
+   {
+    "id": "DEPLOY",
+    "title": "DEPLOY",
+    "verb": "EXECUTE",
+    "density": "MID",
+    "boundary": true,
+    "produces": "deployment",
+    "prompt": "Deploy the packaged physical artefact to its intended operational environment.\nRecord installation state, environmental conditions and configuration."
+   },
+   {
+    "id": "CONFIGURE",
+    "title": "CONFIGURE",
+    "verb": "CONFIGURE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "commissioning.configuration",
+    "prompt": "Configure hardware, software, firmware, networking, operating parameters\nand deployment-specific settings according to the approved release."
+   },
+   {
+    "id": "CALIBRATE",
+    "title": "CALIBRATE",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "commissioning.calibration",
+    "prompt": "Perform required sensor, actuator, instrument and system calibration.\nRecord procedures, standards, values, tolerances and evidence."
+   },
+   {
+    "id": "COMMISSION",
+    "title": "COMMISSION",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "commissioning",
+    "prompt": "Commission the artefact. Verify installation, networking, safety,\nfunctional operation, calibration, operator procedures and environmental\nreadiness. Record all commissioning evidence."
+   },
+   {
+    "id": "ACCEPTANCE",
+    "title": "ACCEPTANCE",
+    "verb": "GATE",
+    "density": "PRO",
+    "boundary": true,
+    "produces": "acceptance",
+    "prompt": "Conduct final acceptance against the approved requirements and agreed\noperational criteria. Identify any deviations, waivers or open items."
+   },
+   {
+    "id": "OPERATE",
+    "title": "OPERATE",
+    "verb": "OPERATE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "operation",
+    "prompt": "Establish operational use, monitoring, logging, maintenance scheduling,\nincident handling and performance observation."
+   },
+   {
+    "id": "OBSERVE",
+    "title": "OBSERVE",
+    "verb": "OBSERVE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "observations",
+    "prompt": "Record operational observations, measurements, failures, maintenance\nevents, environmental changes and opportunities for improvement."
+   },
+   {
+    "id": "MAINTAIN",
+    "title": "MAINTAIN",
+    "verb": "MAINTAIN",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "maintenance",
+    "prompt": "Determine required maintenance, repair, replacement, recalibration,\nsoftware/firmware update or engineering change. Preserve complete\nprovenance and dependency relationships."
+   },
+   {
+    "id": "ITERATE",
+    "title": "ITERATE",
+    "verb": "REVISE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "next_revision",
+    "prompt": "Determine whether observed evidence requires revision of requirements,\narchitecture, design, BOM, realization strategy, implementation,\npackaging or commissioning. Generate the next controlled revision\nwithout destroying predecessor states."
+   },
+   {
+    "id": "RETIRE",
+    "title": "RETIRE",
+    "verb": "RETIRE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "retirement",
+    "prompt": "Retire the physical artefact while preserving provenance, configuration,\nevidence, maintenance history, operational history and final status."
+   }
+  ]
+ },
+ "tilasm": {
+  "id": "tilasm",
+  "title": "tilasm",
+  "unit": null,
+  "output": null,
+  "purpose": null,
+  "source": "cyclers/tilasm.pni",
+  "derived": true,
+  "invariants": [],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "stage_1",
+    "title": "stage_1",
+    "verb": "STAGE_1",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ },
+ "yadein": {
+  "id": "yadein",
+  "title": "yadein",
+  "unit": null,
+  "output": null,
+  "purpose": null,
+  "source": "cyclers/yadein.pni",
+  "derived": true,
+  "invariants": [],
+  "refuses": [],
+  "evidence": [],
+  "stages": [
+   {
+    "id": "stage_1",
+    "title": "stage_1",
+    "verb": "STAGE_1",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   }
+  ]
+ }
+}

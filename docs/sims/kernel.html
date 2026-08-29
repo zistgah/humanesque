@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diff-drive kernel</title>
+  <link rel="stylesheet" href="../site.css" />
+  <style>
+    .floor { background:#111; border:12px solid #2a2a2a; border-radius:8px; display:block; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head">
+  <a href="../index.html"><strong>PANINI</strong></a>
+  <nav><a href="../sims.html">Sims</a><a href="../console.html">Console</a></nav>
+</header>
+<main class="site-main">
+  <h1>Two wheels, one axle</h1>
+  <p>Physical: left/right wheel speeds, axle length L. Same object as a lab robot. Not a screenshot of a robot.</p>
+  <canvas class="floor" id="c" width="480" height="320"></canvas>
+  <p>
+    vl <input id="vl" type="range" min="-2" max="2" step="0.1" value="1" />
+    vr <input id="vr" type="range" min="-2" max="2" step="0.1" value="1" />
+  </p>
+</main>
+<script>
+(function () {
+  var x = 240, y = 160, th = 0, L = 28;
+  var c = document.getElementById("c"), ctx = c.getContext("2d");
+  function step(dt) {
+    var vl = +document.getElementById("vl").value;
+    var vr = +document.getElementById("vr").value;
+    var v = (vl + vr) / 2, w = (vr - vl) / (L / 20);
+    x += v * Math.cos(th) * dt * 40;
+    y += v * Math.sin(th) * dt * 40;
+    th += w * dt;
+    if (x < 20) x = 20; if (x > 460) x = 460;
+    if (y < 20) y = 20; if (y > 300) y = 300;
+  }
+  function draw() {
+    ctx.fillStyle = "#0d1a0d"; ctx.fillRect(0, 0, 480, 320);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(th);
+    ctx.fillStyle = "#c9a227";
+    ctx.fillRect(-16, -10, 32, 20);
+    ctx.fillStyle = "#333";
+    ctx.fillRect(-10, -14, 12, 6);
+    ctx.fillRect(-10, 8, 12, 6);
+    ctx.restore();
+  }
+  var last = performance.now();
+  function loop(t) {
+    step((t - last) / 1000); last = t; draw();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

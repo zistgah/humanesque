@@ -1,0 +1,23 @@
+{
+  "standard": "PANINI.STD.2026.08",
+  "epistemic": "VERIFIED_SUBSET",
+  "frontends": {
+    "panini": { "status": "VERIFIED", "scope": "self-host subset + JS interp/IR VM" },
+    "python": { "status": "VERIFIED_SUBSET", "scope": "print, def(1 stmt), return, assign, lists, tensor/matmul" },
+    "c": { "status": "VERIFIED_SUBSET", "scope": "int main, return, printf, arithmetic" },
+    "cpp": { "status": "VERIFIED_SUBSET", "scope": "cout rewrite then C frontend" },
+    "fortran": { "status": "VERIFIED_SUBSET", "scope": "PROGRAM / PRINT *, expr" },
+    "rust": { "status": "VERIFIED_SUBSET", "scope": "println! numeric expr" },
+    "typescript": { "status": "VERIFIED_SUBSET", "scope": "console.log numeric expr" },
+    "go": { "status": "VERIFIED_SUBSET", "scope": "fmt.Println numeric expr" },
+    "zig": { "status": "VERIFIED_SUBSET", "scope": "std.debug.print numeric expr" },
+    "pytorch": { "status": "PARTIAL", "scope": "tensor/matmul in PANINI; not autograd/CUDA" }
+  },
+  "backends_emit": ["js", "python", "c", "fortran", "torch", "wgsl"],
+  "tooling": {
+    "vscode": "grammar + launch + debug adapter stub",
+    "lsp": "file diagnostics cli",
+    "debugger": "line-step token trace (not DWARF)",
+    "pages": "static workbench"
+  }
+}

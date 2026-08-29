@@ -1,0 +1,126 @@
+MODULE PANINI.Language
+
+FUNCTION isDigit(ch)
+    RETURN ch >= "0" AND ch <= "9"
+END
+
+FUNCTION isAlpha(ch)
+    RETURN (ch >= "A" AND ch <= "Z") OR (ch >= "a" AND ch <= "z") OR ch == "_"
+END
+
+FUNCTION isSpace(ch)
+    RETURN ch == " " OR ch == TAB() OR ch == NEWLINE() OR ch == CR()
+END
+
+FUNCTION token(kind, value)
+    RETURN {kind: kind, value: value}
+END
+
+FUNCTION makeKeywords()
+    k = {}
+    k["MODULE"] = TRUE
+    k["END"] = TRUE
+    k["FUNCTION"] = TRUE
+    k["RETURN"] = TRUE
+    k["IF"] = TRUE
+    k["ELSE"] = TRUE
+    k["WHILE"] = TRUE
+    k["FOR"] = TRUE
+    k["IN"] = TRUE
+    k["TRUE"] = TRUE
+    k["FALSE"] = TRUE
+    k["NULL"] = TRUE
+    k["AND"] = TRUE
+    k["OR"] = TRUE
+    k["NOT"] = TRUE
+    k["ASSERT"] = TRUE
+    k["PRINT"] = TRUE
+    k["LET"] = TRUE
+    k["IMPORT"] = TRUE
+    k["EXPORT"] = TRUE
+    k["TYPE"] = TRUE
+    RETURN k
+END
+
+FUNCTION lex(source)
+    keywords = makeKeywords()
+    tokens = []
+    i = 0
+    n = LEN(source)
+    WHILE i < n
+        ch = source[i]
+        IF isSpace(ch)
+            i = i + 1
+        ELSE
+            IF ch == "/" AND i + 1 < n AND source[i + 1] == "/"
+                i = i + 2
+                WHILE i < n AND source[i] != NEWLINE()
+                    i = i + 1
+                END
+            ELSE
+                IF ch == "/" AND i + 1 < n AND source[i + 1] == "*"
+                    i = i + 2
+                    WHILE i + 1 < n AND NOT (source[i] == "*" AND source[i + 1] == "/")
+                        i = i + 1
+                    END
+                    i = i + 2
+                ELSE
+                    IF ch == QUOTE()
+                        i = i + 1
+                        raw = ""
+                        WHILE i < n AND source[i] != QUOTE()
+                            IF source[i] == BACKSLASH() AND i + 1 < n
+                                nxt = source[i + 1]
+                                IF nxt == "n"
+                                    raw = raw + NEWLINE()
+                                ELSE
+                                    raw = raw + nxt
+                                END
+                                i = i + 2
+                            ELSE
+                                raw = raw + source[i]
+                                i = i + 1
+                            END
+                        END
+                        i = i + 1
+                        tokens = APPEND(tokens, token("STRING", raw))
+                    ELSE
+                        IF isDigit(ch)
+                            raw = ""
+                            WHILE i < n AND isDigit(source[i])
+                                raw = raw + source[i]
+                                i = i + 1
+                            END
+                            tokens = APPEND(tokens, token("NUMBER", INT(raw)))
+                        ELSE
+                            IF isAlpha(ch)
+                                raw = ""
+                                WHILE i < n AND (isAlpha(source[i]) OR isDigit(source[i]))
+                                    raw = raw + source[i]
+                                    i = i + 1
+                                END
+                                IF HASKEY(keywords, raw)
+                                    tokens = APPEND(tokens, token("KEYWORD", raw))
+                                ELSE
+                                    tokens = APPEND(tokens, token("IDENT", raw))
+                                END
+                            ELSE
+                                IF i + 1 < n AND (SLICE(source, i, i + 2) == "->" OR SLICE(source, i, i + 2) == "==" OR SLICE(source, i, i + 2) == "!=" OR SLICE(source, i, i + 2) == "<=" OR SLICE(source, i, i + 2) == ">=")
+                                    tokens = APPEND(tokens, token("OP", SLICE(source, i, i + 2)))
+                                    i = i + 2
+                                ELSE
+                                    tokens = APPEND(tokens, token("OP", ch))
+                                    i = i + 1
+                                END
+                            END
+                        END
+                    END
+                END
+            END
+        END
+    END
+    tokens = APPEND(tokens, token("EOF", ""))
+    RETURN tokens
+END
+
+END

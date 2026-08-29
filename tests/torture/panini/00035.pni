@@ -1,0 +1,6 @@
+MODULE T00035
+FUNCTION main()
+    PRINT 2 * 3 + 1
+    RETURN 0
+END
+END

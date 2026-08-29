@@ -1,0 +1,7 @@
+REM BASIC comment strand
+MODULE T00008
+FUNCTION main()
+    PRINT "rem"
+    RETURN 0
+END
+END

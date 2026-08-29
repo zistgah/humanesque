@@ -1,0 +1,43 @@
+MODULE PANINI.Cyclers
+
+CYCLER FAKIR
+    PURPOSE "Guide sovereigns through domainal reality by retrieval."
+    PRINCIPLE RETRIEVE_DONT_RECONSTRUCT
+END
+
+CYCLER CHARBAGH
+    PURPOSE "Humanesque triage and wayfinding."
+    PURPOSE "Humanesque triage and wayfinding."
+END
+
+META_CYCLER GENIE
+    PURPOSE "Conceive and realize deliverables under human sovereignty."
+END
+
+FUNCTION fakir_method()
+    RETURN "RETRIEVE READ INTERPRET CORRELATE VERIFY EVIDENCE GOVERN PRESERVE GUIDE TRANSFORM"
+END
+
+FUNCTION charbagh_route(kind)
+    IF kind == "estate"
+        RETURN "EXISTING_ESTATE"
+    END
+    IF kind == "genie"
+        RETURN "INVOKE_GENIE"
+    END
+    RETURN "MAP"
+END
+
+FUNCTION genie_elevate(cycler)
+    RETURN {kind: "GENIE", from: cycler, status: "PROPOSED"}
+END
+
+FUNCTION main()
+    PRINT fakir_method()
+    PRINT charbagh_route("estate")
+    g = genie_elevate("FAKIR")
+    PRINT g.kind
+    RETURN 0
+END
+
+END

@@ -1,0 +1,1671 @@
+REM  KHĀK.pni
+REM  PANINI representation of KHĀK / KHĀK-E-ZAMIN.
+REM  KHĀK = computational substrate of ZAMIN.
+REM
+REM  Purpose:
+REM    End-to-end substrate architecture for physical computation,
+REM    with silicon/CMOS as a canonical realization while preserving
+REM    substrate-level neutrality across heterogeneous technologies.
+REM
+REM  Constitutional relation:
+REM    ZAMIN = ontological / civilizational land and foundational ground.
+REM    KHĀK  = physical + computational substrate of that ground.
+REM    SILICON = one realization of KHĀK, not its definition.
+REM
+REM  Existing ZAMIN repository alignment:
+REM    Hardware
+REM    SPICE cells/models
+REM    PRATIK fluidic interposer
+REM    computational-substrate work
+REM    manuscript / paper / implementation artefacts
+REM
+REM  This specification extends those artefacts into a complete
+REM  substrate lifecycle rather than replacing them.
+REM
+REM  Reference silicon lifecycle:
+REM    REQUIREMENTS
+REM      -> ARCHITECTURE
+REM      -> DEVICE / CIRCUIT / RTL
+REM      -> MODEL / SPICE
+REM      -> VERIFICATION
+REM      -> SYNTHESIS / PHYSICAL DESIGN
+REM      -> SIGNOFF
+REM      -> TAPEOUT
+REM      -> FABRICATION
+REM      -> WAFER TEST
+REM      -> DICING
+REM      -> PACKAGING
+REM      -> FINAL TEST
+REM      -> CHARACTERIZATION
+REM      -> SYSTEM INTEGRATION
+REM      -> DEPLOYMENT
+REM      -> OBSERVATION
+REM      -> FEEDBACK
+REM      -> NEXT REVISION
+REM
+REM  KHĀK generalizes this lifecycle so that silicon is a backend,
+REM  not the ontology itself.
+
+PROGRAM KHAK
+
+  VERSION "1.0.0"
+  CLASS   SOVEREIGN_SUBSTRATE_SYSTEM
+  DOMAIN  COMPUTATIONAL_SUBSTRATE
+  PURPOSE "Provide an end-to-end, evidence-governed substrate lifecycle from material/process definition through computation, realization, verification, test, deployment and feedback."
+
+  REM ================================================================
+  REM  0. CONSTITUTION
+  REM ================================================================
+
+  CONSTITUTION KHAK_CONSTITUTION
+
+    IDENTITY
+      SYSTEM      "KHĀK"
+      FULL_NAME   "KHĀK-E-ZAMIN"
+      SCRIPT      "خاکِ زمین"
+      ROLE        "Physical and computational substrate"
+      PARENT      "ZAMIN"
+      RELATION    "Computational Khāk of ZAMIN"
+    END IDENTITY
+
+    ONTOLOGY
+      ZAMIN = "Land / ground / foundational ontological substrate"
+      KHAK  = "Physical and computational substrate"
+      REALIZATION = "Material, device, fabrication, packaging, compute, or infrastructure instantiation"
+    END ONTOLOGY
+
+    CANON
+      REQUIRE canonical_terminology
+      REQUIRE provenance
+      REQUIRE evidence_status
+      REQUIRE reproducibility
+      REQUIRE verification_gates
+      REQUIRE human_authority_over_constitutional_decisions
+      REQUIRE technology_neutrality
+      REQUIRE backend_semantic_equivalence_WHERE_claimed
+    END CANON
+
+    RULE "KHĀK MUST NOT be defined as silicon."
+    RULE "Silicon MUST be represented as one realization of KHĀK."
+    RULE "A realization MUST NOT silently redefine the substrate abstraction."
+    RULE "Material, device, circuit, package, system and ecosystem layers MUST remain distinguishable."
+    RULE "Simulation MUST NOT be represented as fabricated silicon."
+    RULE "Design intent MUST remain traceable to realized evidence."
+    RULE "Measurements MUST carry units."
+    RULE "Measurements MUST carry uncertainty WHERE applicable."
+    RULE "Claims of PASS MUST require evidence."
+    RULE "Unresolved evidence MUST remain unresolved."
+    RULE "Failed gates MUST NOT silently become PASS."
+    RULE "A later realization MAY supersede an earlier realization without erasing provenance."
+    RULE "No single backend owns KHĀK."
+
+  END CONSTITUTION
+
+
+  REM ================================================================
+  REM  1. KHĀK ABSTRACTION LEVELS
+  REM ================================================================
+
+  ENUM KHAK_LEVEL
+
+    ONTOLOGICAL_SUBSTRATE
+    MATERIAL_SUBSTRATE
+    PROCESS_SUBSTRATE
+    DEVICE_SUBSTRATE
+    CIRCUIT_SUBSTRATE
+    MEMORY_SUBSTRATE
+    COMPUTE_SUBSTRATE
+    INTERCONNECT_SUBSTRATE
+    PACKAGE_SUBSTRATE
+    SYSTEM_SUBSTRATE
+    INFRASTRUCTURE_SUBSTRATE
+    ECOLOGICAL_SUBSTRATE
+  END ENUM
+
+  ENUM REALIZATION_FAMILY
+
+    SILICON_CMOS
+    COMPOUND_SEMICONDUCTOR
+    MEMRISTIVE
+    PHOTONIC
+    NEUROMORPHIC
+    SPINTRONIC
+    CARBON_2D
+    QUANTUM
+    BIO_MOLECULAR
+    FLUIDIC
+    HYBRID
+    HETEROGENEOUS
+    FUTURE_UNRESOLVED
+  END ENUM
+
+  TYPE Substrate
+    FIELD id
+    FIELD parent
+    FIELD khak_level
+    FIELD realization_family
+    FIELD material
+    FIELD process
+    FIELD geometry
+    FIELD electrical_properties
+    FIELD thermal_properties
+    FIELD optical_properties
+    FIELD mechanical_properties
+    FIELD interface_contracts
+    FIELD provenance
+    FIELD epistemic_status
+    FIELD verification_status
+    FIELD lifecycle_state
+  END TYPE
+
+  TYPE DesignIntent
+    FIELD id
+    FIELD purpose
+    FIELD requirements
+    FIELD constraints
+    FIELD performance_targets
+    FIELD energy_targets
+    FIELD latency_targets
+    FIELD reliability_targets
+    FIELD safety_requirements
+    FIELD interface_requirements
+    FIELD provenance
+  END TYPE
+
+  TYPE Model
+    FIELD id
+    FIELD target
+    FIELD abstraction_level
+    FIELD equations
+    FIELD parameters
+    FIELD assumptions
+    FIELD domain_of_validity
+    FIELD source
+    FIELD provenance
+    FIELD verification_status
+  END TYPE
+
+  TYPE Experiment
+    FIELD id
+    FIELD hypothesis
+    FIELD setup
+    FIELD instrumentation
+    FIELD conditions
+    FIELD measurements
+    FIELD units
+    FIELD uncertainty
+    FIELD raw_data
+    FIELD analysis
+    FIELD result
+    FIELD provenance
+  END TYPE
+
+  TYPE Realization
+    FIELD id
+    FIELD substrate_id
+    FIELD backend
+    FIELD process
+    FIELD design_revision
+    FIELD fabrication_revision
+    FIELD package_revision
+    FIELD test_revision
+    FIELD status
+    FIELD provenance
+    FIELD evidence
+    FIELD hash
+  END TYPE
+
+  TYPE TestResult
+    FIELD id
+    FIELD realization_id
+    FIELD test_type
+    FIELD conditions
+    FIELD measurements
+    FIELD units
+    FIELD uncertainty
+    FIELD limits
+    FIELD result
+    FIELD raw_data
+    FIELD provenance
+  END TYPE
+
+
+  REM ================================================================
+  REM  2. CANONICAL KHĀK RELATION
+  REM ================================================================
+
+  RELATION ZAMIN_KHAK
+
+    ZAMIN
+      -> "ontological land / foundational ground"
+
+    KHAK
+      -> "physical and computational substrate"
+
+    KHAK
+      -> REALIZATION_SET
+
+    REALIZATION_SET
+      -> SILICON_CMOS
+      -> COMPOUND_SEMICONDUCTOR
+      -> MEMRISTIVE
+      -> PHOTONIC
+      -> NEUROMORPHIC
+      -> QUANTUM
+      -> SPINTRONIC
+      -> CARBON_2D
+      -> BIO_MOLECULAR
+      -> FLUIDIC
+      -> HYBRID
+      -> HETEROGENEOUS
+      -> FUTURE_UNRESOLVED
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  3. SILICON REALIZATION
+  REM ================================================================
+
+  REALIZATION SILICON
+
+    FAMILY        SILICON_CMOS
+    ROLE          "Canonical KHĀK realization"
+    MATERIAL      "Silicon / semiconductor stack"
+    STATUS        "REALIZATION_OF_KHAK"
+
+    RULE "SILICON != KHAK"
+    RULE "SILICON SUBSTRATE MAY IMPLEMENT KHAK"
+    RULE "SILICON WORKFLOW MUST REMAIN TRACEABLE TO KHAK CONTRACT"
+
+  END REALIZATION
+
+
+  REM ================================================================
+  REM  4. END-TO-END KHĀK LIFECYCLE
+  REM ================================================================
+
+  PIPELINE KHAK_LIFECYCLE
+
+    INTENT
+      -> REQUIREMENTS
+      -> ARCHITECTURE
+      -> SUBSTRATE_SELECTION
+      -> MATERIAL_AND_PROCESS_MODEL
+      -> DEVICE_MODEL
+      -> CIRCUIT_MODEL
+      -> SYSTEM_MODEL
+      -> SIMULATION
+      -> FORMAL_VERIFICATION
+      -> IMPLEMENTATION
+      -> PHYSICAL_DESIGN
+      -> SIGNOFF
+      -> TAPEOUT_OR_REALIZATION_RELEASE
+      -> FABRICATION
+      -> METROLOGY
+      -> WAFER_TEST_OR_INTERMEDIATE_TEST
+      -> DICING_OR_SEGMENTATION
+      -> PACKAGING_OR_INTEGRATION
+      -> FINAL_TEST
+      -> CHARACTERIZATION
+      -> SYSTEM_INTEGRATION
+      -> DEPLOYMENT
+      -> TELEMETRY
+      -> OBSERVATION
+      -> FEEDBACK
+      -> REVISION
+
+    LOOP
+      REVISION
+        -> UPDATED_REQUIREMENTS
+        -> UPDATED_DESIGN
+        -> UPDATED_MODEL
+        -> UPDATED_REALIZATION
+        -> UPDATED_EVIDENCE
+    END LOOP
+
+  END PIPELINE
+
+
+  REM ================================================================
+  REM  5. REQUIREMENTS / DESIGN INTENT
+  REM ================================================================
+
+  WORKFLOW REQUIREMENTS
+
+    INPUT user_intent
+    INPUT system_context
+    INPUT operational_constraints
+
+    FORMALIZE DesignIntent
+
+    REQUIRE
+      function
+      interfaces
+      performance
+      power
+      thermal
+      latency
+      reliability
+      manufacturability
+      testability
+      safety
+      lifecycle_constraints
+    END REQUIRE
+
+    TRACE each requirement TO architecture_element
+
+    FREEZE requirement_baseline
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  6. SUBSTRATE SELECTION
+  REM ================================================================
+
+  WORKFLOW SUBSTRATE_SELECTION
+
+    INPUT DesignIntent
+
+    ENUMERATE candidate_realizations FROM REALIZATION_FAMILY
+
+    EVALUATE
+      functional_fit
+      process_availability
+      model_maturity
+      fabrication_access
+      packaging_access
+      testability
+      energy
+      thermal
+      latency
+      reliability
+      cost
+      scalability
+      ecosystem_dependencies
+    END EVALUATE
+
+    PRESERVE all candidate provenance
+
+    SELECT realization ONLY with explicit decision_record
+
+    RECORD
+      selected_substrate
+      rejected_candidates
+      decision_basis
+      assumptions
+      unresolved_items
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  7. MATERIAL / PROCESS MODEL
+  REM ================================================================
+
+  WORKFLOW MATERIAL_PROCESS_MODEL
+
+    INPUT selected_substrate
+
+    RETRIEVE authoritative
+      process_parameters
+      material_parameters
+      device_rules
+      process_constraints
+      design_rules
+      PDK_WHERE_AVAILABLE
+      packaging_constraints
+      reliability_constraints
+
+    READ sources
+
+    INTERPRET only within source scope
+
+    VERIFY parameter consistency
+
+    PRESERVE provenance
+
+    CREATE Model MATERIAL_PROCESS_MODEL
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  8. DEVICE MODEL
+  REM ================================================================
+
+  WORKFLOW DEVICE_MODELING
+
+    INPUT MATERIAL_PROCESS_MODEL
+
+    DEFINE
+      device_geometry
+      terminal_behavior
+      parasitics
+      leakage
+      switching_behavior
+      noise
+      temperature_dependence
+      process_variation
+      aging
+    END DEFINE
+
+    IMPLEMENT model
+
+    VERIFY against source data or measurement WHERE available
+
+    MARK unsupported parameters UNRESOLVED
+
+    CREATE Model DEVICE_MODEL
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  9. SPICE / CIRCUIT WORKFLOW
+  REM ================================================================
+
+  WORKFLOW SPICE
+
+    INPUT DEVICE_MODEL
+    INPUT circuit_topology
+    INPUT operating_conditions
+
+    LOAD
+      model_libraries
+      cell_libraries
+      technology_models
+      testbenches
+    END LOAD
+
+    RUN
+      DC
+      AC
+      TRANSIENT
+      NOISE_WHERE_REQUIRED
+      CORNER
+      MONTE_CARLO_WHERE_REQUIRED
+      TEMPERATURE_SWEEP_WHERE_REQUIRED
+      SUPPLY_SWEEP_WHERE_REQUIRED
+    END RUN
+
+    CAPTURE
+      waveforms
+      operating_points
+      timing
+      power
+      energy
+      stability
+      margins
+      failure_modes
+    END CAPTURE
+
+    COMPARE simulation_results AGAINST requirements
+
+    REQUIRE reproducible_netlist
+    REQUIRE reproducible_models
+    REQUIRE recorded_conditions
+
+    OUTPUT SPICE_EVIDENCE
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  10. EXISTING ZAMIN SPICE ARTEFACTS
+  REM ================================================================
+
+  REGISTER ZAMIN_SPICE_REPOSITORY
+
+    PATH "zamin/spice"
+
+    CELLS
+      "memristor_model.sp"
+      "tar_node.sp"
+      "tcg_x1.sp"
+      "tel_x1.sp"
+      "tmc_node.sp"
+      "ttr_x1.sp"
+    END CELLS
+
+    MODELS
+      "mtcmos_30nm.sp"
+    END MODELS
+
+    TESTBENCH
+      "sign_frustration_tb.sp"
+    END TESTBENCH
+
+    RULE "Existing artefacts remain source artefacts."
+    RULE "KHĀK may orchestrate, validate and extend them without rewriting provenance."
+    RULE "Model replacement requires explicit revision and evidence."
+
+  END REGISTER
+
+
+  REM ================================================================
+  REM  11. DIGITAL / EVENT-DRIVEN / PRATIK PATH
+  REM ================================================================
+
+  WORKFLOW PRATIK_REALIZATION
+
+    INPUT verified_architecture
+
+    DEFINE
+      event_semantics
+      state_semantics
+      interface_semantics
+      concurrency_semantics
+      failure_semantics
+      commit_semantics
+    END DEFINE
+
+    COMPILE architecture
+      -> abstract_event_machine
+      -> PRATIK_ISA
+      -> backend_representation
+      -> physical_implementation
+
+    VERIFY
+      deadlock_freedom
+      event_conservation
+      queue_conservation
+      state_isolation
+      causal_ordering
+      commit_correctness
+      idempotence
+      topology_safety
+      no_duplication
+      no_silent_loss
+    END VERIFY
+
+    TARGET
+      CPU
+      GPU
+      FPGA_WHERE_APPROPRIATE
+      QDI_ASIC
+      CUSTOM_SILICON
+      HETEROGENEOUS_BACKENDS
+    END TARGET
+
+    REQUIRE semantic_equivalence WHERE cross_backend_equivalence_is_claimed
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  12. FORMAL VERIFICATION
+  REM ================================================================
+
+  WORKFLOW FORMAL_VERIFICATION
+
+    PHASE 0 "Specification"
+      FREEZE interfaces
+      FREEZE state variables
+      FREEZE preconditions
+      FREEZE postconditions
+      FREEZE failure semantics
+      FREEZE concurrency semantics
+
+    PHASE 1 "System Model"
+      MODEL global_state
+      CHECK TypeOK
+      CHECK DeadlockFree
+      CHECK QueueConservation
+      CHECK StateIsolation
+
+    PHASE 2 "Protocol Model"
+      MODEL ReqAck_or_equivalent_protocol
+      CHECK liveness
+      CHECK safety
+      CHECK output_persistency_WHERE_APPLICABLE
+
+    PHASE 3 "Theorem Layer"
+      PROVE commit_correctness
+      PROVE event_conservation
+      PROVE causal_ordering
+      PROVE idempotence
+
+    PHASE 4 "Synthesis / Equivalence"
+      SYNTHESIZE target
+      RUN logical_equivalence
+      COMPARE abstract_semantics WITH implementation_semantics
+
+    GATE formal_pass
+      REQUIRE proof_or_explicit_waiver
+      REQUIRE evidence
+    END GATE
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  13. PHYSICAL DESIGN
+  REM ================================================================
+
+  WORKFLOW PHYSICAL_DESIGN
+
+    INPUT verified_netlist
+    INPUT technology_constraints
+    INPUT packaging_constraints
+
+    PERFORM
+      floorplan
+      power_plan
+      placement
+      clock_or_event_distribution
+      routing
+      signal_integrity_analysis
+      power_integrity_analysis
+      thermal_analysis
+      electromigration_analysis_WHERE_APPLICABLE
+      design_rule_checks
+      layout_versus_schematic
+      parasitic_extraction
+      post_layout_simulation
+    END PERFORM
+
+    REQUIRE
+      DRC_PASS
+      LVS_PASS
+      extraction_consistency
+      timing_or_event_contract_PASS
+      power_contract_PASS
+      thermal_contract_PASS
+    END REQUIRE
+
+    GENERATE
+      GDS_OR_EQUIVALENT_RELEASE
+      netlists
+      extracted_models
+      signoff_reports
+      release_manifest
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  14. SIGNOFF
+  REM ================================================================
+
+  GATE SIGNOFF_GATE
+
+    REQUIRE requirements_frozen
+    REQUIRE design_review_complete
+    REQUIRE verification_complete
+    REQUIRE physical_checks_complete
+    REQUIRE model_versions_frozen
+    REQUIRE tool_versions_recorded
+    REQUIRE PDK_OR_PROCESS_VERSION_RECORDED_WHERE_APPLICABLE
+    REQUIRE artifacts_hashed
+    REQUIRE provenance_complete
+    REQUIRE unresolved_items_explicit
+
+    OUTPUT release_candidate
+
+  END GATE
+
+
+  REM ================================================================
+  REM  15. TAPEOUT / REALIZATION RELEASE
+  REM ================================================================
+
+  WORKFLOW TAPEOUT
+
+    INPUT release_candidate
+
+    PACKAGE
+      final_layout
+      checksums
+      manifests
+      layer_map
+      process_identifier
+      design_identifier
+      revision
+      signoff_evidence
+      contact_and_authority_records
+    END PACKAGE
+
+    SUBMIT to fabrication_provider OR realization_provider
+
+    RECORD
+      submission_timestamp
+      provider
+      acceptance
+      run_identifier
+      mask_or_build_identifier_WHERE_APPLICABLE
+
+    REQUIRE provider_acceptance BEFORE fabrication_status = AUTHORIZED
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  16. SILICON FABRICATION
+  REM ================================================================
+
+  WORKFLOW SILICON_FABRICATION
+
+    INPUT accepted_tapeout
+    INPUT process_definition
+
+    STAGES
+      RAW_MATERIAL
+      PURIFICATION
+      CRYSTALLIZATION
+      WAFER_PREPARATION
+      CLEANING
+      OXIDATION_WHERE_APPLICABLE
+      DEPOSITION
+      PHOTOLITHOGRAPHY
+      ETCHING
+      DOPING
+      CMP
+      METALLIZATION
+      INTERCONNECT_FORMATION
+      METROLOGY
+      PROCESS_CONTROL
+    END STAGES
+
+    LOOP fabrication_layer
+      DEPOSIT
+      PATTERN
+      ETCH_OR_MODIFY
+      CLEAN
+      MEASURE
+      VERIFY
+      RECORD
+    END LOOP
+
+    OUTPUT fabricated_wafer
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  17. METROLOGY / PROCESS CONTROL
+  REM ================================================================
+
+  WORKFLOW METROLOGY
+
+    INPUT wafer_or_substrate
+
+    MEASURE
+      geometry
+      thickness
+      critical_dimensions
+      overlay
+      defects
+      material_properties_WHERE_REQUIRED
+      electrical_test_structures_WHERE_AVAILABLE
+    END MEASURE
+
+    RECORD
+      instrument
+      calibration
+      conditions
+      units
+      uncertainty
+      operator_or_automation_identity
+      timestamp
+    END RECORD
+
+    COMPARE measurements AGAINST process_limits
+
+    UPDATE process_evidence
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  18. WAFER TEST / PROBE
+  REM ================================================================
+
+  WORKFLOW WAFER_TEST
+
+    INPUT fabricated_wafer
+
+    IDENTIFY dies
+
+    FOR each die
+      APPLY electrical_tests
+      APPLY parametric_tests_WHERE_REQUIRED
+      APPLY functional_tests
+      RECORD measurements
+      ASSIGN die_status
+      PRESERVE die_traceability
+    END FOR
+
+    CALCULATE
+      yield
+      defect_distribution
+      parametric_distribution
+      spatial_distribution_WHERE_AVAILABLE
+    END CALCULATE
+
+    OUTPUT known_good_die_set
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  19. DICING / DIE HANDLING
+  REM ================================================================
+
+  WORKFLOW DICING
+
+    INPUT known_good_die_set
+
+    PERFORM
+      wafer_dicing_OR_equivalent_segmentation
+      die_cleaning
+      die_inspection
+      die_tracking
+    END PERFORM
+
+    PRESERVE die_to_wafer_to_run lineage
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  20. PRATIK FLUIDIC INTERPOSER
+  REM ================================================================
+
+  REGISTER PRATIK_INTERPOSER
+
+    SOURCE_PATH
+      "zamin/layout/pratik_fluidic_interposer.py"
+    END SOURCE_PATH
+
+    ROLE
+      "Physical substrate/interconnect realization associated with the ZAMIN computational-substrate work."
+    END ROLE
+
+    INTERFACES
+      compute
+      interconnect
+      fluidic_WHERE_DEFINED
+      thermal_WHERE_DEFINED
+      packaging
+      instrumentation
+    END INTERFACES
+
+    RULE "PRATIK interposer remains a realization component, not the definition of KHĀK."
+    RULE "Geometry and process claims require source artefacts or measurement evidence."
+    RULE "Interface contracts MUST be explicit."
+
+  END REGISTER
+
+
+  REM ================================================================
+  REM  21. PACKAGING
+  REM ================================================================
+
+  WORKFLOW PACKAGING
+
+    INPUT known_good_die_set
+
+    SELECT package_or_integration_method BASED_ON
+      electrical_requirements
+      thermal_requirements
+      mechanical_requirements
+      signal_integrity
+      power_delivery
+      pin_count
+      test_strategy
+      production_volume
+    END SELECT
+
+    PERFORM
+      die_attach
+      interconnect
+      encapsulation_OR_equivalent
+      inspection
+    END PERFORM
+
+    RECORD package_revision
+
+    OUTPUT packaged_device
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  22. FINAL TEST
+  REM ================================================================
+
+  WORKFLOW FINAL_TEST
+
+    INPUT packaged_device
+
+    APPLY
+      functional_test
+      parametric_test
+      interface_test
+      power_test
+      thermal_test_WHERE_REQUIRED
+      reliability_screen_WHERE_REQUIRED
+      burn_in_WHERE_REQUIRED
+      application_test_WHERE_REQUIRED
+    END APPLY
+
+    RECORD
+      measurements
+      units
+      uncertainty
+      test_conditions
+      limits
+      pass_fail
+      raw_data
+    END RECORD
+
+    REQUIRE no_unmeasured_PASS
+
+    OUTPUT final_test_evidence
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  23. CHARACTERIZATION / QUALIFICATION
+  REM ================================================================
+
+  WORKFLOW CHARACTERIZATION
+
+    INPUT packaged_devices
+
+    SAMPLE across
+      process_corners
+      voltage
+      temperature
+      frequency_or_event_rate
+      workload
+      device_population
+    END SAMPLE
+
+    MEASURE
+      performance
+      power
+      energy
+      latency
+      throughput
+      reliability
+      variation
+      failure_modes
+    END MEASURE
+
+    BUILD
+      characterization_dataset
+      statistical_summary
+      operating_envelope
+      guardbands
+      yield_model
+    END BUILD
+
+    UPDATE
+      design_constraints
+      models
+      test_limits
+      next_revision_requirements
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  24. SYSTEM INTEGRATION
+  REM ================================================================
+
+  WORKFLOW SYSTEM_INTEGRATION
+
+    INPUT characterized_device
+    INPUT host_system
+    INPUT firmware_or_runtime
+    INPUT interfaces
+
+    INTEGRATE
+      substrate
+      package
+      board_or_interposer
+      power
+      thermal
+      firmware
+      runtime
+      software
+      observability
+    END INTEGRATE
+
+    VERIFY
+      interface_contracts
+      end_to_end_function
+      performance
+      power
+      thermal
+      reliability
+      safety_WHERE_REQUIRED
+    END VERIFY
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  25. HARDWARE-SOFTWARE CONTINUITY
+  REM ================================================================
+
+  RELATION HARDWARE_SOFTWARE
+
+    DESIGN_INTENT
+      -> SEMANTIC_MODEL
+      -> ABSTRACT_EXECUTION
+      -> BACKEND_EXECUTION
+      -> PHYSICAL_REALIZATION
+      -> TELEMETRY
+      -> OBSERVATION
+      -> FEEDBACK
+
+    RULE "Hardware observations are evidence about realization constraints."
+    RULE "Software representation MUST NOT erase physical constraints."
+    RULE "Physical constraints MUST be exposed through explicit telemetry/contracts."
+    RULE "Backend substitution MUST preserve declared semantics WHERE equivalence is claimed."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  26. TELEMETRY / OBSERVATORY
+  REM ================================================================
+
+  WORKFLOW OBSERVATION
+
+    INPUT running_system
+
+    OBSERVE
+      utilization
+      latency
+      throughput
+      power
+      temperature
+      errors
+      event_rates
+      memory_behavior
+      interconnect_behavior
+      workload_distribution
+      reliability
+    END OBSERVE
+
+    RECORD raw_telemetry
+
+    PRESERVE timestamps
+    PRESERVE units
+    PRESERVE calibration_context_WHERE_APPLICABLE
+    PRESERVE provenance
+
+    UPDATE system_state
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  27. DIGITAL-TWIN / SIM2REAL / REAL2SIM
+  REM ================================================================
+
+  LOOP SIM2REAL_REAL2SIM
+
+    SIMULATE design
+    VERIFY model_assumptions
+    REALIZE physical_artifact
+    MEASURE physical_artifact
+    COMPARE simulation WITH measurement
+    UPDATE model ONLY with explicit evidence
+    RE-RUN verification
+    CHECK model_drift
+    CHECK realization_drift
+
+  END LOOP
+
+
+  REM ================================================================
+  REM  28. EXPERIMENT GATE
+  REM ================================================================
+
+  GATE EXPERIMENT_GATE
+
+    DENY "simulation == experiment"
+
+    REQUIRE
+      empirical_evidence
+      measurements
+      units
+      conditions
+      provenance
+    END REQUIRE
+
+    REQUIRE uncertainty WHERE applicable
+
+    REQUIRE raw_data OR traceable_raw_data_reference
+
+    PASS only IF evidence_satisfies_claim
+
+  END GATE
+
+
+  REM ================================================================
+  REM  29. FAILURE / CORRECTIVE ACTION
+  REM ================================================================
+
+  WORKFLOW FAILURE_ANALYSIS
+
+    INPUT failed_gate_OR_observed_failure
+
+    CLASSIFY
+      design_failure
+      model_failure
+      process_failure
+      fabrication_failure
+      packaging_failure
+      test_failure
+      integration_failure
+      environmental_failure
+      unknown
+    END CLASSIFY
+
+    PRESERVE original evidence
+
+    TRACE
+      requirement
+      design_revision
+      model_revision
+      process_revision
+      fabrication_run
+      die
+      package
+      test
+      observation
+    END TRACE
+
+    PROPOSE corrective_action
+
+    VERIFY corrective_action
+
+    FORK revision
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  30. PROVENANCE / LINEAGE
+  REM ================================================================
+
+  WORKFLOW PROVENANCE
+
+    EVERY artifact MUST RECORD
+      id
+      version
+      parent
+      source
+      author_or_agent
+      timestamp
+      toolchain
+      environment
+      dependencies
+      hash_WHERE_APPLICABLE
+      epistemic_status
+    END RECORD
+
+    LINEAGE
+
+      REQUIREMENT
+        -> ARCHITECTURE
+        -> MODEL
+        -> NETLIST
+        -> LAYOUT
+        -> TAPEOUT
+        -> FAB_RUN
+        -> WAFER
+        -> DIE
+        -> PACKAGE
+        -> TEST
+        -> SYSTEM
+        -> DEPLOYMENT
+        -> OBSERVATION
+        -> REVISION
+
+    END LINEAGE
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  31. EPISTEMIC STATUS
+  REM ================================================================
+
+  ENUM EPISTEMIC_STATUS
+
+    RETRIEVED
+    MEASURED
+    VERIFIED
+    INFERRED
+    PROPOSED
+    SIMULATED
+    UNRESOLVED
+    FAILED
+  END ENUM
+
+  RULE "SIMULATED MUST NOT masquerade as MEASURED."
+  RULE "INFERRED MUST NOT masquerade as RETRIEVED."
+  RULE "PROPOSED MUST NOT masquerade as VERIFIED."
+  RULE "UNRESOLVED MUST remain visible."
+  RULE "FAILED MUST retain failure evidence."
+
+  END ENUM
+
+
+  REM ================================================================
+  REM  32. QUALITY / MANUFACTURING FEEDBACK
+  REM ================================================================
+
+  LOOP MANUFACTURING_LEARNING
+
+    COLLECT
+      wafer_yield
+      die_yield
+      package_yield
+      final_test_yield
+      characterization_data
+      field_data
+    END COLLECT
+
+    CORRELATE
+      process
+      layout
+      model
+      test
+      environment
+      workload
+    END CORRELATE
+
+    IDENTIFY
+      systematic_variation
+      random_variation
+      defect_signatures
+      reliability_trends
+      performance_drift
+    END IDENTIFY
+
+    FEED findings INTO
+      process_improvement
+      model_update
+      design_revision
+      test_optimization
+      packaging_revision
+      next_tapeout
+    END FEED
+
+  END LOOP
+
+
+  REM ================================================================
+  REM  33. OPEN SUBSTRATE PRINCIPLE
+  REM ================================================================
+
+  PRINCIPLE OPEN_SUBSTRATE
+
+    "KHĀK is technology-agnostic at the abstraction layer."
+
+    "A silicon realization may be replaced, supplemented or composed
+     with another realization without changing the definition of KHĀK."
+
+    "Multiple realization families MAY coexist in one system."
+
+    "Heterogeneous substrate composition MUST preserve interface contracts."
+
+  END PRINCIPLE
+
+
+  REM ================================================================
+  REM  34. HETEROGENEOUS COMPOSITION
+  REM ================================================================
+
+  WORKFLOW HETEROGENEOUS_SUBSTRATE
+
+    INPUT substrate_A
+    INPUT substrate_B
+
+    DEFINE interface_contract
+      semantics
+      timing_or_event_contract
+      data_contract
+      power_contract
+      thermal_contract
+      physical_contract
+      safety_contract_WHERE_REQUIRED
+    END DEFINE
+
+    VERIFY interface_contract
+
+    COMPOSE A WITH B
+
+    PRESERVE independent provenance of A
+    PRESERVE independent provenance of B
+
+    OUTPUT composite_substrate
+
+  END WORKFLOW
+
+
+  REM ================================================================
+  REM  35. RELATION TO ZAMIN
+  REM ================================================================
+
+  RELATION ZAMIN_TO_KHAK
+
+    ZAMIN
+      -> habitat_ground
+      -> civilizational_ground
+      -> ontological_ground
+
+    KHAK
+      -> physical_ground
+      -> computational_ground
+      -> realization_ground
+
+    RULE "ZAMIN retains ontological breadth."
+    RULE "KHĀK carries the physical/computational realization layer."
+    RULE "Neither layer is collapsed into the other."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  36. RELATION TO PRATIK
+  REM ================================================================
+
+  RELATION PRATIK_KHAK
+
+    KHAK_ROLE
+      "substrate abstraction"
+
+    PRATIK_ROLE
+      "specific event-driven computational realization / architecture"
+
+    RULE "PRATIK may be realized on KHĀK."
+    RULE "KHĀK is not reducible to PRATIK."
+    RULE "PRATIK artifacts retain independent provenance."
+    RULE "Formal semantics MUST survive lowering to physical realization."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  37. RELATION TO CEM / CYCLER / KITAB / ZISTGAH
+  REM ================================================================
+
+  RELATION KHAK_SYSTEM_STACK
+
+    CEM
+      -> "substrate realization / embodiment"
+
+    KHAK
+      -> "physical and computational substrate"
+
+    CYCLER
+      -> "execution lifecycle / orchestration"
+
+    KITAB
+      -> "persistent canonical artifact"
+
+    ZISTGAH
+      -> "ecosystem / habitat / infrastructure"
+
+    ZAMIN
+      -> "ontological land / foundational ground"
+
+    RULE "These layers interoperate without collapsing into one another."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  38. RELATION TO VERIFICATION / ORACLE
+  REM ================================================================
+
+  RELATION KHAK_VERIFICATION
+
+    DESIGN
+      -> VERIFY
+      -> REALIZE
+      -> MEASURE
+      -> VERIFY_AGAIN
+
+    ORACLE_ROLE
+      "truth / validity / test / evidence interface"
+
+    KITAB_ROLE
+      "canonical persistent record of verified realization state"
+
+    RULE "Verification is continuous across the lifecycle."
+    RULE "No single simulation gate substitutes for physical evidence."
+
+  END RELATION
+
+
+  REM ================================================================
+  REM  39. END-TO-END SILICON CONTRACT
+  REM ================================================================
+
+  CONTRACT SILICON_END_TO_END
+
+    REQUIRE
+      intent_defined
+      requirements_frozen
+      substrate_selected
+      process_identified
+      models_available
+      SPICE_verified
+      architecture_verified
+      implementation_verified
+      physical_design_signed_off
+      release_accepted
+      fabrication_traceable
+      wafer_test_recorded
+      die_traceable
+      package_traceable
+      final_test_recorded
+      characterization_recorded
+      system_integration_verified
+      deployment_observed
+      feedback_preserved
+    END REQUIRE
+
+    PASS_STATE
+      "REALIZED_AND_EVIDENCED"
+
+    FAILURE_STATE
+      "BLOCKED_UNTIL_CORRECTED_OR_EXPLICITLY_ACCEPTED_BY_AUTHORITY"
+
+  END CONTRACT
+
+
+  REM ================================================================
+  REM  40. CANONICAL SILICON WALK
+  REM ================================================================
+
+  CANONICAL_WALK
+
+    USER_INTENT
+      -> REQUIREMENTS
+      -> ARCHITECTURE
+      -> KHĀK_SELECTION
+      -> SILICON_PROCESS
+      -> DEVICE_MODELS
+      -> SPICE
+      -> FORMAL_VERIFICATION
+      -> RTL_OR_CIRCUIT_IMPLEMENTATION
+      -> SYNTHESIS
+      -> PHYSICAL_DESIGN
+      -> DRC_LVS_EXTRACTION
+      -> SIGNOFF
+      -> TAPEOUT
+      -> FAB
+      -> METROLOGY
+      -> WAFER_PROBE
+      -> DICE
+      -> PACKAGE
+      -> FINAL_TEST
+      -> CHARACTERIZE
+      -> SYSTEM_INTEGRATE
+      -> DEPLOY
+      -> OBSERVE
+      -> FEEDBACK
+      -> NEXT_REVISION
+
+  END CANONICAL_WALK
+
+
+  REM ================================================================
+  REM  41. MAIN EXECUTION
+  REM ================================================================
+
+  MAIN
+
+    LOAD KHAK_CONSTITUTION
+    LOAD ZAMIN_KHAK
+    LOAD ZAMIN_SPICE_REPOSITORY
+    LOAD PRATIK_INTERPOSER
+
+    INITIALIZE provenance
+    INITIALIZE artifact_registry
+    INITIALIZE evidence_registry
+    INITIALIZE realization_registry
+    INITIALIZE test_registry
+
+    ACCEPT design_intent
+
+    RUN REQUIREMENTS
+    RUN SUBSTRATE_SELECTION
+    RUN MATERIAL_PROCESS_MODEL
+    RUN DEVICE_MODELING
+    RUN SPICE
+    RUN FORMAL_VERIFICATION
+    RUN PHYSICAL_DESIGN
+    RUN SIGNOFF
+    RUN TAPEOUT
+    RUN SILICON_FABRICATION
+    RUN METROLOGY
+    RUN WAFER_TEST
+    RUN DICING
+    RUN PACKAGING
+    RUN FINAL_TEST
+    RUN CHARACTERIZATION
+    RUN SYSTEM_INTEGRATION
+    RUN OBSERVATION
+
+    IF evidence_complete
+      MARK realization REALIZED_AND_EVIDENCED
+    ELSE
+      MARK realization UNRESOLVED
+    END IF
+
+    LOOP
+      PRESERVE all_state
+      VERIFY provenance
+      UPDATE telemetry
+      ANALYZE failures
+      RECORD observations
+      FORK next_revision WHEN authorized
+    END LOOP
+
+  END MAIN
+
+
+  REM ================================================================
+  REM  42. NON-NEGOTIABLES
+  REM ================================================================
+
+  NON_NEGOTIABLES
+
+    KHAK_IS_NOT_SILICON
+    SILICON_IS_ONE_REALIZATION_OF_KHAK
+    ZAMIN_REMAINS_THE_ONTOLOGICAL_GROUND
+    KHAK_REMAINS_THE_PHYSICAL_COMPUTATIONAL_GROUND
+    PROVENANCE_PRESERVED
+    EVIDENCE_PRESERVED
+    SIMULATION_NOT_EQUAL_EXPERIMENT
+    DESIGN_NOT_EQUAL_FABRICATION
+    FABRICATION_NOT_EQUAL_VALIDATION
+    TEST_RESULTS_REQUIRE_MEASUREMENTS
+    MEASUREMENTS_REQUIRE_UNITS
+    UNCERTAINTY_PRESERVED_WHERE_APPLICABLE
+    FAILURES_REMAIN_VISIBLE
+    UNRESOLVED_ITEMS_REMAIN_VISIBLE
+    BACKEND_NEUTRALITY
+    HETEROGENEOUS_COMPOSITION_ALLOWED
+    INTERFACE_CONTRACTS_EXPLICIT
+    HUMAN_AUTHORITY_OVER_CONSTITUTIONAL_DECISIONS
+    REVISION_PRESERVES_ANCESTRY
+
+  END NON_NEGOTIABLES
+
+
+  REM ================================================================
+  REM  43. CANONICAL COMPRESSION
+  REM ================================================================
+
+  CANONICAL_COMPRESSION
+
+    "ZAMIN IS THE LAND.
+     KHĀK IS ITS PHYSICAL AND COMPUTATIONAL SOIL."
+
+    "KHĀK IS THE COMPUTATIONAL KHĀK OF ZAMIN."
+
+    "SILICON IS A REALIZATION OF KHĀK,
+     NOT THE DEFINITION OF KHĀK."
+
+    "DESIGN -> MODEL -> VERIFY -> REALIZE -> MEASURE -> LEARN -> REVISE."
+
+    "FROM MATERIAL TO DEVICE.
+     FROM DEVICE TO COMPUTE.
+     FROM COMPUTE TO SYSTEM.
+     FROM SYSTEM TO OBSERVATION.
+     FROM OBSERVATION TO THE NEXT REALIZATION."
+
+  END CANONICAL_COMPRESSION
+
+
+  REM ================================================================
+  REM  44. VERSION NOTE
+  REM ================================================================
+
+  VERSION_NOTE
+
+    STATUS
+      "Canonical working specification"
+
+    BASIS
+      "Extends the existing ZAMIN computational-substrate architecture."
+
+    PRESERVED
+      "ZAMIN ontology"
+      "Hardware artefacts"
+      "SPICE artefacts"
+      "PRATIK interposer work"
+      "Computational-substrate abstraction"
+      "Provenance and evidence requirements"
+
+    EXTENDED
+      "End-to-end KHĀK lifecycle"
+      "Silicon/CMOS realization path"
+      "Model-to-silicon traceability"
+      "Wafer-to-system test continuity"
+      "Hardware/software continuity"
+      "Sim2Real / Real2Sim feedback"
+      "Heterogeneous substrate realization"
+      "Manufacturing learning loop"
+
+    DESIGN_PRINCIPLE
+      "Abstraction first. Realization is many."
+
+  END VERSION_NOTE
+
+END PROGRAM KHAK

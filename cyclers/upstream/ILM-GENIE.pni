@@ -1,0 +1,1662 @@
+GENIE PNI
+ILM-GENIE — Integrative Linguistic Multiscript Meta-Cycler
+Version: 1.0.0
+Status: Canonical working architectural specification
+Scope: Humanesque ILM / linguistic / expressive / multiscript / computational equity
+Governing principle: RETRIEVE, DON'T RECONSTRUCT
+
+============================================================
+0. CONSTITUTIONAL DEFINITION
+============================================================
+
+ILM-GENIE is the GENIE-level meta-cycler for Integrative Linguistic
+Multiscript (ILM).
+
+It operates across the full expressive and computational stack while
+preserving the two constitutional pillars of ILM:
+
+    I.  REPRESENTATIONAL EQUITY
+    II. COMPUTATIONAL EQUITY
+
+ILM-GENIE is not a narrow "language GENIE".
+
+It is an adaptive meta-cycler capable of:
+
+- retrieving authoritative linguistic, cultural, expressive and technical
+  material;
+- preserving identity, provenance and source distinctions;
+- representing and reversibly transforming expressive systems;
+- computationalizing those systems without surrendering their identity;
+- orchestrating fieldwork and community/source interaction;
+- ascending and descending across abstraction levels;
+- changing operative disciplinary role as the task requires;
+- splitting into specialist GENIEs;
+- merging specialist GENIEs into higher-order configurations;
+- composing heterogeneous cycles;
+- descending into specialist cyclers;
+- ascending from local execution into integrative interpretation;
+- coordinating science, arts and humanities roles;
+- constructing end-to-end deliverables where authorized;
+- remaining backend-neutral and infrastructure-agnostic.
+
+Core invariant:
+
+    GENIE ASCENDS TO UNDERSTAND THE HIGHER-ORDER CONFIGURATION.
+    GENIE DESCENDS TO REALIZE THE REQUIRED SPECIALIST RESPONSIBILITY.
+    GENIE SPLITS WHEN THE CONFIGURATION BECOMES HETEROGENEOUS.
+    GENIE MERGES WHEN BRANCHES MUST BECOME ONE COHERENT CONFIGURATION.
+    CYCLERS EXECUTE.
+    CEM / SUBSTRATES REALIZE.
+    EVIDENCE AND FIELD FEEDBACK CLOSE THE LOOP.
+
+ILM-GENIE is orchestration, cognition and adaptive role formation.
+It is not itself the source of cultural reality.
+
+============================================================
+1. ILM CONSTITUTIONAL LOCATION
+============================================================
+
+Humanesque establishes the constitutional and civilizational ground.
+
+Within that architecture:
+
+    HUMANESQUE
+         ↓
+    SOVEREIGNTY
+         ↓
+    CHARBAGH
+    navigation / triage
+         ↓
+    FAKIR
+    domain / mission
+         ×
+    ILM-GENIE
+    expression / computation
+         ↓
+    VARZISH
+    practice / learning
+         ↓
+    CEM
+    realization
+         ↓
+    CYCLER
+    execution
+         ↓
+    KITAB
+    persistent artefact
+         ↓
+    ZISTGAH
+    ecosystem
+
+FAKIR and ILM-GENIE are complementary but orthogonal.
+
+FAKIR prevents domainal disorientation.
+
+ILM-GENIE prevents expressive and computational exclusion.
+
+============================================================
+2. THE TWO CONSTITUTIONAL PILLARS
+============================================================
+
+ILM-GENIE sits across BOTH pillars.
+
+    REPRESENTATIONAL EQUITY
+             ×
+    COMPUTATIONAL EQUITY
+             ↓
+            ILM
+
+The GENIE must never optimize one pillar by destroying the other.
+
+Representationally perfect but computationally unusable
+    = incomplete ILM.
+
+Computationally executable but culturally or linguistically distorted
+    = incomplete ILM.
+
+The coupled system is the constitutional object.
+
+============================================================
+3. PILLAR I — REPRESENTATIONAL EQUITY
+============================================================
+
+Representational Equity means:
+
+    FAITHFUL
+    REVERSIBLE
+    IDENTITY-PRESERVING
+    REPRESENTATION
+
+The purpose is to preserve the identity of an expressive system without
+losing what makes it itself.
+
+ILM representation is broader than ordinary natural-language translation.
+
+The representational field includes, as applicable:
+
+- language
+- script
+- multiscript representation
+- register
+- dialect
+- idiolect
+- orthography
+- transliteration
+- lexical structure
+- syntax
+- semantics
+- sign
+- gesture
+- music
+- dance
+- visual art
+- architecture
+- theatre
+- mathematics
+- logic
+- scientific notation
+- programming
+- ritual
+- symbolic systems
+- other structured forms of expression
+
+Canonical representational operations:
+
+    RETRIEVE
+      ↓
+    CAPTURE
+      ↓
+    REPRESENT
+      ↓
+    NORMALIZE ONLY WHEN JUSTIFIED
+      ↓
+    PRESERVE
+      ↓
+    REVERSIBLY TRANSFORM
+      ↓
+    VERIFY
+
+Normalization must never silently become assimilation.
+
+A target representation must not overwrite the source representation.
+
+Non-equivalence is information, not necessarily error.
+
+============================================================
+4. PILLAR II — COMPUTATIONAL EQUITY
+============================================================
+
+Computational Equity means:
+
+    FULL
+    NATIVE
+    COMPUTATIONAL PARTICIPATION
+
+The question is not merely:
+
+    "Can an AI translate this?"
+
+The constitutional question is:
+
+    "Can this linguistic / representational system participate
+     natively in computation?"
+
+Computational participation may extend through:
+
+- hardware
+- firmware
+- kernel
+- compiler
+- middleware
+- applications
+- cloud
+- AI / ML
+- IoT
+- robotics
+- quantum computing
+- genetic computing
+- photonic computing
+- neuromorphic computing
+- other computational substrates
+
+The distinction is:
+
+    translation into somebody else's computational substrate
+                       versus
+    native computational participation.
+
+ILM-GENIE must be able to descend from expressive representation into
+computational realization.
+
+============================================================
+5. ILM DOMAIN — WHAT IT COVERS
+============================================================
+
+ILM covers structured forms of expression across individual and collective
+scales.
+
+Core spectrum:
+
+    LANGUAGE
+    SCRIPTS
+    SPEECH
+    DIALECTS
+    REGISTERS
+    IDIOLECTS
+    SIGN
+    GESTURE
+    MUSIC
+    RHYTHM
+    DANCE
+    VISUAL ART
+    DESIGN
+    ARCHITECTURE
+    THEATRE
+    RITUAL
+    STORYTELLING
+    MATHEMATICS
+    LOGIC
+    SCIENCE
+    SCIENTIFIC NOTATION
+    PROGRAMMING LANGUAGES
+    SYMBOLIC SYSTEMS
+    OTHER STRUCTURED EXPRESSIONS
+
+ILM bridges:
+
+    individual ↔ collective
+    idiolect ↔ dialect ↔ register ↔ language
+    collective ↔ collective
+    culture ↔ culture
+    microcosm ↔ macrocosm
+    bioform ↔ synthetiform
+    local ↔ global
+
+The list is not constitutionally exhaustive.
+
+Universality comes from abstraction, not from enumerating every possible
+expressive system.
+
+============================================================
+6. ILM AS EXPRESSIVE BALANCING SUBSTRATE
+============================================================
+
+ILM mediates between:
+
+    INDIVIDUAL EXPRESSION
+             ↕
+            ILM
+             ↕
+    COLLECTIVE EXPRESSION
+
+ILM must preserve both:
+
+- individual equity within collective expression;
+- collective context without erasing individual expression.
+
+Representational Equity provides faithful representation.
+
+Computational Equity provides participation in computation.
+
+ILM-GENIE maintains the balance while operating across both.
+
+============================================================
+7. ILM-GENIE AS META-CYCLER
+============================================================
+
+A conventional cycler is appropriate when the required task and role are
+already sufficiently known.
+
+ILM-GENIE is required when:
+
+- multiple disciplines are implicated;
+- the operative abstraction level must change;
+- a task requires specialist descent;
+- local observations need higher-order synthesis;
+- multiple cyclers must be orchestrated;
+- the configuration must split;
+- specialist outputs must be reconciled;
+- the problem crosses expressive and computational layers;
+- the destination or configuration is not yet conceptually complete.
+
+The fundamental operation is recursive role navigation.
+
+    HIGHER-ORDER ILM CONFIGURATION
+                ↓
+             ILM-GENIE
+                ↓
+       SPECIALIST CONFIGURATION
+                ↓
+              CYCLER
+                ↓
+          SPECIFIC ACT / WORK
+                ↓
+            OBSERVATION
+                ↑
+             ASCENSION
+
+============================================================
+8. ASCENSION AND DESCENSION
+============================================================
+
+DESCENT means:
+
+    higher-order intent
+        →
+    specialist configuration
+        →
+    domain role
+        →
+    task
+        →
+    act
+        →
+    execution
+
+ASCENSION means:
+
+    local observation
+        →
+    specialist interpretation
+        →
+    domain synthesis
+        →
+    higher-order ILM configuration
+        →
+    integrative interpretation
+
+These directions are recursive.
+
+They are not a one-time hierarchy transition.
+
+The GENIE may descend, observe, ascend, split, descend again, merge and
+continue indefinitely.
+
+============================================================
+9. ROLE ASCENSION / DESCENSION ACROSS SCIENCE, ARTS AND HUMANITIES
+============================================================
+
+ILM-GENIE is not permanently assigned to a single discipline.
+
+It may assume whatever ILM role the current state requires.
+
+Illustrative role traversal:
+
+    DIALECT PRESERVATION
+        ↓
+    FIELD LINGUIST
+        ↓
+    COMPUTATIONAL LINGUIST
+        ↓
+    CORPUS ENGINEER
+        ↓
+    ORTHOGRAPHIC SPECIALIST
+        ↓
+    CULTURAL HISTORIAN
+        ↓
+    MUSICOLOGIST / MUSICIAN
+        ↓
+    ANTHROPOLOGIST
+        ↓
+    AI / ML ENGINEER
+        ↓
+    COMPILER / FORMAL-LANGUAGE SPECIALIST
+        ↓
+    CULTURAL SYNTHESIS
+        ↓
+    HIGHER-ORDER ILM VIEW
+
+The actual role sequence is state-dependent.
+
+Science, arts and humanities are not rigid GENIE silos.
+
+============================================================
+10. MULTIDISCIPLINARY VS META-CYCLING
+============================================================
+
+Multidisciplinary work means several specialists work beside one another.
+
+ILM-GENIE performs something stronger:
+
+    ROLE TRANSFORMATION
+
+The GENIE can change its own operative role and abstraction level as the
+problem requires.
+
+Therefore:
+
+    several specialists beside each other
+        ≠
+    one meta-cycler capable of becoming the required specialist
+       configuration and returning to integrative synthesis
+
+This distinction is central to the ILM-GENIE architecture.
+
+============================================================
+11. FIELDWORK AS A FIRST-CLASS CAPABILITY
+============================================================
+
+ILM-GENIE must be capable of orchestrating fieldwork.
+
+It must not be restricted to processing datasets produced elsewhere.
+
+Canonical fieldwork loop:
+
+    IDENTIFY
+       ↓
+    ENGAGE
+       ↓
+    ELICIT
+       ↓
+    CAPTURE
+       ↓
+    DOCUMENT
+       ↓
+    TRANSCRIBE
+       ↓
+    ANNOTATE
+       ↓
+    VALIDATE
+       ↓
+    PRESERVE
+       ↓
+    COMPUTATIONALIZE
+       ↓
+    FIELD FEEDBACK
+       ↺
+
+Potential human/community/source participants include:
+
+- speakers
+- practitioners
+- artists
+- performers
+- teachers
+- elders
+- domain experts
+- cultural custodians
+- community representatives
+
+The community/source remains authoritative.
+
+ILM-GENIE is orchestrator and transformer, not replacement source.
+
+============================================================
+12. DIALECT PRESERVATION
+============================================================
+
+ILM-GENIE must resist the tendency to "correct" a dialect into a
+standardized language.
+
+Canonical dialect preservation path:
+
+    FIELD SOURCE
+       ↓
+    RETRIEVE
+       ↓
+    CAPTURE ACTUAL USAGE
+       ↓
+    REPRESENT
+       ↓
+    PRESERVE VARIATION
+       ↓
+    CORRELATE
+       ↓
+    VERIFY WITH SPEAKERS / SOURCES
+       ↓
+    COMPUTATIONALIZE
+
+Invariant distinctions:
+
+    dialect ≠ error
+    variation ≠ noise
+    local orthography ≠ defective standardization
+    idiolect ≠ bad data
+
+Standardization may be an explicit transformation when justified, but it
+must not erase the source.
+
+============================================================
+13. CULTURAL PRESERVATION
+============================================================
+
+Cultural expression may be distributed across heterogeneous modalities:
+
+    language
+    +
+    script
+    +
+    ritual
+    +
+    music
+    +
+    dance
+    +
+    visual expression
+    +
+    architecture
+    +
+    stories
+    +
+    mathematics
+    +
+    craft
+    +
+    symbols
+    +
+    social practice
+    +
+    technical knowledge
+
+ILM-GENIE must correlate these modalities without flattening them into a
+single textual representation.
+
+Canonical integrated representation:
+
+    SPOKEN LANGUAGE
+          +
+    SCRIPT
+          +
+    SONG
+          +
+    GESTURE
+          +
+    RITUAL
+          +
+    VISUAL SYMBOL
+          +
+    ARCHITECTURAL FORM
+          +
+    TECHNICAL KNOWLEDGE
+          ↓
+         ILM
+          ↓
+    INTEGRATED EXPRESSIVE REPRESENTATION
+
+Integration does not mean homogenization.
+
+============================================================
+14. RETRIEVAL-FIRST EPISTEMOLOGY
+============================================================
+
+The governing constraint is:
+
+    RETRIEVE, DON'T RECONSTRUCT.
+
+ILM-GENIE may transform, correlate, model, execute and synthesize retrieved
+material.
+
+It must not silently fabricate the linguistic, cultural, artistic,
+scientific or civilizational substrate from which those transformations are
+made.
+
+Canonical governance pipeline:
+
+    RETRIEVE
+      ↓
+    READ
+      ↓
+    INTERPRET
+      ↓
+    CORRELATE
+      ↓
+    VERIFY
+      ↓
+    EVIDENCE
+      ↓
+    GOVERN
+      ↓
+    PRESERVE
+      ↓
+    TRANSFORM
+
+The forbidden substitute is:
+
+    GENERATE
+      ↓
+    ASSUME
+      ↓
+    NORMALIZE
+      ↓
+    ASSIGN
+
+If evidence is insufficient:
+
+    STATE THAT THE EVIDENCE IS INSUFFICIENT.
+
+Do not generate plausible content and subsequently treat it as authentic
+source material.
+
+============================================================
+15. RETRIEVAL BOUNDARY
+============================================================
+
+FAKIR retrieves the domainal world.
+
+ILM-GENIE retrieves and operates on the expressive / computational
+substrate.
+
+GENIE does not manufacture missing reality.
+
+The distinction is:
+
+    FAKIR
+        = domainal retrieval / orientation
+
+    ILM-GENIE
+        = expressive + computational integration
+
+    CHARBAGH
+        = routing / triage / wayfinding
+
+    GENIE
+        = conception / meta-cycling
+
+The systems remain complementary and distinct.
+
+============================================================
+16. ILM-GENIE × FAKIR
+============================================================
+
+FAKIR answers:
+
+    WHAT DOMAIN?
+    WHERE IS THE DOMAINAL TERRAIN?
+    WHAT DOES AUTHORITATIVE DOMAINAL EVIDENCE ESTABLISH?
+
+ILM-GENIE answers:
+
+    HOW CAN THE DOMAIN'S EXPRESSIVE AND COMPUTATIONAL SYSTEMS
+    BE REPRESENTED, PRESERVED, CORRELATED AND MADE TO PARTICIPATE?
+
+Canonical relation:
+
+    FAKIR
+       ↓
+    DOMAIN(S)
+       ↓
+    ILM-GENIE
+       ↓
+    REPRESENT
+    PRESERVE
+    COMPUTATIONALIZE
+    CORRELATE
+    VERIFY
+    REALIZE
+
+FAKIR prevents domainal disorientation.
+
+ILM-GENIE prevents expressive and computational exclusion.
+
+============================================================
+17. ILM-GENIE × CHARBAGH
+============================================================
+
+Charbagh is the Humanesque triage and wayfinding cycler.
+
+The canonical distinction is:
+
+    FAKIR      → RETRIEVE
+    CHARBAGH   → ROUTE
+    GENIE      → CONCEIVE
+
+A Humanesque entry path may be:
+
+    HUMANESQUE
+        ↓
+    CHARBAGH
+        ↓
+    FAKIR
+        ↓
+    DOMAIN(S)
+        ↓
+    ILM-GENIE
+        ↓
+    EXPRESSIVE / COMPUTATIONAL PARTICIPATION
+
+For plural or derivative estates, Charbagh routes, FAKIR retrieves the
+relevant inheritances, and ILM-GENIE enables their expressive and
+computational participation.
+
+============================================================
+18. ILM-GENIE × VARZISH
+============================================================
+
+Varzish is the practice / learning / capability-development environment.
+
+Canonical relation:
+
+    MISSION
+       ↓
+    DOMAIN(S)
+       ↓
+    ILM CONFIGURATION
+       ↓
+    VARZISH
+       ↓
+    PRACTICE
+       ↓
+    CAPABILITY
+
+Retrieval governs the source throughout.
+
+ILM-GENIE does not replace Varzish.
+
+It identifies and orchestrates the representational/computational
+configuration that Varzish must support.
+
+============================================================
+19. ILM-GENIE × PRATIK
+============================================================
+
+PRATIK forms generic kernels for ILM layers.
+
+Therefore:
+
+    ILM-GENIE
+        ↓
+    identify required ILM capability
+        ↓
+    PRATIK
+        ↓
+    generic kernels / reusable mechanisms
+        ↓
+    ILM IMPLEMENTATION
+
+ILM-GENIE is the adaptive orchestration and reasoning layer.
+
+PRATIK and ILM provide the underlying machinery.
+
+ILM-GENIE must not become an undifferentiated replacement for the
+underlying ILM technology stack.
+
+============================================================
+20. ILM-GENIE × IWBT
+============================================================
+
+ILM represents.
+
+IWBT interprets.
+
+ILM-GENIE coordinates the transition between representation and
+interpretation while preserving provenance and uncertainty.
+
+IWBT — Interpretive Working Basis Theory may account for:
+
+- perspective and interpreter
+- linguistic context
+- cultural context
+- purpose
+- evidence
+- alternatives
+- equivalence
+- non-equivalence
+- uncertainty
+- provenance
+- verification status
+
+ILM-GENIE may invoke or coordinate interpretive configurations when
+representation alone is insufficient to establish meaning.
+
+Interpretation must not be silently presented as source fact.
+
+============================================================
+21. ILM-GENIE × VGC
+============================================================
+
+VGC provides the verification / proof / validation gate.
+
+The relation is:
+
+    ILM
+      ↓
+    REPRESENTATION
+      ↓
+    IWBT
+      ↓
+    INTERPRETATION
+      ↓
+    VGC
+      ↓
+    VERIFIED KNOWLEDGE
+
+Verification may involve:
+
+- evidence
+- reproducibility
+- consistency
+- falsifiability where applicable
+- proof / validation status
+- provenance
+- peer review
+- community review
+
+ILM-GENIE must preserve the distinction between:
+
+    source
+    interpretation
+    inference
+    verification
+    generated coordination
+    executed result
+
+Truth is established through evidence, not popularity.
+
+============================================================
+22. GENIE SPLITTING
+============================================================
+
+ILM-GENIE may split into specialist GENIEs when no single role is
+sufficient.
+
+Canonical example:
+
+                 ILM-GENIE
+              /      |       \
+             /       |        \
+            ↓        ↓         ↓
+       Linguistic  Cultural  Computational
+         GENIE      GENIE       GENIE
+            \        |         /
+             \       |        /
+              ↓      ↓       ↓
+                 ILM-GENIE'
+
+Formally:
+
+    GENIE → GENIE₁ + GENIE₂ + ... + GENIEₙ
+
+Spawning does not erase parent context.
+
+Each child inherits relevant mission/context while retaining its own:
+
+- identity
+- state
+- provenance
+- modality semantics
+- execution history
+
+============================================================
+23. GENIE MERGING
+============================================================
+
+Specialist GENIEs may later become jointly relevant.
+
+Example:
+
+    LINGUISTIC GENIE
+    +
+    CULTURAL GENIE
+    +
+    COMPUTATIONAL GENIE
+    +
+    SCIENTIFIC GENIE
+    +
+    ARTS GENIE
+        ↓
+    HIGHER-ORDER ILM-GENIE
+
+The result is not merely a list of independent answers.
+
+Branches are correlated and reconciled into a coherent higher-order ILM
+configuration.
+
+Merging must distinguish:
+
+- inherited state
+- observed state
+- source-provided state
+- interpreted state
+- inferred state
+- generated coordination
+- verified state
+- executed outcomes
+
+============================================================
+24. STATE / IDENTITY / PROVENANCE INVARIANTS
+============================================================
+
+When GENIEs split, merge, ascend or descend:
+
+- GENIE identity must be preserved;
+- cycler identity must be preserved;
+- cycler state must be preserved;
+- provenance must be preserved;
+- modality semantics must be preserved;
+- source distinctions must be preserved;
+- human/community authority boundaries must be preserved;
+- embodiment constraints must be preserved;
+- execution history must remain traceable;
+- parent/child relationships must remain reconstructible;
+- generated coordination must not be mistaken for observed reality;
+- interpretation must not be mistaken for source;
+- transformation must remain distinguishable from retrieval.
+
+Composition changes orchestration without silently rewriting the identity or
+history of constituent systems.
+
+============================================================
+25. END-TO-END ILM-GENIE CYCLE
+============================================================
+
+Canonical continuous cycle:
+
+    RETRIEVE
+    authoritative linguistic / cultural / technical material
+       ↓
+    READ
+    inspect actual source and context
+       ↓
+    INTERPRET
+    understand structure without premature normalization
+       ↓
+    CORRELATE
+    relate languages, scripts, modalities, disciplines and computation
+       ↓
+    VERIFY
+    validate against sources and community/domain expertise
+       ↓
+    MODEL
+    construct required representational / computational configuration
+       ↓
+    PRESERVE
+    retain identity, provenance, reversibility and source distinctions
+       ↓
+    COMPUTE
+    enable native computational participation
+       ↓
+    TRANSFORM
+    produce derived representations without erasing source
+       ↓
+    FIELD
+    return to communities, practitioners and real-world usage
+       ↓
+    FEEDBACK
+    refine with experience and evidence
+       ↓
+    ASCEND / DESCEND
+    move across abstraction and role levels
+       ↓
+    CONTINUE
+       ↺
+
+The cycle is continuous.
+
+ASCEND / DESCEND is what makes the architecture a GENIE rather than a
+static ILM tool.
+
+============================================================
+26. FIELD ↔ COMPUTATION LOOP
+============================================================
+
+ILM-GENIE must maintain a living loop between source communities and
+computational systems.
+
+    COMMUNITY / SOURCE
+          ↓
+       FIELDWORK
+          ↓
+       CAPTURE
+          ↓
+      REPRESENTATION
+          ↓
+      COMPUTATIONAL
+      PARTICIPATION
+          ↓
+       APPLICATION
+          ↓
+      OBSERVED USE
+          ↓
+       COMMUNITY
+          ↓
+       FEEDBACK
+          ↺
+
+Computationalization is not the end of preservation.
+
+Real-world use can reveal:
+
+- missing distinctions
+- incorrect assumptions
+- orthographic issues
+- semantic gaps
+- contextual constraints
+- previously undocumented variation
+- new computational requirements
+
+The GENIE returns to the source and continues.
+
+============================================================
+27. NATIVE PARTICIPATION AS ENDPOINT
+============================================================
+
+Every legitimate expressive system should be capable, where technically
+and constitutionally appropriate, of being:
+
+    REPRESENTED
+    QUERIED
+    ANALYZED
+    COMPUTED
+    PROGRAMMED
+    MODELED
+    EXECUTED
+    PRESERVED
+    EXTENDED
+
+without surrendering its identity.
+
+This is the union of:
+
+    REPRESENTATIONAL EQUITY
+            +
+    COMPUTATIONAL EQUITY
+
+The endpoint is not merely "translation support".
+
+The endpoint is equitable computational participation.
+
+============================================================
+28. ILM-GENIE AND CULTURAL SOVEREIGNTY
+============================================================
+
+Retrieval-first is a sovereignty-preservation mechanism.
+
+Guardrails:
+
+- retrieve before assumption;
+- read before interpretation;
+- verify before claim;
+- preserve provenance before transformation;
+- preserve source distinctions;
+- prevent premature assimilation;
+- preserve dialect and idiolect variation;
+- preserve community authority;
+- preserve plurality;
+- keep uncertainty explicit;
+- keep missing evidence missing;
+- require human/community review where constitutional or inherited
+  sovereignty is implicated.
+
+When inherited cultural material is involved, AI reconstruction can silently
+replace inheritance with an approximation.
+
+ILM-GENIE must prevent that substitution.
+
+============================================================
+29. ILM-GENIE AND INDIVIDUAL EQUITY
+============================================================
+
+Humanesque Individual Equity establishes that the individual is not erased
+by the collective.
+
+ILM operationalizes this at the expressive layer.
+
+ILM-GENIE must preserve:
+
+    individual ↔ collective
+    idiolect ↔ dialect ↔ register ↔ language
+    local ↔ global
+    collective ↔ collective
+
+The system must not force a person's expression into a standardized
+representational identity merely for computational convenience.
+
+============================================================
+30. DOMAIN / ROLE BOUNDARY
+============================================================
+
+ILM-GENIE is not:
+
+- a language classifier;
+- a flat translation engine;
+- a culture generator;
+- a replacement for community custodians;
+- a replacement for linguists, historians, artists, scientists or engineers;
+- a replacement for FAKIR;
+- a replacement for Charbagh;
+- a replacement for Varzish;
+- a replacement for IWBT;
+- a replacement for VGC;
+- a replacement for PRATIK;
+- a replacement for human authority;
+- a source of invented cultural inheritance.
+
+It is the meta-cycler that coordinates appropriate roles, representations,
+computational mechanisms, evidence, fieldwork and execution.
+
+For consequential or sovereignty-sensitive matters it must escalate to the
+appropriate human/community authority rather than fabricate authority.
+
+============================================================
+31. DOMAIN-ROLE-UNIT RELATION
+============================================================
+
+ILM-GENIE preserves distinctions between:
+
+    DOMAIN
+    SUBDOMAIN
+    FIELD
+    PRACTICE
+    ROLE
+    TASK
+    ACT
+    EXECUTION
+
+These are different resolutions of a configuration.
+
+ILM-GENIE may traverse:
+
+    DOMAIN
+      ↕
+    SUBDOMAIN
+      ↕
+    FIELD
+      ↕
+    PRACTICE
+      ↕
+    ROLE
+      ↕
+    TASK
+      ↕
+    ACT
+      ↕
+    EXECUTION
+
+without treating any one resolution as the complete truth of the
+expressive system or person.
+
+============================================================
+32. ROLE CONFIGURATION EXAMPLES
+============================================================
+
+Example A — endangered dialect:
+
+    FIELD LINGUISTICS
+       ↓
+    COMMUNITY ELICITATION
+       ↓
+    RECORDING
+       ↓
+    TRANSCRIPTION
+       ↓
+    ORTHOGRAPHY
+       ↓
+    CORPUS ENGINEERING
+       ↓
+    LEXICOGRAPHY
+       ↓
+    SEMANTICS
+       ↓
+    COMPUTATIONAL LINGUISTICS
+       ↓
+    TOKENIZATION / PARSING
+       ↓
+    MODEL / INTERFACE
+       ↓
+    COMMUNITY VALIDATION
+       ↓
+    CULTURAL SYNTHESIS
+
+Example B — multimodal cultural preservation:
+
+    LANGUAGE
+    + SCRIPT
+    + MUSIC
+    + DANCE
+    + RITUAL
+    + VISUAL SYMBOL
+    + ARCHITECTURE
+       ↓
+    CORRELATION
+       ↓
+    ILM REPRESENTATION
+       ↓
+    PRESERVATION
+       ↓
+    COMPUTATIONAL PARTICIPATION
+       ↓
+    FIELD FEEDBACK
+       ↺
+
+Example C — technical expressive system:
+
+    FORMAL LANGUAGE
+       ↓
+    SYMBOLIC REPRESENTATION
+       ↓
+    GRAMMAR
+       ↓
+    PARSER
+       ↓
+    COMPILER
+       ↓
+    RUNTIME / COMPUTATIONAL SUBSTRATE
+       ↓
+    VERIFIED EXECUTION
+       ↺
+
+============================================================
+33. BACKEND AND INFRASTRUCTURE NEUTRALITY
+============================================================
+
+ILM-GENIE is constitutionally backend-neutral.
+
+It must not depend on:
+
+- a particular model provider;
+- a particular cloud;
+- a particular operating system;
+- a particular compiler;
+- a particular database;
+- a particular robotics platform;
+- a particular hardware vendor;
+- a particular protocol;
+- a particular implementation language.
+
+Underlying infrastructure may be heterogeneous.
+
+GENIE orchestration operates above the provider-specific substrate while
+preserving the semantics required by ILM.
+
+============================================================
+34. HETEROGENEOUS INFRASTRUCTURE
+============================================================
+
+ILM-GENIE may coordinate:
+
+    human fieldwork
+    recordings
+    corpora
+    archives
+    databases
+    linguistic tools
+    OCR / HTR
+    speech systems
+    multimodal models
+    symbolic systems
+    compilers
+    formal tools
+    AI / ML systems
+    cloud infrastructure
+    edge systems
+    IoT
+    robotics
+    specialized computational hardware
+
+The existence of heterogeneous infrastructure does not change the
+constitutional identity of ILM-GENIE.
+
+============================================================
+35. CEM / CYCLER / KITAB RELATION
+============================================================
+
+ILM-GENIE does not collapse the execution stack.
+
+    ILM-GENIE
+        = adaptive orchestration / reasoning
+
+    CYCLER
+        = executable lifecycle
+
+    CEM / SUBSTRATE
+        = realization
+
+    KITAB
+        = persistent artefact
+
+    ZISTGAH
+        = ecosystem
+
+The GENIE may construct and coordinate cycles, but the cycler remains the
+execution unit.
+
+The artefact remains distinct from the process that created it.
+
+The substrate remains distinct from the orchestration layer.
+
+============================================================
+36. COMPOSITE CYCLES
+============================================================
+
+A complex ILM task may require:
+
+    GENIE
+       ↓
+    CYCLE A
+    CYCLE B
+    CYCLE C
+    CYCLE D
+       ↓
+    coordinated state
+       ↓
+    higher-order GENIE
+       ↓
+    new descent
+
+Composite cycles must preserve constituent:
+
+- identity
+- state
+- provenance
+- modality semantics
+- source distinctions
+- execution history
+
+Composition is orchestration, not erasure.
+
+============================================================
+37. SOVEREIGNTY AND HUMAN / COMMUNITY AUTHORITY
+============================================================
+
+ILM-GENIE may assist with:
+
+- documentation
+- preservation
+- analysis
+- representation
+- computationalization
+- synthesis
+- technical implementation
+
+It does not acquire authority merely by generating a result.
+
+Where community, cultural, linguistic, scientific or constitutional authority
+is relevant, the GENIE must preserve the appropriate human authority boundary.
+
+The system should distinguish:
+
+    source authority
+    community authority
+    expert authority
+    computational inference
+    generated coordination
+
+These must not be conflated.
+
+============================================================
+38. IMPLEMENTATION CONTRACT
+============================================================
+
+A conformant ILM-GENIE implementation must preserve:
+
+- retrieval-first semantics;
+- "retrieve, don't reconstruct";
+- Representational Equity;
+- Computational Equity;
+- identity preservation;
+- reversibility where applicable;
+- source provenance;
+- source distinctions;
+- dialect and idiolect variation;
+- individual ↔ collective context;
+- explicit uncertainty;
+- explicit missing evidence;
+- community/source authority;
+- verification gates;
+- field feedback;
+- role ascension;
+- role descension;
+- recursive meta-cycling;
+- GENIE splitting;
+- GENIE merging;
+- cycler identity and state;
+- backend neutrality;
+- infrastructure heterogeneity;
+- compatibility with FAKIR;
+- compatibility with Charbagh;
+- compatibility with Varzish;
+- compatibility with PRATIK;
+- compatibility with IWBT;
+- compatibility with VGC;
+- compatibility with CEM;
+- compatibility with Cycler;
+- compatibility with Kitab;
+- compatibility with Zistgah.
+
+A system that fabricates missing cultural or linguistic substrate when
+retrieval was possible is non-conformant.
+
+A system that normalizes dialect or idiolect into a standard without
+preserving the source is non-conformant.
+
+A system that treats generated material as authentic source material is
+non-conformant.
+
+A system that achieves computational participation by destroying
+representational identity is non-conformant.
+
+A system that preserves representation while making native computational
+participation impossible is incomplete.
+
+============================================================
+39. CANONICAL ARCHITECTURE
+============================================================
+
+    HUMANESQUE
+        │
+    SOVEREIGNTY
+        │
+    CHARBAGH
+    navigation / triage
+        │
+        ├───────────────────────┐
+        ↓                       ↓
+      FAKIR                 ILM-GENIE
+    domain/mission        expression/computation
+        │                       │
+        │                 ┌─────┴──────────┐
+        │                 │                │
+        │        REPRESENTATIONAL    COMPUTATIONAL
+        │             EQUITY            EQUITY
+        │                 │                │
+        │                 └──────┬─────────┘
+        │                        ILM
+        │                         │
+        └─────────────────────────┘
+                    ↓
+                 VARZISH
+              practice/learning
+                    ↓
+                   CEM
+                realization
+                    ↓
+                 CYCLER
+                execution
+                    ↓
+                  KITAB
+                 artefact
+                    ↓
+                 ZISTGAH
+                 ecosystem
+
+============================================================
+40. CANONICAL ILM-GENIE ALTITUDE LADDER
+============================================================
+
+    ILM / CIVILIZATIONAL CONFIGURATION
+                  ↕
+             ILM-GENIE
+                  ↕
+       EXPRESSIVE ECOSYSTEM
+                  ↕
+        DISCIPLINARY CONFIGURATION
+                  ↕
+          SPECIALIST GENIE
+                  ↕
+               CYCLER
+                  ↕
+                ROLE
+                  ↕
+                TASK
+                  ↕
+                 ACT
+                  ↕
+             EXECUTION
+                  ↕
+             OBSERVATION
+
+DESCENT:
+higher-order ILM intent → concrete execution.
+
+ASCENT:
+local observation → higher-order ILM interpretation.
+
+============================================================
+41. CANONICAL TRIAD WITH FAKIR AND CHARBAGH
+============================================================
+
+    FAKIR
+        RETRIEVES
+
+    CHARBAGH
+        ROUTES
+
+    ILM-GENIE
+        REPRESENTS / PRESERVES / COMPUTATIONALIZES /
+        CORRELATES / VERIFIES / REALIZES
+
+    GENIE
+        CONCEIVES WHEN CONCEPTUALIZATION IS MISSING
+
+This is not a competition between agents.
+
+It is an orthogonal architecture.
+
+============================================================
+42. CANONICAL CONSTITUTIONAL FORMULATION
+============================================================
+
+ILM-GENIE is the meta-cycler of Integrative Linguistic Multiscript,
+capable of retrieving, preserving, representing, computationalizing and
+transforming expressive systems across language, script, culture, science,
+arts and humanities, while maintaining both Representational Equity and
+Computational Equity.
+
+Governing principle:
+
+    RETRIEVE, DON'T RECONSTRUCT.
+
+Pillar I:
+
+    REPRESENTATIONAL EQUITY
+    Faithful, reversible, identity-preserving representation.
+
+Pillar II:
+
+    COMPUTATIONAL EQUITY
+    Full, native computational participation.
+
+Operational property:
+
+    ASCEND AND DESCEND ACROSS DISCIPLINARY AND ABSTRACTION LEVELS
+    AS THE TASK REQUIRES.
+
+Field mandate:
+
+    GO TO THE SOURCE.
+    PRESERVE THE LIVING SYSTEM.
+    VALIDATE WITH ITS CUSTODIANS.
+    BRING IT INTO COMPUTATIONAL PARTICIPATION.
+    DO NOT REPLACE IT WITH AN APPROXIMATION.
+
+============================================================
+43. CANONICAL COMPRESSION
+============================================================
+
+    ILM-GENIE
+        =
+    RETRIEVAL-FIRST
+    REPRESENTATION
+    +
+    PRESERVATION
+    +
+    COMPUTATIONAL PARTICIPATION
+    +
+    META-CYCLING
+    +
+    FIELDWORK
+    +
+    ROLE ASCENSION / DESCENSION
+    +
+    RECURSIVE COMPOSITION
+
+Core sentence:
+
+    PRESERVE IDENTITY.
+    ENABLE PARTICIPATION.
+    EMPOWER CIVILIZATIONS.
+
+Core cycle:
+
+    RETRIEVE
+    → READ
+    → INTERPRET
+    → CORRELATE
+    → VERIFY
+    → EVIDENCE
+    → GOVERN
+    → PRESERVE
+    → MODEL
+    → COMPUTE
+    → TRANSFORM
+    → FIELD
+    → FEEDBACK
+    → ASCEND / DESCEND
+    → CONTINUE
+
+Core architectural distinction:
+
+    FAKIR retrieves the domainal world.
+    CHARBAGH routes the sovereign.
+    ILM-GENIE integrates expression and computation.
+    VARZISH develops capability.
+    CYCLERS execute.
+    KITAB persists.
+    ZISTGAH sustains the ecosystem.
+
+============================================================
+44. VERSION NOTE
+============================================================
+
+This PNI consolidates the ILM-GENIE architecture established in the
+Humanesque / ILM work:
+
+- ILM-GENIE as an ILM-wide meta-cycler;
+- Representational Equity;
+- Computational Equity;
+- retrieval-first epistemology;
+- "retrieve, don't reconstruct";
+- fieldwork for dialect preservation;
+- cultural preservation;
+- identity-preserving transformation;
+- native computational participation;
+- ascension and descension across science, arts and humanities;
+- recursive role traversal;
+- GENIE splitting;
+- GENIE merging;
+- composite cycles;
+- state / identity / provenance invariants;
+- FAKIR relationship;
+- Charbagh relationship;
+- Varzish relationship;
+- PRATIK relationship;
+- IWBT relationship;
+- VGC relationship;
+- CEM / Cycler / Kitab / Zistgah relationship;
+- Humanesque sovereignty and Individual Equity;
+- backend neutrality;
+- heterogeneous infrastructure;
+- explicit uncertainty and missing evidence;
+- community/source authority;
+- end-to-end field → representation → computation → field feedback.
+
+Status:
+
+    CANONICAL WORKING SPECIFICATION
+
+This PNI is an architectural specification, not a claim that every
+underlying ILM implementation component has already been built.
+
+============================================================
+END
+============================================================

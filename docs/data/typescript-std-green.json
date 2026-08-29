@@ -1,0 +1,12 @@
+{
+  "language": "typescript",
+  "issuing_body": "Microsoft TypeScript v5.4.5 compiler tests (ECMA-262 + types)",
+  "suite": "tests/cases/compiler/{unaryPlus,2dArrays}.ts",
+  "n": 2,
+  "pass": 2,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "note": "Named tsc compiler extract: unaryPlus execute-accept + 2dArrays compile-accept. Full tsc UI / checker is GAP. Homemade tests/std/typescript is CORE GREEN only."
+}
