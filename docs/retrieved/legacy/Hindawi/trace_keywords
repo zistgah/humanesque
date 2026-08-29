@@ -1,0 +1,2 @@
+cat keywords | ../Romenagri/flatten_uni_dev | iconv -tutf16 | uni2acii | acii2pcf > keywords.hin2rmn
+cat keywords.hin2rmn | h2b | h2c | h2cpp | h2j | h2l | h2yacc | h2y | soochee/h2py > keywords.traceback

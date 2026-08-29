@@ -21,23 +21,25 @@
   <ol>
     <li><a href="console.html">Console</a> — one VT100. bash and COMMAND.COM on the VFS.</li>
     <li><a href="emu.html">x86 guest</a> — v86, i386. Lekhak EXE, FreeDOS. <a href="ayebios.html">AyeBIOS</a> is SeaBIOS through Hindawi Guru (firmware source flatten; 16-bit ROM not claimed this turn).</li>
-    <li><a href="llm.html">llama.cpp</a> — same VFS, <code>llama-cli</code>. The guest is llama.cpp compiled to WASM. <a href="story.html">Story spinner</a> feeds one sentence per turn for N turns, then download or print to PDF.</li>
-    <li><a href="nb.html">Notebook</a> — Hindawi 2004 pipeline (flatten · shaili · host C).</li>
+    <li><a href="llm.html">llama.cpp</a> — same VFS, <code>llama-cli</code>. The guest is llama.cpp compiled to WASM. <a href="story.html">Story spinner</a> keeps generating until you Stop. Novel length is allowed.</li>
+    <li><a href="nb.html">Notebook</a> — Hindawi 2004 pipeline (flatten · original Romenagri · shaili · host). Original Colab chrome: <a href="nb.frozen.html">nb.frozen.html</a>.</li>
   </ol>
 
   <h2>Language</h2>
-  <p>The paragraph is here once. A stack is ⟨script, language, shaili⟩. Brahmi scripts round-trip through the Devanagari hub. Perso-Arabic is named lossy. Keyword tables that are short of the Hindi bar go to cyclers — they are not invented in this tree.</p>
+  <p>The paragraph is here once. A stack is ⟨script, language, shaili⟩. Brahmi scripts round-trip through the Devanagari hub. Perso-Arabic is named lossy. Keyword tables that are short of the Hindi bar go to cyclers — they are not invented in this tree. The 2004 hosts on every language: Logo, BASIC, C, C++, Assembly, lex, yacc.</p>
   <p><a class="btn" href="stack.html">Open the stack (dropdown of every language)</a></p>
+  <p class="fine">The local tree is <a href="/panini.zip" download="panini.zip">panini.zip</a>. Self-host on the CLI with <code>node src/cli.js binary file.pni</code> — PANINI → C → gcc. JavaScript remains the web host. <a href="local.html">How to run it locally</a>.</p>
 
   <h2>Enter by vocation</h2>
   <ul>
     <li><a href="nb.html">Beginner</a> — PRINT, Shaili, first programme.</li>
-    <li><a href="workbench.html">Computer engineer</a> — source → AST → IR → host → gcc, since 2004.</li>
+    <li><a href="workbench.html">Computer engineer</a> — source → AST → IR → host → gcc, since 2004. VS Code on the web.</li>
     <li><a href="linguist.html">Linguist</a> — tables, flatten maps, round-trip. Submit a CSV.</li>
-    <li><a href="path/research.html">Researcher</a> — ISO C, WASM CFG, theorems.</li>
+    <li><a href="path/research.html">Researcher</a> — ISO C, WASM CFG, theorems. Papers below.</li>
     <li><a href="agi.html">AGI stack</a> — L0–L26 plus the last derived test report.</li>
     <li><a href="roadmap.html">Roadmap</a> — 12 points, ISA matrix, honesty wall.</li>
-    <li><a href="cyclers.html">Cycler / Mez</a> — harness for people without API keys.</li>
+    <li><a href="cyclers.html">Cycler / Mez</a> — harness for people without API keys. The cyclers run.</li>
+    <li><a href="gate-cse.html">GATE CS</a> — original programmes and adapted runnable programmes.</li>
   </ul>
 
   <figure class="poster-wrap">
@@ -47,6 +49,11 @@
     Choudhary, A. (2026). <em>PANINI Self-Hosting Specification</em> (Version 1.0.0).
     <a href="https://doi.org/10.5281/zenodo.22121524">doi:10.5281/zenodo.22121524</a>
   </p>
+  <p class="cite">
+    Choudhary, A. (2026). <em>Cycles :: Part 1</em> (v1.0.0). Zenodo.
+    <a href="https://doi.org/10.5281/zenodo.22122422">doi:10.5281/zenodo.22122422</a>
+  </p>
+  <p class="fine"><a href="research.html">Research, journals, patents</a> · <a href="REFERENCES.md">References</a></p>
   <div class="eve">
     <strong>Do not flatten.</strong>
     Script, language, shaili, host, and guest are independent axes.

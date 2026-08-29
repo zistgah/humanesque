@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="mai">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Maithili गुरु / C — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Maithili · गुरु · C</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Maithili गुरु is still a C program.</p>
+  
+  <p>
+    <a class="btn" href="../nb.html?lang=maithili&demo=langs/maithili_guru.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=maithili">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <span>C</span> · <a href="maithili-cpp.html">C++</a> · <a href="maithili-basic.html">BASIC</a> · <a href="maithili-asm.html">Assembly</a> · <a href="maithili-lex.html">lex</a> · <a href="maithili-yacc.html">yacc</a> · <a href="maithili-logo.html">Logo</a></p>
+  <h2>1–10 · clauses</h2>
+  <ol lang="en"><li>This document is the standard of Maithili गुरु / C.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>29 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">यदि</td><td><code>yadi</code></td><td><code>if</code></td></tr><tr><td dir="auto">अन्यथा</td><td><code>anyathaa</code></td><td><code>else</code></td></tr><tr><td dir="auto">जबतक</td><td><code>jabataka</code></td><td><code>while</code></td></tr><tr><td dir="auto">करो</td><td><code>karau</code></td><td><code>do</code></td></tr><tr><td dir="auto">हेतु</td><td><code>heetu</code></td><td><code>for</code></td></tr><tr><td dir="auto">विराम</td><td><code>viraama</code></td><td><code>break</code></td></tr><tr><td dir="auto">जारी</td><td><code>jaarii</code></td><td><code>continue</code></td></tr><tr><td dir="auto">चयन</td><td><code>cayana</code></td><td><code>switch</code></td></tr><tr><td dir="auto">स्थिति</td><td><code>sthiti</code></td><td><code>case</code></td></tr><tr><td dir="auto">मूल</td><td><code>muula</code></td><td><code>default</code></td></tr><tr><td dir="auto">लौटाओ</td><td><code>lautaaau</code></td><td><code>return</code></td></tr><tr><td dir="auto">अचर</td><td><code>acara</code></td><td><code>const</code></td></tr><tr><td dir="auto">पूर्णांक</td><td><code>puur_naa_nka</code></td><td><code>int</code></td></tr><tr><td dir="auto">दशमलव</td><td><code>dashamalava</code></td><td><code>float</code></td></tr><tr><td dir="auto">द्विगुण</td><td><code>dviguu_na</code></td><td><code>double</code></td></tr><tr><td dir="auto">अक्षर</td><td><code>ak_sara</code></td><td><code>char</code></td></tr><tr><td dir="auto">शून्य</td><td><code>shuunya</code></td><td><code>void</code></td></tr><tr><td dir="auto">कृत्य</td><td><code>kr_tya</code></td><td><code>void</code></td></tr><tr><td dir="auto">वर्ग</td><td><code>varga</code></td><td><code>class</code></td></tr><tr><td dir="auto">नवीन</td><td><code>naviina</code></td><td><code>new</code></td></tr><tr><td dir="auto">सार्वजनिक</td><td><code>saarvajanika</code></td><td><code>public</code></td></tr><tr><td dir="auto">निजी</td><td><code>nijii</code></td><td><code>private</code></td></tr><tr><td dir="auto">स्थिर</td><td><code>sthira</code></td><td><code>static</code></td></tr><tr><td dir="auto">आभासी</td><td><code>aabhaasii</code></td><td><code>virtual</code></td></tr><tr><td dir="auto">जब</td><td><code>jaba</code></td><td><code>case</code></td></tr><tr><td dir="auto">संरचना</td><td><code>sa_nracanaa</code></td><td><code>struct</code></td></tr><tr><td dir="auto">सम्मिलित</td><td><code>sammilita</code></td><td><code>include</code></td></tr><tr><td dir="auto">पढ़ो</td><td><code>pa_dau</code></td><td><code>scanf</code></td></tr><tr><td dir="auto">लिखो</td><td><code>likhau</code></td><td><code>printf</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/maithili_guru.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><शैली गुरु>
+#समावेश <मानकपन.स>
+
+पूर्णांक मुख्य()
+{
+	अक्षर अ[८०];
+	पूर्णांक क;
+	म_लिखो("आपका नाम क्या है?\n");
+	म_पूछो("%s",अ);
+	म_लिखो("नमस्ते %s.\n",अ);
+	क्रम(क=1; क<=10; क++)
+		म_लिखो("%d\n",क);
+	म_पूछो("%s",अ);
+	वापस 0;
+}</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host C. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is C.</p>
+  <pre translate="no">#include <stdio.h>
+
+int main()
+{
+	char _a[८०];
+	int ka;
+	ma_printf("आपका नाम क्या है?\n");
+	scanf("%s",_a);
+	ma_printf("नमस्ते %s.\n",_a);
+	for(ka=1; ka<=10; ka++)
+		ma_printf("%d\n",ka);
+	scanf("%s",_a);
+	return 0;
+}</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">#samaawaeesha <maanakapana.sa>
+
+int mukhya()
+{
+	char _a[८०];
+	int ka;
+	ma_printf("आपका नाम क्या है?\n");
+	ma_poochhoa("%s",_a);
+	ma_printf("नमस्ते %s.\n",_a);
+	krama(ka=1; ka<=10; ka++)
+		ma_printf("%d\n",ka);
+	ma_poochhoa("%s",_a);
+	waapasa 0;
+}</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><span>C</span> · <a href="maithili-cpp.html">C++</a> · <a href="maithili-basic.html">BASIC</a> · <a href="maithili-asm.html">Assembly</a> · <a href="maithili-lex.html">lex</a> · <a href="maithili-yacc.html">yacc</a> · <a href="maithili-logo.html">Logo</a></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Maithili C.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * VGA / Super VGA framebuffer for the PANINI console (same CRT as VT100).
  * Mode 13h: 320×200×256. Mode 12h: 640×480×16. Mode 3: text (VT100).

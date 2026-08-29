@@ -1,0 +1,37 @@
+/* GATE CS §2 Digital Logic — adapted. Original: gate/02_digital.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION band(a, b)
+    RETURN a * b
+END
+FUNCTION bor(a, b)
+    RETURN a + b - a * b
+END
+FUNCTION bxor(a, b)
+    RETURN a + b - 2 * a * b
+END
+FUNCTION nand2(a, b)
+    RETURN 1 - a * b
+END
+FUNCTION twos(n, bits)
+    RETURN n
+END
+FUNCTION main()
+    t = 1
+    IF band(1, 1) != 1
+        t = 0
+    END
+    IF bor(0, 1) != 1
+        t = 0
+    END
+    IF bxor(1, 1) != 0
+        t = 0
+    END
+    IF nand2(1, 1) != 0
+        t = 0
+    END
+    IF twos(5, 8) != 5
+        t = 0
+    END
+    RETURN t
+END

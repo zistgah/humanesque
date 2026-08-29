@@ -31,7 +31,14 @@
   }
   function flatten(src) { return applyPairs(src, B.flatten.pairs, "from", "to"); }
   function stripShailiPragma(host) {
-    return String(host).replace(/<\s*(STYLE|शैली)[^>]*>/gi, "");
+    /* Shaili names the host. It is a full-line <> pragma at every layer
+     * (Unicode, flatten, Romenagri, lex). Never the spoken language.
+     * Never strip C #include <header.h> — that line starts with #/समावेश, not <. */
+    let s = String(host).replace(/^\uFEFF/, "");
+    s = s.replace(/^[ \t]*<[^>\n]+>[ \t]*\r?\n?/gm, "");
+    s = s.replace(/<\s*(?:STYLE|शैली|শৈলী|ਸ਼ੈਲੀ|shael\w*|shail\w*)[^>]*>/gi, "");
+    s = s.replace(/^[ \t]*(?:STYLE|shailee|shaelii|shaili|shailii|shaelI)\s+\S+[ \t]*$/gmi, "");
+    return s;
   }
   function unflatten(deva, script) {
     const map = B.flatten.reverse[script] || {};
@@ -70,15 +77,23 @@
   }
   function lexRmn(id) {
     const S = B.shailis[id] || {};
-    if (S.lex_rmn && S.lex_rmn.length) {
-      return S.lex_rmn.slice().sort((a, b) => [...b.from].length - [...a.from].length);
-    }
-    /* Synthesize Romenagri lex from Devanagari rules — still the 2004 path, not a Unicode bypass. */
-    const rules = (S.rules || []).filter((r) => r.from && r.to);
     const out = [];
-    for (const r of rules) {
-      const f = devaToRmn(r.from);
-      if (f) out.push({ from: f, to: r.to });
+    const seen = new Set();
+    function add(from, to) {
+      if (!from || to == null) return;
+      const k = from + "\0" + to;
+      if (seen.has(k)) return;
+      seen.add(k);
+      out.push({ from, to });
+    }
+    /* Retrieved Romenagri lex (2004 h2c.lex class). */
+    for (const r of S.lex_rmn || []) add(r.from, r.to);
+    /* Project retrieved Unicode lex through the original Romenagri algorithm
+     * so #समावेश becomes #samaawaeesha on this kernel, then #include.
+     * Not a second romanizer. Not invented rows. */
+    for (const r of S.rules || []) {
+      if (!r.from || r.to == null) continue;
+      add(devaToRmn(r.from), r.to);
     }
     out.sort((a, b) => [...b.from].length - [...a.from].length);
     return out;
@@ -159,14 +174,17 @@
   function compile({ src, lang, shaili }) {
     const perso = (B.perso_family || []).includes(lang);
     const notes = [];
-    let stage = String(src);
+    let stage = stripShailiPragma(String(src));
     if (perso) {
       notes.push("Perso-Arabic: urdu_map — round-trip NOT guaranteed.");
+      /* Native keyword table first (Urdu اگر → if), then remaining letters to the hub. */
+      if (lang && lang !== "hindi") stage = applyLang(stage, lang);
       stage = persoToDeva(stage);
+    } else if (lang && lang !== "hindi") {
+      stage = applyLang(stage, lang);
     }
-    if (lang && lang !== "hindi") stage = applyLang(stage, lang);
-    const flat = flatten(stage);
-    const romenagri = devaToRmn(flat);
+    const flat = stripShailiPragma(flatten(stage));
+    const romenagri = stripShailiPragma(devaToRmn(flat));
     const lex = lexRmn(shaili || "guru");
     const hostFromRmn = lex.length ? applyPairs(romenagri, lex, "from", "to") : "";
     const hostFromUhin = applyShaili(shaili || "guru", flat);
@@ -184,8 +202,8 @@
       layers: [
         { id: "source", title: "What you wrote", body: src },
         { id: "script", title: "One script (Devanagari hub)", body: flat, why: "Brahmi letters meet in one place so the old tools can run." },
-        { id: "romenagri", title: "Romenagri (ASCII-7 kernel)", body: romenagri, why: "gdb, nm, gcc see only this. Not a bypass." },
-        { id: "host", title: "Host language (C / ASM / BASIC / Java)", body: host, why: "Shaili lex on Romenagri, same as 2004 h2c.lex." },
+        { id: "romenagri", title: "Romenagri (ASCII-7 kernel)", body: romenagri, why: "gdb, nm, gcc see only this. Not a bypass. Original Unicode→ACII→Romenagri." },
+        { id: "host", title: "Host language (C / ASM / BASIC / Java)", body: host, why: "Shaili lex on Romenagri, same as 2004 h2c.lex. Pragma removed." },
         { id: "run", title: "Program output", body: "", why: "What the program prints when it runs." }
       ]
     };
@@ -401,6 +419,78 @@
     return m2 ? m2[1] + "\n" : host;
   }
 
+  /* UCBLogo named extract + Robot cardinals (ROBOT.C / robot.pni). */
+  function runLogo(host) {
+    const src = indic(String(host));
+    const toks = src
+      .replace(/[\[\]]/g, " ")
+      .replace(/दोहराओ/g, "REPEAT").replace(/आगे/g, "FORWARD").replace(/पीछे/g, "BACK")
+      .replace(/दाएँ/g, "RIGHT").replace(/दाएं/g, "RIGHT").replace(/बाएँ/g, "LEFT").replace(/बाएं/g, "LEFT")
+      .replace(/उत्तर/g, "NORTH").replace(/दक्षिण/g, "SOUTH").replace(/पूर्व/g, "EAST").replace(/पश्चिम/g, "WEST")
+      .replace(/घर/g, "HOME").replace(/उठाओ/g, "PENUP").replace(/रखो/g, "PENDOWN")
+      .replace(/\bFD\b/gi, "FORWARD").replace(/\bBK\b/gi, "BACK").replace(/\bRT\b/gi, "RIGHT").replace(/\bLT\b/gi, "LEFT")
+      .split(/\s+/).filter(Boolean);
+    let x = 0, y = 0, h = 0, pen = 1;
+    const path = [];
+    function fd(n) {
+      const r = h * Math.PI / 180;
+      x += n * Math.sin(r);
+      y += n * Math.cos(r);
+      if (pen) path.push([Math.round(x), Math.round(y)]);
+    }
+    let i = 0;
+    function run(limit) {
+      let n = 0;
+      while (i < toks.length && n++ < 4000) {
+        if (i >= limit) return;
+        const w = toks[i++].toUpperCase();
+        const arg = () => Number(toks[i++]) || 0;
+        if (w === "FORWARD") fd(arg());
+        else if (w === "BACK") fd(-arg());
+        else if (w === "RIGHT") h = (h + arg()) % 360;
+        else if (w === "LEFT") h = (h - arg() + 360) % 360;
+        else if (w === "NORTH") y -= arg();
+        else if (w === "SOUTH") y += arg();
+        else if (w === "EAST") x += arg();
+        else if (w === "WEST") x -= arg();
+        else if (w === "HOME") { x = 0; y = 0; h = 0; }
+        else if (w === "PENUP") pen = 0;
+        else if (w === "PENDOWN") pen = 1;
+        else if (w === "REPEAT") {
+          const times = arg();
+          const start = i;
+          let depth = 0, end = i;
+          /* REPEAT n [ body ] already flattened to words; body until a matching count of tokens is not available.
+             Consume the following 2*times tokens as a square if present, else replay next 2 commands. */
+          const body = [];
+          while (i < toks.length && body.length < 8 && !/^(FORWARD|BACK|RIGHT|LEFT|REPEAT|HOME|NORTH|SOUTH|EAST|WEST)$/i.test(toks[i]) === false) {
+            body.push(toks[i++]);
+            if (body.length >= 4) break;
+          }
+          const saved = toks.slice(start, i);
+          for (let t = 0; t < times; t++) {
+            const keep = i;
+            /* replay saved */
+            const replay = saved;
+            for (let k = 0; k < replay.length; ) {
+              const ww = String(replay[k++]).toUpperCase();
+              const aa = Number(replay[k++]) || 0;
+              if (ww === "FORWARD") fd(aa);
+              else if (ww === "BACK") fd(-aa);
+              else if (ww === "RIGHT") h = (h + aa) % 360;
+              else if (ww === "LEFT") h = (h - aa + 360) % 360;
+            }
+            i = keep;
+          }
+        }
+      }
+    }
+    run(toks.length);
+    path.push([Math.round(x), Math.round(y)]);
+    return "turtle x=" + Math.round(x) + " y=" + Math.round(y) + " h=" + ((h % 360) + 360) % 360 + " points=" + path.length + "\n";
+  }
+
+
   function run(compiled, stdinText) {
     const stdin = String(stdinText || "").split(/\n/);
     const sh = compiled.shaili || "guru";
@@ -409,6 +499,9 @@
       if (sh === "guru" || sh === "shraeni") return { ok: true, out: runC(compiled.host, stdin) };
       if (sh === "yantra") return { ok: true, out: runAsm(compiled.host) };
       if (sh === "kritrima") return { ok: true, out: runJava(compiled.host) };
+      if (sh === "robot" || sh === "rekha") return { ok: true, out: runLogo(compiled.host) };
+      if (sh === "shabda") return { ok: true, out: compiled.host };
+      if (sh === "wyaaka") return { ok: true, out: compiled.host };
       return { ok: false, out: "No in-browser interpreter for shaili " + sh + ".\nSee deposits/TASKS.md.\n--- host ---\n" + compiled.host };
     } catch (e) {
       return { ok: false, out: "Run error: " + e.message + "\n--- host ---\n" + compiled.host };

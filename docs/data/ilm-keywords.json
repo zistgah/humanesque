@@ -1,0 +1,5830 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "bar": 29,
+  "bar_language": "hindi",
+  "note": "Existing TSV translations kept. Missing C keys filled from retrieved lang_*.csv construct inventory (Perso-Arabic) or literary fills (Brahmi/Hebrew/Pali/Prakrit). retrieved/ is not overwritten.",
+  "invented_maps": false,
+  "languages": {
+    "arabic": {
+      "script": "Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Arabic",
+      "id": "arabic",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "tsv"
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "tsv"
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "tsv"
+        }
+      ]
+    },
+    "aramaic": {
+      "script": "Aramaic",
+      "family": "semitic",
+      "roundtrip": "inventory",
+      "title": "Aramaic",
+      "id": "aramaic",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "else",
+        "while",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "𐡄𐡍",
+          "romenagri": "hana",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "אחרת",
+          "romenagri": "aharata",
+          "c": "else",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כלעוד",
+          "romenagri": "kalaeauda",
+          "c": "while",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "𐡏𐡁𐡃",
+          "romenagri": "aebada",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "עבור",
+          "romenagri": "aebuura",
+          "c": "for",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שבור",
+          "romenagri": "shvor",
+          "c": "break",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "המשך",
+          "romenagri": "hemshech",
+          "c": "continue",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "בחר",
+          "romenagri": "bchar",
+          "c": "switch",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מקרה",
+          "romenagri": "mikre",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ברירתמחדל",
+          "romenagri": "briratmachdal",
+          "c": "default",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "החזר",
+          "romenagri": "hahazara",
+          "c": "return",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "קבוע",
+          "romenagri": "kavuа",
+          "c": "const",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שלם",
+          "romenagri": "shalem",
+          "c": "int",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "צף",
+          "romenagri": "tsaf",
+          "c": "float",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כפול",
+          "romenagri": "kaful",
+          "c": "double",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "תו",
+          "romenagri": "tav",
+          "c": "char",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פונקציה",
+          "romenagri": "puunaqaeiyah",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ריק",
+          "romenagri": "rek",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מחלקה",
+          "romenagri": "mahalaqah",
+          "c": "class",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "חדש",
+          "romenagri": "chadash",
+          "c": "new",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ציבורי",
+          "romenagri": "tsiburi",
+          "c": "public",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פרטי",
+          "romenagri": "prati",
+          "c": "private",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "סטטי",
+          "romenagri": "stati",
+          "c": "static",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מדומה",
+          "romenagri": "medume",
+          "c": "virtual",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כאשר",
+          "romenagri": "kaasher",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מבנה",
+          "romenagri": "mivne",
+          "c": "struct",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כלול",
+          "romenagri": "kalul",
+          "c": "include",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "קרא",
+          "romenagri": "kra",
+          "c": "scanf",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כתוב",
+          "romenagri": "ktov",
+          "c": "printf",
+          "source": "hebrew-hub",
+          "fill": true
+        }
+      ]
+    },
+    "assamese": {
+      "script": "Bengali-Assamese",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Assamese",
+      "id": "assamese",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "যদি",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "অন্যথা",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "যেতিয়ালৈ",
+          "romenagri": "yeetiyaalai",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "কৰা",
+          "romenagri": "karaa",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "বাবে",
+          "romenagri": "baabee",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "বিৰতি",
+          "romenagri": "birati",
+          "c": "break",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "অব্যাহত",
+          "romenagri": "abyaahata",
+          "c": "continue",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "নিৰ্বাচন",
+          "romenagri": "nirbaacana",
+          "c": "switch",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "অৱস্থা",
+          "romenagri": "avasthaa",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "মূল",
+          "romenagri": "muula",
+          "c": "default",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ঘূৰাই",
+          "romenagri": "ghuuraai",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ধ্ৰুৱক",
+          "romenagri": "dhrubaka",
+          "c": "const",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "পূৰ্ণসংখ্যা",
+          "romenagri": "puurnasa_nkhyaa",
+          "c": "int",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "দশমিক",
+          "romenagri": "dashamika",
+          "c": "float",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "দ্বিগুণ",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "আখৰ",
+          "romenagri": "aakhara",
+          "c": "char",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "কাৰ্য",
+          "romenagri": "kaarya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "শূন্য",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "শ্ৰেণী",
+          "romenagri": "shree_nii",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "নতুন",
+          "romenagri": "natuna",
+          "c": "new",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ৰাজহুৱা",
+          "romenagri": "raajahuwaa",
+          "c": "public",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ব্যক্তিগত",
+          "romenagri": "byaktigata",
+          "c": "private",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "স্থিৰ",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "আভাসী",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "যেতিয়া",
+          "romenagri": "yeetiyaa",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "গঠন",
+          "romenagri": "gathana",
+          "c": "struct",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "অন্তৰ্ভুক্ত",
+          "romenagri": "antarbhukta",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "পঢ়ক",
+          "romenagri": "pa_dhaka",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "লিখক",
+          "romenagri": "likhaka",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "bengali": {
+      "script": "Bengali",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Bengali",
+      "id": "bengali",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "যদি",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "অন্যথা",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "যতক্ষণ",
+          "romenagri": "yatak_sa_na",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "করো",
+          "romenagri": "karau",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "জন্য",
+          "romenagri": "janya",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "বিরতি",
+          "romenagri": "birati",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "চালু",
+          "romenagri": "caalu",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "নির্বাচন",
+          "romenagri": "nirbaacana",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "ক্ষেত্র",
+          "romenagri": "k_seetra",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "পূর্বনির্ধারিত",
+          "romenagri": "puurbanirdhaarita",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "ফেরত",
+          "romenagri": "pheerata",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ধ্রুবক",
+          "romenagri": "dhrubaka",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "পূর্ণসংখ্যা",
+          "romenagri": "puur_nasa_nkhyaa",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "দশমিক",
+          "romenagri": "dashamika",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "দ্বিগুণ",
+          "romenagri": "dbigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "অক্ষর",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "শূন্য",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "কাজ",
+          "romenagri": "kaaja",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "শ্রেণী",
+          "romenagri": "shree_nii",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "নতুন",
+          "romenagri": "natuna",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "সর্বজনীন",
+          "romenagri": "sarbajaniina",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "ব্যক্তিগত",
+          "romenagri": "byaktigata",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "স্থির",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "আভাসী",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "যখন",
+          "romenagri": "yakhana",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "কাঠামো",
+          "romenagri": "kaathaamau",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "অন্তর্ভুক্ত",
+          "romenagri": "antarbhukta",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "পড়ো",
+          "romenagri": "pa_dau",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "লেখো",
+          "romenagri": "lekhau",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "dari": {
+      "script": "Perso-Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Dari",
+      "id": "dari",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "if",
+        "else",
+        "while",
+        "do",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "csv:lang_dari.csv",
+          "fill": true
+        }
+      ]
+    },
+    "gujarati": {
+      "script": "Gujarati",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Gujarati",
+      "id": "gujarati",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "જો",
+          "romenagri": "jau",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "નહીંતર",
+          "romenagri": "nahii_ntara",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "જ્યાંસુધી",
+          "romenagri": "jyaa_nsudhii",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "કરો",
+          "romenagri": "karau",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "માટે",
+          "romenagri": "maatee",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "તોડો",
+          "romenagri": "taudau",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "ચાલુ",
+          "romenagri": "caalu",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "પસંદગી",
+          "romenagri": "pasa_ndagii",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "સ્થિતિ",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "મૂળભૂત",
+          "romenagri": "muulabhuuta",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "પાછા",
+          "romenagri": "paachaa",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "અચલ",
+          "romenagri": "acala",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "પૂર્ણાંક",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "દશાંશ",
+          "romenagri": "dashaa_nsha",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "દ્વિગુણ",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "અક્ષર",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "શૂન્ય",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "વિધેય",
+          "romenagri": "vidheeya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "વર્ગ",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "નવું",
+          "romenagri": "navu_n",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "જાહેર",
+          "romenagri": "jaaheera",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "ખાનગી",
+          "romenagri": "khaanagii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "સ્થિર",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "આભાસી",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "જ્યારે",
+          "romenagri": "jyaaree",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "સંરચના",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "સમાવેશ",
+          "romenagri": "samaavesha",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "વાંચો",
+          "romenagri": "vaa_nco",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "લખો",
+          "romenagri": "lakho",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "hebrew": {
+      "script": "Hebrew",
+      "family": "semitic",
+      "roundtrip": "lossy-abjad",
+      "title": "Hebrew",
+      "id": "hebrew",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "אם",
+          "romenagri": "ama",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "אחרת",
+          "romenagri": "aharata",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "כלעוד",
+          "romenagri": "kalaeauda",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "עשה",
+          "romenagri": "aeshah",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "עבור",
+          "romenagri": "aebuura",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "שבור",
+          "romenagri": "shvor",
+          "c": "break",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "המשך",
+          "romenagri": "hemshech",
+          "c": "continue",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "בחר",
+          "romenagri": "bchar",
+          "c": "switch",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "מקרה",
+          "romenagri": "mikre",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ברירתמחדל",
+          "romenagri": "briratmachdal",
+          "c": "default",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "החזר",
+          "romenagri": "hahazara",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "קבוע",
+          "romenagri": "kavuа",
+          "c": "const",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "שלם",
+          "romenagri": "shalem",
+          "c": "int",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "צף",
+          "romenagri": "tsaf",
+          "c": "float",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "כפול",
+          "romenagri": "kaful",
+          "c": "double",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "תו",
+          "romenagri": "tav",
+          "c": "char",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "פונקציה",
+          "romenagri": "puunaqaeiyah",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ריק",
+          "romenagri": "rek",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "מחלקה",
+          "romenagri": "mahalaqah",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "חדש",
+          "romenagri": "chadash",
+          "c": "new",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ציבורי",
+          "romenagri": "tsiburi",
+          "c": "public",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "פרטי",
+          "romenagri": "prati",
+          "c": "private",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "סטטי",
+          "romenagri": "stati",
+          "c": "static",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "מדומה",
+          "romenagri": "medume",
+          "c": "virtual",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "כאשר",
+          "romenagri": "kaasher",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "מבנה",
+          "romenagri": "mivne",
+          "c": "struct",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "כלול",
+          "romenagri": "kalul",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "קרא",
+          "romenagri": "kra",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "כתוב",
+          "romenagri": "ktov",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "hindi": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Hindi",
+      "id": "hindi",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [],
+      "rows": [
+        {
+          "native": "यदि",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अन्यथा",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "जबतक",
+          "romenagri": "jabataka",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "करो",
+          "romenagri": "karau",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "हेतु",
+          "romenagri": "heetu",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "विराम",
+          "romenagri": "viraama",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "जारी",
+          "romenagri": "jaarii",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "चयन",
+          "romenagri": "cayana",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिति",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "मूल",
+          "romenagri": "muula",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "लौटाओ",
+          "romenagri": "lautaaau",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "अचर",
+          "romenagri": "acara",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "पूर्णांक",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "दशमलव",
+          "romenagri": "dashamalava",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "द्विगुण",
+          "romenagri": "dviguu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "अक्षर",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "शून्य",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "कृत्य",
+          "romenagri": "kr_tya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "वर्ग",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "नवीन",
+          "romenagri": "naviina",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "सार्वजनिक",
+          "romenagri": "saarvajanika",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "निजी",
+          "romenagri": "nijii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिर",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "आभासी",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "जब",
+          "romenagri": "jaba",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "संरचना",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "सम्मिलित",
+          "romenagri": "sammilita",
+          "c": "include",
+          "source": "tsv"
+        },
+        {
+          "native": "पढ़ो",
+          "romenagri": "pa_dau",
+          "c": "scanf",
+          "source": "tsv"
+        },
+        {
+          "native": "लिखो",
+          "romenagri": "likhau",
+          "c": "printf",
+          "source": "tsv"
+        }
+      ]
+    },
+    "kannada": {
+      "script": "Kannada",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Kannada",
+      "id": "kannada",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "ಆದರೆ",
+          "romenagri": "aadaree",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "ಇಲ್ಲದಿದ್ದರೆ",
+          "romenagri": "illadiddaree",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "ತನಕ",
+          "romenagri": "tanaka",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "ಮಾಡು",
+          "romenagri": "maadu",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "ಗಾಗಿ",
+          "romenagri": "gaagi",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "ನಿಲ್ಲಿಸು",
+          "romenagri": "nillisu",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "ಮುಂದುವರಿ",
+          "romenagri": "mu_nduvari",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "ಆಯ್ಕೆ",
+          "romenagri": "aayke",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "ಸ್ಥಿತಿ",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ಪೂರ್ವನಿಯೋಜಿತ",
+          "romenagri": "puurvaniyaujita",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "ಹಿಂತಿರುಗಿಸು",
+          "romenagri": "hi_ntirugisu",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ಸ್ಥಿರಾಂಕ",
+          "romenagri": "sthiraa_nka",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "ಪೂರ್ಣಾಂಕ",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "ದಶಮಾಂಶ",
+          "romenagri": "dashamaa_nsha",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "ದ್ವಿಗುಣ",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "ಅಕ್ಷರ",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "ಶೂನ್ಯ",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ಕಾರ್ಯ",
+          "romenagri": "kaarya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ವರ್ಗ",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "ಹೊಸ",
+          "romenagri": "hosa",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "ಸಾರ್ವಜನಿಕ",
+          "romenagri": "saarvajanika",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "ಖಾಸಗಿ",
+          "romenagri": "khaasagi",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ಸ್ಥಿರ",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "ವಾಸ್ತವಿಕ",
+          "romenagri": "vaastavika",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "ಯಾವಾಗ",
+          "romenagri": "yaavaaga",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ರಚನೆ",
+          "romenagri": "racane",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "ಸೇರಿಸು",
+          "romenagri": "seerisu",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ಓದು",
+          "romenagri": "oodu",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ಬರೆ",
+          "romenagri": "bare",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "kashmiri": {
+      "script": "Perso-Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Kashmiri",
+      "id": "kashmiri",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "if",
+        "else",
+        "while",
+        "do",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "csv:lang_kashmiri.csv",
+          "fill": true
+        }
+      ]
+    },
+    "malayalam": {
+      "script": "Malayalam",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Malayalam",
+      "id": "malayalam",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "എങ്കിൽ",
+          "romenagri": "e_nkila",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "അല്ലെങ്കിൽ",
+          "romenagri": "alle_nkila",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "വരെ",
+          "romenagri": "vare",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "ചെയ്യുക",
+          "romenagri": "ceyyuka",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "വേണ്ടി",
+          "romenagri": "ve_ndi",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "നിർത്തുക",
+          "romenagri": "nirttuka",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "തുടരുക",
+          "romenagri": "tudaruka",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "തിരഞ്ഞെടുപ്പ്",
+          "romenagri": "tira_nyedupp",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "അവസ്ഥ",
+          "romenagri": "avastha",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "സ്ഥിരസ്ഥിതി",
+          "romenagri": "sthirasthiti",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "മടക്കുക",
+          "romenagri": "madakkuka",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "സ്ഥിരം",
+          "romenagri": "sthira_m",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "പൂർണ്ണസംഖ്യ",
+          "romenagri": "puur_n_nasa_mkhya",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "ദശാംശം",
+          "romenagri": "dashaa_msha_m",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "ഇരട്ട",
+          "romenagri": "iratta",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "അക്ഷരം",
+          "romenagri": "ak_sara_m",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "ശൂന്യം",
+          "romenagri": "shuunya_m",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ധർമ്മം",
+          "romenagri": "dharmma_m",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "വർഗ്ഗം",
+          "romenagri": "varggsa_m",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "പുതിയ",
+          "romenagri": "putiya",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "പൊതു",
+          "romenagri": "potu",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "സ്വകാര്യ",
+          "romenagri": "svakaarya",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "സ്ഥിതം",
+          "romenagri": "sthita_m",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "മായാ",
+          "romenagri": "maayaa",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "എപ്പോൾ",
+          "romenagri": "eppaula",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ഘടന",
+          "romenagri": "ghatana",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "ഉൾപ്പെടുത്തുക",
+          "romenagri": "u_lppetuttuka",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "വായിക്കുക",
+          "romenagri": "vaayikkuka",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "എഴുതുക",
+          "romenagri": "ezhutuka",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "marathi": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Marathi",
+      "id": "marathi",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "जर",
+          "romenagri": "jara",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अन्यथा",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "पर्यंत",
+          "romenagri": "parya_nta",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "करा",
+          "romenagri": "karaa",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "साठी",
+          "romenagri": "saathii",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "थांबा",
+          "romenagri": "thaa_mbaa",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "सुरूठेवा",
+          "romenagri": "suruutheevaa",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "निवड",
+          "romenagri": "nivada",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिती",
+          "romenagri": "sthitii",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "पूर्वनिर्धारित",
+          "romenagri": "puurvanirdhaarita",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "परत",
+          "romenagri": "parata",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिरांक",
+          "romenagri": "sthiraa_nka",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "पूर्णांक",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "दशांश",
+          "romenagri": "dashaa_nsha",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "द्विगुण",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "अक्षर",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "शून्य",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "कार्य",
+          "romenagri": "kaarya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "वर्ग",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "नवीन",
+          "romenagri": "naviina",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "सार्वजनिक",
+          "romenagri": "saarvajanika",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "खाजगी",
+          "romenagri": "khaajagii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिर",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "आभासी",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "जेव्हा",
+          "romenagri": "jeevhaa",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "संरचना",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "समावेश",
+          "romenagri": "samaavesha",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "वाचा",
+          "romenagri": "vaacaa",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "लिहा",
+          "romenagri": "lihaa",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "nepali": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Nepali",
+      "id": "nepali",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "switch",
+        "case",
+        "default",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "यदि",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अन्यथा",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "जबसम्म",
+          "romenagri": "jabasamma",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "गर",
+          "romenagri": "gara",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "लागि",
+          "romenagri": "laagi",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "रोक",
+          "romenagri": "rauka",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "जारी",
+          "romenagri": "jaarii",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "चयन",
+          "romenagri": "cayana",
+          "c": "switch",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "स्थिति",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "मूल",
+          "romenagri": "muula",
+          "c": "default",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "फर्काऊ",
+          "romenagri": "pharakaauu",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "अचर",
+          "romenagri": "acara",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "पूर्णाङ्क",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "दशमलव",
+          "romenagri": "dashamalava",
+          "c": "float",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "द्विगुण",
+          "romenagri": "dviguu_na",
+          "c": "double",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "अक्षर",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "कार्य",
+          "romenagri": "kaarya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "शून्य",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "वर्ग",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "नयाँ",
+          "romenagri": "nayaa_n",
+          "c": "new",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "सार्वजनिक",
+          "romenagri": "saarvajanika",
+          "c": "public",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "निजी",
+          "romenagri": "nijii",
+          "c": "private",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "स्थिर",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "आभासी",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "जब",
+          "romenagri": "jaba",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "संरचना",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "समावेश",
+          "romenagri": "samaavesha",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पढ",
+          "romenagri": "pa_dha",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "लेख",
+          "romenagri": "lekha",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "odia": {
+      "script": "Odia",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Odia",
+      "id": "odia",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "ଯଦି",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "ଅନ୍ୟଥା",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "ଯେପର୍ଯ୍ୟନ୍ତ",
+          "romenagri": "yeeparyyanta",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "କର",
+          "romenagri": "kara",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "ପାଇଁ",
+          "romenagri": "paaii_n",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "ଭାଙ୍ଗ",
+          "romenagri": "bhaa_nga",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "ଜାରି",
+          "romenagri": "jaari",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "ବାଛ",
+          "romenagri": "baacha",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "ସ୍ଥିତି",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ପୂର୍ବନିର୍ଦ୍ଧାରିତ",
+          "romenagri": "puurbanirddhaarita",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "ଫେରାଅ",
+          "romenagri": "pheeraaa",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ଅଚଳ",
+          "romenagri": "acala",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "ପୂର୍ଣ୍ଣସଂଖ୍ୟା",
+          "romenagri": "puur_n_nasa_mkhyaa",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "ଦଶମିକ",
+          "romenagri": "dashamika",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "ଦ୍ୱିଗୁଣ",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "ଅକ୍ଷର",
+          "romenagri": "ak_sara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "ଶୂନ୍ୟ",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "କାର୍ଯ୍ୟ",
+          "romenagri": "kaaryya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ଶ୍ରେଣୀ",
+          "romenagri": "shree_nii",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "ନୂତନ",
+          "romenagri": "nuutana",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "ସର୍ବସାଧାରଣ",
+          "romenagri": "sarbasaadhaara_na",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "ବ୍ୟକ୍ତିଗତ",
+          "romenagri": "byaktigata",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ସ୍ଥିର",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "ଆଭାସୀ",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "ଯେତେବେଳେ",
+          "romenagri": "yeeteebeelee",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ସଂରଚନା",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "ସାମିଲ",
+          "romenagri": "saamila",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ପଢନ୍ତୁ",
+          "romenagri": "pa_dhantu",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ଲେଖନ୍ତୁ",
+          "romenagri": "lekhantu",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "pali": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Pali",
+      "id": "pali",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "सचे",
+          "romenagri": "sacee",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अञ्ञथा",
+          "romenagri": "anyanyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "याव",
+          "romenagri": "yaava",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "करोहि",
+          "romenagri": "karauhi",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "अत्थाय",
+          "romenagri": "atthaaya",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "भञ्ज",
+          "romenagri": "bha_nja",
+          "c": "break",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "अनुवत्त",
+          "romenagri": "anuvatta",
+          "c": "continue",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "विकप्प",
+          "romenagri": "vikappa",
+          "c": "switch",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पक्ख",
+          "romenagri": "pakkha",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "सभाव",
+          "romenagri": "sabhaava",
+          "c": "default",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पटिनिवत्त",
+          "romenagri": "patinivatta",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ध्रुव",
+          "romenagri": "dhruva",
+          "c": "const",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पूर्णङ्क",
+          "romenagri": "puur_na_nka",
+          "c": "int",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "भिन्न",
+          "romenagri": "bhinna",
+          "c": "float",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "द्विगुण",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "वण्ण",
+          "romenagri": "va_n_na",
+          "c": "char",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "किच्च",
+          "romenagri": "kicca",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "सुञ्ञ",
+          "romenagri": "su_n_na",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "वग्ग",
+          "romenagri": "vaggsa",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "नव",
+          "romenagri": "nava",
+          "c": "new",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "साधारण",
+          "romenagri": "saadhaara_na",
+          "c": "public",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "गुत्त",
+          "romenagri": "gutta",
+          "c": "private",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ठित",
+          "romenagri": "thita",
+          "c": "static",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "आभास",
+          "romenagri": "aabhaasa",
+          "c": "virtual",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "यदा",
+          "romenagri": "yadaa",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "सङ्घट",
+          "romenagri": "sa_ngha_ta",
+          "c": "struct",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "अन्तोगध",
+          "romenagri": "antogadha",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पठ",
+          "romenagri": "patha",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "लिख",
+          "romenagri": "likha",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "pashto": {
+      "script": "Perso-Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Pashto",
+      "id": "pashto",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "if",
+        "else",
+        "while",
+        "do",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "csv:lang_pashto.csv",
+          "fill": true
+        }
+      ]
+    },
+    "persian": {
+      "script": "Perso-Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Persian",
+      "id": "persian",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "اگر",
+          "romenagri": "agar",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "وگرنه",
+          "romenagri": "vagarnah",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "تازمانیکه",
+          "romenagri": "taazamaaniikah",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "انجامبده",
+          "romenagri": "anjaamabdah",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "برای",
+          "romenagri": "baraaya",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "بشکن",
+          "romenagri": "bishkan",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "ادامه",
+          "romenagri": "adaamah",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "انتخاب",
+          "romenagri": "intikhaaba",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "حالت",
+          "romenagri": "haalata",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "پیشفرض",
+          "romenagri": "piishfarza",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "بازگرد",
+          "romenagri": "baazgard",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "صحیح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "اعشاری",
+          "romenagri": "aeshaarii",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "دوگانه",
+          "romenagri": "daugaanah",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "نویسه",
+          "romenagri": "naviisah",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "تهی",
+          "romenagri": "tahii",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "تابع",
+          "romenagri": "taabe",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "رده",
+          "romenagri": "radah",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "جدید",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "عمومی",
+          "romenagri": "umuumii",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "خصوصی",
+          "romenagri": "khusuusii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ایستا",
+          "romenagri": "iistaa",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "مجازی",
+          "romenagri": "majaazii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "هنگامیکه",
+          "romenagri": "hanagaamiikah",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ساختار",
+          "romenagri": "saakhtaara",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "شامل",
+          "romenagri": "shaamila",
+          "c": "include",
+          "source": "tsv"
+        },
+        {
+          "native": "بخوان",
+          "romenagri": "bikhaan",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "بنویس",
+          "romenagri": "binaviis",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "phoenician": {
+      "script": "Phoenician",
+      "family": "semitic",
+      "roundtrip": "inventory",
+      "title": "Phoenician",
+      "id": "phoenician",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "else",
+        "while",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "𐤀𐤌",
+          "romenagri": "ama",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "אחרת",
+          "romenagri": "aharata",
+          "c": "else",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כלעוד",
+          "romenagri": "kalaeauda",
+          "c": "while",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "𐤐𐤏𐤋",
+          "romenagri": "paaela",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "עבור",
+          "romenagri": "aebuura",
+          "c": "for",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שבור",
+          "romenagri": "shvor",
+          "c": "break",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "המשך",
+          "romenagri": "hemshech",
+          "c": "continue",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "בחר",
+          "romenagri": "bchar",
+          "c": "switch",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מקרה",
+          "romenagri": "mikre",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ברירתמחדל",
+          "romenagri": "briratmachdal",
+          "c": "default",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "החזר",
+          "romenagri": "hahazara",
+          "c": "return",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "קבוע",
+          "romenagri": "kavuа",
+          "c": "const",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שלם",
+          "romenagri": "shalem",
+          "c": "int",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "צף",
+          "romenagri": "tsaf",
+          "c": "float",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כפול",
+          "romenagri": "kaful",
+          "c": "double",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "תו",
+          "romenagri": "tav",
+          "c": "char",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פונקציה",
+          "romenagri": "puunaqaeiyah",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ריק",
+          "romenagri": "rek",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מחלקה",
+          "romenagri": "mahalaqah",
+          "c": "class",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "חדש",
+          "romenagri": "chadash",
+          "c": "new",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ציבורי",
+          "romenagri": "tsiburi",
+          "c": "public",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פרטי",
+          "romenagri": "prati",
+          "c": "private",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "סטטי",
+          "romenagri": "stati",
+          "c": "static",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מדומה",
+          "romenagri": "medume",
+          "c": "virtual",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כאשר",
+          "romenagri": "kaasher",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מבנה",
+          "romenagri": "mivne",
+          "c": "struct",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כלול",
+          "romenagri": "kalul",
+          "c": "include",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "קרא",
+          "romenagri": "kra",
+          "c": "scanf",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כתוב",
+          "romenagri": "ktov",
+          "c": "printf",
+          "source": "hebrew-hub",
+          "fill": true
+        }
+      ]
+    },
+    "prakrit": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Prakrit",
+      "id": "prakrit",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "जइ",
+          "romenagri": "jai",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अण्णहा",
+          "romenagri": "a_n_nahaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "जाव",
+          "romenagri": "jaava",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "करेहि",
+          "romenagri": "kareehi",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "अत्थे",
+          "romenagri": "atthe",
+          "c": "for",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "भंग",
+          "romenagri": "bha_nga",
+          "c": "break",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "चालु",
+          "romenagri": "caalu",
+          "c": "continue",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "विअप्प",
+          "romenagri": "viappa",
+          "c": "switch",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पक्ख",
+          "romenagri": "pakkha",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "मूल",
+          "romenagri": "muula",
+          "c": "default",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "निअत्त",
+          "romenagri": "niatta",
+          "c": "return",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "धुव",
+          "romenagri": "dhuva",
+          "c": "const",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पुण्णंक",
+          "romenagri": "pu_n_na_nka",
+          "c": "int",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "भिण्ण",
+          "romenagri": "bhi_n_na",
+          "c": "float",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "दुगुण",
+          "romenagri": "dugu_na",
+          "c": "double",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "अक्खर",
+          "romenagri": "akkhara",
+          "c": "char",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "सुण्ण",
+          "romenagri": "su_n_na",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "किरिया",
+          "romenagri": "kiriyaa",
+          "c": "void",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "वग्ग",
+          "romenagri": "vagga",
+          "c": "class",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "णव",
+          "romenagri": "_nava",
+          "c": "new",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "साहत्त",
+          "romenagri": "saahatta",
+          "c": "public",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "गुत्त",
+          "romenagri": "gutta",
+          "c": "private",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ठिअ",
+          "romenagri": "thia",
+          "c": "static",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "आभास",
+          "romenagri": "aabhaasa",
+          "c": "virtual",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "जदा",
+          "romenagri": "jadaa",
+          "c": "case",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "संघड",
+          "romenagri": "sa_ngha_da",
+          "c": "struct",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "अंतोगध",
+          "romenagri": "a_ntogadha",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "पढ",
+          "romenagri": "pa_dha",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "लिह",
+          "romenagri": "liha",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "punjabi": {
+      "script": "Gurmukhi",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Punjabi",
+      "id": "punjabi",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "ਜੇ",
+          "romenagri": "jee",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "ਨਹੀਂਤਾਂ",
+          "romenagri": "nahii_ntaa_n",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "ਜਦਤੱਕ",
+          "romenagri": "jadatakka",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "ਕਰੋ",
+          "romenagri": "karau",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "ਲਈ",
+          "romenagri": "laii",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "ਰੋਕੋ",
+          "romenagri": "raukau",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "ਜਾਰੀ",
+          "romenagri": "jaarii",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "ਚੋਣ",
+          "romenagri": "cau_na",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "ਹਾਲਤ",
+          "romenagri": "haalata",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ਮੂਲ",
+          "romenagri": "muula",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "ਵਾਪਸ",
+          "romenagri": "vaapasa",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ਅਚਲ",
+          "romenagri": "acala",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "ਪੂਰਨਅੰਕ",
+          "romenagri": "puurana_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "ਦਸ਼ਮਲਵ",
+          "romenagri": "dashamalava",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "ਦੁੱਗਣਾ",
+          "romenagri": "duggsa_naa",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "ਅੱਖਰ",
+          "romenagri": "akkhara",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "ਖਾਲੀ",
+          "romenagri": "khaalii",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ਕਾਰਜ",
+          "romenagri": "kaaraja",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ਵਰਗ",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "ਨਵਾਂ",
+          "romenagri": "navaa_n",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "ਜਨਤਕ",
+          "romenagri": "janataka",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "ਨਿਜੀ",
+          "romenagri": "nijii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ਸਥਿਰ",
+          "romenagri": "sathira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "ਆਭਾਸੀ",
+          "romenagri": "aabhaasii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "ਜਦੋਂ",
+          "romenagri": "jadau_n",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ਬਣਤਰ",
+          "romenagri": "ba_natara",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "ਸ਼ਾਮਲ",
+          "romenagri": "shaamala",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ਪੜ੍ਹੋ",
+          "romenagri": "pa_rhau",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "ਲਿਖੋ",
+          "romenagri": "likhau",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "sanskrit": {
+      "script": "Devanagari",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Sanskrit",
+      "id": "sanskrit",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [],
+      "rows": [
+        {
+          "native": "यदि",
+          "romenagri": "yadi",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "अन्यथा",
+          "romenagri": "anyathaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "यावत्",
+          "romenagri": "yaavat",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "कुरु",
+          "romenagri": "kuru",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "प्रति",
+          "romenagri": "prati",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "भङ्ग",
+          "romenagri": "bha_nga",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "अनुवर्त",
+          "romenagri": "anuvarta",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "विकल्प",
+          "romenagri": "vikalpa",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "पक्ष",
+          "romenagri": "pak_sa",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "स्वभाव",
+          "romenagri": "svabhaava",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "प्रत्यागम",
+          "romenagri": "pratyaagama",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ध्रुव",
+          "romenagri": "dhruva",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "पूर्णाङ्क",
+          "romenagri": "puur_naa_nka",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "भिन्न",
+          "romenagri": "bhinna",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "द्विगुण",
+          "romenagri": "dviguu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "वर्ण",
+          "romenagri": "var_na",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "शून्य",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "क्रिया",
+          "romenagri": "kriyaa",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "वर्ग",
+          "romenagri": "varga",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "नूतन",
+          "romenagri": "nuutana",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "सार्वजनिक",
+          "romenagri": "saarvajanika",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "गुप्त",
+          "romenagri": "gupta",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "स्थिर",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "आभास",
+          "romenagri": "aabhaasa",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "यदा",
+          "romenagri": "yadaa",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "संरचना",
+          "romenagri": "sa_nracanaa",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "अन्तर्भाव",
+          "romenagri": "antarbhaava",
+          "c": "include",
+          "source": "tsv"
+        },
+        {
+          "native": "पठ",
+          "romenagri": "patha",
+          "c": "scanf",
+          "source": "tsv"
+        },
+        {
+          "native": "लिख",
+          "romenagri": "likha",
+          "c": "printf",
+          "source": "tsv"
+        }
+      ]
+    },
+    "shahmukhi": {
+      "script": "Perso-Arabic (Shahmukhi)",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Punjabi Shahmukhi",
+      "id": "shahmukhi",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "if",
+        "else",
+        "while",
+        "do",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "csv:lang_punjabi_shahmukhi.csv",
+          "fill": true
+        }
+      ]
+    },
+    "sindhi": {
+      "script": "Perso-Arabic",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Sindhi",
+      "id": "sindhi",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "if",
+        "else",
+        "while",
+        "do",
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "return",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "إذا",
+          "romenagri": "izaa",
+          "c": "if",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "وإلا",
+          "romenagri": "vaillaa",
+          "c": "else",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "طالما",
+          "romenagri": "taalamaa",
+          "c": "while",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افعل",
+          "romenagri": "ifaela",
+          "c": "do",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "لكل",
+          "romenagri": "likulli",
+          "c": "for",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اكسر",
+          "romenagri": "iksira",
+          "c": "break",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "استمر",
+          "romenagri": "istamirra",
+          "c": "continue",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "بدل",
+          "romenagri": "baddila",
+          "c": "switch",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "حالة",
+          "romenagri": "haalah",
+          "c": "case",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "default",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "أرجع",
+          "romenagri": "arjie",
+          "c": "return",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "صحيح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عائم",
+          "romenagri": "aaima",
+          "c": "float",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "مزدوج",
+          "romenagri": "muzdavija",
+          "c": "double",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "فراغ",
+          "romenagri": "faraagha",
+          "c": "void",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "دالة",
+          "romenagri": "daalah",
+          "c": "void",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "صنف",
+          "romenagri": "sanfa",
+          "c": "class",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "جديد",
+          "romenagri": "jadiida",
+          "c": "new",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عام",
+          "romenagri": "aamma",
+          "c": "public",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "خاص",
+          "romenagri": "khaassa",
+          "c": "private",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ساكن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "افتراضي",
+          "romenagri": "iftiraadii",
+          "c": "virtual",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "عندما",
+          "romenagri": "indamaa",
+          "c": "case",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "بنية",
+          "romenagri": "binyah",
+          "c": "struct",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "ضمن",
+          "romenagri": "dammina",
+          "c": "include",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اقرأ",
+          "romenagri": "iqraa",
+          "c": "scanf",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        },
+        {
+          "native": "اكتب",
+          "romenagri": "uktuba",
+          "c": "printf",
+          "source": "csv:lang_sindhi.csv",
+          "fill": true
+        }
+      ]
+    },
+    "syriac": {
+      "script": "Syriac",
+      "family": "semitic",
+      "roundtrip": "inventory",
+      "title": "Syriac",
+      "id": "syriac",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "for",
+        "break",
+        "continue",
+        "switch",
+        "case",
+        "default",
+        "const",
+        "int",
+        "float",
+        "double",
+        "char",
+        "void",
+        "void",
+        "class",
+        "new",
+        "public",
+        "private",
+        "static",
+        "virtual",
+        "case",
+        "struct",
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "ܐܢ",
+          "romenagri": "ana",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "ܐܚܪܢܐ",
+          "romenagri": "aharanaa",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "ܟܡܐ",
+          "romenagri": "kamaa",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "ܥܒܕ",
+          "romenagri": "aebada",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "עבור",
+          "romenagri": "aebuura",
+          "c": "for",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שבור",
+          "romenagri": "shvor",
+          "c": "break",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "המשך",
+          "romenagri": "hemshech",
+          "c": "continue",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "בחר",
+          "romenagri": "bchar",
+          "c": "switch",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מקרה",
+          "romenagri": "mikre",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ברירתמחדל",
+          "romenagri": "briratmachdal",
+          "c": "default",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ܦܢܐ",
+          "romenagri": "panaa",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "קבוע",
+          "romenagri": "kavuа",
+          "c": "const",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "שלם",
+          "romenagri": "shalem",
+          "c": "int",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "צף",
+          "romenagri": "tsaf",
+          "c": "float",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כפול",
+          "romenagri": "kaful",
+          "c": "double",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "תו",
+          "romenagri": "tav",
+          "c": "char",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פונקציה",
+          "romenagri": "puunaqaeiyah",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ריק",
+          "romenagri": "rek",
+          "c": "void",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מחלקה",
+          "romenagri": "mahalaqah",
+          "c": "class",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "חדש",
+          "romenagri": "chadash",
+          "c": "new",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "ציבורי",
+          "romenagri": "tsiburi",
+          "c": "public",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "פרטי",
+          "romenagri": "prati",
+          "c": "private",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "סטטי",
+          "romenagri": "stati",
+          "c": "static",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מדומה",
+          "romenagri": "medume",
+          "c": "virtual",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כאשר",
+          "romenagri": "kaasher",
+          "c": "case",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "מבנה",
+          "romenagri": "mivne",
+          "c": "struct",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כלול",
+          "romenagri": "kalul",
+          "c": "include",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "קרא",
+          "romenagri": "kra",
+          "c": "scanf",
+          "source": "hebrew-hub",
+          "fill": true
+        },
+        {
+          "native": "כתוב",
+          "romenagri": "ktov",
+          "c": "printf",
+          "source": "hebrew-hub",
+          "fill": true
+        }
+      ]
+    },
+    "tamil": {
+      "script": "Tamil",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Tamil",
+      "id": "tamil",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "எனில்",
+          "romenagri": "enila",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "இல்லையெனில்",
+          "romenagri": "illaiyenila",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "வரை",
+          "romenagri": "varai",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "செய்",
+          "romenagri": "sey",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "க்கு",
+          "romenagri": "kku",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "நிறுத்து",
+          "romenagri": "niruttu",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "தொடர்",
+          "romenagri": "todara",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "தேர்வு",
+          "romenagri": "teervu",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "நிலை",
+          "romenagri": "nilai",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "இயல்பு",
+          "romenagri": "iyalpu",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "திரும்பு",
+          "romenagri": "tirumpu",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "மாறிலி",
+          "romenagri": "maarili",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "முழு",
+          "romenagri": "muzu",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "தசம",
+          "romenagri": "tasama",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "இரட்டை",
+          "romenagri": "irattai",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "எழுத்து",
+          "romenagri": "ezuttu",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "வெறுமை",
+          "romenagri": "verumai",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "செயல்",
+          "romenagri": "seyala",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "வகுப்பு",
+          "romenagri": "vakuppu",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "புதிய",
+          "romenagri": "putiya",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "பொது",
+          "romenagri": "potu",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "தனிப்பட்ட",
+          "romenagri": "tanippatta",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "நிலையான",
+          "romenagri": "nilaiyaana",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "மெய்நிகர்",
+          "romenagri": "meynikara",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "போது",
+          "romenagri": "pootu",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "கட்டமைப்பு",
+          "romenagri": "kattamaippu",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "சேர்",
+          "romenagri": "seer",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "படி",
+          "romenagri": "pa_di",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "எழுது",
+          "romenagri": "ezhutu",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "telugu": {
+      "script": "Telugu",
+      "family": "brahmi",
+      "roundtrip": "lossless",
+      "title": "Telugu",
+      "id": "telugu",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "include",
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "ఒకవేళ",
+          "romenagri": "okaveela",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "లేకపోతే",
+          "romenagri": "leekapootee",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "వరకు",
+          "romenagri": "varaku",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "చేయి",
+          "romenagri": "ceeyi",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "కొరకు",
+          "romenagri": "koraku",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "ఆపు",
+          "romenagri": "aapu",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "కొనసాగు",
+          "romenagri": "konasaagu",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "ఎంపిక",
+          "romenagri": "empika",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "స్థితి",
+          "romenagri": "sthiti",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "అప్రమేయ",
+          "romenagri": "aprameeya",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "తిరిగి",
+          "romenagri": "tirigi",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "స్థిరరాశి",
+          "romenagri": "sthiraraashi",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "పూర్ణాంకం",
+          "romenagri": "puur_naa_nka_m",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "దశాంశం",
+          "romenagri": "dashaa_msha_m",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "ద్విగుణ",
+          "romenagri": "dvigu_na",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "అక్షరం",
+          "romenagri": "ak_sara_m",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "శూన్య",
+          "romenagri": "shuunya",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "ప్రమేయం",
+          "romenagri": "prameeya_m",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "తరగతి",
+          "romenagri": "taragati",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "కొత్త",
+          "romenagri": "kotta",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "బహిరంగ",
+          "romenagri": "bahira_nga",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "అంతరంగ",
+          "romenagri": "a_ntara_nga",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "స్థిర",
+          "romenagri": "sthira",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "మాయా",
+          "romenagri": "maayaa",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "ఎప్పుడు",
+          "romenagri": "eppudu",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "నిర్మాణం",
+          "romenagri": "nirmaa_na_m",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "చేర్చు",
+          "romenagri": "ceercu",
+          "c": "include",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "చదువు",
+          "romenagri": "caduvu",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "వ్రాయి",
+          "romenagri": "vraayi",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    },
+    "urdu": {
+      "script": "Perso-Arabic (Nastaliq)",
+      "family": "perso",
+      "roundtrip": "lossy-abjad",
+      "title": "Urdu",
+      "id": "urdu",
+      "n": 29,
+      "unique_c": 27,
+      "bar": 29,
+      "complete": true,
+      "filled_c": [
+        "scanf",
+        "printf"
+      ],
+      "rows": [
+        {
+          "native": "اگر",
+          "romenagri": "agara",
+          "c": "if",
+          "source": "tsv"
+        },
+        {
+          "native": "ورنہ",
+          "romenagri": "varnah",
+          "c": "else",
+          "source": "tsv"
+        },
+        {
+          "native": "جبتک",
+          "romenagri": "jabataka",
+          "c": "while",
+          "source": "tsv"
+        },
+        {
+          "native": "کرو",
+          "romenagri": "karau",
+          "c": "do",
+          "source": "tsv"
+        },
+        {
+          "native": "برائے",
+          "romenagri": "baraae",
+          "c": "for",
+          "source": "tsv"
+        },
+        {
+          "native": "توڑو",
+          "romenagri": "taudau",
+          "c": "break",
+          "source": "tsv"
+        },
+        {
+          "native": "جاری",
+          "romenagri": "jaarii",
+          "c": "continue",
+          "source": "tsv"
+        },
+        {
+          "native": "انتخاب",
+          "romenagri": "inatikhaaba",
+          "c": "switch",
+          "source": "tsv"
+        },
+        {
+          "native": "حالت",
+          "romenagri": "haalata",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "طےشدہ",
+          "romenagri": "taeshudah",
+          "c": "default",
+          "source": "tsv"
+        },
+        {
+          "native": "واپس",
+          "romenagri": "vaapasa",
+          "c": "return",
+          "source": "tsv"
+        },
+        {
+          "native": "ثابت",
+          "romenagri": "saabita",
+          "c": "const",
+          "source": "tsv"
+        },
+        {
+          "native": "صحیح",
+          "romenagri": "sahiiha",
+          "c": "int",
+          "source": "tsv"
+        },
+        {
+          "native": "اعشاری",
+          "romenagri": "aeshaarii",
+          "c": "float",
+          "source": "tsv"
+        },
+        {
+          "native": "دوہرا",
+          "romenagri": "dauharaa",
+          "c": "double",
+          "source": "tsv"
+        },
+        {
+          "native": "حرف",
+          "romenagri": "harfa",
+          "c": "char",
+          "source": "tsv"
+        },
+        {
+          "native": "خالی",
+          "romenagri": "khaalii",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "تابع",
+          "romenagri": "taabe",
+          "c": "void",
+          "source": "tsv"
+        },
+        {
+          "native": "جماعت",
+          "romenagri": "jamaaata",
+          "c": "class",
+          "source": "tsv"
+        },
+        {
+          "native": "نیا",
+          "romenagri": "nayaa",
+          "c": "new",
+          "source": "tsv"
+        },
+        {
+          "native": "عوامی",
+          "romenagri": "avaamii",
+          "c": "public",
+          "source": "tsv"
+        },
+        {
+          "native": "نجی",
+          "romenagri": "nijii",
+          "c": "private",
+          "source": "tsv"
+        },
+        {
+          "native": "ساکن",
+          "romenagri": "saakina",
+          "c": "static",
+          "source": "tsv"
+        },
+        {
+          "native": "مجازی",
+          "romenagri": "majaazii",
+          "c": "virtual",
+          "source": "tsv"
+        },
+        {
+          "native": "جب",
+          "romenagri": "jaba",
+          "c": "case",
+          "source": "tsv"
+        },
+        {
+          "native": "ساخت",
+          "romenagri": "saakhta",
+          "c": "struct",
+          "source": "tsv"
+        },
+        {
+          "native": "شامل",
+          "romenagri": "shaamila",
+          "c": "include",
+          "source": "tsv"
+        },
+        {
+          "native": "پڑھو",
+          "romenagri": "pa_rhau",
+          "c": "scanf",
+          "source": "fill-literary",
+          "fill": true
+        },
+        {
+          "native": "لکھو",
+          "romenagri": "likhau",
+          "c": "printf",
+          "source": "fill-literary",
+          "fill": true
+        }
+      ]
+    }
+  }
+}

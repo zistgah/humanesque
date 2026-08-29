@@ -1,0 +1,73 @@
+/* GATE CS §2 Digital Logic
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION band(a, b)
+    RETURN a * b
+END
+FUNCTION bor(a, b)
+    IF a + b > 0
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION bnot(a)
+    RETURN 1 - a
+END
+FUNCTION bxor(a, b)
+    RETURN (a + b) % 2
+END
+FUNCTION half_sum(a, b)
+    RETURN bxor(a, b)
+END
+FUNCTION half_carry(a, b)
+    RETURN band(a, b)
+END
+FUNCTION full_sum(a, b, cin)
+    RETURN bxor(bxor(a, b), cin)
+END
+FUNCTION mux2(s, d0, d1)
+    IF s == 0
+        RETURN d0
+    END
+    RETURN d1
+END
+FUNCTION twos(n, bits)
+    m = 1
+    i = 0
+    WHILE i < bits
+        m = m * 2
+        i = i + 1
+    END
+    RETURN (m - n) % m
+END
+FUNCTION sr_next(s, r, q)
+    IF s == 1 AND r == 0
+        RETURN 1
+    END
+    IF s == 0 AND r == 1
+        RETURN 0
+    END
+    RETURN q
+END
+FUNCTION main()
+    t = 1
+    IF half_sum(1, 1) != 0
+        t = 0
+    END
+    IF half_carry(1, 1) != 1
+        t = 0
+    END
+    IF full_sum(1, 1, 1) != 1
+        t = 0
+    END
+    IF mux2(1, 0, 1) != 1
+        t = 0
+    END
+    IF twos(1, 4) != 15
+        t = 0
+    END
+    IF sr_next(1, 0, 0) != 1
+        t = 0
+    END
+    RETURN t
+END

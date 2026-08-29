@@ -1,0 +1,521 @@
+{
+ "source": "retrieved/romenagri/src/acii.h",
+ "invented": false,
+ "rows": [
+  {
+   "romenagri": "",
+   "acii_bytes": [
+    239,
+    66
+   ]
+  },
+  {
+   "romenagri": "__",
+   "acii_bytes": [
+    95
+   ]
+  },
+  {
+   "romenagri": "_a",
+   "acii_bytes": [
+    164
+   ]
+  },
+  {
+   "romenagri": "^a",
+   "acii_bytes": []
+  },
+  {
+   "romenagri": "_aa",
+   "acii_bytes": [
+    165
+   ]
+  },
+  {
+   "romenagri": "^aa",
+   "acii_bytes": [
+    218
+   ]
+  },
+  {
+   "romenagri": "_i",
+   "acii_bytes": [
+    166
+   ]
+  },
+  {
+   "romenagri": "^i",
+   "acii_bytes": [
+    219
+   ]
+  },
+  {
+   "romenagri": "_ee",
+   "acii_bytes": [
+    167
+   ]
+  },
+  {
+   "romenagri": "^ee",
+   "acii_bytes": [
+    220
+   ]
+  },
+  {
+   "romenagri": "_u",
+   "acii_bytes": [
+    168
+   ]
+  },
+  {
+   "romenagri": "^u",
+   "acii_bytes": [
+    221
+   ]
+  },
+  {
+   "romenagri": "_oo",
+   "acii_bytes": [
+    169
+   ]
+  },
+  {
+   "romenagri": "^oo",
+   "acii_bytes": [
+    222
+   ]
+  },
+  {
+   "romenagri": "_ri",
+   "acii_bytes": [
+    170
+   ]
+  },
+  {
+   "romenagri": "^_ri",
+   "acii_bytes": [
+    223
+   ]
+  },
+  {
+   "romenagri": "_ae",
+   "acii_bytes": [
+    171
+   ]
+  },
+  {
+   "romenagri": "^ae",
+   "acii_bytes": [
+    224
+   ]
+  },
+  {
+   "romenagri": "_aee",
+   "acii_bytes": [
+    172
+   ]
+  },
+  {
+   "romenagri": "^aee",
+   "acii_bytes": [
+    225
+   ]
+  },
+  {
+   "romenagri": "_ai",
+   "acii_bytes": [
+    173
+   ]
+  },
+  {
+   "romenagri": "^ai",
+   "acii_bytes": [
+    226
+   ]
+  },
+  {
+   "romenagri": "_ow",
+   "acii_bytes": [
+    175
+   ]
+  },
+  {
+   "romenagri": "^ow",
+   "acii_bytes": [
+    228
+   ]
+  },
+  {
+   "romenagri": "_oa",
+   "acii_bytes": [
+    176
+   ]
+  },
+  {
+   "romenagri": "^oa",
+   "acii_bytes": [
+    229
+   ]
+  },
+  {
+   "romenagri": "_ou",
+   "acii_bytes": [
+    177
+   ]
+  },
+  {
+   "romenagri": "^ou",
+   "acii_bytes": [
+    230
+   ]
+  },
+  {
+   "romenagri": "_au",
+   "acii_bytes": [
+    178
+   ]
+  },
+  {
+   "romenagri": "^au",
+   "acii_bytes": [
+    231
+   ]
+  },
+  {
+   "romenagri": "_ao",
+   "acii_bytes": [
+    174
+   ]
+  },
+  {
+   "romenagri": "^ao",
+   "acii_bytes": [
+    227
+   ]
+  },
+  {
+   "romenagri": "ka",
+   "acii_bytes": [
+    179
+   ]
+  },
+  {
+   "romenagri": "kha",
+   "acii_bytes": [
+    180
+   ]
+  },
+  {
+   "romenagri": "ga",
+   "acii_bytes": [
+    181
+   ]
+  },
+  {
+   "romenagri": "gha",
+   "acii_bytes": [
+    182
+   ]
+  },
+  {
+   "romenagri": "_nga",
+   "acii_bytes": [
+    183
+   ]
+  },
+  {
+   "romenagri": "cha",
+   "acii_bytes": [
+    184
+   ]
+  },
+  {
+   "romenagri": "chha",
+   "acii_bytes": [
+    185
+   ]
+  },
+  {
+   "romenagri": "ja",
+   "acii_bytes": [
+    186
+   ]
+  },
+  {
+   "romenagri": "jha",
+   "acii_bytes": [
+    187
+   ]
+  },
+  {
+   "romenagri": "_yna",
+   "acii_bytes": [
+    188
+   ]
+  },
+  {
+   "romenagri": "ta",
+   "acii_bytes": [
+    189
+   ]
+  },
+  {
+   "romenagri": "tha",
+   "acii_bytes": [
+    190
+   ]
+  },
+  {
+   "romenagri": "da",
+   "acii_bytes": [
+    191
+   ]
+  },
+  {
+   "romenagri": "dha",
+   "acii_bytes": [
+    192
+   ]
+  },
+  {
+   "romenagri": "_nna",
+   "acii_bytes": [
+    193
+   ]
+  },
+  {
+   "romenagri": "_ta",
+   "acii_bytes": [
+    194
+   ]
+  },
+  {
+   "romenagri": "_tha",
+   "acii_bytes": [
+    195
+   ]
+  },
+  {
+   "romenagri": "_da",
+   "acii_bytes": [
+    196
+   ]
+  },
+  {
+   "romenagri": "_dha",
+   "acii_bytes": [
+    197
+   ]
+  },
+  {
+   "romenagri": "na",
+   "acii_bytes": [
+    198
+   ]
+  },
+  {
+   "romenagri": "pa",
+   "acii_bytes": [
+    200
+   ]
+  },
+  {
+   "romenagri": "pha",
+   "acii_bytes": [
+    201
+   ]
+  },
+  {
+   "romenagri": "ba",
+   "acii_bytes": [
+    202
+   ]
+  },
+  {
+   "romenagri": "bha",
+   "acii_bytes": [
+    203
+   ]
+  },
+  {
+   "romenagri": "ma",
+   "acii_bytes": [
+    204
+   ]
+  },
+  {
+   "romenagri": "ya",
+   "acii_bytes": [
+    205
+   ]
+  },
+  {
+   "romenagri": "ra",
+   "acii_bytes": [
+    207
+   ]
+  },
+  {
+   "romenagri": "_rra",
+   "acii_bytes": [
+    208
+   ]
+  },
+  {
+   "romenagri": "la",
+   "acii_bytes": [
+    209
+   ]
+  },
+  {
+   "romenagri": "wa",
+   "acii_bytes": [
+    212
+   ]
+  },
+  {
+   "romenagri": "lvra",
+   "acii_bytes": [
+    210
+   ]
+  },
+  {
+   "romenagri": "sha",
+   "acii_bytes": [
+    213
+   ]
+  },
+  {
+   "romenagri": "xa",
+   "acii_bytes": [
+    214
+   ]
+  },
+  {
+   "romenagri": "sa",
+   "acii_bytes": [
+    215
+   ]
+  },
+  {
+   "romenagri": "_ha",
+   "acii_bytes": [
+    216
+   ]
+  },
+  {
+   "romenagri": "_m",
+   "acii_bytes": [
+    162
+   ]
+  },
+  {
+   "romenagri": "_hh",
+   "acii_bytes": [
+    163
+   ]
+  },
+  {
+   "romenagri": "_na",
+   "acii_bytes": [
+    161
+   ]
+  },
+  {
+   "romenagri": "^za",
+   "acii_bytes": [
+    233
+   ]
+  },
+  {
+   "romenagri": "|",
+   "acii_bytes": [
+    234
+   ]
+  },
+  {
+   "romenagri": "^",
+   "acii_bytes": [
+    232
+   ]
+  },
+  {
+   "romenagri": "_rda",
+   "acii_bytes": [
+    191,
+    233
+   ]
+  },
+  {
+   "romenagri": "_rdha",
+   "acii_bytes": [
+    192,
+    233
+   ]
+  },
+  {
+   "romenagri": "^ra",
+   "acii_bytes": [
+    232,
+    207
+   ]
+  },
+  {
+   "romenagri": "r",
+   "acii_bytes": [
+    207,
+    232
+   ]
+  },
+  {
+   "romenagri": "kxa",
+   "acii_bytes": [
+    179,
+    232,
+    214
+   ]
+  },
+  {
+   "romenagri": "_tra",
+   "acii_bytes": [
+    194,
+    232,
+    207
+   ]
+  },
+  {
+   "romenagri": "j_yna",
+   "acii_bytes": [
+    186,
+    232,
+    188
+   ]
+  },
+  {
+   "romenagri": "shra",
+   "acii_bytes": [
+    213,
+    232,
+    207
+   ]
+  },
+  {
+   "romenagri": "_jza",
+   "acii_bytes": [
+    128
+   ]
+  },
+  {
+   "romenagri": "_nza",
+   "acii_bytes": [
+    199
+   ]
+  },
+  {
+   "romenagri": "_3",
+   "acii_bytes": [
+    235
+   ]
+  }
+ ]
+}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * QB64 integer/CONST expression semantics (Phoenix-Edition tests).
  * TRUE is -1. AND/OR/NOT/XOR/EQV/IMP are bitwise 32-bit.

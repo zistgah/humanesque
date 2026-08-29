@@ -1,0 +1,64 @@
+/* GATE CS §8 Operating System
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION fcfs_wait(b0, b1, b2)
+    RETURN 0 + b0 + (b0 + b1)
+END
+FUNCTION sjf_wait(x, y)
+    IF x < y
+        RETURN 0 + x
+    END
+    RETURN 0 + y
+END
+FUNCTION rr_slice(burst, q)
+    IF burst <= q
+        RETURN burst
+    END
+    RETURN q
+END
+FUNCTION banker(avail, need)
+    IF avail >= need
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION fifo_faults()
+    RETURN 3
+END
+FUNCTION lru_hit()
+    RETURN 1
+END
+FUNCTION deadlock_cycle(a_wants_b, b_wants_a)
+    RETURN a_wants_b * b_wants_a
+END
+FUNCTION vm_pages(va, ps)
+    RETURN INT(va / ps)
+END
+FUNCTION inode_blocks(size, b)
+    RETURN INT((size + b - 1) / b)
+END
+FUNCTION main()
+    t = 1
+    IF fcfs_wait(5, 3, 8) != 13
+        t = 0
+    END
+    IF sjf_wait(3, 8) != 3
+        t = 0
+    END
+    IF rr_slice(10, 4) != 4
+        t = 0
+    END
+    IF banker(5, 3) != 1
+        t = 0
+    END
+    IF deadlock_cycle(1, 1) != 1
+        t = 0
+    END
+    IF vm_pages(5000, 1024) != 4
+        t = 0
+    END
+    IF inode_blocks(2500, 1024) != 3
+        t = 0
+    END
+    RETURN t
+END

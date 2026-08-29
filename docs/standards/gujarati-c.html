@@ -1,28 +1,96 @@
 <!DOCTYPE html>
-<html lang="und">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>gujarati guru / C — standard</title>
+<html lang="gu">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gujarati गुरु / C — standard</title>
 <link rel="stylesheet" href="../site.css"/>
-<link rel="stylesheet" href="../skins/academic.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
 </head>
 <body class="site">
-<header class="site-head"><strong>PANINI</strong>
-<nav><a href="index.html">Standards</a> <a href="../nb.html">Notebook</a> <a href="CONTRIBUTE.html">Submit</a></nav>
-</header>
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
 <main class="site-main">
-<h1>gujarati · गुरु · C</h1>
-<p>Released lineage: Hindawi 15 August 2004. This file is the first filled standard for this pair in this tree.</p>
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Gujarati · गुरु · C</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Gujarati गुरु is still a C program.</p>
+  
+  <p>
+    <a class="btn" href="../nb.html?lang=gujarati&demo=langs/gujarati_guru.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=gujarati">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <span>C</span> · <a href="gujarati-cpp.html">C++</a> · <a href="gujarati-basic.html">BASIC</a> · <a href="gujarati-asm.html">Assembly</a> · <a href="gujarati-lex.html">lex</a> · <a href="gujarati-yacc.html">yacc</a> · <a href="gujarati-logo.html">Logo</a></p>
+  <h2>1–10 · clauses</h2>
+  <ol lang="en"><li>This document is the standard of Gujarati गुरु / C.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>29 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">જો</td><td><code>jau</code></td><td><code>if</code></td></tr><tr><td dir="auto">નહીંતર</td><td><code>nahii_ntara</code></td><td><code>else</code></td></tr><tr><td dir="auto">જ્યાંસુધી</td><td><code>jyaa_nsudhii</code></td><td><code>while</code></td></tr><tr><td dir="auto">કરો</td><td><code>karau</code></td><td><code>do</code></td></tr><tr><td dir="auto">માટે</td><td><code>maatee</code></td><td><code>for</code></td></tr><tr><td dir="auto">તોડો</td><td><code>taudau</code></td><td><code>break</code></td></tr><tr><td dir="auto">ચાલુ</td><td><code>caalu</code></td><td><code>continue</code></td></tr><tr><td dir="auto">પસંદગી</td><td><code>pasa_ndagii</code></td><td><code>switch</code></td></tr><tr><td dir="auto">સ્થિતિ</td><td><code>sthiti</code></td><td><code>case</code></td></tr><tr><td dir="auto">મૂળભૂત</td><td><code>muulabhuuta</code></td><td><code>default</code></td></tr><tr><td dir="auto">પાછા</td><td><code>paachaa</code></td><td><code>return</code></td></tr><tr><td dir="auto">અચલ</td><td><code>acala</code></td><td><code>const</code></td></tr><tr><td dir="auto">પૂર્ણાંક</td><td><code>puur_naa_nka</code></td><td><code>int</code></td></tr><tr><td dir="auto">દશાંશ</td><td><code>dashaa_nsha</code></td><td><code>float</code></td></tr><tr><td dir="auto">દ્વિગુણ</td><td><code>dvigu_na</code></td><td><code>double</code></td></tr><tr><td dir="auto">અક્ષર</td><td><code>ak_sara</code></td><td><code>char</code></td></tr><tr><td dir="auto">શૂન્ય</td><td><code>shuunya</code></td><td><code>void</code></td></tr><tr><td dir="auto">વિધેય</td><td><code>vidheeya</code></td><td><code>void</code></td></tr><tr><td dir="auto">વર્ગ</td><td><code>varga</code></td><td><code>class</code></td></tr><tr><td dir="auto">નવું</td><td><code>navu_n</code></td><td><code>new</code></td></tr><tr><td dir="auto">જાહેર</td><td><code>jaaheera</code></td><td><code>public</code></td></tr><tr><td dir="auto">ખાનગી</td><td><code>khaanagii</code></td><td><code>private</code></td></tr><tr><td dir="auto">સ્થિર</td><td><code>sthira</code></td><td><code>static</code></td></tr><tr><td dir="auto">આભાસી</td><td><code>aabhaasii</code></td><td><code>virtual</code></td></tr><tr><td dir="auto">જ્યારે</td><td><code>jyaaree</code></td><td><code>case</code></td></tr><tr><td dir="auto">સંરચના</td><td><code>sa_nracanaa</code></td><td><code>struct</code></td></tr><tr><td dir="auto">સમાવેશ</td><td><code>samaavesha</code></td><td><code>include</code></td></tr><tr><td dir="auto">વાંચો</td><td><code>vaa_nco</code></td><td><code>scanf</code></td></tr><tr><td dir="auto">લખો</td><td><code>lakho</code></td><td><code>printf</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/gujarati_guru.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><શૈલી ગુરુ>
+#સમાવેશ <માનકપન.સ>
 
-<h2>1–10 · clauses</h2>
-<ol><li>यह दस्तावेज़ gujarati guru / C का मानक है।</li><li>यह दस्तावेज़ अंग्रेज़ी ISO पाठ का अनुवाद नहीं है।</li><li>इस फ़ाइल की कुंजी-सारणी आधिकारिक है।</li><li>संकलन पथ है: यूनिकोड, फिर ACII, फिर रोमननागरी, फिर शैली लेक्स, फिर मेज़बान।</li><li>इस मानक में लिखा कार्यक्रम उसी शैली के किसी अन्य प्रकाशित मानक में देखा जा सकता है।</li><li>देखना संकलन की पहचान नहीं बदलता।</li><li>नामकोश के द्वारा पहचानकर्ता दिखते हैं। संकलन मूल पहचानकर्ता लेता है।</li><li>कुंजी-सारणी के अंतर सूचीबद्ध हैं। स्मृति से नहीं भरे गए।</li><li>बोली फ़ाइलें ध्वनि, शब्द-चयन, या वाक्य-रचना पंक्तियाँ जोड़ सकती हैं। स्वीकृति से पहले वे इस सारणी की जगह नहीं लेतीं।</li><li>सुधार deposits/csv और deposits/standards में CSV के रूप में भेजें।</li></ol>
-<ol><li>This document is the standard of gujarati guru / C.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri, then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
-<h2>Keyword table (normative)</h2>
-<p>Source: retrieved <code>langs/gujarati_c.tsv</code>. Not invented this turn.</p>
-<table><thead><tr><th>native</th><th>Romenagri</th><th>host C</th></tr></thead>
-<tbody><tr><td>જો</td><td><code>jau</code></td><td><code>if</code></td></tr><tr><td>નહીંતર</td><td><code>nahii_ntara</code></td><td><code>else</code></td></tr><tr><td>જ્યાંસુધી</td><td><code>jyaa_nsudhii</code></td><td><code>while</code></td></tr><tr><td>કરો</td><td><code>karau</code></td><td><code>do</code></td></tr><tr><td>માટે</td><td><code>maatee</code></td><td><code>for</code></td></tr><tr><td>તોડો</td><td><code>taudau</code></td><td><code>break</code></td></tr><tr><td>ચાલુ</td><td><code>caalu</code></td><td><code>continue</code></td></tr><tr><td>પસંદગી</td><td><code>pasa_ndagii</code></td><td><code>switch</code></td></tr><tr><td>સ્થિતિ</td><td><code>sthiti</code></td><td><code>case</code></td></tr><tr><td>મૂળભૂત</td><td><code>muulabhuuta</code></td><td><code>default</code></td></tr><tr><td>પાછા</td><td><code>paachaa</code></td><td><code>return</code></td></tr><tr><td>અચલ</td><td><code>acala</code></td><td><code>const</code></td></tr><tr><td>પૂર્ણાંક</td><td><code>puur_naa_nka</code></td><td><code>int</code></td></tr><tr><td>દશાંશ</td><td><code>dashaa_nsha</code></td><td><code>float</code></td></tr><tr><td>દ્વિગુણ</td><td><code>dvigu_na</code></td><td><code>double</code></td></tr><tr><td>અક્ષર</td><td><code>ak_sara</code></td><td><code>char</code></td></tr><tr><td>શૂન્ય</td><td><code>shuunya</code></td><td><code>void</code></td></tr><tr><td>વિધેય</td><td><code>vidheeya</code></td><td><code>void</code></td></tr><tr><td>વર્ગ</td><td><code>varga</code></td><td><code>class</code></td></tr><tr><td>નવું</td><td><code>navu_n</code></td><td><code>new</code></td></tr><tr><td>જાહેર</td><td><code>jaaheera</code></td><td><code>public</code></td></tr><tr><td>ખાનગી</td><td><code>khaanagii</code></td><td><code>private</code></td></tr><tr><td>સ્થિર</td><td><code>sthira</code></td><td><code>static</code></td></tr><tr><td>આભાસી</td><td><code>aabhaasii</code></td><td><code>virtual</code></td></tr><tr><td>જ્યારે</td><td><code>jyaaree</code></td><td><code>case</code></td></tr><tr><td>સંરચના</td><td><code>sa_nracanaa</code></td><td><code>struct</code></td></tr></tbody></table>
-<h2>Gaps toward C17 keywords</h2>
-<p><code>auto</code>, <code>enum</code>, <code>extern</code>, <code>goto</code>, <code>inline</code>, <code>long</code>, <code>register</code>, <code>restrict</code>, <code>short</code>, <code>signed</code>, <code>sizeof</code>, <code>typedef</code>, <code>union</code>, <code>unsigned</code>, <code>volatile</code>, <code>_Bool</code>, <code>_Complex</code>, <code>_Generic</code>, <code>_Atomic</code>, <code>_Alignas</code>, <code>_Alignof</code>, <code>_Noreturn</code>, <code>_Static_assert</code>, <code>_Thread_local</code></p>
-<p>C17 have 19 / 43. Extra host tokens in TSV: class, new, private, public, virtual</p>
-<p class="fine">View this program in another standard: notebook → View as. Identifiers use the dictionary. Compilation identity does not follow the view.</p>
-<p class="fine"><a href="CONTRIBUTE.html">Correct this table</a></p>
-</main></body></html>
+પૂર્ણાંક મુખ્ય()
+{
+	અક્ષર અ[૮૦];
+	પૂર્ણાંક ક;
+	મ_લિખો("आपका नाम क्या है?\n");
+	મ_પૂછો("%s",અ);
+	મ_લિખો("नमस्ते %s.\n",અ);
+	ક્રમ(ક=1; ક<=10; ક++)
+		મ_લિખો("%d\n",ક);
+	મ_પૂછો("%s",અ);
+	વાપસ 0;
+}</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host C. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is C.</p>
+  <pre translate="no">#include <stdio.h>
+
+int main()
+{
+	char _a[८०];
+	int ka;
+	printf("आपका नाम क्या है?\n");
+	scanf("%s",_a);
+	printf("नमस्ते %s.\n",_a);
+	for(ka=1; ka<=10; ka++)
+		printf("%d\n",ka);
+	scanf("%s",_a);
+	return 0;
+}</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">#include <maanakapana.sa>
+
+int mukhya()
+{
+	char _a[८०];
+	int ka;
+	ma_likhoa("आपका नाम क्या है?\n");
+	ma_poochhoa("%s",_a);
+	ma_likhoa("नमस्ते %s.\n",_a);
+	krama(ka=1; ka<=10; ka++)
+		ma_likhoa("%d\n",ka);
+	ma_poochhoa("%s",_a);
+	waapasa 0;
+}</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><span>C</span> · <a href="gujarati-cpp.html">C++</a> · <a href="gujarati-basic.html">BASIC</a> · <a href="gujarati-asm.html">Assembly</a> · <a href="gujarati-lex.html">lex</a> · <a href="gujarati-yacc.html">yacc</a> · <a href="gujarati-logo.html">Logo</a></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Gujarati C.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

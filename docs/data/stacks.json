@@ -1,0 +1,1154 @@
+{
+  "stacks": [
+    [
+      "hindi",
+      "Hindi",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "sanskrit",
+      "Sanskrit",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "assamese",
+      "Assamese",
+      "brahmi",
+      "bengali",
+      false,
+      true
+    ],
+    [
+      "bengali",
+      "Bengali",
+      "brahmi",
+      "bengali",
+      false,
+      true
+    ],
+    [
+      "bodo",
+      "Bodo",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "dogri",
+      "Dogri",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "gujarati",
+      "Gujarati",
+      "brahmi",
+      "gujarati",
+      false,
+      true
+    ],
+    [
+      "kannada",
+      "Kannada",
+      "brahmi",
+      "kannada",
+      false,
+      true
+    ],
+    [
+      "kashmiri",
+      "Kashmiri",
+      "perso",
+      null,
+      true,
+      true
+    ],
+    [
+      "konkani",
+      "Konkani",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "maithili",
+      "Maithili",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "malayalam",
+      "Malayalam",
+      "brahmi",
+      "malayalam",
+      false,
+      true
+    ],
+    [
+      "manipuri",
+      "Manipuri (Meitei)",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "marathi",
+      "Marathi",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "nepali",
+      "Nepali",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "odia",
+      "Odia",
+      "brahmi",
+      "odia",
+      false,
+      true
+    ],
+    [
+      "punjabi",
+      "Punjabi (Gurmukhi)",
+      "brahmi",
+      "gurmukhi",
+      false,
+      true
+    ],
+    [
+      "shahmukhi",
+      "Punjabi (Shahmukhi)",
+      "perso",
+      null,
+      true,
+      true
+    ],
+    [
+      "santali",
+      "Santali",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "sindhi_deva",
+      "Sindhi (Devanagari)",
+      "brahmi",
+      "devanagari",
+      false,
+      true
+    ],
+    [
+      "sindhi",
+      "Sindhi (Perso-Arabic)",
+      "perso",
+      null,
+      true,
+      true
+    ],
+    [
+      "tamil",
+      "Tamil",
+      "brahmi",
+      "tamil",
+      false,
+      true
+    ],
+    [
+      "telugu",
+      "Telugu",
+      "brahmi",
+      "telugu",
+      false,
+      true
+    ],
+    [
+      "urdu",
+      "Urdu",
+      "perso",
+      null,
+      true,
+      true
+    ],
+    [
+      "arabic",
+      "Standard Arabic",
+      "perso",
+      null,
+      true,
+      false
+    ],
+    [
+      "persian",
+      "Standard Farsi",
+      "perso",
+      null,
+      true,
+      false
+    ],
+    [
+      "dari",
+      "Dari",
+      "perso",
+      null,
+      true,
+      false
+    ],
+    [
+      "pashto",
+      "Pashto",
+      "perso",
+      null,
+      true,
+      false
+    ]
+  ],
+  "pages": [
+    {
+      "id": "hindi",
+      "title": "Hindi",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "hindi-guru.html",
+      "demo": "langs/hindi_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "hindi",
+      "title": "Hindi",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "hindi-shraeni.html",
+      "demo": "langs/hindi_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "hindi",
+      "title": "Hindi",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "hindi-praatha.html",
+      "demo": "langs/hindi_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "sanskrit",
+      "title": "Sanskrit",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "sanskrit-guru.html",
+      "demo": "langs/sanskrit_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "sanskrit",
+      "title": "Sanskrit",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "sanskrit-shraeni.html",
+      "demo": "langs/sanskrit_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "sanskrit",
+      "title": "Sanskrit",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "sanskrit-praatha.html",
+      "demo": "langs/sanskrit_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "assamese",
+      "title": "Assamese",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "assamese-guru.html",
+      "demo": "langs/assamese_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "assamese",
+      "title": "Assamese",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "assamese-shraeni.html",
+      "demo": "langs/assamese_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "assamese",
+      "title": "Assamese",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "assamese-praatha.html",
+      "demo": "langs/assamese_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "bengali",
+      "title": "Bengali",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "bengali-guru.html",
+      "demo": "langs/bengali_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "bengali",
+      "title": "Bengali",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "bengali-shraeni.html",
+      "demo": "langs/bengali_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "bengali",
+      "title": "Bengali",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "bengali-praatha.html",
+      "demo": "langs/bengali_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "bodo",
+      "title": "Bodo",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "bodo-guru.html",
+      "demo": "langs/bodo_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "bodo",
+      "title": "Bodo",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "bodo-shraeni.html",
+      "demo": "langs/bodo_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "bodo",
+      "title": "Bodo",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "bodo-praatha.html",
+      "demo": "langs/bodo_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "dogri",
+      "title": "Dogri",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "dogri-guru.html",
+      "demo": "langs/dogri_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "dogri",
+      "title": "Dogri",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "dogri-shraeni.html",
+      "demo": "langs/dogri_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "dogri",
+      "title": "Dogri",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "dogri-praatha.html",
+      "demo": "langs/dogri_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "gujarati",
+      "title": "Gujarati",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "gujarati-guru.html",
+      "demo": "langs/gujarati_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "gujarati",
+      "title": "Gujarati",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "gujarati-shraeni.html",
+      "demo": "langs/gujarati_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "gujarati",
+      "title": "Gujarati",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "gujarati-praatha.html",
+      "demo": "langs/gujarati_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "kannada",
+      "title": "Kannada",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "kannada-guru.html",
+      "demo": "langs/kannada_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "kannada",
+      "title": "Kannada",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "kannada-shraeni.html",
+      "demo": "langs/kannada_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "kannada",
+      "title": "Kannada",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "kannada-praatha.html",
+      "demo": "langs/kannada_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "kashmiri",
+      "title": "Kashmiri",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": true,
+      "href": "kashmiri-guru.html",
+      "demo": "langs/kashmiri_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "kashmiri",
+      "title": "Kashmiri",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": true,
+      "href": "kashmiri-shraeni.html",
+      "demo": "langs/kashmiri_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "kashmiri",
+      "title": "Kashmiri",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": true,
+      "href": "kashmiri-praatha.html",
+      "demo": "langs/kashmiri_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "konkani",
+      "title": "Konkani",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "konkani-guru.html",
+      "demo": "langs/konkani_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "konkani",
+      "title": "Konkani",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "konkani-shraeni.html",
+      "demo": "langs/konkani_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "konkani",
+      "title": "Konkani",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "konkani-praatha.html",
+      "demo": "langs/konkani_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "maithili",
+      "title": "Maithili",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "maithili-guru.html",
+      "demo": "langs/maithili_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "maithili",
+      "title": "Maithili",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "maithili-shraeni.html",
+      "demo": "langs/maithili_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "maithili",
+      "title": "Maithili",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "maithili-praatha.html",
+      "demo": "langs/maithili_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "malayalam",
+      "title": "Malayalam",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "malayalam-guru.html",
+      "demo": "langs/malayalam_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "malayalam",
+      "title": "Malayalam",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "malayalam-shraeni.html",
+      "demo": "langs/malayalam_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "malayalam",
+      "title": "Malayalam",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "malayalam-praatha.html",
+      "demo": "langs/malayalam_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "manipuri",
+      "title": "Manipuri (Meitei)",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "manipuri-guru.html",
+      "demo": "langs/manipuri_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "manipuri",
+      "title": "Manipuri (Meitei)",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "manipuri-shraeni.html",
+      "demo": "langs/manipuri_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "manipuri",
+      "title": "Manipuri (Meitei)",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "manipuri-praatha.html",
+      "demo": "langs/manipuri_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "marathi",
+      "title": "Marathi",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "marathi-guru.html",
+      "demo": "langs/marathi_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "marathi",
+      "title": "Marathi",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "marathi-shraeni.html",
+      "demo": "langs/marathi_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "marathi",
+      "title": "Marathi",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "marathi-praatha.html",
+      "demo": "langs/marathi_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "nepali",
+      "title": "Nepali",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "nepali-guru.html",
+      "demo": "langs/nepali_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "nepali",
+      "title": "Nepali",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "nepali-shraeni.html",
+      "demo": "langs/nepali_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "nepali",
+      "title": "Nepali",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "nepali-praatha.html",
+      "demo": "langs/nepali_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "odia",
+      "title": "Odia",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "odia-guru.html",
+      "demo": "langs/odia_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "odia",
+      "title": "Odia",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "odia-shraeni.html",
+      "demo": "langs/odia_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "odia",
+      "title": "Odia",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "odia-praatha.html",
+      "demo": "langs/odia_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "punjabi",
+      "title": "Punjabi (Gurmukhi)",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "punjabi-guru.html",
+      "demo": "langs/punjabi_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "punjabi",
+      "title": "Punjabi (Gurmukhi)",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "punjabi-shraeni.html",
+      "demo": "langs/punjabi_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "punjabi",
+      "title": "Punjabi (Gurmukhi)",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "punjabi-praatha.html",
+      "demo": "langs/punjabi_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "shahmukhi",
+      "title": "Punjabi (Shahmukhi)",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": true,
+      "href": "shahmukhi-guru.html",
+      "demo": "langs/shahmukhi_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "shahmukhi",
+      "title": "Punjabi (Shahmukhi)",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": true,
+      "href": "shahmukhi-shraeni.html",
+      "demo": "langs/shahmukhi_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "shahmukhi",
+      "title": "Punjabi (Shahmukhi)",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": true,
+      "href": "shahmukhi-praatha.html",
+      "demo": "langs/shahmukhi_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "santali",
+      "title": "Santali",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "santali-guru.html",
+      "demo": "langs/santali_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "santali",
+      "title": "Santali",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "santali-shraeni.html",
+      "demo": "langs/santali_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "santali",
+      "title": "Santali",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "santali-praatha.html",
+      "demo": "langs/santali_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "sindhi_deva",
+      "title": "Sindhi (Devanagari)",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "sindhi_deva-guru.html",
+      "demo": "langs/sindhi_deva_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "sindhi_deva",
+      "title": "Sindhi (Devanagari)",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "sindhi_deva-shraeni.html",
+      "demo": "langs/sindhi_deva_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "sindhi_deva",
+      "title": "Sindhi (Devanagari)",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "sindhi_deva-praatha.html",
+      "demo": "langs/sindhi_deva_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "sindhi",
+      "title": "Sindhi (Perso-Arabic)",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": true,
+      "href": "sindhi-guru.html",
+      "demo": "langs/sindhi_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "sindhi",
+      "title": "Sindhi (Perso-Arabic)",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": true,
+      "href": "sindhi-shraeni.html",
+      "demo": "langs/sindhi_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "sindhi",
+      "title": "Sindhi (Perso-Arabic)",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": true,
+      "href": "sindhi-praatha.html",
+      "demo": "langs/sindhi_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "tamil",
+      "title": "Tamil",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "tamil-guru.html",
+      "demo": "langs/tamil_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "tamil",
+      "title": "Tamil",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "tamil-shraeni.html",
+      "demo": "langs/tamil_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "tamil",
+      "title": "Tamil",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "tamil-praatha.html",
+      "demo": "langs/tamil_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "telugu",
+      "title": "Telugu",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": false,
+      "href": "telugu-guru.html",
+      "demo": "langs/telugu_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "telugu",
+      "title": "Telugu",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": false,
+      "href": "telugu-shraeni.html",
+      "demo": "langs/telugu_shraeni.uhin",
+      "n": 80
+    },
+    {
+      "id": "telugu",
+      "title": "Telugu",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": false,
+      "href": "telugu-praatha.html",
+      "demo": "langs/telugu_praatha.uhin",
+      "n": 60
+    },
+    {
+      "id": "urdu",
+      "title": "Urdu",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": true,
+      "perso": true,
+      "href": "urdu-guru.html",
+      "demo": "langs/urdu_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "urdu",
+      "title": "Urdu",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": true,
+      "perso": true,
+      "href": "urdu-shraeni.html",
+      "demo": "langs/urdu_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "urdu",
+      "title": "Urdu",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": true,
+      "perso": true,
+      "href": "urdu-praatha.html",
+      "demo": "langs/urdu_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "arabic",
+      "title": "Standard Arabic",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": false,
+      "perso": true,
+      "href": "arabic-guru.html",
+      "demo": "langs/arabic_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "arabic",
+      "title": "Standard Arabic",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": false,
+      "perso": true,
+      "href": "arabic-shraeni.html",
+      "demo": "langs/arabic_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "arabic",
+      "title": "Standard Arabic",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": false,
+      "perso": true,
+      "href": "arabic-praatha.html",
+      "demo": "langs/arabic_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "persian",
+      "title": "Standard Farsi",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": false,
+      "perso": true,
+      "href": "persian-guru.html",
+      "demo": "langs/persian_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "persian",
+      "title": "Standard Farsi",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": false,
+      "perso": true,
+      "href": "persian-shraeni.html",
+      "demo": "langs/persian_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "persian",
+      "title": "Standard Farsi",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": false,
+      "perso": true,
+      "href": "persian-praatha.html",
+      "demo": "langs/persian_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "dari",
+      "title": "Dari",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": false,
+      "perso": true,
+      "href": "dari-guru.html",
+      "demo": "langs/dari_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "dari",
+      "title": "Dari",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": false,
+      "perso": true,
+      "href": "dari-shraeni.html",
+      "demo": "langs/dari_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "dari",
+      "title": "Dari",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": false,
+      "perso": true,
+      "href": "dari-praatha.html",
+      "demo": "langs/dari_praatha.uhin",
+      "n": 29
+    },
+    {
+      "id": "pashto",
+      "title": "Pashto",
+      "shaili": "guru",
+      "host": "C",
+      "eighth": false,
+      "perso": true,
+      "href": "pashto-guru.html",
+      "demo": "langs/pashto_guru.uhin",
+      "n": 29
+    },
+    {
+      "id": "pashto",
+      "title": "Pashto",
+      "shaili": "shraeni",
+      "host": "C++",
+      "eighth": false,
+      "perso": true,
+      "href": "pashto-shraeni.html",
+      "demo": "langs/pashto_shraeni.uhin",
+      "n": 29
+    },
+    {
+      "id": "pashto",
+      "title": "Pashto",
+      "shaili": "praatha",
+      "host": "BASIC",
+      "eighth": false,
+      "perso": true,
+      "href": "pashto-praatha.html",
+      "demo": "langs/pashto_praatha.uhin",
+      "n": 29
+    }
+  ]
+}

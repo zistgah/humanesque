@@ -1,0 +1,25 @@
+/* GATE CS §6 TOC — adapted. Original: gate/06_toc.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION dfa_a_star_b(n_a, has_b)
+    IF has_b != 1
+        RETURN 0
+    END
+    IF n_a < 0
+        RETURN 0
+    END
+    RETURN 1
+END
+FUNCTION tm_inc(n)
+    RETURN n + 1
+END
+FUNCTION main()
+    t = 1
+    IF dfa_a_star_b(3, 1) != 1
+        t = 0
+    END
+    IF tm_inc(7) != 8
+        t = 0
+    END
+    RETURN t
+END

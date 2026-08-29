@@ -7,30 +7,84 @@
       "id": "estate",
       "label": "Estate",
       "items": [
-        { "href": "index.html", "label": "Home" },
-        { "href": "explorer.html", "label": "Explorer" },
-        { "href": "mez/desk.html", "label": "Mez desk" },
-        { "href": "dome/", "label": "Dome" },
-        { "href": "chakra/", "label": "Chakra" },
-        { "href": "ontology.html", "label": "Ontology" },
-        { "href": "fakir/", "label": "FAKIR" },
-        { "href": "sims.html", "label": "Sims" }
+        {
+          "href": "index.html",
+          "label": "Home"
+        },
+        {
+          "href": "explorer.html",
+          "label": "Explorer"
+        },
+        {
+          "href": "mez/desk.html",
+          "label": "Mez desk"
+        },
+        {
+          "href": "dome/",
+          "label": "Dome"
+        },
+        {
+          "href": "chakra/",
+          "label": "Chakra"
+        },
+        {
+          "href": "ontology.html",
+          "label": "Ontology"
+        },
+        {
+          "href": "fakir/",
+          "label": "FAKIR"
+        },
+        {
+          "href": "sims.html",
+          "label": "Sims"
+        }
       ]
     },
     {
       "id": "machine",
       "label": "Machine",
       "items": [
-        { "href": "console.html", "label": "Console · VFS" },
-        { "href": "emu.html", "label": "x86 guest" },
-        { "href": "ayebios.html", "label": "AyeBIOS" },
-        { "href": "llm.html", "label": "llama.cpp" },
-        { "href": "story.html", "label": "Story spinner" },
-        { "href": "nb.html", "label": "Notebook" },
-        { "href": "workbench.html", "label": "Workbench L15" },
-        { "href": "flow.html", "label": "C → WASM" },
-        { "href": "wasm.html", "label": "WASM / Maṇḍūkapluti" },
-        { "href": "pspice.html", "label": "PSpice" }
+        {
+          "href": "console.html",
+          "label": "Console · VFS"
+        },
+        {
+          "href": "emu.html",
+          "label": "x86 guest"
+        },
+        {
+          "href": "ayebios.html",
+          "label": "AyeBIOS"
+        },
+        {
+          "href": "llm.html",
+          "label": "llama.cpp"
+        },
+        {
+          "href": "story.html",
+          "label": "Story spinner"
+        },
+        {
+          "href": "nb.html",
+          "label": "Notebook"
+        },
+        {
+          "href": "workbench.html",
+          "label": "Workbench (VS Code)"
+        },
+        {
+          "href": "flow.html",
+          "label": "C → WASM"
+        },
+        {
+          "href": "wasm.html",
+          "label": "WASM / Maṇḍūkapluti"
+        },
+        {
+          "href": "pspice.html",
+          "label": "PSpice"
+        }
       ]
     },
     {
@@ -40,42 +94,120 @@
       "href": "stack.html",
       "note": "Script × language × shaili. One page, dropdown, not repeated cards.",
       "items": [
-        { "href": "stack.html", "label": "Stack dropdown" },
-        { "href": "ports.html", "label": "Hindawi ports" },
-        { "href": "standards/", "label": "Standards" },
-        { "href": "languages.html", "label": "Frontends" },
-        { "href": "grammar.html", "label": "PANINI grammar" }
+        {
+          "href": "stack.html",
+          "label": "Stack dropdown"
+        },
+        {
+          "href": "standards/",
+          "label": "Standards (Logo · BASIC · C · C++ · ASM · lex · yacc)"
+        },
+        {
+          "href": "nb.html",
+          "label": "Notebook (Hindawi 2004)"
+        },
+        {
+          "href": "nb.frozen.html",
+          "label": "Original notebook (Colab)"
+        },
+        {
+          "href": "frontends.html",
+          "label": "Frontend explanations"
+        },
+        {
+          "href": "path/roundtrip.html",
+          "label": "Romenagri lab"
+        },
+        {
+          "href": "ports.html",
+          "label": "Hindawi ports"
+        },
+        {
+          "href": "languages.html",
+          "label": "Frontends"
+        },
+        {
+          "href": "grammar.html",
+          "label": "PANINI grammar"
+        }
       ]
     },
     {
       "id": "linguistics",
       "label": "Linguistics",
       "items": [
-        { "href": "path/roundtrip.html", "label": "Round-trip lab" },
-        { "href": "linguist.html", "label": "Linguist lab" },
-        { "href": "perso_arabic.html", "label": "Perso-Arabic" },
-        { "href": "punjabi.html", "label": "Gurmukhi" },
-        { "href": "deposits/", "label": "Deposits / CSV" }
+        {
+          "href": "path/roundtrip.html",
+          "label": "Round-trip lab"
+        },
+        {
+          "href": "linguist.html",
+          "label": "Linguist lab"
+        },
+        {
+          "href": "perso_arabic.html",
+          "label": "Perso-Arabic"
+        },
+        {
+          "href": "punjabi.html",
+          "label": "Gurmukhi"
+        },
+        {
+          "href": "deposits/",
+          "label": "Deposits / CSV"
+        }
       ]
     },
     {
       "id": "agi",
       "label": "AGI stack",
       "items": [
-        { "href": "agi.html", "label": "Status (derived)" },
-        { "href": "dashboard.html", "label": "Dashboard" },
-        { "href": "path/research.html", "label": "Layers" },
-        { "href": "coverage.html", "label": "Coverage" },
-        { "href": "factory.html", "label": "Factory" }
+        {
+          "href": "agi.html",
+          "label": "Status (derived)"
+        },
+        {
+          "href": "dashboard.html",
+          "label": "Dashboard"
+        },
+        {
+          "href": "research.html",
+          "label": "Papers"
+        },
+        {
+          "href": "local.html",
+          "label": "Download zip / CLI binary"
+        },
+        {
+          "href": "gate-cse.html",
+          "label": "GATE CS programmes"
+        },
+        {
+          "href": "coverage.html",
+          "label": "Coverage"
+        },
+        {
+          "href": "factory.html",
+          "label": "Factory"
+        }
       ]
     },
     {
       "id": "cyclers",
       "label": "Cyclers",
       "items": [
-        { "href": "cyclers.html", "label": "All cyclers" },
-        { "href": "mez/harness.html", "label": "Harness" },
-        { "href": "deposits/", "label": "Deposits" }
+        {
+          "href": "cyclers.html",
+          "label": "All cyclers"
+        },
+        {
+          "href": "mez/harness.html",
+          "label": "Harness"
+        },
+        {
+          "href": "deposits/",
+          "label": "Deposits"
+        }
       ]
     }
   ]

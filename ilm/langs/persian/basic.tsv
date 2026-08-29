@@ -1,0 +1,12 @@
+# persian → basic  |  script: Perso-Arabic  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/praatha/h2b.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	basic
+وگرنه	vagarnah	ELSE
+انجامبده	anjaamabdah	DO
+برای	baraaya	FOR
+ادامه	adaamah	\nC continue;\n
+حالت	haalata	WHILE
+صحیح	sahiiha	CINT
+ایستا	iistaa	CONST
+هنگامیکه	hanagaamiikah	WHILE

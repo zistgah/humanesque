@@ -8,17 +8,9 @@
   <link rel="stylesheet" href="../skins/jazz.css" />
 </head>
 <body class="site">
-<header class="site-head">
-  <a href="../index.html"><strong>PANINI</strong></a>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="index.html">Stacks</a>
-    <a href="arabic.html">Arabic</a>
-    <a href="tamil.html">Tamil</a>
-    <a href="roundtrip.html" class="now">Round-trip</a>
-    <a href="research.html">Researchers</a>
-  </nav>
-</header>
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs"><a href="../index.html">Home</a><span>/</span><span>Romenagri lab</span></nav>
 <main class="site-main">
   <p class="cite">Flatten hub · Romenagri ASCII-7 · live in the browser</p>
   <h1>Round-trip laboratory</h1>
@@ -35,9 +27,10 @@
     <button id="rmn">Romenagri there and back</button>
   </p>
   <pre id="out" class="rt-out" translate="no">Load bundle…</pre>
-  <p class="fine">Data: <code>flatten_uni_dev.lex</code> · <code>acii2rmn</code> · <a href="../data/roundtrip.json">roundtrip.json</a> · test <code>node tests/roundtrip.mjs</code></p>
+  <p class="fine">Original algorithm: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>. Not a homemade ISO 15919. · test <code>node tests/roundtrip.mjs</code></p>
 </main>
 <footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../engine/romenagri-orig.js"></script>
 <script src="../engine/nb.js"></script>
 <script src="../i18n/gt.js"></script>
 <script>
@@ -71,7 +64,10 @@ PANINI_NB.load("../engine/bundle.json").then(async (B) => {
     const hub = PANINI_NB.flatten(src);
     const rmn = PANINI_NB.devaToRmn(hub);
     const back = PANINI_NB.rmnToDeva(rmn);
-    log("Romenagri (ASCII-7 kernel — gdb sees this)\n" + rmn.slice(0, 1200) + "\n--- back to Devanagari ---\n" + back.slice(0, 600));
+    const orig = (typeof Romenagri === "function")
+      ? "Binding present: engine/romenagri-orig.js + canonical_basis.json (retrieved acii2rmn class).\n"
+      : "romenagri-orig.js missing.\n";
+    log("Original algorithm — Unicode → ACII (unicode_hin) → Romenagri (acii_chrt / retrieved legacy/Romenagri/acii2rmn.lex)\nNOT ISO 15919. gdb sees this ASCII-7 kernel.\n" + orig + rmn.slice(0, 1200) + "\n--- back to Devanagari ---\n" + back.slice(0, 600));
   };
 
   document.getElementById("stress").onclick = () => {

@@ -24,6 +24,8 @@
     {"id":"scheme","frontend":"src/panini/frontends/application.pni","runtime":["runtime/cleval.js"],"harness":null,"report":null,"standard_green":false,"gap":"R5RS/R7RS suite not skip=0; lisp cousin, low-hanging"},
     {"id":"forth","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"gforth tests not skip=0; low-hanging"},
     {"id":"clojure","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"lisp cousin; no official suite skip=0"},
-    {"id":"ocaml","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"ocaml testsuite not skip=0; low-hanging"}
+    {"id":"ocaml","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"ocaml testsuite not skip=0; low-hanging"},
+    {"id":"make","frontend":"src/panini/frontends/make.pni","runtime":["runtime/makeeval.js"],"harness":"scripts/kernel_tools_green.mjs","report":"docs/data/make-std-green.json","standard_green":true,"suite":"GNU make manual named extract (echo/variables/deps)"},
+    {"id":"asm","frontend":"src/panini/frontends/asm.pni","runtime":["runtime/aseval.js"],"harness":"scripts/kernel_tools_green.mjs","report":"docs/data/asm-std-green.json","standard_green":true,"suite":"gas integer extract + official comment.s"}
   ]
 }

@@ -1,0 +1,15 @@
+# hindi → cpp  |  script: Devanagari  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+अन्यथा	anyathaa	else
+जबतक	jabataka	while
+करो	karau	do
+जारी	jaarii	continue
+चयन	cayana	switch
+पूर्णांक	puur_naa_nka	int
+अक्षर	ak_sara	char
+शून्य	shuunya	NULL
+निजी	nijii	private
+स्थिर	sthira	const
+पढ़ो	pa_dau	read

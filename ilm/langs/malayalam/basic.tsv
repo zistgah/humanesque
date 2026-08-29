@@ -1,0 +1,12 @@
+# malayalam → basic  |  script: Malayalam  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/praatha/h2b.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	basic
+അല്ലെങ്കിൽ	alle_nkila	ELSE
+ചെയ്യുക	ceyyuka	DO
+വേണ്ടി	ve_ndi	FOR
+തുടരുക	tudaruka	\nC continue;\n
+അവസ്ഥ	avastha	WHILE
+പൂർണ്ണസംഖ്യ	puur_n_nasa_mkhya	CINT
+സ്ഥിതം	sthita_m	CONST
+എപ്പോൾ	eppaula	WHILE

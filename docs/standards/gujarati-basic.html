@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gujarati प्राथमिक / BASIC — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Gujarati · प्राथमिक · BASIC</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Gujarati प्राथमिक is still a BASIC program.</p>
+  
+  <p>
+    <a class="btn" href="../nb.html?lang=gujarati&demo=langs/gujarati_praatha.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=gujarati">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <a href="gujarati-c.html">C</a> · <a href="gujarati-cpp.html">C++</a> · <span>BASIC</span> · <a href="gujarati-asm.html">Assembly</a> · <a href="gujarati-lex.html">lex</a> · <a href="gujarati-yacc.html">yacc</a> · <a href="gujarati-logo.html">Logo</a></p>
+  <h2>1–10 · clauses</h2>
+  <ol lang="en"><li>This document is the standard of Gujarati प्राथमिक / BASIC.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>142 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">તો                /**/</td><td><code>_toa                /**/</code></td><td><code>ELSE</code></td></tr><tr><td dir="auto">રખો               /**/</td><td><code>rakhoa               /**/</code></td><td><code>STATIC</code></td></tr><tr><td dir="auto">તક              /**/</td><td><code>_taka              /**/</code></td><td><code>WEND</code></td></tr><tr><td dir="auto">more details.</td><td><code>more details.</code></td><td><code>REM</code></td></tr><tr><td dir="auto">બેક્રમ_ક્રિયા</td><td><code>baeekrama_kriyaa</code></td><td><code>RANDOMIZE</code></td></tr><tr><td dir="auto">અક્રમ_ક્રિયા</td><td><code>_akrama_kriyaa</code></td><td><code>RANDOMIZE</code></td></tr><tr><td dir="auto">ચિત્ર_લિખો</td><td><code>chi_tra_likhoa</code></td><td><code>XTEXT</code></td></tr><tr><td dir="auto">ચાબી_દબાયા</td><td><code>chaabee__dabaayaa</code></td><td><code>INKEY</code></td></tr><tr><td dir="auto">ખાતા_પૂર્ણ</td><td><code>khaa_taa_poor_nna</code></td><td><code>EOF</code></td></tr><tr><td dir="auto">પૂર્વક્ષય</td><td><code>poorwakxaya</code></td><td><code>LTRIM</code></td></tr><tr><td dir="auto">સાર્વજનિક</td><td><code>saarwajanika</code></td><td><code>SHARED</code></td></tr><tr><td dir="auto">પૂર્વાસિત</td><td><code>poorwaasi_ta</code></td><td><code>EXISTS</code></td></tr><tr><td dir="auto">ખાતા_લિખો</td><td><code>khaa_taa_likhoa</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">ખાતા_પઢ઼ો</td><td><code>khaa_taa_padhzoa</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">ખાતા_શબ્દ</td><td><code>khaa_taa_shab_da</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">પ્રતિપાદક</td><td><code>pra_tipaa_daka</code></td><td><code>EXP</code></td></tr><tr><td dir="auto">અક્રમાઙ્ક</td><td><code>_akramaa_ngka</code></td><td><code>RND</code></td></tr><tr><td dir="auto">અક્રમાન્ક</td><td><code>_akramaanka</code></td><td><code>RND</code></td></tr><tr><td dir="auto">પૂર્ણાન્ક</td><td><code>poor_nnaanka</code></td><td><code>CINT</code></td></tr><tr><td dir="auto">પૂર્ણાઙ્ક</td><td><code>poor_nnaa_ngka</code></td><td><code>CINT</code></td></tr><tr><td dir="auto">પૂર્વાદેશ</td><td><code>poorwaa_daeesha</code></td><td><code>COMMAND</code></td></tr><tr><td dir="auto">\"("\\""</td><td><code>\"("\\""</code></td><td><code>REM</code></td></tr><tr><td dir="auto">અંક_માલા</td><td><code>_a_mka_maalaa</code></td><td><code>STR</code></td></tr><tr><td dir="auto">અન્તક્ષય</td><td><code>_an_takxaya</code></td><td><code>RTRIM</code></td></tr><tr><td dir="auto">ષષ્ઠાદશક</td><td><code>xaxthaa_dashaka</code></td><td><code>HEX</code></td></tr><tr><td dir="auto">ક્રમાન્ત</td><td><code>kramaan_ta</code></td><td><code>NEXT</code></td></tr><tr><td dir="auto">અક્રમાંક</td><td><code>_akramaa_mka</code></td><td><code>RND</code></td></tr><tr><td dir="auto">પૂર્ણાંક</td><td><code>poor_nnaa_mka</code></td><td><code>CINT</code></td></tr><tr><td dir="auto">ટિપ્પણી</td><td><code>tippa_nnee</code></td><td><code>REM</code></td></tr><tr><td dir="auto">દિનાઙ્ક</td><td><code>_dinaa_ngka</code></td><td><code>DATE</code></td></tr><tr><td dir="auto">દિનાન્ક</td><td><code>_dinaanka</code></td><td><code>DATE</code></td></tr><tr><td dir="auto">અંતક્ષય</td><td><code>_a_m_takxaya</code></td><td><code>RTRIM</code></td></tr><tr><td dir="auto">ચ_દબાયા</td><td><code>cha__dabaayaa</code></td><td><code>INKEY</code></td></tr><tr><td dir="auto">ક્રમાંત</td><td><code>kramaa_m_ta</code></td><td><code>NEXT</code></td></tr><tr><td dir="auto">અનુક્રમ</td><td><code>_anukrama</code></td><td><code>CALL</code></td></tr><tr><td dir="auto">વર્ગમૂલ</td><td><code>wargamoola</code></td><td><code>SQR</code></td></tr><tr><td dir="auto">સમપૂર્ણ</td><td><code>samapoor_nna</code></td><td><code>ABS</code></td></tr><tr><td dir="auto">રંગકોષ</td><td><code>ra_mgakoaxa</code></td><td><code>PALETTE</code></td></tr><tr><td dir="auto">દિનાંક</td><td><code>_dinaa_mka</code></td><td><code>DATE</code></td></tr><tr><td dir="auto">અન્યથા</td><td><code>_anya_thaa</code></td><td><code>ELSE</code></td></tr><tr><td dir="auto">દોહરાઓ</td><td><code>_doa_haraa_oa</code></td><td><code>LOOP</code></td></tr><tr><td dir="auto">ખ_શબ્દ</td><td><code>kha_shab_da</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">સમાપ્ત</td><td><code>samaap_ta</code></td><td><code>END</code></td></tr><tr><td dir="auto">ક્રિયા</td><td><code>kriyaa</code></td><td><code>FUNCTION</code></td></tr><tr><td dir="auto">બિન્દુ</td><td><code>bin_du</code></td><td><code>PSET</code></td></tr><tr><td dir="auto">ઔર_બિટ</td><td><code>_oura_bita</code></td><td><code>&</code></td></tr><tr><td dir="auto">યા_બિટ</td><td><code>yaa_bita</code></td><td><code>|</code></td></tr><tr><td dir="auto">સ્થાન</td><td><code>s_thaana</code></td><td><code>LOCATE</code></td></tr><tr><td dir="auto">પૂર્વ</td><td><code>poorwa</code></td><td><code>LEFT</code></td></tr><tr><td dir="auto">ઇસ્કિ</td><td><code>_iski</code></td><td><code>ASC</code></td></tr><tr><td dir="auto">આષ્ટક</td><td><code>_aaxtaka</code></td><td><code>OCT</code></td></tr><tr><td dir="auto">સાર્વ</td><td><code>saarwa</code></td><td><code>SHARED</code></td></tr><tr><td dir="auto">સ્થિર</td><td><code>s_thira</code></td><td><code>CONST</code></td></tr><tr><td dir="auto">નત્થી</td><td><code>na_t_thee</code></td><td><code>APPEND</code></td></tr><tr><td dir="auto">પૂર્ણ</td><td><code>poor_nna</code></td><td><code>END</code></td></tr><tr><td dir="auto">અવકાશ</td><td><code>_awakaasha</code></td><td><code>SHELL</code></td></tr><tr><td dir="auto">નિકાસ</td><td><code>nikaasa</code></td><td><code>EXIT SUB</code></td></tr><tr><td dir="auto">અવરોધ</td><td><code>_awaroa_dha</code></td><td><code>
+C break;
+</code></td></tr><tr><td dir="auto">ઘોષણા</td><td><code>ghoaxa_nnaa</code></td><td><code>DECLARE</code></td></tr><tr><td dir="auto">ચિન્હ</td><td><code>chin_ha</code></td><td><code>SGN</code></td></tr><tr><td dir="auto">અક્રમ</td><td><code>_akrama</code></td><td><code>RND</code></td></tr><tr><td dir="auto">પર્દા</td><td><code>par_daa</code></td><td><code>SCREEN</code></td></tr><tr><td dir="auto">બિંદુ</td><td><code>bi_m_du</code></td><td><code>PSET</code></td></tr><tr><td dir="auto">લિખો</td><td><code>likhoa</code></td><td><code>PRINT</code></td></tr><tr><td dir="auto">પૂછો</td><td><code>poochhoa</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">ખાલી</td><td><code>khaalee</code></td><td><code>SPACE</code></td></tr><tr><td dir="auto">અન્ત</td><td><code>_an_ta</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">માલા</td><td><code>maalaa</code></td><td><code>STRING</code></td></tr><tr><td dir="auto">લિપી</td><td><code>lipee</code></td><td><code>CHR</code></td></tr><tr><td dir="auto">બડ઼ે</td><td><code>badzaee</code></td><td><code>UCASE</code></td></tr><tr><td dir="auto">છોટે</td><td><code>chhoataee</code></td><td><code>LCASE</code></td></tr><tr><td dir="auto">અન્શ</td><td><code>_ansha</code></td><td><code>INSTR</code></td></tr><tr><td dir="auto">અઙ્શ</td><td><code>_a_ngsha</code></td><td><code>INSTR</code></td></tr><tr><td dir="auto">ષષ્ઠ</td><td><code>xaxtha</code></td><td><code>HEX</code></td></tr><tr><td dir="auto">અષ્ટ</td><td><code>_axta</code></td><td><code>OCT</code></td></tr><tr><td dir="auto">ચાબી</td><td><code>chaabee</code></td><td><code>INKEY</code></td></tr><tr><td dir="auto">ઘડ઼ી</td><td><code>ghadzee</code></td><td><code>TIMER</code></td></tr><tr><td dir="auto">સમયક</td><td><code>samayaka</code></td><td><code>TIMER</code></td></tr><tr><td dir="auto">માનો</td><td><code>maanoa</code></td><td><code>LET</code></td></tr><tr><td dir="auto">આયામ</td><td><code>_aayaama</code></td><td><code>DIM</code></td></tr><tr><td dir="auto">ક્રમ</td><td><code>krama</code></td><td><code>FOR</code></td></tr><tr><td dir="auto">ખોલો</td><td><code>khoaloa</code></td><td><code>OPEN</code></td></tr><tr><td dir="auto">હેતુ</td><td><code>_haee_tu</code></td><td><code>FOR</code></td></tr><tr><td dir="auto">લેખન</td><td><code>laeekhana</code></td><td><code>OUTPUT</code></td></tr><tr><td dir="auto">પન્થ</td><td><code>pan_tha</code></td><td><code>AS</code></td></tr><tr><td dir="auto">બન્દ</td><td><code>ban_da</code></td><td><code>CLOSE</code></td></tr><tr><td dir="auto">અગલા</td><td><code>_agalaa</code></td><td><code>GOTO</code></td></tr><tr><td dir="auto">વાપસ</td><td><code>waapasa</code></td><td><code>RETURN</code></td></tr><tr><td dir="auto">જારી</td><td><code>jaaree</code></td><td><code>
+C continue;
+</code></td></tr><tr><td dir="auto">સાઇન</td><td><code>saa_ina</code></td><td><code>SIN</code></td></tr><tr><td dir="auto">અટૈન</td><td><code>_ataina</code></td><td><code>ATN</code></td></tr><tr><td dir="auto">ચિંહ</td><td><code>chi_m_ha</code></td><td><code>SGN</code></td></tr><tr><td dir="auto">અઙ્ક</td><td><code>_a_ngka</code></td><td><code>INT</code></td></tr><tr><td dir="auto">અન્ક</td><td><code>_anka</code></td><td><code>INT</code></td></tr><tr><td dir="auto">રેખા</td><td><code>raeekhaa</code></td><td><code>LINE</code></td></tr><tr><td dir="auto">ઔર_બ</td><td><code>_oura_ba</code></td><td><code>&</code></td></tr><tr><td dir="auto">યા_બ</td><td><code>yaa_ba</code></td><td><code>|</code></td></tr><tr><td dir="auto">નહીં</td><td><code>na_hee_m</code></td><td><code>NOT</code></td></tr><tr><td dir="auto">અથવા</td><td><code>_a_thawaa</code></td><td><code>XOR</code></td></tr><tr><td dir="auto">કેવલ</td><td><code>kaeewala</code></td><td><code>XOR</code></td></tr><tr><td dir="auto">ટિપ</td><td><code>tipa</code></td><td><code>REM</code></td></tr><tr><td dir="auto">સાફ</td><td><code>saapha</code></td><td><code>CLS</code></td></tr><tr><td dir="auto">રંગ</td><td><code>ra_mga</code></td><td><code>COLOR</code></td></tr><tr><td dir="auto">સમય</td><td><code>samaya</code></td><td><code>TIME</code></td></tr><tr><td dir="auto">બીચ</td><td><code>beecha</code></td><td><code>MID</code></td></tr><tr><td dir="auto">અંત</td><td><code>_a_m_ta</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">અંશ</td><td><code>_a_msha</code></td><td><code>INSTR</code></td></tr><tr><td dir="auto">isc</td><td><code>isc</code></td><td><code>ASC</code></td></tr><tr><td dir="auto">ISC</td><td><code>ISC</code></td><td><code>ASC</code></td></tr><tr><td dir="auto">માન</td><td><code>maana</code></td><td><code>VAL</code></td></tr><tr><td dir="auto">માપ</td><td><code>maapa</code></td><td><code>LEN</code></td></tr><tr><td dir="auto">અગર</td><td><code>_agara</code></td><td><code>IF</code></td></tr><tr><td dir="auto">ગતિ</td><td><code>ga_ti</code></td><td><code>STEP</code></td></tr><tr><td dir="auto">કરો</td><td><code>karoa</code></td><td><code>DO</code></td></tr><tr><td dir="auto">ફિર</td><td><code>phira</code></td><td><code>LOOP</code></td></tr><tr><td dir="auto">પાઠ</td><td><code>paatha</code></td><td><code>INPUT</code></td></tr><tr><td dir="auto">પંથ</td><td><code>pa_m_tha</code></td><td><code>AS</code></td></tr><tr><td dir="auto">બંદ</td><td><code>ba_m_da</code></td><td><code>CLOSE</code></td></tr><tr><td dir="auto">ખ_પ</td><td><code>kha_pa</code></td><td><code>EOF</code></td></tr><tr><td dir="auto">ઇતિ</td><td><code>_i_ti</code></td><td><code>END</code></td></tr><tr><td dir="auto">જાઓ</td><td><code>jaa_oa</code></td><td><code>GOSUB</code></td></tr><tr><td dir="auto">અણુ</td><td><code>_a_nnu</code></td><td><code>SUB</code></td></tr><tr><td dir="auto">જડ઼</td><td><code>jadza</code></td><td><code>STATIC</code></td></tr><tr><td dir="auto">ઘોષ</td><td><code>ghoaxa</code></td><td><code>DECLARE</code></td></tr><tr><td dir="auto">લૉગ</td><td><code>lauga</code></td><td><code>LOG</code></td></tr><tr><td dir="auto">કૉસ</td><td><code>kausa</code></td><td><code>COS</code></td></tr><tr><td dir="auto">ટૈન</td><td><code>taina</code></td><td><code>TAN</code></td></tr><tr><td dir="auto">મૂલ</td><td><code>moola</code></td><td><code>SQR</code></td></tr><tr><td dir="auto">અંક</td><td><code>_a_mka</code></td><td><code>INT</code></td></tr><tr><td dir="auto">શેષ</td><td><code>shaeexa</code></td><td><code>MOD</code></td></tr><tr><td dir="auto">વૃત</td><td><code>w_ri_ta</code></td><td><code>CIRCLE</code></td></tr><tr><td dir="auto">તથા</td><td><code>_ta_thaa</code></td><td><code>AND</code></td></tr><tr><td dir="auto">*/</td><td><code>*/</code></td><td><code>REM</code></td></tr><tr><td dir="auto">ઇસ</td><td><code>_isa</code></td><td><code>ASC</code></td></tr><tr><td dir="auto">હૈ</td><td><code>_hai</code></td><td><code>THEN</code></td></tr><tr><td dir="auto">હો</td><td><code>_hoa</code></td><td><code>THEN</code></td></tr><tr><td dir="auto">સે</td><td><code>saee</code></td><td><code>TO</code></td></tr><tr><td dir="auto">જબ</td><td><code>jaba</code></td><td><code>WHILE</code></td></tr><tr><td dir="auto">તબ</td><td><code>_taba</code></td><td><code>WEND</code></td></tr><tr><td dir="auto">સમ</td><td><code>sama</code></td><td><code>ABS</code></td></tr><tr><td dir="auto">ઔર</td><td><code>_oura</code></td><td><code>AND</code></td></tr><tr><td dir="auto">યા</td><td><code>yaa</code></td><td><code>OR</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/gujarati_praatha.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><શૈલી પ્રાથમિક>
+પૂછો "ऊँचाई: ", ન
+લિખો ન
+ક્રમ ક = ૧ સે ન
+	ક્રમ ખ = ૧ સે (ન - ક)
+		લિખો " ";
+	ક્રમાંત ખ
+	ક્રમ ગ = ૧ સે ક
+		લિખો "&";
+	ક્રમાંત ગ
+	લિખો ""
+ક્રમાંત ક
+ક્રમ ક = (ન - ૧) સે ૧ ગતિ -૧
+	ક્રમ ખ = ૧ સે (ન - ક)
+		લિખો " ";
+	ક્રમાંત ખ
+	ક્રમ ગ = ૧ સે ક
+		લિખો "&";
+	ક્રમાંત ગ
+	લિખો ""
+ક્રમાંત ક
+ઇતિ
+</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host BASIC. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is BASIC.</p>
+  <pre translate="no">INPUT "ऊँचाई: ", न
+PRINT न
+FOR क = १ TO न
+	FOR ख = १ TO (न - क)
+		PRINT " ";
+	NEXT ख
+	FOR ग = १ TO क
+		PRINT "&";
+	NEXT ग
+	PRINT ""
+NEXT क
+FOR क = (न - १) TO १ STEP -१
+	FOR ख = १ TO (न - क)
+		PRINT " ";
+	NEXT ख
+	FOR ग = १ TO क
+		PRINT "&";
+	NEXT ग
+	PRINT ""
+NEXT क
+END
+</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">poochhoa "ऊँचाई: ", na
+likhoa na
+krama ka = १ saee na
+	krama kha = १ saee (na - ka)
+		likhoa " ";
+	kramaa_m_ta kha
+	krama ga = १ saee ka
+		likhoa "&";
+	kramaa_m_ta ga
+	likhoa ""
+kramaa_m_ta ka
+krama ka = (na - १) saee १ ga_ti -१
+	krama kha = १ saee (na - ka)
+		likhoa " ";
+	kramaa_m_ta kha
+	krama ga = १ saee ka
+		likhoa "&";
+	kramaa_m_ta ga
+	likhoa ""
+kramaa_m_ta ka
+_i_ti
+</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><a href="gujarati-c.html">C</a> · <a href="gujarati-cpp.html">C++</a> · <span>BASIC</span> · <a href="gujarati-asm.html">Assembly</a> · <a href="gujarati-lex.html">lex</a> · <a href="gujarati-yacc.html">yacc</a> · <a href="gujarati-logo.html">Logo</a></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Gujarati BASIC.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

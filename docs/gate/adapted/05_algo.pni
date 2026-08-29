@@ -1,0 +1,38 @@
+/* GATE CS §5 Algorithms — adapted. Original: gate/05_algo.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION binsearch_ok(n)
+    RETURN n
+END
+FUNCTION fib(n)
+    IF n <= 1
+        RETURN n
+    END
+    RETURN fib(n - 1) + fib(n - 2)
+END
+FUNCTION coins(n)
+    c = 0
+    IF n >= 10
+        c = c + n / 10
+        n = n - (n / 10) * 10
+    END
+    IF n >= 5
+        c = c + n / 5
+        n = n - (n / 5) * 5
+    END
+    c = c + n
+    RETURN c
+END
+FUNCTION main()
+    t = 1
+    IF fib(6) != 8
+        t = 0
+    END
+    IF coins(28) != 6
+        t = 0
+    END
+    IF binsearch_ok(1) != 1
+        t = 0
+    END
+    RETURN t
+END

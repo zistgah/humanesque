@@ -12,7 +12,8 @@
     terminal: { label: "Terminal", href: "skins/terminal.css" },
     contrast: { label: "Contrast", href: "skins/contrast.css" }
   };
-  var path = location.pathname.indexOf("/dome/") >= 0 || location.pathname.indexOf("/mez/") >= 0 || location.pathname.indexOf("/skins/") >= 0 ? "../" : "";
+  var script = document.currentScript;
+  var base = (script && script.src) ? script.src.replace(/skins\/skins\.js(?:\?.*)?$/, "") : "";
   function apply(id) {
     if (!PRESETS[id]) id = "jazz";
     try { localStorage.setItem("panini-theme", id); } catch (e) {}
@@ -24,7 +25,7 @@
       el = document.createElement("link");
       el.id = "panini-skin";
       el.rel = "stylesheet";
-      el.href = path + spec.href;
+      el.href = base + spec.href;
       document.head.appendChild(el);
     }
     var custom;
@@ -63,10 +64,8 @@
   var bar = document.createElement("div");
   bar.id = "panini-rung";
   bar.style.cssText = "display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;padding:.3rem 1rem;font:12px/1.3 ui-monospace,monospace;background:#05070c;color:#e8d9a8;border-bottom:1px solid rgba(201,162,39,.35);";
-  var html = '<a href="' + path + 'index.html" style="color:#c9a227;font-weight:600">Home</a>';
-  html += '<a href="' + path + 'console.html" style="color:#e8d9a8">Console</a>';
-  html += '<a href="' + path + 'workbench.html" style="color:#e8d9a8">Workbench</a>';
-  html += '<a href="' + path + 'theme.html" style="color:#e8d9a8">Themes</a>';
+  var html = '<span style="opacity:.7">Themes</span>';
+  html += '<a href="' + base + 'theme.html" style="color:#e8d9a8">lab</a>';
   html += '<span style="opacity:.5">·</span>';
   Object.keys(PRESETS).forEach(function (k) {
     html += '<button type="button" data-skin="' + k + '" style="background:#1a3348;color:#e8d9a8;border:1px solid #c9a227;cursor:pointer">' + PRESETS[k].label + "</button>";

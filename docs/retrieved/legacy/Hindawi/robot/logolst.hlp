@@ -1,0 +1,45 @@
+<#ÏåÊå½#>
+ÕâÑÜ ÏåÊå½
+Shaili Robot is a Indic manifestation of LOGO, the
+pedagogical learning tool for introducing young-students
+to the world of computer programming. We have decided
+upon the title Robot owing to our plans of releasing a
+version linked with FreeBot ANGEL's control system. For
+further discussions please write, email or visit our
+web-site. If you decide to write we may not be able to
+reply personally, but the answer to your question or a
+similar one will be reflected in the FAQs. Given below
+are the commands of this shaili.
+ 
+© x    : x ³ÄÌ ©ÈÏ ³Ü °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Æ x    : x ³ÄÌ ÆÜ¸á ³Ü °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Ê x    : x ³ÄÌ ÊÚ¡¬ °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Ä x     : x ³ÄÌ ÄÚ¡¬ °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ
+©# x   : x ³ÄÌ ©ÈÏ ³Ü °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Æ# x   : x ³ÄÌ ÆÜ¸á ³Ü °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Ê# x   : x ³ÄÌ ÊÚ¡¬ °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ
+Ä# x    : x ³ÄÌ ÄÚ¡¬ °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ
+³ x    : x=0 ³ÑÌ ©ÈÏ;   x=1 ³ÑÌ ÆÜ¸á
+Ï x     : Ï¢µ x ¸ÍÆ ³ÏÆá ØáÂİ
+Ñ x    : x=0 Ñæ½å;   x=1 ÌÂ Ñæ½å
+¶ x    : ¸ÛÂèÏ-È½è½ ³å x ³åÁ radian ¶İÌÚÆá ØáÂİ
+º(x,y) : (x,y) ÊÛÆèÄİ Â³ Ïá´Ú ´Ü¢¸³Ï ºÚÆá ØáÂİ
+È(x,y) : (x,y) ÊÛÆèÄİ ÈÏ ÈØİ¡¸Æá ØáÂİ
+Ë(x,y) : (x,y) ÊÛÆèÄİ ³å ³á¢ÄèÏÛÂ ³Ï Ï¢µ ËÏÆá ØáÂİ ¥ÄáÕ
+¦ÂÛ    : ÆÛ³Ú×
+ 
+Shaili Robot operates in two modes: i) when invoked
+from the command prompt, it offers a line editing
+mode, where drawings have to made using a single line
+of code alone, and ii) in the second mode commands may
+be stored in a file. For more details please get a
+fresh copy of "sahayata" from our web site:
+http://hindawi.in
+ 
+<!top3> ÕâÑÜÍÚ¡ ÂÃÚ ¨Æ³á ÕÊèÄ ×Ş¸Ü
+<!top5> Ñá´³ ÈèÏÍåµ Ìá¢ ×ØÚÍÂÚ
+<!top1> ØÛ¢ÄÔÜ ×á ¬³ ÈÏÛ¸Í
+<!top2> ØÛ¢ÄÔÜ ×á ×ÌèÊÆèÅÛÂ ³İ¹ ÈèÏÌİ´ ÔÛÖÍ
+<!top4> ¨ÈÍåµ³ÏèÂÚ°¢ ×á ÆÛÔáÄÆ
+<*>
+ 

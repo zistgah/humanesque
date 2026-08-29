@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nepali रोबोट / Logo — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Nepali · रोबोट · Logo</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Nepali रोबोट is still a Logo program.</p>
+  
+  <p>
+    <a class="btn" href="../nb.html?lang=nepali&demo=langs/nepali_robot.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=nepali">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <a href="nepali-c.html">C</a> · <a href="nepali-cpp.html">C++</a> · <a href="nepali-basic.html">BASIC</a> · <a href="nepali-asm.html">Assembly</a> · <a href="nepali-lex.html">lex</a> · <a href="nepali-yacc.html">yacc</a> · <span>Logo</span></p>
+  <h2>1–10 · clauses</h2>
+  <ol lang="en"><li>This document is the standard of Nepali रोबोट / Logo.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>14 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  <p class="fine">Keyword table is the named Robot extract (ROBOT.C cardinals + UCBLogo host). It is not a retrieved 2004 lex file. Host is Logo.</p>
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">आगे</td><td><code>_aagaee</code></td><td><code>FORWARD</code></td></tr><tr><td dir="auto">पीछे</td><td><code>peechhaee</code></td><td><code>BACK</code></td></tr><tr><td dir="auto">दाएँ</td><td><code>_daa_aee_na</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">दाएं</td><td><code>_daa_aee_m</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">बाएँ</td><td><code>baa_aee_na</code></td><td><code>LEFT</code></td></tr><tr><td dir="auto">बाएं</td><td><code>baa_aee_m</code></td><td><code>LEFT</code></td></tr><tr><td dir="auto">दोहराओ</td><td><code>_doa_haraa_oa</code></td><td><code>REPEAT</code></td></tr><tr><td dir="auto">उठाओ</td><td><code>_uthaa_oa</code></td><td><code>PENUP</code></td></tr><tr><td dir="auto">रखो</td><td><code>rakhoa</code></td><td><code>PENDOWN</code></td></tr><tr><td dir="auto">घर</td><td><code>ghara</code></td><td><code>HOME</code></td></tr><tr><td dir="auto">उत्तर</td><td><code>_u_t_tara</code></td><td><code>NORTH</code></td></tr><tr><td dir="auto">दक्षिण</td><td><code>_dakxi_nna</code></td><td><code>SOUTH</code></td></tr><tr><td dir="auto">पूर्व</td><td><code>poorwa</code></td><td><code>EAST</code></td></tr><tr><td dir="auto">पश्चिम</td><td><code>pashchima</code></td><td><code>WEST</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/nepali_robot.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><शैली रोबोट>
+दोहराओ 4 [
+  आगे 80
+  दाएँ 90
+]
+उत्तर 10
+पूर्व 10
+दक्षिण 10
+पश्चिम 10
+घर
+</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host Logo. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is Logo.</p>
+  <pre translate="no">REPEAT 4 [
+  FORWARD 80
+  RIGHT 90
+]
+NORTH 10
+EAST 10
+SOUTH 10
+WEST 10
+HOME
+</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">_doa_haraa_oa 4 [
+  _aagaee 80
+  _daa_aee_na 90
+]
+_u_t_tara 10
+poorwa 10
+_dakxi_nna 10
+pashchima 10
+ghara
+</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><a href="nepali-c.html">C</a> · <a href="nepali-cpp.html">C++</a> · <a href="nepali-basic.html">BASIC</a> · <a href="nepali-asm.html">Assembly</a> · <a href="nepali-lex.html">lex</a> · <a href="nepali-yacc.html">yacc</a> · <span>Logo</span></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Nepali Logo.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

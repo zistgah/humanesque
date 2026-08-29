@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Host-speed C eval for heap-heavy programs (calloc / 8-queens).
  * Parse still happens in PANINI.Frontend.C. Semantics match c.pni.

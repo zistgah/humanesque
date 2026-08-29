@@ -1,0 +1,22 @@
+/* GATE CS §4 Data Structures — adapted. Original: gate/04_ds.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION fact(n)
+    IF n <= 1
+        RETURN 1
+    END
+    RETURN n * fact(n - 1)
+END
+FUNCTION parent(i)
+    RETURN (i - 1) / 2
+END
+FUNCTION main()
+    t = 1
+    IF fact(5) != 120
+        t = 0
+    END
+    IF parent(5) != 2
+        t = 0
+    END
+    RETURN t
+END

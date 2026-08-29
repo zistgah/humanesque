@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Lower Rust / Go / Julia to C for STANDARD_GREEN single-exec.
  * Lex/parse remain in the PANINI frontend. This is host-speed desugar

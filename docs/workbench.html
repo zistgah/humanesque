@@ -9,25 +9,45 @@
   <style>
     html, body.wb { height: 100%; margin: 0; }
     body.wb { display: flex; flex-direction: column; background: #1e1e1e; color: #d4d4d4; }
-    body.wb .site-head { flex: 0 0 auto; }
+    body.wb .site-head, body.wb .crumbs { flex: 0 0 auto; }
     #vscode-bar {
       display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
       padding: .5rem .8rem; background: #007acc; color: #fff;
       font: 13px/1.3 ui-sans-serif, system-ui, sans-serif;
     }
-    #vscode-bar a, #vscode-bar button {
+    #vscode-bar a, #vscode-bar button, #run-bar button, #run-bar a, #run-bar select {
       background: #fff; color: #005a9e; border: 0; padding: .35rem .7rem;
-      text-decoration: none; font-weight: 600; cursor: pointer;
+      text-decoration: none; font-weight: 600; cursor: pointer; min-height: 2rem;
     }
-    #vscode-bar .lic { margin-left: auto; font-size: 11px; opacity: .95; }
-    #editor { flex: 1; min-height: 70vh; }
-    #pick { background: #252526; color: #ccc; border: 1px solid #3c3c3c; padding: .3rem; }
+    #vscode-bar .lic { margin-left: auto; font: 11px/1.3 ui-sans-serif, sans-serif; opacity: .95; max-width: 28rem; }
+    #run-bar {
+      display: flex; flex-wrap: wrap; gap: .45rem; align-items: center;
+      padding: .4rem .8rem; background: #252526; color: #ccc;
+      font: 13px/1.3 ui-sans-serif, system-ui, sans-serif;
+    }
+    #run-bar select, #pick { background: #1e1e1e; color: #ccc; border: 1px solid #3c3c3c; padding: .3rem; }
+    #src {
+      flex: 0 0 auto; min-height: 22vh; width: 100%; box-sizing: border-box;
+      background: #1e1e1e; color: #d4d4d4; border: 0; border-bottom: 1px solid #3c3c3c;
+      font: 14px/1.45 ui-monospace, Menlo, monospace; padding: .6rem;
+    }
+    #editor { flex: 1; min-height: 28vh; }
+    .io { display: grid; grid-template-columns: 1fr 1fr; min-height: 8rem; border-top: 1px solid #3c3c3c; font: 12px/1.4 ui-monospace, monospace; }
+    .io > div { padding: .4rem .6rem; overflow: auto; }
+    .io h3 { margin: 0 0 .3rem; font: 700 11px ui-sans-serif, sans-serif; }
+    #err { background: #2a1515; color: #f0c0c0; white-space: pre-wrap; }
+    #out { background: #152015; color: #cfe8cf; white-space: pre-wrap; }
+    @media (max-width: 720px) {
+      .io { grid-template-columns: 1fr; }
+      #vscode-bar .lic { display: none; }
+    }
   </style>
 </head>
 <body class="wb site">
 <!-- Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later -->
 <header class="site-head"></header>
 <script src="spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
 <div id="vscode-bar">
   <strong>Visual Studio Code</strong>
   <a href="https://vscode.dev/github/zistgah/panini_by_grok" rel="noopener">Open vscode.dev (original)</a>
@@ -35,49 +55,143 @@
   <label>Local Monaco file
     <select id="pick"></select>
   </label>
-  <span class="lic">VS Code and Monaco Editor © Microsoft, MIT. We do not ship a clone of the workbench chrome. Run is the notebook / console — not a third box here.</span>
+  <span class="lic">VS Code and Monaco Editor © Microsoft, MIT. We do not ship a clone of the workbench chrome. The textarea below always loads. Monaco attaches when the CDN answers.</span>
 </div>
+<div id="run-bar">
+  <label>Frontend <select id="lang"></select></label>
+  <button type="button" id="run">Run</button>
+  <button type="button" id="sample">Load sample</button>
+  <a href="frontends.html">Explanations</a>
+  <a href="nb.html">Notebook</a>
+  <a href="nb.frozen.html">Original notebook</a>
+  <span class="fine" style="opacity:.8">Frontends from data/frontends.json. Chrome frozen.</span>
+</div>
+<textarea id="src" aria-label="Source" spellcheck="false">/* workbench loaded. Pick a file or a frontend. */</textarea>
 <div id="editor" aria-label="Monaco editor"></div>
+<div class="io">
+  <div><h3>Errors / diagnostics</h3><div id="err">(run a frontend)</div></div>
+  <div><h3>Result</h3><div id="out"></div></div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
 <script src="files.js"></script>
 <script>
 /* Pages cannot host the VS Code desktop binary. vscode.dev IS that product on the web.
-   Monaco is the editor engine extracted from VS Code (same MIT tree). */
+   Monaco is the editor engine extracted from VS Code (same MIT tree).
+   The textarea is the load contract: if the CDN or an ES module fails, this page still works. */
 (function () {
   var FILES = window.PANINI_FILES || {};
   var names = Object.keys(FILES);
   var pick = document.getElementById("pick");
-  names.forEach(function (n) {
-    var o = document.createElement("option");
-    o.value = n; o.textContent = n; pick.appendChild(o);
-  });
+  var ta = document.getElementById("src");
+  var feEd = null;
+  var META = [];
+  var SAMPLES = {};
+  var cfg = { monaco: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs", frontends: "data/frontends.json", engine: "engine/playground.js" };
+
   function langOf(n) {
     if (/\.py$/.test(n)) return "python";
-    if (/\.(c|h|cpp)$/.test(n)) return "cpp";
+    if (/\.(c|h|cpp|uhin)$/.test(n)) return "cpp";
     if (/\.ts$/.test(n)) return "typescript";
     if (/\.js$/.test(n)) return "javascript";
     if (/\.rs$/.test(n)) return "rust";
     if (/\.go$/.test(n)) return "go";
     if (/\.md$/.test(n)) return "markdown";
+    if (/\.pni$/.test(n)) return "plaintext";
     return "plaintext";
   }
-  require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } });
-  require(["vs/editor/editor.main"], function () {
-    var first = names[0] || "untitled.pni";
-    var ed = monaco.editor.create(document.getElementById("editor"), {
-      value: FILES[first] || "",
-      language: langOf(first),
-      theme: "vs-dark",
-      automaticLayout: true,
-      minimap: { enabled: true }
-    });
-    pick.value = first;
-    pick.onchange = function () {
-      var n = pick.value;
-      monaco.editor.setModelLanguage(ed.getModel(), langOf(n));
-      ed.setValue(FILES[n] || "");
-    };
+  function source() { return feEd ? feEd.getValue() : ta.value; }
+  function setSource(v) {
+    ta.value = v;
+    if (feEd) feEd.setValue(v);
+  }
+  names.forEach(function (n) {
+    var o = document.createElement("option");
+    o.value = n; o.textContent = n; pick.appendChild(o);
   });
+  if (names[0]) setSource(FILES[names[0]] || ta.value);
+  pick.onchange = function () {
+    var n = pick.value;
+    setSource(FILES[n] || "");
+    if (feEd && window.monaco) monaco.editor.setModelLanguage(feEd.getModel(), langOf(n));
+  };
+
+  function bootMonaco() {
+    if (typeof require === "undefined") return;
+    try {
+      require.config({ paths: { vs: cfg.monaco } });
+      require(["vs/editor/editor.main"], function () {
+        feEd = monaco.editor.create(document.getElementById("editor"), {
+          value: ta.value,
+          language: langOf(pick.value || ""),
+          theme: "vs-dark",
+          automaticLayout: true,
+          minimap: { enabled: true }
+        });
+        feEd.onDidChangeModelContent(function () { ta.value = feEd.getValue(); });
+      });
+    } catch (e) {
+      console.warn("monaco unavailable, textarea stays", e);
+    }
+  }
+
+  fetch("data/workbench.config.json").then(function (r) { return r.json(); }).then(function (c) {
+    cfg = Object.assign(cfg, c);
+    return fetch(cfg.frontends).then(function (r) { return r.json(); });
+  }).then(function (pack) {
+    META = pack.frontends || [];
+    SAMPLES = {};
+    META.forEach(function (m) { SAMPLES[m.id] = m.sample || ""; });
+    var sel = document.getElementById("lang");
+    META.forEach(function (m) {
+      var o = document.createElement("option");
+      o.value = m.id;
+      o.textContent = (m.standard_green ? "GREEN " : (m.core ? "CORE  " : "      ")) + m.title;
+      sel.appendChild(o);
+    });
+    var want = new URLSearchParams(location.search).get("lang");
+    if (want && META.some(function (m) { return m.id === want; })) {
+      sel.value = want;
+      setSource(SAMPLES[want] || "");
+    }
+    sel.onchange = function () {
+      setSource(SAMPLES[sel.value] || "");
+      if (feEd && window.monaco) {
+        var id = sel.value;
+        var m = META.filter(function (x) { return x.id === id; })[0];
+        monaco.editor.setModelLanguage(feEd.getModel(), (m && m.monaco) || "plaintext");
+      }
+    };
+    bootMonaco();
+  }).catch(function (e) {
+    document.getElementById("err").textContent = "config: " + (e && e.message ? e.message : e) + " — textarea still works.";
+    bootMonaco();
+  });
+
+  document.getElementById("sample").onclick = function () {
+    var id = document.getElementById("lang").value;
+    setSource(SAMPLES[id] || "");
+  };
+  document.getElementById("run").onclick = function () {
+    var id = document.getElementById("lang").value || "c";
+    var src = source();
+    document.getElementById("err").textContent = "running…";
+    document.getElementById("out").textContent = "";
+    import("./engine/playground.js").then(function (mod) {
+      return mod.runLang(id, src);
+    }).then(function (r) {
+      document.getElementById("err").textContent = r.ok ? "ok — no diagnostics" : (r.error || r.rejected || JSON.stringify(r));
+      var bits = [];
+      bits.push("frontend: " + (r.frontend || id));
+      if (r.value !== undefined) bits.push("value: " + r.value);
+      if (r.print !== undefined) bits.push("print: " + r.print);
+      if (r.prints) bits.push("prints: " + JSON.stringify(r.prints));
+      if (r.lowered) bits.push("lowered:\n" + String(r.lowered).slice(0, 1200));
+      if (r.note) bits.push(r.note);
+      document.getElementById("out").textContent = bits.join("\n");
+    }).catch(function (e) {
+      document.getElementById("err").textContent = "runtime: " + (e && e.message ? e.message : e);
+    });
+  };
 })();
 </script>
 </body>

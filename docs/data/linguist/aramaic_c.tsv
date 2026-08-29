@@ -1,0 +1,31 @@
+# aramaic C keywords — Hindi bar 29. GPL-3.0-or-later
+native	romenagri	c
+𐡄𐡍	hana	if
+		else
+		while
+𐡏𐡁𐡃	aebada	do
+		for
+		break
+		continue
+		switch
+		case
+		default
+		return
+		const
+		int
+		float
+		double
+		char
+		void
+		void
+		class
+		new
+		public
+		private
+		static
+		virtual
+		case
+		struct
+		include
+		scanf
+		printf

@@ -1,0 +1,90 @@
+{
+ "target": "yacc",
+ "shaili": "wyaaka",
+ "host": "yacc",
+ "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
+ "invented": false,
+ "extracted_at_rules": 20,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "श_शब्द",
+   "to": "yylex"
+  },
+  {
+   "from": "श_ब_मान",
+   "to": "yylval"
+  },
+  {
+   "from": "श_माला",
+   "to": "yytext"
+  },
+  {
+   "from": "श_पंक्ति",
+   "to": "yylineno"
+  },
+  {
+   "from": "व्याक",
+   "to": "yyparse"
+  },
+  {
+   "from": "व्याक_त्रुटि",
+   "to": "yyerror"
+  },
+  {
+   "from": "\\%मोहर",
+   "to": "%ctoken"
+  },
+  {
+   "from": "\\%बाँए",
+   "to": "%cleft"
+  },
+  {
+   "from": "\\%दाँए",
+   "to": "%cright"
+  },
+  {
+   "from": "\\%बेमेल",
+   "to": "%cnonassoc"
+  },
+  {
+   "from": "\\%प्राथमिकता",
+   "to": "%cprec"
+  },
+  {
+   "from": "\\%जोड़",
+   "to": "%cunion"
+  },
+  {
+   "from": "\\%पूरक",
+   "to": "%cterm"
+  },
+  {
+   "from": "\\%प्रकार",
+   "to": "%ctype"
+  },
+  {
+   "from": "\\%समप्रवाह",
+   "to": "%csynch"
+  },
+  {
+   "from": "\\%शुरू",
+   "to": "%cxstart"
+  },
+  {
+   "from": "व्याक_ढेर_प्रकार",
+   "to": "YYSTYPE"
+  },
+  {
+   "from": "व्याक_ढेर_typedef",
+   "to": "YYSTYPE"
+  }
+ ]
+}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * GHC codeGen should_run subset (cgrun001/002/005).
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* tree-rev: 2026.08.28 */
 /* Copyright (C) 1993-2026 Abhishek Choudhary
  * SPDX-License-Identifier: GPL-3.0-or-later

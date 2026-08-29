@@ -1,0 +1,25 @@
+/* GATE CS §3 COA — adapted. Original: gate/03_coa.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION cache_index(addr, nsets)
+    RETURN addr - (addr / nsets) * nsets
+END
+FUNCTION stall(load_use)
+    IF load_use != 0
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION main()
+    t = 1
+    IF cache_index(10, 4) != 2
+        t = 0
+    END
+    IF stall(1) != 1
+        t = 0
+    END
+    IF stall(0) != 0
+        t = 0
+    END
+    RETURN t
+END

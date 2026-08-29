@@ -24,6 +24,8 @@ import { haskellRun } from "./hseval.js";
 import { cppReject } from "./cpplower.js";
 import { lispRun } from "./cleval.js";
 import { prologRun } from "./pleval.js";
+import { makeRun } from "./makeeval.js";
+import { asRun } from "./aseval.js";
 import { createVga, vgaPset, vgaLine, vgaScreen, vgaCls } from "./vga.js";
 import { renderTextBitmap } from "./dosfont.js";
 
@@ -78,6 +80,8 @@ export function installBuiltins(env, runtime) {
   def("HASKELLRUN", (x) => wrap(haskellRun(toStr(x))), 1);
   def("SMALLTALKRUN", (x) => wrap(stRunFile(toStr(x))), 1);
   def("CPPREJECT", (x) => vStr(cppReject(toStr(x)) || ""), 1);
+  def("MAKERUN", (x) => wrap(makeRun(toStr(x))), 1);
+  def("ASRUN", (x) => wrap(asRun(toStr(x))), 1);
   def("LISPRUN", (x) => wrap(lispRun(toStr(x))), 1);
   def("PROLOGRUN", (x) => wrap(prologRun(toStr(x))), 1);
   {

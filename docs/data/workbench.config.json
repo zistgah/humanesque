@@ -1,0 +1,5 @@
+{
+  "frontends": "data/frontends.json",
+  "monaco": "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs",
+  "engine": "engine/playground.js"
+}

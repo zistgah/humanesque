@@ -1,0 +1,22 @@
+/* GATE CS §8 OS — adapted. Original: gate/08_os.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION fcfs(a, b, c)
+    RETURN a + b + c
+END
+FUNCTION sjf(a, b)
+    IF a < b
+        RETURN a
+    END
+    RETURN b
+END
+FUNCTION main()
+    t = 1
+    IF fcfs(1, 2, 3) != 6
+        t = 0
+    END
+    IF sjf(5, 2) != 2
+        t = 0
+    END
+    RETURN t
+END

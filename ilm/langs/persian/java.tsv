@@ -1,0 +1,14 @@
+# persian → java  |  script: Perso-Arabic  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/kritrima/h2j.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	java
+وگرنه	vagarnah	else
+تازمانیکه	taazamaaniikah	while
+انجامبده	anjaamabdah	do
+بشکن	bishkan	stop
+ادامه	adaamah	continue
+انتخاب	intikhaaba	switch
+صحیح	sahiiha	int
+نویسه	naviisah	char
+خصوصی	khusuusii	private
+ایستا	iistaa	const

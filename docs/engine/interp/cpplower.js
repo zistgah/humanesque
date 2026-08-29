@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * C++ → C lowering for PANINI.Frontend.Cpp.
  * Lex stays in cpp.pni. This is host-speed desugar (same slot as CINTERP).

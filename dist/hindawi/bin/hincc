@@ -1,0 +1,15 @@
+#!/bin/sh
+# Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+HERE=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+if [ -z "$PANINI_ROOT" ]; then
+  if [ -f "$HERE/../../../tools/hincc.mjs" ]; then
+    PANINI_ROOT=$(CDPATH= cd -- "$HERE/../../.." && pwd)
+  elif [ -f "$HERE/../../tools/hincc.mjs" ]; then
+    PANINI_ROOT=$(CDPATH= cd -- "$HERE/../.." && pwd)
+  else
+    echo "hincc: set PANINI_ROOT to the panini tree" >&2
+    exit 2
+  fi
+fi
+export PANINI_ROOT
+exec "${NODE:-node}" "$PANINI_ROOT/tools/hincc.mjs" "$@"

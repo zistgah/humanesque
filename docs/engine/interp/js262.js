@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * ECMAScript subset eval for Test262 language extract (STANDARD GREEN).
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

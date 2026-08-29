@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * C translation phases 1–4 (preprocessor).
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

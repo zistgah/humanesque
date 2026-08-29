@@ -1,0 +1,13 @@
+# odia → cpp  |  script: Odia  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+ଅନ୍ୟଥା	anyathaa	else
+ଯେପର୍ଯ୍ୟନ୍ତ	yeeparyyanta	while
+କର	kara	do
+ଜାରି	jaari	continue
+ବାଛ	baacha	switch
+ପୂର୍ଣ୍ଣସଂଖ୍ୟା	puur_n_nasa_mkhyaa	int
+ଅକ୍ଷର	ak_sara	char
+ବ୍ୟକ୍ତିଗତ	byaktigata	private
+ସ୍ଥିର	sthira	const

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — local download</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Self-hosted. The zip is the runnable tree, not a dump of ISO PDFs.</p>
+  <h1>Download the local version</h1>
+  <p class="lead">This site is the primary delivery platform. The same tree runs on a machine you own.</p>
+  <p><a class="btn" href="/panini.zip" download="panini.zip">Download panini.zip</a></p>
+  <h2>What is in the zip</h2>
+  <ul>
+    <li><code>panini/</code> — compiler, runtime, retrieved Hindawi 2004 / Romenagri, examples.</li>
+    <li><code>panini/docs/</code> — this website: notebook, workbench, language stacks.</li>
+    <li><code>panini/PACKING.txt</code> — what was left out, and why.</li>
+  </ul>
+  <h2>What is not in the zip</h2>
+  <p>Named, not hidden. These are large and already published elsewhere:</p>
+  <ul>
+    <li>ISO / ECMA specification PDFs and HTML dumps (<code>n1570</code>, <code>n4296</code>, ECMA-262, …). Fetch them from the issuing body.</li>
+    <li>GGUF models and WASM guests. The story spinner and llama.cpp page fetch those at run time.</li>
+    <li>AyeBIOS firmware blobs.</li>
+  </ul>
+  <h2>Web host (JavaScript)</h2>
+  <pre translate="no">unzip panini.zip
+cd panini
+node src/cli.js run examples/hello.pni
+node src/cli.js compile examples/factorial.pni --target c --out factorial.c</pre>
+  <h2>Native binary (PANINI → C → gcc)</h2>
+  <p>JavaScript is primary because the web is primary. The same programme compiles to a machine binary on the local CLI.</p>
+  <pre translate="no">node src/cli.js binary examples/factorial.pni --out factorial
+./factorial
+# prints 720</pre>
+  <p>Equivalent: <code>node src/cli.js gcc examples/factorial.pni --out factorial</code></p>
+  <p class="fine">Requires <code>node</code> and <code>gcc</code> on the PATH. The emitted C is the GNU11-shaped integer subset.</p>
+  <h2>Hindawi 2004 on the same tree</h2>
+  <pre translate="no">node src/cli.js hindawi retrieved/legacy/Hindawi/samples/HindiC.uhin</pre>
+  <p>Notebook in the browser: <a href="nb.html">nb.html</a>. Original Colab chrome: <a href="nb.frozen.html">nb.frozen.html</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Dari रोबोट / Logo — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Dari · रोबोट · Logo</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Dari रोबोट is still a Logo program.</p>
+  <p class="warn">Perso-Arabic does not round-trip. Lowest-layer debug (gdb, nm) will not reconstruct the original letters. Named, not hidden.</p>
+  <p>
+    <a class="btn" href="../nb.html?lang=dari&demo=langs/dari_robot.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=dari">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <a href="dari-c.html">C</a> · <a href="dari-cpp.html">C++</a> · <a href="dari-basic.html">BASIC</a> · <a href="dari-asm.html">Assembly</a> · <a href="dari-lex.html">lex</a> · <a href="dari-yacc.html">yacc</a> · <span>Logo</span></p>
+  <h2>1–10 · clauses</h2>
+  <ol dir="rtl"><li>این سند استاندارد Dari रोबोट / Logo است.</li><li>این سند ترجمهٔ یک متن ایزوی انگلیسی نیست.</li><li>جدول کلیدواژه‌های این پرونده هنجاری است.</li><li>مسیر ترجمه: یونیکد، سپس ACII، سپس رومنگری (الگوریتم اصلی)، سپس لکْسِ شایلی، سپس میزبان.</li><li>برنامه‌ای نوشته‌شده با این استاندارد را می‌توان در هر استاندارد منتشرشدهٔ همان شایلی دید.</li><li>دیدن هویت ترجمه را عوض نمی‌کند.</li><li>شناسه‌ها از راه واژه‌نامه نشان داده می‌شوند. ترجمه شناسه‌های اصلی را می‌گیرد.</li><li>خلأهای جدول فهرست شده‌اند. از حافظه پر نشده‌اند.</li><li>پرونده‌های گویش می‌توانند ردیف‌های آوایی، واژگانی یا نحوی بیفزایند. تا پذیرش جایگزین این جدول نمی‌شوند.</li><li>اصلاحات به صورت CSV در deposits/csv و deposits/standards فرستاده می‌شوند.</li></ol>
+  <ol lang="en"><li>This document is the standard of Dari रोबोट / Logo.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>14 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  <p class="fine">Keyword table is the named Robot extract (ROBOT.C cardinals + UCBLogo host). It is not a retrieved 2004 lex file. Host is Logo.</p>
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">آگے</td><td><code>_aagaee</code></td><td><code>FORWARD</code></td></tr><tr><td dir="auto">پـیچھے</td><td><code>peechhaee</code></td><td><code>BACK</code></td></tr><tr><td dir="auto">داایـں</td><td><code>_daa_aee_na</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">داایـں</td><td><code>_daa_aee_m</code></td><td><code>RIGHT</code></td></tr><tr><td dir="auto">باایـں</td><td><code>baa_aee_na</code></td><td><code>LEFT</code></td></tr><tr><td dir="auto">باایـں</td><td><code>baa_aee_m</code></td><td><code>LEFT</code></td></tr><tr><td dir="auto">دـوھرااو</td><td><code>_doa_haraa_oa</code></td><td><code>REPEAT</code></td></tr><tr><td dir="auto">اُٹھااو</td><td><code>_uthaa_oa</code></td><td><code>PENUP</code></td></tr><tr><td dir="auto">رکھـو</td><td><code>rakhoa</code></td><td><code>PENDOWN</code></td></tr><tr><td dir="auto">گھر</td><td><code>ghara</code></td><td><code>HOME</code></td></tr><tr><td dir="auto">اُت्تر</td><td><code>_u_t_tara</code></td><td><code>NORTH</code></td></tr><tr><td dir="auto">دک्شھـیݨ</td><td><code>_dakxi_nna</code></td><td><code>SOUTH</code></td></tr><tr><td dir="auto">پ◌ُـور्व</td><td><code>poorwa</code></td><td><code>EAST</code></td></tr><tr><td dir="auto">پش्چـیم</td><td><code>pashchima</code></td><td><code>WEST</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/dari_robot.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><ش◌َـےلـی رـوبـوٹ>
+دـوھرااو 4 [
+  آگے 80
+  داایـں 90
+]
+اُت्تر 10
+پ◌ُـور्व 10
+دک्شھـیݨ 10
+پش्چـیم 10
+گھر
+</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host Logo. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is Logo.</p>
+  <pre translate="no">दव़राओ 4 [
+  FORWARD 80
+  दाायं 90
+]
+NORTH 10
+प◌ُॉर्व 10
+दक्षयण 10
+पश्चयम 10
+HOME
+</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">_dawzaraa_oa 4 [
+  _aagaee 80
+  _daaaya_m 90
+]
+_u_t_tara 10
+pa◌ُ^aurwa 10
+_dakxaya_nna 10
+pashchayama 10
+ghara
+</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><a href="dari-c.html">C</a> · <a href="dari-cpp.html">C++</a> · <a href="dari-basic.html">BASIC</a> · <a href="dari-asm.html">Assembly</a> · <a href="dari-lex.html">lex</a> · <a href="dari-yacc.html">yacc</a> · <span>Logo</span></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Dari Logo.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

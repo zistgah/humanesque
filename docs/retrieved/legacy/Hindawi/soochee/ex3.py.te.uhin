@@ -1,0 +1,22 @@
+# Program to check ఉంటే a number ఉంది prime లేదా కాదు
+
+num = 407
+
+# To take లోput నుండి the user
+#num = లోt(లోput("Enter a number: "))
+
+# prime numbers are greater than 1
+ఉంటే num > 1:
+   # check కోసం factలేదాs
+   కోసం i లో range(2,num):
+       ఉంటే (num % i) == 0:
+           ముద్రించు(num,"is not a prime number")
+           ముద్రించు(i,"times",num//i,"is",num)
+           విడతీయు
+   వేరే:
+       ముద్రించు(num,"is a prime number")
+       
+# ఉంటే లోput number ఉంది less than
+# లేదా equal to 1, it ఉంది కాదు prime
+వేరే:
+   ముద్రించు(num,"is not a prime number")

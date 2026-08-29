@@ -23,6 +23,12 @@ ck "native identifiers reach DWARF"         bash -c 'objdump --dwarf=info /tmp/_
 echo " Mez"
 ck "workflows derived from .pni"            bash -c 'node apps/mez/build-workflows.mjs | grep -q derived'
 ck "workflows.json is derived, not authored" bash -c 'grep -q "\"derived\": true" apps/mez/docs/workflows.json'
+echo " ILM matrix (this merge)"
+ck "keyword maps extracted from retrieved transducers" bash -c 'node tools/extract_maps.mjs | grep -q "c      EXTRACTED"'
+ck "no map is marked invented"              bash -c '! grep -rq "\"invented\": true" ilm/maps/'
+ck "9 shailis extracted, 27 languages generated" bash -c 'node tools/extract_maps.mjs | grep -c EXTRACTED | grep -q 9 && node tools/build_ilm_matrix.mjs >/dev/null && [ $(ls ilm/langs | wc -l) -ge 27 ] && [ $(ls ilm/langs/tamil/*.tsv | wc -l) -ge 9 ]'
+ck "unauthored cells are skeletons, not guesses" bash -c 'grep -q "UNRESOLVED" ilm/langs/sindhi/c.tsv'
+ck "three ILM axes remain distinct"          bash -c '[ -f retrieved/romenagri/tables/tamil_to_deva.tsv ] && [ -f retrieved/romenagri/langs/tamil_c.tsv ] && [ -f ilm/maps/c.map.json ]'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

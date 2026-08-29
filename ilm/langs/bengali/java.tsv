@@ -1,0 +1,14 @@
+# bengali → java  |  script: Bengali  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/kritrima/h2j.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	java
+অন্যথা	anyathaa	else
+যতক্ষণ	yatak_sa_na	while
+করো	karau	do
+বিরতি	birati	stop
+চালু	caalu	continue
+নির্বাচন	nirbaacana	switch
+পূর্ণসংখ্যা	puur_nasa_nkhyaa	int
+অক্ষর	ak_sara	char
+ব্যক্তিগত	byaktigata	private
+স্থির	sthira	const

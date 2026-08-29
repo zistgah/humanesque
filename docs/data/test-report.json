@@ -1,20 +1,22 @@
 {
   "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
   "theorem": "DASHBOARD_DERIVED",
-  "when": "2026-08-29T15:05:54.124Z",
-  "exit_policy": "nonzero_on_failure",
+  "when": "2026-08-29T07:16:51.333Z",
+  "exit_policy": "never_nonzero",
   "assets": [
     {
       "name": "wllama.wasm",
-      "ok": false,
-      "status": 403,
-      "url": "https://cdn.jsdelivr.net/npm/@wllama/wllama@2.3.1/esm/single-thread/wllama.wasm"
+      "ok": true,
+      "fetched": false,
+      "bytes": 1719074,
+      "path": "/workspace/artifacts/panini/docs/engine/wllama/wllama.wasm"
     },
     {
       "name": "stories15M.Q4_0.gguf",
-      "ok": false,
-      "status": 403,
-      "url": "https://huggingface.co/ggml-org/models/resolve/main/tinyllamas/stories15M-q4_0.gguf"
+      "ok": true,
+      "fetched": false,
+      "bytes": 19077344,
+      "path": "/workspace/artifacts/panini/docs/models/stories15M.Q4_0.gguf"
     }
   ],
   "frontends": [
@@ -39,7 +41,7 @@
       "ok": true,
       "subsetOk": true,
       "feOk": true,
-      "value": 42,
+      "value": 0,
       "frontend": "PANINI.Frontend.Python"
     },
     {
@@ -68,15 +70,18 @@
     },
     {
       "name": "zig",
-      "ok": false,
-      "error": "Undefined name: b"
+      "ok": true,
+      "subsetOk": true,
+      "feOk": false,
+      "value": 30,
+      "frontend": "PANINI.Frontend.Zig"
     },
     {
       "name": "fortran",
       "ok": true,
       "subsetOk": true,
       "feOk": true,
-      "value": 0,
+      "value": 42,
       "frontend": "PANINI.Frontend.Fortran"
     },
     {
@@ -84,7 +89,6 @@
       "ok": true,
       "subsetOk": true,
       "feOk": true,
-      "value": 0,
       "frontend": "PANINI.Frontend.Lua"
     },
     {
@@ -491,7 +495,7 @@
       "name": "tests/run.mjs",
       "ok": true,
       "code": 0,
-      "tail": "  ok   python_standard_green_cpython_language |   ok   qb64_pascal_fortran_std_green |   ok   oop_standard_green_cpp_js_ts_java_st_hs |   ok   lisp_prolog_standard_green |   ok   console_one_glass_vga |  | 32 passed, 0 failed | "
+      "tail": "  ok   foreign_python_cc | RETRIEVE READ INTERPRET CORRELATE VERIFY EVIDENCE GOVERN PRESERVE GUIDE TRANSFORM | EXISTING_ESTATE | GENIE |   ok   stdlib_cyclers_genie_fakir_charbagh |  | 25 passed, 0 failed | "
     },
     {
       "name": "c_last",
@@ -511,13 +515,13 @@
   "derived": {
     "assets": {
       "n": 2,
-      "pass": 0,
-      "fail": 2
+      "pass": 2,
+      "fail": 0
     },
     "frontends": {
       "n": 10,
-      "pass": 9,
-      "fail": 1
+      "pass": 10,
+      "fail": 0
     },
     "roundtrip": {
       "n": 13,
@@ -534,8 +538,8 @@
       "pass": 3,
       "fail": 0
     },
-    "total_pass": 79,
+    "total_pass": 82,
     "total_n": 83,
-    "greenish": "79/83"
+    "greenish": "82/83"
   }
 }

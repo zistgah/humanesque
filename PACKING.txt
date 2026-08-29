@@ -1,0 +1,13 @@
+PANINI local tree
+Copyright (C) 1993-2026 Abhishek Choudhary  GPL-3.0-or-later
+
+This zip is the runnable tree, not a dump of every retrieved ISO PDF.
+Left out on purpose (named, not hidden):
+  - retrieved/standards  ISO/ECMA HTML+PDF (n1570, n4296, ECMA-262, …)
+  - GGUF / WASM guests   fetched at run time by llama.cpp / wllama
+  - AyeBIOS firmware blobs
+  - alias standard pages (*-guru.html is *-c.html)
+
+Web host:  node src/cli.js run examples/hello.pni
+Binary:    node src/cli.js binary examples/factorial.pni --out factorial
+Site copy: docs/index.html

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Standard Farsi शब्द / lex — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Standard Farsi · शब्द · lex</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Standard Farsi शब्द is still a lex program.</p>
+  <p class="warn">Perso-Arabic does not round-trip. Lowest-layer debug (gdb, nm) will not reconstruct the original letters. Named, not hidden.</p>
+  <p>
+    <a class="btn" href="../nb.html?lang=persian&demo=langs/persian_shabda.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=persian">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <a href="persian-c.html">C</a> · <a href="persian-cpp.html">C++</a> · <a href="persian-basic.html">BASIC</a> · <a href="persian-asm.html">Assembly</a> · <span>lex</span> · <a href="persian-yacc.html">yacc</a> · <a href="persian-logo.html">Logo</a></p>
+  <h2>1–10 · clauses</h2>
+  <ol dir="rtl"><li>این سند استاندارد Standard Farsi शब्द / lex است.</li><li>این سند ترجمهٔ یک متن ایزوی انگلیسی نیست.</li><li>جدول کلیدواژه‌های این پرونده هنجاری است.</li><li>مسیر ترجمه: یونیکد، سپس ACII، سپس رومنگری (الگوریتم اصلی)، سپس لکْسِ شایلی، سپس میزبان.</li><li>برنامه‌ای نوشته‌شده با این استاندارد را می‌توان در هر استاندارد منتشرشدهٔ همان شایلی دید.</li><li>دیدن هویت ترجمه را عوض نمی‌کند.</li><li>شناسه‌ها از راه واژه‌نامه نشان داده می‌شوند. ترجمه شناسه‌های اصلی را می‌گیرد.</li><li>خلأهای جدول فهرست شده‌اند. از حافظه پر نشده‌اند.</li><li>پرونده‌های گویش می‌توانند ردیف‌های آوایی، واژگانی یا نحوی بیفزایند. تا پذیرش جایگزین این جدول نمی‌شوند.</li><li>اصلاحات به صورت CSV در deposits/csv و deposits/standards فرستاده می‌شوند.</li></ol>
+  <ol lang="en"><li>This document is the standard of Standard Farsi शब्द / lex.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>8 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">more details.</td><td><code>more details.</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">\'("\\'"</td><td><code>\'("\\'"</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">\"("\\""</td><td><code>\"("\\""</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">ش_پںک्تـی</td><td><code>sha_pa_mk_ti</code></td><td><code>yylineno</code></td></tr><tr><td dir="auto">ش_ب_مان</td><td><code>sha_ba_maana</code></td><td><code>yylval</code></td></tr><tr><td dir="auto">ش_شب्د</td><td><code>sha_shab_da</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">ش_مالا</td><td><code>sha_maalaa</code></td><td><code>yytext</code></td></tr><tr><td dir="auto">*/</td><td><code>*/</code></td><td><code>yylex</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/persian_shabda.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><ش◌َـےلـی شب्د>
+%{
+%}
+%%
+"अ"a+"अ"	{م_لـیکھـو("ओ");}
+ab+a	{م_لـیکھـو("ab*a");}
+%%</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host lex. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is lex.</p>
+  <pre translate="no">%{
+%}
+%%
+"अ"a+"अ"	{ma_layakhau("ओ");}
+ab+a	{ma_layakhau("ab*a");}
+%%</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">%{
+%}
+%%
+"अ"a+"अ"	{ma_layakhau("ओ");}
+ab+a	{ma_layakhau("ab*a");}
+%%</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><a href="persian-c.html">C</a> · <a href="persian-cpp.html">C++</a> · <a href="persian-basic.html">BASIC</a> · <a href="persian-asm.html">Assembly</a> · <span>lex</span> · <a href="persian-yacc.html">yacc</a> · <a href="persian-logo.html">Logo</a></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Standard Farsi lex.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

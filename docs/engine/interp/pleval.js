@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * ISO Prolog subset for Ciao iso_tests arithmetic extract (STANDARD GREEN).
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

@@ -1,0 +1,19 @@
+/* GATE CS §9 DBMS — adapted. Original: gate/09_dbms.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION btree_min(t)
+    RETURN t - 1
+END
+FUNCTION is_3nf(ok)
+    RETURN ok
+END
+FUNCTION main()
+    t = 1
+    IF btree_min(3) != 2
+        t = 0
+    END
+    IF is_3nf(1) != 1
+        t = 0
+    END
+    RETURN t
+END

@@ -1,0 +1,1426 @@
+{
+ "target": "asm",
+ "shaili": "yantra",
+ "host": "asm",
+ "source": "retrieved/legacy/Hindawi/yantra/h2y.uhin",
+ "invented": false,
+ "extracted_at_rules": 354,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "कउ",
+   "to": "AH"
+  },
+  {
+   "from": "कन",
+   "to": "AL"
+  },
+  {
+   "from": "कक्ष",
+   "to": "AX"
+  },
+  {
+   "from": "खउ",
+   "to": "BH"
+  },
+  {
+   "from": "खन",
+   "to": "BL"
+  },
+  {
+   "from": "खक्ष",
+   "to": "BX"
+  },
+  {
+   "from": "गउ",
+   "to": "CH"
+  },
+  {
+   "from": "गन",
+   "to": "CL"
+  },
+  {
+   "from": "गक्ष",
+   "to": "CX"
+  },
+  {
+   "from": "घउ",
+   "to": "DH"
+  },
+  {
+   "from": "घन",
+   "to": "DL"
+  },
+  {
+   "from": "घक्ष",
+   "to": "DX"
+  },
+  {
+   "from": "बकक्ष",
+   "to": "EAX"
+  },
+  {
+   "from": "बखक्ष",
+   "to": "EBX"
+  },
+  {
+   "from": "बगक्ष",
+   "to": "ECX"
+  },
+  {
+   "from": "बघक्ष",
+   "to": "EDX"
+  },
+  {
+   "from": "बआस",
+   "to": "EBP"
+  },
+  {
+   "from": "बनस",
+   "to": "EIP"
+  },
+  {
+   "from": "बतक",
+   "to": "EDI"
+  },
+  {
+   "from": "बढक",
+   "to": "ESI"
+  },
+  {
+   "from": "आस",
+   "to": "BP"
+  },
+  {
+   "from": "नस",
+   "to": "IP"
+  },
+  {
+   "from": "ढस",
+   "to": "SP"
+  },
+  {
+   "from": "कख",
+   "to": "CS"
+  },
+  {
+   "from": "तख",
+   "to": "DS"
+  },
+  {
+   "from": "बख",
+   "to": "ES"
+  },
+  {
+   "from": "दख",
+   "to": "FS"
+  },
+  {
+   "from": "गख",
+   "to": "GS"
+  },
+  {
+   "from": "ढख",
+   "to": "SS"
+  },
+  {
+   "from": "तक",
+   "to": "DI"
+  },
+  {
+   "from": "ढक",
+   "to": "SI"
+  },
+  {
+   "from": "और",
+   "to": "AND"
+  },
+  {
+   "from": "बाइट",
+   "to": "BYTE"
+  },
+  {
+   "from": "टिप्पणी",
+   "to": "COMMENT"
+  },
+  {
+   "from": "orictxt276",
+   "to": "CON"
+  },
+  {
+   "from": "orictxt277",
+   "to": "DUP"
+  },
+  {
+   "from": "बर",
+   "to": "EQ"
+  },
+  {
+   "from": "दूर",
+   "to": "FAR"
+  },
+  {
+   "from": "जब",
+   "to": "GE"
+  },
+  {
+   "from": "जय",
+   "to": "GT"
+  },
+  {
+   "from": "उच्च",
+   "to": "HIGH"
+  },
+  {
+   "from": "कब",
+   "to": "LE"
+  },
+  {
+   "from": "नाप",
+   "to": "LENGTH"
+  },
+  {
+   "from": "पंक्ति",
+   "to": "LINE"
+  },
+  {
+   "from": "न्यून",
+   "to": "LOW"
+  },
+  {
+   "from": "कम",
+   "to": "LT"
+  },
+  {
+   "from": "नकाब",
+   "to": "MASK"
+  },
+  {
+   "from": "शेष",
+   "to": "MOD"
+  },
+  {
+   "from": "नब",
+   "to": "NE"
+  },
+  {
+   "from": "निकट",
+   "to": "NEAR"
+  },
+  {
+   "from": "नहीं",
+   "to": "NOT"
+  },
+  {
+   "from": "कुछ_नहीं",
+   "to": "NOTHING"
+  },
+  {
+   "from": "दुरत्व",
+   "to": "OFFSET"
+  },
+  {
+   "from": "या",
+   "to": "OR"
+  },
+  {
+   "from": "सूचक",
+   "to": "PTR"
+  },
+  {
+   "from": "खंड",
+   "to": "SEG"
+  },
+  {
+   "from": "लघु",
+   "to": "SHORT"
+  },
+  {
+   "from": "माप",
+   "to": "SIZE"
+  },
+  {
+   "from": "ढेर",
+   "to": "STACK"
+  },
+  {
+   "from": "यह",
+   "to": "THIS"
+  },
+  {
+   "from": "प्रकार",
+   "to": "TYPE"
+  },
+  {
+   "from": "जबतक",
+   "to": "WHILE"
+  },
+  {
+   "from": "चौड़ाई",
+   "to": "WIDTH"
+  },
+  {
+   "from": "शब्द",
+   "to": "WORD"
+  },
+  {
+   "from": "अथवा",
+   "to": "XOR"
+  },
+  {
+   "from": "मिलाओ",
+   "to": "ALIGN"
+  },
+  {
+   "from": "\\.सजाओ",
+   "to": ".ALPHA"
+  },
+  {
+   "from": "मानो",
+   "to": "ASSUME"
+  },
+  {
+   "from": "\\.कूट",
+   "to": ".CODE"
+  },
+  {
+   "from": "साधारण",
+   "to": "COMM"
+  },
+  {
+   "from": "\\.स्थिर",
+   "to": ".CONST"
+  },
+  {
+   "from": "\\.संदर्भ",
+   "to": ".CREF"
+  },
+  {
+   "from": "\\.तथ्य",
+   "to": ".DATA"
+  },
+  {
+   "from": "\\.तथ्य\\?",
+   "to": ".DATA\\?"
+  },
+  {
+   "from": "तथ्य_बाइट",
+   "to": "BYTE"
+  },
+  {
+   "from": "तब",
+   "to": "DB"
+  },
+  {
+   "from": "तथ्य_द्विगुन",
+   "to": "DWORD"
+  },
+  {
+   "from": "तद",
+   "to": "DD"
+  },
+  {
+   "from": "तदूर",
+   "to": "DF"
+  },
+  {
+   "from": "तथ्य_दूर",
+   "to": "FWORD"
+  },
+  {
+   "from": "डॉसखंड",
+   "to": "DOSSEG"
+  },
+  {
+   "from": "तथ्य_चौथ",
+   "to": "QWORD"
+  },
+  {
+   "from": "तच",
+   "to": "DQ"
+  },
+  {
+   "from": "दब",
+   "to": "DT"
+  },
+  {
+   "from": "दस_बाइट",
+   "to": "TWORD"
+  },
+  {
+   "from": "तश",
+   "to": "DW"
+  },
+  {
+   "from": "अन्था",
+   "to": "ELSE"
+  },
+  {
+   "from": "पूर्ण",
+   "to": "END"
+  },
+  {
+   "from": "पूर्ण_अगर",
+   "to": "ENDIF"
+  },
+  {
+   "from": "पूर्ण_सक्रिया",
+   "to": "ENDM"
+  },
+  {
+   "from": "पूर्ण_क्रिया",
+   "to": "ENDP"
+  },
+  {
+   "from": "पूर्ण_खंड",
+   "to": "ENDS"
+  },
+  {
+   "from": "सम",
+   "to": "EQU"
+  },
+  {
+   "from": "\\.त्रुटि",
+   "to": ".ERR"
+  },
+  {
+   "from": "\\.त्रुटि1",
+   "to": ".ERR1"
+  },
+  {
+   "from": "\\.त्रुटि2",
+   "to": ".ERR2"
+  },
+  {
+   "from": "\\.त्रुटि_सत",
+   "to": ".ERRE"
+  },
+  {
+   "from": "\\.त्रुटि_असत",
+   "to": ".ERRNZ"
+  },
+  {
+   "from": "\\.त्रुटि_घोषित",
+   "to": ".ERRDEF"
+  },
+  {
+   "from": "\\.त्रुटि_अघोषित",
+   "to": ".ERRNDEF"
+  },
+  {
+   "from": "\\.त्रुटि_खाली",
+   "to": ".ERRB"
+  },
+  {
+   "from": "\\.त्रुटि_न_खाली",
+   "to": ".ERRNB"
+  },
+  {
+   "from": "\\.त्रुटि_सम_माला",
+   "to": ".ERRIDN[I]"
+  },
+  {
+   "from": "\\.त्रुटि_असम_माला",
+   "to": ".ERRDIF[I]"
+  },
+  {
+   "from": "जोड़_मिल",
+   "to": "EVEN"
+  },
+  {
+   "from": "\\.निकास",
+   "to": ".EXIT"
+  },
+  {
+   "from": "निकासक",
+   "to": "EXITM"
+  },
+  {
+   "from": "orictxt218",
+   "to": "EXTERN"
+  },
+  {
+   "from": "बाह्य",
+   "to": "EXTRN"
+  },
+  {
+   "from": "\\.दूरतथ्य",
+   "to": ".FARDATA"
+  },
+  {
+   "from": "\\.दूरतथ्य\\?",
+   "to": ".FARDATA\\?"
+  },
+  {
+   "from": "समूह",
+   "to": "GROUP"
+  },
+  {
+   "from": "अगर",
+   "to": "IF"
+  },
+  {
+   "from": "अगर1",
+   "to": "IF1"
+  },
+  {
+   "from": "अगर2",
+   "to": "IF2"
+  },
+  {
+   "from": "अगर_खाली",
+   "to": "IFB"
+  },
+  {
+   "from": "अगर_घोषित",
+   "to": "IFDEF"
+  },
+  {
+   "from": "अगर_असम",
+   "to": "IFDIF"
+  },
+  {
+   "from": "अगर_असत",
+   "to": "IFE"
+  },
+  {
+   "from": "अगर_सम",
+   "to": "IFIDN"
+  },
+  {
+   "from": "अगर_भरा",
+   "to": "IFNB"
+  },
+  {
+   "from": "अगर_अघोषित",
+   "to": "IFNDEF"
+  },
+  {
+   "from": "समावेश",
+   "to": "INCLUDE"
+  },
+  {
+   "from": "समाकोष",
+   "to": "INCLUDELIB"
+  },
+  {
+   "from": "क्रम",
+   "to": "IRP"
+  },
+  {
+   "from": "क्रमअ",
+   "to": "IRPC"
+  },
+  {
+   "from": "मोहर",
+   "to": "LABEL"
+  },
+  {
+   "from": "orictxt239",
+   "to": ".LALL"
+  },
+  {
+   "from": "orictxt240",
+   "to": ".LFCOND"
+  },
+  {
+   "from": "\\.दिखाओ",
+   "to": ".LIST"
+  },
+  {
+   "from": "स्थानीय",
+   "to": "LOCAL"
+  },
+  {
+   "from": "\\.स्वरूप",
+   "to": ".MODEL"
+  },
+  {
+   "from": "सक्रिया",
+   "to": "MACRO"
+  },
+  {
+   "from": "नाम",
+   "to": "NAME"
+  },
+  {
+   "from": "शुरू",
+   "to": "ORG"
+  },
+  {
+   "from": "\\%लिखो",
+   "to": "%cOUT"
+  },
+  {
+   "from": "पृष्ठ",
+   "to": "PAGE"
+  },
+  {
+   "from": "क्रिया",
+   "to": "PROC"
+  },
+  {
+   "from": "सार्व",
+   "to": "PUBLIC"
+  },
+  {
+   "from": "सीमित",
+   "to": "PURGE"
+  },
+  {
+   "from": "\\.आधार",
+   "to": ".RADIX"
+  },
+  {
+   "from": "अभिलेख",
+   "to": "RECORD"
+  },
+  {
+   "from": "दोहराओ",
+   "to": "REPT"
+  },
+  {
+   "from": "\\.मत_यंत्र",
+   "to": ".SALL"
+  },
+  {
+   "from": "अखंड",
+   "to": "SEGMENT"
+  },
+  {
+   "from": "\\.मूल",
+   "to": ".SEQ"
+  },
+  {
+   "from": "orictxt259",
+   "to": ".SFCOND"
+  },
+  {
+   "from": "\\.ढेर",
+   "to": ".STACK"
+  },
+  {
+   "from": "ढाँचा",
+   "to": "STRUC"
+  },
+  {
+   "from": "उपशीर्षक",
+   "to": "SUBTTL"
+  },
+  {
+   "from": "orictxt263",
+   "to": ".TFCOND"
+  },
+  {
+   "from": "शीर्षक",
+   "to": "TITLE"
+  },
+  {
+   "from": "जोड़",
+   "to": "UNI0N"
+  },
+  {
+   "from": "\\.मत_कोई",
+   "to": ".XALL"
+  },
+  {
+   "from": "\\.असंदर्भ",
+   "to": ".XCREF"
+  },
+  {
+   "from": "\\.मत_दिखाओ",
+   "to": ".XLIST"
+  },
+  {
+   "from": "प्रथम",
+   "to": "ENTRY"
+  },
+  {
+   "from": "विधि",
+   "to": "FORMAT"
+  },
+  {
+   "from": "प्रयोग",
+   "to": "EXECUTABLE"
+  },
+  {
+   "from": "पाठक",
+   "to": "READABLE"
+  },
+  {
+   "from": "लेखक",
+   "to": "WRITEABLE"
+  },
+  {
+   "from": "जठ",
+   "to": "AAA"
+  },
+  {
+   "from": "भाठ",
+   "to": "AAD"
+  },
+  {
+   "from": "गठ",
+   "to": "AAM"
+  },
+  {
+   "from": "घठ",
+   "to": "AAS"
+  },
+  {
+   "from": "जढ",
+   "to": "ADC"
+  },
+  {
+   "from": "जमा",
+   "to": "ADD"
+  },
+  {
+   "from": "छसठ",
+   "to": "ARPL"
+  },
+  {
+   "from": "सीमा",
+   "to": "BOUND"
+  },
+  {
+   "from": "अब",
+   "to": "BSF"
+  },
+  {
+   "from": "पब",
+   "to": "BSR"
+  },
+  {
+   "from": "बिटज",
+   "to": "BT"
+  },
+  {
+   "from": "बजविप",
+   "to": "BTC"
+  },
+  {
+   "from": "बजप",
+   "to": "BTR"
+  },
+  {
+   "from": "बजव",
+   "to": "BTS"
+  },
+  {
+   "from": "आरम्भ",
+   "to": "CALL"
+  },
+  {
+   "from": "बसश",
+   "to": "CBW"
+  },
+  {
+   "from": "दसच",
+   "to": "CDQ"
+  },
+  {
+   "from": "सढझ",
+   "to": "CLC"
+  },
+  {
+   "from": "सदझ",
+   "to": "CLD"
+  },
+  {
+   "from": "वब",
+   "to": "CLI"
+  },
+  {
+   "from": "सकब",
+   "to": "CLTS"
+  },
+  {
+   "from": "वढ",
+   "to": "CMC"
+  },
+  {
+   "from": "भेद",
+   "to": "CMP"
+  },
+  {
+   "from": "भमाब",
+   "to": "CMPSB"
+  },
+  {
+   "from": "भमाश",
+   "to": "CMPSW"
+  },
+  {
+   "from": "भेद_बदल",
+   "to": "CMPXCHG"
+  },
+  {
+   "from": "भेद_बदल_8ब",
+   "to": "CMPXCHG8B"
+  },
+  {
+   "from": "शसद",
+   "to": "CWD"
+  },
+  {
+   "from": "दजठ",
+   "to": "DAA"
+  },
+  {
+   "from": "दघठ",
+   "to": "DAS"
+  },
+  {
+   "from": "नफा",
+   "to": "DEC"
+  },
+  {
+   "from": "भाग",
+   "to": "DIV"
+  },
+  {
+   "from": "प्रवेश",
+   "to": "ENTER"
+  },
+  {
+   "from": "orictxt65",
+   "to": "ESC"
+  },
+  {
+   "from": "रुको",
+   "to": "HLT"
+  },
+  {
+   "from": "पभ",
+   "to": "IDIV"
+  },
+  {
+   "from": "पग",
+   "to": "IMUL"
+  },
+  {
+   "from": "अंदर",
+   "to": "IN"
+  },
+  {
+   "from": "लाभ",
+   "to": "INC"
+  },
+  {
+   "from": "अमब",
+   "to": "INSB"
+  },
+  {
+   "from": "अमश",
+   "to": "INSW"
+  },
+  {
+   "from": "विघ्न",
+   "to": "INT"
+  },
+  {
+   "from": "विघ्न3",
+   "to": "INT3"
+  },
+  {
+   "from": "विघ्नअ",
+   "to": "INTO"
+  },
+  {
+   "from": "ववाप",
+   "to": "IRET"
+  },
+  {
+   "from": "लऊ",
+   "to": "JA"
+  },
+  {
+   "from": "लऊब",
+   "to": "JAE"
+  },
+  {
+   "from": "लन",
+   "to": "JB"
+  },
+  {
+   "from": "लनीब",
+   "to": "JBE"
+  },
+  {
+   "from": "लगश",
+   "to": "JCXZ"
+  },
+  {
+   "from": "लब",
+   "to": "JE"
+  },
+  {
+   "from": "लबगश",
+   "to": "JECXZ"
+  },
+  {
+   "from": "लज",
+   "to": "JG"
+  },
+  {
+   "from": "लजब",
+   "to": "JGE"
+  },
+  {
+   "from": "लक",
+   "to": "JL"
+  },
+  {
+   "from": "लकब",
+   "to": "JLE"
+  },
+  {
+   "from": "लाँघ",
+   "to": "JMP"
+  },
+  {
+   "from": "लनऊ",
+   "to": "JNA"
+  },
+  {
+   "from": "लनऊब",
+   "to": "JNAE"
+  },
+  {
+   "from": "लनन",
+   "to": "JNB"
+  },
+  {
+   "from": "लननब",
+   "to": "JNBE"
+  },
+  {
+   "from": "लनब",
+   "to": "JNE"
+  },
+  {
+   "from": "लनज",
+   "to": "JNG"
+  },
+  {
+   "from": "लनजब",
+   "to": "JNGE"
+  },
+  {
+   "from": "लनक",
+   "to": "JNL"
+  },
+  {
+   "from": "लनकब",
+   "to": "JNLE"
+  },
+  {
+   "from": "लनअ",
+   "to": "JNO"
+  },
+  {
+   "from": "लनम",
+   "to": "JNP"
+  },
+  {
+   "from": "लनच",
+   "to": "JNS"
+  },
+  {
+   "from": "लनश",
+   "to": "JNZ"
+  },
+  {
+   "from": "लअ",
+   "to": "JO"
+  },
+  {
+   "from": "लम",
+   "to": "JP"
+  },
+  {
+   "from": "लमब",
+   "to": "JPE"
+  },
+  {
+   "from": "लमअ",
+   "to": "JPO"
+  },
+  {
+   "from": "लच",
+   "to": "JS"
+  },
+  {
+   "from": "लश",
+   "to": "JZ"
+  },
+  {
+   "from": "भकझ",
+   "to": "LAHF"
+  },
+  {
+   "from": "भअ",
+   "to": "LAR"
+  },
+  {
+   "from": "भतख",
+   "to": "LDS"
+  },
+  {
+   "from": "भठ",
+   "to": "LEA"
+  },
+  {
+   "from": "निकलो",
+   "to": "LEAVE"
+  },
+  {
+   "from": "भबख",
+   "to": "LES"
+  },
+  {
+   "from": "भदख",
+   "to": "LFS"
+  },
+  {
+   "from": "भव्या",
+   "to": "LGDT"
+  },
+  {
+   "from": "भगख",
+   "to": "LGS"
+  },
+  {
+   "from": "भविघ्न",
+   "to": "LIDT"
+  },
+  {
+   "from": "भस्था",
+   "to": "LLDT"
+  },
+  {
+   "from": "भयअ",
+   "to": "LMSW"
+  },
+  {
+   "from": "ताला",
+   "to": "LOCK"
+  },
+  {
+   "from": "भमब",
+   "to": "LODSB"
+  },
+  {
+   "from": "भमश",
+   "to": "LODSW"
+  },
+  {
+   "from": "फिर",
+   "to": "LOOP"
+  },
+  {
+   "from": "फिरबर",
+   "to": "LOOPE"
+  },
+  {
+   "from": "फिरनब",
+   "to": "LOOPNE"
+  },
+  {
+   "from": "फिरनश",
+   "to": "LOOPNZ"
+  },
+  {
+   "from": "फिरश",
+   "to": "LOOPZ"
+  },
+  {
+   "from": "भखस",
+   "to": "LSL"
+  },
+  {
+   "from": "भढख",
+   "to": "LSS"
+  },
+  {
+   "from": "भखर",
+   "to": "LTR"
+  },
+  {
+   "from": "डालो",
+   "to": "MOV"
+  },
+  {
+   "from": "डालोमब",
+   "to": "MOVSB"
+  },
+  {
+   "from": "डालोमश",
+   "to": "MOVSW"
+  },
+  {
+   "from": "डचअ",
+   "to": "MOVSX"
+  },
+  {
+   "from": "डशअ",
+   "to": "MOVZX"
+  },
+  {
+   "from": "गुणा",
+   "to": "MUL"
+  },
+  {
+   "from": "नकार",
+   "to": "NEG"
+  },
+  {
+   "from": "वक्रि",
+   "to": "NOP"
+  },
+  {
+   "from": "बाहर",
+   "to": "OUT"
+  },
+  {
+   "from": "बमब",
+   "to": "OUTSB"
+  },
+  {
+   "from": "बमश",
+   "to": "OUTSW"
+  },
+  {
+   "from": "लो",
+   "to": "POP"
+  },
+  {
+   "from": "लोस",
+   "to": "POPA"
+  },
+  {
+   "from": "लोसद",
+   "to": "POPAD"
+  },
+  {
+   "from": "लोझ",
+   "to": "POPF"
+  },
+  {
+   "from": "लोझद",
+   "to": "POPFD"
+  },
+  {
+   "from": "दो",
+   "to": "PUSH"
+  },
+  {
+   "from": "दोस",
+   "to": "PUSHA"
+  },
+  {
+   "from": "दोसद",
+   "to": "PUSHAD"
+  },
+  {
+   "from": "दोझ",
+   "to": "PUSHF"
+  },
+  {
+   "from": "दोझद",
+   "to": "PUSHFD"
+  },
+  {
+   "from": "घढब",
+   "to": "RCL"
+  },
+  {
+   "from": "घढद",
+   "to": "RCR"
+  },
+  {
+   "from": "पुनः",
+   "to": "REP"
+  },
+  {
+   "from": "पुनःब",
+   "to": "REPE"
+  },
+  {
+   "from": "पुनःनब",
+   "to": "REPNE"
+  },
+  {
+   "from": "पुनःनश",
+   "to": "REPNZ"
+  },
+  {
+   "from": "पुनःश",
+   "to": "REPZ"
+  },
+  {
+   "from": "वापस",
+   "to": "RET"
+  },
+  {
+   "from": "वापद",
+   "to": "RETF"
+  },
+  {
+   "from": "घब",
+   "to": "ROL"
+  },
+  {
+   "from": "घद",
+   "to": "ROR"
+  },
+  {
+   "from": "रकझ",
+   "to": "SAHF"
+  },
+  {
+   "from": "हगब",
+   "to": "SAL"
+  },
+  {
+   "from": "हगद",
+   "to": "SAR"
+  },
+  {
+   "from": "हब",
+   "to": "SHL"
+  },
+  {
+   "from": "हद",
+   "to": "SHR"
+  },
+  {
+   "from": "हबद",
+   "to": "SHLD"
+  },
+  {
+   "from": "हदद",
+   "to": "SHRD"
+  },
+  {
+   "from": "घउध",
+   "to": "SBB"
+  },
+  {
+   "from": "पमब",
+   "to": "SCASB"
+  },
+  {
+   "from": "पमश",
+   "to": "SCASW"
+  },
+  {
+   "from": "रऊ",
+   "to": "SETA"
+  },
+  {
+   "from": "रऊब",
+   "to": "SETAE"
+  },
+  {
+   "from": "रन",
+   "to": "SETB"
+  },
+  {
+   "from": "रनब",
+   "to": "SETBE"
+  },
+  {
+   "from": "रब",
+   "to": "SETE"
+  },
+  {
+   "from": "रज",
+   "to": "SETG"
+  },
+  {
+   "from": "रजब",
+   "to": "SETGE"
+  },
+  {
+   "from": "रक",
+   "to": "SETL"
+  },
+  {
+   "from": "रकब",
+   "to": "SETLE"
+  },
+  {
+   "from": "रनऊ",
+   "to": "SETNA"
+  },
+  {
+   "from": "रनऊब",
+   "to": "SETNAE"
+  },
+  {
+   "from": "रनन",
+   "to": "SETNB"
+  },
+  {
+   "from": "रननब",
+   "to": "SETNBE"
+  },
+  {
+   "from": "रनाब",
+   "to": "SETNE"
+  },
+  {
+   "from": "रनज",
+   "to": "SETNG"
+  },
+  {
+   "from": "रनजब",
+   "to": "SETNGE"
+  },
+  {
+   "from": "रनक",
+   "to": "SETNL"
+  },
+  {
+   "from": "रनकब",
+   "to": "SETNLE"
+  },
+  {
+   "from": "रनअ",
+   "to": "SETNO"
+  },
+  {
+   "from": "रनम",
+   "to": "SETNP"
+  },
+  {
+   "from": "रनच",
+   "to": "SETNS"
+  },
+  {
+   "from": "रनश",
+   "to": "SETNZ"
+  },
+  {
+   "from": "रअ",
+   "to": "SETO"
+  },
+  {
+   "from": "रम",
+   "to": "SETP"
+  },
+  {
+   "from": "रमब",
+   "to": "SETPE"
+  },
+  {
+   "from": "रमअ",
+   "to": "SETPO"
+  },
+  {
+   "from": "रच",
+   "to": "SETS"
+  },
+  {
+   "from": "रश",
+   "to": "SETZ"
+  },
+  {
+   "from": "रखो_व्याख्या",
+   "to": "SGDT"
+  },
+  {
+   "from": "रखो_विघ्न",
+   "to": "SIDT"
+  },
+  {
+   "from": "रखो_स्थानीय",
+   "to": "SLDT"
+  },
+  {
+   "from": "रयअ",
+   "to": "SMSW"
+  },
+  {
+   "from": "रढझ",
+   "to": "STC"
+  },
+  {
+   "from": "रदझ",
+   "to": "STD"
+  },
+  {
+   "from": "वश",
+   "to": "STI"
+  },
+  {
+   "from": "रखमब",
+   "to": "STOSB"
+  },
+  {
+   "from": "रखमश",
+   "to": "STOSW"
+  },
+  {
+   "from": "रक्रिर",
+   "to": "STR"
+  },
+  {
+   "from": "घटा",
+   "to": "SUB"
+  },
+  {
+   "from": "जाँच",
+   "to": "TEST"
+  },
+  {
+   "from": "सल",
+   "to": "VERR"
+  },
+  {
+   "from": "सप",
+   "to": "VERRW"
+  },
+  {
+   "from": "विलंब",
+   "to": "WAIT"
+  },
+  {
+   "from": "बज",
+   "to": "XADD"
+  },
+  {
+   "from": "बदलो",
+   "to": "XCHG"
+  },
+  {
+   "from": "अनु",
+   "to": "XLAT"
+  },
+  {
+   "from": "ढाँचा_क्षुद्र",
+   "to": "TINY"
+  },
+  {
+   "from": "ढाँचा_छोटा",
+   "to": "SMALL"
+  },
+  {
+   "from": "ढाँचा_कठोर",
+   "to": "COMPACT"
+  },
+  {
+   "from": "ढाँचा_बड़ा",
+   "to": "LARGE"
+  },
+  {
+   "from": "ढाँचा_बृहत",
+   "to": "HUGE"
+  }
+ ]
+}

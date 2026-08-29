@@ -1,0 +1,66 @@
+{
+ "language": "persian",
+ "iso639": "fa",
+ "script": "Perso-Arabic",
+ "script_table": null,
+ "script_axis": "UNRESOLVED",
+ "language_axis": "RETRIEVED",
+ "keyword_source": "retrieved/romenagri/langs/persian_c.tsv",
+ "invented": false,
+ "cells": [
+  {
+   "target": "asm",
+   "filled": 3,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "basic",
+   "filled": 8,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "c",
+   "filled": 27,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "cpp",
+   "filled": 9,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "java",
+   "filled": 10,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "lex",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "logo",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "python",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "yacc",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  }
+ ]
+}

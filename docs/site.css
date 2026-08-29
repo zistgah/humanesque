@@ -27,16 +27,19 @@ body.site, body.poster {
 }
 .site-head strong { letter-spacing: .14em; color: var(--gold); font-weight: 500; }
 .site-head nav.spine-nav { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; }
+.spine-quick { display: flex; flex-wrap: wrap; gap: .55rem 1rem; align-items: center; width: 100%; font-size: .92rem; }
+.spine-quick a { color: var(--gold) !important; border-bottom: 1px solid rgba(201,162,39,.45); }
 .spine-drop { position: relative; }
 .spine-drop > button, .spine-drop > a {
-  background: transparent; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0;
+  background: transparent; border: 0; color: var(--ink) !important; font: inherit; cursor: pointer; padding: .15rem .1rem;
+  border-bottom: 1px solid rgba(201,162,39,.4);
 }
 .spine-drop ul {
   display: none; position: absolute; z-index: 20; margin: 0; padding: .4rem 0;
   list-style: none; min-width: 12rem;
   background: #0b1524; border: 1px solid rgba(201,162,39,.4);
 }
-.spine-drop:hover ul, .spine-drop:focus-within ul { display: block; }
+.spine-drop:hover ul, .spine-drop:focus-within ul, .spine-drop.open ul { display: block; }
 .spine-drop li a { display: block; padding: .25rem .8rem; color: var(--ink); text-decoration: none; }
 .spine-drop li a:hover { color: var(--gold); }
 .spine-langs { display: flex; gap: .4rem; align-items: center; }
@@ -104,3 +107,16 @@ button:hover, .btn:hover { border-color: var(--gold); color: #fff; }
   .site-main { padding: 1rem; }
   body.site, body.poster { font-size: 16px; }
 }
+
+nav.crumbs {
+  display: flex; flex-wrap: wrap; gap: .35rem; align-items: center;
+  padding: .45rem 1.5rem; font-size: .88rem; color: var(--dim);
+  border-bottom: 1px solid rgba(201,162,39,.2);
+}
+nav.crumbs a { color: var(--ink); text-decoration: none; }
+nav.crumbs a:hover { color: var(--gold); }
+nav.crumbs span { opacity: .7; }
+.nb-colab { background: #0b1c2c; color: #e8d9a8; padding: 8px 12px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.nb-colab a { color: #e8d9a8; }
+a.btn { display: inline-block; background: #f3e6b6; color: #0d2a4a; padding: .3rem .7rem; text-decoration: none; font-weight: 700; margin: .2rem .2rem .2rem 0; }
+body.site .warn { background: rgba(201,162,39,.12); border: 1px solid var(--gold); padding: .6rem .8rem; }

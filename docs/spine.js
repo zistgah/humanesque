@@ -1,4 +1,5 @@
 /* Canonical site spine. Include on every public page. Do not duplicate menus.
+ * Navigation and breadcrumbs live here. Do not reinvent them per page.
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
  */
 (function () {
@@ -19,6 +20,29 @@
     (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
     return n;
   }
+  var LABELS = {
+    "index.html": "Home",
+    "standards": "Standards",
+    "stack.html": "Stack",
+    "nb.html": "Notebook",
+    "nb.frozen.html": "Original notebook",
+    "workbench.html": "Workbench",
+    "frontends.html": "Frontends",
+    "languages.html": "Frontends",
+    "path": "Path",
+    "roundtrip.html": "Romenagri",
+    "research.html": "Research",
+    "linguist.html": "Linguist",
+    "hindawi.html": "Hindawi",
+    "ilm": "ILM",
+    "deposits": "Deposits",
+    "mez": "Mez",
+    "sims": "Sims",
+    "console.html": "Console",
+    "emu.html": "x86 guest",
+    "agi.html": "Status",
+    "roadmap.html": "Roadmap"
+  };
   function langSelect(bundle) {
     var sel = el("select", { id: "spine-lang", "aria-label": "Language stack" });
     sel.appendChild(el("option", { value: "", text: "Language stack…" }));
@@ -35,7 +59,7 @@
     if (q) sel.value = q;
     return sel;
   }
-  function inject(data, bundle) {
+  function injectNav(data, bundle) {
     var head = document.querySelector("header.site-head");
     if (!head || head.getAttribute("data-no-spine") === "1") return;
     head.innerHTML = "";
@@ -58,13 +82,102 @@
         ul.appendChild(el("li", null, [el("a", { href: rel(it.href), text: it.label })]));
       });
       drop.appendChild(ul);
+      drop.querySelector("button").addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = drop.classList.contains("open");
+        nav.querySelectorAll(".spine-drop.open").forEach(function (n) { n.classList.remove("open"); });
+        if (!open) drop.classList.add("open");
+      });
       nav.appendChild(drop);
     });
     head.appendChild(nav);
+    var quick = el("nav", { class: "spine-quick", "aria-label": "Primary" });
+    [
+      ["index.html", "Home"],
+      ["workbench.html", "Workbench"],
+      ["nb.html", "Notebook"],
+      ["stack.html", "Stack"],
+      ["standards/", "Standards"],
+      ["local.html", "Download"]
+    ].forEach(function (pair) {
+      quick.appendChild(el("a", { href: rel(pair[0]), text: pair[1] }));
+    });
+    var zip = el("a", { href: "/panini.zip", text: "panini.zip" });
+    zip.setAttribute("download", "panini.zip");
+    quick.appendChild(zip);
+    head.appendChild(quick);
   }
-  Promise.all([
-    fetch(base + "spine.json").then(function (r) { return r.json(); }),
-    fetch(base + "engine/bundle.json").then(function (r) { return r.json(); }).catch(function () { return {}; })
-  ]).then(function (pair) { inject(pair[0], pair[1]); })
-    .catch(function (e) { console.warn("spine", e); });
+  function injectCrumbs() {
+    var path = (location.pathname || "").replace(/\/+$/, "");
+    var segs = path.split("/").filter(Boolean);
+    if (segs[0] === "site") segs.shift();
+    var nav = document.querySelector("nav.crumbs");
+    if (!nav) {
+      nav = el("nav", { class: "crumbs", "aria-label": "Breadcrumb" });
+      var head = document.querySelector("header.site-head");
+      if (head && head.parentNode) head.parentNode.insertBefore(nav, head.nextSibling);
+      else document.body.insertBefore(nav, document.body.firstChild);
+    }
+    nav.innerHTML = "";
+    nav.appendChild(el("a", { href: rel("index.html"), text: "Home" }));
+    if (!segs.length || (segs.length === 1 && segs[0] === "index.html")) return;
+    var acc = [];
+    segs.forEach(function (seg, i) {
+      acc.push(seg);
+      nav.appendChild(el("span", { text: " / " }));
+      var last = i === segs.length - 1;
+      var name = LABELS[seg] || decodeURIComponent(seg).replace(/\.html$/, "").replace(/[-_]/g, " ");
+      if (last) {
+        nav.appendChild(el("span", { text: name }));
+        return;
+      }
+      var href;
+      if (seg === "standards") href = rel("standards/");
+      else if (seg === "path") href = rel("path/");
+      else if (seg === "ilm") href = rel("ilm/");
+      else if (seg === "deposits") href = rel("deposits/");
+      else href = rel(acc.join("/"));
+      nav.appendChild(el("a", { href: href, text: name }));
+    });
+  }
+  var FALLBACK = {
+    brand: "PANINI",
+    menu: [
+      { id: "estate", label: "Estate", items: [
+        { href: "index.html", label: "Home" },
+        { href: "workbench.html", label: "Workbench" },
+        { href: "nb.html", label: "Notebook" },
+        { href: "local.html", label: "Download zip" }
+      ]},
+      { id: "machine", label: "Machine", items: [
+        { href: "console.html", label: "Console" },
+        { href: "nb.html", label: "Notebook" },
+        { href: "workbench.html", label: "Workbench" },
+        { href: "story.html", label: "Story" }
+      ]},
+      { id: "languages", label: "Languages", href: "stack.html", items: [
+        { href: "stack.html", label: "Stack" },
+        { href: "standards/", label: "Standards" }
+      ]},
+      { id: "cyclers", label: "Cyclers", items: [
+        { href: "cyclers.html", label: "Cyclers" },
+        { href: "mez/desk.html", label: "Mez desk" }
+      ]}
+    ]
+  };
+  injectNav(FALLBACK, {});
+  injectCrumbs();
+  fetch(base + "spine.json").then(function (r) {
+    if (!r.ok) throw new Error("spine.json " + r.status);
+    return r.json();
+  }).then(function (data) {
+    injectNav(data, {});
+    injectCrumbs();
+    fetch(base + "engine/bundle.json").then(function (r) { return r.json(); }).then(function (bundle) {
+      injectNav(data, bundle);
+    }).catch(function () {});
+  }).catch(function (e) {
+    console.warn("spine.json failed, fallback menu stays", e);
+  });
 })();

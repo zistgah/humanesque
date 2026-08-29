@@ -62,6 +62,29 @@ async function main() {
       process.exitCode = result.success ? 0 : 1;
       return;
     }
+    case "binary":
+    case "gcc": {
+      const file = args[1];
+      const src = readInput(file);
+      const result = compile(src, { filename: file || "<stdin>", target: "c" });
+      const cText = result.binary.toString("utf8");
+      const stem = (file || "a").replace(/\.pni$/i, "");
+      const cPath = flag("c-out") || stem + ".c";
+      const binPath = flag("out") || stem;
+      fs.writeFileSync(cPath, cText);
+      const { spawnSync } = await import("node:child_process");
+      const r = spawnSync("gcc", ["-O2", cPath, "-o", binPath], { encoding: "utf8" });
+      if (r.stdout) process.stdout.write(r.stdout);
+      if (r.stderr) process.stderr.write(r.stderr);
+      if (r.status) {
+        process.stderr.write("PANINI emitted C to " + cPath + " but gcc failed.\n");
+        process.exitCode = r.status;
+        return;
+      }
+      process.stderr.write("PANINI → C → gcc  wrote " + binPath + "  (source " + cPath + ")\n");
+      process.exitCode = result.success ? 0 : 1;
+      return;
+    }
     case "run-spec": {
       await import("../scripts/run_spec.mjs");
       return;
@@ -322,7 +345,8 @@ Usage:
   panini lex <file.pni>
   panini parse <file.pni>
   panini typecheck <file.pni>
-  panini compile <file.pni> [--target json|js] [--out file]
+  panini compile <file.pni> [--target json|js|c] [--out file]
+  panini binary <file.pni> [--out a.out]   # PANINI → C → gcc. Native binary. JS remains the web host.
   panini python <file.py>     # invoke host python3
   panini cc <file.c>          # invoke host cc
   panini cpp <file.cpp>       # invoke host c++

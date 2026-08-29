@@ -4,44 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>हिंदवी अभ्यास अनुभाग</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
   <style>
-    /* Chrome from हिंदवी_2022_8_स्मरण_पुस्तिका.ipynb — paper, not the estate navy. */
-    body { margin: 0; font: 15px/1.45 "Noto Sans Devanagari", Georgia, sans-serif; background: #f7f7f7; color: #111; }
-    header { background: #0b1c2c; color: #e8d9a8; padding: 8px 12px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    header a { color: #e8d9a8; }
-    .wrap { display: flex; gap: 8px; padding: 8px; max-width: 1200px; margin: 0 auto; }
-    .editors { flex: 3; min-width: 0; }
-    .actions { flex: 1; min-width: 11rem; }
-    label { font-weight: 700; display: block; margin-top: 6px; }
-    textarea { width: 100%; font-family: ui-monospace, monospace; font-size: 13px; }
-    #prog { height: 180px; }
-    #inp { height: 80px; }
-    #out, #rmn, #host, #flat { height: 110px; }
-    .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px; }
-    .stage { background: #fff; border: 1px solid #ccc; padding: 6px; }
-    .stage h3 { margin: 0 0 4px; font-size: 13px; }
-    .why { font-size: 12px; color: #444; margin: 0 0 4px; }
-    .warn { background: #fff3cd; border: 1px solid #c9a227; padding: 6px 12px; margin: 8px; }
-    @media (max-width: 720px) { .wrap, .io, .stages { flex-direction: column; grid-template-columns: 1fr; } }
-    .io { display: flex; gap: 8px; }
-    .io > div { flex: 1; min-width: 0; }
-    button { height: 30px; font-weight: 700; border: 0; padding: 0 10px; cursor: pointer; width: 100%; margin: 3px 0; }
-    .b-build { background: orange; }
-    .b-run { background: #2e7d32; color: #fff; }
-    .b-new { background: pink; }
-    .b-io { background: cyan; }
-    .b-x { background: lightgreen; }
-    .b-demo { background: lightblue; }
-    select { width: 100%; height: 25px; }
-    .fine { font-size: 12px; color: #444; padding: 0 12px 12px; }
-    @media (max-width: 720px) { .wrap, .io { flex-direction: column; } }
+    /* Estate chrome. Original Colab paper is nb.frozen.html — do not mix palettes. */
+    .nb-page .wrap { display: flex; gap: 8px; padding: 8px; max-width: 1200px; margin: 0 auto; }
+    .nb-page .editors { flex: 3; min-width: 0; }
+    .nb-page .actions { flex: 1; min-width: 11rem; }
+    .nb-page label { font-weight: 700; display: block; margin-top: 6px; }
+    .nb-page textarea { width: 100%; font-family: ui-monospace, monospace; font-size: 13px; }
+    .nb-page #prog { height: 180px; }
+    .nb-page #inp { height: 80px; }
+    .nb-page #out, .nb-page #rmn, .nb-page #host, .nb-page #flat, .nb-page #view { height: 110px; }
+    .nb-page .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px; }
+    .nb-page .stage { background: rgba(8,16,32,.72); border: 1px solid rgba(201,162,39,.32); padding: 6px; }
+    .nb-page .stage h3 { margin: 0 0 4px; font-size: 13px; }
+    .nb-page .why { font-size: 12px; color: var(--dim); margin: 0 0 4px; }
+    .nb-page .io { display: flex; gap: 8px; }
+    .nb-page .io > div { flex: 1; min-width: 0; }
+    .nb-page button { height: 30px; font-weight: 700; border: 0; padding: 0 10px; cursor: pointer; width: 100%; margin: 3px 0; }
+    .nb-page .b-build { background: orange; color: #111; }
+    .nb-page .b-run { background: #2e7d32; color: #fff; }
+    .nb-page .b-new { background: #c48; color: #fff; }
+    .nb-page .b-io { background: #1a6; color: #fff; }
+    .nb-page .b-x { background: #385; color: #fff; }
+    .nb-page .b-demo { background: #246; color: #fff; }
+    .nb-page select { width: 100%; height: 25px; }
+    .nb-page .fine { font-size: 12px; color: var(--dim); padding: 0 12px 12px; }
+    @media (max-width: 720px) { .nb-page .wrap, .nb-page .io, .nb-page .stages { flex-direction: column; grid-template-columns: 1fr; } }
   </style>
 </head>
-<body>
-<header>
+<body class="site nb-page">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="index.html">Home</a><span>/</span><a href="nb.html">Notebook</a>
+</nav>
+<header class="nb-colab">
   <strong>हिंदवी अभ्यास अनुभाग</strong>
-  <a href="index.html">PANINI</a>
+  <a href="nb.frozen.html">Original Colab chrome (frozen)</a>
   <a href="hindawi.html">Devanagari flow</a>
+  <a href="path/roundtrip.html">Romenagri (original algorithm)</a>
+  <a href="retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>
 </header>
 <div class="wrap">
   <div class="editors">
@@ -125,8 +129,9 @@
     <ol id="layerlist" style="font-size:13px;margin:0;padding-left:1.2rem"></ol>
   </div>
 </div>
-<p class="fine">Frozen chrome: <a href="nb.frozen.html">nb.frozen.html</a> (do not restyle). Compile is Unicode → ACII → Romenagri → shaili lex. Native gurucc then gcc. This page only <em>shows</em> those boxes. Original Colab: retrieved/legacy/Notebooks.</p>
+<p class="fine">Frozen Colab chrome: <a href="nb.frozen.html">nb.frozen.html</a>. Compile is Unicode → ACII → Romenagri (retrieved <code>acii2rmn</code> / <code>canonical_basis.json</code>) → shaili lex → host. Original algorithm: <a href="retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a> and <a href="engine/romenagri-orig.js">romenagri-orig.js</a>. Native gurucc then gcc. This page shows those boxes.</p>
 <input id="file" type="file" hidden />
+<script src="engine/romenagri-orig.js"></script>
 <script src="engine/nb.js"></script>
 <script src="i18n/gt.js"></script>
 <script>

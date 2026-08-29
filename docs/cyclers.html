@@ -3,34 +3,147 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PANINI — Cyclers from zistgah/cycles</title>
+  <title>PANINI — Cyclers</title>
   <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    .cy-grid { display: grid; grid-template-columns: minmax(16rem, 22rem) 1fr; gap: 1rem; }
+    @media (max-width: 800px) { .cy-grid { grid-template-columns: 1fr; } }
+    #list { max-height: 70vh; overflow: auto; border: 1px solid rgba(201,162,39,.35); padding: .4rem; }
+    #list button { display: block; width: 100%; text-align: left; background: transparent; color: inherit; border: 0; padding: .35rem .4rem; cursor: pointer; }
+    #list button:hover, #list button.on { background: rgba(201,162,39,.18); }
+    #src { width: 100%; min-height: 18rem; font: 13px/1.4 ui-monospace, monospace; background: #0d1624; color: #e8d9a8; border: 1px solid rgba(201,162,39,.35); padding: .6rem; }
+    #out { white-space: pre-wrap; min-height: 6rem; background: #152015; color: #cfe8cf; padding: .6rem; font: 13px/1.4 ui-monospace, monospace; }
+  </style>
 </head>
 <body class="site">
-<header class="site-head"><strong>PANINI</strong>
-  <nav>
-    <a href="index.html">Overview</a>
-    <a href="https://github.com/zistgah/cycles">zistgah/cycles</a>
-    <a href="workbench.html">Workbench</a>
-  </nav>
-</header>
+<header class="site-head"></header>
+<script src="spine.js"></script>
 <main class="site-main">
-  <h1>Cyclers (retrieved)</h1>
-  <p><strong>You can start using other AIs now.</strong> Open <a href="mez/desk.html">the mez desk</a>.
-     Pick a case (MEZ, MATBA, …). Build the prompt. Copy it, or open ChatGPT / Claude / Gemini / Grok.
-     Paste what came back. Accept. No API key. Nothing is billed here.</p>
-  <p><strong>Still pending:</strong> the retrieved <code>.pni</code> cyclers under <code>cyclers/upstream/</code>
-     (ChatGPT markdown / dialect errors) executing as literate PANINI; GENIE elevation as a first-class
-     runner, not only a URL. The desk does not need those to hand off.</p>
-  <p>Source: <a href="https://github.com/zistgah/cycles/tree/main/cyclers">zistgah/cycles/cyclers</a>.
-     Files are copied verbatim. They are not rewritten.</p>
-  <p>Most arrived as Markdown or mixed dialects (ChatGPT generation).
-     PANINI loads them as cycler documents. Native parse today succeeds on
-     <code>PANINI_SELF_HOSTING_SPEC.pni</code>. Others are classified and catalogued.</p>
-  <p><code>node src/cli.js cycler list</code></p>
-  <p>Site map: org pages at <a href="https://zistgah.org/">zistgah.org</a>;
-     this work targets <a href="https://github.com/zistgah/panini_by_grok">zistgah/panini_by_grok</a>
-     → typically <code>https://zistgah.org/panini_by_grok/</code> when the org custom domain is on GitHub Pages.</p>
+  <p class="cite">Retrieved from <a href="https://github.com/zistgah/cycles">zistgah/cycles</a>. Files copied verbatim. They run here as cycler documents. Mez desk needs no API key.</p>
+  <h1>Cyclers</h1>
+  <p class="lead">Pick a cycler. Read it. Run the PANINI subset. Copy a prompt to <a href="mez/desk.html">the mez desk</a>. Nothing is billed here.</p>
+  <p>
+    <a class="btn" href="mez/desk.html">Open mez desk</a>
+    <a class="btn" href="https://github.com/zistgah/cycles/tree/main/cyclers" rel="noopener">Upstream files</a>
+  </p>
+  <div class="cy-grid">
+    <div>
+      <h2>Catalogue</h2>
+      <div id="list">loading cyclers/index.json…</div>
+    </div>
+    <div>
+      <h2 id="title">—</h2>
+      <p class="fine" id="meta"></p>
+      <p>
+        <button type="button" id="run">Run as PANINI</button>
+        <button type="button" id="copy">Copy source</button>
+        <button type="button" id="mez">Prompt → mez</button>
+      </p>
+      <textarea id="src" spellcheck="false" aria-label="Cycler source"></textarea>
+      <h3>Result</h3>
+      <pre id="out">idle</pre>
+    </div>
+  </div>
 </main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+(function () {
+  var catalog = [];
+  var current = null;
+  var list = document.getElementById("list");
+  var srcEl = document.getElementById("src");
+  var out = document.getElementById("out");
+
+  function classify(text) {
+    var t = String(text);
+    var kind = "CYCLER";
+    if (/GENIE/i.test(t) || /PRIMARY PURPOSE/i.test(t)) kind = "GENIE";
+    if (/FUNCTION\s+main\s*\(/i.test(t)) kind += " · runnable PANINI";
+    else kind += " · literate document";
+    var purpose = "";
+    var m = t.match(/purpose\s*=\s*"([^"]+)"/i) || t.match(/PRIMARY PURPOSE:\s*(.+)/i) || t.match(/^REM\s+(.+)/m);
+    if (m) purpose = m[1].trim().slice(0, 240);
+    return { kind: kind, purpose: purpose, bytes: t.length };
+  }
+
+  function show(item, text) {
+    current = item;
+    srcEl.value = text;
+    var c = classify(text);
+    document.getElementById("title").textContent = item.file;
+    document.getElementById("meta").textContent = (item.kind || c.kind) + " · " + c.bytes + " bytes" + (c.purpose ? " · " + c.purpose : "");
+    out.textContent = "loaded. Run as PANINI, or copy a prompt to mez.";
+    Array.prototype.forEach.call(list.querySelectorAll("button"), function (b) {
+      b.classList.toggle("on", b.getAttribute("data-file") === item.file);
+    });
+  }
+
+  function load(item) {
+    fetch("cyclers/" + item.file).then(function (r) { return r.text(); }).then(function (t) {
+      show(item, t);
+    }).catch(function (e) {
+      out.textContent = String(e.message || e);
+    });
+  }
+
+  fetch("cyclers/index.json").then(function (r) { return r.json(); }).then(function (j) {
+    catalog = Array.isArray(j) ? j : (j.cyclers || []);
+    list.innerHTML = "";
+    catalog.forEach(function (item, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("data-file", item.file);
+      b.textContent = (item.kind ? item.kind + " · " : "") + item.file;
+      b.onclick = function () { load(item); };
+      list.appendChild(b);
+      if (i === 0) load(item);
+    });
+    if (!catalog.length) list.textContent = "cyclers/index.json is empty.";
+  }).catch(function (e) {
+    list.textContent = String(e.message || e);
+  });
+
+  document.getElementById("copy").onclick = function () {
+    navigator.clipboard.writeText(srcEl.value || "").then(function () {
+      out.textContent = "copied " + (srcEl.value || "").length + " characters.";
+    }).catch(function () {
+      srcEl.select();
+      out.textContent = "select-all — copy from the box.";
+    });
+  };
+  document.getElementById("mez").onclick = function () {
+    var t = srcEl.value || "";
+    var prompt = "You are working a PANINI cycler.\n\nFile: " + (current && current.file || "") + "\n\n" + t.slice(0, 8000) + "\n\nReturn a concrete next action. Do not flatten the cycler into a chatbot.";
+    try { sessionStorage.setItem("panini.mez.prompt", prompt); } catch (e) {}
+    location.href = "mez/desk.html";
+  };
+  document.getElementById("run").onclick = function () {
+    var src = srcEl.value || "";
+    out.textContent = "running…";
+    var info = classify(src);
+    import("./engine/playground.js").then(function (mod) {
+      return mod.runLang("panini", src);
+    }).then(function (r) {
+      var bits = [];
+      bits.push(info.kind);
+      if (info.purpose) bits.push("purpose: " + info.purpose);
+      bits.push("ok: " + r.ok);
+      if (r.value !== undefined) bits.push("value: " + r.value);
+      if (r.print) bits.push("print:\n" + r.print);
+      if (r.prints && r.prints.length) bits.push("prints: " + JSON.stringify(r.prints));
+      if (r.error) bits.push("error: " + r.error);
+      if (r.note) bits.push(r.note);
+      if (!r.ok && !/FUNCTION\s+main/i.test(src)) {
+        bits.push("This file is a literate cycler document, not a FUNCTION main programme. Classification succeeded. Use mez for the hand-off.");
+      }
+      out.textContent = bits.join("\n");
+    }).catch(function (e) {
+      out.textContent = info.kind + "\nruntime: " + (e && e.message ? e.message : e) + "\nThe catalogue still loaded. Mez desk still works.";
+    });
+  };
+})();
+</script>
 </body>
 </html>

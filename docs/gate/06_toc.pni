@@ -1,0 +1,74 @@
+/* GATE CS §6 Theory of Computation
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION dfa_even1(s)
+    st = 0
+    i = 0
+    WHILE i < LEN(s)
+        IF s[i] == "1"
+            st = (st + 1) % 2
+        END
+        i = i + 1
+    END
+    RETURN 1 - st
+END
+FUNCTION re_a_star_b(s)
+    i = 0
+    WHILE i < LEN(s) AND s[i] == "a"
+        i = i + 1
+    END
+    IF i < LEN(s) AND s[i] == "b" AND i + 1 == LEN(s)
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION pda_parens(s)
+    d = 0
+    i = 0
+    WHILE i < LEN(s)
+        IF s[i] == "("
+            d = d + 1
+        ELSEIF s[i] == ")"
+            d = d - 1
+            IF d < 0
+                RETURN 0
+            END
+        END
+        i = i + 1
+    END
+    IF d == 0
+        RETURN 1
+    END
+    RETURN 0
+END
+FUNCTION anbn(n)
+    RETURN n
+END
+FUNCTION tm_inc(n)
+    RETURN n + 1
+END
+FUNCTION undeci_halting()
+    RETURN 0
+END
+FUNCTION main()
+    t = 1
+    IF dfa_even1("11011") != 1
+        t = 0
+    END
+    IF re_a_star_b("aaab") != 1
+        t = 0
+    END
+    IF pda_parens("(())") != 1
+        t = 0
+    END
+    IF pda_parens("(()") != 0
+        t = 0
+    END
+    IF tm_inc(41) != 42
+        t = 0
+    END
+    IF undeci_halting() != 0
+        t = 0
+    END
+    RETURN t
+END

@@ -1,0 +1,7 @@
+@wllama/wllama 2.3.1
+https://github.com/ngxson/wllama
+License: MIT
+Author: Xuan Son NGUYEN
+This is llama.cpp compiled to WebAssembly. Not a reimplementation.
+
+v86 (emu.html) is BSD, copy/v86 / hindawiai/v86.

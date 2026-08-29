@@ -1,128 +1,86 @@
-# Humanesque — merged release
+# Humanesque
 
-**PANINI · ILM / Hindawi · GENIE · Mez · Kitab · the cycler family · the factory**
+**PANINI · ILM / Hindawi · GENIE · Mez · Kitab · the cycler family**
 
 © 1993–2026 Abhishek Choudhary. AyeAI. GPL-3.0-or-later.
 
-The **full `zistgah/panini_by_grok` tree** — compiler, 21 frontends, 6 backends,
-Hindawi/ILM localization, 41 documentation pages, factory, labs, VS Code
-extension, LSP, debugger, x86 emulator, WebGPU, website — with the
-`zistgah/panini_by_claude` engine overlaid and four honesty defects fixed.
-
-Grok's own README is kept at `README.grok.md`.
-
----
-
-## Verify before you believe anything below
+The full `zistgah/panini_by_grok` tree at latest HEAD, merged with the
+`zistgah/panini_by_claude` engine, plus the ILM matrix built in this merge.
+Grok's own README is kept at `README.grok.md`. `ARCHITECTURE.md` is the index.
 
 ```
-bash VERIFY.sh
-```
-
-Sixteen checks, no arguments. Current result: **ALL CHECKS PASSED**.
-
-```
- engine (claude)
-  spec parses with 0 errors                       [ok]
-  145 assertions, mutation-proven                 [ok]
-  no network call in the engine                   [ok]
-  ...and that scan is proven to bite              [ok]
- compiler + backends (grok)
-  bootstrap runs                                  [ok]
-  C backend emits code gcc compiles               [ok]
-  Python backend emits runnable code              [ok]
-  C frontend: structs, pointers, recursion        [ok]
- ILM / Hindawi (grok)
-  compiles a 2004 Devanagari source               [ok]
-  native identifiers reach DWARF                  [ok]
- Mez
-  workflows derived from .pni                     [ok]
-  workflows.json is derived, not authored         [ok]
- integrity (fixed in this merge)
-  package.json licence matches LICENSE            [ok]
-  test suite CAN fail (exit code honoured)        [ok]
-  A-vs-B selfhost comparison is a real gate       [ok]
-```
-
-## Seed it
-
-```
-bash seed_humanesque.sh            # verify and stage, nothing pushed
+bash VERIFY.sh                     # 20 checks, no arguments
 bash seed_humanesque.sh --push     # gate: SEED humanesque
 ```
 
-Finds the release beside itself, in `$PWD`, or extracts
-`humanesque-release.tar.gz` from either. Stages in `$PWD`, never `/tmp`.
-Creates the remote if absent, inside the same typed gate. Verifies the staged
-tree where it lands before it will push.
+## What this merge added
 
----
+**The ILM matrix — 27 languages × 9 shailis.** All nine keyword maps extracted
+from the retrieved 2003–2023 transducers: **1,913 rules, none authored.**
 
-## What this merge changed
+| shaili | host | rules | | shaili | host | rules |
+|---|---|---|---|---|---|---|
+| गुरु guru | C | 323 | | सूची soochee | Python | 38 |
+| श्रेणी shraeni | C++ | 879 | | व्याकरण wyaaka | yacc | 20 |
+| यंत्र yantra | asm | 354 | | रोबोट robot | LOGO | 8 |
+| कृत्रिम kritrima | Java | 186 | | शब्द shabda | lex | 6 |
+| प्राथमिक praatha | BASIC | 99 | | | | |
 
-**1. Mez's desk now reads the language.** `apps/mez/docs/desk.html` fetched an
-80 KB hand-made `workflows.json` while 32 `.pni` cyclers and a parser sat in the
-same tree. `mez.pni` states the invariant it was breaking — *"cyclers are PANINI
-programs, not plugins"*. `apps/mez/build-workflows.mjs` derives it now; every
-entry carries `derived:true` and its `source` path, and VERIFY asserts both.
+**81 of 243 cells filled from retrieved data.** The other 162 are skeletons with
+the native column empty and marked `UNRESOLVED — a speaker must author them`.
+Nothing invents a native keyword.
 
-**2. The test suite can fail.** `tests/test.mjs` carried
-`exit_policy:"never_nonzero"` and `process.exit(0)` in a `finally`, so 81/83 with
-two failures exited 0 forever. It now exits 1. *It currently exits 1 — there are
-two real failures (`frontends zig`, `roundtrip flatten_bengali`) that were always
-there and were always green.*
+Filled: assamese · bengali · gujarati · hindi · kannada · malayalam · marathi ·
+nepali · odia · punjabi · sanskrit · tamil · telugu · urdu · arabic · persian.
+Skeleton: bodo · dogri · kashmiri · konkani · maithili · manipuri · santali ·
+sindhi · shahmukhi · dari · pashto.
 
-**3. The A-vs-B self-host comparison is a real gate.** `scripts/selfhost.mjs:70`
-passed a hardcoded `true`. Forcing `sameAB=false` still printed `[ok]` and still
-concluded VERIFIED. It now passes `sameAB`.
+```
+node tools/extract_maps.mjs        # nine shailis from the transducers
+node tools/build_ilm_matrix.mjs    # 27 x 9 keyword tables
+```
 
-**4. Licence conflict resolved.** `package.json` said MIT; `LICENSE` and every
-source header say GPL-3.0-or-later. npm and every SBOM scanner read package.json.
+**Mez reads the language.** `apps/mez/build-workflows.mjs` derives the desk's
+workflows from the `.pni` cyclers instead of a hand-made 80 KB snapshot. Every
+entry carries `derived:true` and its source path; VERIFY asserts both.
 
----
+**Four honesty defects fixed**, re-applied to this pull: `package.json` said MIT
+against a GPL LICENSE · `tests/test.mjs` carried `never_nonzero` so 81/83 exited
+0 forever (it now exits 1, and there are two real failures) · `selfhost.mjs:70`
+passed a hardcoded `true` for the A-vs-B comparison · the desk's snapshot.
 
-## What holds, and what does not
+## On self-hosting — the objection is right
 
-**Real, and I have not matched any of it:** the C frontend handles structs,
-pointers and recursion correctly; the C and Python backends emit code that
-compiles under real `gcc` and runs under real CPython; the Hindawi pipeline
-compiles a 2004 Devanagari source to a working binary with `DW_AT_name : अ` and
-`DW_AT_name : क` in the debug info.
+Compiling to JavaScript does not disqualify self-hosting. gcc emits x86 and is
+self-hosted. The target is not the question.
 
-**Not carried:** the self-hosting VERIFIED claim.
-`node engine/bin/panini.mjs conformance` reports `CAN_COMPILE: no`,
-`CAN_LOWER: no`, `CAN_BUILD: no`, and `ASSERT PANINI.CompilerSource
-CAN_COMPILE PANINI.CompilerSource` **FAILS** — for the right reason, both
-operands resolving to real modules. `docs/GROK_UPDATE.md` §4 shows how the
-theorem is currently satisfied: JavaScript doing the lowering, a `.pni` whose
-every build stage is `RETURN TRUE`, a typechecker that cannot reject, and a
-verifier that reads a file the pipeline itself wrote.
+The question is whether the PANINI-source compiler, compiled by itself,
+reproduces itself. That is not passed here, and the reason is not the target:
+`src/panini/compiler.pni` is 25 lines that call `lex()`, `build.pni` is seven
+functions each returning `TRUE`, `typechecker.pni` cannot reject anything, and
+`CAN_LOWER` is satisfied by `compiler/ir.js` — JavaScript. `docs/GROK_UPDATE.md`
+§4 has the line numbers.
 
-Two `.pni` implementations coexist here on purpose — `compiler/` + `src/panini/`
-from grok, `engine/` from claude. They disagree about what is proven. That
-disagreement is the most useful thing in the repository and it is not resolved by
-deleting one.
+Both implementations are kept and both are left disagreeing. That disagreement is
+the most useful thing in this repository.
 
----
+## Not asserted
 
-## Open, and stated
+**Mez does not yet work as intended.** Six output cyclers still recover only their
+first `STAGE`. A fix took matba 1→28, awaz→12, khwab→7, tilasm→14, yadein→13 and
+broke a FILE-block assertion; it was reverted rather than shipped half-tested.
+`docs/GROK_UPDATE.md` §1 carries the numbers and the trap.
 
-- **Stage nesting.** Six output cyclers recover only their first `STAGE`. A fix
-  took matba 1→28, awaz→12, khwab→7, tilasm→14, yadein→13 — and broke a FILE-block
-  assertion. Reverted rather than shipped half-tested. `docs/GROK_UPDATE.md` §1
-  carries the numbers and the exact trap.
-- **The second dialect.** ~9,300 parse errors are prose architecture documents
-  with `KEY: value` front matter. Whether that is PANINI is the author's ruling.
-- **23 of the 32 bundled cyclers** do not parse with grok's parser, including
-  `khwab`. `docs/KNOWLEDGE_TRANSFER_FOR_GROK.md` lists the fourteen constructs.
-- **`MANIFEST.sha256` lists itself** plus three files written after it —
-  `sha256sum -c` gives 6 FAILED. Not fixed here: resealing is a gated act.
-- `bin/mez.py`, Kitab's plumbing, `genie.js`, the dome — sovereign in their own
-  repositories. Reached, not absorbed.
+**GENIE is not done.** The prompt operating system is specified, `genie.js` lives
+in its own repository, and nothing here implements the eleven nodes.
+
+**LOGO, lex and yacc are thin** — 8, 6 and 20 rules. The transducers are
+retrieved and real; the extractors read only what matched. More rules are in
+those files than my readers currently pull out.
 
 ## Read next
 
-`docs/GROK_UPDATE.md` — nine sections, each with the command that produces the
-defect and the check that proves it fixed.
-`docs/KNOWLEDGE_TRANSFER_FOR_GROK.md` · `docs/GUIDANCE_TO_GROK_MEZ.md` ·
-`spec/DELTAS.md`.
+`ARCHITECTURE.md` — the three axes, nine shailis, four strata, both AGI stacks,
+release tiers, and what is architectural rather than implemented.
+`docs/GROK_UPDATE.md` · `docs/KNOWLEDGE_TRANSFER_FOR_GROK.md` ·
+`docs/GUIDANCE_TO_GROK_MEZ.md` · `spec/DELTAS.md`.

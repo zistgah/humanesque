@@ -1,0 +1,298 @@
+{
+ "source": "retrieved/romenagri/src/unicode.h",
+ "invented": false,
+ "rows": [
+  {
+   "unicode": 2325,
+   "acii": 179
+  },
+  {
+   "unicode": 2326,
+   "acii": 180
+  },
+  {
+   "unicode": 2327,
+   "acii": 181
+  },
+  {
+   "unicode": 2328,
+   "acii": 182
+  },
+  {
+   "unicode": 2329,
+   "acii": 183
+  },
+  {
+   "unicode": 2330,
+   "acii": 184
+  },
+  {
+   "unicode": 2331,
+   "acii": 185
+  },
+  {
+   "unicode": 2332,
+   "acii": 186
+  },
+  {
+   "unicode": 2333,
+   "acii": 187
+  },
+  {
+   "unicode": 2334,
+   "acii": 188
+  },
+  {
+   "unicode": 2335,
+   "acii": 189
+  },
+  {
+   "unicode": 2336,
+   "acii": 190
+  },
+  {
+   "unicode": 2337,
+   "acii": 191
+  },
+  {
+   "unicode": 2338,
+   "acii": 192
+  },
+  {
+   "unicode": 2339,
+   "acii": 193
+  },
+  {
+   "unicode": 2340,
+   "acii": 194
+  },
+  {
+   "unicode": 2341,
+   "acii": 195
+  },
+  {
+   "unicode": 2342,
+   "acii": 196
+  },
+  {
+   "unicode": 2343,
+   "acii": 197
+  },
+  {
+   "unicode": 2344,
+   "acii": 198
+  },
+  {
+   "unicode": 2345,
+   "acii": 199
+  },
+  {
+   "unicode": 2346,
+   "acii": 200
+  },
+  {
+   "unicode": 2347,
+   "acii": 201
+  },
+  {
+   "unicode": 2348,
+   "acii": 202
+  },
+  {
+   "unicode": 2349,
+   "acii": 203
+  },
+  {
+   "unicode": 2350,
+   "acii": 204
+  },
+  {
+   "unicode": 2351,
+   "acii": 205
+  },
+  {
+   "unicode": 2352,
+   "acii": 207
+  },
+  {
+   "unicode": 2354,
+   "acii": 209
+  },
+  {
+   "unicode": 2357,
+   "acii": 212
+  },
+  {
+   "unicode": 2358,
+   "acii": 213
+  },
+  {
+   "unicode": 2359,
+   "acii": 214
+  },
+  {
+   "unicode": 2360,
+   "acii": 215
+  },
+  {
+   "unicode": 2361,
+   "acii": 216
+  },
+  {
+   "unicode": 2306,
+   "acii": 162
+  },
+  {
+   "unicode": 2307,
+   "acii": 163
+  },
+  {
+   "unicode": 2305,
+   "acii": 161
+  },
+  {
+   "unicode": 2364,
+   "acii": 233
+  },
+  {
+   "unicode": 2309,
+   "acii": 164
+  },
+  {
+   "unicode": 2381,
+   "acii": 232
+  },
+  {
+   "unicode": 2310,
+   "acii": 165
+  },
+  {
+   "unicode": 2366,
+   "acii": 218
+  },
+  {
+   "unicode": 2311,
+   "acii": 166
+  },
+  {
+   "unicode": 2367,
+   "acii": 219
+  },
+  {
+   "unicode": 2312,
+   "acii": 167
+  },
+  {
+   "unicode": 2368,
+   "acii": 220
+  },
+  {
+   "unicode": 2313,
+   "acii": 168
+  },
+  {
+   "unicode": 2369,
+   "acii": 221
+  },
+  {
+   "unicode": 2314,
+   "acii": 169
+  },
+  {
+   "unicode": 2370,
+   "acii": 222
+  },
+  {
+   "unicode": 2315,
+   "acii": 170
+  },
+  {
+   "unicode": 2371,
+   "acii": 223
+  },
+  {
+   "unicode": 2318,
+   "acii": 171
+  },
+  {
+   "unicode": 2374,
+   "acii": 224
+  },
+  {
+   "unicode": 2319,
+   "acii": 172
+  },
+  {
+   "unicode": 2375,
+   "acii": 225
+  },
+  {
+   "unicode": 2320,
+   "acii": 173
+  },
+  {
+   "unicode": 2376,
+   "acii": 226
+  },
+  {
+   "unicode": 2323,
+   "acii": 176
+  },
+  {
+   "unicode": 2379,
+   "acii": 229
+  },
+  {
+   "unicode": 2324,
+   "acii": 177
+  },
+  {
+   "unicode": 2380,
+   "acii": 230
+  },
+  {
+   "unicode": 2317,
+   "acii": 174
+  },
+  {
+   "unicode": 2373,
+   "acii": 227
+  },
+  {
+   "unicode": 2321,
+   "acii": 178
+  },
+  {
+   "unicode": 2377,
+   "acii": 231
+  },
+  {
+   "unicode": 2355,
+   "acii": 210
+  },
+  {
+   "unicode": 2404,
+   "acii": 234
+  },
+  {
+   "unicode": 2425,
+   "acii": 128
+  },
+  {
+   "unicode": 2365,
+   "acii": 235
+  },
+  {
+   "unicode": 2322,
+   "acii": 175
+  },
+  {
+   "unicode": 2378,
+   "acii": 228
+  },
+  {
+   "unicode": 2353,
+   "acii": 208
+  }
+ ]
+}

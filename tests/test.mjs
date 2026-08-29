@@ -294,8 +294,7 @@ try {
   rec("panini_core", "orchestrator", false, { error: String(e.message || e) });
 } finally {
   try { write(); } catch (e) { console.error("report write failed", e); }
-  // A suite that cannot go red is not a suite. Failures now set the exit code.
-  const failed = Object.values(report).flat().filter((r) => r && r.ok === false).length;
+  const failed = Object.values(report).flat().filter((r)=>r&&r.ok===false).length;
   if (failed) console.error(`${failed} check(s) failed`);
   process.exit(failed ? 1 : 0);
 }

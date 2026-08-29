@@ -1,0 +1,7 @@
+<ش◌َـےلـی ش्رےݨـی>
+#include <iostream>
+int main()
+{
+	std::cout << "سلام\n";
+	return 0;
+}

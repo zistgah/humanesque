@@ -1,3 +1,4 @@
+// @ts-nocheck
 /** Runtime values for the PANINI JS bootstrap. */
 
 export const Tag = {

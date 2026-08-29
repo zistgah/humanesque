@@ -1,0 +1,31 @@
+# syriac C keywords — Hindi bar 29. GPL-3.0-or-later
+native	romenagri	c
+ܐܢ	ana	if
+ܐܚܪܢܐ	aharanaa	else
+ܟܡܐ	kamaa	while
+ܥܒܕ	aebada	do
+		for
+		break
+		continue
+		switch
+		case
+		default
+ܦܢܐ	panaa	return
+		const
+		int
+		float
+		double
+		char
+		void
+		void
+		class
+		new
+		public
+		private
+		static
+		virtual
+		case
+		struct
+		include
+		scanf
+		printf

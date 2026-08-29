@@ -11,7 +11,7 @@
       background: var(--paper, #f4efe2);
       color: var(--text, #1a1408);
       padding: 1.5rem 1.75rem;
-      min-height: 16rem;
+      min-height: 24rem;
       white-space: pre-wrap;
       font: 1.15rem/1.7 Georgia, "Iowan Old Style", serif;
       border: 1px solid rgba(201,162,39,.45);
@@ -35,27 +35,36 @@
 <header class="site-head"></header>
 <script src="spine.js"></script>
 <main class="site-main">
-  <p class="cite no-print">Parallel to <a href="llm.html">llama.cpp</a> · same wllama guest · one sentence per turn</p>
+  <p class="cite no-print">Parallel to <a href="llm.html">llama.cpp</a> · same wllama guest · keep giving the word until Stop</p>
   <h1>Story spinner</h1>
-  <p class="lead no-print">A few words. N turns. Each turn feeds the last sentence and appends the next. Length is arbitrary. Download, or print to PDF from the browser.</p>
+  <p class="lead no-print">A few words. Turns N = 0 means there is no ceiling — generate until you press Stop. Novel length is allowed. Each turn feeds the last sentence and appends the next. Keep going continues from where it left off. Download, or print to PDF.</p>
 
   <div class="story-controls no-print">
     <label>Opening words
-      <textarea id="seed">Once upon a time in a small village</textarea>
+      <textarea id="seed">Once upon a time in a small village by the river, a child found a brass lamp that still remembered every name it had ever been given.</textarea>
     </label>
-    <label>Turns N
-      <input id="n" type="number" min="1" max="500" value="8" />
+    <label>Turns N (0 = until Stop)
+      <input id="n" type="number" min="0" max="100000" value="0" />
     </label>
     <label>Tokens / turn
-      <input id="tok" type="number" min="8" max="128" value="32" />
+      <input id="tok" type="number" min="8" max="512" value="96" />
+    </label>
+    <label>Model
+      <select id="model">
+        <option value="15M">stories15M</option>
+        <option value="42M">stories42M</option>
+        <option value="110M">stories110M</option>
+        <option value="host">host-speed continuer</option>
+      </select>
     </label>
     <button type="button" id="go">Spin</button>
+    <button type="button" id="more">Keep going</button>
     <button type="button" id="stop">Stop</button>
     <button type="button" id="dl">Download .txt</button>
     <button type="button" id="dlh">Download .html</button>
     <button type="button" id="pdf">Print / PDF</button>
   </div>
-  <p class="turn-log no-print" id="log">idle — same model as llama-cli (stories15M Q4_0).</p>
+  <p class="turn-log no-print" id="log">idle — llama.cpp when the guest loads; otherwise a labelled host-speed continuer. N=0 means until Stop.</p>
   <article id="paper" class="story-paper" aria-live="polite"></article>
 </main>
 <footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
@@ -64,9 +73,17 @@
 <script>
 (function () {
   var stop = false;
+  var spinning = false;
   var paper = document.getElementById("paper");
   var log = document.getElementById("log");
+  var llamaOk = false;
+  var rng = 1;
 
+  function rand() {
+    rng = (rng * 1664525 + 1013904223) >>> 0;
+    return rng / 4294967296;
+  }
+  function pick(a) { return a[Math.floor(rand() * a.length)]; }
   function sentences(t) {
     var parts = String(t).match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
     return parts.map(function (s) { return s.replace(/\s+/g, " ").trim(); }).filter(Boolean);
@@ -91,40 +108,101 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
   }
 
-  document.getElementById("go").onclick = async function () {
+  /* Host-speed continuer. Labelled. Not llama.cpp. Keeps generating until Stop.
+     Beats, names, weather, rooms, and verbs cycle so a novel-length run does not stall. */
+  var NAMES = ["Leela", "Arun", "Noor", "Kabir", "Sita", "Farid", "Meera", "Ishan", "Zara", "Dev"];
+  var PLACES = ["the river ghat", "the old observatory", "the brass bazaar", "a courtyard of neem", "the railway shed", "the fort wall", "the school verandah", "the indigo warehouse"];
+  var WEATHER = ["a dry wind", "unseasonal rain", "a moon that would not set", "dust from the west", "the first cool of dusk", "a heat that hummed in the wires"];
+  var OBJECTS = ["the lamp", "a ledger", "a rusted key", "a folded map", "a clay bird", "a radio that still spoke in two languages", "a bicycle bell", "a packet of seeds"];
+  var VERBS = ["waited", "turned", "listened", "counted", "walked", "opened", "closed", "remembered", "forgot", "asked", "answered", "drew", "hid"];
+  var BEATS = [
+    function (who, where) { return who + " stood at " + where + " and " + pick(VERBS) + " while " + pick(WEATHER) + " moved through the lane."; },
+    function (who) { return "Someone called " + who + " by a name that had not been used since childhood, and the sound of it changed the room."; },
+    function (who) { return who + " picked up " + pick(OBJECTS) + ". Inside it was a sentence written twice, once in a script they could read and once in a script they could only feel."; },
+    function (who, where) { return "At " + where + ", " + who + " met " + pick(NAMES) + ", who said: the work is not to translate the world but to compute in it."; },
+    function (who) { return "A cycler on the desk printed a line and waited. " + who + " did not have an API key. The desk did not ask for one."; },
+    function (who) { return who + " dreamed of a compiler that refused to flatten a language into a souvenir keyword, and woke with the taste of iron and cardamom."; },
+    function (who, where) { return "Night at " + where + " was not empty. " + who + " heard the same three notes a radio had played in 2004, when a machine first spoke in a mother tongue."; },
+    function (who) { return "They wrote one more page. Then another. The lamp did not dim. " + who + " understood that length was a decision, not a ration."; },
+    function (who) { return pick(NAMES) + " said to " + who + ", \"Keep giving the word.\" So they did. The story did not stop of its own accord."; },
+    function (who, where) { return "From " + where + " the city looked like a proof: streets as axioms, people as lemmas, " + who + " as the only remaining open conjecture."; }
+  ];
+
+  function hostContinue(story) {
+    var last = lastSentence(story);
+    var who = pick(NAMES);
+    var where = pick(PLACES);
+    var beat = pick(BEATS)(who, where);
+    var echo = last.length > 40 ? last.slice(0, 72) : last;
+    return beat + " What had just been said — “" + echo.replace(/^[“"]|[”"]$/g, "") + "” — was not the end of it.";
+  }
+
+  async function oneTurn(story, tok) {
+    var model = document.getElementById("model").value;
+    if (model !== "host" && llamaOk && window.PANINI_LLM) {
+      try {
+        if (PANINI_LLM.setModel) await PANINI_LLM.setModel(model);
+        var prompt = story.slice(-1800);
+        var raw = await PANINI_LLM.llamaCli(["-p", prompt, "-n", String(tok)]);
+        var gen = String(raw || "");
+        if (gen.indexOf(prompt) === 0) gen = gen.slice(prompt.length);
+        var next = clipSentence(gen);
+        if (next && next.length > 1) return next;
+      } catch (e) {
+        llamaOk = false;
+        log.textContent = "llama guest failed (" + (e && e.message ? e.message : e) + ") — host-speed continuer labelled, still generating.";
+      }
+    }
+    return hostContinue(story);
+  }
+
+  async function spin(fromCurrent) {
+    if (spinning) return;
+    spinning = true;
     stop = false;
     var seed = document.getElementById("seed").value.trim();
-    var N = Math.max(1, Number(document.getElementById("n").value) || 8);
-    var tok = Math.max(8, Number(document.getElementById("tok").value) || 32);
-    if (!seed) { log.textContent = "give a few words"; return; }
-    paper.textContent = seed;
-    log.textContent = "loading llama.cpp WASM…";
-    try {
-      await PANINI_LLM.getWllama();
-    } catch (e) {
-      log.textContent = String(e.message || e);
-      return;
+    var N = Number(document.getElementById("n").value);
+    if (!Number.isFinite(N) || N < 0) N = 0;
+    var tok = Math.max(8, Number(document.getElementById("tok").value) || 96);
+    var untilStop = N === 0;
+    var limit = untilStop ? 100000 : N;
+    if (!fromCurrent) {
+      if (!seed) { log.textContent = "give a few words"; spinning = false; return; }
+      rng = seed.split("").reduce(function (a, c) { return (a + c.charCodeAt(0)) | 0; }, 1) >>> 0;
+      paper.textContent = seed;
     }
-    var story = seed;
-    for (var i = 1; i <= N && !stop; i++) {
-      log.textContent = "turn " + i + " / " + N + " — feeding: “" + lastSentence(story).slice(0, 80) + "”";
-      var prompt = story;
-      var raw;
+    var story = paper.textContent || seed;
+    var model = document.getElementById("model").value;
+    if (model !== "host" && window.PANINI_LLM && PANINI_LLM.getWllama) {
+      log.textContent = "loading llama.cpp WASM…";
       try {
-        raw = await PANINI_LLM.llamaCli(["-p", prompt, "-n", String(tok)]);
+        if (PANINI_LLM.setModel) await PANINI_LLM.setModel(model);
+        await PANINI_LLM.getWllama();
+        llamaOk = true;
       } catch (e) {
-        log.textContent = String(e.message || e);
-        break;
+        llamaOk = false;
+        log.textContent = "llama not available (" + (e && e.message ? e.message : e) + ") — host-speed continuer. Keep going until Stop.";
       }
-      var gen = String(raw || "");
-      if (gen.indexOf(prompt) === 0) gen = gen.slice(prompt.length);
-      var next = clipSentence(gen);
-      if (!next) break;
-      story = (story.replace(/\s+$/, "") + " " + next).replace(/\s+/g, " ").trim();
-      paper.textContent = story;
     }
-    log.textContent = stop ? "stopped · " + sentences(story).length + " sentences"
-      : "done · " + N + " turns · " + sentences(story).length + " sentences · download or print to PDF";
+    var start = 1;
+    for (var i = start; i <= limit && !stop; i++) {
+      var engine = llamaOk && model !== "host" ? "llama.cpp " + model : "host-speed continuer";
+      log.textContent = "turn " + i + (untilStop ? " / until Stop" : " / " + N) + " · " + engine + " · feeding: “" + lastSentence(story).slice(0, 80) + "” · " + story.split(/\s+/).length + " words";
+      var next = await oneTurn(story, tok);
+      if (!next) break;
+      story = (story.replace(/\s+$/, "") + " " + next).replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+      paper.textContent = story;
+      await new Promise(function (r) { setTimeout(r, llamaOk ? 10 : 0); });
+    }
+    var words = story.split(/\s+/).filter(Boolean).length;
+    log.textContent = (stop ? "stopped" : "done") + " · " + sentences(story).length + " sentences · " + words + " words · download or print to PDF";
+    spinning = false;
+  }
+
+  document.getElementById("go").onclick = function () { spin(false); };
+  document.getElementById("more").onclick = function () {
+    if (!paper.textContent) return spin(false);
+    spin(true);
   };
   document.getElementById("stop").onclick = function () { stop = true; };
   document.getElementById("dl").onclick = function () {

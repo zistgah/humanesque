@@ -1,0 +1,63 @@
+/* GATE CS §10 Computer Networks
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION osi_layers()
+    RETURN 7
+END
+FUNCTION tcpip_layers()
+    RETURN 4
+END
+FUNCTION checksum3(a, b, c)
+    s = a + b + c
+    WHILE s >= 256
+        s = s - 256
+    END
+    RETURN s
+END
+FUNCTION cidr_hosts(prefix)
+    n = 32 - prefix
+    p = 1
+    i = 0
+    WHILE i < n
+        p = p * 2
+        i = i + 1
+    END
+    RETURN p - 2
+END
+FUNCTION dv_relax(d, via, w)
+    IF via + w < d
+        RETURN via + w
+    END
+    RETURN d
+END
+FUNCTION tcp_ack(seq, len)
+    RETURN seq + len
+END
+FUNCTION nat_port(base, n)
+    RETURN base + n
+END
+FUNCTION main()
+    t = 1
+    IF osi_layers() != 7
+        t = 0
+    END
+    IF tcpip_layers() != 4
+        t = 0
+    END
+    IF checksum3(200, 100, 20) != 64
+        t = 0
+    END
+    IF cidr_hosts(30) != 2
+        t = 0
+    END
+    IF dv_relax(10, 3, 2) != 5
+        t = 0
+    END
+    IF tcp_ack(1000, 20) != 1020
+        t = 0
+    END
+    IF nat_port(40000, 3) != 40003
+        t = 0
+    END
+    RETURN t
+END

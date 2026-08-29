@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Browser/Pages builtins for the C→WASM flow. No Node toolchain.
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

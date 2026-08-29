@@ -1,0 +1,356 @@
+C /*                                                                                               
+C                            Abhishek Choudhary's                          [TM]
+C     ___________________    __                  ______________         
+C    / _________________ \  /\_\                / ____________ \            
+C   / /________________ \ \ \/_/               /\ \__________ \ \   
+C  /\ \           __   \ \ \       __          \ \ \     __  \ \ \
+C  \ \ \         /\ \   \ \_\     /\ \          \ \_\   /\ \  \ \ \
+C   \ \ \        \ \ \   \/_/     \ \ \          \/_/   \ \ \  \ \ \
+C    \ \ \        \ \ \            \ \ \                 \ \ \  \ \ \
+C     \ \ \        \/  \            \/  \             ____\_\ \  \ \ \
+C      \ \ \       /   /            /   /            /         \  \ \ \
+C       \ \ \     /   /            /   /            /   _______ \  \ \ \
+C        \ \ \   /\  /________    /   /            /\  /______ \ \  \ \ \
+C         \ \ \  \ \_  ______ \  /\  /             \ \ \      \ \ \  \ \ \
+C          \ \ \  \_/ /_____ \ \ \ \ \     ________ \ \ \      \ \ \  \ \ \
+C           \ \ \  /\ \     \ \_\ \ \ \   /\  ____ \ \ \ \______\_\ \  \ \ \
+C            \ \ \ \ \ \     \/_/  \ \ \  \ \ \__ \ \ \ \___________ \  \ \ \
+C             \ \ \ \ \ \           \ \ \  \ \ \ \ \ \ \___________ \ \  \ \ \
+C              \ \ \ \ \ \_______    \ \ \__\_\ \_\/ /             \ \ \  \ \ \
+C               \ \_\ \ \________\    \ \_______  __/               \ \_\  \ \_\
+C                \/_/  \_________/     \_______ \ \/                 \/_/   \/_/
+C                                              \ \_\
+C                                               \/_/
+C  
+C                    Hindawi Programming System for Indian Languages
+C  
+C   [TM] Notice:
+C   "Hindawi Programming System" and the Hindawi Logo in Devnagari script are
+C   trademarks of Abhishek Choudhary and Sweta Choudhary, licensed to be used
+C   without any royalty for Hindawi Programming System for Indian Languages
+C   software only, AND, any other usage of this Logo, title, or the graphic
+C   imitation of these in any form or media is not permitted without a prior
+C   and legally appropriate written permission from the holders of the 
+C   trademarks, WHEREAS, the software, ALONE, is under GPL and any derivative,
+C   WHATSOEVER, may be distributed according to the conditions of GNU GPL V2
+C   described below, as long as the Hindawi Logo or the "Hindawi Programming
+C   System" title are NOT replicated, NOTWITHSTANDING, the clauses of the GNU
+C   GPL V2 license, AND, other conditions and legislations applicable to the 
+C   use of the software and the trademarks, AS PER the appplicable laws of the
+C   country of usage.
+C  
+C   Copyright (C) 2003,2004,2005,2006 Abhishek Choudhary
+C   Copyright (C) 2007,2008 Sweta Choudhary
+C   This file is part of the Hindawi Programming System.
+C  
+C   The Hindawi Programming System is free software; 
+C   you can redistribute it and/or modify it under the terms of the 
+C   General Public License as published by the 
+C   Free Software Foundation; either version 2 of the License, or 
+C   (at your option) any later version.
+C   
+C   The Hindawi Programming System is distributed in the hope
+C   that it will be useful, but WITHOUT ANY WARRANTY; without 
+C   even the implied warranty of MERCHANTABILITY or FITNESS FOR 
+C   A PARTICULAR PURPOSE. See the GNU General Public License for 
+C   more details.
+C   
+C   You should have received a copy of the GNU General Public
+C   License along with this file; see the file COPYING. If
+C   not, write to the Free Software Foundation,
+C   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+C  
+C   You can get more information from the following sources
+C                  WWW:    http://www.hindawi.in
+C                  Email:  info@hindawi.in
+C  
+C */
+ 
+¸æ¿éÚ§(1)
+×ÚÉ
+interface =0
+skip=1
+a$=ÈŞÏèÔÚÄáÕ$
+¤µÏ ÌÚÈ(a$)=0 Øå Âå
+   interface=1
+¤ÆèÍÃÚ
+   ´åÑå a$ ØáÂİ ÈÚ¾ È¢Ã #1
+   ÈÏèÄÚ(1)
+ÈŞÏèÁ ¤µÏ
+done =0
+g$=""
+³Ïå ºÊ Â³ done=0
+¤µÏ interface=1 Øå Âå par_daa(1)
+½ÛÈ prathmik shailee equiv of BASIC's DRAW
+½ÛÈ ÊÜ¸$ ³á ÑÛ¬ ÆÜ¸á ³Ü ÑÚ§Æ ¥ÔÕèÍ³ Øâ
+dummy%=ÌÚÆ(ÊÜ¸$("1234",2,2))
+i%=1
+px%=0: py%=0: fx%=0: fy%=0: ix%=0: iy%=0: c%=15: a=0
+tx=0: ty=0
+root_two=sqr(2)
+pen_nib=1: u_pnt=1
+C px_int=fx_int=ScreenWidth/2;
+C py_int=fy_int=ScreenHeight/2;
+ 
+ºÊ Â³ i%<len(g$)
+ix%=0: iy%=0
+nl%=0
+C      if(strcmp(MID_S(g_S,i_int,2),"©#")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+2+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+2+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = (int)(-1 * VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C   ix_int = (int)(VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C }
+C else if(strcmp(MID_S(g_S,i_int,2),"Æ#")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+2+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+2+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = (int)(VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C   ix_int = (int)(-1 * VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C }
+C else if(strcmp(MID_S(g_S,i_int,2),"Ê#")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+2+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+2+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = (int)(-1 * VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C   ix_int = (int)(-1 * VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C }
+C else if(strcmp(MID_S(g_S,i_int,2),"Ä#")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+2+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+2+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = (int)(VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C   ix_int = (int)(VAL(MID_S(g_S,i_int+2,nl_int)) / root_two);
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"©")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = -1 * VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Æ")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Ê")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   ix_int = -1 * VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Ä")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   ix_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"³")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   pen_nib = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Ñ")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   u_pnt = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Ï")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   c_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"¶")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( (MID_S(g_S,i_int+1+nl_int,1)[0] >= 48  &&
+C           MID_S(g_S,i_int+1+nl_int,1)[0] <= 57) ||
+C           MID_S(g_S,i_int+1+nl_int,1)[0] == 'E' ||
+C           MID_S(g_S,i_int+1+nl_int,1)[0] == '+' ||
+C           MID_S(g_S,i_int+1+nl_int,1)[0] == '-' ||
+C           MID_S(g_S,i_int+1+nl_int,1)[0] == '.' ){nl_int++;}
+C   a = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"º")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   ix_int = VAL(MID_S(g_S,i_int+1,nl_int))-px_int;
+C   i_int+=(nl_int+1); nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 44 ){nl_int++; i_int++;}
+C   nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = VAL(MID_S(g_S,i_int+1,nl_int))-py_int;
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"È")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   px_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C   i_int+=(nl_int+1); nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 44 ){nl_int++; i_int++;}
+C   nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   py_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C }
+C else if(strcmp(MID_S(g_S,i_int,1),"Ë")==0)
+C {
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   ix_int = VAL(MID_S(g_S,i_int+1,nl_int));
+C   i_int+=(nl_int+1); nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 44 ){nl_int++; i_int++;}
+C   nl_int=0;
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] == 32 ){nl_int++; i_int++;}
+C   while( MID_S(g_S,i_int+1+nl_int,1)[0] >= 48 &&
+C          MID_S(g_S,i_int+1+nl_int,1)[0] <= 57 ){nl_int++;}
+C   iy_int = VAL(MID_S(g_S,i_int+1,nl_int));
+   ËÏå(ix%,iy%,c%)
+   ix%=0: iy%=0
+C }
+C else {i_int++; continue;}
+ 
+rem translate final points
+fx%=px%+ix%
+fy%=py%+iy%
+rem rotate final points
+rem tx = px% + (fx% - px%) * cos(a) - (fy% - py%) * sin(a)
+rem ty = py% + (fx% - px%) * sin(a) + (fy% - py%) * cos(a)
+C tx=(float)px_int+(float)(fx_int-px_int)*(float)cos(a)-(float)(fy_int-py_int)*(float)sin(a);
+C ty=(float)py_int+(float)(fx_int-px_int)*(float)sin(a)+(float)(fy_int-py_int)*(float)cos(a);
+C fx_int=(int)tx;
+C fy_int=(int)ty;
+¤µÏ pen_nib=1 Øå Âå
+   raekhaa(px%,py%,fx%,fy%,c%,0)
+ÈŞÏèÁ ¤µÏ
+¤µÏ u_pnt=1 Øå Âå
+   px%=fx%
+   py%=fy%
+ÈŞÏèÁ ¤µÏ
+i%=i%+1
+ÂÊ Â³
+C if(!skip && interface) while(!kbhit());
+ 
+ 
+¤µÏ interface=1 Øå Âå
+   ¤µÏ ÌÚÈ(g$) > 0  Øå Âå ÔÛÑ¢Ê
+   par_daa(0)
+   ¸æ¿éÚ§(1)
+   ×ÚÉ
+   ×èÃÚÆ(1,1)
+   Ï¢µ(15,14)
+   ÑÛ´å("    ÕâÑÜ ÏåÊå½ ×¢×è³ÏÁ- 0.2.1 ³    ")
+   ×èÃÚÆ(1,2)
+   Ï¢µ(1,10)
+   ÑÛ´å("  Copyright (C)2006 ¤ËÛÖá³ ¸æÅÏÜ  ")
+   ×èÃÚÆ(1,3)
+   ÄÛ$=" ÄÛÆÚ¢³: "+ÄÛÆÚ¢³$ : ×Ì$="×ÌÍ: "+×ÌÍ$
+   ³$=ÄÛ$+"  "+×Ì$
+   Ï¢µ(15,11)
+   ÑÛ´å(³$)
+   Ï¢µ(12,0)
+   ×èÃÚÆ(40,1)
+   ÑÛ´å("GNU-GPL V2.")
+   Ï¢µ(15,0)
+   ÑÛ´å(" Visit http://www.hindawi.in")
+   Ï¢µ(7,0)
+   ×èÃÚÆ(40,2)
+   ÑÛ´å("If you cannot see Hindi press Alt-Enter ")
+   ×èÃÚÆ(40,3)
+   ÑÛ´å("×ØÚÍÂÚ :")
+   Ï¢µ(15,0)
+   ÑÛ´å("ÌÄÄ")
+   Ï¢µ(7,0)  ¢
+   ÑÛ´å("   ÆÛ³Ú× :")
+   Ï¢µ(15,0)
+   ÑÛ´å("¦ÂÛ")
+   Ï¢µ(7,0)
+   ×èÃÚÆ(1,4)
+   g1$="¥ÄáÕ->"+g$
+   ÑÛ´å(g1$)
+   ×èÃÚÆ(8,4)
+   ÈŞ¹å("",g$)
+¤ÆèÍÃÚ
+   ¤µÏ ÆØÜ¢ ´_È(1) Øå Âå
+      ´ÚÂÚ_ÈÀéå #1,b$
+      g$=b$
+      ¤µÏ ÈŞÏèÔ³èÖÍ$(¤¢Â³èÖÍ$(g$))="<ÕâÑÜ ÈèÏÚÃÌÛ³>" Øå Âå g$=""
+   ¤ÆèÍÃÚ
+      g$="¦ÂÛ"
+   ÈŞÏèÁ ¤µÏ
+ÈŞÏèÁ ¤µÏ
+¤µÏ ÈŞÏèÔ³èÖÍ$(¤¢Â³èÖÍ$(g$))="¦ÂÛ" Øå Âå done=1
+¤µÏ ÈŞÏèÔ³èÖÍ$(¤¢Â³èÖÍ$(g$))="ÌÄÄ" Øå Âå
+   ×ÚÉ
+   Ï¢µ(15,1)
+   ÑÛ´å("ÕâÑÜ ÏåÊå½ ³á ¥ÄáÕ")
+   Ï¢µ(7,0)
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("© x    : x ³ÄÌ ©ÈÏ ³Ü °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Æ x    : x ³ÄÌ ÆÜ¸á ³Ü °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ê x    : x ³ÄÌ ÊÚ¡¬ °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ä x     : x ³ÄÌ ÄÚ¡¬ °Ï Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("©# x   : x ³ÄÌ ©ÈÏ ³Ü °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Æ# x   : x ³ÄÌ ÆÜ¸á ³Ü °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ê# x   : x ³ÄÌ ÊÚ¡¬ °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ä# x    : x ³ÄÌ ÄÚ¡¬ °Ï ÂÛÏ¹Ü Ïá´Ú ´Ü¢¸Æá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("³ x    : x=0 ³ÑÌ ©ÈÏ;   x=1 ³ÑÌ ÆÜ¸á")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ï x     : Ï¢µ x ¸ÍÆ ³ÏÆá ØáÂİ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ñ x    : x=0 Ñæ½å;   x=1 ÌÂ Ñæ½å")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("¶ x    : ¸ÛÂèÏ-È½è½ ³å x ³åÁ radian ¶İÌÚÆá ØáÂİ ¥ÄáÕ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("º(x,y) : (x,y) ÊÛÆèÄİ Â³ Ïá´Ú ´Ü¢¸³Ï ºÚÆá ØáÂİ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("È(x,y) : (x,y) ÊÛÆèÄİ ÈÏ ÈØİ¡¸Æá ØáÂİ")
+   Æ_×èÃÚÆ(16)
+   ÑÛ´å("Ë(x,y) : (x,y) ÊÛÆèÄİ ³å ³á¢ÄèÏÛÂ ³Ï Ï¢µ ËÏÆá ØáÂİ ¥ÄáÕ")
+   ÔÛÑ¢Ê
+ÈŞÏèÁ ¤µÏ
+skip=0
+ÄåØÏÚ°
+ 
+¤µÏ interface<>1 Øå Âå
+   Ê¢Ä(1)
+   ÔÛÑ¢Ê
+ÈŞÏèÁ ¤µÏ
+ÈÏèÄÚ(-1)
+¸æ¿éÚ§(1)
+×ÚÉ
+¦ÂÛ

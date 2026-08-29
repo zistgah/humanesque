@@ -1,0 +1,31 @@
+/* GATE CS §10 Networks — adapted. Original: gate/10_networks.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION osi()
+    RETURN 7
+END
+FUNCTION tcpip()
+    RETURN 4
+END
+FUNCTION cidr_hosts(bits)
+    IF bits == 30
+        RETURN 2
+    END
+    IF bits == 24
+        RETURN 254
+    END
+    RETURN 0
+END
+FUNCTION main()
+    t = 1
+    IF osi() != 7
+        t = 0
+    END
+    IF tcpip() != 4
+        t = 0
+    END
+    IF cidr_hosts(30) != 2
+        t = 0
+    END
+    RETURN t
+END

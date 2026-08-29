@@ -1,0 +1,511 @@
+[
+ {
+  "romenagri": "",
+  "iscii_bytes": [
+   56559,
+   66
+  ]
+ },
+ {
+  "romenagri": "__",
+  "iscii_bytes": [
+   95
+  ]
+ },
+ {
+  "romenagri": "_a",
+  "iscii_bytes": [
+   56484
+  ]
+ },
+ {
+  "romenagri": "^a",
+  "iscii_bytes": []
+ },
+ {
+  "romenagri": "_aa",
+  "iscii_bytes": [
+   56485
+  ]
+ },
+ {
+  "romenagri": "^aa",
+  "iscii_bytes": [
+   56538
+  ]
+ },
+ {
+  "romenagri": "_i",
+  "iscii_bytes": [
+   56486
+  ]
+ },
+ {
+  "romenagri": "_ee",
+  "iscii_bytes": [
+   56487
+  ]
+ },
+ {
+  "romenagri": "^ee",
+  "iscii_bytes": [
+   56540
+  ]
+ },
+ {
+  "romenagri": "_u",
+  "iscii_bytes": [
+   56488
+  ]
+ },
+ {
+  "romenagri": "^u",
+  "iscii_bytes": [
+   56541
+  ]
+ },
+ {
+  "romenagri": "_oo",
+  "iscii_bytes": [
+   56489
+  ]
+ },
+ {
+  "romenagri": "^oo",
+  "iscii_bytes": [
+   56542
+  ]
+ },
+ {
+  "romenagri": "_ri",
+  "iscii_bytes": [
+   56490
+  ]
+ },
+ {
+  "romenagri": "^_ri",
+  "iscii_bytes": [
+   56543
+  ]
+ },
+ {
+  "romenagri": "_ae",
+  "iscii_bytes": [
+   56491
+  ]
+ },
+ {
+  "romenagri": "^ae",
+  "iscii_bytes": [
+   56544
+  ]
+ },
+ {
+  "romenagri": "_aee",
+  "iscii_bytes": [
+   56492
+  ]
+ },
+ {
+  "romenagri": "^aee",
+  "iscii_bytes": [
+   56545
+  ]
+ },
+ {
+  "romenagri": "_ai",
+  "iscii_bytes": [
+   56493
+  ]
+ },
+ {
+  "romenagri": "^ai",
+  "iscii_bytes": [
+   56546
+  ]
+ },
+ {
+  "romenagri": "_ow",
+  "iscii_bytes": [
+   56495
+  ]
+ },
+ {
+  "romenagri": "^ow",
+  "iscii_bytes": [
+   56548
+  ]
+ },
+ {
+  "romenagri": "_oa",
+  "iscii_bytes": [
+   56496
+  ]
+ },
+ {
+  "romenagri": "^oa",
+  "iscii_bytes": [
+   56549
+  ]
+ },
+ {
+  "romenagri": "_ou",
+  "iscii_bytes": [
+   56497
+  ]
+ },
+ {
+  "romenagri": "^ou",
+  "iscii_bytes": [
+   56550
+  ]
+ },
+ {
+  "romenagri": "_au",
+  "iscii_bytes": [
+   56498
+  ]
+ },
+ {
+  "romenagri": "^au",
+  "iscii_bytes": [
+   56551
+  ]
+ },
+ {
+  "romenagri": "_ao",
+  "iscii_bytes": [
+   56494
+  ]
+ },
+ {
+  "romenagri": "^ao",
+  "iscii_bytes": [
+   56547
+  ]
+ },
+ {
+  "romenagri": "ka",
+  "iscii_bytes": [
+   56499
+  ]
+ },
+ {
+  "romenagri": "kha",
+  "iscii_bytes": [
+   56500
+  ]
+ },
+ {
+  "romenagri": "ga",
+  "iscii_bytes": [
+   56501
+  ]
+ },
+ {
+  "romenagri": "gha",
+  "iscii_bytes": [
+   56502
+  ]
+ },
+ {
+  "romenagri": "_nga",
+  "iscii_bytes": [
+   56503
+  ]
+ },
+ {
+  "romenagri": "cha",
+  "iscii_bytes": [
+   56504
+  ]
+ },
+ {
+  "romenagri": "chha",
+  "iscii_bytes": [
+   56505
+  ]
+ },
+ {
+  "romenagri": "ja",
+  "iscii_bytes": [
+   56506
+  ]
+ },
+ {
+  "romenagri": "jha",
+  "iscii_bytes": [
+   56507
+  ]
+ },
+ {
+  "romenagri": "_yna",
+  "iscii_bytes": [
+   56508
+  ]
+ },
+ {
+  "romenagri": "ta",
+  "iscii_bytes": [
+   56509
+  ]
+ },
+ {
+  "romenagri": "tha",
+  "iscii_bytes": [
+   56510
+  ]
+ },
+ {
+  "romenagri": "da",
+  "iscii_bytes": [
+   56511
+  ]
+ },
+ {
+  "romenagri": "dha",
+  "iscii_bytes": [
+   56512
+  ]
+ },
+ {
+  "romenagri": "_nna",
+  "iscii_bytes": [
+   56513
+  ]
+ },
+ {
+  "romenagri": "_ta",
+  "iscii_bytes": [
+   56514
+  ]
+ },
+ {
+  "romenagri": "_tha",
+  "iscii_bytes": [
+   56515
+  ]
+ },
+ {
+  "romenagri": "_da",
+  "iscii_bytes": [
+   56516
+  ]
+ },
+ {
+  "romenagri": "_dha",
+  "iscii_bytes": [
+   56517
+  ]
+ },
+ {
+  "romenagri": "na",
+  "iscii_bytes": [
+   56518
+  ]
+ },
+ {
+  "romenagri": "pa",
+  "iscii_bytes": [
+   56520
+  ]
+ },
+ {
+  "romenagri": "pha",
+  "iscii_bytes": [
+   56521
+  ]
+ },
+ {
+  "romenagri": "ba",
+  "iscii_bytes": [
+   56522
+  ]
+ },
+ {
+  "romenagri": "bha",
+  "iscii_bytes": [
+   56523
+  ]
+ },
+ {
+  "romenagri": "ma",
+  "iscii_bytes": [
+   56524
+  ]
+ },
+ {
+  "romenagri": "ya",
+  "iscii_bytes": [
+   56525
+  ]
+ },
+ {
+  "romenagri": "ra",
+  "iscii_bytes": [
+   56527
+  ]
+ },
+ {
+  "romenagri": "_rra",
+  "iscii_bytes": [
+   56528
+  ]
+ },
+ {
+  "romenagri": "la",
+  "iscii_bytes": [
+   56529
+  ]
+ },
+ {
+  "romenagri": "wa",
+  "iscii_bytes": [
+   56532
+  ]
+ },
+ {
+  "romenagri": "lvra",
+  "iscii_bytes": [
+   56530
+  ]
+ },
+ {
+  "romenagri": "sha",
+  "iscii_bytes": [
+   56533
+  ]
+ },
+ {
+  "romenagri": "xa",
+  "iscii_bytes": [
+   56534
+  ]
+ },
+ {
+  "romenagri": "sa",
+  "iscii_bytes": [
+   56535
+  ]
+ },
+ {
+  "romenagri": "_ha",
+  "iscii_bytes": [
+   56536
+  ]
+ },
+ {
+  "romenagri": "_m",
+  "iscii_bytes": [
+   56482
+  ]
+ },
+ {
+  "romenagri": "_hh",
+  "iscii_bytes": [
+   56483
+  ]
+ },
+ {
+  "romenagri": "_na",
+  "iscii_bytes": [
+   56481
+  ]
+ },
+ {
+  "romenagri": "^za",
+  "iscii_bytes": [
+   56553
+  ]
+ },
+ {
+  "romenagri": "|",
+  "iscii_bytes": [
+   56554
+  ]
+ },
+ {
+  "romenagri": "^",
+  "iscii_bytes": [
+   56552
+  ]
+ },
+ {
+  "romenagri": "_rda",
+  "iscii_bytes": [
+   56511,
+   56553
+  ]
+ },
+ {
+  "romenagri": "_rdha",
+  "iscii_bytes": [
+   56512,
+   56553
+  ]
+ },
+ {
+  "romenagri": "^ra",
+  "iscii_bytes": [
+   56552,
+   56527
+  ]
+ },
+ {
+  "romenagri": "r",
+  "iscii_bytes": [
+   56527,
+   56552
+  ]
+ },
+ {
+  "romenagri": "kxa",
+  "iscii_bytes": [
+   56499,
+   56552,
+   56534
+  ]
+ },
+ {
+  "romenagri": "_tra",
+  "iscii_bytes": [
+   56514,
+   56552,
+   56527
+  ]
+ },
+ {
+  "romenagri": "j_yna",
+  "iscii_bytes": [
+   56506,
+   56552,
+   56508
+  ]
+ },
+ {
+  "romenagri": "shra",
+  "iscii_bytes": [
+   56533,
+   56552,
+   56527
+  ]
+ },
+ {
+  "romenagri": "_jza",
+  "iscii_bytes": [
+   56448
+  ]
+ },
+ {
+  "romenagri": "_nza",
+  "iscii_bytes": [
+   56519
+  ]
+ },
+ {
+  "romenagri": "_3",
+  "iscii_bytes": [
+   56555
+  ]
+ }
+]

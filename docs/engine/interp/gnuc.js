@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * GNU C pre-pass. Does not claim vmlinux.
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

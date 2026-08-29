@@ -13,20 +13,35 @@
 <main class="site-main">
   <p class="cite">VFS guest · llama.cpp WASM · not GitHub Pages as the runtime story</p>
   <h1>llama.cpp</h1>
-  <p class="lead">Two guests. Do not flatten them.</p>
+  <p class="lead">Two guests. Do not flatten them. Several models. Do not flatten those either.</p>
   <table>
     <tr><th>Guest</th><th>What</th><th>Where</th></tr>
     <tr><td>x86 i386</td><td>v86 · FreeDOS · Lekhak EXE</td><td><a href="emu.html">emu.html</a></td></tr>
     <tr><td>llama.cpp</td><td>Upstream C++ built natively (g++/cmake) <em>and</em> the same engine as WASM via wllama, invoked as <code>llama-cli</code> on the VFS</td><td><a href="console.html">console</a></td></tr>
   </table>
-  <p>x86_64 ELF does not run in v86. The browser path is llama.cpp compiled to WASM, model on <code>/models/</code>.</p>
+  <p>x86_64 ELF does not run in v86. The browser path is llama.cpp compiled to WASM. GGUF is fetched, not shipped in the zip.</p>
+  <h2>Models (ggml-org tinyllamas, Q4_0)</h2>
+  <table>
+    <tr><th>Id</th><th>File</th><th>Why it is here</th></tr>
+    <tr><td>15M</td><td>stories15M-q4_0.gguf</td><td>The original guest. Small enough for a phone.</td></tr>
+    <tr><td>42M</td><td>stories42M-q4_0.gguf</td><td>Same family, more parameters.</td></tr>
+    <tr><td>110M</td><td>stories110M-q4_0.gguf</td><td>Same family, longest context we load in the browser.</td></tr>
+  </table>
   <p>
+    <label>Model
+      <select id="m">
+        <option value="15M">stories15M</option>
+        <option value="42M">stories42M</option>
+        <option value="110M">stories110M</option>
+      </select>
+    </label>
     <input id="p" value="Once upon a time" style="width:min(32rem,100%)" />
-    <button type="button" id="run">llama-cli -p … -n 16</button>
+    <label>n <input id="n" type="number" min="8" max="256" value="32" style="width:4rem" /></label>
+    <button type="button" id="run">llama-cli -p …</button>
   </p>
   <pre id="out">idle</pre>
-  <p>Console: <code>llama-cli --version</code> then <code>llama-cli -p "Once upon a time" -n 16</code></p>
-  <p class="fine">WASM: @wllama/wllama 2.3.1 MIT (ngxson) — llama.cpp. Model: stories15M Q4_0. Parallel: <a href="story.html">story spinner</a> (N turns, one sentence at a time, download / print-PDF).</p>
+  <p>Console: <code>llama-cli --version</code> then <code>llama-cli -m 42M -p "Once upon a time" -n 32</code></p>
+  <p class="fine">WASM: @wllama/wllama 2.3.1 MIT (ngxson) — llama.cpp. Parallel: <a href="story.html">story spinner</a> (N=0 until Stop, novel length, keep going).</p>
 </main>
 <footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
 <script src="skins/skins.js"></script>
@@ -34,9 +49,13 @@
 <script>
 document.getElementById("run").onclick = function () {
   const out = document.getElementById("out");
-  out.textContent = "loading llama.cpp WASM + GGUF…";
-  PANINI_LLM.llamaCli(["-p", document.getElementById("p").value, "-n", "16"])
-    .then(function (t) { out.textContent = t; })
+  const id = document.getElementById("m").value;
+  const n = document.getElementById("n").value || "32";
+  out.textContent = "loading llama.cpp WASM + GGUF (" + id + ")…";
+  const go = window.PANINI_LLM.setModel ? PANINI_LLM.setModel(id) : Promise.resolve();
+  go.then(function () {
+    return PANINI_LLM.llamaCli(["-m", id, "-p", document.getElementById("p").value, "-n", String(n)]);
+  }).then(function (t) { out.textContent = t; })
     .catch(function (e) { out.textContent = String(e.message || e); });
 };
 </script>

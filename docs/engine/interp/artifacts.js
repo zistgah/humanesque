@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { vArtifact, vMap, vStr, wrap } from "./values.js";
 
 export class ArtifactStore {

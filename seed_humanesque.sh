@@ -2,7 +2,7 @@
 # seed_humanesque.sh — seed the merged release as zistgah/humanesque.
 #
 # Clause A: run it from anywhere. It finds the release beside itself, in $PWD,
-# or EXTRACTS humanesque-release.tar.gz from either. It does not stop and ask
+# or EXTRACTS humanesque.tar.gz from either. It does not stop and ask
 # you to unpack something it can unpack.
 # Clause 7: stages in $PWD, never /tmp, never above the invocation directory.
 set -uo pipefail
@@ -15,11 +15,11 @@ die(){ printf '\nseed: %s\n' "$*" >&2; exit 2; }
 
 resolve_src() {
   local looked=() c
-  for c in "$HERE" "$PWD" "$HERE/humanesque-release" "$PWD/humanesque-release"; do
+  for c in "$HERE" "$PWD" "$HERE/humanesque" "$PWD/humanesque"; do
     looked+=("$c"); [ -f "$c/VERIFY.sh" ] && { printf '%s\n' "$c"; return 0; }
   done
-  for c in "$HERE/humanesque-release.tar.gz" "$PWD/humanesque-release.tar.gz" \
-           "$HERE/humanesque-release.tar" "$PWD/humanesque-release.tar"; do
+  for c in "$HERE/humanesque.tar.gz" "$PWD/humanesque.tar.gz" \
+           "$HERE/humanesque.tar" "$PWD/humanesque.tar"; do
     looked+=("$c")
     if [ -f "$c" ]; then
       mkdir -p "$WORK/extract" || die "cannot create $WORK/extract"
@@ -31,7 +31,7 @@ resolve_src() {
   done
   die "could not find the release. Looked in:
     $(printf '%s\n    ' "${looked[@]}")
-  Put humanesque-release.tar.gz beside this script and run it again."
+  Put humanesque.tar.gz beside this script and run it again."
 }
 
 SRC="$(resolve_src)" || exit 2

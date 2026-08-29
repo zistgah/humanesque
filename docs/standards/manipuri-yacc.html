@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="mni">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Manipuri (Meitei) व्याकरण / yacc — standard</title>
+<link rel="stylesheet" href="../site.css"/>
+<link rel="stylesheet" href="../skins/jazz.css"/>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="../spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
+<main class="site-main">
+  <p class="cite">Released lineage: Hindawi 15 August 2004. Same deliverable shape as Hindi गुरु/C, श्रेणी/C++, प्राथमिक/BASIC, यांत्रिक/ASM, शब्द/lex, व्याकरण/yacc, रोबोट/Logo.</p>
+  <h1>Manipuri (Meitei) · व्याकरण · yacc</h1>
+  <p>Shaili names the <em>host</em>, never the spoken language. Manipuri (Meitei) व्याकरण is still a yacc program.</p>
+  <p class="warn">Meetei Mayek reverse-flatten is not in this clone. Hub is Devanagari. Named.</p>
+  <p>
+    <a class="btn" href="../nb.html?lang=manipuri&demo=langs/manipuri_wyaaka.uhin">Open in notebook</a>
+    <a class="btn" href="../nb.frozen.html">Original notebook</a>
+    <a class="btn" href="../workbench.html">Workbench</a>
+    <a class="btn" href="../stack.html?lang=manipuri">Keyword stack</a>
+    <a class="btn" href="../path/roundtrip.html">Romenagri lab</a>
+  </p>
+  <p>This language, other hosts: <a href="manipuri-c.html">C</a> · <a href="manipuri-cpp.html">C++</a> · <a href="manipuri-basic.html">BASIC</a> · <a href="manipuri-asm.html">Assembly</a> · <a href="manipuri-lex.html">lex</a> · <span>yacc</span> · <a href="manipuri-logo.html">Logo</a></p>
+  <h2>1–10 · clauses</h2>
+  <ol lang="en"><li>This document is the standard of Manipuri (Meitei) व्याकरण / yacc.</li><li>This document is not a translation of an English-language ISO text.</li><li>The keyword table in this file is normative.</li><li>The compile path is Unicode, then ACII, then Romenagri (original algorithm), then the shaili lex, then the host.</li><li>A program written to this standard may be viewed in any other published standard of the same shaili.</li><li>Viewing does not change compilation identity.</li><li>Identifiers are presented through a dictionary. Compilation uses the original identifiers.</li><li>Gaps in the keyword table are listed. They are not filled from memory.</li><li>Dialect files may add phonetic, word-choice, or syntax rows. They do not replace this table until accepted.</li><li>Corrections are submitted as CSV in deposits/csv and deposits/standards.</li></ol>
+  <h2>Keyword table (normative)</h2>
+  <p>10 rows. Hindi C bar is 29 unique-C keys. Other hosts use the 2004 retrieved lex where it exists. Romenagri is the original Unicode → ACII → Romenagri algorithm, not ISO 15919.</p>
+  
+  <table><thead><tr><th>native</th><th>Romenagri</th><th>host</th></tr></thead><tbody><tr><td dir="auto">more details.</td><td><code>more details.</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">व्याक_त्रुटि</td><td><code>wyaaka__truti</code></td><td><code>yyerror</code></td></tr><tr><td dir="auto">\'("\\'"</td><td><code>\'("\\'"</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">\"("\\""</td><td><code>\"("\\""</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">श_पंक्ति</td><td><code>sha_pa_mk_ti</code></td><td><code>yylineno</code></td></tr><tr><td dir="auto">श_ब_मान</td><td><code>sha_ba_maana</code></td><td><code>yylval</code></td></tr><tr><td dir="auto">श_शब्द</td><td><code>sha_shab_da</code></td><td><code>yylex</code></td></tr><tr><td dir="auto">श_माला</td><td><code>sha_maalaa</code></td><td><code>yytext</code></td></tr><tr><td dir="auto">व्याक</td><td><code>wyaaka</code></td><td><code>yyparse</code></td></tr><tr><td dir="auto">*/</td><td><code>*/</code></td><td><code>yylex</code></td></tr></tbody></table>
+  <h2>Demo program</h2>
+  <p>Source file: <code>../demos/langs/manipuri_wyaaka.uhin</code>. This is the program, not a souvenir line.</p>
+  <pre translate="no" dir="auto"><शैली व्याक>
+%अणु
+#समावेश <प्रकार.स>
+#समावेश <मानकपन.स>
+#घोषणा व्याक_ढेर_प्रकार द्विगुन
+%पूर्ण
+ 
+%मोहर अंक
+%बाँए '+' '-'
+%बाँए '*' '/'
+%बाँए '%'
+%दाँए घटा
+ 
+%%
+पंक्ति   : पंक्ति उक्ति '\n'   { म_लिखो("%g \n", $2); }
+       | पंक्ति '\n'
+       | /* ऐपसिलन */
+       ;
+उक्ति   : उक्ति '+' उक्ति    { $$ = $1 + $3; }
+       | उक्ति '-' उक्ति    { $$ = $1 - $3; }
+       | उक्ति '*' उक्ति    { $$ = $1 * $3; }
+       | उक्ति '/' उक्ति    { $$ = $1 / $3; }
+       | उक्ति '%' उक्ति    { $$ = (int)$1 % (int)$3; }
+       | '(' उक्ति ')'     { $$ = $2; }
+       | '-' उक्ति %प्राथमिकता घटा  { $$ = - $2; }
+       | अंक
+       ;
+%%
+ 
+पूर्णांक श_शब्द()
+अणु
+   पूर्णांक च;
+   जबतक ( ( च=अक्षर_लो() ) == ' ' );
+   अगर ( (च == '.') || (है_अंक(च)) )
+   अणु
+      अक्षर_वापस(च, मानक_निवेश);
+      म_पूछो("%lf", &श_ब_मान);
+      वापस अंक;
+   पूर्ण
+   वापस च;
+पूर्ण
+ 
+पूर्णांक व्याक_त्रुटि()
+अणु
+   वापस 0;
+पूर्ण
+ 
+पूर्णांक मुख्य(पूर्णांक तस, अक्षर *तव[] )
+अणु
+   म_लिखो("हिंदवी कैल्क्यूलेटर\n");
+   म_लिखो("Copyright (C) 2003-2023 Abhishek Choudhary\n");
+   म_लिखो("GNU GPL V2 license. NO WARRANTY.\n");
+   म_लिखो("आप 0 से 9, +, -, *, / और () का प्रयोग कर सकते हैं।\n");
+   व्याक();
+   वापस 0;
+पूर्ण
+</pre>
+  <h2>Compile path</h2>
+  <ol>
+    <li>Unicode source (this page).</li>
+    <li>Flatten to the Devanagari hub (Brahmi). Perso-Arabic applies the language table first, then urdu_map, and is lossy.</li>
+    <li>Original Romenagri: Unicode → ACII (<code>unicode_hin</code>) → Romenagri (<code>acii_chrt</code> / retrieved <code>legacy/Romenagri/acii2rmn.lex</code>). Binding: <code>engine/romenagri-orig.js</code> + <code>canonical_basis.json</code>.</li>
+    <li>Shaili lex on that ASCII-7 kernel.</li>
+    <li>Host yacc. The shaili pragma is removed. It is not a host token.</li>
+  </ol>
+  <h2>Host after compile</h2>
+  <p class="ok">Shaili pragma stripped from host. Host is yacc.</p>
+  <pre translate="no">%_a_nnu
+#samaawaeesha <prakaara.sa>
+#samaawaeesha <maanakapana.sa>
+#ghoaxa_nnaa yyparse_dhaeera_prakaara _dwiguna
+%poor_nna
+ 
+%moa_hara _a_mka
+%baa_na_aee '+' '-'
+%baa_na_aee '*' '/'
+%baa_na_aee '%'
+%_daa_na_aee ghataa
+ 
+%%
+pa_mk_ti   : pa_mk_ti _uk_ti '\n'   { ma_printf("%g \n", $2); }
+       | pa_mk_ti '\n'
+       | /* _aipasilana yylex
+       ;
+_uk_ti   : _uk_ti '+' _uk_ti    { $$ = $1 + $3; }
+       | _uk_ti '-' _uk_ti    { $$ = $1 - $3; }
+       | _uk_ti '*' _uk_ti    { $$ = $1 * $3; }
+       | _uk_ti '/' _uk_ti    { $$ = $1 / $3; }
+       | _uk_ti '%' _uk_ti    { $$ = (int)$1 % (int)$3; }
+       | '(' _uk_ti ')'     { $$ = $2; }
+       | '-' _uk_ti %praa_thamika_taa ghataa  { $$ = - $2; }
+       | _a_mka
+       ;
+%%
+ 
+int yylex()
+_a_nnu
+   int cha;
+   while ( ( cha=char_loa() ) == ' ' );
+   _agara ( (cha == '.') || (_hai__a_mka(cha)) )
+   _a_nnu
+      char_waapasa(cha, maanaka_niwaeesha);
+      ma_poochhoa("%lf", &yylval);
+      waapasa _a_mka;
+   poor_nna
+   waapasa cha;
+poor_nna
+ 
+int yyerror()
+_a_nnu
+   waapasa 0;
+poor_nna
+ 
+int mukhya(int _tasa, char *_tawa[] )
+_a_nnu
+   ma_printf("हिंदवी कैल्क्यूलेटर\n");
+   ma_printf("Copyright (C) 2003-2023 Abhishek Choudhary\n");
+   ma_printf("GNU GPL V2 license. NO WARRANTY.\n");
+   ma_printf("आप 0 से 9, +, -, *, / और () का प्रयोग कर सकते हैं।\n");
+   yyparse();
+   waapasa 0;
+poor_nna
+</pre>
+  <h3>Romenagri of this demo (ASCII-7 kernel)</h3>
+  <pre translate="no">%_a_nnu
+#samaawaeesha <prakaara.sa>
+#samaawaeesha <maanakapana.sa>
+#ghoaxa_nnaa wyaaka_dhaeera_prakaara _dwiguna
+%poor_nna
+ 
+%moa_hara _a_mka
+%baa_na_aee '+' '-'
+%baa_na_aee '*' '/'
+%baa_na_aee '%'
+%_daa_na_aee ghataa
+ 
+%%
+pa_mk_ti   : pa_mk_ti _uk_ti '\n'   { ma_printf("%g \n", $2); }
+       | pa_mk_ti '\n'
+       | /* _aipasilana */
+       ;
+_uk_ti   : _uk_ti '+' _uk_ti    { $$ = $1 + $3; }
+       | _uk_ti '-' _uk_ti    { $$ = $1 - $3; }
+       | _uk_ti '*' _uk_ti    { $$ = $1 * $3; }
+       | _uk_ti '/' _uk_ti    { $$ = $1 / $3; }
+       | _uk_ti '%' _uk_ti    { $$ = (int)$1 % (int)$3; }
+       | '(' _uk_ti ')'     { $$ = $2; }
+       | '-' _uk_ti %praa_thamika_taa ghataa  { $$ = - $2; }
+       | _a_mka
+       ;
+%%
+ 
+int sha_shab_da()
+_a_nnu
+   int cha;
+   while ( ( cha=char_loa() ) == ' ' );
+   _agara ( (cha == '.') || (_hai__a_mka(cha)) )
+   _a_nnu
+      char_waapasa(cha, maanaka_niwaeesha);
+      ma_poochhoa("%lf", &sha_ba_maana);
+      waapasa _a_mka;
+   poor_nna
+   waapasa cha;
+poor_nna
+ 
+int wyaaka__truti()
+_a_nnu
+   waapasa 0;
+poor_nna
+ 
+int mukhya(int _tasa, char *_tawa[] )
+_a_nnu
+   ma_printf("हिंदवी कैल्क्यूलेटर\n");
+   ma_printf("Copyright (C) 2003-2023 Abhishek Choudhary\n");
+   ma_printf("GNU GPL V2 license. NO WARRANTY.\n");
+   ma_printf("आप 0 से 9, +, -, *, / और () का प्रयोग कर सकते हैं।\n");
+   wyaaka();
+   waapasa 0;
+poor_nna
+</pre>
+  <h2>The seven hosts on every language</h2>
+  <p><a href="manipuri-c.html">C</a> · <a href="manipuri-cpp.html">C++</a> · <a href="manipuri-basic.html">BASIC</a> · <a href="manipuri-asm.html">Assembly</a> · <a href="manipuri-lex.html">lex</a> · <span>yacc</span> · <a href="manipuri-logo.html">Logo</a></p>
+  <h2>Hindi 2004 bar</h2>
+  <p>A complete stack is the Hindi 15 August 2004 deliverable: a shaili, a keyword table, a program that compiles, a host with the pragma gone, and the original Romenagri path. This page is that shape for Manipuri (Meitei) yacc.</p>
+  <p class="fine">Original Colab chrome: <a href="../nb.frozen.html">nb.frozen.html</a>. Retrieved 2004 tree: <a href="../retrieved/legacy/Hindawi/">retrieved/legacy/Hindawi</a>. Romenagri sources: <a href="../retrieved/legacy/Romenagri/">retrieved/legacy/Romenagri</a>.</p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="../skins/skins.js"></script>
+</body></html>

@@ -1,0 +1,87 @@
+{
+ "generated_from": "retrieved/legacy/Hindawi",
+ "invented": false,
+ "targets": [
+  {
+   "id": "c",
+   "shaili": "guru",
+   "host": "C",
+   "status": "EXTRACTED",
+   "rules": 323,
+   "source": "retrieved/legacy/Hindawi/guru/h2c.lex",
+   "reason": null
+  },
+  {
+   "id": "cpp",
+   "shaili": "shraeni",
+   "host": "C++",
+   "status": "EXTRACTED",
+   "rules": 879,
+   "source": "retrieved/legacy/Hindawi/shraeni/h2cpp.uhin",
+   "reason": null
+  },
+  {
+   "id": "basic",
+   "shaili": "praatha",
+   "host": "BASIC",
+   "status": "EXTRACTED",
+   "rules": 99,
+   "source": "retrieved/legacy/Hindawi/praatha/h2b.uhin",
+   "reason": null
+  },
+  {
+   "id": "java",
+   "shaili": "kritrima",
+   "host": "Java",
+   "status": "EXTRACTED",
+   "rules": 186,
+   "source": "retrieved/legacy/Hindawi/kritrima/h2j.uhin",
+   "reason": null
+  },
+  {
+   "id": "python",
+   "shaili": "soochee",
+   "host": "Python",
+   "status": "EXTRACTED",
+   "rules": 38,
+   "source": "retrieved/legacy/Hindawi/soochee/h2py.uhin",
+   "reason": null
+  },
+  {
+   "id": "lex",
+   "shaili": "shabda",
+   "host": "lex",
+   "status": "EXTRACTED",
+   "rules": 6,
+   "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
+   "reason": null
+  },
+  {
+   "id": "yacc",
+   "shaili": "wyaaka",
+   "host": "yacc",
+   "status": "EXTRACTED",
+   "rules": 20,
+   "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
+   "reason": null
+  },
+  {
+   "id": "asm",
+   "shaili": "yantra",
+   "host": "asm",
+   "status": "EXTRACTED",
+   "rules": 354,
+   "source": "retrieved/legacy/Hindawi/yantra/h2y.uhin",
+   "reason": null
+  },
+  {
+   "id": "logo",
+   "shaili": "robot",
+   "host": "LOGO",
+   "status": "EXTRACTED",
+   "rules": 8,
+   "source": "retrieved/legacy/Hindawi/robot/ROBOT.C",
+   "reason": null
+  }
+ ]
+}

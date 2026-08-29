@@ -1,0 +1,31 @@
+# phoenician C keywords — Hindi bar 29. GPL-3.0-or-later
+native	romenagri	c
+𐤀𐤌	ama	if
+		else
+		while
+𐤐𐤏𐤋	paaela	do
+		for
+		break
+		continue
+		switch
+		case
+		default
+		return
+		const
+		int
+		float
+		double
+		char
+		void
+		void
+		class
+		new
+		public
+		private
+		static
+		virtual
+		case
+		struct
+		include
+		scanf
+		printf

@@ -1,0 +1,300 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "invented_maps": false,
+  "kernel": "one: flatten + romenagri + shaili lex + cc",
+  "scheduled_22": [
+    {
+      "id": "assamese",
+      "iso": "as",
+      "script": "bengali",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "bengali",
+      "iso": "bn",
+      "script": "bengali",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "bodo",
+      "iso": "brx",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "hindi-hub"
+    },
+    {
+      "id": "dogri",
+      "iso": "doi",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "hindi-hub"
+    },
+    {
+      "id": "gujarati",
+      "iso": "gu",
+      "script": "gujarati",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "hindi",
+      "iso": "hi",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "tsv+shaili"
+    },
+    {
+      "id": "kannada",
+      "iso": "kn",
+      "script": "kannada",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "kashmiri",
+      "iso": "ks",
+      "script": "perso-arabic",
+      "family": "perso",
+      "keywords": "tsv",
+      "roundtrip": false
+    },
+    {
+      "id": "konkani",
+      "iso": "kok",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "hindi-hub"
+    },
+    {
+      "id": "maithili",
+      "iso": "mai",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "hindi-hub"
+    },
+    {
+      "id": "malayalam",
+      "iso": "ml",
+      "script": "malayalam",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "manipuri",
+      "iso": "mni",
+      "script": "meitei-mayek",
+      "family": "brahmi",
+      "keywords": "awaiting-csv"
+    },
+    {
+      "id": "marathi",
+      "iso": "mr",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "nepali",
+      "iso": "ne",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "odia",
+      "iso": "or",
+      "script": "odia",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "punjabi",
+      "iso": "pa",
+      "script": "gurmukhi",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "sanskrit",
+      "iso": "sa",
+      "script": "devanagari",
+      "family": "brahmi",
+      "keywords": "tsv-keyword-only"
+    },
+    {
+      "id": "santali",
+      "iso": "sat",
+      "script": "ol-chiki",
+      "family": "brahmi",
+      "keywords": "awaiting-csv"
+    },
+    {
+      "id": "sindhi",
+      "iso": "sd",
+      "script": "perso-arabic",
+      "family": "perso",
+      "keywords": "tsv",
+      "roundtrip": false
+    },
+    {
+      "id": "tamil",
+      "iso": "ta",
+      "script": "tamil",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "telugu",
+      "iso": "te",
+      "script": "telugu",
+      "family": "brahmi",
+      "keywords": "tsv"
+    },
+    {
+      "id": "urdu",
+      "iso": "ur",
+      "script": "perso-arabic",
+      "family": "perso",
+      "keywords": "tsv",
+      "roundtrip": false
+    }
+  ],
+  "catalog": {
+    "shailis": [
+      {
+        "id": "guru",
+        "name": "गुरु",
+        "host": "C",
+        "rules": 352
+      },
+      {
+        "id": "shraeni",
+        "name": "श्रेणी",
+        "host": "C++",
+        "rules": 908
+      },
+      {
+        "id": "praatha",
+        "name": "प्राथमिक",
+        "host": "BASIC",
+        "rules": 172
+      },
+      {
+        "id": "kritrima",
+        "name": "कृत्रिम",
+        "host": "Java",
+        "rules": 214
+      },
+      {
+        "id": "soochee",
+        "name": "सूची",
+        "host": "Python",
+        "rules": 66
+      },
+      {
+        "id": "shabda",
+        "name": "शब्द",
+        "host": "lex",
+        "rules": 34
+      },
+      {
+        "id": "wyaaka",
+        "name": "व्याकरण",
+        "host": "yacc",
+        "rules": 36
+      },
+      {
+        "id": "yantra",
+        "name": "यांत्रिक",
+        "host": "asm",
+        "rules": 549
+      }
+    ],
+    "brahmi": [
+      "hindi",
+      "nepali",
+      "marathi",
+      "sanskrit",
+      "punjabi",
+      "bengali",
+      "assamese",
+      "gujarati",
+      "odia",
+      "tamil",
+      "telugu",
+      "kannada",
+      "malayalam",
+      "pali",
+      "prakrit"
+    ],
+    "perso": [
+      "urdu",
+      "persian",
+      "arabic",
+      "pashto",
+      "dari",
+      "sindhi",
+      "kashmiri",
+      "shahmukhi"
+    ],
+    "langs": [
+      "arabic",
+      "aramaic",
+      "assamese",
+      "bengali",
+      "gujarati",
+      "hebrew",
+      "hindi",
+      "kannada",
+      "malayalam",
+      "marathi",
+      "nepali",
+      "odia",
+      "pali",
+      "persian",
+      "phoenician",
+      "prakrit",
+      "punjabi",
+      "sanskrit",
+      "syriac",
+      "tamil",
+      "telugu",
+      "urdu",
+      "pashto",
+      "dari",
+      "sindhi",
+      "kashmiri",
+      "shahmukhi"
+    ]
+  },
+  "brahmi": [
+    "hindi",
+    "nepali",
+    "marathi",
+    "sanskrit",
+    "punjabi",
+    "bengali",
+    "assamese",
+    "gujarati",
+    "odia",
+    "tamil",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "pali",
+    "prakrit"
+  ],
+  "perso": [
+    "urdu",
+    "persian",
+    "arabic",
+    "pashto",
+    "dari",
+    "sindhi",
+    "kashmiri",
+    "shahmukhi"
+  ]
+}

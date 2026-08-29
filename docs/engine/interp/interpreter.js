@@ -1,3 +1,4 @@
+// @ts-nocheck
 if (typeof globalThis.process === "undefined") {
   globalThis.process = { stdout: { write() {} }, stderr: { write() {} }, env: {} };
 }

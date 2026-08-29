@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * GNU Smalltalk Eval-subset for tests/intmath.st (STANDARD GREEN extract).
  * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later

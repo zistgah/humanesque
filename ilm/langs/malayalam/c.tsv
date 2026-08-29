@@ -1,0 +1,30 @@
+# malayalam → c  |  script: Malayalam  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+എങ്കിൽ	e_nkila	if
+അല്ലെങ്കിൽ	alle_nkila	else
+വരെ	vare	while
+ചെയ്യുക	ceyyuka	do
+വേണ്ടി	ve_ndi	for
+നിർത്തുക	nirttuka	break
+തുടരുക	tudaruka	continue
+തിരഞ്ഞെടുപ്പ്	tira_nyedupp	switch
+അവസ്ഥ	avastha	case
+സ്ഥിരസ്ഥിതി	sthirasthiti	default
+മടക്കുക	madakkuka	return
+സ്ഥിരം	sthira_m	const
+പൂർണ്ണസംഖ്യ	puur_n_nasa_mkhya	int
+ദശാംശം	dashaa_msha_m	float
+ഇരട്ട	iratta	double
+അക്ഷരം	ak_sara_m	char
+ശൂന്യം	shuunya_m	void
+ധർമ്മം	dharmma_m	void
+വർഗ്ഗം	varggsa_m	class
+പുതിയ	putiya	new
+പൊതു	potu	public
+സ്വകാര്യ	svakaarya	private
+സ്ഥിതം	sthita_m	static
+മായാ	maayaa	virtual
+എപ്പോൾ	eppaula	case
+ഘടന	ghatana	struct

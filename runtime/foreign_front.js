@@ -65,7 +65,10 @@ const TABLE = {
   ocaml: { file: "src/panini/frontends/application.pni", fn: "run_ocaml" },
   prolog: { file: "src/panini/frontends/prolog.pni", fn: "run_prolog" },
   assembly: { file: "src/panini/frontends/application.pni", fn: "run_assembly" },
-  asm: { file: "src/panini/frontends/application.pni", fn: "run_assembly" },
+  asm: { file: "src/panini/frontends/asm.pni", fn: "run_asm" },
+  as: { file: "src/panini/frontends/asm.pni", fn: "run_asm" },
+  gas: { file: "src/panini/frontends/asm.pni", fn: "run_asm" },
+  make: { file: "src/panini/frontends/make.pni", fn: "run_make" },
 };
 
 export function supportedFrontends() {

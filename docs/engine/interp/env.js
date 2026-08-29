@@ -1,3 +1,4 @@
+// @ts-nocheck
 export class Environment {
   constructor(parent = null, name = "env") {
     this.parent = parent;

@@ -1,0 +1,42 @@
+{
+ "target": "logo",
+ "shaili": "robot",
+ "host": "LOGO",
+ "source": "retrieved/legacy/Hindawi/robot/ROBOT.C",
+ "invented": false,
+ "extracted_at_rules": 8,
+ "rules": [
+  {
+   "from": "%s%s%s",
+   "to": "_di_S"
+  },
+  {
+   "from": "����->",
+   "to": "g_S"
+  },
+  {
+   "from": "%s%s",
+   "to": "poorwakxaya_S"
+  },
+  {
+   "from": "%d.%m.%Y",
+   "to": "tp"
+  },
+  {
+   "from": "%d/%m/%Y",
+   "to": "tp"
+  },
+  {
+   "from": "%d-%b-%Y",
+   "to": "tp"
+  },
+  {
+   "from": "%m-%d-%Y",
+   "to": "tp"
+  },
+  {
+   "from": "%H:%M:%S",
+   "to": "tp"
+  }
+ ]
+}

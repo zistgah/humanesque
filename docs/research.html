@@ -5,19 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PANINI — research & patents</title>
   <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
 </head>
 <body class="site">
-<header class="site-head">
-  <strong>RESEARCH</strong>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="legacy.html">Legacy</a>
-    <a href="mentions.html">Mentions</a>
-  </nav>
-</header>
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<nav class="crumbs" aria-label="Breadcrumb"></nav>
 <main class="site-main">
-  <h1>Journals, conferences, patent search</h1>
-  <p>End-state of this legacy arc: an index of <em>where to look</em>, plus filings already on the public profile. Not a live legal search. Not IBM. Not HP.</p>
+  <p class="cite">End-state of this legacy arc: papers on the record, then an index of where to look. Not a live legal search. Not IBM. Not HP.</p>
+  <h1>Research papers</h1>
+  <ol>
+    <li>
+      Choudhary, A. (2026). <em>PANINI Self-Hosting Specification</em> (Version 1.0.0).
+      <a href="https://doi.org/10.5281/zenodo.22121524">doi:10.5281/zenodo.22121524</a>
+    </li>
+    <li>
+      Choudhary, A. (2026). <em>Cycles :: Part 1</em> (v1.0.0). Zenodo.
+      <a href="https://doi.org/10.5281/zenodo.22122422">doi:10.5281/zenodo.22122422</a>
+    </li>
+  </ol>
+  <p><a href="path/research.html">Latest layers (runnable)</a> · <a href="REFERENCES.md">References</a> · <a href="mentions.html">Mentions</a></p>
+  <h2>Journals, conferences, patent search</h2>
+  <p>An index of <em>where to look</em>, plus filings already on the public profile.</p>
   <h2>Search</h2>
   <ul id="s"></ul>
   <h2>Known filings (profile)</h2>
@@ -25,6 +34,8 @@
   <h2>Other people’s work to cite, not claim</h2>
   <ul id="o"></ul>
 </main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
 <script>
 fetch("data/research_index.json").then(r=>r.json()).then(j=>{
   document.getElementById("s").innerHTML = j.searches.map(x =>

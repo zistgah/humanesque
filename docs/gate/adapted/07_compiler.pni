@@ -1,0 +1,13 @@
+/* GATE CS §7 Compiler — adapted. Original: gate/07_compiler.pni
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION fold()
+    RETURN 1 + 2 * 3
+END
+FUNCTION main()
+    t = 1
+    IF fold() != 7
+        t = 0
+    END
+    RETURN t
+END

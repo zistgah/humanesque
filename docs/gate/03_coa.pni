@@ -1,0 +1,55 @@
+/* GATE CS §3 Computer Organization and Architecture
+ * Copyright (C) 1993-2026 Abhishek Choudhary | GPL-3.0-or-later
+ */
+FUNCTION ea_regoff(base, off)
+    RETURN base + off
+END
+FUNCTION alu(op, a, b)
+    IF op == 0
+        RETURN a + b
+    END
+    IF op == 1
+        RETURN a - b
+    END
+    IF op == 2
+        RETURN a * b
+    END
+    RETURN INT(a / b)
+END
+FUNCTION pipeline_cycles(n, stages)
+    RETURN n + stages - 1
+END
+FUNCTION load_use_stall(n, stages, hazards)
+    RETURN pipeline_cycles(n, stages) + hazards
+END
+FUNCTION cache_index(addr, nsets)
+    RETURN addr % nsets
+END
+FUNCTION cache_tag(addr, block, nsets)
+    RETURN INT(addr / (block * nsets))
+END
+FUNCTION dma_cycles(bytes, bus)
+    RETURN INT(bytes / bus)
+END
+FUNCTION main()
+    t = 1
+    IF ea_regoff(100, 8) != 108
+        t = 0
+    END
+    IF alu(0, 40, 2) != 42
+        t = 0
+    END
+    IF pipeline_cycles(5, 5) != 9
+        t = 0
+    END
+    IF load_use_stall(5, 5, 1) != 10
+        t = 0
+    END
+    IF cache_index(20, 8) != 4
+        t = 0
+    END
+    IF dma_cycles(1024, 4) != 256
+        t = 0
+    END
+    RETURN t
+END
