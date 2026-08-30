@@ -1,0 +1,46 @@
+#!/bin/sh
+# fixarabnum — Arabic-Indic and Eastern Arabic-Indic digits to ASCII.
+# Copyright (C) 1993-2026 Abhishek Choudhary. GNU GPL v2 or later.
+# Part of the Hindawi Indic Programming System.
+#
+# fixuninum converts Devanagari digits (U+0966-096F). It does NOT cover
+# U+0660-0669 (Arabic-Indic) or U+06F0-06F9 (Eastern Arabic-Indic, used by
+# Urdu, Persian, Pashto, Dari and Sindhi), so a literal like [۸۰] reached the
+# C compiler as an undeclared identifier: "error: 'xp' undeclared".
+#
+# NOT sed: sed's y command counts BYTES and these digits are multibyte, so
+# y/۰۱۲۳۴۵۶۷۸۹/0123456789/ is rejected as "strings are different lengths".
+# NOT plain awk either: mawk's split(s,a,"") is byte-wise. So this picks the
+# first interpreter present that handles characters, and says so if none is.
+#
+# Digits inside a string literal are left alone — a string is data and is
+# never transduced. Same rule the shailis obey.
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 -c '
+import sys
+M = {}
+for i, (a, e) in enumerate(zip("٠١٢٣٤٥٦٧٨٩", "۰۱۲۳۴۵۶۷۸۹")):
+    M[a] = M[e] = str(i)
+for line in sys.stdin:
+    out, instr, prev = [], False, ""
+    for c in line:
+        if c == "\"" and prev != "\\\\":
+            instr = not instr
+        out.append(M[c] if (not instr and c in M) else c)
+        prev = c
+    sys.stdout.write("".join(out))
+'
+elif command -v gawk >/dev/null 2>&1; then
+  exec gawk '
+BEGIN{ split("٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩",a," "); split("۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹",e," ")
+       for(i=1;i<=10;i++){m[a[i]]=i-1; m[e[i]]=i-1} }
+{ o=""; s=0; n=split($0,c,"")
+  for(i=1;i<=n;i++){ if(c[i]=="\"" && (i==1||c[i-1]!="\\")) s=!s
+                     o = o ((!s && (c[i] in m)) ? m[c[i]] : c[i]) }
+  print o }'
+elif command -v perl >/dev/null 2>&1; then
+  exec perl -CSD -pe 'tr/٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹/01234567890123456789/'
+else
+  echo "fixarabnum: needs python3, gawk or perl — none found. Digits NOT converted." >&2
+  cat
+fi

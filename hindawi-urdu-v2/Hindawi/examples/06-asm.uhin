@@ -1,0 +1,8 @@
+<شیلی یَنتر>
+	.section .text
+	.globl main
+main:
+	منتقل $1, %eax
+	منتقل $2, %ebx
+	جمع  %ebx, %eax
+	واپس

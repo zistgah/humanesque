@@ -1,0 +1,62 @@
+#!/bin/bash
+#Copyright (C) 1993-2026 Abhishek Choudhary. GNU GPL v2 or later.
+#Hindawi Indic Programming System — اردو driver
+#
+#Reads the <شیلی …> line, picks the shaili, runs the chain. One driver.
+#
+#  urducc program.uhin          compile and build
+#  urducc -s program.uhin       show the generated host source only
+#  urducc -r file.c گرو         reverse: host source back into Urdu
+set -u
+HERE="$(cd "$(dirname "$0")" && pwd)"
+PATH="$HERE:$PATH"
+die(){ printf '%s\n' "$*" >&2; exit 2; }
+
+# script → language → standard. fixarabnum closes the U+06F0-06F9 gap that
+# fixuninum does not cover; without it [۸۰] reaches cc as an identifier.
+chain(){ fixuninum | "$HERE/fixarabnum" | fltr_ur_hi \
+         | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf; }
+
+shaili_of(){ head -1 "$1" | tr -d '<>' | awk '{print $2}'; }
+
+declare -A DIR=( [گرو]=guru [پراتھا]=praatha [شرینی]=shraeni [کرترما]=kritrima \
+                 [سوچی]=soochee [شبد]=shabda [ویاکا]=wyaaka [یَنتر]=yantra )
+declare -A FWD=( [guru]=h2c [praatha]=h2b [shraeni]=h2cpp [kritrima]=h2j \
+                 [soochee]=h2py [shabda]=h2l [wyaaka]=h2yacc [yantra]=h2y )
+declare -A EXT=( [guru]=.c [praatha]=.bas [shraeni]=.cpp [kritrima]=.java \
+                 [soochee]=.py [shabda]=.l [wyaaka]=.y [yantra]=.asm )
+declare -A TOOL=( [guru]=cc [praatha]=qb2c [shraeni]=c++ [kritrima]=javac \
+                  [soochee]=python3 [shabda]=flex [wyaaka]=bison [yantra]=as )
+declare -A PIPE=( [shabda]="| h2c" [wyaaka]="| h2c" )
+
+SHOW=0; REV=0
+[ "${1:-}" = "-s" ] && { SHOW=1; shift; }
+[ "${1:-}" = "-r" ] && { REV=1; shift; }
+SRC="${1:-}"; [ -n "$SRC" ] || die "استعمال: urducc [-s|-r] program.uhin"
+[ -f "$SRC" ] || die "فائل نہیں ملی: $SRC"
+
+if [ "$REV" -eq 1 ]; then
+  d="${DIR[${2:-گرو}]:-guru}"; r="${FWD[$d]/h2/}"; r="${r}2h"
+  [ -x "$HERE/$d/${r}_urdu" ] || die "پہلے تعمیر کریں:  cd $d && make"
+  cat "$SRC" | "$HERE/$d/${r}_urdu" | fltr_hi_ur
+  exit 0
+fi
+
+s="$(shaili_of "$SRC")"; d="${DIR[$s]:-}"
+[ -n "$d" ] || die "نامعلوم شیلی: $s   (گرو پراتھا شرینی کرترما سوچی شبد ویاکا یَنتر)"
+[ -x "$HERE/$d/${FWD[$d]}_urdu" ] || die "پہلے تعمیر کریں:  cd $d && make"
+
+OUT="$(basename "${SRC%.uhin}")${EXT[$d]}"
+# The generated lex is NEVER piped through h2c — that transduces the pattern
+# column as well and every rule stops matching.
+eval "tail -n +2 \"\$SRC\" | chain | \"\$HERE/\$d/\${FWD[\$d]}_urdu\" ${PIPE[$d]:-}" > "$OUT"
+[ "$SHOW" -eq 1 ] && { cat "$OUT"; exit 0; }
+echo "تالیف کے نتائج"
+echo "=============="
+case "$d" in
+  guru|shraeni) ${TOOL[$d]} -g -o "${OUT%.*}" "$OUT" && echo "بن گیا: ${OUT%.*}" ;;
+  soochee)      python3 "$OUT" ;;
+  shabda)       flex -8 -olexyy.c "$OUT" && gcc lexyy.c -o "${OUT%.*}" -lfl && echo "بن گیا: ${OUT%.*}" ;;
+  wyaaka)       bison -d "$OUT" && echo "بن گیا" ;;
+  *)            ${TOOL[$d]} "$OUT" ;;
+esac

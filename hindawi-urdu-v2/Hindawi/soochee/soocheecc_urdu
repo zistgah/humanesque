@@ -1,0 +1,11 @@
+#!/bin/bash
+#Copyright (C) 1993-2026 Abhishek Choudhary. GPL v2 or later.
+#Hindawi — shaili soochee (Python) — urdu
+#Forward:  native source -> Python.  The .lex is never piped through h2c.
+echo संकलन के परिणाम >  tempfil0123.tmphin
+echo ============ >> tempfil0123.tmphin
+cat $1 | fixuninum | fixarabnum | fltr_ur_hi | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf \
+  | ./h2py_urdu > tempfil0123.tmphin.py
+python3 tempfil0123.tmphin.py 2>> tempfil0123.tmphin
+cat tempfil0123.tmphin
+rm tempfil0123.tmphin

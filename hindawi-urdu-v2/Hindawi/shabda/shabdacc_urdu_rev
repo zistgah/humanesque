@@ -1,0 +1,4 @@
+#!/bin/bash
+#Reverse: lex source -> urdu. Output passes through fltr_hi_ur
+#because the action strings emerged from the build chain as romenagri.
+cat $1 | ./l2h_urdu | fltr_hi_ur

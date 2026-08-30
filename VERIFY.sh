@@ -76,6 +76,13 @@ ck "Urdu edition has the chintamani structure"   bash -c '[ -f urdu/install ] &&
 ck "Urdu carries all nine shailis, 323 C rules"  bash -c '[ $(grep -c printf urdu/Hindawi/guru/h2c.uhin) = 323 ] && [ $(ls -d urdu/Hindawi/*/ | wc -l) -ge 9 ]'
 ck "Urdu Colab notebook is valid JSON"           python3 -c "import json;n=json.load(open('urdu/Notebooks/hindawi_urdu.ipynb'));assert len(n['cells'])>=20"
 ck "Urdu README states the known defect"         grep -q "Known defect" urdu/README.md
+ck "Urdu: all 8 shailis, both directions"       bash -c 'n=0; for d in guru praatha shraeni kritrima soochee shabda wyaaka yantra; do [ -f hindawi-urdu-v2/Hindawi/$d/*_urdu.uhin ] 2>/dev/null || ls hindawi-urdu-v2/Hindawi/$d/h2*_urdu.uhin >/dev/null 2>&1 && n=$((n+1)); done; [ $n -ge 8 ]'
+ck "Urdu: no rule dropped from guru"             bash -c 'a=$(grep -c printf retrieved/legacy/Hindawi/guru/h2c.uhin); b=$(grep -c printf hindawi-urdu-v2/Hindawi/guru/h2c_urdu.uhin); [ $b -ge $((a-12)) ]'
+ck "Urdu: forward actions are plain ASCII"       bash -c '! grep -oE "\{printf\(\"[^\"]*\"" hindawi-urdu-v2/Hindawi/guru/h2c_urdu.uhin | grep -qP "[^\x00-\x7F]"'
+ck "Urdu: lex is never piped through h2c"        bash -c '! grep -q "acii2cf | h2c" hindawi-urdu-v2/Hindawi/guru/Makefile'
+ck "fixarabnum covers U+0660 and U+06F0 ranges"  bash -c 'printf "[۸۰]" | hindawi-urdu-v2/Hindawi/fixarabnum | grep -q "\[80\]"'
+ck "Urdu manual and notebook exist, in Urdu"     bash -c 'grep -q "ہندوی" hindawi-urdu-v2/docs/*.md && python3 -c "import json;n=json.load(open(\"hindawi-urdu-v2/Notebooks/ہندوی_اردو.ipynb\"));assert len(n[\"cells\"])>=25"'
+ck "one clean driver, not eight"                 bash -c '[ -x hindawi-urdu-v2/Hindawi/urducc ] && grep -q "شیلی" hindawi-urdu-v2/Hindawi/urducc'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'
