@@ -487,7 +487,7 @@ orictxt434                 {printf("alarm");}
 orictxt435                 {printf("alarm");}
 orictxt436                 {printf("alloca");}
 समय_ठीक                    {printf("asctime");}
-orictxt438                 {printf("asctime");}
+समय_ठीक                 {printf("asctime");}
 orictxt439                 {printf("asin");}
 यंत्र                       {printf("asm");}
 निश्चित                   {printf("assert");}
@@ -861,7 +861,7 @@ orictxt827                 {printf("wild");}
  
 पनप्रवाह\.स              {printf("iostream.h");}
 पनप्रवाह_स              {printf("iostream");}
-पन_प्रवाह                {printf("iostream");}
+पनप्रवाह_स                {printf("iostream");}
 अ_बाहर                  {printf("cout");}
 अ_अंदर                  {printf("cin");}
 डेसी                    {printf("dec");}
@@ -915,8 +915,8 @@ orictxt827                 {printf("wild");}
 बम_प्रवाह                {printf("ostrstream");}
 अम_प्रवाह                {printf("istrstream");}
 लो_पंक्ति                {printf("getline");}
-orictxt883               {printf("read");}
-orictxt884               {printf("write");}
+पढ़ो               {printf("read");}
+ग_लिखो               {printf("write");}
 द्विग                    {printf("binary");}
 प_स्थान                  {printf("seekp");}
 मानकपन                   {printf("stdio");}

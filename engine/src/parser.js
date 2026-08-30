@@ -25,6 +25,11 @@ export class ParseError extends Error {
 // the corpus ("OUTPUT TEXT", "USER consent"); treating them as raw-text openers
 // let one of them swallow an entire file. Only ASK, PROMPT and CONTENT open
 // prose, and only when they open a block at all.
+// D39, scoped. Only these are written as siblings at equal indent with no END
+// of their own in the corpus. FILE is deliberately absent: its body is a CONTENT
+// heredoc and it must keep its own explicit terminator.
+const SIBLING_CLOSES = new Set(['STAGE', 'CYCLE', 'RULE', 'TEST', 'CASE', 'STEP']);
+
 export const RAW_BLOCK_KEYWORDS = new Set(['CONTENT', 'ASK', 'PROMPT']);
 
 export const DECL_KEYWORDS = new Set([
@@ -228,7 +233,7 @@ export class Parser {
    * Parse statements until the block closes. Consumes the closing END when
    * there is one; closes silently on dedent when there is not.
    */
-  parseBlockBody(headerIndent, ctx, term) {
+  parseBlockBody(headerIndent, ctx, term, headerKeyword = null) {
     const body = [];
     for (;;) {
       // The heredoc reader can skip past a claimed terminator; if that happened,
@@ -236,6 +241,22 @@ export class Parser {
       if (term && this.pos > term.index) { term.claimed = false; term = null; }
       if (this.atEnd()) {
         if (term) this.note('warning', 'unterminated', 'block reached end of file without its END', this.peek());
+        break;
+      }
+      // D39. A claimed terminator does not reach past a SIBLING of the same
+      // keyword at the same indent. The cycler corpus writes stage after stage
+      // at equal indent with no END of its own (matba 211 vs 246), so a distant
+      // `END STAGE` was claimed by the first stage, which then swallowed all
+      // twenty-one of its siblings. Narrow on purpose: same keyword, same
+      // indent, named, and only when the header itself opened by indentation —
+      // a FILE whose body is a CONTENT heredoc must keep its own END.
+      if (term && this.pos !== term.index && !this.isWord('END')
+          && this.peek().type === T.WORD && this.peek().indent === headerIndent
+          && this.peek().upper === headerKeyword
+          && SIBLING_CLOSES.has(headerKeyword)
+          && this.peek(1) && this.peek(1).line === this.peek().line
+          && this.peek(1).type === T.WORD) {
+        term.claimed = false;
         break;
       }
       if (term) {
@@ -640,7 +661,7 @@ export class Parser {
         inDecl: true,
         namespace: NAMESPACE_KEYWORDS.has(keyword),
         indent,
-      }, term)
+      }, term, keyword)
       : [];
 
     return {

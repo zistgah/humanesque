@@ -1,0 +1,170 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "method": "authored cells are never overwritten; projected maps the Hindi word through the script's own retrieved transliteration table; romanised transliterates the romenagri spine into the target script. Every filled cell is editable — correct one column in ilm/keywords.csv.",
+ "constructs": 1801,
+ "languages": 27,
+ "per_language": {
+  "arabic": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "aramaic": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "assamese": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "bengali": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "dari": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "gujarati": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "hebrew": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "hindi": {
+   "authored": 1310,
+   "projected": 0,
+   "romanised": 0,
+   "empty": 491
+  },
+  "kannada": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "kashmiri": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "malayalam": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "marathi": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "nepali": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "odia": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "pali": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "pashto": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "persian": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "phoenician": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "prakrit": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "punjabi": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "sanskrit": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "shahmukhi": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "sindhi": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "syriac": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  },
+  "tamil": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "telugu": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 0,
+   "empty": 491
+  },
+  "urdu": {
+   "authored": 72,
+   "projected": 1238,
+   "romanised": 483,
+   "empty": 8
+  }
+ }
+}

@@ -96,7 +96,7 @@ ISC               |
  
 अगर             {printf("IF");}
 है                 {printf("THEN");}
-हो                {printf("THEN");}
+है                {printf("THEN");}
 तो                /**/
 अन्यथा           {printf("ELSE");}
  
@@ -115,8 +115,8 @@ ISC               |
 तब              {printf("WEND");}
  
 खोलो              {printf("OPEN");}
-हेतु               {printf("FOR");}
-पाठ               {printf("INPUT");}
+क्रम               {printf("FOR");}
+पूछो               {printf("INPUT");}
 लेखन            {printf("OUTPUT");}
 नत्थी             {printf("APPEND");}
 पन्थ             |
@@ -131,7 +131,7 @@ ISC               |
 खाता_पढ़ो         |
 ख_पढ़ो           {printf("LINE INPUT"); /*line input #*/}
 खाता_शब्द         |
-ख_शब्द           {printf("INPUT");}
+पूछो           {printf("INPUT");}
  
 पूर्ण              |
 इति              |

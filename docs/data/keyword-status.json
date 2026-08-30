@@ -1,0 +1,1019 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "what": "translation coverage of ilm/keywords.csv. A language column holds the TRANSLATION of a construct. Rendering it into another script is the transliteration algorithm's job and is not represented here.",
+ "gate": "none — this is published status, not a build gate",
+ "constructs": 1801,
+ "languages": 27,
+ "core_constructs": 63,
+ "core_coverage": {
+  "arabic": 26,
+  "aramaic": 26,
+  "assamese": 26,
+  "bengali": 26,
+  "dari": 26,
+  "gujarati": 26,
+  "hebrew": 26,
+  "hindi": 63,
+  "kannada": 26,
+  "kashmiri": 26,
+  "malayalam": 26,
+  "marathi": 26,
+  "nepali": 26,
+  "odia": 26,
+  "pali": 26,
+  "pashto": 26,
+  "persian": 26,
+  "phoenician": 26,
+  "prakrit": 26,
+  "punjabi": 26,
+  "sanskrit": 26,
+  "shahmukhi": 26,
+  "sindhi": 26,
+  "syriac": 26,
+  "tamil": 26,
+  "telugu": 26,
+  "urdu": 26
+ },
+ "per_language": {
+  "arabic": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "aramaic": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "assamese": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "bengali": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "dari": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "gujarati": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "hebrew": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "hindi": {
+   "translated": 1310,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 312
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 377
+    },
+    "basic": {
+     "total": 89,
+     "translated": 89
+    },
+    "java": {
+     "total": 181,
+     "translated": 181
+    },
+    "lex": {
+     "total": 4,
+     "translated": 4
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 6
+    },
+    "asm": {
+     "total": 349,
+     "translated": 341
+    }
+   }
+  },
+  "kannada": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "kashmiri": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "malayalam": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "marathi": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "nepali": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "odia": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "pali": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "pashto": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "persian": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "phoenician": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "prakrit": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "punjabi": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "sanskrit": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "shahmukhi": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "sindhi": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "syriac": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "tamil": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "telugu": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  },
+  "urdu": {
+   "translated": 72,
+   "total": 1801,
+   "by_host": {
+    "c": {
+     "total": 312,
+     "translated": 24
+    },
+    "cpp": {
+     "total": 860,
+     "translated": 26
+    },
+    "basic": {
+     "total": 89,
+     "translated": 0
+    },
+    "java": {
+     "total": 181,
+     "translated": 22
+    },
+    "lex": {
+     "total": 4,
+     "translated": 0
+    },
+    "yacc": {
+     "total": 6,
+     "translated": 0
+    },
+    "asm": {
+     "total": 349,
+     "translated": 0
+    }
+   }
+  }
+ },
+ "needs_translation": {
+  "arabic": 1729,
+  "aramaic": 1729,
+  "assamese": 1729,
+  "bengali": 1729,
+  "dari": 1729,
+  "gujarati": 1729,
+  "hebrew": 1729,
+  "hindi": 491,
+  "kannada": 1729,
+  "kashmiri": 1729,
+  "malayalam": 1729,
+  "marathi": 1729,
+  "nepali": 1729,
+  "odia": 1729,
+  "pali": 1729,
+  "pashto": 1729,
+  "persian": 1729,
+  "phoenician": 1729,
+  "prakrit": 1729,
+  "punjabi": 1729,
+  "sanskrit": 1729,
+  "shahmukhi": 1729,
+  "sindhi": 1729,
+  "syriac": 1729,
+  "tamil": 1729,
+  "telugu": 1729,
+  "urdu": 1729
+ },
+ "construct_model": {
+  "constructs": 39,
+  "untranslated": {
+   "arabic": 13,
+   "aramaic": 13,
+   "assamese": 13,
+   "bengali": 13,
+   "dari": 13,
+   "gujarati": 13,
+   "hebrew": 13,
+   "hindi": 2,
+   "kannada": 13,
+   "kashmiri": 13,
+   "malayalam": 13,
+   "marathi": 13,
+   "nepali": 13,
+   "odia": 13,
+   "pali": 13,
+   "pashto": 13,
+   "persian": 13,
+   "phoenician": 13,
+   "prakrit": 13,
+   "punjabi": 13,
+   "sanskrit": 13,
+   "shahmukhi": 13,
+   "sindhi": 13,
+   "syriac": 13,
+   "tamil": 13,
+   "telugu": 13,
+   "urdu": 13
+  }
+ }
+}

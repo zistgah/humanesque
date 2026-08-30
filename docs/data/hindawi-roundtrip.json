@@ -3,17 +3,17 @@
  "method": "each character in <script>_to_deva.tsv is mapped to Devanagari and back; a character that does not return to itself is counted lossy",
  "scripts": [
   {
-   "script": "devanagari",
-   "chars": 128,
-   "roundtrip_ok": 128,
+   "script": "bengali",
+   "chars": 79,
+   "roundtrip_ok": 79,
    "lossy": 0,
    "losses": [],
    "note": "bijective over this table"
   },
   {
-   "script": "bengali",
-   "chars": 79,
-   "roundtrip_ok": 79,
+   "script": "devanagari",
+   "chars": 128,
+   "roundtrip_ok": 128,
    "lossy": 0,
    "losses": [],
    "note": "bijective over this table"
@@ -35,9 +35,41 @@
    "note": "bijective over this table"
   },
   {
+   "script": "kannada",
+   "chars": 79,
+   "roundtrip_ok": 79,
+   "lossy": 0,
+   "losses": [],
+   "note": "bijective over this table"
+  },
+  {
+   "script": "khudawadi",
+   "chars": 69,
+   "roundtrip_ok": 69,
+   "lossy": 0,
+   "losses": [],
+   "note": "bijective over this table"
+  },
+  {
+   "script": "malayalam",
+   "chars": 79,
+   "roundtrip_ok": 79,
+   "lossy": 0,
+   "losses": [],
+   "note": "bijective over this table"
+  },
+  {
    "script": "oriya",
    "chars": 80,
    "roundtrip_ok": 80,
+   "lossy": 0,
+   "losses": [],
+   "note": "bijective over this table"
+  },
+  {
+   "script": "sharada",
+   "chars": 83,
+   "roundtrip_ok": 83,
    "lossy": 0,
    "losses": [],
    "note": "bijective over this table"
@@ -54,102 +86,6 @@
    "script": "telugu",
    "chars": 78,
    "roundtrip_ok": 78,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "kannada",
-   "chars": 79,
-   "roundtrip_ok": 79,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "malayalam",
-   "chars": 79,
-   "roundtrip_ok": 79,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "sinhala",
-   "chars": 1,
-   "roundtrip_ok": 1,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "tirhuta",
-   "chars": 80,
-   "roundtrip_ok": 80,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "modi",
-   "chars": 77,
-   "roundtrip_ok": 77,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "sharada",
-   "chars": 83,
-   "roundtrip_ok": 83,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "takri",
-   "chars": 66,
-   "roundtrip_ok": 66,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "khudawadi",
-   "chars": 69,
-   "roundtrip_ok": 69,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "multani",
-   "chars": 37,
-   "roundtrip_ok": 37,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "kaithi",
-   "chars": 62,
-   "roundtrip_ok": 62,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "grantha",
-   "chars": 64,
-   "roundtrip_ok": 64,
-   "lossy": 0,
-   "losses": [],
-   "note": "bijective over this table"
-  },
-  {
-   "script": "newa",
-   "chars": 80,
-   "roundtrip_ok": 80,
    "lossy": 0,
    "losses": [],
    "note": "bijective over this table"

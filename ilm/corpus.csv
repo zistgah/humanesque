@@ -1,0 +1,61 @@
+language,role,evidence,layers,in_green_index,has_frontend,has_langdef,has_bin,is_layer_pick
+ada,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+asm,toolchain,decorator-host frontend green-index layer-pick toolchain-bin,L3:best L6:popular-1,y,y,,y,y
+assembly,general-purpose,langdef,,,,y,,
+basic,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L16:popular-2,y,y,y,y,y
+c,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L3:popular-1 L4:best L5:best L6:best L7:best L12:best L13:popular-1 L14:best,y,y,y,y,y
+c++,general-purpose,layer-pick,L4:popular-2 L5:popular-2 L7:popular-1 L8:best L9:best L10:best L14:popular-1 L17:popular-1 L20:best,,,,,y
+chakra,general-purpose,langdef,,,,y,,
+chisel,hardware,layer-pick,L2:popular-2,,,,,y
+clojure,general-purpose,green-index langdef toolchain-bin,,y,,y,y,
+cobol,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+coq,proof,layer-pick,L23:popular-1,,,,,y
+cpp,general-purpose,decorator-host frontend green-index langdef toolchain-bin,,y,y,y,y,
+cpp-preproc,toolchain,toolchain-bin,,,,,y,
+cppp,general-purpose,green-index,,y,,,,
+csharp,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+dart,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+datalog,query,layer-pick,L25:popular-2,,,,,y
+erlang,general-purpose,layer-pick,L19:best L22:popular-1,,,,,y
+forth,general-purpose,green-index langdef toolchain-bin,,y,,y,y,
+fortran,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+go,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L7:popular-2 L19:popular-1 L22:best L24:popular-1,y,y,y,y,y
+haskell,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L13:popular-2 L23:popular-2,y,y,y,y,y
+java,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L8:popular-1,y,y,y,y,y
+javascript,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L16:best,y,y,y,y,y
+julia,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L9:popular-2 L18:popular-1,y,y,y,y,y
+kconfig,toolchain,green-index toolchain-bin,,y,,,y,
+kotlin,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+ld,toolchain,green-index toolchain-bin,,y,,,y,
+lean,proof,layer-pick,L23:best,,,,,y
+lex,toolchain,green-index toolchain-bin,,y,,,y,
+lisp,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L18:popular-2,y,y,y,y,y
+logo,general-purpose,green-index langdef toolchain-bin,,y,,y,y,
+lua,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+make,toolchain,frontend green-index toolchain-bin,,y,y,,y,
+ocaml,general-purpose,green-index langdef layer-pick toolchain-bin,L14:popular-2,y,,y,y,y
+octave,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+panini,panini,green-index layer-pick toolchain-bin,L13:best L21:best L25:best L26:best,y,,,y,y
+pascal,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+perl,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+php,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+prolog,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L25:popular-1 L26:popular-1,y,y,y,y,y
+python,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L1:popular-2 L8:popular-2 L9:popular-1 L10:popular-1 L11:popular-1 L12:popular-1 L15:popular-1 L17:best L18:best L20:popular-2 L21:popular-1 L24:best,y,y,y,y,y
+r,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+ruby,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+rust,general-purpose,decorator-host frontend green-index langdef layer-pick toolchain-bin,L3:popular-2 L4:popular-1 L5:popular-1 L6:popular-2 L10:popular-2 L12:popular-2 L15:popular-2 L17:popular-2 L19:popular-2 L20:popular-1 L22:popular-2 L24:popular-2,y,y,y,y,y
+scala,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L11:popular-2,y,y,y,y,y
+scheme,general-purpose,green-index langdef toolchain-bin,,y,,y,y,
+smalltalk,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+sparql,query,layer-pick,L26:popular-2,,,,,y
+spice,hardware,layer-pick,L1:best,,,,,y
+sql,query,frontend green-index langdef layer-pick toolchain-bin,L11:best,y,y,y,y,y
+swift,general-purpose,frontend green-index langdef toolchain-bin,,y,y,y,y,
+sysml,modelling,frontend green-index langdef toolchain-bin,,y,y,y,y,
+systemverilog,hardware,layer-pick,L0:popular-2,,,,,y
+typescript,general-purpose,frontend green-index langdef layer-pick toolchain-bin,L15:best L16:popular-1 L21:popular-2,y,y,y,y,y
+verilog,hardware,layer-pick,L0:popular-1 L2:best,,,,,y
+verilog-a,hardware,layer-pick,L1:popular-1,,,,,y
+vhdl,hardware,layer-pick,L0:best L2:popular-1,,,,,y
+yacc,toolchain,green-index toolchain-bin,,y,,,y,
+zig,general-purpose,frontend green-index toolchain-bin,,y,y,,y,

@@ -28,7 +28,7 @@ A `<शैली …>` line selects the pipeline, as it always has.
 
 ## Keyword provenance — undefined keywords
 
-- `tsv`
+- `csv`
 
 `tsv`/`csv` are retrieved tables. `inherited` takes the vocabulary of a language
 written in the same script and register. `projected` maps a Devanagari word

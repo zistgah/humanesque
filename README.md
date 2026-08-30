@@ -12,34 +12,95 @@ bash seed_humanesque.sh --push     # gate: SEED humanesque
 
 ---
 
-## Hindawi — 49 distributions, 23 scripts, FULL retrieved transducers
+## Hindawi — ONE CSV, ONE generator
 
-**Corrected.** The previous build reduced `guru/h2c.uhin` from the retrieved
-**323 rules to 29**, and the `keywords` file from **714 to 29**. That was a
-reduction, not a distribution. Rebuilt: the retrieved transducer is the base and
-**every rule is carried** — preprocessor directives, header-name mappings, the
-lot. A language substitutes the words it has and carries the rest through
-unchanged.
+`ilm/keywords.csv` is the single source. **1,801 constructs × 27 languages.**
+Nothing else is authored, and 49 duplicated transducer trees are gone.
 
-    guru      323 rules  (16 localised for hindi)      shabda     4  composes h2l | h2c
-    shraeni   879 rules  (18 localised)                wyaaka     6  composes h2yacc | h2c
-    yantra    354 rules                                soochee   38  (8 localised)
-    kritrima  186 rules  (14 localised)                praatha   99
-    keywords  724 entries                              TOTAL  1,852 rules per distribution
+    construct  standard  host  kind  iso_clause  std_ref  romenagri  <27 languages>
 
-`hindawi/` — **not** `dist/hindawi/`, which is grok's and is now untouched.
+`tools/hindawi-gen <language> [--script S] [--out DIR]` generates a distribution
+from it. Every retrieved rule is carried — guru 323, shraeni 879, yantra 354 —
+and a language substitutes the words it has.
 
-## Layout
+### The construct is primary
 
-`dist/hindawi/<script>/<language>/` in the retrieved Hindawi layout. **Not JSON.**
+`for` is one construct shared by C, C++, Java, Python, Rust, Go. It is translated
+**once per human language**, not once per host language. The old table repeated it
+eight times because it was keyed on host × keyword.
 
-```
-hindawi/<script>/<language>/
-  guru/ shraeni/ praatha/ kritrima/ soochee/ shabda/ wyaaka/ yantra/ robot/
-     h2<host>.uhin  <host>2h.uhin  Makefile (retrieved)  <shaili>cc
-  hindrv/   hincc hin2std std2hin hincc.awk hin2std.awk std2hin.awk (retrieved)
-  keywords  samples/  exercises/
-```
+    ilm/constructs.csv    39 constructs x 27 human languages
+                          construct, category, gloss, <27 language columns>
+    ilm/decorators.csv    216 host realisations across 8 host languages
+                          construct, host, keyword, decorator
+
+The decorator is what a *use* of the construct drags in:
+
+    PRINT   c     printf              stdio.h
+    PRINT   cpp   cout                iostream
+    PRINT   go    fmt.Println         fmt
+    PRINT   python print              —
+    READ    java  Scanner             java.util.Scanner
+    STRUCT  python dataclass          dataclasses
+
+Both are **living documents**. A standard revision changes `decorators.csv`; the
+translation in `constructs.csv` does not move.
+
+**The translation work collapsed from 1,729 rows per language to 13.** Hindi is
+37 of 39, every other language 26 of 39. `ilm/worksheets/<language>.csv` now holds
+those 13 rows with the construct, its category and a gloss.
+
+### 27 AGI layers × 3 languages
+
+`ilm/layers.csv` — for each of L0–L26 (names **read from** `docs/AGI_STACK.md`,
+not retyped), the best-suited language and the two most popular alternatives,
+each with a stated reason. 81 rows, 29 distinct primary languages.
+
+    L7   OS/runtime     best       C            POSIX is defined in C
+                        popular-1  C++          systemd-era userland and services
+                        popular-2  Go           runtimes and daemons, GC above the kernel
+    L23  Metacognition  best       Lean         metacognition means proof
+                        popular-1  Coq          the older, larger proof corpus
+                        popular-2  Haskell      types as lightweight proof
+
+Popularity is recorded as a **reason**, not as agreement — the column says why a
+language is there, including when the reason is only that people use it.
+Toolchain languages (make, ld, kconfig, lex, yacc, cpp, as) are **excluded** and
+treated separately, asserted by a check.
+
+### The keyword table — standard construct, and the localized construct in its own script
+
+`ilm/keywords.csv` remains as the per-host keyword surface the shailis are
+generated from. No romenagri column; the spine is `ilm/romenagri-spine.csv`.
+
+### Standards compliance
+
+**48 of 49 C keywords carry their ISO/IEC 9899:2011 clause** — `if` 6.8.4.1,
+`while` 6.8.5.1, `int` 6.7.2, `#include` 6.10.2, `printf` 7.21.6.3, `main`
+5.1.2.2.1. C++ against ISO/IEC 14882:2020. Per-host: c 312 · cpp 860 · asm 349 ·
+java 181 · basic 89 · yacc 6 · lex 4. → `docs/data/keywords-compliance.json`
+
+### 36 distributions, 11 scripts
+
+Generated, not stored: `hindawi/<script>/<language>/` with the nine shaili
+directories, `hindrv/`, `keywords`, `samples/`, `exercises/`. 51 tarballs in
+`hindawi-tar/`. Devanagari carries hindi, sanskrit, marathi, nepali, pali,
+prakrit plus marwari, bhojpuri, awadhi, magahi, rajasthani, bodo, dogri,
+maithili, konkani — each marked `inherits_vocabulary_from` until it gets its own
+CSV column. Give it one and it differentiates.
+
+## Mez — now reads real stage sequences
+
+The stage-nesting defect is **fixed**. D39: a claimed terminator does not reach
+past a sibling of the same keyword at the same indent — scoped to STAGE, CYCLE,
+RULE, TEST, CASE, STEP, deliberately excluding FILE whose body is a heredoc.
+
+    awaz    1 -> 12 stages      tilasm  1 -> 12
+    khwab   1 ->  7            yadein  1 -> 13
+    pench       40             genie        6
+
+145/145 still green, spec still 0 errors. matba stays at 2 — its stages nest
+inside a WORKFLOW block, a different shape, still open.
 
 ## Toolchain — grok's 46 Unix-named frontends
 

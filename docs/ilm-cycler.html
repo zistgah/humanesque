@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ILM / PANINI Cycler — C1…C5</title>
+<style>
+:root{font-family:system-ui,sans-serif;color-scheme:dark}
+body{margin:0;background:#111;color:#eee}
+header{padding:16px 22px;border-bottom:1px solid #444;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+header h1{font-size:1.05rem;margin:0;font-weight:600}
+header .sub{color:#8a8375;font-size:.8rem}
+main{max-width:1100px;margin:auto;padding:18px 22px 60px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+button{background:#1d1d1d;color:#eee;border:1px solid #555;padding:7px 13px;border-radius:3px;cursor:pointer;font-size:.86rem}
+button:hover{border-color:#c8a24a}
+button.p{background:#c8a24a;color:#111;border-color:#c8a24a;font-weight:600}
+.stages{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.stage{border:1px solid #444;padding:6px 11px;border-radius:3px;cursor:pointer;font-size:.82rem;color:#aaa}
+.stage.active{border-color:#c8a24a;color:#c8a24a}
+.stage.done{border-color:#4c7a52;color:#7fbe88}
+.steps{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 14px}
+.step{border:1px solid #3a3a3a;padding:5px 9px;border-radius:3px;cursor:pointer;font-size:.78rem;color:#999}
+.step.active{border-color:#c8a24a;color:#c8a24a;background:#1a1710}
+.step.done{border-color:#4c7a52;color:#7fbe88}
+.step.gate{border-style:dashed}
+label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#8a8375;margin:14px 0 5px}
+pre,textarea{width:100%;background:#0b0b0b;color:#ddd;border:1px solid #3a3a3a;border-radius:3px;
+padding:11px;font:13px/1.5 ui-monospace,monospace;box-sizing:border-box}
+pre{white-space:pre-wrap;margin:0;max-height:44vh;overflow:auto}
+textarea{min-height:120px;resize:vertical}
+.note{background:#16150f;border-left:3px solid #c8a24a;padding:9px 13px;margin:12px 0;font-size:.85rem;color:#cfc6b0}
+.gatebox{background:#1a0f0f;border-left:3px solid #a05252;padding:9px 13px;margin:12px 0;font-size:.85rem;color:#e0bcbc}
+#status{color:#8a8375;font-size:.8rem}
+a{color:#c8a24a}
+.flow{color:#6f6a5e;font-size:.76rem;line-height:1.7;white-space:pre;overflow-x:auto}
+</style></head><body>
+<header>
+  <h1>ILM / PANINI Cycler</h1>
+  <span class="sub">C1 language corpus → C2 observation → C3 construct reconciliation → C4 decorator → C5 ILM translation</span>
+</header>
+<main>
+
+<div class="flow">LANGUAGE CORPUS  81 + X
+      ├── CONSTRUCT OBSERVATION ──→ SEMANTIC RECONCILIATION ──→ PANINI CONSTRUCT MODEL
+      └── DECORATOR OBSERVATION ──→ LANGUAGE-SPECIFIC MODEL          │
+                                                                     ▼
+                                                            ILM TRANSLATION
+                                                      DIALECT STANDARD → IDIOLECT OVERLAY</div>
+
+<div class="note"><b>Union, then reconcile — never intersection.</b> A construct present in one
+language does not disappear for lacking a counterpart elsewhere. Each correspondence is
+classified: equivalent · specialization · generalization · composition · syntactic-sugar ·
+language-specific · unresolved. <b>A release is frozen; the corpus is not.</b></div>
+
+<div class="stages" id="stages"></div>
+<div class="steps" id="steps"></div>
+
+<div class="bar">
+  <button onclick="prevStep()">← back</button>
+  <button class="p" onclick="copyPrompt()">copy prompt</button>
+  <button onclick="copyResult()">copy result</button>
+  <button onclick="markDone()">mark done →</button>
+  <button onclick="clearResult()">clear</button>
+  <button onclick="exportRun()">export run</button>
+  <button onclick="importRun()">import</button>
+  <span id="status"></span>
+</div>
+
+<label>Prompt — hand this to any AI or person</label>
+<pre id="prompt"></pre>
+<div id="gate"></div>
+
+<label>Context — what this step is given</label>
+<textarea id="context" placeholder="Paste the previous step's artifact here."></textarea>
+
+<label>Result — what came back</label>
+<textarea id="result" placeholder="Paste the reply here. It becomes the next step's context."></textarea>
+
+</main>
+<script>
+/* Every step is a prompt. The cycler is the protocol, not the software.
+   Nothing is sent anywhere: copy out, paste back. */
+const CTX = `CONTEXT — PANINI / ILM
+
+PANINI separates EXPRESSION (language-independent conceptual side) from
+REALIZATION (the mechanism through which it becomes an artifact, behaviour,
+physical operation or biological construct). Realization is substantially
+larger than computational realization; do not assume every path ends in
+machine code or bytecode.
+
+Three axes stay distinct and are never conflated:
+  SCRIPT    the writing system            LANGUAGE  the human vocabulary
+  STANDARD  the computational construct
+
+Rules that bind every step:
+  Union, then reconcile. Never intersection.
+  Never move a language-specific requirement into the common construct.
+  Where you do not know, write UNRESOLVED. Do not supply a plausible value.
+  Preserve provenance. Do not flatten distinct concepts to simplify the inventory.
+  No result is canonical because an AI produced it.
+`;
+
+const cycler = { title:"ILM / PANINI Cycler", stages:[
+
+{id:"C1", name:"C1 · Language corpus", steps:[
+ {name:"1 select", prompt:`${CTX}
+TASK — C1.1 SELECTION
+For each of the 27 AGI layers (L0–L26) given in the context, name:
+  (a) the best-suited language, with the technical reason;
+  (b) the two most popular languages for that layer, with the ecosystem reason.
+If (a) coincides with one of (b), take the next distinct major language so the
+set remains three distinct languages. Record the substitution and why.
+Return: layer, rank, language, reason, substituted_for.`},
+ {name:"2 verify", prompt:`${CTX}
+TASK — C1.2 WEB VERIFICATION
+Independently verify each selection: current popularity, active maintenance,
+release recency, ecosystem status, standards body. Cite sources.
+Where a claim cannot be verified, mark it UNRESOLVED — do not defend it.
+Return the same table plus: evidence, source, verified_on, confidence.`},
+ {name:"3 overlap", prompt:`${CTX}
+TASK — C1.3 OVERLAP RESOLUTION
+Resolve duplicate selections across layers WITHOUT losing any layer's rationale.
+A language may legitimately serve several layers; say so rather than dropping it.
+Return: language, layers_served, rationale_per_layer, collisions_resolved.`},
+ {name:"4 additional X", prompt:`${CTX}
+TASK — C1.4 ADDITIONAL LANGUAGES (the X)
+Identify languages that belong in the corpus though they hold no layer slot,
+justified by exceptional popularity, historical significance, or strong domain
+specificity. Toolchain languages (make, ld, kconfig, lex, yacc, cpp) are a
+separate role — mark them, do not exclude them silently.
+Return: language, role, justification, evidence.`},
+ {name:"5 review", prompt:`${CTX}
+TASK — C1.5 REVIEW
+Produce the proposed corpus: 81 baseline selections + X additional.
+List every unresolved case separately. Do not resolve them by guessing.
+Return the corpus table, an unresolved list, and a version note.`},
+ {name:"6 GATE", gate:"FREEZE corpus <version>", prompt:`${CTX}
+HUMAN GATE — C1.6
+A release is frozen. The corpus is not.
+Freezing records a version; it does not close the corpus to revision.
+A later C1 may say "the language formerly in this slot is no longer the best
+current choice" without invalidating any historical release.
+Type the gate word exactly to freeze this release.`}]},
+
+{id:"C2", name:"C2 · Observation", steps:[
+ {name:"1 constructs", prompt:`${CTX}
+TASK — C2.1 CONSTRUCT OBSERVATION — ONE LANGUAGE
+Language: [NAME]   Version/standard: [e.g. ISO/IEC 9899:2011]
+
+Extract EVERY construct this language expresses. For each:
+  canonical conceptual identity (what it MEANS, not what it is called)
+  surface keyword or syntax · variants · version introduced/removed
+  provenance (clause or section of the standard) · language-specific requirements
+
+Do NOT force a construct into an existing category because the names look alike.
+Do NOT stop at the categories you have seen; this language may express something
+no other language in the corpus does. That is exactly what must be recorded.
+Return: construct_observation rows + an explicit list of anything you could not classify.`},
+ {name:"2 decorators", prompt:`${CTX}
+TASK — C2.2 DECORATOR OBSERVATION — SAME LANGUAGE
+Separately from the constructs, record how this language REALIZES them:
+keywords · grammatical forms · punctuation · type notation · declaration
+conventions · calling conventions · module/import conventions · standard-library
+dependencies · headers · annotations · attributes · compiler directives · pragmas
+· language-specific operators · syntactic sugar · idioms · required runtime facilities.
+
+Example: printf needs stdio.h in C; cout needs iostream in C++. Those belong HERE,
+never in the construct.
+Return: decorator rows keyed by construct id.`},
+ {name:"3 program", prompt:`${CTX}
+TASK — C2.3 MECHANICAL EXTRACTION (optional)
+If mechanical extraction is more reliable than enumeration, return a PROGRAM that
+performs it, rather than the enumerated result.
+The program must: produce the proposed dataset; state its assumptions; state what
+it cannot see; and NOT modify the canonical corpus.
+Return: the program, its assumptions, its known blind spots.`},
+ {name:"4 GATE", gate:"ACCEPT <language> observation", prompt:`${CTX}
+HUMAN GATE — C2.4
+Accept / reject / merge the observation for this language.
+An observation is a proposal. It does not enter the canonical corpus by being produced.`}]},
+
+{id:"C3", name:"C3 · Construct reconciliation", steps:[
+ {name:"1 union", prompt:`${CTX}
+TASK — C3.1 UNION
+Take the UNION of all observed constructs across all languages processed so far.
+Do NOT compute an intersection. Do NOT drop a construct because only one language
+has it. Carry every observation's provenance forward.
+Return: the union set with source languages per entry.`},
+ {name:"2 correspond", prompt:`${CTX}
+TASK — C3.2 CORRESPONDENCE
+For each pair or cluster of observations that may be the same thing, classify the
+relationship as exactly one of:
+  equivalent · specialization · generalization · composition · syntactic-sugar ·
+  language-specific · unresolved
+State the evidence. "Both are called for" is not evidence. Semantic identity is.
+Return: relationship rows with evidence and confidence.`},
+ {name:"3 canonical", prompt:`${CTX}
+TASK — C3.3 CANONICAL CONSTRUCT MODEL
+Derive the canonical construct: id, category, gloss, semantics, the languages that
+motivated it, and the relationships from C3.2.
+Records with explicit relationships — NOT a flat matrix. A construct's realizations,
+provenance, dialect and version are related records, not columns.
+Anything unresolved stays unresolved and is listed.
+Return: canonical constructs + unresolved list.`},
+ {name:"4 GATE", gate:"CANON construct <version>", prompt:`${CTX}
+HUMAN GATE — C3.4
+Admit constructs into the canonical model. Reject anything whose correspondence
+evidence is weak. A promoted construct records who promoted it and when.`}]},
+
+{id:"C4", name:"C4 · Decorator reconciliation", steps:[
+ {name:"1 model", prompt:`${CTX}
+TASK — C4.1 LANGUAGE-SPECIFIC MODEL
+For each language, map canonical construct → that language's realization and its
+decorator. Keep this ENTIRELY separate from C3.
+THE RULE: never move a language-specific requirement into the common construct
+merely because several languages share it. If it is genuinely a common semantic
+requirement, C3 promotes it — C4 does not.
+Return: language, construct_id, realization, decorator, runtime_requirement, version.`},
+ {name:"2 promote", prompt:`${CTX}
+TASK — C4.2 PROMOTION CANDIDATES
+List decorators that MIGHT be common semantics rather than language artefacts.
+For each, argue both sides. Do not promote anything here — C3 does that.
+Return: candidate, languages sharing it, case for promotion, case against.`},
+ {name:"3 GATE", gate:"ACCEPT decorators <language>", prompt:`${CTX}
+HUMAN GATE — C4.3
+Accept the decorator model for this language. Any promotion goes back to C3.`}]},
+
+{id:"C5", name:"C5 · ILM translation", steps:[
+ {name:"1 translate", prompt:`${CTX}
+TASK — C5.1 TRANSLATION
+You are translating the canonical PANINI construct corpus into
+[TARGET LANGUAGE / DIALECT].
+
+The unit of standardization is the DIALECT. An idiolect is a later overlay on the
+dialect standard, never a separate standard.
+
+Do not translate programming-language keywords literally unless the literal
+translation is the established expression in that language.
+Preserve the identity of every canonical construct.
+Distinguish semantic identity from surface expression.
+
+For each construct give:
+  canonical construct ID · target-language expression · grammatical/syntactic form
+  acceptable variants · register/dialect · ambiguity notes · disallowed or
+  conflicting forms · provenance · contributor · review status · ILM version
+
+The translation must be REVERSIBLE to the canonical construct.
+Do not invent a new construct to resolve a translation difficulty.
+If the language lacks a natural existing expression, MARK THE GAP and propose
+candidate terminology — do not silently fabricate a canonical translation.`},
+ {name:"2 review", prompt:`${CTX}
+TASK — C5.2 INDEPENDENT REVIEW
+Given the canonical construct and the proposed [dialect] translation, determine
+whether the translation preserves: construct identity · grammatical
+appropriateness · register · reversibility · technical distinction.
+Identify ambiguity or semantic drift. DO NOT REWRITE SILENTLY — report.
+Return: per-construct verdict, issues found, recommended action.`},
+ {name:"3 decorators", prompt:`${CTX}
+TASK — C5.3 DECORATOR TRANSLATION
+Translate the language-specific decorators separately from the constructs.
+A header name, a pragma or an attribute may have no natural translation at all —
+say so rather than coining one.
+Return: language, construct_id, decorator, target expression or UNTRANSLATABLE, reason.`},
+ {name:"4 speaker", prompt:`${CTX}
+TASK — C5.4 SPEAKER VALIDATION
+Ask an appropriate speaker of this dialect:
+  Is this an authentic expression? Is anything missing?
+  Has standardization altered it? Are there dialect alternatives?
+  Would a local speaker actually use it?
+The system must not become the authority over the community.
+Return: speaker responses, contested items, agreed forms.`},
+ {name:"5 GATE", gate:"PUBLISH <dialect> <version>", prompt:`${CTX}
+HUMAN GATE — C5.5
+Publish the dialect standard. Idiolect profiles overlay it; they do not fork it.
+Record: dialect, ILM version, contributors, reviewers, unresolved gaps.`}]}
+]};
+
+let S=0, C=0, state={};
+const key='ilm-cycler-v1';
+const steps=()=>cycler.stages[S].steps;
+const k=(s,c)=>s+':'+c;
+
+function render(){
+ document.getElementById('stages').innerHTML=cycler.stages.map((st,i)=>{
+   const done=st.steps.every((_,j)=>state[k(i,j)]?.done);
+   return `<div class="stage ${i===S?'active':''} ${done?'done':''}" onclick="goStage(${i})">${st.name}</div>`;}).join('');
+ document.getElementById('steps').innerHTML=steps().map((s,i)=>
+   `<div class="step ${i===C?'active':''} ${state[k(S,i)]?.done?'done':''} ${s.gate?'gate':''}"
+     onclick="go(${i})">${s.gate?'⊘ ':''}${s.name}</div>`).join('');
+ const st=steps()[C];
+ document.getElementById('prompt').textContent=st.prompt;
+ document.getElementById('gate').innerHTML=st.gate
+   ? `<div class="gatebox"><b>Human gate.</b> Nothing proceeds until a person types
+      <code>${st.gate}</code> exactly. An AI cannot pass this step.</div>` : '';
+ document.getElementById('context').value=state[k(S,C)]?.context||'';
+ document.getElementById('result').value=state[k(S,C)]?.result||'';
+ document.getElementById('status').textContent=
+   `${cycler.stages[S].id} · step ${C+1} of ${steps().length}` +
+   (state[k(S,C)]?.done?' · completed':'');
+}
+function persist(){ state[k(S,C)]={context:document.getElementById('context').value,
+  result:document.getElementById('result').value, done:state[k(S,C)]?.done||false};
+  try{localStorage.setItem(key,JSON.stringify(state));}catch(e){} }
+function go(i){persist();C=i;render();}
+function goStage(i){persist();S=i;C=0;render();}
+function prevStep(){persist(); if(C>0)C--; else if(S>0){S--;C=steps().length-1;} render();}
+function markDone(){
+ persist(); state[k(S,C)].done=true;
+ // the result becomes the next step's context — that is the cycle
+ const r=state[k(S,C)].result;
+ if(C+1<steps().length){ C++; state[k(S,C)]={...(state[k(S,C)]||{}),context:r}; }
+ else if(S+1<cycler.stages.length){ S++;C=0; state[k(S,C)]={...(state[k(S,C)]||{}),context:r}; }
+ try{localStorage.setItem(key,JSON.stringify(state));}catch(e){}
+ render();
+}
+function copyPrompt(){ const p=steps()[C].prompt+'\n\n=== CONTEXT ===\n'+
+  (document.getElementById('context').value||'(none)');
+  navigator.clipboard.writeText(p); }
+function copyResult(){ navigator.clipboard.writeText(document.getElementById('result').value); }
+function clearResult(){ document.getElementById('result').value=''; persist(); render(); }
+function exportRun(){
+ persist();
+ const blob=new Blob([JSON.stringify({cycler:cycler.title,when:new Date().toISOString(),state},null,1)],
+   {type:'application/json'});
+ const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+ a.download='ilm-cycler-run.json'; a.click();
+}
+function importRun(){
+ const i=document.createElement('input'); i.type='file'; i.accept='.json';
+ i.onchange=()=>{const f=i.files[0]; if(!f)return; const r=new FileReader();
+   r.onload=()=>{try{state=JSON.parse(r.result).state||{};render();}
+     catch(e){alert('could not read that run: '+e);}}; r.readAsText(f);};
+ i.click();
+}
+try{ state=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){ state={}; }
+render();
+</script></body></html>

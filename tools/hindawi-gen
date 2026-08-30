@@ -1,0 +1,126 @@
+#!/usr/bin/env node
+/* hindawi-gen — generate a Hindawi distribution for one language, from
+ * ilm/keywords.csv and the retrieved transducers. Nothing is duplicated in the
+ * repository: one CSV is the source, this script is the wheel.
+ *
+ *   tools/hindawi-gen <language> [--script S] [--out DIR] [--list]
+ *
+ * The romenagri column is the spine. A language cell that is empty falls back
+ * to the retrieved word, so no rule is ever lost.                            */
+import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const LEG = path.join(root, 'retrieved/legacy/Hindawi');
+const TBL = path.join(root, 'retrieved/romenagri/tables');
+
+function csv(file) {
+  const t = fs.readFileSync(file, 'utf8').split('\n').filter(Boolean);
+  const split = (l) => { const o = []; let c = '', q = false;
+    for (let i = 0; i < l.length; i++) { const ch = l[i];
+      if (q) { if (ch === '"' && l[i + 1] === '"') { c += '"'; i++; } else if (ch === '"') q = false; else c += ch; }
+      else if (ch === '"') q = true; else if (ch === ',') { o.push(c); c = ''; } else c += ch; }
+    o.push(c); return o; };
+  const head = split(t[0]);
+  return { head, rows: t.slice(1).map((l) => Object.fromEntries(split(l).map((v, i) => [head[i], v]))) };
+}
+const SH = {
+  guru:{n:'गुरु',host:'C',t:'h2c',r:'c2h',drv:'gurucc',tool:'cc',ext:'.c',pipe:[]},
+  shraeni:{n:'श्रेणी',host:'C++',t:'h2cpp',r:'cpp2h',drv:'shraenicc',tool:'c++',ext:'.cpp',pipe:[]},
+  praatha:{n:'प्राथमिक',host:'BASIC',t:'h2b',r:'b2h',drv:'praathacc',tool:'basic',ext:'.bas',pipe:[]},
+  kritrima:{n:'कृत्रिम',host:'Java',t:'h2j',r:'j2h',drv:'kritrimacc',tool:'javac',ext:'.java',pipe:[]},
+  soochee:{n:'सूची',host:'Python',t:'h2py',r:'py2h',drv:'soocheecc',tool:'python3',ext:'.py',pipe:[]},
+  shabda:{n:'शब्द',host:'lex',t:'h2l',r:'l2h',drv:'shabdacc',tool:'flex',ext:'.l',pipe:['h2c']},
+  wyaaka:{n:'व्याकरण',host:'yacc',t:'h2yacc',r:'yacc2h',drv:'wyaakacc',tool:'bison',ext:'.y',pipe:['h2c']},
+  yantra:{n:'यंत्र',host:'asm',t:'h2y',r:'y2h',drv:'yantracc',tool:'as',ext:'.asm',pipe:[]},
+};
+const HOSTKEY = { guru:'c', shraeni:'cpp', praatha:'basic', kritrima:'java',
+  soochee:'python', shabda:'lex', wyaaka:'yacc', yantra:'asm' };
+const SRC = { guru:'guru/h2c.uhin', shraeni:'shraeni/h2cpp.uhin', praatha:'praatha/h2b.uhin',
+  kritrima:'kritrima/h2j.uhin', soochee:'soochee/h2py.uhin', shabda:'shabda/h2l.uhin',
+  wyaaka:'wyaaka/h2yacc.uhin', yantra:'yantra/h2y.uhin' };
+
+function scriptRev(script) {
+  const f = path.join(TBL, script + '_to_deva.tsv');
+  if (!fs.existsSync(f)) return null;
+  const rev = new Map();
+  for (const l of fs.readFileSync(f, 'utf8').split('\n')) {
+    if (!l || l.startsWith('#') || !l.includes('\t')) continue;
+    const [s, d] = l.split('\t'); if (!s || !d || s === 'src') continue;
+    if (!rev.has(d)) rev.set(d, s);
+  }
+  return rev;
+}
+const project = (w, rev) => [...w].map((c) => rev.get(c) ?? c).join('');
+
+const args = process.argv.slice(2);
+const K = csv(path.join(root, 'ilm/keywords.csv'));
+const META = ['construct','standard','host','kind','iso_clause','std_ref'];
+const langs = K.head.filter((h) => !META.includes(h));
+if (args.includes('--list') || !args.length) {
+  console.log('languages: ' + langs.join(' '));
+  console.log('usage: tools/hindawi-gen <language> [--script S] [--out DIR]');
+  process.exit(args.length ? 0 : 2);
+}
+const lang = args[0];
+if (!langs.includes(lang)) { console.error(`hindawi-gen: no column "${lang}" in ilm/keywords.csv`); process.exit(2); }
+const script = (args.includes('--script') ? args[args.indexOf('--script') + 1] : null);
+const rel = args.includes('--out') ? args[args.indexOf('--out') + 1] : 'hindawi/' + lang;
+// Never climb out of the tree, and never silently relocate what was asked for.
+// An absolute --out was being rewritten under root, which looked like success
+// and wrote somewhere else. Refuse instead.
+if (path.isAbsolute(rel) || rel.split(path.sep).includes('..')) {
+  console.error(`hindawi-gen: --out must be a path inside the tree, relative to ${root}`);
+  console.error(`             got: ${rel}`);
+  process.exit(2);
+}
+const out = path.join(root, rel);
+const rev = script && scriptRev(script);
+
+fs.mkdirSync(out, { recursive: true });
+const stat = {};
+for (const [sh, cfg] of Object.entries(SH)) {
+  const hk = HOSTKEY[sh];
+  const words = new Map();          // standard keyword -> native word for this language
+  let filled = 0, fallback = 0, projected = 0;
+  for (const r of K.rows) {
+    if (r.host !== hk) continue;
+    let v = r[lang];
+    if (v) { filled++; }
+    else if (r.hindi && rev) { v = project(r.hindi, rev); projected++; }
+    else { v = ''; fallback++; }
+    if (v) words.set(r.standard, v);
+  }
+  // rewrite the retrieved transducer, carrying every rule
+  const sd = path.join(out, sh); fs.mkdirSync(sd, { recursive: true });
+  const src = path.join(LEG, SRC[sh]);
+  let body = fs.existsSync(src) ? fs.readFileSync(src, 'utf8') : '%{\n%}\n\n%%\n\n%%\n';
+  body = body.split('\n').map((l) => {
+    const m = l.match(/^(\S+)(\s+)\{printf\("([^"]*)"\);\}\s*$/);
+    if (!m) return l;
+    const w = words.get(m[3]);
+    return w && w !== m[1] ? w + m[2] + `{printf("${m[3]}");}` : l;
+  }).join('\n');
+  fs.writeFileSync(path.join(sd, cfg.t + '.uhin'), body);
+  const chain = ['|', cfg.t, ...cfg.pipe.map((p) => '| ' + p)].join(' ').replace('| |', '|');
+  fs.writeFileSync(path.join(sd, cfg.drv),
+`#!/bin/bash
+#Copyright (C) 1993-2026 Abhishek Choudhary
+#Hindawi Indic Programming System — shaili ${sh} (${cfg.n}) — ${cfg.host} — ${lang}
+#Generated by tools/hindawi-gen from ilm/keywords.csv. Do not hand-edit; edit the CSV.
+cat $1 | acii2uni | iconv -f UTF-16 -t UTF-8 ${chain} > out${cfg.ext}
+${cfg.tool} out${cfg.ext}
+`, { mode: 0o755 });
+  const lm = path.join(LEG, path.dirname(SRC[sh]), 'Makefile');
+  if (fs.existsSync(lm)) fs.copyFileSync(lm, path.join(sd, 'Makefile'));
+  stat[sh] = { rules: (body.match(/\{printf\(/g) || []).length, localised: filled, projected };
+}
+fs.mkdirSync(path.join(out, 'hindrv'), { recursive: true });
+for (const f of fs.readdirSync(path.join(LEG, 'hindrv')))
+  fs.copyFileSync(path.join(LEG, 'hindrv', f), path.join(out, 'hindrv', f));
+const kws = [...new Set(K.rows.map((r) => r[lang]).filter(Boolean))].sort();
+fs.writeFileSync(path.join(out, 'keywords'), kws.join('\n') + '\n');
+fs.writeFileSync(path.join(out, 'GENERATED.json'), JSON.stringify({
+  language: lang, script: script || null, source: 'ilm/keywords.csv',
+  generator: 'tools/hindawi-gen', invented: false, keywords: kws.length, shailis: stat }, null, 1));
+console.log(`${lang}${script ? ' (' + script + ')' : ''} -> ${path.relative(root, out)}`);
+for (const [k, v] of Object.entries(stat))
+  console.log(`  ${k.padEnd(9)} ${String(v.rules).padStart(4)} rules  ${v.localised} localised${v.projected ? '  ' + v.projected + ' projected' : ''}`);

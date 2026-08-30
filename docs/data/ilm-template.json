@@ -1,0 +1,89 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "unit": "dialect standard; idiolect is an overlay on it, never a separate standard",
+ "languages": 90,
+ "scripts": 47,
+ "families": {
+  "Ancient": [
+   "brahmi",
+   "kharoshthi",
+   "sharada",
+   "siddham"
+  ],
+  "Austroasiatic": [
+   "khmer",
+   "ol_chiki"
+  ],
+  "Austronesian": [
+   "balinese",
+   "buginese",
+   "javanese",
+   "tagalog"
+  ],
+  "Dravidian": [
+   "grantha",
+   "kannada",
+   "malayalam",
+   "tamil",
+   "telugu"
+  ],
+  "Indo-Aryan": [
+   "bengali",
+   "devanagari",
+   "gujarati",
+   "gurmukhi",
+   "kaithi",
+   "khudawadi",
+   "modi",
+   "multani",
+   "newa",
+   "oriya",
+   "sharada",
+   "sinhala",
+   "takri",
+   "tirhuta"
+  ],
+  "Indo-European": [
+   "armenian",
+   "cyrillic",
+   "greek",
+   "latin"
+  ],
+  "Indo-Iranian": [
+   "perso_arabic"
+  ],
+  "Japonic": [
+   "japanese"
+  ],
+  "Kartvelian": [
+   "georgian"
+  ],
+  "Koreanic": [
+   "hangul"
+  ],
+  "Niger-Congo": [
+   "latin"
+  ],
+  "Semitic": [
+   "ethiopic",
+   "hebrew",
+   "perso_arabic",
+   "phoenician",
+   "syriac"
+  ],
+  "Sino-Tibetan": [
+   "han",
+   "meetei_mayek",
+   "myanmar",
+   "tibetan"
+  ],
+  "Tai-Kadai": [
+   "lao",
+   "tai_tham",
+   "thai"
+  ]
+ },
+ "script_tables_present": 53,
+ "hindawi_generated": 36
+}

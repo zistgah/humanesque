@@ -1,0 +1,82 @@
+layer,domain,rank,language,reason
+L0,Physical substrate,best,VHDL,hardware description is the substrate language; synthesisable
+L0,Physical substrate,popular-1,Verilog,larger installed base in industry
+L0,Physical substrate,popular-2,SystemVerilog,verification constructs on top of Verilog
+L1,Device physics,best,SPICE,"device physics is solved numerically, not programmed"
+L1,Device physics,popular-1,Verilog-A,analog behavioural modelling
+L1,Device physics,popular-2,Python,SciPy is where device models are actually fitted
+L2,Digital primitives,best,Verilog,RTL is the native form of a digital primitive
+L2,Digital primitives,popular-1,VHDL,stronger typing for the same job
+L2,Digital primitives,popular-2,Chisel,"generators over Scala, growing in RISC-V work"
+L3,Hardware architecture,best,asm,the architecture IS the instruction set
+L3,Hardware architecture,popular-1,C,"the portable assembler, and what compilers target"
+L3,Hardware architecture,popular-2,Rust,used for new bare-metal work without a runtime
+L4,Memory/storage,best,C,malloc/free and the memory model are C's own
+L4,Memory/storage,popular-1,Rust,ownership makes lifetimes checkable
+L4,Memory/storage,popular-2,C++,"RAII and allocators, widest existing code"
+L5,Interconnect/I/O,best,C,drivers and I/O are written in C everywhere
+L5,Interconnect/I/O,popular-1,Rust,driver work is moving here
+L5,Interconnect/I/O,popular-2,C++,device stacks in industry
+L6,Firmware/boot,best,C,firmware and boot are C plus a little asm
+L6,Firmware/boot,popular-1,asm,the reset vector cannot be C
+L6,Firmware/boot,popular-2,Rust,embedded HAL crates are production now
+L7,OS/runtime,best,C,POSIX is defined in C
+L7,OS/runtime,popular-1,C++,systemd-era userland and services
+L7,OS/runtime,popular-2,Go,"runtimes and daemons, GC acceptable above the kernel"
+L8,Execution frameworks,best,C++,execution frameworks need zero-cost abstraction
+L8,Execution frameworks,popular-1,Java,JVM is itself an execution framework at scale
+L8,Execution frameworks,popular-2,Python,the framework people actually reach for
+L9,Simulation / twins,best,C++,simulators are compute-bound
+L9,Simulation / twins,popular-1,Python,Gazebo/Isaac scripting is Python
+L9,Simulation / twins,popular-2,Julia,differentiable simulation without leaving one language
+L10,Sensorimotor,best,C++,ROS 2 real-time control is C++
+L10,Sensorimotor,popular-1,Python,ROS 2 Python is how most people start
+L10,Sensorimotor,popular-2,Rust,deterministic control without GC pauses
+L11,Data substrate,best,SQL,the data substrate has its own declarative standard
+L11,Data substrate,popular-1,Python,pandas/Arrow is where data actually moves
+L11,Data substrate,popular-2,Scala,"Spark, for the large end"
+L12,Representation / ILM,best,C,"the Hindawi transducers are lex+C — this layer is retrieved, not chosen"
+L12,Representation / ILM,popular-1,Python,corpus and script tooling
+L12,Representation / ILM,popular-2,Rust,ICU-class text processing
+L13,Programming language,best,PANINI,this is PANINI's own layer
+L13,Programming language,popular-1,C,the language every other language bootstraps through
+L13,Programming language,popular-2,Haskell,where language semantics are usually specified
+L14,Compiler / semantic,best,C,lex/yacc/flex/bison emit C; the retrieved shailis are C
+L14,Compiler / semantic,popular-1,C++,LLVM is C++
+L14,Compiler / semantic,popular-2,OCaml,the classic compiler-writing language
+L15,Tooling / workbench,best,TypeScript,tooling and workbenches are browser-first here
+L15,Tooling / workbench,popular-1,Python,CLI tooling and glue
+L15,Tooling / workbench,popular-2,Rust,fast language servers and formatters
+L16,Interaction,best,JavaScript,interaction runs in the browser
+L16,Interaction,popular-1,TypeScript,"the same, with types"
+L16,Interaction,popular-2,BASIC,the beginner rung must stay a beginner rung
+L17,Model substrate,best,Python,the model substrate is Python whether or not one likes it
+L17,Model substrate,popular-1,C++,the kernels underneath are C++/CUDA
+L17,Model substrate,popular-2,Rust,inference runtimes moving here
+L18,Cognition,best,Python,cognition experiments are written in Python
+L18,Cognition,popular-1,Julia,numerics without the two-language problem
+L18,Cognition,popular-2,Lisp,"the historical cognition language, still apt"
+L19,Coherence,best,Erlang,coherence across failing parts is Erlang's subject
+L19,Coherence,popular-1,Go,"CSP concurrency, widely deployed"
+L19,Coherence,popular-2,Rust,fearless concurrency with no GC
+L20,Embodiment,best,C++,embodiment is real-time control
+L20,Embodiment,popular-1,Rust,memory safety where a fault moves a limb
+L20,Embodiment,popular-2,Python,high-level policy above the control loop
+L21,Agent architecture,best,PANINI,"a cycler IS an agent architecture, and it is .pni"
+L21,Agent architecture,popular-1,Python,agent frameworks live here
+L21,Agent architecture,popular-2,TypeScript,browser-resident agents
+L22,Collective,best,Go,collective systems are distributed services
+L22,Collective,popular-1,Erlang,supervision trees for the same problem
+L22,Collective,popular-2,Rust,when the coordination layer must not pause
+L23,Metacognition,best,Lean,metacognition means proof
+L23,Metacognition,popular-1,Coq,"the older, larger proof corpus"
+L23,Metacognition,popular-2,Haskell,types as lightweight proof
+L24,Persistence,best,Python,"provenance tooling — Misty, OTS — is Python"
+L24,Persistence,popular-1,Go,content-addressed stores and registries
+L24,Persistence,popular-2,Rust,signing and hashing infrastructure
+L25,Sovereignty,best,PANINI,"sovereignty is expressed as contract, and the contract is .pni"
+L25,Sovereignty,popular-1,Prolog,rules and entailment
+L25,Sovereignty,popular-2,Datalog,policy as queryable rules
+L26,Civilizational,best,PANINI,the civilizational layer is the estate itself
+L26,Civilizational,popular-1,Prolog,domain ontology and inference
+L26,Civilizational,popular-2,SPARQL,knowledge graphs at civilizational scale

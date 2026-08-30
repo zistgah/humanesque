@@ -159,6 +159,105 @@
     "boundary": false,
     "produces": null,
     "prompt": null
+   },
+   {
+    "id": "REALIZATION_REVISION",
+    "title": "REALIZATION_REVISION",
+    "verb": "REVISE",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "stage_3",
+    "title": "stage_3",
+    "verb": "STAGE_3",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PRODUCTION",
+    "title": "PRODUCTION",
+    "verb": "PRODUCE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "production",
+    "prompt": null
+   },
+   {
+    "id": "TECHNICAL_REVIEW",
+    "title": "TECHNICAL_REVIEW",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "COMPOSITION_FIDELITY",
+    "title": "COMPOSITION_FIDELITY",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "stage_7",
+    "title": "stage_7",
+    "verb": "STAGE_7",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "HUMAN_VERIFICATION",
+    "title": "HUMAN_VERIFICATION",
+    "verb": "HUMAN_VERIFICATION",
+    "density": "PRO",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "METADATA",
+    "title": "METADATA",
+    "verb": "INTEGRATE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "artefact.metadata",
+    "prompt": null
+   },
+   {
+    "id": "PROVENANCE",
+    "title": "PROVENANCE",
+    "verb": "RECORD",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PACKAGE",
+    "title": "PACKAGE",
+    "verb": "PACKAGE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "RELEASE",
+    "title": "RELEASE",
+    "verb": "RELEASE",
+    "density": "PRO",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
    }
   ]
  },
@@ -266,6 +365,60 @@
     "boundary": false,
     "produces": null,
     "prompt": null
+   },
+   {
+    "id": "GENERATION",
+    "title": "GENERATION",
+    "verb": "GENERATION",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "CONTINUITY",
+    "title": "CONTINUITY",
+    "verb": "CONTINUITY",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "stage_4",
+    "title": "stage_4",
+    "verb": "STAGE_4",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "REVIEW",
+    "title": "REVIEW",
+    "verb": "REVIEW",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PACKAGE",
+    "title": "PACKAGE",
+    "verb": "PACKAGE",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "MINT",
+    "title": "MINT",
+    "verb": "MINT",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
    }
   ]
  },
@@ -298,6 +451,15 @@
     "density": "EASY",
     "boundary": false,
     "produces": "concept",
+    "prompt": null
+   },
+   {
+    "id": "ASSIST",
+    "title": "ASSIST",
+    "verb": "ASSIST",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
     "prompt": null
    }
   ]
@@ -713,6 +875,105 @@
     "boundary": false,
     "produces": null,
     "prompt": null
+   },
+   {
+    "id": "IMMERSIVE_ARCHITECTURE",
+    "title": "IMMERSIVE_ARCHITECTURE",
+    "verb": "SPECIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "REALIZE",
+    "title": "REALIZE",
+    "verb": "CREATE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "implementation",
+    "prompt": null
+   },
+   {
+    "id": "SIMULATE",
+    "title": "SIMULATE",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "simulation.results",
+    "prompt": null
+   },
+   {
+    "id": "EXPERIENCE",
+    "title": "EXPERIENCE",
+    "verb": "EXECUTE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "OBSERVE",
+    "title": "OBSERVE",
+    "verb": "OBSERVE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "observation",
+    "prompt": null
+   },
+   {
+    "id": "EVALUATE",
+    "title": "EVALUATE",
+    "verb": "VERIFY",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "evaluation",
+    "prompt": null
+   },
+   {
+    "id": "stage_8",
+    "title": "stage_8",
+    "verb": "STAGE_8",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "VERIFY",
+    "title": "VERIFY",
+    "verb": "VERIFY",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PACKAGE",
+    "title": "PACKAGE",
+    "verb": "PACKAGE",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PUBLISH",
+    "title": "PUBLISH",
+    "verb": "PUBLISH",
+    "density": "MID",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PRESERVE",
+    "title": "PRESERVE",
+    "verb": "PRESERVE",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
    }
   ]
  },
@@ -733,6 +994,114 @@
     "title": "stage_1",
     "verb": "STAGE_1",
     "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "INDEX",
+    "title": "INDEX",
+    "verb": "INDEX",
+    "density": "EASY",
+    "boundary": false,
+    "produces": "memory.index",
+    "prompt": null
+   },
+   {
+    "id": "stage_3",
+    "title": "stage_3",
+    "verb": "STAGE_3",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "TEMPORAL_ORDER",
+    "title": "TEMPORAL_ORDER",
+    "verb": "STRUCTURE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "memory.timeline",
+    "prompt": null
+   },
+   {
+    "id": "CORRELATE",
+    "title": "CORRELATE",
+    "verb": "INTEGRATE",
+    "density": "MID",
+    "boundary": false,
+    "produces": "memory.correlations",
+    "prompt": null
+   },
+   {
+    "id": "CONTEXTUALIZE",
+    "title": "CONTEXTUALIZE",
+    "verb": "ENRICH",
+    "density": "MID",
+    "boundary": false,
+    "produces": "memory.context",
+    "prompt": "Identify contextual information supported by the supplied fragments.\nSeparate observation from inference and interpretation.\nDo not manufacture missing context."
+   },
+   {
+    "id": "INTERPRET",
+    "title": "INTERPRET",
+    "verb": "INTERPRET",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "memory.fragments.INTERPRETATIONS",
+    "prompt": "Interpret the accumulated material while preserving the distinction\nbetween source material, observation, inference and interpretation."
+   },
+   {
+    "id": "CONSOLIDATE",
+    "title": "CONSOLIDATE",
+    "verb": "INTEGRATE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "memory",
+    "prompt": null
+   },
+   {
+    "id": "MEMORY_REVIEW",
+    "title": "MEMORY_REVIEW",
+    "verb": "VERIFY",
+    "density": "MID",
+    "boundary": false,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "HUMAN_REVIEW",
+    "title": "HUMAN_REVIEW",
+    "verb": "REVIEW",
+    "density": "PRO",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "TRANSEG_SEED",
+    "title": "TRANSEG_SEED",
+    "verb": "DERIVE",
+    "density": "PRO",
+    "boundary": false,
+    "produces": "transeg.seed",
+    "prompt": null
+   },
+   {
+    "id": "EXPORT",
+    "title": "EXPORT",
+    "verb": "EXPORT",
+    "density": "EASY",
+    "boundary": true,
+    "produces": null,
+    "prompt": null
+   },
+   {
+    "id": "PRESERVE",
+    "title": "PRESERVE",
+    "verb": "PRESERVE",
+    "density": "PRO",
     "boundary": false,
     "produces": null,
     "prompt": null

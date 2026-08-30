@@ -133,7 +133,7 @@ orictxt277                {printf("DUP");}
 \.संदर्भ                    {printf(".CREF");}
 \.तथ्य                    {printf(".DATA");}
 \.तथ्य\?                   {printf(".DATA\?");}
-तथ्य_बाइट                {printf("BYTE");}
+बाइट                {printf("BYTE");}
 तब                      {printf("DB");}
 तथ्य_द्विगुन            {printf("DWORD");}
 तद                       {printf("DD");}

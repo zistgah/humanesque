@@ -1,0 +1,51 @@
+{
+ "language": "bodo",
+ "script": null,
+ "source": "ilm/keywords.csv",
+ "generator": "tools/hindawi-gen",
+ "invented": false,
+ "keywords": 892,
+ "shailis": {
+  "guru": {
+   "rules": 323,
+   "localised": 312,
+   "projected": 0
+  },
+  "shraeni": {
+   "rules": 879,
+   "localised": 377,
+   "projected": 0
+  },
+  "praatha": {
+   "rules": 99,
+   "localised": 89,
+   "projected": 0
+  },
+  "kritrima": {
+   "rules": 186,
+   "localised": 181,
+   "projected": 0
+  },
+  "soochee": {
+   "rules": 38,
+   "localised": 0,
+   "projected": 0
+  },
+  "shabda": {
+   "rules": 6,
+   "localised": 4,
+   "projected": 0
+  },
+  "wyaaka": {
+   "rules": 20,
+   "localised": 6,
+   "projected": 0
+  },
+  "yantra": {
+   "rules": 354,
+   "localised": 341,
+   "projected": 0
+  }
+ },
+ "inherits_vocabulary_from": "hindi"
+}

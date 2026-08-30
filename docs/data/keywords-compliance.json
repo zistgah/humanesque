@@ -1,0 +1,70 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "source": "ilm/keywords.csv — generated from the retrieved transducers and language tables",
+ "rows": 1801,
+ "languages": 27,
+ "by_host": {
+  "c": 312,
+  "cpp": 860,
+  "basic": 89,
+  "java": 181,
+  "python": 0,
+  "lex": 4,
+  "yacc": 6,
+  "asm": 349
+ },
+ "romenagri": {
+  "note": "legality is asserted for identifiers only; header names and preprocessor directives are lex patterns and carry escapes by design",
+  "header_or_directive_forms": 46,
+  "with_spine": 805,
+  "ascii7": 805,
+  "c_identifier_legal": 805,
+  "illegal": 0,
+  "illegal_examples": [],
+  "collisions": 1,
+  "collision_examples": [
+   "cpp:iftiraadii x2"
+  ]
+ },
+ "standards": {
+  "c": {
+   "ref": "ISO/IEC 9899:2011",
+   "mapped": 48,
+   "of_keywords": 49
+  },
+  "cpp": {
+   "ref": "ISO/IEC 14882:2020",
+   "mapped": 14
+  }
+ },
+ "language_coverage": {
+  "arabic": 72,
+  "aramaic": 72,
+  "assamese": 72,
+  "bengali": 72,
+  "dari": 72,
+  "gujarati": 72,
+  "hebrew": 72,
+  "hindi": 72,
+  "kannada": 72,
+  "kashmiri": 72,
+  "malayalam": 72,
+  "marathi": 72,
+  "nepali": 72,
+  "odia": 72,
+  "pali": 72,
+  "pashto": 72,
+  "persian": 72,
+  "phoenician": 72,
+  "prakrit": 72,
+  "punjabi": 72,
+  "sanskrit": 72,
+  "shahmukhi": 72,
+  "sindhi": 72,
+  "syriac": 72,
+  "tamil": 72,
+  "telugu": 72,
+  "urdu": 72
+ }
+}
