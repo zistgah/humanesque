@@ -41,7 +41,7 @@
   {
    "target": "lex",
    "filled": 0,
-   "unresolved": 0,
+   "unresolved": 309,
    "status": "SKELETON"
   },
   {
@@ -59,7 +59,7 @@
   {
    "target": "yacc",
    "filled": 0,
-   "unresolved": 0,
+   "unresolved": 309,
    "status": "SKELETON"
   }
  ]

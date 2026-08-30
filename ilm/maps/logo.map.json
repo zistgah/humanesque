@@ -2,6 +2,9 @@
  "target": "logo",
  "shaili": "robot",
  "host": "LOGO",
+ "pipeline": [
+  "self"
+ ],
  "source": "retrieved/legacy/Hindawi/robot/ROBOT.C",
  "invented": false,
  "extracted_at_rules": 8,

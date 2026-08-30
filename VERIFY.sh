@@ -34,6 +34,9 @@ ck "ILM page is linked from the site index"     grep -q "ilm.html" docs/index.ht
 ck "ILM index matches the generated matrix"     bash -c 'node -e "const a=require(\"./docs/data/ilm-index.json\"),b=require(\"./ilm/MATRIX.json\");process.exit(a.languages.length===b.generated.length?0:1)"'
 ck "every frontend is exercised and reported"   bash -c '[ -f docs/data/frontend-status.json ] && node -e "const d=require(\"./docs/data/frontend-status.json\");process.exit(d.frontends.length>=30?0:1)"'
 ck "no frontend is called working without refusing bad input" bash -c '! node -e "const d=require(\"./docs/data/frontend-status.json\");process.exit(d.frontends.some(f=>f.status===\"WORKING\"&&!f.rejects)?0:1)"'
+ck "shabda composes with guru (h2l|h2c)"       bash -c 'node -e "const m=require(\"./ilm/maps/lex.map.json\");process.exit(m.composed_rules>300&&m.own_rules<20?0:1)"'
+ck "wyaaka composes with guru (h2yacc|h2c)"     bash -c 'node -e "const m=require(\"./ilm/maps/yacc.map.json\");process.exit(m.composed_rules>300?0:1)"'
+ck "pipeline reported, not reimplemented"       bash -c 'node tools/hindawi_pipeline.mjs retrieved/legacy/Hindawi/samples/HindiLEX.uhin | grep -q "h2lex | h2c"'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

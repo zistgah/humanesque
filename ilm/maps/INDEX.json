@@ -52,18 +52,18 @@
    "shaili": "shabda",
    "host": "lex",
    "status": "EXTRACTED",
-   "rules": 6,
+   "rules": 327,
    "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
-   "reason": null
+   "reason": "6 own + 321 via c"
   },
   {
    "id": "yacc",
    "shaili": "wyaaka",
    "host": "yacc",
    "status": "EXTRACTED",
-   "rules": 20,
+   "rules": 341,
    "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
-   "reason": null
+   "reason": "20 own + 321 via c"
   },
   {
    "id": "asm",

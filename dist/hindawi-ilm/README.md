@@ -2,22 +2,27 @@
 
 © 1993–2026 Abhishek Choudhary. AyeAI. GPL-3.0-or-later.
 
-Keyword tables for the Hindawi Indic Programming System across 27 human
-languages and 9 shailis (शैली — host-language styles).
+Keyword tables for the Hindawi Indic Programming System: 27 human languages ×
+9 shailis (शैली), **2,555 rules**, every one read out of the 2003–2023
+transducers. `invented: false` on every map.
 
-    maps/<shaili>.map.json      the computational standard: romenagri or
-                                Devanagari -> host keyword. Extracted from the
-                                2003-2023 transducers. invented: false.
-    langs/<language>/<shaili>.tsv   native <-> romenagri <-> host keyword
+## The transducers COMPOSE — this is the algorithm
 
-**A row with an empty native column is UNRESOLVED**: a speaker must author it.
-Nothing here invents a native keyword. A wrong Kashmiri keyword is worse than
-an absent one.
+    shabdacc:  cat $1 | acii2uni | iconv | h2l   | h2c | flex | gcc
+    wyaakacc:  cat $1 | acii2uni | iconv | h2yacc| h2c | bison
 
-Regenerate everything from the retrieved sources:
+`h2l` carries only the four things lex adds beyond C — श_शब्द→yylex,
+श_ब_मान→yylval, श_माला→yytext, श_पंक्ति→yylineno — and pipes into `h2c` for the
+rest, because **a lex action block is C**. So shabda is 6 own + 321 composed =
+**327**, not 6. Reading a composing shaili on its own reports a working system as
+a broken one.
 
-    node extract_maps.mjs        # nine shailis from the transducers
-    node build_ilm_matrix.mjs    # 27 languages x 9 shailis
+    node hindawi_pipeline.mjs <file.uhin>   # which pipeline, how many rules
+    node ../../tools/hincc.mjs <file.uhin>  # actually compile it
 
-Three axes, never conflated: SCRIPT (writing system) · LANGUAGE (the
-programmer's vocabulary) · STANDARD (the computational construct).
+Three axes, never conflated: **SCRIPT** (acii2uni, the transliteration tables) ·
+**LANGUAGE** (the shaili keyword vocabulary) · **STANDARD** (flex, cc, bison).
+The `<शैली …>` line selects the pipeline.
+
+A row with an empty native column is **UNRESOLVED**: a speaker must author it.
+Nothing here invents a native keyword.

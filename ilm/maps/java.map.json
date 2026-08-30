@@ -2,6 +2,9 @@
  "target": "java",
  "shaili": "kritrima",
  "host": "Java",
+ "pipeline": [
+  "self"
+ ],
  "source": "retrieved/legacy/Hindawi/kritrima/h2j.uhin",
  "invented": false,
  "extracted_at_rules": 186,

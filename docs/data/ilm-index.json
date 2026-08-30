@@ -14,7 +14,7 @@
   "standard": {
    "source": "ilm/maps",
    "shailis": 9,
-   "rules": 1913
+   "rules": 2555
   }
  },
  "cells": {
@@ -28,6 +28,10 @@
    "shaili": "shraeni",
    "host": "C++",
    "rules": 879,
+   "own": 879,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/shraeni/h2cpp.uhin",
    "invented": false
   },
@@ -36,7 +40,37 @@
    "shaili": "yantra",
    "host": "asm",
    "rules": 354,
+   "own": 354,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/yantra/h2y.uhin",
+   "invented": false
+  },
+  {
+   "target": "yacc",
+   "shaili": "wyaaka",
+   "host": "yacc",
+   "rules": 341,
+   "own": 20,
+   "pipeline": [
+    "self",
+    "c"
+   ],
+   "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
+   "invented": false
+  },
+  {
+   "target": "lex",
+   "shaili": "shabda",
+   "host": "lex",
+   "rules": 327,
+   "own": 6,
+   "pipeline": [
+    "self",
+    "c"
+   ],
+   "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
    "invented": false
   },
   {
@@ -44,6 +78,10 @@
    "shaili": "guru",
    "host": "C",
    "rules": 323,
+   "own": 323,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/guru/h2c.lex",
    "invented": false
   },
@@ -52,6 +90,10 @@
    "shaili": "kritrima",
    "host": "Java",
    "rules": 186,
+   "own": 186,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/kritrima/h2j.uhin",
    "invented": false
   },
@@ -60,6 +102,10 @@
    "shaili": "praatha",
    "host": "BASIC",
    "rules": 99,
+   "own": 99,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/praatha/h2b.uhin",
    "invented": false
   },
@@ -68,15 +114,11 @@
    "shaili": "soochee",
    "host": "Python",
    "rules": 38,
+   "own": 38,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/soochee/h2py.uhin",
-   "invented": false
-  },
-  {
-   "target": "yacc",
-   "shaili": "wyaaka",
-   "host": "yacc",
-   "rules": 20,
-   "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
    "invented": false
   },
   {
@@ -84,15 +126,11 @@
    "shaili": "robot",
    "host": "LOGO",
    "rules": 8,
+   "own": 8,
+   "pipeline": [
+    "self"
+   ],
    "source": "retrieved/legacy/Hindawi/robot/ROBOT.C",
-   "invented": false
-  },
-  {
-   "target": "lex",
-   "shaili": "shabda",
-   "host": "lex",
-   "rules": 6,
-   "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
    "invented": false
   }
  ],
@@ -1798,5 +1836,6 @@
     }
    ]
   }
- ]
+ ],
+ "composition": "shabdacc runs h2l|h2c and wyaakacc runs h2yacc|h2c: a lex or yacc action block IS C, so those shailis compose with the C transducer. Reading them alone reports a working shaili as a broken one."
 }

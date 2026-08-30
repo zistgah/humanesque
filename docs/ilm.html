@@ -41,7 +41,7 @@ the error that produces <code>#define je if</code> — a macro that evaporates a
 the preprocessor and reaches no diagnostic, no debugger and no symbol table.</div>
 
 <h2>The nine shailis</h2>
-<table><thead><tr><th>shaili</th><th>host</th><th class="n">rules</th><th>retrieved from</th></tr></thead>
+<table><thead><tr><th>shaili</th><th>host</th><th class="n">rules</th><th>composes with</th><th>retrieved from</th></tr></thead>
 <tbody id="sh"></tbody></table>
 
 <h2>27 languages × 9 shailis</h2>
@@ -71,8 +71,14 @@ fetch('data/ilm-index.json').then(r=>r.json()).then(d=>{
   ['Standard','computational construct',d.axes.standard.rules.toLocaleString()+' rules',d.axes.standard.source]
  ].map(a=>`<div class="axis"><b>${a[0]}</b><div class="sub">${a[1]}</div>
   <div class="big">${a[2]}</div><code>${a[3]}</code></div>`).join('');
- q('#sh').innerHTML=d.shailis.map(s=>`<tr><td class="native">${s.shaili}</td><td>${s.host}</td>
-  <td class="n">${s.rules}</td><td><code>${s.source.replace('retrieved/legacy/Hindawi/','')}</code></td></tr>`).join('');
+ q('#sh').innerHTML=d.shailis.map(s=>{const c=(s.pipeline||[]).slice(1);
+  return `<tr><td class="native">${s.shaili}</td><td>${s.host}</td>
+  <td class="n">${s.rules}${c.length?' <span class="sub">('+s.own+' own)</span>':''}</td>
+  <td class="n">${c.length?'h2'+c.join(' | h2'):'—'}</td>
+  <td><code>${s.source.replace('retrieved/legacy/Hindawi/','')}</code></td></tr>`;}).join('');
+if(d.composition){const n=document.createElement('div');n.className='note';
+ n.innerHTML='<b>The transducers compose.</b> '+d.composition;
+ q('#sh').closest('table').after(n);}
  const order=d.shailis.map(s=>s.target);
  q('#hh').outerHTML='<th>'+order.join('</th><th>')+'</th>';
  q('#cellsum').textContent=d.cells.filled+' of '+d.cells.total+

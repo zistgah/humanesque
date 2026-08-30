@@ -2,6 +2,9 @@
  "target": "asm",
  "shaili": "yantra",
  "host": "asm",
+ "pipeline": [
+  "self"
+ ],
  "source": "retrieved/legacy/Hindawi/yantra/h2y.uhin",
  "invented": false,
  "extracted_at_rules": 354,

@@ -2,6 +2,9 @@
  "target": "cpp",
  "shaili": "shraeni",
  "host": "C++",
+ "pipeline": [
+  "self"
+ ],
  "source": "retrieved/legacy/Hindawi/shraeni/h2cpp.uhin",
  "invented": false,
  "extracted_at_rules": 879,

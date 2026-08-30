@@ -2,6 +2,9 @@
  "target": "python",
  "shaili": "soochee",
  "host": "Python",
+ "pipeline": [
+  "self"
+ ],
  "source": "retrieved/legacy/Hindawi/soochee/h2py.uhin",
  "invented": false,
  "extracted_at_rules": 38,
