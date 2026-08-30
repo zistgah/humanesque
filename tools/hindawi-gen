@@ -97,7 +97,12 @@ for (const [sh, cfg] of Object.entries(SH)) {
     const m = l.match(/^(\S+)(\s+)\{printf\("([^"]*)"\);\}\s*$/);
     if (!m) return l;
     const w = words.get(m[3]);
-    return w && w !== m[1] ? w + m[2] + `{printf("${m[3]}");}` : l;
+    if (!w || w === m[1]) return l;
+    // The retrieved rule may carry lex escapes on its pattern (\#, \.) — the
+    // pattern is a regex, not a word. Carry the escapes onto the localised form
+    // or flex reads # as a directive and . as any-character.
+    const esc = w.replace(/([#.\\*+?()[\]{}|^$])/g, '\\$1');
+    return esc + m[2] + `{printf("${m[3]}");}`;
   }).join('\n');
   fs.writeFileSync(path.join(sd, cfg.t + '.uhin'), body);
   const chain = ['|', cfg.t, ...cfg.pipe.map((p) => '| ' + p)].join(' ').replace('| |', '|');

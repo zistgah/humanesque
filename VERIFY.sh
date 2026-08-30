@@ -72,6 +72,10 @@ ck "every stage ends in a human gate"            bash -c '[ $(grep -c "gate:\"" 
 ck "cycler sends nothing anywhere"               bash -c '! grep -qE "fetch\(|XMLHttpRequest|WebSocket" docs/ilm-cycler.html'
 ck "ILM template covers families and scripts"    bash -c '[ -f ilm/ilm-template.csv ] && [ $(tail -n +2 ilm/ilm-template.csv | wc -l) -ge 88 ]'
 ck "decorator rule is stated in C4"              grep -q "never move a language-specific requirement" docs/ilm-cycler.html
+ck "Urdu edition has the chintamani structure"   bash -c '[ -f urdu/install ] && [ -d urdu/Romenagri ] && [ -d urdu/APCISR ] && [ -d urdu/Hindawi/hindrv ] && [ -d urdu/Hindawi/guru ]'
+ck "Urdu carries all nine shailis, 323 C rules"  bash -c '[ $(grep -c printf urdu/Hindawi/guru/h2c.uhin) = 323 ] && [ $(ls -d urdu/Hindawi/*/ | wc -l) -ge 9 ]'
+ck "Urdu Colab notebook is valid JSON"           python3 -c "import json;n=json.load(open('urdu/Notebooks/hindawi_urdu.ipynb'));assert len(n['cells'])>=20"
+ck "Urdu README states the known defect"         grep -q "Known defect" urdu/README.md
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

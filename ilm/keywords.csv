@@ -1,5 +1,5 @@
 construct,standard,host,kind,iso_clause,std_ref,arabic,aramaic,assamese,bengali,dari,gujarati,hebrew,hindi,kannada,kashmiri,malayalam,marathi,nepali,odia,pali,pashto,persian,phoenician,prakrit,punjabi,sanskrit,shahmukhi,sindhi,syriac,tamil,telugu,urdu
-C_MAIN,main,c,identifier,5.1.2.2.1,ISO/IEC 9899:2011,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,
+C_MAIN,main,c,identifier,5.1.2.2.1,ISO/IEC 9899:2011,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,مرکزی
 C_BASSTUB_C,basstub.c,c,header,,ISO/IEC 9899:2011,,,,,,,,प्राथमिक\.स,,,,,,,,,,,,,,,,,,,
 C_ALLOC_H,alloc.h,c,header,,ISO/IEC 9899:2011,,,,,,,,भाग\.स,,,,,,,,,,,,,,,,,,,
 C_ASSERT_H,assert.h,c,header,,ISO/IEC 9899:2011,,,,,,,,निश्चित\.स,,,,,,,,,,,,,,,,,,,
@@ -20,7 +20,7 @@ C_SETJMP_H,setjmp.h,c,header,,ISO/IEC 9899:2011,,,,,,,,समलाँघ\.स,,
 C_SIGNAL_H,signal.h,c,header,,ISO/IEC 9899:2011,,,,,,,,संकेत\.स,,,,,,,,,,,,,,,,,,,
 C_STDARG_H,stdarg.h,c,header,,ISO/IEC 9899:2011,,,,,,,,मानकतर्क\.स,,,,,,,,,,,,,,,,,,,
 C_STDDEF_H,stddef.h,c,header,,ISO/IEC 9899:2011,,,,,,,,मानकघोष\.स,,,,,,,,,,,,,,,,,,,
-C_STDIO_H,stdio.h,c,header,,ISO/IEC 9899:2011,,,,,,,,मानकपन\.स,,,,,,,,,,,,,,,,,,,
+C_STDIO_H,stdio.h,c,header,,ISO/IEC 9899:2011,,,,,,,,मानकपन\.स,,,,,,,,,,,,,,,,,,,معیاری.س
 C_STDLIB_H,stdlib.h,c,header,,ISO/IEC 9899:2011,,,,,,,,मानककोष\.स,,,,,,,,,,,,,,,,,,,
 C_STRING_H,string.h,c,header,,ISO/IEC 9899:2011,,,,,,,,माला\.स,,,,,,,,,,,,,,,,,,,
 C_STAT_H,stat.h,c,header,,ISO/IEC 9899:2011,,,,,,,,स्थिति\.स,,,,,,,,,,,,,,,,,,,
@@ -28,7 +28,7 @@ C_TIME_H,time.h,c,header,,ISO/IEC 9899:2011,,,,,,,,समय\.स,,,,,,,,,,,,,,,
 C_TIMEB_H,timeb.h,c,header,,ISO/IEC 9899:2011,,,,,,,,ब_समय\.स,,,,,,,,,,,,,,,,,,,
 C__,{,c,identifier,,ISO/IEC 9899:2011,,,,,,,,अणु,,,,,,,,,,,,,,,,,,,
 C__,},c,identifier,,ISO/IEC 9899:2011,,,,,,,,पूर्ण,,,,,,,,,,,,,,,,,,,
-C__DEFINE,#define,c,directive,6.10.3,ISO/IEC 9899:2011,,,,,,,,\#घोषणा,,,,,,,,,,,,,,,,,,,
+C__DEFINE,#define,c,directive,6.10.3,ISO/IEC 9899:2011,,,,,,,,\#घोषणा,,,,,,,,,,,,,,,,,,,#تعریف
 C__ELIF,#elif,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#या_अगर,,,,,,,,,,,,,,,,,,,
 C__ELSE,#else,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#अन्यथा,,,,,,,,,,,,,,,,,,,
 C__ENDIF,#endif,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#पूर्ण_अगर,,,,,,,,,,,,,,,,,,,
@@ -36,7 +36,7 @@ C__ERROR,#error,c,directive,6.10.5,ISO/IEC 9899:2011,,,,,,,,\#त्रुटि
 C__IF,#if,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#अगर,,,,,,,,,,,,,,,,,,,
 C__IFDEF,#ifdef,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#अगर_घोषित,,,,,,,,,,,,,,,,,,,
 C__IFNDEF,#ifndef,c,directive,6.10.1,ISO/IEC 9899:2011,,,,,,,,\#अगर_अघोषित,,,,,,,,,,,,,,,,,,,
-C__INCLUDE,#include,c,directive,6.10.2,ISO/IEC 9899:2011,,,,,,,,\#समावेश,,,,,,,,,,,,,,,,,,,
+C__INCLUDE,#include,c,directive,6.10.2,ISO/IEC 9899:2011,,,,,,,,\#समावेश,,,,,,,,,,,,,,,,,,,#شامل
 C__LINE,#line,c,directive,6.10.4,ISO/IEC 9899:2011,,,,,,,,\#पंक्ति,,,,,,,,,,,,,,,,,,,
 C__PRAGMA,#pragma,c,directive,6.10.6,ISO/IEC 9899:2011,,,,,,,,\#आशय,,,,,,,,,,,,,,,,,,,
 C__UNDEF,#undef,c,directive,6.10.3,ISO/IEC 9899:2011,,,,,,,,\#अघोषित,,,,,,,,,,,,,,,,,,,
@@ -117,7 +117,7 @@ C_ATEXIT,atexit,c,identifier,,ISO/IEC 9899:2011,,,,,,,,निकास_पर,,,
 C_ATOF,atof,c,identifier,,ISO/IEC 9899:2011,,,,,,,,म_से_भ,,,,,,,,,,,,,,,,,,,
 C_ATOI,atoi,c,identifier,,ISO/IEC 9899:2011,,,,,,,,म_से_प,,,,,,,,,,,,,,,,,,,
 C_ATOL,atol,c,identifier,,ISO/IEC 9899:2011,,,,,,,,म_से_द,,,,,,,,,,,,,,,,,,,
-C_AUTO,auto,c,identifier,6.4.1,ISO/IEC 9899:2011,,,,,,,,स्वतः,,,,,,,,,,,,,,,,,,,
+C_AUTO,auto,c,identifier,6.4.1,ISO/IEC 9899:2011,,,,,,,,स्वतः,,,,,,,,,,,,,,,,,,,خودکار
 C_BREAK,break,c,identifier,6.8.6.3,ISO/IEC 9899:2011,اكسر,שבור,বিৰতি,বিরতি,اكسر,તોડો,שבור,विराम,ನಿಲ್ಲಿಸು,اكسر,നിർത്തുക,थांबा,रोक,ଭାଙ୍ଗ,भञ्ज,اكسر,بشکن,שבור,भंग,ਰੋਕੋ,भङ्ग,اكسر,اكسر,שבור,நிறுத்து,ఆపు,توڑو
 C_BSEARCH,bsearch,c,identifier,,ISO/IEC 9899:2011,,,,,,,,द्वा_खोज,,,,,,,,,,,,,,,,,,,
 C_CALLOC,calloc,c,identifier,,ISO/IEC 9899:2011,,,,,,,,सुस्मृति,,,,,,,,,,,,,,,,,,,
@@ -141,10 +141,10 @@ C_DIV_T,div_t,c,identifier,,ISO/IEC 9899:2011,,,,,,,,भाग_प्रका�
 C_DO,do,c,identifier,6.8.5.2,ISO/IEC 9899:2011,افعل,𐡏𐡁𐡃,কৰা,করো,افعل,કરો,עשה,करो,ಮಾಡು,افعل,ചെയ്യുക,करा,गर,କର,करोहि,افعل,انجامبده,𐤐𐤏𐤋,करेहि,ਕਰੋ,कुरु,افعل,افعل,ܥܒܕ,செய்,చేయి,کرو
 C_DOUBLE,double,c,identifier,6.7.2,ISO/IEC 9899:2011,مزدوج,כפול,দ্বিগুণ,দ্বিগুণ,مزدوج,દ્વિગુણ,כפול,द्विगुण,ದ್ವಿಗುಣ,مزدوج,ഇരട്ട,द्विगुण,द्विगुण,ଦ୍ୱିଗୁଣ,द्विगुण,مزدوج,دوگانه,כפול,दुगुण,ਦੁੱਗਣਾ,द्विगुण,مزدوج,مزدوج,כפול,இரட்டை,ద్విగుణ,دوہرا
 C_ELSE,else,c,identifier,6.8.4.1,ISO/IEC 9899:2011,وإلا,אחרת,অন্যথা,অন্যথা,وإلا,નહીંતર,אחרת,अन्यथा,ಇಲ್ಲದಿದ್ದರೆ,وإلا,അല്ലെങ്കിൽ,अन्यथा,अन्यथा,ଅନ୍ୟଥା,अञ्ञथा,وإلا,وگرنه,אחרת,अण्णहा,ਨਹੀਂਤਾਂ,अन्यथा,وإلا,وإلا,ܐܚܪܢܐ,இல்லையெனில்,లేకపోతే,ورنہ
-C_ENUM,enum,c,identifier,6.7.2.2,ISO/IEC 9899:2011,,,,,,,,क्रमागत,,,,,,,,,,,,,,,,,,,
+C_ENUM,enum,c,identifier,6.7.2.2,ISO/IEC 9899:2011,,,,,,,,क्रमागत,,,,,,,,,,,,,,,,,,,شمار
 C_ERRNO,errno,c,identifier,,ISO/IEC 9899:2011,,,,,,,,त्रुटि_सं,,,,,,,,,,,,,,,,,,,
 C_EXIT,exit,c,identifier,,ISO/IEC 9899:2011,,,,,,,,निकास,,,,,,,,,,,,,,,,,,,
-C_EXTERN,extern,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,बाह्य,,,,,,,,,,,,,,,,,,,
+C_EXTERN,extern,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,बाह्य,,,,,,,,,,,,,,,,,,,بیرونی
 C_FABS,fabs,c,identifier,,ISO/IEC 9899:2011,,,,,,,,भ_असल,,,,,,,,,,,,,,,,,,,
 C_FCLOSE,fclose,c,identifier,,ISO/IEC 9899:2011,,,,,,,,ख_बंद,,,,,,,,,,,,,,,,,,,
 C_FEOF,feof,c,identifier,,ISO/IEC 9899:2011,,,,,,,,ख_पूर्ण,,,,,,,,,,,,,,,,,,,
@@ -178,7 +178,7 @@ C_GETCHAR,getchar,c,identifier,,ISO/IEC 9899:2011,,,,,,,,अक्षर_लो,
 C_GETENV,getenv,c,identifier,,ISO/IEC 9899:2011,,,,,,,,दो_पर्या,,,,,,,,,,,,,,,,,,,
 C_GETS,gets,c,identifier,,ISO/IEC 9899:2011,,,,,,,,माला_लो,,,,,,,,,,,,,,,,,,,
 C_GMTIME,gmtime,c,identifier,,ISO/IEC 9899:2011,,,,,,,,स_जमट,,,,,,,,,,,,,,,,,,,
-C_GOTO,goto,c,identifier,6.8.6.1,ISO/IEC 9899:2011,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,
+C_GOTO,goto,c,identifier,6.8.6.1,ISO/IEC 9899:2011,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,جاؤ
 C_IF,if,c,identifier,6.8.4.1,ISO/IEC 9899:2011,إذا,𐡄𐡍,যদি,যদি,إذا,જો,אם,यदि,ಆದರೆ,إذا,എങ്കിൽ,जर,यदि,ଯଦି,सचे,إذا,اگر,𐤀𐤌,जइ,ਜੇ,यदि,إذا,إذا,ܐܢ,எனில்,ఒకవేళ,اگر
 C_INLINE,inline,c,identifier,6.7.4,ISO/IEC 9899:2011,,,,,,,,अंतरभूत,,,,,,,,,,,,,,,,,,,
 C_INT,int,c,identifier,6.7.2,ISO/IEC 9899:2011,صحيح,שלם,পূৰ্ণসংখ্যা,পূর্ণসংখ্যা,صحيح,પૂર્ણાંક,שלם,पूर्णांक,ಪೂರ್ಣಾಂಕ,صحيح,പൂർണ്ണസംഖ്യ,पूर्णांक,पूर्णाङ्क,ପୂର୍ଣ୍ଣସଂଖ୍ୟା,पूर्णङ्क,صحيح,صحیح,שלם,पुण्णंक,ਪੂਰਨਅੰਕ,पूर्णाङ्क,صحيح,صحيح,שלם,முழு,పూర్ణాంకం,صحیح
@@ -203,7 +203,7 @@ C_LDIV,ldiv,c,identifier,,ISO/IEC 9899:2011,,,,,,,,द_भाग,,,,,,,,,,,,,,,,
 C_LDIV_T,ldiv_t,c,identifier,,ISO/IEC 9899:2011,,,,,,,,द_भाग_प्रकार,,,,,,,,,,,,,,,,,,,
 C_LOCALECONV,localeconv,c,identifier,,ISO/IEC 9899:2011,,,,,,,,क्षेत्र_बदलो,,,,,,,,,,,,,,,,,,,
 C_LOCALTIME,localtime,c,identifier,,ISO/IEC 9899:2011,,,,,,,,स_स्थानीय,,,,,,,,,,,,,,,,,,,
-C_LONG,long,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,
+C_LONG,long,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,طویل
 C_LONGJMP,longjmp,c,identifier,,ISO/IEC 9899:2011,,,,,,,,दीर्घ_लाँघ,,,,,,,,,,,,,,,,,,,
 C_MALLOC,malloc,c,identifier,,ISO/IEC 9899:2011,,,,,,,,दो_स्मृति,,,,,,,,,,,,,,,,,,,
 C_MEMCHR,memchr,c,identifier,,ISO/IEC 9899:2011,,,,,,,,स_प्रथम,,,,,,,,,,,,,,,,,,,
@@ -234,7 +234,7 @@ C_RAND,rand,c,identifier,,ISO/IEC 9899:2011,,,,,,,,अक्रम,,,,,,,,,,,,,,
 C_READ,read,c,identifier,,ISO/IEC 9899:2011,,,,,,,,पढ़ो,,,,,,,,,,,,,,,,,,,
 C_READDIR,readdir,c,identifier,,ISO/IEC 9899:2011,,,,,,,,सूची_पढ़ो,,,,,,,,,,,,,,,,,,,
 C_REALLOC,realloc,c,identifier,,ISO/IEC 9899:2011,,,,,,,,पुनः_स्मृति,,,,,,,,,,,,,,,,,,,
-C_REGISTER,register,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,रेजिस्टर,,,,,,,,,,,,,,,,,,,
+C_REGISTER,register,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,रेजिस्टर,,,,,,,,,,,,,,,,,,,رجسٹر
 C_REMOVE,remove,c,identifier,,ISO/IEC 9899:2011,,,,,,,,हटाओ,,,,,,,,,,,,,,,,,,,
 C_RENAME,rename,c,identifier,,ISO/IEC 9899:2011,,,,,,,,नाम,,,,,,,,,,,,,,,,,,,
 C_RETURN,return,c,identifier,6.8.6.4,ISO/IEC 9899:2011,أرجع,החזר,ঘূৰাই,ফেরত,أرجع,પાછા,החזר,लौटाओ,ಹಿಂತಿರುಗಿಸು,أرجع,മടക്കുക,परत,फर्काऊ,ଫେରାଅ,पटिनिवत्त,أرجع,بازگرد,החזר,निअत्त,ਵਾਪਸ,प्रत्यागम,أرجع,أرجع,ܦܢܐ,திரும்பு,తిరిగి,واپس
@@ -246,14 +246,14 @@ C_SETBUF,setbuf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,रखो_बफ,,,,,,,,,
 C_SETJMP,setjmp,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बनाओ_लाँघ,,,,,,,,,,,,,,,,,,,
 C_SETLOCALE,setlocale,c,identifier,,ISO/IEC 9899:2011,,,,,,,,रखो_क्षेत्र,,,,,,,,,,,,,,,,,,,
 C_SETVBUF,setvbuf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,रखो_भबफ,,,,,,,,,,,,,,,,,,,
-C_SHORT,short,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,
+C_SHORT,short,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,مختصر
 C_SIG_ATOMIC_T,sig_atomic_t,c,identifier,,ISO/IEC 9899:2011,,,,,,,,संक_पूर्ण_प्रकार,,,,,,,,,,,,,,,,,,,
 C_SIGNAL,signal,c,identifier,,ISO/IEC 9899:2011,,,,,,,,संकेत,,,,,,,,,,,,,,,,,,,
-C_SIGNED,signed,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,चिन्हित,,,,,,,,,,,,,,,,,,,
+C_SIGNED,signed,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,चिन्हित,,,,,,,,,,,,,,,,,,,علامتی
 C_SIGPENDING,sigpending,c,identifier,,ISO/IEC 9899:2011,,,,,,,,संक_बाकी,,,,,,,,,,,,,,,,,,,
 C_SIGSUSPEND,sigsuspend,c,identifier,,ISO/IEC 9899:2011,,,,,,,,संक_रोको,,,,,,,,,,,,,,,,,,,
 C_SIZE_T,size_t,c,identifier,,ISO/IEC 9899:2011,,,,,,,,माप_प्रकार,,,,,,,,,,,,,,,,,,,
-C_SIZEOF,sizeof,c,identifier,6.5.3.4,ISO/IEC 9899:2011,,,,,,,,माप,,,,,,,,,,,,,,,,,,,
+C_SIZEOF,sizeof,c,identifier,6.5.3.4,ISO/IEC 9899:2011,,,,,,,,माप,,,,,,,,,,,,,,,,,,,حجم
 C_SPRINTF,sprintf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,प्र_लिखो,,,,,,,,,,,,,,,,,,,
 C_SQRT,sqrt,c,identifier,,ISO/IEC 9899:2011,,,,,,,,वर्ग_मूल,,,,,,,,,,,,,,,,,,,
 C_SRAND,srand,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बेक्रम,,,,,,,,,,,,,,,,,,,
@@ -292,17 +292,17 @@ C_TMPFILE,tmpfile,c,identifier,,ISO/IEC 9899:2011,,,,,,,,क्षणिक_ख,
 C_TMPNAM,tmpnam,c,identifier,,ISO/IEC 9899:2011,,,,,,,,क्षणिक,,,,,,,,,,,,,,,,,,,
 C_TOLOWER,tolower,c,identifier,,ISO/IEC 9899:2011,,,,,,,,छोटे,,,,,,,,,,,,,,,,,,,
 C_TOUPPER,toupper,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बड़े,,,,,,,,,,,,,,,,,,,
-C_TYPEDEF,typedef,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,प्रकार,,,,,,,,,,,,,,,,,,,
+C_TYPEDEF,typedef,c,identifier,6.7.1,ISO/IEC 9899:2011,,,,,,,,प्रकार,,,,,,,,,,,,,,,,,,,قسم
 C_UNGETC,ungetc,c,identifier,,ISO/IEC 9899:2011,,,,,,,,अक्षर_वापस,,,,,,,,,,,,,,,,,,,
-C_UNION,union,c,identifier,6.7.2.1,ISO/IEC 9899:2011,,,,,,,,जोड़,,,,,,,,,,,,,,,,,,,
-C_UNSIGNED,unsigned,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,अचिन्हित,,,,,,,,,,,,,,,,,,,
+C_UNION,union,c,identifier,6.7.2.1,ISO/IEC 9899:2011,,,,,,,,जोड़,,,,,,,,,,,,,,,,,,,اتحاد
+C_UNSIGNED,unsigned,c,identifier,6.7.2,ISO/IEC 9899:2011,,,,,,,,अचिन्हित,,,,,,,,,,,,,,,,,,,غیرعلامتی
 C_VA_ARG,va_arg,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बहु_तर्क,,,,,,,,,,,,,,,,,,,
 C_VA_END,va_end,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बहु_पूर्ण,,,,,,,,,,,,,,,,,,,
 C_VA_START,va_start,c,identifier,,ISO/IEC 9899:2011,,,,,,,,बहु_शुरू,,,,,,,,,,,,,,,,,,,
 C_VFPRINTF,vfprintf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,भख_लिखो,,,,,,,,,,,,,,,,,,,
 C_VIRTUAL,virtual,c,identifier,,ISO/IEC 9899:2011,افتراضي,מדומה,আভাসী,আভাসী,افتراضي,આભાસી,מדומה,आभासी,ವಾಸ್ತವಿಕ,افتراضي,മായാ,आभासी,आभासी,ଆଭାସୀ,आभास,افتراضي,مجازی,מדומה,आभास,ਆਭਾਸੀ,आभास,افتراضي,افتراضي,מדומה,மெய்நிகர்,మాయా,مجازی
 C_VOID,void,c,identifier,6.7.2,ISO/IEC 9899:2011,دالة,ריק,শূন্য,কাজ,دالة,વિધેય,ריק,कृत्य,ಕಾರ್ಯ,دالة,ധർമ്മം,कार्य,शून्य,କାର୍ଯ୍ୟ,सुञ्ञ,دالة,تابع,ריק,किरिया,ਕਾਰਜ,क्रिया,دالة,دالة,ריק,செயல்,ప్రమేయం,تابع
-C_VOLATILE,volatile,c,identifier,6.7.3,ISO/IEC 9899:2011,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,
+C_VOLATILE,volatile,c,identifier,6.7.3,ISO/IEC 9899:2011,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,متغیر
 C_VPRINTF,vprintf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,भ_लिखो,,,,,,,,,,,,,,,,,,,
 C_VSPRINTF,vsprintf,c,identifier,,ISO/IEC 9899:2011,,,,,,,,भम_लिखो,,,,,,,,,,,,,,,,,,,
 C_WAIT,wait,c,identifier,,ISO/IEC 9899:2011,,,,,,,,रुको,,,,,,,,,,,,,,,,,,,
@@ -311,7 +311,7 @@ C_WHILE,while,c,identifier,6.8.5.1,ISO/IEC 9899:2011,طالما,כלעוד,য�
 C_WRITE,write,c,identifier,,ISO/IEC 9899:2011,,,,,,,,ग_लिखो,,,,,,,,,,,,,,,,,,,
 C_GETTIME,gettime,c,identifier,,ISO/IEC 9899:2011,,,,,,,,समय_लो,,,,,,,,,,,,,,,,,,,
 C_SETTIME,settime,c,identifier,,ISO/IEC 9899:2011,,,,,,,,समय_रखो,,,,,,,,,,,,,,,,,,,
-CPP_MAIN,main,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,
+CPP_MAIN,main,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,مرکزی
 CPP_ALLOC_H,alloc.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,भाग\.स,,,,,,,,,,,,,,,,,,,
 CPP_ASSERT_H,assert.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,निश्चित\.स,,,,,,,,,,,,,,,,,,,
 CPP_BIOS_H,bios.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मूलप्रण\.स,,,,,,,,,,,,,,,,,,,
@@ -331,7 +331,7 @@ CPP_SETJMP_H,setjmp.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,समलाँघ\.
 CPP_SIGNAL_H,signal.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,संकेत\.स,,,,,,,,,,,,,,,,,,,
 CPP_STDARG_H,stdarg.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मानकतर्क\.स,,,,,,,,,,,,,,,,,,,
 CPP_STDDEF_H,stddef.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मानकघोष\.स,,,,,,,,,,,,,,,,,,,
-CPP_STDIO_H,stdio.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मानकपन\.स,,,,,,,,,,,,,,,,,,,
+CPP_STDIO_H,stdio.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मानकपन\.स,,,,,,,,,,,,,,,,,,,معیاری.س
 CPP_STDLIB_H,stdlib.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,मानककोष\.स,,,,,,,,,,,,,,,,,,,
 CPP_STRING_H,string.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,माला\.स,,,,,,,,,,,,,,,,,,,
 CPP_STAT_H,stat.h,cpp,header,,ISO/IEC 14882:2020,,,,,,,,स्थिति\.स,,,,,,,,,,,,,,,,,,,
@@ -346,7 +346,7 @@ CPP__,!,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP___,!=,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP__,#,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP___,##,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CPP__DEFINE,#define,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#घोषणा,,,,,,,,,,,,,,,,,,,
+CPP__DEFINE,#define,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#घोषणा,,,,,,,,,,,,,,,,,,,#تعریف
 CPP__ELIF,#elif,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#या_अगर,,,,,,,,,,,,,,,,,,,
 CPP__ELSE,#else,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#अन्यथा,,,,,,,,,,,,,,,,,,,
 CPP__ENDIF,#endif,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#पूर्ण_अगर,,,,,,,,,,,,,,,,,,,
@@ -354,7 +354,7 @@ CPP__ERROR,#error,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#त्रुटि,
 CPP__IF,#if,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#अगर,,,,,,,,,,,,,,,,,,,
 CPP__IFDEF,#ifdef,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#अगर_घोषित,,,,,,,,,,,,,,,,,,,
 CPP__IFNDEF,#ifndef,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#अगर_अघोषित,,,,,,,,,,,,,,,,,,,
-CPP__INCLUDE,#include,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#समावेश,,,,,,,,,,,,,,,,,,,
+CPP__INCLUDE,#include,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#समावेश,,,,,,,,,,,,,,,,,,,#شامل
 CPP__LINE,#line,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#पंक्ति,,,,,,,,,,,,,,,,,,,
 CPP__PRAGMA,#pragma,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#आशय,,,,,,,,,,,,,,,,,,,
 CPP__UNDEF,#undef,cpp,directive,,ISO/IEC 14882:2020,,,,,,,,\#अघोषित,,,,,,,,,,,,,,,,,,,
@@ -754,7 +754,7 @@ CPP_ATEXIT,atexit,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,निकास_प�
 CPP_ATOF,atof,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,म_से_भ,,,,,,,,,,,,,,,,,,,
 CPP_ATOI,atoi,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,म_से_प,,,,,,,,,,,,,,,,,,,
 CPP_ATOL,atol,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,म_से_द,,,,,,,,,,,,,,,,,,,
-CPP_AUTO,auto,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,स्वतः,,,,,,,,,,,,,,,,,,,
+CPP_AUTO,auto,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,स्वतः,,,,,,,,,,,,,,,,,,,خودکار
 CPP_BASENAME,basename,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_BREAK,break,cpp,identifier,,ISO/IEC 14882:2020,اكسر,שבור,বিৰতি,বিরতি,اكسر,તોડો,שבור,विराम,ನಿಲ್ಲಿಸು,اكسر,നിർത്തുക,थांबा,रोक,ଭାଙ୍ଗ,भञ्ज,اكسر,بشکن,שבור,भंग,ਰੋਕੋ,भङ्ग,اكسر,اكسر,שבור,நிறுத்து,ఆపు,توڑو
 CPP_BRK,brk,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -802,7 +802,7 @@ CPP_DOUBLE,double,cpp,identifier,,ISO/IEC 14882:2020,مزدوج,כפול,দ্�
 CPP_DUP,dup,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_DUP2,dup2,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_ELSE,else,cpp,identifier,,ISO/IEC 14882:2020,وإلا,אחרת,অন্যথা,অন্যথা,وإلا,નહીંતર,אחרת,अन्यथा,ಇಲ್ಲದಿದ್ದರೆ,وإلا,അല്ലെങ്കിൽ,अन्यथा,अन्यथा,ଅନ୍ୟଥା,अञ्ञथा,وإلا,وگرنه,אחרת,अण्णहा,ਨਹੀਂਤਾਂ,अन्यथा,وإلا,وإلا,ܐܚܪܢܐ,இல்லையெனில்,లేకపోతే,ورنہ
-CPP_ENUM,enum,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,क्रमागत,,,,,,,,,,,,,,,,,,,
+CPP_ENUM,enum,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,क्रमागत,,,,,,,,,,,,,,,,,,,شمار
 CPP_ERRNO,errno,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,त्रुटि_सं,,,,,,,,,,,,,,,,,,,
 CPP_EXECL,execl,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_EXECLE,execle,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -812,7 +812,7 @@ CPP_EXECVE,execve,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_EXECVP,execvp,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_EXIT,exit,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,निकास,,,,,,,,,,,,,,,,,,,
 CPP_EXP,exp,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CPP_EXTERN,extern,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,बाह्य,,,,,,,,,,,,,,,,,,,
+CPP_EXTERN,extern,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,बाह्य,,,,,,,,,,,,,,,,,,,بیرونی
 CPP_FABS,fabs,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,भ_असल,,,,,,,,,,,,,,,,,,,
 CPP_FCBT,fcbt,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_FCLOSE,fclose,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,ख_बंद,,,,,,,,,,,,,,,,,,,
@@ -887,7 +887,7 @@ CPP_GETS,gets,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,माला_लो,,,,,
 CPP_GETUID,getuid,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_GID_T,gid_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_GMTIME,gmtime,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,स_जमट,,,,,,,,,,,,,,,,,,,
-CPP_GOTO,goto,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,
+CPP_GOTO,goto,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,جاؤ
 CPP_IF,if,cpp,identifier,,ISO/IEC 14882:2020,إذا,𐡄𐡍,যদি,যদি,إذا,જો,אם,यदि,ಆದರೆ,إذا,എങ്കിൽ,जर,यदि,ଯଦି,सचे,إذا,اگر,𐤀𐤌,जइ,ਜੇ,यदि,إذا,إذا,ܐܢ,எனில்,ఒకవేళ,اگر
 CPP_INLINE,inline,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अंतरभूत,,,,,,,,,,,,,,,,,,,
 CPP_INO_T,ino_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -922,7 +922,7 @@ CPP_LOCALTIME,localtime,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,स_स्थ�
 CPP_LOG,log,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_LOG10,log10,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_LOG2,log2,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CPP_LONG,long,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,
+CPP_LONG,long,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,طویل
 CPP_LONGJMP,longjmp,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,दीर्घ_लाँघ,,,,,,,,,,,,,,,,,,,
 CPP_LSEEK,lseek,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_MALLOC,malloc,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,दो_स्मृति,,,,,,,,,,,,,,,,,,,
@@ -973,7 +973,7 @@ CPP_RAND48,rand48,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_READ,read,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,पढ़ो,,,,,,,,,,,,,,,,,,,
 CPP_READDIR,readdir,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,सूची_पढ़ो,,,,,,,,,,,,,,,,,,,
 CPP_REALLOC,realloc,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,पुनः_स्मृति,,,,,,,,,,,,,,,,,,,
-CPP_REGISTER,register,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,रेजिस्टर,,,,,,,,,,,,,,,,,,,
+CPP_REGISTER,register,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,रेजिस्टर,,,,,,,,,,,,,,,,,,,رجسٹر
 CPP_REMOVE,remove,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,हटाओ,,,,,,,,,,,,,,,,,,,
 CPP_RENAME,rename,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,नाम,,,,,,,,,,,,,,,,,,,
 CPP_RETURN,return,cpp,identifier,,ISO/IEC 14882:2020,أرجع,החזר,ঘূৰাই,ফেরত,أرجع,પાછા,החזר,लौटाओ,ಹಿಂತಿರುಗಿಸು,أرجع,മടക്കുക,परत,फर्काऊ,ଫେରାଅ,पटिनिवत्त,أرجع,بازگرد,החזר,निअत्त,ਵਾਪਸ,प्रत्यागम,أرجع,أرجع,ܦܢܐ,திரும்பு,తిరిగి,واپس
@@ -991,7 +991,7 @@ CPP_SETPGID,setpgid,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SETSID,setsid,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SETUID,setuid,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SETVBUF,setvbuf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,रखो_भबफ,,,,,,,,,,,,,,,,,,,
-CPP_SHORT,short,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,
+CPP_SHORT,short,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,مختصر
 CPP_SIG_ATOMIC_T,sig_atomic_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,संक_पूर्ण_प्रकार,,,,,,,,,,,,,,,,,,,
 CPP_SIGACTION,sigaction,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SIGADDSET,sigaddset,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -1001,7 +1001,7 @@ CPP_SIGISMEMBER,sigismember,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,
 CPP_SIGJMP_BUF,sigjmp_buf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SIGLONGJMP,siglongjmp,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SIGNAL,signal,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,संकेत,,,,,,,,,,,,,,,,,,,
-CPP_SIGNED,signed,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,चिन्हित,,,,,,,,,,,,,,,,,,,
+CPP_SIGNED,signed,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,चिन्हित,,,,,,,,,,,,,,,,,,,علامتی
 CPP_SIGPENDING,sigpending,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,संक_बाकी,,,,,,,,,,,,,,,,,,,
 CPP_SIGPROCMASK,sigprocmask,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SIGSET_T,sigset_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -1010,7 +1010,7 @@ CPP_SIGSUSPEND,sigsuspend,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,संक_�
 CPP_SIN,sin,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SINH,sinh,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SIZE_T,size_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,माप_प्रकार,,,,,,,,,,,,,,,,,,,
-CPP_SIZEOF,sizeof,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,माप,,,,,,,,,,,,,,,,,,,
+CPP_SIZEOF,sizeof,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,माप,,,,,,,,,,,,,,,,,,,حجم
 CPP_SLEEP,sleep,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SPEED_T,speed_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_SPRINTF,sprintf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,प्र_लिखो,,,,,,,,,,,,,,,,,,,
@@ -1082,16 +1082,16 @@ CPP_TOLOWER,tolower,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,छोटे,,,,,,
 CPP_TOUPPER,toupper,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,बड़े,,,,,,,,,,,,,,,,,,,
 CPP_TRY,try,cpp,identifier,14.2,ISO/IEC 14882:2020,,,,,,,,प्रयास,,,,,,,,,,,,,,,,,,,
 CPP_TTYNAME,ttyname,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CPP_TYPEDEF,typedef,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,प्रकार,,,,,,,,,,,,,,,,,,,
+CPP_TYPEDEF,typedef,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,प्रकार,,,,,,,,,,,,,,,,,,,قسم
 CPP_TZSET,tzset,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UID_T,uid_t,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UMASK,umask,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UNAME,uname,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UNEXPECTED,unexpected,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UNGETC,ungetc,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अक्षर_वापस,,,,,,,,,,,,,,,,,,,
-CPP_UNION,union,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,जोड़,,,,,,,,,,,,,,,,,,,
+CPP_UNION,union,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,जोड़,,,,,,,,,,,,,,,,,,,اتحاد
 CPP_UNLINK,unlink,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
-CPP_UNSIGNED,unsigned,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अचिन्हित,,,,,,,,,,,,,,,,,,,
+CPP_UNSIGNED,unsigned,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अचिन्हित,,,,,,,,,,,,,,,,,,,غیرعلامتی
 CPP_UTIME,utime,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_UTSNAME,utsname,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,,,,,,,,,,,,,,,,,,,,
 CPP_VA_ARG,va_arg,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,बहु_तर्क,,,,,,,,,,,,,,,,,,,
@@ -1100,7 +1100,7 @@ CPP_VA_START,va_start,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,बहु_शु
 CPP_VFPRINTF,vfprintf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,भख_लिखो,,,,,,,,,,,,,,,,,,,
 CPP_VIRTUAL,virtual,cpp,identifier,13.3,ISO/IEC 14882:2020,افتراضي,מדומה,আভাসী,আভাসী,افتراضي,આભાસી,מדומה,आभासी,ವಾಸ್ತವಿಕ,افتراضي,മായാ,आभासी,आभासी,ଆଭାସୀ,आभास,افتراضي,مجازی,מדומה,आभास,ਆਭਾਸੀ,आभास,افتراضي,افتراضي,מדומה,மெய்நிகர்,మాయా,مجازی
 CPP_VOID,void,cpp,identifier,,ISO/IEC 14882:2020,دالة,ריק,শূন্য,কাজ,دالة,વિધેય,ריק,कृत्य,ಕಾರ್ಯ,دالة,ധർമ്മം,कार्य,शून्य,କାର୍ଯ୍ୟ,सुञ्ञ,دالة,تابع,ריק,किरिया,ਕਾਰਜ,क्रिया,دالة,دالة,ריק,செயல்,ప్రమేయం,تابع
-CPP_VOLATILE,volatile,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,
+CPP_VOLATILE,volatile,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,متغیر
 CPP_VPRINTF,vprintf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,भ_लिखो,,,,,,,,,,,,,,,,,,,
 CPP_VSPRINTF,vsprintf,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,भम_लिखो,,,,,,,,,,,,,,,,,,,
 CPP_WAIT,wait,cpp,identifier,,ISO/IEC 14882:2020,,,,,,,,रुको,,,,,,,,,,,,,,,,,,,
@@ -1263,7 +1263,7 @@ BASIC_COMMAND,COMMAND,basic,identifier,,ECMA-116 / QB64,,,,,,,,पूर्व�
 JAVA__,{,java,identifier,,JLS SE 17,,,,,,,,अणु,,,,,,,,,,,,,,,,,,,
 JAVA__,},java,identifier,,JLS SE 17,,,,,,,,पूर्ण,,,,,,,,,,,,,,,,,,,
 JAVA___,//,java,identifier,,JLS SE 17,,,,,,,,टिप,,,,,,,,,,,,,,,,,,,
-JAVA_MAIN,main,java,identifier,,JLS SE 17,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,
+JAVA_MAIN,main,java,identifier,,JLS SE 17,,,,,,,,मुख्य,,,,,,,,,,,,,,,,,,,مرکزی
 JAVA_ABSTRACT,abstract,java,identifier,,JLS SE 17,,,,,,,,सार,,,,,,,,,,,,,,,,,,,
 JAVA_BOOLEAN,boolean,java,identifier,,JLS SE 17,,,,,,,,द्वाफल,,,,,,,,,,,,,,,,,,,
 JAVA_BREAK,break,java,identifier,,JLS SE 17,اكسر,שבור,বিৰতি,বিরতি,اكسر,તોડો,שבור,विराम,ನಿಲ್ಲಿಸು,اكسر,നിർത്തുക,थांबा,रोक,ଭାଙ୍ଗ,भञ्ज,اكسر,بشکن,שבור,भंग,ਰੋਕੋ,भङ्ग,اكسر,اكسر,שבור,நிறுத்து,ఆపు,توڑو
@@ -1283,14 +1283,14 @@ JAVA_FINAL,final,java,identifier,,JLS SE 17,,,,,,,,अन्तिम,,,,,,,,,,,
 JAVA_FINALLY,finally,java,identifier,,JLS SE 17,,,,,,,,अन्तिमतः,,,,,,,,,,,,,,,,,,,
 JAVA_FLOAT,float,java,identifier,,JLS SE 17,عائم,צף,দশমিক,দশমিক,عائم,દશાંશ,צף,दशमलव,ದಶಮಾಂಶ,عائم,ദശാംശം,दशांश,दशमलव,ଦଶମିକ,भिन्न,عائم,اعشاری,צף,भिण्ण,ਦਸ਼ਮਲਵ,भिन्न,عائم,عائم,צף,தசம,దశాంశం,اعشاری
 JAVA_FOR,for,java,identifier,,JLS SE 17,لكل,עבור,বাবে,জন্য,لكل,માટે,עבור,हेतु,ಗಾಗಿ,لكل,വേണ്ടി,साठी,लागि,ପାଇଁ,अत्थाय,لكل,برای,עבור,अत्थे,ਲਈ,प्रति,لكل,لكل,עבור,க்கு,కొరకు,برائے
-JAVA_GOTO,goto,java,identifier,,JLS SE 17,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,
+JAVA_GOTO,goto,java,identifier,,JLS SE 17,,,,,,,,जाओ,,,,,,,,,,,,,,,,,,,جاؤ
 JAVA_IF,if,java,identifier,,JLS SE 17,إذا,𐡄𐡍,যদি,যদি,إذا,જો,אם,यदि,ಆದರೆ,إذا,എങ്കിൽ,जर,यदि,ଯଦି,सचे,إذا,اگر,𐤀𐤌,जइ,ਜੇ,यदि,إذا,إذا,ܐܢ,எனில்,ఒకవేళ,اگر
 JAVA_IMPLEMENTS,implements,java,identifier,,JLS SE 17,,,,,,,,लागु,,,,,,,,,,,,,,,,,,,
 JAVA_IMPORT,import,java,identifier,,JLS SE 17,,,,,,,,आयात,,,,,,,,,,,,,,,,,,,
 JAVA_INSTANCEOF,instanceof,java,identifier,,JLS SE 17,,,,,,,,अवतार,,,,,,,,,,,,,,,,,,,
 JAVA_INT,int,java,identifier,,JLS SE 17,صحيح,שלם,পূৰ্ণসংখ্যা,পূর্ণসংখ্যা,صحيح,પૂર્ણાંક,שלם,पूर्णांक,ಪೂರ್ಣಾಂಕ,صحيح,പൂർണ്ണസംഖ്യ,पूर्णांक,पूर्णाङ्क,ପୂର୍ଣ୍ଣସଂଖ୍ୟା,पूर्णङ्क,صحيح,صحیح,שלם,पुण्णंक,ਪੂਰਨਅੰਕ,पूर्णाङ्क,صحيح,صحيح,שלם,முழு,పూర్ణాంకం,صحیح
 JAVA_INTERFACE,interface,java,identifier,,JLS SE 17,,,,,,,,स्वरूप,,,,,,,,,,,,,,,,,,,
-JAVA_LONG,long,java,identifier,,JLS SE 17,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,
+JAVA_LONG,long,java,identifier,,JLS SE 17,,,,,,,,दीर्घ,,,,,,,,,,,,,,,,,,,طویل
 JAVA_NATIVE,native,java,identifier,,JLS SE 17,,,,,,,,यांत्रिक,,,,,,,,,,,,,,,,,,,
 JAVA_NEW,new,java,identifier,,JLS SE 17,جديد,חדש,নতুন,নতুন,جديد,નવું,חדש,नवीन,ಹೊಸ,جديد,പുതിയ,नवीन,नयाँ,ନୂତନ,नव,جديد,جدید,חדש,णव,ਨਵਾਂ,नूतन,جديد,جديد,חדש,புதிய,కొత్త,نیا
 JAVA_PACKAGE,package,java,identifier,,JLS SE 17,,,,,,,,कोष,,,,,,,,,,,,,,,,,,,
@@ -1298,7 +1298,7 @@ JAVA_PRIVATE,private,java,identifier,,JLS SE 17,خاص,פרטי,ব্যক্�
 JAVA_PROTECTED,protected,java,identifier,,JLS SE 17,,,,,,,,रक्षित,,,,,,,,,,,,,,,,,,,
 JAVA_PUBLIC,public,java,identifier,,JLS SE 17,عام,ציבורי,ৰাজহুৱা,সর্বজনীন,عام,જાહેર,ציבורי,सार्वजनिक,ಸಾರ್ವಜನಿಕ,عام,പൊതു,सार्वजनिक,सार्वजनिक,ସର୍ବସାଧାରଣ,साधारण,عام,عمومی,ציבורי,साहत्त,ਜਨਤਕ,सार्वजनिक,عام,عام,ציבורי,பொது,బహిరంగ,عوامی
 JAVA_RETURN,return,java,identifier,,JLS SE 17,أرجع,החזר,ঘূৰাই,ফেরত,أرجع,પાછા,החזר,लौटाओ,ಹಿಂತಿರುಗಿಸು,أرجع,മടക്കുക,परत,फर्काऊ,ଫେରାଅ,पटिनिवत्त,أرجع,بازگرد,החזר,निअत्त,ਵਾਪਸ,प्रत्यागम,أرجع,أرجع,ܦܢܐ,திரும்பு,తిరిగి,واپس
-JAVA_SHORT,short,java,identifier,,JLS SE 17,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,
+JAVA_SHORT,short,java,identifier,,JLS SE 17,,,,,,,,लघु,,,,,,,,,,,,,,,,,,,مختصر
 JAVA_STATIC,static,java,identifier,,JLS SE 17,ساكن,סטטי,স্থিৰ,স্থির,ساكن,સ્થિર,סטטי,स्थिर,ಸ್ಥಿರ,ساكن,സ്ഥിതം,स्थिर,स्थिर,ସ୍ଥିର,ठित,ساكن,ایستا,סטטי,ठिअ,ਸਥਿਰ,स्थिर,ساكن,ساكن,סטטי,நிலையான,స్థిర,ساکن
 JAVA_STRICTFP,strictfp,java,identifier,,JLS SE 17,,,,,,,,दृढ़भग्न,,,,,,,,,,,,,,,,,,,
 JAVA_SUPER,super,java,identifier,,JLS SE 17,,,,,,,,मह,,,,,,,,,,,,,,,,,,,
@@ -1310,7 +1310,7 @@ JAVA_THROWS,throws,java,identifier,,JLS SE 17,,,,,,,,फेंकता_है,,
 JAVA_TRANSIENT,transient,java,identifier,,JLS SE 17,,,,,,,,अस्थायी,,,,,,,,,,,,,,,,,,,
 JAVA_TRY,try,java,identifier,,JLS SE 17,,,,,,,,प्रयास,,,,,,,,,,,,,,,,,,,
 JAVA_VOID,void,java,identifier,,JLS SE 17,دالة,ריק,শূন্য,কাজ,دالة,વિધેય,ריק,कृत्य,ಕಾರ್ಯ,دالة,ധർമ്മം,कार्य,शून्य,କାର୍ଯ୍ୟ,सुञ्ञ,دالة,تابع,ריק,किरिया,ਕਾਰਜ,क्रिया,دالة,دالة,ריק,செயல்,ప్రమేయం,تابع
-JAVA_VOLATILE,volatile,java,identifier,,JLS SE 17,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,
+JAVA_VOLATILE,volatile,java,identifier,,JLS SE 17,,,,,,,,अस्थिर,,,,,,,,,,,,,,,,,,,متغیر
 JAVA_WHILE,while,java,identifier,,JLS SE 17,طالما,כלעוד,যেতিয়ালৈ,যতক্ষণ,طالما,જ્યાંસુધી,כלעוד,जबतक,ತನಕ,طالما,വരെ,पर्यंत,जबसम्म,ଯେପର୍ଯ୍ୟନ୍ତ,याव,طالما,تازمانیکه,כלעוד,जाव,ਜਦਤੱਕ,यावत्,طالما,طالما,ܟܡܐ,வரை,వరకు,جبتک
 JAVA_APPLET,Applet,java,identifier,,JLS SE 17,,,,,,,,प्रयोग_श्रेणी,,,,,,,,,,,,,,,,,,,
 JAVA_APPLET,applet,java,identifier,,JLS SE 17,,,,,,,,प्रयोग,,,,,,,,,,,,,,,,,,,
