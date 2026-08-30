@@ -1,0 +1,714 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "invented": false,
+ "note": "one downloadable Hindawi distribution per Brahmi-derived script",
+ "shailis": 9,
+ "rules": 2555,
+ "scripts": [
+  {
+   "script": "ahom",
+   "rows": 44,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "balinese",
+   "rows": 28,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "batak",
+   "rows": 23,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "bengali",
+   "rows": 80,
+   "languages": [
+    "assamese",
+    "bengali"
+   ],
+   "cells": {
+    "total": 18,
+    "filled": 10
+   }
+  },
+  {
+   "script": "bhaiksuki",
+   "rows": 76,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "brahmi",
+   "rows": 77,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "buginese",
+   "rows": 24,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "buhid",
+   "rows": 20,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "chakma",
+   "rows": 29,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "cham",
+   "rows": 53,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "devanagari",
+   "rows": 129,
+   "languages": [
+    "bodo",
+    "hindi",
+    "konkani",
+    "marathi",
+    "nepali",
+    "sanskrit",
+    "prakrit",
+    "pali"
+   ],
+   "cells": {
+    "total": 54,
+    "filled": 20
+   }
+  },
+  {
+   "script": "dives_akuru",
+   "rows": 65,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "dogra",
+   "rows": 61,
+   "languages": [
+    "dogri"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "grantha",
+   "rows": 65,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "gujarati",
+   "rows": 83,
+   "languages": [
+    "gujarati"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "gunjala_gondi",
+   "rows": 59,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "gurmukhi",
+   "rows": 68,
+   "languages": [
+    "punjabi"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "gurung_khema",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "hanunoo",
+   "rows": 20,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "javanese",
+   "rows": 37,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "kaithi",
+   "rows": 63,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "kannada",
+   "rows": 80,
+   "languages": [
+    "kannada"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "kawi",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "kayah_li",
+   "rows": 36,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "kharoshthi",
+   "rows": 45,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "khmer",
+   "rows": 35,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "khojki",
+   "rows": 58,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "khudawadi",
+   "rows": 70,
+   "languages": [
+    "sindhi"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "kirat_rai",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "lao",
+   "rows": 20,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "lepcha",
+   "rows": 46,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "limbu",
+   "rows": 43,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "mahajani",
+   "rows": 38,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "malayalam",
+   "rows": 80,
+   "languages": [
+    "malayalam"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "marchen",
+   "rows": 33,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "masaram_gondi",
+   "rows": 68,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "meetei_mayek",
+   "rows": 29,
+   "languages": [
+    "manipuri"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "modi",
+   "rows": 78,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "mongolian",
+   "rows": 37,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "multani",
+   "rows": 38,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "myanmar",
+   "rows": 70,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "nag_mundari",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "nandinagari",
+   "rows": 64,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "new_tai_lue",
+   "rows": 18,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "newa",
+   "rows": 81,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "ol_chiki",
+   "rows": 12,
+   "languages": [
+    "santali"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "ol_onal",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "oriya",
+   "rows": 81,
+   "languages": [
+    "odia"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "pau_cin_hau",
+   "rows": 27,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "phags-pa",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "rejang",
+   "rows": 25,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "saurashtra",
+   "rows": 78,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "sharada",
+   "rows": 84,
+   "languages": [
+    "kashmiri"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "siddham",
+   "rows": 66,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "sinhala",
+   "rows": 2,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "soyombo",
+   "rows": 49,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "sundanese",
+   "rows": 40,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "sunuwar",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "syloti_nagri",
+   "rows": 10,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tagalog",
+   "rows": 20,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tagbanwa",
+   "rows": 18,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tai_le",
+   "rows": 24,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tai_tham",
+   "rows": 25,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tai_viet",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "takri",
+   "rows": 67,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tamil",
+   "rows": 57,
+   "languages": [
+    "tamil"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 5
+   }
+  },
+  {
+   "script": "tangsa",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "telugu",
+   "rows": 79,
+   "languages": [
+    "telugu"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 6
+   }
+  },
+  {
+   "script": "thai",
+   "rows": 11,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tibetan",
+   "rows": 57,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "tirhuta",
+   "rows": 81,
+   "languages": [
+    "maithili"
+   ],
+   "cells": {
+    "total": 9,
+    "filled": 0
+   }
+  },
+  {
+   "script": "toto",
+   "rows": 1,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "wancho",
+   "rows": 42,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  },
+  {
+   "script": "zanabazar_square",
+   "rows": 48,
+   "languages": [],
+   "cells": {
+    "total": 0,
+    "filled": 0
+   }
+  }
+ ]
+}

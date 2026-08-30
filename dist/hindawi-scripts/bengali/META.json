@@ -1,0 +1,89 @@
+{
+ "script": "bengali",
+ "brahmi_derived": true,
+ "invented": false,
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "script_table": {
+  "file": "bengali_to_deva.tsv",
+  "rows": 80,
+  "source": "retrieved/romenagri/tables"
+ },
+ "languages": [
+  "assamese",
+  "bengali"
+ ],
+ "cells": {
+  "total": 18,
+  "filled": 10
+ },
+ "shailis": [
+  {
+   "shaili": "shraeni",
+   "host": "C++",
+   "rules": 879,
+   "own": 879,
+   "composes_with": []
+  },
+  {
+   "shaili": "yantra",
+   "host": "asm",
+   "rules": 354,
+   "own": 354,
+   "composes_with": []
+  },
+  {
+   "shaili": "wyaaka",
+   "host": "yacc",
+   "rules": 341,
+   "own": 20,
+   "composes_with": [
+    "c"
+   ]
+  },
+  {
+   "shaili": "shabda",
+   "host": "lex",
+   "rules": 327,
+   "own": 6,
+   "composes_with": [
+    "c"
+   ]
+  },
+  {
+   "shaili": "guru",
+   "host": "C",
+   "rules": 323,
+   "own": 323,
+   "composes_with": []
+  },
+  {
+   "shaili": "kritrima",
+   "host": "Java",
+   "rules": 186,
+   "own": 186,
+   "composes_with": []
+  },
+  {
+   "shaili": "praatha",
+   "host": "BASIC",
+   "rules": 99,
+   "own": 99,
+   "composes_with": []
+  },
+  {
+   "shaili": "soochee",
+   "host": "Python",
+   "rules": 38,
+   "own": 38,
+   "composes_with": []
+  },
+  {
+   "shaili": "robot",
+   "host": "LOGO",
+   "rules": 8,
+   "own": 8,
+   "composes_with": []
+  }
+ ]
+}

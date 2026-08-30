@@ -1,0 +1,757 @@
+{
+ "target": "java",
+ "shaili": "kritrima",
+ "host": "Java",
+ "pipeline": [
+  "self"
+ ],
+ "source": "retrieved/legacy/Hindawi/kritrima/h2j.uhin",
+ "invented": false,
+ "extracted_at_rules": 186,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "अणु",
+   "to": "{"
+  },
+  {
+   "from": "पूर्ण",
+   "to": "}"
+  },
+  {
+   "from": "टिप",
+   "to": "//"
+  },
+  {
+   "from": "मुख्य",
+   "to": "main"
+  },
+  {
+   "from": "सार",
+   "to": "abstract"
+  },
+  {
+   "from": "द्वाफल",
+   "to": "boolean"
+  },
+  {
+   "from": "अवरोध",
+   "to": "break"
+  },
+  {
+   "from": "बाईट",
+   "to": "byte"
+  },
+  {
+   "from": "हाल",
+   "to": "case"
+  },
+  {
+   "from": "पकड़ो",
+   "to": "catch"
+  },
+  {
+   "from": "अक्षर",
+   "to": "char"
+  },
+  {
+   "from": "श्रेणी",
+   "to": "class"
+  },
+  {
+   "from": "स्थिर",
+   "to": "const"
+  },
+  {
+   "from": "जारी",
+   "to": "continue"
+  },
+  {
+   "from": "शेष",
+   "to": "default"
+  },
+  {
+   "from": "करो",
+   "to": "do"
+  },
+  {
+   "from": "द्विगुन",
+   "to": "double"
+  },
+  {
+   "from": "अन्यथा",
+   "to": "else"
+  },
+  {
+   "from": "पूर्वज",
+   "to": "extends"
+  },
+  {
+   "from": "अन्तिम",
+   "to": "final"
+  },
+  {
+   "from": "अन्तिमतः",
+   "to": "finally"
+  },
+  {
+   "from": "भग्न",
+   "to": "float"
+  },
+  {
+   "from": "क्रम",
+   "to": "for"
+  },
+  {
+   "from": "जाओ",
+   "to": "goto"
+  },
+  {
+   "from": "अगर",
+   "to": "if"
+  },
+  {
+   "from": "लागु",
+   "to": "implements"
+  },
+  {
+   "from": "आयात",
+   "to": "import"
+  },
+  {
+   "from": "अवतार",
+   "to": "instanceof"
+  },
+  {
+   "from": "पूर्णांक",
+   "to": "int"
+  },
+  {
+   "from": "स्वरूप",
+   "to": "interface"
+  },
+  {
+   "from": "दीर्घ",
+   "to": "long"
+  },
+  {
+   "from": "यांत्रिक",
+   "to": "native"
+  },
+  {
+   "from": "नया",
+   "to": "new"
+  },
+  {
+   "from": "कोष",
+   "to": "package"
+  },
+  {
+   "from": "निजी",
+   "to": "private"
+  },
+  {
+   "from": "रक्षित",
+   "to": "protected"
+  },
+  {
+   "from": "खुला",
+   "to": "public"
+  },
+  {
+   "from": "वापस",
+   "to": "return"
+  },
+  {
+   "from": "लघु",
+   "to": "short"
+  },
+  {
+   "from": "जड़",
+   "to": "static"
+  },
+  {
+   "from": "दृढ़भग्न",
+   "to": "strictfp"
+  },
+  {
+   "from": "मह",
+   "to": "super"
+  },
+  {
+   "from": "चयन",
+   "to": "switch"
+  },
+  {
+   "from": "समप्रवाह",
+   "to": "synchronised"
+  },
+  {
+   "from": "यह",
+   "to": "this"
+  },
+  {
+   "from": "फेंको",
+   "to": "throw"
+  },
+  {
+   "from": "फेंकता_है",
+   "to": "throws"
+  },
+  {
+   "from": "अस्थायी",
+   "to": "transient"
+  },
+  {
+   "from": "प्रयास",
+   "to": "try"
+  },
+  {
+   "from": "व्योम",
+   "to": "void"
+  },
+  {
+   "from": "अस्थिर",
+   "to": "volatile"
+  },
+  {
+   "from": "जबतक",
+   "to": "while"
+  },
+  {
+   "from": "प्रयोग_श्रेणी",
+   "to": "Applet"
+  },
+  {
+   "from": "प्रयोग",
+   "to": "applet"
+  },
+  {
+   "from": "तर्क",
+   "to": "args"
+  },
+  {
+   "from": "गणित_त्रुटि",
+   "to": "ArithmeticException"
+  },
+  {
+   "from": "व्यूह_सूचकांक_खेद_त्रुटि",
+   "to": "ArrayIndexOutOfBoundsException"
+  },
+  {
+   "from": "व्यूह_स्थिति_त्रुटि",
+   "to": "ArrayStateException"
+  },
+  {
+   "from": "ध्वनि_अंश",
+   "to": "AudioClip"
+  },
+  {
+   "from": "औसंख",
+   "to": "awt"
+  },
+  {
+   "from": "बफर_पाठक",
+   "to": "BufferedReader"
+  },
+  {
+   "from": "अक्षर_स्थान",
+   "to": "charAt"
+  },
+  {
+   "from": "श्रेणी_साँचा_त्रुटि",
+   "to": "ClassCastException"
+  },
+  {
+   "from": "श्रेणी_उपलब्ध_नहीं_त्रुटि",
+   "to": "ClassNotFoundException"
+  },
+  {
+   "from": "श्रेणी_निराधार_त्रुटि",
+   "to": "ClassNotSupportedException"
+  },
+  {
+   "from": "नकल",
+   "to": "clone"
+  },
+  {
+   "from": "बंद",
+   "to": "close"
+  },
+  {
+   "from": "भेद",
+   "to": "compareTo"
+  },
+  {
+   "from": "संयोग",
+   "to": "concat"
+  },
+  {
+   "from": "यह_कड़ी",
+   "to": "currentThread"
+  },
+  {
+   "from": "दिन",
+   "to": "Date"
+  },
+  {
+   "from": "मिटाओ",
+   "to": "destroy"
+  },
+  {
+   "from": "माला_लिखो",
+   "to": "drawString"
+  },
+  {
+   "from": "अंत_में",
+   "to": "endsWith"
+  },
+  {
+   "from": "बराबर",
+   "to": "equals"
+  },
+  {
+   "from": "बराबर_न",
+   "to": "equalsIgnoreCase"
+  },
+  {
+   "from": "खाता_प्रवेश_प्रवाह",
+   "to": "FileInputStream"
+  },
+  {
+   "from": "खाता_निकास_प्रवाह",
+   "to": "FileOutputStream"
+  },
+  {
+   "from": "भरो_ढेर",
+   "to": "fillInStackTrace"
+  },
+  {
+   "from": "अंतिम",
+   "to": "finalize"
+  },
+  {
+   "from": "लो_ध्वनि_अंश",
+   "to": "getAudioClip"
+  },
+  {
+   "from": "लो_बाइट",
+   "to": "getBytes"
+  },
+  {
+   "from": "लो_अक्षर",
+   "to": "getChars"
+  },
+  {
+   "from": "लो_श्रेणी",
+   "to": "getClass"
+  },
+  {
+   "from": "लो_अंश_माप",
+   "to": "getContentLength"
+  },
+  {
+   "from": "लो_अंश_प्रकार",
+   "to": "getContentType"
+  },
+  {
+   "from": "लो_दिन",
+   "to": "getDate"
+  },
+  {
+   "from": "लो_अन्त",
+   "to": "getExpiration"
+  },
+  {
+   "from": "लो_क्षेत्र_सूचकांक",
+   "to": "GetFieldID"
+  },
+  {
+   "from": "लो_छवि",
+   "to": "getImage"
+  },
+  {
+   "from": "लो_प्रवेश_प्रवाह",
+   "to": "getInputStream"
+  },
+  {
+   "from": "लो_पूर्ण_क्षेत्र",
+   "to": "GetIntField"
+  },
+  {
+   "from": "लो_पूर्व_बदली",
+   "to": "getLastModified"
+  },
+  {
+   "from": "लो_स्थानीय_संदेश",
+   "to": "getLocalizedMessage"
+  },
+  {
+   "from": "लो_संकेत",
+   "to": "getMessage"
+  },
+  {
+   "from": "लो_नाम",
+   "to": "getName"
+  },
+  {
+   "from": "लो_वस्तु_श्रेणी",
+   "to": "GetObjectClass"
+  },
+  {
+   "from": "लो_तर्क",
+   "to": "getParameter"
+  },
+  {
+   "from": "लो_प्राथमिक",
+   "to": "getPriority"
+  },
+  {
+   "from": "चित्रांकन",
+   "to": "Graphics"
+  },
+  {
+   "from": "हैश_कूट",
+   "to": "hashCode"
+  },
+  {
+   "from": "अवैध_प्रवेश_त्रुटि",
+   "to": "IllegalAccessException"
+  },
+  {
+   "from": "अवैध_तर्क_त्रुटि",
+   "to": "IllegalArgumentException"
+  },
+  {
+   "from": "अवैध_योजक_त्रुटि",
+   "to": "IllegalMonitorStateException"
+  },
+  {
+   "from": "अवैध_स्थिति_त्रुटि",
+   "to": "IllegalStateException"
+  },
+  {
+   "from": "अवैध_कड़ी_स्थिति_त्रुटि",
+   "to": "IllegalThreadStateException"
+  },
+  {
+   "from": "छवि",
+   "to": "Image"
+  },
+  {
+   "from": "सूचकांक",
+   "to": "indexOf"
+  },
+  {
+   "from": "सूचकांक_भेद_त्रुटि",
+   "to": "IndexOutOfBoundsException"
+  },
+  {
+   "from": "उपसर्ग",
+   "to": "init"
+  },
+  {
+   "from": "प्रवेश_प्रवाह",
+   "to": "InputStream"
+  },
+  {
+   "from": "प्रवेश_प्रवाह_पाठक",
+   "to": "InputStreamReader"
+  },
+  {
+   "from": "अवतारण_त्रुटि",
+   "to": "InstantiationException"
+  },
+  {
+   "from": "विघ्न_त्रुटि",
+   "to": "InterruptedException"
+  },
+  {
+   "from": "पन",
+   "to": "io"
+  },
+  {
+   "from": "जीवित_है",
+   "to": "isAlive"
+  },
+  {
+   "from": "कृत्रिम",
+   "to": "java"
+  },
+  {
+   "from": "मेल",
+   "to": "join"
+  },
+  {
+   "from": "पूर्व_सूचकांक",
+   "to": "lastIndexOf"
+  },
+  {
+   "from": "माप",
+   "to": "length"
+  },
+  {
+   "from": "लो_कोष",
+   "to": "loadLibrary"
+  },
+  {
+   "from": "दोहराओ",
+   "to": "loop"
+  },
+  {
+   "from": "गणित",
+   "to": "Math"
+  },
+  {
+   "from": "उच्च_प्राथमिकता",
+   "to": "MAX_PRIORITY"
+  },
+  {
+   "from": "न्यून_प्राथमिकता",
+   "to": "MIN_PRIORITY"
+  },
+  {
+   "from": "ऋण_व्यूह_माप_त्रुटि",
+   "to": "NegativeArraySizeException"
+  },
+  {
+   "from": "नेट",
+   "to": "net"
+  },
+  {
+   "from": "अगला_द्वि",
+   "to": "nextdouble"
+  },
+  {
+   "from": "सामान्य_प्राथमिकता",
+   "to": "NORM_PRIORITY"
+  },
+  {
+   "from": "कोई_ऐसा_क्षेत्र_नहीं_त्रुटि",
+   "to": "NoSuchFieldException"
+  },
+  {
+   "from": "कोई_ऐसी_क्रिया_नहीं_त्रुटि",
+   "to": "NoSuchMethodException"
+  },
+  {
+   "from": "संकेत",
+   "to": "notify"
+  },
+  {
+   "from": "संकेत_सब",
+   "to": "notifyAll"
+  },
+  {
+   "from": "शून्य_सूचक_त्रुटि",
+   "to": "NullPointerException"
+  },
+  {
+   "from": "अंक_रचना-त्रुटि",
+   "to": "NumberFormatException"
+  },
+  {
+   "from": "वस्तु",
+   "to": "Object"
+  },
+  {
+   "from": "खोलो_सम्बन्ध",
+   "to": "openConnection"
+  },
+  {
+   "from": "बाहर",
+   "to": "out"
+  },
+  {
+   "from": "निकास_प्रवाह",
+   "to": "OutputStream"
+  },
+  {
+   "from": "बनाओ",
+   "to": "paint"
+  },
+  {
+   "from": "बजाओ",
+   "to": "play"
+  },
+  {
+   "from": "म_लिखो_न",
+   "to": "println"
+  },
+  {
+   "from": "दिखाओ_ढेर",
+   "to": "printStackTrace"
+  },
+  {
+   "from": "छापाकार",
+   "to": "PrintWriter"
+  },
+  {
+   "from": "अक्रम",
+   "to": "rand"
+  },
+  {
+   "from": "म_पढ़ो",
+   "to": "read"
+  },
+  {
+   "from": "पाठक",
+   "to": "Reader"
+  },
+  {
+   "from": "पंक्ति_पढ़ो",
+   "to": "readLine"
+  },
+  {
+   "from": "क्षेत्र_मेल",
+   "to": "regionMatches"
+  },
+  {
+   "from": "प्रतिस्थापन",
+   "to": "replace"
+  },
+  {
+   "from": "पुनः_आरम्भ",
+   "to": "resume"
+  },
+  {
+   "from": "आरम्भ",
+   "to": "run"
+  },
+  {
+   "from": "आरम्भ_लायक",
+   "to": "Runnable"
+  },
+  {
+   "from": "सुरक्षा_त्रुटि",
+   "to": "SecurityException"
+  },
+  {
+   "from": "रखो_पूर्ण_क्षेत्र",
+   "to": "SetIntField"
+  },
+  {
+   "from": "रखो_नाम",
+   "to": "setName"
+  },
+  {
+   "from": "रखो_प्राथमिकता",
+   "to": "setPriority"
+  },
+  {
+   "from": "सो_जाओ",
+   "to": "sleep"
+  },
+  {
+   "from": "वर्ग_मूल",
+   "to": "sqrt"
+  },
+  {
+   "from": "शुरू",
+   "to": "start"
+  },
+  {
+   "from": "शुरू_में",
+   "to": "startsWith"
+  },
+  {
+   "from": "विराम",
+   "to": "stop"
+  },
+  {
+   "from": "माला_श्रेणी",
+   "to": "String"
+  },
+  {
+   "from": "माला_बफर",
+   "to": "StringBuffer"
+  },
+  {
+   "from": "माला_सूचकांक_सीमा_खेद",
+   "to": "StringIndexOutOfBounds"
+  },
+  {
+   "from": "उपमाला",
+   "to": "substring"
+  },
+  {
+   "from": "स्थगित",
+   "to": "suspend"
+  },
+  {
+   "from": "प्रणाली",
+   "to": "System"
+  },
+  {
+   "from": "कड़ी",
+   "to": "Thread"
+  },
+  {
+   "from": "फेंकने_लायक",
+   "to": "Throwable"
+  },
+  {
+   "from": "करो_अक्षर_व्यूह",
+   "to": "toCharArray"
+  },
+  {
+   "from": "करो_छोटे",
+   "to": "toLowerCase"
+  },
+  {
+   "from": "करो_माला",
+   "to": "toString"
+  },
+  {
+   "from": "करो_बड़े",
+   "to": "toUpperCase"
+  },
+  {
+   "from": "छाँटो",
+   "to": "trim"
+  },
+  {
+   "from": "क्रिया_उपलब्ध_नहीं_त्रुटि",
+   "to": "UnsupportedOperationException"
+  },
+  {
+   "from": "नया_हाल",
+   "to": "update"
+  },
+  {
+   "from": "वसंज्ञ",
+   "to": "URL"
+  },
+  {
+   "from": "वसंज्ञ_सम्बन्ध",
+   "to": "URLConnection"
+  },
+  {
+   "from": "उपयोग",
+   "to": "util"
+  },
+  {
+   "from": "मान",
+   "to": "valueof"
+  },
+  {
+   "from": "रुको",
+   "to": "wait"
+  },
+  {
+   "from": "म_लिखो",
+   "to": "write"
+  },
+  {
+   "from": "लेखक",
+   "to": "Writer"
+  }
+ ]
+}

@@ -34,6 +34,12 @@ the 2003–2023 transducers. Nothing invented.</p>
 <a class="dl" href="../dist/hindawi-ilm.tar.gz">Download the distribution</a>
 <a class="dl" href="data/ilm-index.json">ilm-index.json</a>
 
+<h2>Download — one distribution per Brahmi-derived script</h2>
+<p class="sub" id="scriptsum"></p>
+<div id="scripts" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(11rem,1fr));gap:.4rem;margin:1rem 0"></div>
+<a class="dl" href="../dist/hindawi-scripts-all.tar.gz">All 74 scripts</a>
+<a class="dl" href="../dist/hindawi-ilm.tar.gz">Matrix only</a>
+
 <h2>Three axes, never conflated</h2>
 <div class="axes" id="axes"></div>
 <div class="note">A cell is (script × language × standard). Collapsing any two is
@@ -95,4 +101,19 @@ if(d.composition){const n=document.createElement('div');n.className='note';
 }).catch(e=>{document.querySelector('#axes').innerHTML=
  '<div class="axis"><b>index unavailable</b><div class="sub">data/ilm-index.json could not be read: '+e+
  '. Nothing is shown rather than a fabricated table.</div></div>';});
+
+fetch('data/hindawi-scripts.json').then(r=>r.json()).then(d=>{
+ const w=d.scripts.filter(s=>s.languages.length), n=d.scripts.length-w.length;
+ document.getElementById('scriptsum').innerHTML=
+  d.scripts.length+' scripts. <b>'+w.length+'</b> carry languages with keyword tables; '+
+  n+' ship the script table and the '+d.shailis+' shailis, awaiting a language assignment. '+
+  'Each bundle is self-contained: script table, keyword tables, all '+d.rules.toLocaleString()+' shaili rules, and the pipeline tool.';
+ document.getElementById('scripts').innerHTML=d.scripts.map(s=>{
+  const has=s.languages.length;
+  return `<a href="../dist/hindawi-scripts/${s.script}.tar.gz" style="display:block;padding:.4rem .6rem;
+   border:1px solid var(--line);background:${has?'#fff':'transparent'};text-decoration:none;color:var(--ink)">
+   <b>${s.script.replace(/_/g,' ')}</b><br><span class="sub" style="font-size:.75rem">
+   ${s.rows} rows${has?' · '+s.languages.join(', '):''}</span></a>`;}).join('');
+}).catch(e=>{document.getElementById('scriptsum').textContent=
+ 'hindawi-scripts.json could not be read ('+e+'). Nothing is listed rather than a fabricated one.';});
 </script></body></html>

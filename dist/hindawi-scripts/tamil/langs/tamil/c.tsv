@@ -1,0 +1,30 @@
+# tamil → c  |  script: Tamil  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+எனில்	enila	if
+இல்லையெனில்	illaiyenila	else
+வரை	varai	while
+செய்	sey	do
+க்கு	kku	for
+நிறுத்து	niruttu	break
+தொடர்	todara	continue
+தேர்வு	teervu	switch
+நிலை	nilai	case
+இயல்பு	iyalpu	default
+திரும்பு	tirumpu	return
+மாறிலி	maarili	const
+முழு	muzu	int
+தசம	tasama	float
+இரட்டை	irattai	double
+எழுத்து	ezuttu	char
+வெறுமை	verumai	void
+செயல்	seyala	void
+வகுப்பு	vakuppu	class
+புதிய	putiya	new
+பொது	potu	public
+தனிப்பட்ட	tanippatta	private
+நிலையான	nilaiyaana	static
+மெய்நிகர்	meynikara	virtual
+போது	pootu	case
+கட்டமைப்பு	kattamaippu	struct

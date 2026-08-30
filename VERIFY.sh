@@ -37,6 +37,9 @@ ck "no frontend is called working without refusing bad input" bash -c '! node -e
 ck "shabda composes with guru (h2l|h2c)"       bash -c 'node -e "const m=require(\"./ilm/maps/lex.map.json\");process.exit(m.composed_rules>300&&m.own_rules<20?0:1)"'
 ck "wyaaka composes with guru (h2yacc|h2c)"     bash -c 'node -e "const m=require(\"./ilm/maps/yacc.map.json\");process.exit(m.composed_rules>300?0:1)"'
 ck "pipeline reported, not reimplemented"       bash -c 'node tools/hindawi_pipeline.mjs retrieved/legacy/Hindawi/samples/HindiLEX.uhin | grep -q "h2lex | h2c"'
+ck "74 per-script Hindawi distributions built"  bash -c '[ $(ls dist/hindawi-scripts/*.tar.gz 2>/dev/null | wc -l) -ge 74 ]'
+ck "each bundle is self-contained"              bash -c 'cd /tmp && rm -rf _t && mkdir _t && tar xzf '"$PWD"'/dist/hindawi-scripts/tamil.tar.gz -C _t && [ -f _t/tamil/tamil_to_deva.tsv ] && [ -f _t/tamil/maps/lex.map.json ] && [ -f _t/tamil/langs/tamil/c.tsv ] && [ -f _t/tamil/hindawi_pipeline.mjs ]'
+ck "script downloads are listed on the site"    bash -c '[ -f docs/data/hindawi-scripts.json ] && grep -q "hindawi-scripts" docs/ilm.html'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

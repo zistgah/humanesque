@@ -1,0 +1,1701 @@
+{
+ "target": "yacc",
+ "shaili": "wyaaka",
+ "host": "yacc",
+ "pipeline": [
+  "self",
+  "c"
+ ],
+ "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
+ "invented": false,
+ "extracted_at_rules": 20,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "श_शब्द",
+   "to": "yylex"
+  },
+  {
+   "from": "श_ब_मान",
+   "to": "yylval"
+  },
+  {
+   "from": "श_माला",
+   "to": "yytext"
+  },
+  {
+   "from": "श_पंक्ति",
+   "to": "yylineno"
+  },
+  {
+   "from": "व्याक",
+   "to": "yyparse"
+  },
+  {
+   "from": "व्याक_त्रुटि",
+   "to": "yyerror"
+  },
+  {
+   "from": "\\%मोहर",
+   "to": "%ctoken"
+  },
+  {
+   "from": "\\%बाँए",
+   "to": "%cleft"
+  },
+  {
+   "from": "\\%दाँए",
+   "to": "%cright"
+  },
+  {
+   "from": "\\%बेमेल",
+   "to": "%cnonassoc"
+  },
+  {
+   "from": "\\%प्राथमिकता",
+   "to": "%cprec"
+  },
+  {
+   "from": "\\%जोड़",
+   "to": "%cunion"
+  },
+  {
+   "from": "\\%पूरक",
+   "to": "%cterm"
+  },
+  {
+   "from": "\\%प्रकार",
+   "to": "%ctype"
+  },
+  {
+   "from": "\\%समप्रवाह",
+   "to": "%csynch"
+  },
+  {
+   "from": "\\%शुरू",
+   "to": "%cxstart"
+  },
+  {
+   "from": "व्याक_ढेर_प्रकार",
+   "to": "YYSTYPE"
+  },
+  {
+   "from": "व्याक_ढेर_typedef",
+   "to": "YYSTYPE"
+  },
+  {
+   "from": "mukhya",
+   "to": "main",
+   "via": "c"
+  },
+  {
+   "from": "praa_thamika\\.sa",
+   "to": "basstub.c",
+   "via": "c"
+  },
+  {
+   "from": "bhaaga\\.sa",
+   "to": "alloc.h",
+   "via": "c"
+  },
+  {
+   "from": "nishchi_ta\\.sa",
+   "to": "assert.h",
+   "via": "c"
+  },
+  {
+   "from": "moolapra_nna\\.sa",
+   "to": "bios.h",
+   "via": "c"
+  },
+  {
+   "from": "pattapana\\.sa",
+   "to": "conio.h",
+   "via": "c"
+  },
+  {
+   "from": "prakaara\\.sa",
+   "to": "ctype.h",
+   "via": "c"
+  },
+  {
+   "from": "soochee\\.sa",
+   "to": "dir.h",
+   "via": "c"
+  },
+  {
+   "from": "dausa\\.sa",
+   "to": "dos.h",
+   "via": "c"
+  },
+  {
+   "from": "_trutisa_m\\.sa",
+   "to": "errno.h",
+   "via": "c"
+  },
+  {
+   "from": "bhagna\\.sa",
+   "to": "float.h",
+   "via": "c"
+  },
+  {
+   "from": "pana\\.sa",
+   "to": "io.h",
+   "via": "c"
+  },
+  {
+   "from": "seemaa\\.sa",
+   "to": "limits.h",
+   "via": "c"
+  },
+  {
+   "from": "kxae_tra\\.sa",
+   "to": "locale.h",
+   "via": "c"
+  },
+  {
+   "from": "ga_nni_ta\\.sa",
+   "to": "math.h",
+   "via": "c"
+  },
+  {
+   "from": "sm_ri_ti\\.sa",
+   "to": "mem.h",
+   "via": "c"
+  },
+  {
+   "from": "kriyaa\\.sa",
+   "to": "process.h",
+   "via": "c"
+  },
+  {
+   "from": "samalaa_nagha\\.sa",
+   "to": "setjmp.h",
+   "via": "c"
+  },
+  {
+   "from": "sa_mkae_ta\\.sa",
+   "to": "signal.h",
+   "via": "c"
+  },
+  {
+   "from": "maanaka_tarka\\.sa",
+   "to": "stdarg.h",
+   "via": "c"
+  },
+  {
+   "from": "maanakaghoaxa\\.sa",
+   "to": "stddef.h",
+   "via": "c"
+  },
+  {
+   "from": "maanakapana\\.sa",
+   "to": "stdio.h",
+   "via": "c"
+  },
+  {
+   "from": "maanakakoaxa\\.sa",
+   "to": "stdlib.h",
+   "via": "c"
+  },
+  {
+   "from": "maalaa\\.sa",
+   "to": "string.h",
+   "via": "c"
+  },
+  {
+   "from": "s_thi_ti\\.sa",
+   "to": "stat.h",
+   "via": "c"
+  },
+  {
+   "from": "samaya\\.sa",
+   "to": "time.h",
+   "via": "c"
+  },
+  {
+   "from": "ba_samaya\\.sa",
+   "to": "timeb.h",
+   "via": "c"
+  },
+  {
+   "from": "_a_nnu",
+   "to": "{",
+   "via": "c"
+  },
+  {
+   "from": "poor_nna",
+   "to": "}",
+   "via": "c"
+  },
+  {
+   "from": "\\#ghoaxa_nnaa",
+   "to": "#define",
+   "via": "c"
+  },
+  {
+   "from": "\\#yaa__agara",
+   "to": "#elif",
+   "via": "c"
+  },
+  {
+   "from": "\\#_anya_thaa",
+   "to": "#else",
+   "via": "c"
+  },
+  {
+   "from": "\\#poor_nna__agara",
+   "to": "#endif",
+   "via": "c"
+  },
+  {
+   "from": "\\#_truti",
+   "to": "#error",
+   "via": "c"
+  },
+  {
+   "from": "\\#_agara",
+   "to": "#if",
+   "via": "c"
+  },
+  {
+   "from": "\\#_agara_ghoaxi_ta",
+   "to": "#ifdef",
+   "via": "c"
+  },
+  {
+   "from": "\\#_agara__aghoaxi_ta",
+   "to": "#ifndef",
+   "via": "c"
+  },
+  {
+   "from": "\\#samaawaesha",
+   "to": "#include",
+   "via": "c"
+  },
+  {
+   "from": "\\#pa_mk_ti",
+   "to": "#line",
+   "via": "c"
+  },
+  {
+   "from": "\\#_aashaya",
+   "to": "#pragma",
+   "via": "c"
+  },
+  {
+   "from": "\\#_aghoaxi_ta",
+   "to": "#undef",
+   "via": "c"
+  },
+  {
+   "from": "bapha_maana",
+   "to": "BUFSIZ",
+   "via": "c"
+  },
+  {
+   "from": "_akxara_bita",
+   "to": "CHAR_BIT",
+   "via": "c"
+  },
+  {
+   "from": "_akxara__uchcha",
+   "to": "CHAR_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_akxara_nyoona",
+   "to": "CHAR_MIN",
+   "via": "c"
+  },
+  {
+   "from": "shishu__uchcha",
+   "to": "CHILD_MAX",
+   "via": "c"
+  },
+  {
+   "from": "gha_rdee_tika",
+   "to": "CLK_TCK",
+   "via": "c"
+  },
+  {
+   "from": "_dwiga_bhagna",
+   "to": "DBL_DIG",
+   "via": "c"
+  },
+  {
+   "from": "_dwiga__a_m_tara",
+   "to": "DBL_EPSILON",
+   "via": "c"
+  },
+  {
+   "from": "_dwiga_poor_nna",
+   "to": "DBL_MANT_DIG",
+   "via": "c"
+  },
+  {
+   "from": "_dwiga__uchcha",
+   "to": "DBL_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_dwiga_nyoona",
+   "to": "DBL_MIN",
+   "via": "c"
+  },
+  {
+   "from": "soochee",
+   "to": "DIR",
+   "via": "c"
+  },
+  {
+   "from": "gala_ta__tarka",
+   "to": "EDOM",
+   "via": "c"
+  },
+  {
+   "from": "khaa_taapoor_nna",
+   "to": "EOF",
+   "via": "c"
+  },
+  {
+   "from": "_dusphala",
+   "to": "ERANGE",
+   "via": "c"
+  },
+  {
+   "from": "nikaasa__truti",
+   "to": "EXIT_FAILURE",
+   "via": "c"
+  },
+  {
+   "from": "nikaasa_saphala",
+   "to": "EXIT_SUCCESS",
+   "via": "c"
+  },
+  {
+   "from": "khaa_taa",
+   "to": "FILE",
+   "via": "c"
+  },
+  {
+   "from": "khaa_taanaama__uchcha",
+   "to": "FILENAME_MAX",
+   "via": "c"
+  },
+  {
+   "from": "bhagna_bhagna",
+   "to": "FLT_DIG",
+   "via": "c"
+  },
+  {
+   "from": "bhagna__a_m_tara",
+   "to": "FLT_EPSILON",
+   "via": "c"
+  },
+  {
+   "from": "bhagna_poor_nna",
+   "to": "FLT_MANT_DIG",
+   "via": "c"
+  },
+  {
+   "from": "bhagna__uchcha",
+   "to": "FLT_MAX",
+   "via": "c"
+  },
+  {
+   "from": "bhagna_nyoona",
+   "to": "FLT_MIN",
+   "via": "c"
+  },
+  {
+   "from": "bhagna__aa_dhaara",
+   "to": "FLT_RADIX",
+   "via": "c"
+  },
+  {
+   "from": "kha_khoaloa__uchcha",
+   "to": "FOPEN_MAX",
+   "via": "c"
+  },
+  {
+   "from": "wishaala_maana",
+   "to": "HUGE_VAL",
+   "via": "c"
+  },
+  {
+   "from": "_anan_ta",
+   "to": "INFINITY",
+   "via": "c"
+  },
+  {
+   "from": "poor_nnaa_mka__uchcha",
+   "to": "INT_MAX",
+   "via": "c"
+  },
+  {
+   "from": "poor_nnaa_mka_nyoona",
+   "to": "INT_MIN",
+   "via": "c"
+  },
+  {
+   "from": "_da__dwi_bhagna",
+   "to": "LDBL_DIG",
+   "via": "c"
+  },
+  {
+   "from": "_da__dwi__a_m_tara",
+   "to": "LDBL_EPSILON",
+   "via": "c"
+  },
+  {
+   "from": "_da__dwi_poor_nna",
+   "to": "LDBL_MANT_DIG",
+   "via": "c"
+  },
+  {
+   "from": "_da__dwi__uchcha",
+   "to": "LDBL_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_da__dwi_nyoona",
+   "to": "LDBL_MIN",
+   "via": "c"
+  },
+  {
+   "from": "_deergha__uchcha",
+   "to": "LONG_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_deergha_nyoona",
+   "to": "LONG_MIN",
+   "via": "c"
+  },
+  {
+   "from": "ba_kxa_nnika",
+   "to": "L_tmpnam",
+   "via": "c"
+  },
+  {
+   "from": "na__a_mka",
+   "to": "NAN",
+   "via": "c"
+  },
+  {
+   "from": "na_sa_mshoa_dhana",
+   "to": "NDEBUG",
+   "via": "c"
+  },
+  {
+   "from": "shoonya",
+   "to": "NULL",
+   "via": "c"
+  },
+  {
+   "from": "_akrama__uchcha",
+   "to": "RAND_MAX",
+   "via": "c"
+  },
+  {
+   "from": "cha__akxara__uchcha",
+   "to": "SCHAR_MAX",
+   "via": "c"
+  },
+  {
+   "from": "cha__akxara_nyoona",
+   "to": "SCHAR_MIN",
+   "via": "c"
+  },
+  {
+   "from": "pras_tu_ta_sae",
+   "to": "SEEK_CUR",
+   "via": "c"
+  },
+  {
+   "from": "_a_m_ta_sae",
+   "to": "SEEK_END",
+   "via": "c"
+  },
+  {
+   "from": "shuroo_sae",
+   "to": "SEEK_SET",
+   "via": "c"
+  },
+  {
+   "from": "laghu__uchcha",
+   "to": "SHRT_MAX",
+   "via": "c"
+  },
+  {
+   "from": "laghu_nyoona",
+   "to": "SHRT_MIN",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_paa_ta",
+   "to": "SIBGABRT",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_bha__truti",
+   "to": "SIGFPE",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka__awai_dha",
+   "to": "SIGILL",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_wighna",
+   "to": "SIGINT",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka__a_msha",
+   "to": "SIGSEGV",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka__i_ti",
+   "to": "SIGTERM",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_poorwa",
+   "to": "SIG_DFL",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka__truti",
+   "to": "SIG_ERR",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_chhoa_rdoa",
+   "to": "SIG_IGN",
+   "via": "c"
+  },
+  {
+   "from": "kxa_nnika__uchcha",
+   "to": "TMP_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_acha__akxara__uchcha",
+   "to": "UCHAR_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_acha_poor_nnaa_mka__uchcha",
+   "to": "UINT_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_acha__deergha__uchcha",
+   "to": "ULONG_MAX",
+   "via": "c"
+  },
+  {
+   "from": "_acha_laghu__uchcha",
+   "to": "USHRT_MAX",
+   "via": "c"
+  },
+  {
+   "from": "\\\\cha",
+   "to": "\\\\a",
+   "via": "c"
+  },
+  {
+   "from": "\\\\ma",
+   "to": "\\\\b",
+   "via": "c"
+  },
+  {
+   "from": "\\\\pa",
+   "to": "\\\\f",
+   "via": "c"
+  },
+  {
+   "from": "\\\\na",
+   "to": "\\\\n",
+   "via": "c"
+  },
+  {
+   "from": "\\\\la",
+   "to": "\\\\r",
+   "via": "c"
+  },
+  {
+   "from": "\\\\ta",
+   "to": "\\\\t",
+   "via": "c"
+  },
+  {
+   "from": "\\\\kha",
+   "to": "\\\\v",
+   "via": "c"
+  },
+  {
+   "from": "\\\\xa",
+   "to": "\\\\x",
+   "via": "c"
+  },
+  {
+   "from": "_____dina____",
+   "to": "__DATE__",
+   "via": "c"
+  },
+  {
+   "from": "____khaa_taa____",
+   "to": "__FILE__",
+   "via": "c"
+  },
+  {
+   "from": "____pa_mk_ti____",
+   "to": "__LINE__",
+   "via": "c"
+  },
+  {
+   "from": "____maanaka____",
+   "to": "__STDC__",
+   "via": "c"
+  },
+  {
+   "from": "____samaya____",
+   "to": "__TIME__",
+   "via": "c"
+  },
+  {
+   "from": "paa_ta",
+   "to": "abort",
+   "via": "c"
+  },
+  {
+   "from": "_asala",
+   "to": "abs",
+   "via": "c"
+  },
+  {
+   "from": "samaya_theeka",
+   "to": "asctime",
+   "via": "c"
+  },
+  {
+   "from": "ya_m_tra",
+   "to": "asm",
+   "via": "c"
+  },
+  {
+   "from": "nishchi_ta",
+   "to": "assert",
+   "via": "c"
+  },
+  {
+   "from": "nikaasa_para",
+   "to": "atexit",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae_bha",
+   "to": "atof",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae_pa",
+   "to": "atoi",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae__da",
+   "to": "atol",
+   "via": "c"
+  },
+  {
+   "from": "swa_ta_hh",
+   "to": "auto",
+   "via": "c"
+  },
+  {
+   "from": "_awaroa_dha",
+   "to": "break",
+   "via": "c"
+  },
+  {
+   "from": "_dwaa_khoaja",
+   "to": "bsearch",
+   "via": "c"
+  },
+  {
+   "from": "susm_ri_ti",
+   "to": "calloc",
+   "via": "c"
+  },
+  {
+   "from": "_haala",
+   "to": "case",
+   "via": "c"
+  },
+  {
+   "from": "_uchchamaana",
+   "to": "ceil",
+   "via": "c"
+  },
+  {
+   "from": "_akxara",
+   "to": "char",
+   "via": "c"
+  },
+  {
+   "from": "sa_ba_daloa",
+   "to": "chdir",
+   "via": "c"
+  },
+  {
+   "from": "saapha__truti",
+   "to": "clearerr",
+   "via": "c"
+  },
+  {
+   "from": "gha_rdee",
+   "to": "clock",
+   "via": "c"
+  },
+  {
+   "from": "gha_rdee_prakaara",
+   "to": "clock_t",
+   "via": "c"
+  },
+  {
+   "from": "ba_m_da",
+   "to": "close",
+   "via": "c"
+  },
+  {
+   "from": "ba_m_da_soochee",
+   "to": "closedir",
+   "via": "c"
+  },
+  {
+   "from": "s_thira",
+   "to": "const",
+   "via": "c"
+  },
+  {
+   "from": "jaaree",
+   "to": "continue",
+   "via": "c"
+  },
+  {
+   "from": "sa_samaya",
+   "to": "ctime",
+   "via": "c"
+  },
+  {
+   "from": "shaexa",
+   "to": "default",
+   "via": "c"
+  },
+  {
+   "from": "sa__a_m_tara",
+   "to": "difftime",
+   "via": "c"
+  },
+  {
+   "from": "sa_naama",
+   "to": "dirname",
+   "via": "c"
+  },
+  {
+   "from": "bhaaga",
+   "to": "div",
+   "via": "c"
+  },
+  {
+   "from": "bhaaga_prakaara",
+   "to": "div_t",
+   "via": "c"
+  },
+  {
+   "from": "karoa",
+   "to": "do",
+   "via": "c"
+  },
+  {
+   "from": "_dwiguna",
+   "to": "double",
+   "via": "c"
+  },
+  {
+   "from": "_anya_thaa",
+   "to": "else",
+   "via": "c"
+  },
+  {
+   "from": "kramaaga_ta",
+   "to": "enum",
+   "via": "c"
+  },
+  {
+   "from": "_truti_sa_m",
+   "to": "errno",
+   "via": "c"
+  },
+  {
+   "from": "nikaasa",
+   "to": "exit",
+   "via": "c"
+  },
+  {
+   "from": "baa_hya",
+   "to": "extern",
+   "via": "c"
+  },
+  {
+   "from": "bha__asala",
+   "to": "fabs",
+   "via": "c"
+  },
+  {
+   "from": "kha_ba_m_da",
+   "to": "fclose",
+   "via": "c"
+  },
+  {
+   "from": "kha_poor_nna",
+   "to": "feof",
+   "via": "c"
+  },
+  {
+   "from": "kha__truti",
+   "to": "ferror",
+   "via": "c"
+  },
+  {
+   "from": "kha_saapha",
+   "to": "fflush",
+   "via": "c"
+  },
+  {
+   "from": "kha__akxara_loa",
+   "to": "fgetc",
+   "via": "c"
+  },
+  {
+   "from": "kha_s_thaana_loa",
+   "to": "fgetpos",
+   "via": "c"
+  },
+  {
+   "from": "kha_maalaa_loa",
+   "to": "fgets",
+   "via": "c"
+  },
+  {
+   "from": "bhagna",
+   "to": "float",
+   "via": "c"
+  },
+  {
+   "from": "nyoonamaana",
+   "to": "floor",
+   "via": "c"
+  },
+  {
+   "from": "bha_shaexa",
+   "to": "fmod",
+   "via": "c"
+  },
+  {
+   "from": "kha_khoaloa",
+   "to": "fopen",
+   "via": "c"
+  },
+  {
+   "from": "krama",
+   "to": "for",
+   "via": "c"
+  },
+  {
+   "from": "wibhaajana",
+   "to": "fork",
+   "via": "c"
+  },
+  {
+   "from": "kha_s_thaana_prakaara",
+   "to": "fpos_t",
+   "via": "c"
+  },
+  {
+   "from": "kha_likhoa",
+   "to": "fprintf",
+   "via": "c"
+  },
+  {
+   "from": "kha__akxara__doa",
+   "to": "fputc",
+   "via": "c"
+  },
+  {
+   "from": "kha_maalaa__doa",
+   "to": "fputs",
+   "via": "c"
+  },
+  {
+   "from": "kha_pa_rdhoa",
+   "to": "fread",
+   "via": "c"
+  },
+  {
+   "from": "muk_ta",
+   "to": "free",
+   "via": "c"
+  },
+  {
+   "from": "kha_wa_khoaloa",
+   "to": "freopen",
+   "via": "c"
+  },
+  {
+   "from": "mi_tra",
+   "to": "friend",
+   "via": "c"
+  },
+  {
+   "from": "kha_poochhoa",
+   "to": "fscanf",
+   "via": "c"
+  },
+  {
+   "from": "kha_jaa_oa",
+   "to": "fseek",
+   "via": "c"
+  },
+  {
+   "from": "kha_s_thaana__doa",
+   "to": "fsetpos",
+   "via": "c"
+  },
+  {
+   "from": "kha_s_thi_ti",
+   "to": "fstat",
+   "via": "c"
+  },
+  {
+   "from": "kha_ba_taa_oa",
+   "to": "ftell",
+   "via": "c"
+  },
+  {
+   "from": "kha_daaloa",
+   "to": "fwrite",
+   "via": "c"
+  },
+  {
+   "from": "_a_loa",
+   "to": "getc",
+   "via": "c"
+  },
+  {
+   "from": "_akxara_loa",
+   "to": "getchar",
+   "via": "c"
+  },
+  {
+   "from": "_doa_paryaa",
+   "to": "getenv",
+   "via": "c"
+  },
+  {
+   "from": "maalaa_loa",
+   "to": "gets",
+   "via": "c"
+  },
+  {
+   "from": "sa_jamata",
+   "to": "gmtime",
+   "via": "c"
+  },
+  {
+   "from": "jaa_oa",
+   "to": "goto",
+   "via": "c"
+  },
+  {
+   "from": "_agara",
+   "to": "if",
+   "via": "c"
+  },
+  {
+   "from": "_a_m_tarabhoo_ta",
+   "to": "inline",
+   "via": "c"
+  },
+  {
+   "from": "poor_nnaa_mka",
+   "to": "int",
+   "via": "c"
+  },
+  {
+   "from": "_hai__akxara__a_mka",
+   "to": "isalnum",
+   "via": "c"
+  },
+  {
+   "from": "_hai__akxara",
+   "to": "isalpha",
+   "via": "c"
+  },
+  {
+   "from": "_hai_niya_m_tra_nna",
+   "to": "iscntrl",
+   "via": "c"
+  },
+  {
+   "from": "_hai__a_mka",
+   "to": "isdigit",
+   "via": "c"
+  },
+  {
+   "from": "_hai_seemi_ta",
+   "to": "isfinite",
+   "via": "c"
+  },
+  {
+   "from": "_hai_chi_tra",
+   "to": "isgraph",
+   "via": "c"
+  },
+  {
+   "from": "_hai_chhoataa",
+   "to": "islower",
+   "via": "c"
+  },
+  {
+   "from": "_hai__axtaka",
+   "to": "isodigit",
+   "via": "c"
+  },
+  {
+   "from": "_hai_chhaapa",
+   "to": "isprint",
+   "via": "c"
+  },
+  {
+   "from": "_hai_wiraama",
+   "to": "ispunct",
+   "via": "c"
+  },
+  {
+   "from": "_hai_khaalee",
+   "to": "isspace",
+   "via": "c"
+  },
+  {
+   "from": "_hai_ba_rdaa",
+   "to": "isupper",
+   "via": "c"
+  },
+  {
+   "from": "_hai_xaxthaa_dashaka",
+   "to": "isxdigit",
+   "via": "c"
+  },
+  {
+   "from": "laa_nagha_bapha",
+   "to": "jmp_buf",
+   "via": "c"
+  },
+  {
+   "from": "samaap_ta",
+   "to": "kill",
+   "via": "c"
+  },
+  {
+   "from": "_da__asala",
+   "to": "labs",
+   "via": "c"
+  },
+  {
+   "from": "s_thaa_ba_dala",
+   "to": "lconv",
+   "via": "c"
+  },
+  {
+   "from": "_da_bhaaga",
+   "to": "ldiv",
+   "via": "c"
+  },
+  {
+   "from": "_da_bhaaga_prakaara",
+   "to": "ldiv_t",
+   "via": "c"
+  },
+  {
+   "from": "kxae_tra_ba_daloa",
+   "to": "localeconv",
+   "via": "c"
+  },
+  {
+   "from": "sa_s_thaaneeya",
+   "to": "localtime",
+   "via": "c"
+  },
+  {
+   "from": "_deergha",
+   "to": "long",
+   "via": "c"
+  },
+  {
+   "from": "_deergha_laa_nagha",
+   "to": "longjmp",
+   "via": "c"
+  },
+  {
+   "from": "_doa_sm_ri_ti",
+   "to": "malloc",
+   "via": "c"
+  },
+  {
+   "from": "sa_pra_thama",
+   "to": "memchr",
+   "via": "c"
+  },
+  {
+   "from": "sa_bhae_da",
+   "to": "memcmp",
+   "via": "c"
+  },
+  {
+   "from": "sa_nakala",
+   "to": "memcpy",
+   "via": "c"
+  },
+  {
+   "from": "sa__hataa_oa",
+   "to": "memmove",
+   "via": "c"
+  },
+  {
+   "from": "sa_rakhoa",
+   "to": "memset",
+   "via": "c"
+  },
+  {
+   "from": "soochee_ga_rdhoa",
+   "to": "mkdir",
+   "via": "c"
+  },
+  {
+   "from": "sa_ga_rdhoa",
+   "to": "mktime",
+   "via": "c"
+  },
+  {
+   "from": "_dura_twa",
+   "to": "offsetof",
+   "via": "c"
+  },
+  {
+   "from": "khoaloa",
+   "to": "open",
+   "via": "c"
+  },
+  {
+   "from": "soochee_khoaloa",
+   "to": "opendir",
+   "via": "c"
+  },
+  {
+   "from": "chaalaka",
+   "to": "operator",
+   "via": "c"
+  },
+  {
+   "from": "chhoa_rdoa",
+   "to": "pause",
+   "via": "c"
+  },
+  {
+   "from": "likhoa__truti",
+   "to": "perror",
+   "via": "c"
+  },
+  {
+   "from": "ghaa_ta",
+   "to": "pow",
+   "via": "c"
+  },
+  {
+   "from": "ma_likhoa",
+   "to": "printf",
+   "via": "c"
+  },
+  {
+   "from": "nijee",
+   "to": "private",
+   "via": "c"
+  },
+  {
+   "from": "rakxi_ta",
+   "to": "protected",
+   "via": "c"
+  },
+  {
+   "from": "soochaka_bhae_da_prakaara",
+   "to": "ptrdiff_t",
+   "via": "c"
+  },
+  {
+   "from": "khulaa",
+   "to": "public",
+   "via": "c"
+  },
+  {
+   "from": "_a__doa",
+   "to": "putc",
+   "via": "c"
+  },
+  {
+   "from": "_akxara__doa",
+   "to": "putchar",
+   "via": "c"
+  },
+  {
+   "from": "maalaa__doa",
+   "to": "puts",
+   "via": "c"
+  },
+  {
+   "from": "kwika",
+   "to": "qsort",
+   "via": "c"
+  },
+  {
+   "from": "_uthaa_oa",
+   "to": "raise",
+   "via": "c"
+  },
+  {
+   "from": "_akrama",
+   "to": "rand",
+   "via": "c"
+  },
+  {
+   "from": "pa_rdhoa",
+   "to": "read",
+   "via": "c"
+  },
+  {
+   "from": "soochee_pa_rdhoa",
+   "to": "readdir",
+   "via": "c"
+  },
+  {
+   "from": "puna_hh_sm_ri_ti",
+   "to": "realloc",
+   "via": "c"
+  },
+  {
+   "from": "raejistara",
+   "to": "register",
+   "via": "c"
+  },
+  {
+   "from": "_hataa_oa",
+   "to": "remove",
+   "via": "c"
+  },
+  {
+   "from": "naama",
+   "to": "rename",
+   "via": "c"
+  },
+  {
+   "from": "waapasa",
+   "to": "return",
+   "via": "c"
+  },
+  {
+   "from": "shuru_aa_ta",
+   "to": "rewind",
+   "via": "c"
+  },
+  {
+   "from": "soochee_shuru",
+   "to": "rewinddir",
+   "via": "c"
+  },
+  {
+   "from": "soochee__hataa_oa",
+   "to": "rmdir",
+   "via": "c"
+  },
+  {
+   "from": "ma_poochhoa",
+   "to": "scanf",
+   "via": "c"
+  },
+  {
+   "from": "rakhoa_bapha",
+   "to": "setbuf",
+   "via": "c"
+  },
+  {
+   "from": "banaa_oa_laa_nagha",
+   "to": "setjmp",
+   "via": "c"
+  },
+  {
+   "from": "rakhoa_kxae_tra",
+   "to": "setlocale",
+   "via": "c"
+  },
+  {
+   "from": "rakhoa_bhabapha",
+   "to": "setvbuf",
+   "via": "c"
+  },
+  {
+   "from": "laghu",
+   "to": "short",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_poor_nna_prakaara",
+   "to": "sig_atomic_t",
+   "via": "c"
+  },
+  {
+   "from": "sa_mkae_ta",
+   "to": "signal",
+   "via": "c"
+  },
+  {
+   "from": "chin_hi_ta",
+   "to": "signed",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_baakee",
+   "to": "sigpending",
+   "via": "c"
+  },
+  {
+   "from": "sa_mka_roakoa",
+   "to": "sigsuspend",
+   "via": "c"
+  },
+  {
+   "from": "maapa_prakaara",
+   "to": "size_t",
+   "via": "c"
+  },
+  {
+   "from": "maapa",
+   "to": "sizeof",
+   "via": "c"
+  },
+  {
+   "from": "pra_likhoa",
+   "to": "sprintf",
+   "via": "c"
+  },
+  {
+   "from": "warga_moola",
+   "to": "sqrt",
+   "via": "c"
+  },
+  {
+   "from": "baekrama",
+   "to": "srand",
+   "via": "c"
+  },
+  {
+   "from": "maalaa_poochhoa",
+   "to": "sscanf",
+   "via": "c"
+  },
+  {
+   "from": "_atala",
+   "to": "static",
+   "via": "c"
+  },
+  {
+   "from": "maanaka__truti",
+   "to": "stderr",
+   "via": "c"
+  },
+  {
+   "from": "maanaka_niwaesha",
+   "to": "stdin",
+   "via": "c"
+  },
+  {
+   "from": "maanaka_nikaasa",
+   "to": "stdout",
+   "via": "c"
+  },
+  {
+   "from": "ma_joa_rdoa",
+   "to": "strcat",
+   "via": "c"
+  },
+  {
+   "from": "ma__akxara",
+   "to": "strchr",
+   "via": "c"
+  },
+  {
+   "from": "ma_bhae_da",
+   "to": "strcmp",
+   "via": "c"
+  },
+  {
+   "from": "ma_nakala",
+   "to": "strcpy",
+   "via": "c"
+  },
+  {
+   "from": "ma_khoaja",
+   "to": "strcspn",
+   "via": "c"
+  },
+  {
+   "from": "ma__truti",
+   "to": "strerror",
+   "via": "c"
+  },
+  {
+   "from": "sa_maalaa",
+   "to": "strftime",
+   "via": "c"
+  },
+  {
+   "from": "ma_maapa",
+   "to": "strlen",
+   "via": "c"
+  },
+  {
+   "from": "ma_joa_rdana",
+   "to": "strncat",
+   "via": "c"
+  },
+  {
+   "from": "ma_bhae_dana",
+   "to": "strncmp",
+   "via": "c"
+  },
+  {
+   "from": "ma_nakalana",
+   "to": "strncpy",
+   "via": "c"
+  },
+  {
+   "from": "ma_khoajapa",
+   "to": "strrchr",
+   "via": "c"
+  },
+  {
+   "from": "ma__akhoaja",
+   "to": "strspn",
+   "via": "c"
+  },
+  {
+   "from": "ma_maalaa",
+   "to": "strstr",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae_bhagna",
+   "to": "strtod",
+   "via": "c"
+  },
+  {
+   "from": "ma_moa_hara",
+   "to": "strtok",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae__deergha",
+   "to": "strtol",
+   "via": "c"
+  },
+  {
+   "from": "ma_sae__a_deergha",
+   "to": "strtoul",
+   "via": "c"
+  },
+  {
+   "from": "kaaxthaa",
+   "to": "struct",
+   "via": "c"
+  },
+  {
+   "from": "chayana",
+   "to": "switch",
+   "via": "c"
+  },
+  {
+   "from": "pra_nnaalee",
+   "to": "system",
+   "via": "c"
+  },
+  {
+   "from": "dhaa_nachaa",
+   "to": "template",
+   "via": "c"
+  },
+  {
+   "from": "samaya",
+   "to": "time",
+   "via": "c"
+  },
+  {
+   "from": "samaya_prakaara",
+   "to": "time_t",
+   "via": "c"
+  },
+  {
+   "from": "baara",
+   "to": "times",
+   "via": "c"
+  },
+  {
+   "from": "pa_mchaa_mga",
+   "to": "tm",
+   "via": "c"
+  },
+  {
+   "from": "kxa_nnika_kha",
+   "to": "tmpfile",
+   "via": "c"
+  },
+  {
+   "from": "kxa_nnika",
+   "to": "tmpnam",
+   "via": "c"
+  },
+  {
+   "from": "chhoatae",
+   "to": "tolower",
+   "via": "c"
+  },
+  {
+   "from": "ba_rdae",
+   "to": "toupper",
+   "via": "c"
+  },
+  {
+   "from": "prakaara",
+   "to": "typedef",
+   "via": "c"
+  },
+  {
+   "from": "_akxara_waapasa",
+   "to": "ungetc",
+   "via": "c"
+  },
+  {
+   "from": "joa_rda",
+   "to": "union",
+   "via": "c"
+  },
+  {
+   "from": "_achin_hi_ta",
+   "to": "unsigned",
+   "via": "c"
+  },
+  {
+   "from": "ba_hu__tarka",
+   "to": "va_arg",
+   "via": "c"
+  },
+  {
+   "from": "ba_hu_poor_nna",
+   "to": "va_end",
+   "via": "c"
+  },
+  {
+   "from": "ba_hu_soochee",
+   "to": "va_list",
+   "via": "c"
+  },
+  {
+   "from": "ba_hu_shuroo",
+   "to": "va_start",
+   "via": "c"
+  },
+  {
+   "from": "bhakha_likhoa",
+   "to": "vfprintf",
+   "via": "c"
+  },
+  {
+   "from": "bhawa",
+   "to": "virtual",
+   "via": "c"
+  },
+  {
+   "from": "wyoama",
+   "to": "void",
+   "via": "c"
+  },
+  {
+   "from": "_as_thira",
+   "to": "volatile",
+   "via": "c"
+  },
+  {
+   "from": "bha_likhoa",
+   "to": "vprintf",
+   "via": "c"
+  },
+  {
+   "from": "bhama_likhoa",
+   "to": "vsprintf",
+   "via": "c"
+  },
+  {
+   "from": "rukoa",
+   "to": "wait",
+   "via": "c"
+  },
+  {
+   "from": "ba__akxara_prakaara",
+   "to": "wchar_t",
+   "via": "c"
+  },
+  {
+   "from": "jaba_taka",
+   "to": "while",
+   "via": "c"
+  },
+  {
+   "from": "ga_likhoa",
+   "to": "write",
+   "via": "c"
+  },
+  {
+   "from": "samaya_loa",
+   "to": "gettime",
+   "via": "c"
+  },
+  {
+   "from": "samaya_rakhoa",
+   "to": "settime",
+   "via": "c"
+  }
+ ],
+ "own_rules": 20,
+ "composed_rules": 341
+}

@@ -1,0 +1,13 @@
+# tamil → cpp  |  script: Tamil  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+இல்லையெனில்	illaiyenila	else
+வரை	varai	while
+செய்	sey	do
+தொடர்	todara	continue
+தேர்வு	teervu	switch
+முழு	muzu	int
+எழுத்து	ezuttu	char
+தனிப்பட்ட	tanippatta	private
+நிலையான	nilaiyaana	const

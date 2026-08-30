@@ -1,0 +1,3529 @@
+{
+ "target": "cpp",
+ "shaili": "shraeni",
+ "host": "C++",
+ "pipeline": [
+  "self"
+ ],
+ "source": "retrieved/legacy/Hindawi/shraeni/h2cpp.uhin",
+ "invented": false,
+ "extracted_at_rules": 879,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "मुख्य",
+   "to": "main"
+  },
+  {
+   "from": "भाग\\.स",
+   "to": "alloc.h"
+  },
+  {
+   "from": "निश्चित\\.स",
+   "to": "assert.h"
+  },
+  {
+   "from": "मूलप्रण\\.स",
+   "to": "bios.h"
+  },
+  {
+   "from": "पट्टपन\\.स",
+   "to": "conio.h"
+  },
+  {
+   "from": "प्रकार\\.स",
+   "to": "ctype.h"
+  },
+  {
+   "from": "सूची\\.स",
+   "to": "dir.h"
+  },
+  {
+   "from": "डॉस\\.स",
+   "to": "dos.h"
+  },
+  {
+   "from": "त्रुटिसं\\.स",
+   "to": "errno.h"
+  },
+  {
+   "from": "भग्न\\.स",
+   "to": "float.h"
+  },
+  {
+   "from": "पन\\.स",
+   "to": "io.h"
+  },
+  {
+   "from": "सीमा\\.स",
+   "to": "limits.h"
+  },
+  {
+   "from": "क्षेत्र\\.स",
+   "to": "locale.h"
+  },
+  {
+   "from": "गणित\\.स",
+   "to": "math.h"
+  },
+  {
+   "from": "स्मृति\\.स",
+   "to": "mem.h"
+  },
+  {
+   "from": "क्रिया\\.स",
+   "to": "process.h"
+  },
+  {
+   "from": "समलाँघ\\.स",
+   "to": "setjmp.h"
+  },
+  {
+   "from": "संकेत\\.स",
+   "to": "signal.h"
+  },
+  {
+   "from": "मानकतर्क\\.स",
+   "to": "stdarg.h"
+  },
+  {
+   "from": "मानकघोष\\.स",
+   "to": "stddef.h"
+  },
+  {
+   "from": "मानकपन\\.स",
+   "to": "stdio.h"
+  },
+  {
+   "from": "मानककोष\\.स",
+   "to": "stdlib.h"
+  },
+  {
+   "from": "माला\\.स",
+   "to": "string.h"
+  },
+  {
+   "from": "स्थिति\\.स",
+   "to": "stat.h"
+  },
+  {
+   "from": "समय\\.स",
+   "to": "time.h"
+  },
+  {
+   "from": "ब_समय\\.स",
+   "to": "timeb.h"
+  },
+  {
+   "from": "अणु",
+   "to": "{"
+  },
+  {
+   "from": "पूर्ण",
+   "to": "}"
+  },
+  {
+   "from": "orictxt832",
+   "to": "|="
+  },
+  {
+   "from": "orictxt833",
+   "to": "||"
+  },
+  {
+   "from": "orictxt835",
+   "to": "~"
+  },
+  {
+   "from": "orictxt1",
+   "to": "!"
+  },
+  {
+   "from": "orictxt2",
+   "to": "!="
+  },
+  {
+   "from": "orictxt5",
+   "to": "#"
+  },
+  {
+   "from": "orictxt6",
+   "to": "##"
+  },
+  {
+   "from": "\\#घोषणा",
+   "to": "#define"
+  },
+  {
+   "from": "\\#या_अगर",
+   "to": "#elif"
+  },
+  {
+   "from": "\\#अन्यथा",
+   "to": "#else"
+  },
+  {
+   "from": "\\#पूर्ण_अगर",
+   "to": "#endif"
+  },
+  {
+   "from": "\\#त्रुटि",
+   "to": "#error"
+  },
+  {
+   "from": "\\#अगर",
+   "to": "#if"
+  },
+  {
+   "from": "\\#अगर_घोषित",
+   "to": "#ifdef"
+  },
+  {
+   "from": "\\#अगर_अघोषित",
+   "to": "#ifndef"
+  },
+  {
+   "from": "\\#समावेश",
+   "to": "#include"
+  },
+  {
+   "from": "\\#पंक्ति",
+   "to": "#line"
+  },
+  {
+   "from": "\\#आशय",
+   "to": "#pragma"
+  },
+  {
+   "from": "\\#अघोषित",
+   "to": "#undef"
+  },
+  {
+   "from": "orictxt21",
+   "to": "%"
+  },
+  {
+   "from": "orictxt22",
+   "to": "%="
+  },
+  {
+   "from": "orictxt23",
+   "to": "&"
+  },
+  {
+   "from": "orictxt24",
+   "to": "&&"
+  },
+  {
+   "from": "orictxt25",
+   "to": "&="
+  },
+  {
+   "from": "orictxt26",
+   "to": "*"
+  },
+  {
+   "from": "orictxt27",
+   "to": "*="
+  },
+  {
+   "from": "orictxt28",
+   "to": "+"
+  },
+  {
+   "from": "orictxt29",
+   "to": "++"
+  },
+  {
+   "from": "orictxt30",
+   "to": "+="
+  },
+  {
+   "from": "orictxt31",
+   "to": "-"
+  },
+  {
+   "from": "orictxt32",
+   "to": "--"
+  },
+  {
+   "from": "orictxt33",
+   "to": "-="
+  },
+  {
+   "from": "orictxt34",
+   "to": "->"
+  },
+  {
+   "from": "orictxt35",
+   "to": "->*"
+  },
+  {
+   "from": "orictxt36",
+   "to": "."
+  },
+  {
+   "from": "orictxt37",
+   "to": ".*"
+  },
+  {
+   "from": "orictxt38",
+   "to": "/"
+  },
+  {
+   "from": "orictxt39",
+   "to": "/="
+  },
+  {
+   "from": "orictxt40",
+   "to": "::"
+  },
+  {
+   "from": "orictxt41",
+   "to": "<"
+  },
+  {
+   "from": "orictxt42",
+   "to": "<<"
+  },
+  {
+   "from": "orictxt43",
+   "to": "<<="
+  },
+  {
+   "from": "orictxt44",
+   "to": ">"
+  },
+  {
+   "from": "orictxt45",
+   "to": ">>"
+  },
+  {
+   "from": "orictxt46",
+   "to": ">>="
+  },
+  {
+   "from": "orictxt47",
+   "to": "?:"
+  },
+  {
+   "from": "orictxt57",
+   "to": "ARG_MAX"
+  },
+  {
+   "from": "orictxt58",
+   "to": "B0"
+  },
+  {
+   "from": "orictxt59",
+   "to": "B110"
+  },
+  {
+   "from": "orictxt60",
+   "to": "B1200"
+  },
+  {
+   "from": "orictxt61",
+   "to": "B134"
+  },
+  {
+   "from": "orictxt62",
+   "to": "B150"
+  },
+  {
+   "from": "orictxt63",
+   "to": "B1800"
+  },
+  {
+   "from": "orictxt64",
+   "to": "B19200"
+  },
+  {
+   "from": "orictxt65",
+   "to": "B200"
+  },
+  {
+   "from": "orictxt66",
+   "to": "B2400"
+  },
+  {
+   "from": "orictxt67",
+   "to": "B300"
+  },
+  {
+   "from": "orictxt68",
+   "to": "B38400"
+  },
+  {
+   "from": "orictxt69",
+   "to": "B4800"
+  },
+  {
+   "from": "orictxt70",
+   "to": "B50"
+  },
+  {
+   "from": "orictxt71",
+   "to": "B600"
+  },
+  {
+   "from": "orictxt72",
+   "to": "B75"
+  },
+  {
+   "from": "orictxt73",
+   "to": "B9600"
+  },
+  {
+   "from": "orictxt74",
+   "to": "BRKINT"
+  },
+  {
+   "from": "बफ_मान",
+   "to": "BUFSIZ"
+  },
+  {
+   "from": "अक्षर_बिट",
+   "to": "CHAR_BIT"
+  },
+  {
+   "from": "अक्षर_उच्च",
+   "to": "CHAR_MAX"
+  },
+  {
+   "from": "अक्षर_न्यून",
+   "to": "CHAR_MIN"
+  },
+  {
+   "from": "शिशु_उच्च",
+   "to": "CHILD_MAX"
+  },
+  {
+   "from": "घड़ी_टिक",
+   "to": "CLK_TCK"
+  },
+  {
+   "from": "orictxt81",
+   "to": "CLOCAL"
+  },
+  {
+   "from": "orictxt82",
+   "to": "CLOCKS_PER_SEC"
+  },
+  {
+   "from": "orictxt83",
+   "to": "CREAD"
+  },
+  {
+   "from": "orictxt84",
+   "to": "CS5"
+  },
+  {
+   "from": "orictxt85",
+   "to": "CS6"
+  },
+  {
+   "from": "orictxt86",
+   "to": "CS7"
+  },
+  {
+   "from": "orictxt87",
+   "to": "CS8"
+  },
+  {
+   "from": "orictxt88",
+   "to": "CSIZE"
+  },
+  {
+   "from": "orictxt89",
+   "to": "CSTOPB"
+  },
+  {
+   "from": "द्विग_भग्न",
+   "to": "DBL_DIG"
+  },
+  {
+   "from": "द्विग_अंतर",
+   "to": "DBL_EPSILON"
+  },
+  {
+   "from": "द्विग_पूर्ण",
+   "to": "DBL_MANT_DIG"
+  },
+  {
+   "from": "द्विग_उच्च",
+   "to": "DBL_MAX"
+  },
+  {
+   "from": "orictxt94",
+   "to": "DBL_MAX_10_EXP"
+  },
+  {
+   "from": "orictxt95",
+   "to": "DBL_MAX_EXP"
+  },
+  {
+   "from": "द्विग_न्यून",
+   "to": "DBL_MIN"
+  },
+  {
+   "from": "orictxt97",
+   "to": "DBL_MIN_10_EXP"
+  },
+  {
+   "from": "orictxt98",
+   "to": "DBL_MIN_EXP"
+  },
+  {
+   "from": "सूची",
+   "to": "DIR"
+  },
+  {
+   "from": "orictxt100",
+   "to": "E2BIG"
+  },
+  {
+   "from": "orictxt101",
+   "to": "EACCESS"
+  },
+  {
+   "from": "orictxt102",
+   "to": "EAGAIN"
+  },
+  {
+   "from": "orictxt103",
+   "to": "EBADF"
+  },
+  {
+   "from": "orictxt104",
+   "to": "EBUSY"
+  },
+  {
+   "from": "orictxt105",
+   "to": "ECHILD"
+  },
+  {
+   "from": "orictxt106",
+   "to": "ECHO"
+  },
+  {
+   "from": "orictxt107",
+   "to": "ECHOE"
+  },
+  {
+   "from": "orictxt108",
+   "to": "ECHOK"
+  },
+  {
+   "from": "orictxt109",
+   "to": "ECHONL"
+  },
+  {
+   "from": "orictxt110",
+   "to": "EDEADLK"
+  },
+  {
+   "from": "गलत_तर्क",
+   "to": "EDOM"
+  },
+  {
+   "from": "orictxt112",
+   "to": "EEXIST"
+  },
+  {
+   "from": "orictxt113",
+   "to": "EFAULT"
+  },
+  {
+   "from": "orictxt114",
+   "to": "EFBIG"
+  },
+  {
+   "from": "orictxt115",
+   "to": "EINTR"
+  },
+  {
+   "from": "orictxt116",
+   "to": "EINVAL"
+  },
+  {
+   "from": "orictxt117",
+   "to": "EIO"
+  },
+  {
+   "from": "orictxt118",
+   "to": "EISDIR"
+  },
+  {
+   "from": "orictxt119",
+   "to": "EMFILE"
+  },
+  {
+   "from": "orictxt120",
+   "to": "EMLINK"
+  },
+  {
+   "from": "orictxt121",
+   "to": "ENAMETOOLONG"
+  },
+  {
+   "from": "orictxt122",
+   "to": "ENFILE"
+  },
+  {
+   "from": "orictxt123",
+   "to": "ENODEV"
+  },
+  {
+   "from": "orictxt124",
+   "to": "ENOENT"
+  },
+  {
+   "from": "orictxt125",
+   "to": "ENOEXEC"
+  },
+  {
+   "from": "orictxt126",
+   "to": "ENOLCK"
+  },
+  {
+   "from": "orictxt127",
+   "to": "ENOMEM"
+  },
+  {
+   "from": "orictxt128",
+   "to": "ENOSPC"
+  },
+  {
+   "from": "orictxt129",
+   "to": "ENOTDIR"
+  },
+  {
+   "from": "orictxt130",
+   "to": "ENOTEMPTY"
+  },
+  {
+   "from": "orictxt131",
+   "to": "ENOTTY"
+  },
+  {
+   "from": "orictxt132",
+   "to": "ENXIO"
+  },
+  {
+   "from": "खातापूर्ण",
+   "to": "EOF"
+  },
+  {
+   "from": "orictxt134",
+   "to": "EPERM"
+  },
+  {
+   "from": "orictxt135",
+   "to": "EPIPE"
+  },
+  {
+   "from": "दुस्फल",
+   "to": "ERANGE"
+  },
+  {
+   "from": "orictxt137",
+   "to": "EROFS"
+  },
+  {
+   "from": "orictxt138",
+   "to": "ESPIPE"
+  },
+  {
+   "from": "orictxt139",
+   "to": "ESRCH"
+  },
+  {
+   "from": "orictxt140",
+   "to": "EXDEV"
+  },
+  {
+   "from": "निकास_त्रुटि",
+   "to": "EXIT_FAILURE"
+  },
+  {
+   "from": "निकास_सफल",
+   "to": "EXIT_SUCCESS"
+  },
+  {
+   "from": "orictxt143",
+   "to": "FD_CLOEXEC"
+  },
+  {
+   "from": "orictxt144",
+   "to": "FE_ALL_EXCEPT"
+  },
+  {
+   "from": "orictxt145",
+   "to": "FE_DBLPREC"
+  },
+  {
+   "from": "orictxt146",
+   "to": "FE_DIVBYZERO"
+  },
+  {
+   "from": "orictxt147",
+   "to": "FE_DOWNWARD"
+  },
+  {
+   "from": "orictxt148",
+   "to": "FE_FLTPREC"
+  },
+  {
+   "from": "orictxt149",
+   "to": "FE_INEXACT"
+  },
+  {
+   "from": "orictxt150",
+   "to": "FE_INVALID"
+  },
+  {
+   "from": "orictxt151",
+   "to": "FE_LDBLPREC"
+  },
+  {
+   "from": "orictxt152",
+   "to": "FE_OVERFLOW"
+  },
+  {
+   "from": "orictxt153",
+   "to": "FE_TONEAREST"
+  },
+  {
+   "from": "orictxt154",
+   "to": "FE_TOWARDZERO"
+  },
+  {
+   "from": "orictxt155",
+   "to": "FE_UNDERFLOW"
+  },
+  {
+   "from": "orictxt156",
+   "to": "FE_UPWARD"
+  },
+  {
+   "from": "खाता",
+   "to": "FILE"
+  },
+  {
+   "from": "खातानाम_उच्च",
+   "to": "FILENAME_MAX"
+  },
+  {
+   "from": "भग्न_भग्न",
+   "to": "FLT_DIG"
+  },
+  {
+   "from": "भग्न_अंतर",
+   "to": "FLT_EPSILON"
+  },
+  {
+   "from": "भग्न_पूर्ण",
+   "to": "FLT_MANT_DIG"
+  },
+  {
+   "from": "भग्न_उच्च",
+   "to": "FLT_MAX"
+  },
+  {
+   "from": "orictxt163",
+   "to": "FLT_MAX_10_EXP"
+  },
+  {
+   "from": "orictxt164",
+   "to": "FLT_MAX_EXP"
+  },
+  {
+   "from": "भग्न_न्यून",
+   "to": "FLT_MIN"
+  },
+  {
+   "from": "orictxt166",
+   "to": "FLT_MIN_10_EXP"
+  },
+  {
+   "from": "orictxt167",
+   "to": "FLT_MIN_EXP"
+  },
+  {
+   "from": "भग्न_आधार",
+   "to": "FLT_RADIX"
+  },
+  {
+   "from": "orictxt169",
+   "to": "FLT_ROUNDS"
+  },
+  {
+   "from": "ख_खोलो_उच्च",
+   "to": "FOPEN_MAX"
+  },
+  {
+   "from": "orictxt171",
+   "to": "FP_INFINITE"
+  },
+  {
+   "from": "orictxt172",
+   "to": "FP_NANQ"
+  },
+  {
+   "from": "orictxt173",
+   "to": "FP_NANS"
+  },
+  {
+   "from": "orictxt174",
+   "to": "FP_NORMAL"
+  },
+  {
+   "from": "orictxt175",
+   "to": "FP_SUBNORMAL"
+  },
+  {
+   "from": "orictxt176",
+   "to": "FP_ZERO"
+  },
+  {
+   "from": "orictxt177",
+   "to": "F_DUPFD"
+  },
+  {
+   "from": "orictxt178",
+   "to": "F_GETFD"
+  },
+  {
+   "from": "orictxt179",
+   "to": "F_GETFL"
+  },
+  {
+   "from": "orictxt180",
+   "to": "F_GETLK"
+  },
+  {
+   "from": "orictxt181",
+   "to": "F_OK"
+  },
+  {
+   "from": "orictxt182",
+   "to": "F_RDLCK"
+  },
+  {
+   "from": "orictxt183",
+   "to": "F_SETFD"
+  },
+  {
+   "from": "orictxt184",
+   "to": "F_SETFL"
+  },
+  {
+   "from": "orictxt185",
+   "to": "F_SETLK"
+  },
+  {
+   "from": "orictxt186",
+   "to": "F_SETLKW"
+  },
+  {
+   "from": "orictxt187",
+   "to": "F_UNLCK"
+  },
+  {
+   "from": "orictxt188",
+   "to": "F_WRLCK"
+  },
+  {
+   "from": "विशाल_मान",
+   "to": "HUGE_VAL"
+  },
+  {
+   "from": "orictxt190",
+   "to": "HUPCL"
+  },
+  {
+   "from": "orictxt191",
+   "to": "ICANON"
+  },
+  {
+   "from": "orictxt192",
+   "to": "ICRNL"
+  },
+  {
+   "from": "orictxt193",
+   "to": "IEXTEN"
+  },
+  {
+   "from": "orictxt194",
+   "to": "IGNBRK"
+  },
+  {
+   "from": "orictxt195",
+   "to": "IGNCR"
+  },
+  {
+   "from": "orictxt196",
+   "to": "IGNLCR"
+  },
+  {
+   "from": "orictxt197",
+   "to": "IGNPAR"
+  },
+  {
+   "from": "अनन्त",
+   "to": "INFINITY"
+  },
+  {
+   "from": "orictxt199",
+   "to": "INPCK"
+  },
+  {
+   "from": "पूर्णांक_उच्च",
+   "to": "INT_MAX"
+  },
+  {
+   "from": "पूर्णांक_न्यून",
+   "to": "INT_MIN"
+  },
+  {
+   "from": "orictxt202",
+   "to": "ISIG"
+  },
+  {
+   "from": "orictxt203",
+   "to": "ISTRIP"
+  },
+  {
+   "from": "orictxt204",
+   "to": "IXOFF"
+  },
+  {
+   "from": "orictxt205",
+   "to": "IXON"
+  },
+  {
+   "from": "orictxt206",
+   "to": "LC_ALL"
+  },
+  {
+   "from": "orictxt207",
+   "to": "LC_COLLATE"
+  },
+  {
+   "from": "orictxt208",
+   "to": "LC_CTYPE"
+  },
+  {
+   "from": "orictxt209",
+   "to": "LC_MONETARY"
+  },
+  {
+   "from": "orictxt210",
+   "to": "LC_NUMERIC"
+  },
+  {
+   "from": "orictxt211",
+   "to": "LC_TIME"
+  },
+  {
+   "from": "द_द्वि_भग्न",
+   "to": "LDBL_DIG"
+  },
+  {
+   "from": "द_द्वि_अंतर",
+   "to": "LDBL_EPSILON"
+  },
+  {
+   "from": "द_द्वि_पूर्ण",
+   "to": "LDBL_MANT_DIG"
+  },
+  {
+   "from": "द_द्वि_उच्च",
+   "to": "LDBL_MAX"
+  },
+  {
+   "from": "orictxt221",
+   "to": "LDBL_MAX_10_EXP"
+  },
+  {
+   "from": "orictxt223",
+   "to": "LDBL_MAX_EXP"
+  },
+  {
+   "from": "द_द्वि_न्यून",
+   "to": "LDBL_MIN"
+  },
+  {
+   "from": "orictxt227",
+   "to": "LDBL_MIN_10_EXP"
+  },
+  {
+   "from": "orictxt229",
+   "to": "LDBL_MIN_EXP"
+  },
+  {
+   "from": "दीर्घ_उच्च",
+   "to": "LONG_MAX"
+  },
+  {
+   "from": "दीर्घ_न्यून",
+   "to": "LONG_MIN"
+  },
+  {
+   "from": "orictxt233",
+   "to": "L_ctermid"
+  },
+  {
+   "from": "ब_क्षणिक",
+   "to": "L_tmpnam"
+  },
+  {
+   "from": "orictxt235",
+   "to": "MAX_CANON"
+  },
+  {
+   "from": "orictxt236",
+   "to": "MAX_INPUT"
+  },
+  {
+   "from": "orictxt237",
+   "to": "MB_CUR_MAX"
+  },
+  {
+   "from": "orictxt238",
+   "to": "MB_LEN_MAX"
+  },
+  {
+   "from": "orictxt239",
+   "to": "NAME_MAX"
+  },
+  {
+   "from": "न_अंक",
+   "to": "NAN"
+  },
+  {
+   "from": "orictxt241",
+   "to": "NANS"
+  },
+  {
+   "from": "orictxt242",
+   "to": "NCCS"
+  },
+  {
+   "from": "न_संशोधन",
+   "to": "NDEBUG"
+  },
+  {
+   "from": "orictxt244",
+   "to": "NGROUPS_MAX"
+  },
+  {
+   "from": "orictxt245",
+   "to": "NOFLSH"
+  },
+  {
+   "from": "शून्य",
+   "to": "NULL"
+  },
+  {
+   "from": "orictxt247",
+   "to": "OPEN_MAX"
+  },
+  {
+   "from": "orictxt248",
+   "to": "OPOST"
+  },
+  {
+   "from": "orictxt249",
+   "to": "O_ACCMODE"
+  },
+  {
+   "from": "orictxt250",
+   "to": "O_APPEND"
+  },
+  {
+   "from": "orictxt251",
+   "to": "O_CREAT"
+  },
+  {
+   "from": "orictxt252",
+   "to": "O_EXCL"
+  },
+  {
+   "from": "orictxt253",
+   "to": "O_NOCTTY"
+  },
+  {
+   "from": "orictxt254",
+   "to": "O_NONBLOCK"
+  },
+  {
+   "from": "orictxt255",
+   "to": "O_RDONLY"
+  },
+  {
+   "from": "orictxt256",
+   "to": "O_RDWR"
+  },
+  {
+   "from": "orictxt257",
+   "to": "O_TRUNC"
+  },
+  {
+   "from": "orictxt258",
+   "to": "O_WRONLY"
+  },
+  {
+   "from": "orictxt259",
+   "to": "PARENB"
+  },
+  {
+   "from": "orictxt260",
+   "to": "PARMRK"
+  },
+  {
+   "from": "orictxt261",
+   "to": "PARODD"
+  },
+  {
+   "from": "orictxt262",
+   "to": "PATH_MAX"
+  },
+  {
+   "from": "orictxt263",
+   "to": "PIPE_BUF"
+  },
+  {
+   "from": "अक्रम_उच्च",
+   "to": "RAND_MAX"
+  },
+  {
+   "from": "orictxt265",
+   "to": "R_OK"
+  },
+  {
+   "from": "orictxt266",
+   "to": "SA_NOCLDSTOP"
+  },
+  {
+   "from": "च_अक्षर_उच्च",
+   "to": "SCHAR_MAX"
+  },
+  {
+   "from": "च_अक्षर_न्यून",
+   "to": "SCHAR_MIN"
+  },
+  {
+   "from": "प्रस्तुत_से",
+   "to": "SEEK_CUR"
+  },
+  {
+   "from": "अंत_से",
+   "to": "SEEK_END"
+  },
+  {
+   "from": "शुरू_से",
+   "to": "SEEK_SET"
+  },
+  {
+   "from": "लघु_उच्च",
+   "to": "SHRT_MAX"
+  },
+  {
+   "from": "लघु_न्यून",
+   "to": "SHRT_MIN"
+  },
+  {
+   "from": "संक_पात",
+   "to": "SIBGABRT"
+  },
+  {
+   "from": "orictxt275",
+   "to": "SIGARLM"
+  },
+  {
+   "from": "orictxt276",
+   "to": "SIGCHLD"
+  },
+  {
+   "from": "orictxt277",
+   "to": "SIGCONT"
+  },
+  {
+   "from": "संक_भ_त्रुटि",
+   "to": "SIGFPE"
+  },
+  {
+   "from": "orictxt279",
+   "to": "SIGHUP"
+  },
+  {
+   "from": "संक_अवैध",
+   "to": "SIGILL"
+  },
+  {
+   "from": "संक_विघ्न",
+   "to": "SIGINT"
+  },
+  {
+   "from": "orictxt282",
+   "to": "SIGKILL"
+  },
+  {
+   "from": "orictxt283",
+   "to": "SIGPIPE"
+  },
+  {
+   "from": "orictxt284",
+   "to": "SIGQUIT"
+  },
+  {
+   "from": "संक_अंश",
+   "to": "SIGSEGV"
+  },
+  {
+   "from": "orictxt286",
+   "to": "SIGSTOP"
+  },
+  {
+   "from": "संक_इति",
+   "to": "SIGTERM"
+  },
+  {
+   "from": "orictxt288",
+   "to": "SIGTSTP"
+  },
+  {
+   "from": "orictxt289",
+   "to": "SIGTTIN"
+  },
+  {
+   "from": "orictxt290",
+   "to": "SIGTTOU"
+  },
+  {
+   "from": "orictxt291",
+   "to": "SIGUSR1"
+  },
+  {
+   "from": "orictxt292",
+   "to": "SIGUSR2"
+  },
+  {
+   "from": "orictxt293",
+   "to": "SIG_BLOCK"
+  },
+  {
+   "from": "संक_पूर्व",
+   "to": "SIG_DFL"
+  },
+  {
+   "from": "संक_त्रुटि",
+   "to": "SIG_ERR"
+  },
+  {
+   "from": "संक_छोड़ो",
+   "to": "SIG_IGN"
+  },
+  {
+   "from": "orictxt297",
+   "to": "SIG_SETMASK"
+  },
+  {
+   "from": "orictxt298",
+   "to": "SIG_UNBLOCK"
+  },
+  {
+   "from": "orictxt299",
+   "to": "SSIZE_MAX"
+  },
+  {
+   "from": "orictxt300",
+   "to": "STDERR_FILENO"
+  },
+  {
+   "from": "orictxt301",
+   "to": "STDIN_FILENO"
+  },
+  {
+   "from": "orictxt302",
+   "to": "STDOUT_FILENO"
+  },
+  {
+   "from": "orictxt303",
+   "to": "STREAM_MAX"
+  },
+  {
+   "from": "orictxt304",
+   "to": "S_IRGRP"
+  },
+  {
+   "from": "orictxt305",
+   "to": "S_IROTH"
+  },
+  {
+   "from": "orictxt306",
+   "to": "S_IRUSR"
+  },
+  {
+   "from": "orictxt307",
+   "to": "S_IRWXG"
+  },
+  {
+   "from": "orictxt308",
+   "to": "S_IRWXO"
+  },
+  {
+   "from": "orictxt309",
+   "to": "S_IRWXU"
+  },
+  {
+   "from": "orictxt310",
+   "to": "S_ISBLK"
+  },
+  {
+   "from": "orictxt311",
+   "to": "S_ISCHR"
+  },
+  {
+   "from": "orictxt312",
+   "to": "S_ISDIR"
+  },
+  {
+   "from": "orictxt313",
+   "to": "S_ISFIFO"
+  },
+  {
+   "from": "orictxt314",
+   "to": "S_ISGID"
+  },
+  {
+   "from": "orictxt315",
+   "to": "S_ISREGSUID"
+  },
+  {
+   "from": "orictxt316",
+   "to": "S_IWGRP"
+  },
+  {
+   "from": "orictxt317",
+   "to": "S_IWOTH"
+  },
+  {
+   "from": "orictxt318",
+   "to": "S_IWUSR"
+  },
+  {
+   "from": "orictxt319",
+   "to": "S_IXGRP"
+  },
+  {
+   "from": "orictxt320",
+   "to": "S_IXOTH"
+  },
+  {
+   "from": "orictxt321",
+   "to": "S_IXUSR"
+  },
+  {
+   "from": "orictxt322",
+   "to": "ScreenMode"
+  },
+  {
+   "from": "orictxt323",
+   "to": "TCIFLUSH"
+  },
+  {
+   "from": "orictxt324",
+   "to": "TCIOFF"
+  },
+  {
+   "from": "orictxt325",
+   "to": "TCIOFLUSH"
+  },
+  {
+   "from": "orictxt326",
+   "to": "TCION"
+  },
+  {
+   "from": "orictxt327",
+   "to": "TCOFF"
+  },
+  {
+   "from": "orictxt328",
+   "to": "TCOFLUSH"
+  },
+  {
+   "from": "orictxt329",
+   "to": "TCOON"
+  },
+  {
+   "from": "orictxt330",
+   "to": "TCSADRAIN"
+  },
+  {
+   "from": "orictxt331",
+   "to": "TCSAFLUSH"
+  },
+  {
+   "from": "orictxt332",
+   "to": "TCSANOW"
+  },
+  {
+   "from": "क्षणिक_उच्च",
+   "to": "TMP_MAX"
+  },
+  {
+   "from": "orictxt334",
+   "to": "TOSTOP"
+  },
+  {
+   "from": "orictxt335",
+   "to": "TZNAME_MAX"
+  },
+  {
+   "from": "अच_अक्षर_उच्च",
+   "to": "UCHAR_MAX"
+  },
+  {
+   "from": "अच_पूर्णांक_उच्च",
+   "to": "UINT_MAX"
+  },
+  {
+   "from": "अच_दीर्घ_उच्च",
+   "to": "ULONG_MAX"
+  },
+  {
+   "from": "अच_लघु_उच्च",
+   "to": "USHRT_MAX"
+  },
+  {
+   "from": "orictxt340",
+   "to": "VEOF"
+  },
+  {
+   "from": "orictxt341",
+   "to": "VEOL"
+  },
+  {
+   "from": "orictxt342",
+   "to": "VERASE"
+  },
+  {
+   "from": "orictxt343",
+   "to": "VINTR"
+  },
+  {
+   "from": "orictxt344",
+   "to": "VKILL"
+  },
+  {
+   "from": "orictxt345",
+   "to": "VMIN"
+  },
+  {
+   "from": "orictxt346",
+   "to": "VQUIT"
+  },
+  {
+   "from": "orictxt347",
+   "to": "VSTART"
+  },
+  {
+   "from": "orictxt348",
+   "to": "VSTOP"
+  },
+  {
+   "from": "orictxt349",
+   "to": "VSUSP"
+  },
+  {
+   "from": "orictxt350",
+   "to": "VTIME"
+  },
+  {
+   "from": "orictxt351",
+   "to": "WEXITSTATUS"
+  },
+  {
+   "from": "orictxt352",
+   "to": "WIFEXITED"
+  },
+  {
+   "from": "orictxt353",
+   "to": "WIFSIGNALED"
+  },
+  {
+   "from": "orictxt354",
+   "to": "WIFSTOPPED"
+  },
+  {
+   "from": "orictxt355",
+   "to": "WNOHANG"
+  },
+  {
+   "from": "orictxt356",
+   "to": "WSTOPSIG"
+  },
+  {
+   "from": "orictxt357",
+   "to": "WTERMSIG"
+  },
+  {
+   "from": "orictxt358",
+   "to": "WUNTRACED"
+  },
+  {
+   "from": "orictxt359",
+   "to": "W_OK"
+  },
+  {
+   "from": "orictxt360",
+   "to": "X_OK"
+  },
+  {
+   "from": "orictxt361",
+   "to": "["
+  },
+  {
+   "from": "orictxt362",
+   "to": "[]"
+  },
+  {
+   "from": "orictxt363",
+   "to": "\\\\"
+  },
+  {
+   "from": "orictxt364",
+   "to": "\\\\\\"
+  },
+  {
+   "from": "orictxt365",
+   "to": "\\\\\\'"
+  },
+  {
+   "from": "orictxt366",
+   "to": "\\\\\\?"
+  },
+  {
+   "from": "orictxt367",
+   "to": "\\\\\\\\"
+  },
+  {
+   "from": "\\\\च",
+   "to": "\\\\a"
+  },
+  {
+   "from": "\\\\म",
+   "to": "\\\\b"
+  },
+  {
+   "from": "\\\\प",
+   "to": "\\\\f"
+  },
+  {
+   "from": "\\\\न",
+   "to": "\\\\n"
+  },
+  {
+   "from": "\\\\ल",
+   "to": "\\\\r"
+  },
+  {
+   "from": "\\\\ट",
+   "to": "\\\\t"
+  },
+  {
+   "from": "\\\\ख",
+   "to": "\\\\v"
+  },
+  {
+   "from": "\\\\ष",
+   "to": "\\\\x"
+  },
+  {
+   "from": "orictxt376",
+   "to": "]"
+  },
+  {
+   "from": "orictxt378",
+   "to": "^"
+  },
+  {
+   "from": "orictxt379",
+   "to": "^="
+  },
+  {
+   "from": "orictxt380",
+   "to": "_8087"
+  },
+  {
+   "from": "orictxt381",
+   "to": "_IOFBF"
+  },
+  {
+   "from": "orictxt382",
+   "to": "_IOLBF"
+  },
+  {
+   "from": "orictxt383",
+   "to": "_IONBF"
+  },
+  {
+   "from": "orictxt384",
+   "to": "_PC_CHOWN_RESTRICTED"
+  },
+  {
+   "from": "orictxt385",
+   "to": "_PC_MAX_CANON"
+  },
+  {
+   "from": "orictxt386",
+   "to": "_PC_MAX_INPUT"
+  },
+  {
+   "from": "orictxt387",
+   "to": "_PC_NAME_MAX"
+  },
+  {
+   "from": "orictxt388",
+   "to": "_PC_NO_TRUNC"
+  },
+  {
+   "from": "orictxt389",
+   "to": "_PC_PATH_MAX"
+  },
+  {
+   "from": "orictxt390",
+   "to": "_PC_PIPE_BUF"
+  },
+  {
+   "from": "orictxt391",
+   "to": "_PC_VDISABLE"
+  },
+  {
+   "from": "orictxt392",
+   "to": "_POSIX_ARG_MAX"
+  },
+  {
+   "from": "orictxt393",
+   "to": "_POSIX_CHILD_MAX"
+  },
+  {
+   "from": "orictxt394",
+   "to": "_POSIX_CHOWN_RESTRICTED"
+  },
+  {
+   "from": "orictxt395",
+   "to": "_POSIX_JOB_CONTROL"
+  },
+  {
+   "from": "orictxt396",
+   "to": "_POSIX_LINK_MAX"
+  },
+  {
+   "from": "orictxt397",
+   "to": "_POSIX_MAX_CANON"
+  },
+  {
+   "from": "orictxt398",
+   "to": "_POSIX_MAX_INPUT"
+  },
+  {
+   "from": "orictxt399",
+   "to": "_POSIX_NAME_MAX"
+  },
+  {
+   "from": "orictxt400",
+   "to": "_POSIX_NGROUPS_MAX"
+  },
+  {
+   "from": "orictxt401",
+   "to": "_POSIX_NO_TRUNC"
+  },
+  {
+   "from": "orictxt402",
+   "to": "_POSIX_OPEN_MAX"
+  },
+  {
+   "from": "orictxt403",
+   "to": "_POSIX_PATH_MAX"
+  },
+  {
+   "from": "orictxt404",
+   "to": "_POSIX_SAVED_IDS"
+  },
+  {
+   "from": "orictxt405",
+   "to": "_POSIX_SSIZE_MAX"
+  },
+  {
+   "from": "orictxt406",
+   "to": "_POSIX_STREAM_MAX"
+  },
+  {
+   "from": "orictxt407",
+   "to": "_POSIX_TZNAME_MAX"
+  },
+  {
+   "from": "orictxt408",
+   "to": "_POSIX_VDISABLE"
+  },
+  {
+   "from": "orictxt409",
+   "to": "_POSIX_VERSION"
+  },
+  {
+   "from": "orictxt410",
+   "to": "_SC_ARG_MAX"
+  },
+  {
+   "from": "orictxt411",
+   "to": "_SC_CHILD_MAX"
+  },
+  {
+   "from": "orictxt412",
+   "to": "_SC_CLK_TCK"
+  },
+  {
+   "from": "orictxt413",
+   "to": "_SC_JOB_CONTROL"
+  },
+  {
+   "from": "orictxt414",
+   "to": "_SC_NGROUPS_MAX"
+  },
+  {
+   "from": "orictxt415",
+   "to": "_SC_OPEN_MAX"
+  },
+  {
+   "from": "orictxt416",
+   "to": "_SC_SAVED_IDS"
+  },
+  {
+   "from": "orictxt417",
+   "to": "_SC_STREAM_MAX"
+  },
+  {
+   "from": "orictxt418",
+   "to": "_SC_TZNAME_MAX"
+  },
+  {
+   "from": "orictxt419",
+   "to": "_SC_VERSION"
+  },
+  {
+   "from": "__दिन__",
+   "to": "__DATE__"
+  },
+  {
+   "from": "__खाता__",
+   "to": "__FILE__"
+  },
+  {
+   "from": "orictxt422",
+   "to": "__FPCE_IEEE__"
+  },
+  {
+   "from": "orictxt423",
+   "to": "__FPCE__"
+  },
+  {
+   "from": "__पंक्ति__",
+   "to": "__LINE__"
+  },
+  {
+   "from": "__मानक__",
+   "to": "__STDC__"
+  },
+  {
+   "from": "__समय__",
+   "to": "__TIME__"
+  },
+  {
+   "from": "orictxt427",
+   "to": "_atold"
+  },
+  {
+   "from": "_निकास",
+   "to": "_exit"
+  },
+  {
+   "from": "orictxt429",
+   "to": "_stklen"
+  },
+  {
+   "from": "पात",
+   "to": "abort"
+  },
+  {
+   "from": "असल",
+   "to": "abs"
+  },
+  {
+   "from": "orictxt432",
+   "to": "access"
+  },
+  {
+   "from": "orictxt433",
+   "to": "acos"
+  },
+  {
+   "from": "orictxt434",
+   "to": "alarm"
+  },
+  {
+   "from": "orictxt435",
+   "to": "alarm"
+  },
+  {
+   "from": "orictxt436",
+   "to": "alloca"
+  },
+  {
+   "from": "समय_ठीक",
+   "to": "asctime"
+  },
+  {
+   "from": "orictxt438",
+   "to": "asctime"
+  },
+  {
+   "from": "orictxt439",
+   "to": "asin"
+  },
+  {
+   "from": "यंत्र",
+   "to": "asm"
+  },
+  {
+   "from": "निश्चित",
+   "to": "assert"
+  },
+  {
+   "from": "orictxt443",
+   "to": "atan"
+  },
+  {
+   "from": "orictxt444",
+   "to": "atan2"
+  },
+  {
+   "from": "निकास_पर",
+   "to": "atexit"
+  },
+  {
+   "from": "म_से_भ",
+   "to": "atof"
+  },
+  {
+   "from": "म_से_प",
+   "to": "atoi"
+  },
+  {
+   "from": "म_से_द",
+   "to": "atol"
+  },
+  {
+   "from": "स्वतः",
+   "to": "auto"
+  },
+  {
+   "from": "orictxt450",
+   "to": "basename"
+  },
+  {
+   "from": "अवरोध",
+   "to": "break"
+  },
+  {
+   "from": "orictxt452",
+   "to": "brk"
+  },
+  {
+   "from": "द्वा_खोज",
+   "to": "bsearch"
+  },
+  {
+   "from": "सुस्मृति",
+   "to": "calloc"
+  },
+  {
+   "from": "हाल",
+   "to": "case"
+  },
+  {
+   "from": "पकड़ो",
+   "to": "catch"
+  },
+  {
+   "from": "orictxt457",
+   "to": "cc_t"
+  },
+  {
+   "from": "उच्चमान",
+   "to": "ceil"
+  },
+  {
+   "from": "orictxt459",
+   "to": "cfgetispeed"
+  },
+  {
+   "from": "orictxt460",
+   "to": "cfgetospeed"
+  },
+  {
+   "from": "orictxt461",
+   "to": "cfsetispeed"
+  },
+  {
+   "from": "orictxt462",
+   "to": "cfsetospeed"
+  },
+  {
+   "from": "अक्षर",
+   "to": "char"
+  },
+  {
+   "from": "स_बदलो",
+   "to": "chdir"
+  },
+  {
+   "from": "orictxt465",
+   "to": "chmod"
+  },
+  {
+   "from": "orictxt466",
+   "to": "chown"
+  },
+  {
+   "from": "श्रेणी",
+   "to": "class"
+  },
+  {
+   "from": "साफ_त्रुटि",
+   "to": "clearerr"
+  },
+  {
+   "from": "घड़ी",
+   "to": "clock"
+  },
+  {
+   "from": "घड़ी_प्रकार",
+   "to": "clock_t"
+  },
+  {
+   "from": "बंद",
+   "to": "close"
+  },
+  {
+   "from": "बंद_सूची",
+   "to": "closedir"
+  },
+  {
+   "from": "स्थिर",
+   "to": "const"
+  },
+  {
+   "from": "जारी",
+   "to": "continue"
+  },
+  {
+   "from": "orictxt475",
+   "to": "cos"
+  },
+  {
+   "from": "orictxt476",
+   "to": "cosh"
+  },
+  {
+   "from": "orictxt477",
+   "to": "creat"
+  },
+  {
+   "from": "orictxt478",
+   "to": "crlf2nl"
+  },
+  {
+   "from": "orictxt479",
+   "to": "ctermid"
+  },
+  {
+   "from": "स_समय",
+   "to": "ctime"
+  },
+  {
+   "from": "orictxt481",
+   "to": "cuserid"
+  },
+  {
+   "from": "शेष",
+   "to": "default"
+  },
+  {
+   "from": "orictxt483",
+   "to": "defined"
+  },
+  {
+   "from": "मिटाओ",
+   "to": "delete"
+  },
+  {
+   "from": "orictxt486",
+   "to": "dev_t"
+  },
+  {
+   "from": "स_अंतर",
+   "to": "difftime"
+  },
+  {
+   "from": "स_नाम",
+   "to": "dirname"
+  },
+  {
+   "from": "भाग",
+   "to": "div"
+  },
+  {
+   "from": "भाग_प्रकार",
+   "to": "div_t"
+  },
+  {
+   "from": "करो",
+   "to": "do"
+  },
+  {
+   "from": "orictxt492",
+   "to": "dosmemget"
+  },
+  {
+   "from": "orictxt493",
+   "to": "dosmemput"
+  },
+  {
+   "from": "द्विगुन",
+   "to": "double"
+  },
+  {
+   "from": "orictxt495",
+   "to": "dup"
+  },
+  {
+   "from": "orictxt496",
+   "to": "dup2"
+  },
+  {
+   "from": "अन्यथा",
+   "to": "else"
+  },
+  {
+   "from": "क्रमागत",
+   "to": "enum"
+  },
+  {
+   "from": "त्रुटि_सं",
+   "to": "errno"
+  },
+  {
+   "from": "orictxt500",
+   "to": "execl"
+  },
+  {
+   "from": "orictxt501",
+   "to": "execle"
+  },
+  {
+   "from": "orictxt502",
+   "to": "execlp"
+  },
+  {
+   "from": "orictxt503",
+   "to": "execv"
+  },
+  {
+   "from": "orictxt504",
+   "to": "execve"
+  },
+  {
+   "from": "orictxt505",
+   "to": "execvp"
+  },
+  {
+   "from": "निकास",
+   "to": "exit"
+  },
+  {
+   "from": "orictxt507",
+   "to": "exp"
+  },
+  {
+   "from": "बाह्य",
+   "to": "extern"
+  },
+  {
+   "from": "भ_असल",
+   "to": "fabs"
+  },
+  {
+   "from": "orictxt510",
+   "to": "fcbt"
+  },
+  {
+   "from": "ख_बंद",
+   "to": "fclose"
+  },
+  {
+   "from": "orictxt512",
+   "to": "fcntl"
+  },
+  {
+   "from": "orictxt513",
+   "to": "fcntl"
+  },
+  {
+   "from": "orictxt514",
+   "to": "fdopen"
+  },
+  {
+   "from": "orictxt515",
+   "to": "feclearexcepts"
+  },
+  {
+   "from": "orictxt516",
+   "to": "fegetenv"
+  },
+  {
+   "from": "orictxt517",
+   "to": "fegetexcept"
+  },
+  {
+   "from": "orictxt518",
+   "to": "fegetprec"
+  },
+  {
+   "from": "orictxt519",
+   "to": "fegetround"
+  },
+  {
+   "from": "orictxt520",
+   "to": "fenv_t"
+  },
+  {
+   "from": "ख_पूर्ण",
+   "to": "feof"
+  },
+  {
+   "from": "orictxt522",
+   "to": "feprocentry"
+  },
+  {
+   "from": "orictxt523",
+   "to": "feprocexit"
+  },
+  {
+   "from": "orictxt524",
+   "to": "feraiseexcept"
+  },
+  {
+   "from": "ख_त्रुटि",
+   "to": "ferror"
+  },
+  {
+   "from": "orictxt526",
+   "to": "fesetenv"
+  },
+  {
+   "from": "orictxt527",
+   "to": "fesetexcept"
+  },
+  {
+   "from": "orictxt528",
+   "to": "fesetprec"
+  },
+  {
+   "from": "orictxt529",
+   "to": "fesetround"
+  },
+  {
+   "from": "orictxt530",
+   "to": "fetestexcept"
+  },
+  {
+   "from": "orictxt531",
+   "to": "fexcept_t"
+  },
+  {
+   "from": "ख_साफ",
+   "to": "fflush"
+  },
+  {
+   "from": "ख_अक्षर_लो",
+   "to": "fgetc"
+  },
+  {
+   "from": "ख_स्थान_लो",
+   "to": "fgetpos"
+  },
+  {
+   "from": "ख_माला_लो",
+   "to": "fgets"
+  },
+  {
+   "from": "orictxt536",
+   "to": "fileno"
+  },
+  {
+   "from": "भग्न",
+   "to": "float"
+  },
+  {
+   "from": "न्यूनमान",
+   "to": "floor"
+  },
+  {
+   "from": "भ_शेष",
+   "to": "fmod"
+  },
+  {
+   "from": "ख_खोलो",
+   "to": "fopen"
+  },
+  {
+   "from": "क्रम",
+   "to": "for"
+  },
+  {
+   "from": "विभाजन",
+   "to": "fork"
+  },
+  {
+   "from": "orictxt543",
+   "to": "fpathconf"
+  },
+  {
+   "from": "orictxt544",
+   "to": "fpclassify"
+  },
+  {
+   "from": "ख_स्थान_प्रकार",
+   "to": "fpos_t"
+  },
+  {
+   "from": "ख_लिखो",
+   "to": "fprintf"
+  },
+  {
+   "from": "ख_अक्षर_दो",
+   "to": "fputc"
+  },
+  {
+   "from": "ख_माला_दो",
+   "to": "fputs"
+  },
+  {
+   "from": "ख_पढ़ो",
+   "to": "fread"
+  },
+  {
+   "from": "मुक्त",
+   "to": "free"
+  },
+  {
+   "from": "ख_व_खोलो",
+   "to": "freopen"
+  },
+  {
+   "from": "orictxt553",
+   "to": "frexp"
+  },
+  {
+   "from": "मित्र",
+   "to": "friend"
+  },
+  {
+   "from": "ख_पूछो",
+   "to": "fscanf"
+  },
+  {
+   "from": "ख_जाओ",
+   "to": "fseek"
+  },
+  {
+   "from": "ख_स्थान_दो",
+   "to": "fsetpos"
+  },
+  {
+   "from": "ख_स्थिति",
+   "to": "fstat"
+  },
+  {
+   "from": "orictxt559",
+   "to": "fsync"
+  },
+  {
+   "from": "ख_बताओ",
+   "to": "ftell"
+  },
+  {
+   "from": "ख_डालो",
+   "to": "fwrite"
+  },
+  {
+   "from": "अ_लो",
+   "to": "getc"
+  },
+  {
+   "from": "orictxt565",
+   "to": "getcbrk"
+  },
+  {
+   "from": "अक्षर_लो",
+   "to": "getchar"
+  },
+  {
+   "from": "orictxt568",
+   "to": "getcwd"
+  },
+  {
+   "from": "orictxt569",
+   "to": "getegid"
+  },
+  {
+   "from": "दो_पर्या",
+   "to": "getenv"
+  },
+  {
+   "from": "orictxt571",
+   "to": "geteuid"
+  },
+  {
+   "from": "orictxt572",
+   "to": "getgid"
+  },
+  {
+   "from": "orictxt573",
+   "to": "getgrgid"
+  },
+  {
+   "from": "orictxt574",
+   "to": "getgrnam"
+  },
+  {
+   "from": "orictxt575",
+   "to": "getgroups"
+  },
+  {
+   "from": "orictxt576",
+   "to": "gethostname"
+  },
+  {
+   "from": "orictxt577",
+   "to": "getkey"
+  },
+  {
+   "from": "orictxt578",
+   "to": "getlogin"
+  },
+  {
+   "from": "orictxt579",
+   "to": "getpgrp"
+  },
+  {
+   "from": "orictxt580",
+   "to": "getpid"
+  },
+  {
+   "from": "orictxt581",
+   "to": "getppid"
+  },
+  {
+   "from": "orictxt582",
+   "to": "getpwnam"
+  },
+  {
+   "from": "orictxt583",
+   "to": "getpwuid"
+  },
+  {
+   "from": "माला_लो",
+   "to": "gets"
+  },
+  {
+   "from": "orictxt585",
+   "to": "getuid"
+  },
+  {
+   "from": "orictxt586",
+   "to": "gid_t"
+  },
+  {
+   "from": "स_जमट",
+   "to": "gmtime"
+  },
+  {
+   "from": "जाओ",
+   "to": "goto"
+  },
+  {
+   "from": "अगर",
+   "to": "if"
+  },
+  {
+   "from": "अंतरभूत",
+   "to": "inline"
+  },
+  {
+   "from": "orictxt591",
+   "to": "ino_t"
+  },
+  {
+   "from": "पूर्णांक",
+   "to": "int"
+  },
+  {
+   "from": "है_अक्षर_अंक",
+   "to": "isalnum"
+  },
+  {
+   "from": "है_अक्षर",
+   "to": "isalpha"
+  },
+  {
+   "from": "orictxt595",
+   "to": "isatty"
+  },
+  {
+   "from": "है_नियंत्रण",
+   "to": "iscntrl"
+  },
+  {
+   "from": "है_अंक",
+   "to": "isdigit"
+  },
+  {
+   "from": "है_सीमित",
+   "to": "isfinite"
+  },
+  {
+   "from": "है_चित्र",
+   "to": "isgraph"
+  },
+  {
+   "from": "है_छोटा",
+   "to": "islower"
+  },
+  {
+   "from": "orictxt601",
+   "to": "isnan"
+  },
+  {
+   "from": "orictxt602",
+   "to": "isnormal"
+  },
+  {
+   "from": "है_अष्टक",
+   "to": "isodigit"
+  },
+  {
+   "from": "है_छाप",
+   "to": "isprint"
+  },
+  {
+   "from": "है_विराम",
+   "to": "ispunct"
+  },
+  {
+   "from": "है_खाली",
+   "to": "isspace"
+  },
+  {
+   "from": "है_बड़ा",
+   "to": "isupper"
+  },
+  {
+   "from": "है_षष्ठादशक",
+   "to": "isxdigit"
+  },
+  {
+   "from": "orictxt609",
+   "to": "itoa"
+  },
+  {
+   "from": "लाँघ_बफ",
+   "to": "jmp_buf"
+  },
+  {
+   "from": "समाप्त",
+   "to": "kill"
+  },
+  {
+   "from": "द_असल",
+   "to": "labs"
+  },
+  {
+   "from": "स्था_बदल",
+   "to": "lconv"
+  },
+  {
+   "from": "orictxt615",
+   "to": "ldexp"
+  },
+  {
+   "from": "द_भाग",
+   "to": "ldiv"
+  },
+  {
+   "from": "द_भाग_प्रकार",
+   "to": "ldiv_t"
+  },
+  {
+   "from": "orictxt618",
+   "to": "link"
+  },
+  {
+   "from": "क्षेत्र_बदलो",
+   "to": "localeconv"
+  },
+  {
+   "from": "स_स्थानीय",
+   "to": "localtime"
+  },
+  {
+   "from": "orictxt621",
+   "to": "log"
+  },
+  {
+   "from": "orictxt622",
+   "to": "log10"
+  },
+  {
+   "from": "orictxt623",
+   "to": "log2"
+  },
+  {
+   "from": "दीर्घ",
+   "to": "long"
+  },
+  {
+   "from": "दीर्घ_लाँघ",
+   "to": "longjmp"
+  },
+  {
+   "from": "orictxt626",
+   "to": "lseek"
+  },
+  {
+   "from": "दो_स्मृति",
+   "to": "malloc"
+  },
+  {
+   "from": "orictxt628",
+   "to": "mblen"
+  },
+  {
+   "from": "orictxt629",
+   "to": "mbstowcs"
+  },
+  {
+   "from": "orictxt630",
+   "to": "mbtowc"
+  },
+  {
+   "from": "स_प्रथम",
+   "to": "memchr"
+  },
+  {
+   "from": "स_भेद",
+   "to": "memcmp"
+  },
+  {
+   "from": "स_नकल",
+   "to": "memcpy"
+  },
+  {
+   "from": "स_हटाओ",
+   "to": "memmove"
+  },
+  {
+   "from": "स_रखो",
+   "to": "memset"
+  },
+  {
+   "from": "सूची_गढ़ो",
+   "to": "mkdir"
+  },
+  {
+   "from": "orictxt637",
+   "to": "mkfifo"
+  },
+  {
+   "from": "स_गढ़ो",
+   "to": "mktime"
+  },
+  {
+   "from": "orictxt639",
+   "to": "mode_t"
+  },
+  {
+   "from": "orictxt640",
+   "to": "modf"
+  },
+  {
+   "from": "नया",
+   "to": "new"
+  },
+  {
+   "from": "orictxt642",
+   "to": "nlink_t"
+  },
+  {
+   "from": "orictxt643",
+   "to": "ntohl"
+  },
+  {
+   "from": "orictxt644",
+   "to": "ntohs"
+  },
+  {
+   "from": "orictxt645",
+   "to": "off_t"
+  },
+  {
+   "from": "दुरत्व",
+   "to": "offsetof"
+  },
+  {
+   "from": "खोलो",
+   "to": "open"
+  },
+  {
+   "from": "सूची_खोलो",
+   "to": "opendir"
+  },
+  {
+   "from": "चालक",
+   "to": "operator"
+  },
+  {
+   "from": "orictxt650",
+   "to": "passwd"
+  },
+  {
+   "from": "छोड़ो",
+   "to": "pause"
+  },
+  {
+   "from": "orictxt652",
+   "to": "pclose"
+  },
+  {
+   "from": "लिखो_त्रुटि",
+   "to": "perror"
+  },
+  {
+   "from": "orictxt654",
+   "to": "pid_t"
+  },
+  {
+   "from": "orictxt655",
+   "to": "pipe"
+  },
+  {
+   "from": "orictxt656",
+   "to": "popen"
+  },
+  {
+   "from": "घात",
+   "to": "pow"
+  },
+  {
+   "from": "orictxt658",
+   "to": "pow2"
+  },
+  {
+   "from": "म_लिखो",
+   "to": "printf"
+  },
+  {
+   "from": "निजी",
+   "to": "private"
+  },
+  {
+   "from": "रक्षित",
+   "to": "protected"
+  },
+  {
+   "from": "orictxt662",
+   "to": "psignal"
+  },
+  {
+   "from": "सूचक_भेद_प्रकार",
+   "to": "ptrdiff_t"
+  },
+  {
+   "from": "खुला",
+   "to": "public"
+  },
+  {
+   "from": "अ_दो",
+   "to": "putc"
+  },
+  {
+   "from": "अक्षर_दो",
+   "to": "putchar"
+  },
+  {
+   "from": "माला_दो",
+   "to": "puts"
+  },
+  {
+   "from": "क्विक",
+   "to": "qsort"
+  },
+  {
+   "from": "उठाओ",
+   "to": "raise"
+  },
+  {
+   "from": "अक्रम",
+   "to": "rand"
+  },
+  {
+   "from": "orictxt674",
+   "to": "rand48"
+  },
+  {
+   "from": "पढ़ो",
+   "to": "read"
+  },
+  {
+   "from": "सूची_पढ़ो",
+   "to": "readdir"
+  },
+  {
+   "from": "पुनः_स्मृति",
+   "to": "realloc"
+  },
+  {
+   "from": "रेजिस्टर",
+   "to": "register"
+  },
+  {
+   "from": "हटाओ",
+   "to": "remove"
+  },
+  {
+   "from": "नाम",
+   "to": "rename"
+  },
+  {
+   "from": "वापस",
+   "to": "return"
+  },
+  {
+   "from": "शुरुआत",
+   "to": "rewind"
+  },
+  {
+   "from": "सूची_शुरु",
+   "to": "rewinddir"
+  },
+  {
+   "from": "सूची_हटाओ",
+   "to": "rmdir"
+  },
+  {
+   "from": "orictxt687",
+   "to": "run_child"
+  },
+  {
+   "from": "म_पूछो",
+   "to": "scanf"
+  },
+  {
+   "from": "रखो_बफ",
+   "to": "setbuf"
+  },
+  {
+   "from": "orictxt690",
+   "to": "setenv"
+  },
+  {
+   "from": "orictxt691",
+   "to": "setgid"
+  },
+  {
+   "from": "बनाओ_लाँघ",
+   "to": "setjmp"
+  },
+  {
+   "from": "रखो_क्षेत्र",
+   "to": "setlocale"
+  },
+  {
+   "from": "orictxt694",
+   "to": "setpgid"
+  },
+  {
+   "from": "orictxt695",
+   "to": "setsid"
+  },
+  {
+   "from": "orictxt696",
+   "to": "setuid"
+  },
+  {
+   "from": "रखो_भबफ",
+   "to": "setvbuf"
+  },
+  {
+   "from": "लघु",
+   "to": "short"
+  },
+  {
+   "from": "संक_पूर्ण_प्रकार",
+   "to": "sig_atomic_t"
+  },
+  {
+   "from": "orictxt700",
+   "to": "sigaction"
+  },
+  {
+   "from": "orictxt702",
+   "to": "sigaddset"
+  },
+  {
+   "from": "orictxt703",
+   "to": "sigemptyset"
+  },
+  {
+   "from": "orictxt704",
+   "to": "sigfillset"
+  },
+  {
+   "from": "orictxt705",
+   "to": "sigismember"
+  },
+  {
+   "from": "orictxt706",
+   "to": "sigjmp_buf"
+  },
+  {
+   "from": "orictxt707",
+   "to": "siglongjmp"
+  },
+  {
+   "from": "संकेत",
+   "to": "signal"
+  },
+  {
+   "from": "चिन्हित",
+   "to": "signed"
+  },
+  {
+   "from": "संक_बाकी",
+   "to": "sigpending"
+  },
+  {
+   "from": "orictxt711",
+   "to": "sigprocmask"
+  },
+  {
+   "from": "orictxt712",
+   "to": "sigset_t"
+  },
+  {
+   "from": "orictxt713",
+   "to": "sigsetjmp"
+  },
+  {
+   "from": "संक_रोको",
+   "to": "sigsuspend"
+  },
+  {
+   "from": "orictxt715",
+   "to": "sin"
+  },
+  {
+   "from": "orictxt716",
+   "to": "sinh"
+  },
+  {
+   "from": "माप_प्रकार",
+   "to": "size_t"
+  },
+  {
+   "from": "माप",
+   "to": "sizeof"
+  },
+  {
+   "from": "orictxt719",
+   "to": "sleep"
+  },
+  {
+   "from": "orictxt720",
+   "to": "speed_t"
+  },
+  {
+   "from": "प्र_लिखो",
+   "to": "sprintf"
+  },
+  {
+   "from": "वर्ग_मूल",
+   "to": "sqrt"
+  },
+  {
+   "from": "बेक्रम",
+   "to": "srand"
+  },
+  {
+   "from": "माला_पूछो",
+   "to": "sscanf"
+  },
+  {
+   "from": "orictxt725",
+   "to": "ssize_t"
+  },
+  {
+   "from": "orictxt726",
+   "to": "stackavail"
+  },
+  {
+   "from": "orictxt727",
+   "to": "stat"
+  },
+  {
+   "from": "orictxt728",
+   "to": "stat"
+  },
+  {
+   "from": "orictxt729",
+   "to": "statfs"
+  },
+  {
+   "from": "अटल",
+   "to": "static"
+  },
+  {
+   "from": "मानक_त्रुटि",
+   "to": "stderr"
+  },
+  {
+   "from": "मानक_निवेश",
+   "to": "stdin"
+  },
+  {
+   "from": "मानक_निकास",
+   "to": "stdout"
+  },
+  {
+   "from": "orictxt734",
+   "to": "stkcoll"
+  },
+  {
+   "from": "म_जोड़ो",
+   "to": "strcat"
+  },
+  {
+   "from": "म_अक्षर",
+   "to": "strchr"
+  },
+  {
+   "from": "म_भेद",
+   "to": "strcmp"
+  },
+  {
+   "from": "orictxt738",
+   "to": "strcoll"
+  },
+  {
+   "from": "म_नकल",
+   "to": "strcpy"
+  },
+  {
+   "from": "म_खोज",
+   "to": "strcspn"
+  },
+  {
+   "from": "म_त्रुटि",
+   "to": "strerror"
+  },
+  {
+   "from": "स_माला",
+   "to": "strftime"
+  },
+  {
+   "from": "म_माप",
+   "to": "strlen"
+  },
+  {
+   "from": "म_जोड़न",
+   "to": "strncat"
+  },
+  {
+   "from": "म_भेदन",
+   "to": "strncmp"
+  },
+  {
+   "from": "म_नकलन",
+   "to": "strncpy"
+  },
+  {
+   "from": "orictxt747",
+   "to": "strpbrk"
+  },
+  {
+   "from": "म_खोजप",
+   "to": "strrchr"
+  },
+  {
+   "from": "orictxt749",
+   "to": "strsep"
+  },
+  {
+   "from": "म_अखोज",
+   "to": "strspn"
+  },
+  {
+   "from": "म_माला",
+   "to": "strstr"
+  },
+  {
+   "from": "म_से_भग्न",
+   "to": "strtod"
+  },
+  {
+   "from": "म_मोहर",
+   "to": "strtok"
+  },
+  {
+   "from": "म_से_दीर्घ",
+   "to": "strtol"
+  },
+  {
+   "from": "म_से_अदीर्घ",
+   "to": "strtoul"
+  },
+  {
+   "from": "काष्ठा",
+   "to": "struct"
+  },
+  {
+   "from": "orictxt763",
+   "to": "strxfrm"
+  },
+  {
+   "from": "चयन",
+   "to": "switch"
+  },
+  {
+   "from": "orictxt765",
+   "to": "sync"
+  },
+  {
+   "from": "orictxt766",
+   "to": "sys_errlist"
+  },
+  {
+   "from": "orictxt767",
+   "to": "sys_nerr"
+  },
+  {
+   "from": "orictxt768",
+   "to": "sysconf"
+  },
+  {
+   "from": "प्रणाली",
+   "to": "system"
+  },
+  {
+   "from": "orictxt770",
+   "to": "tan"
+  },
+  {
+   "from": "orictxt771",
+   "to": "tanh"
+  },
+  {
+   "from": "orictxt772",
+   "to": "tcdrain"
+  },
+  {
+   "from": "orictxt773",
+   "to": "tcflag_t"
+  },
+  {
+   "from": "orictxt774",
+   "to": "tcflow"
+  },
+  {
+   "from": "orictxt775",
+   "to": "tcflush"
+  },
+  {
+   "from": "orictxt776",
+   "to": "tcgetattr"
+  },
+  {
+   "from": "orictxt777",
+   "to": "tcgetpgrp"
+  },
+  {
+   "from": "orictxt778",
+   "to": "tcsendbreak"
+  },
+  {
+   "from": "orictxt779",
+   "to": "tcsetattr"
+  },
+  {
+   "from": "orictxt780",
+   "to": "tcsetpgrp"
+  },
+  {
+   "from": "ढाँचा",
+   "to": "template"
+  },
+  {
+   "from": "orictxt782",
+   "to": "tempnam"
+  },
+  {
+   "from": "orictxt783",
+   "to": "terminate"
+  },
+  {
+   "from": "orictxt784",
+   "to": "termios"
+  },
+  {
+   "from": "यह",
+   "to": "this"
+  },
+  {
+   "from": "फेंको",
+   "to": "throw"
+  },
+  {
+   "from": "समय",
+   "to": "time"
+  },
+  {
+   "from": "समय_प्रकार",
+   "to": "time_t"
+  },
+  {
+   "from": "बार",
+   "to": "times"
+  },
+  {
+   "from": "पंचांग",
+   "to": "tm"
+  },
+  {
+   "from": "क्षणिक_ख",
+   "to": "tmpfile"
+  },
+  {
+   "from": "क्षणिक",
+   "to": "tmpnam"
+  },
+  {
+   "from": "छोटे",
+   "to": "tolower"
+  },
+  {
+   "from": "बड़े",
+   "to": "toupper"
+  },
+  {
+   "from": "प्रयास",
+   "to": "try"
+  },
+  {
+   "from": "orictxt796",
+   "to": "ttyname"
+  },
+  {
+   "from": "प्रकार",
+   "to": "typedef"
+  },
+  {
+   "from": "orictxt798",
+   "to": "tzset"
+  },
+  {
+   "from": "orictxt799",
+   "to": "uid_t"
+  },
+  {
+   "from": "orictxt800",
+   "to": "umask"
+  },
+  {
+   "from": "orictxt801",
+   "to": "uname"
+  },
+  {
+   "from": "orictxt802",
+   "to": "unexpected"
+  },
+  {
+   "from": "अक्षर_वापस",
+   "to": "ungetc"
+  },
+  {
+   "from": "जोड़",
+   "to": "union"
+  },
+  {
+   "from": "orictxt805",
+   "to": "unlink"
+  },
+  {
+   "from": "अचिन्हित",
+   "to": "unsigned"
+  },
+  {
+   "from": "orictxt807",
+   "to": "utime"
+  },
+  {
+   "from": "orictxt808",
+   "to": "utsname"
+  },
+  {
+   "from": "बहु_तर्क",
+   "to": "va_arg"
+  },
+  {
+   "from": "बहु_पूर्ण",
+   "to": "va_end"
+  },
+  {
+   "from": "बहु_सूची",
+   "to": "va_list"
+  },
+  {
+   "from": "बहु_शुरू",
+   "to": "va_start"
+  },
+  {
+   "from": "भख_लिखो",
+   "to": "vfprintf"
+  },
+  {
+   "from": "भव",
+   "to": "virtual"
+  },
+  {
+   "from": "व्योम",
+   "to": "void"
+  },
+  {
+   "from": "अस्थिर",
+   "to": "volatile"
+  },
+  {
+   "from": "भ_लिखो",
+   "to": "vprintf"
+  },
+  {
+   "from": "भम_लिखो",
+   "to": "vsprintf"
+  },
+  {
+   "from": "रुको",
+   "to": "wait"
+  },
+  {
+   "from": "orictxt822",
+   "to": "waitpid"
+  },
+  {
+   "from": "ब_अक्षर_प्रकार",
+   "to": "wchar_t"
+  },
+  {
+   "from": "orictxt824",
+   "to": "wcstombs"
+  },
+  {
+   "from": "orictxt825",
+   "to": "wctomb"
+  },
+  {
+   "from": "जबतक",
+   "to": "while"
+  },
+  {
+   "from": "orictxt827",
+   "to": "wild"
+  },
+  {
+   "from": "ग_लिखो",
+   "to": "write"
+  },
+  {
+   "from": "पनप्रवाह\\.स",
+   "to": "iostream.h"
+  },
+  {
+   "from": "पनप्रवाह_स",
+   "to": "iostream"
+  },
+  {
+   "from": "पन_प्रवाह",
+   "to": "iostream"
+  },
+  {
+   "from": "अ_बाहर",
+   "to": "cout"
+  },
+  {
+   "from": "अ_अंदर",
+   "to": "cin"
+  },
+  {
+   "from": "डेसी",
+   "to": "dec"
+  },
+  {
+   "from": "षष्ठ",
+   "to": "hex"
+  },
+  {
+   "from": "अष्ट",
+   "to": "oct"
+  },
+  {
+   "from": "खाली",
+   "to": "ws"
+  },
+  {
+   "from": "प_पूर्ण",
+   "to": "endl"
+  },
+  {
+   "from": "म_पूर्ण",
+   "to": "ends"
+  },
+  {
+   "from": "सफाई",
+   "to": "flush"
+  },
+  {
+   "from": "पुनः_पन_झंडे",
+   "to": "resetiosflags"
+  },
+  {
+   "from": "रखो_आधार",
+   "to": "setbase"
+  },
+  {
+   "from": "रखो_भरो",
+   "to": "setfill"
+  },
+  {
+   "from": "रखो_पन_झंडे",
+   "to": "setiosflags"
+  },
+  {
+   "from": "रखो_सटीक",
+   "to": "setprecision"
+  },
+  {
+   "from": "रखो_चौड़ाई",
+   "to": "setw"
+  },
+  {
+   "from": "पनप",
+   "to": "ios"
+  },
+  {
+   "from": "छोड़ो_खाली",
+   "to": "skipws"
+  },
+  {
+   "from": "बाँए",
+   "to": "left"
+  },
+  {
+   "from": "दाँए",
+   "to": "right"
+  },
+  {
+   "from": "वैज्ञानिक",
+   "to": "scientific"
+  },
+  {
+   "from": "जड़",
+   "to": "fixed"
+  },
+  {
+   "from": "बड़ा",
+   "to": "uppercase"
+  },
+  {
+   "from": "लिखो_आधार",
+   "to": "showbase"
+  },
+  {
+   "from": "लिखो_बिंदु",
+   "to": "showpoint"
+  },
+  {
+   "from": "लिखो_चिन्ह",
+   "to": "showpos"
+  },
+  {
+   "from": "ब_प्रवाह",
+   "to": "ostream"
+  },
+  {
+   "from": "अ_प्रवाह",
+   "to": "istream"
+  },
+  {
+   "from": "खप्रवाह\\.स",
+   "to": "fstream.h"
+  },
+  {
+   "from": "ख_प्रवाह",
+   "to": "fstream"
+  },
+  {
+   "from": "अख_प्रवाह",
+   "to": "ifstream"
+  },
+  {
+   "from": "म_लो",
+   "to": "ins"
+  },
+  {
+   "from": "नत्थी",
+   "to": "app"
+  },
+  {
+   "from": "अंत_पर",
+   "to": "ate"
+  },
+  {
+   "from": "न_नया",
+   "to": "nocreate"
+  },
+  {
+   "from": "न_प्रति",
+   "to": "noreplace"
+  },
+  {
+   "from": "छाँटो",
+   "to": "trunc"
+  },
+  {
+   "from": "बख_प्रवाह",
+   "to": "ofstream"
+  },
+  {
+   "from": "म_दो",
+   "to": "outs"
+  },
+  {
+   "from": "अ_त्रुटि",
+   "to": "cerr"
+  },
+  {
+   "from": "लो",
+   "to": "get"
+  },
+  {
+   "from": "दो",
+   "to": "put"
+  },
+  {
+   "from": "ग_स्थान",
+   "to": "seekg"
+  },
+  {
+   "from": "हार",
+   "to": "fail"
+  },
+  {
+   "from": "खप",
+   "to": "eof"
+  },
+  {
+   "from": "सफा",
+   "to": "clear"
+  },
+  {
+   "from": "बुरा",
+   "to": "bad"
+  },
+  {
+   "from": "अच्छा",
+   "to": "good"
+  },
+  {
+   "from": "मप्रवाह\\.स",
+   "to": "strstream.h"
+  },
+  {
+   "from": "मप्रवाह_स",
+   "to": "sstream"
+  },
+  {
+   "from": "म_प्रवाह",
+   "to": "strstream"
+  },
+  {
+   "from": "बम_प्रवाह",
+   "to": "ostrstream"
+  },
+  {
+   "from": "अम_प्रवाह",
+   "to": "istrstream"
+  },
+  {
+   "from": "लो_पंक्ति",
+   "to": "getline"
+  },
+  {
+   "from": "orictxt883",
+   "to": "read"
+  },
+  {
+   "from": "orictxt884",
+   "to": "write"
+  },
+  {
+   "from": "द्विग",
+   "to": "binary"
+  },
+  {
+   "from": "प_स्थान",
+   "to": "seekp"
+  },
+  {
+   "from": "मानकपन",
+   "to": "stdio"
+  },
+  {
+   "from": "समय_लो",
+   "to": "gettime"
+  },
+  {
+   "from": "समय_रखो",
+   "to": "settime"
+  }
+ ]
+}

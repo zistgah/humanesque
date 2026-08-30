@@ -1,0 +1,409 @@
+{
+ "target": "basic",
+ "shaili": "praatha",
+ "host": "BASIC",
+ "pipeline": [
+  "self"
+ ],
+ "source": "retrieved/legacy/Hindawi/praatha/h2b.uhin",
+ "invented": false,
+ "extracted_at_rules": 99,
+ "rules": [
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "टिप",
+   "to": "REM"
+  },
+  {
+   "from": "साफ",
+   "to": "CLS"
+  },
+  {
+   "from": "स्थान",
+   "to": "LOCATE"
+  },
+  {
+   "from": "लिखो",
+   "to": "PRINT"
+  },
+  {
+   "from": "पूछो",
+   "to": "INPUT"
+  },
+  {
+   "from": "रंग",
+   "to": "COLOR"
+  },
+  {
+   "from": "रंगकोष",
+   "to": "PALETTE"
+  },
+  {
+   "from": "चित्र_लिखो",
+   "to": "XTEXT"
+  },
+  {
+   "from": "दिनांक",
+   "to": "DATE"
+  },
+  {
+   "from": "समय",
+   "to": "TIME"
+  },
+  {
+   "from": "खाली",
+   "to": "SPACE"
+  },
+  {
+   "from": "बीच",
+   "to": "MID"
+  },
+  {
+   "from": "पूर्व",
+   "to": "LEFT"
+  },
+  {
+   "from": "अंत",
+   "to": "RIGHT"
+  },
+  {
+   "from": "माला",
+   "to": "STRING"
+  },
+  {
+   "from": "अंक_माला",
+   "to": "STR"
+  },
+  {
+   "from": "लिपी",
+   "to": "CHR"
+  },
+  {
+   "from": "बड़े",
+   "to": "UCASE"
+  },
+  {
+   "from": "छोटे",
+   "to": "LCASE"
+  },
+  {
+   "from": "पूर्वक्षय",
+   "to": "LTRIM"
+  },
+  {
+   "from": "अंतक्षय",
+   "to": "RTRIM"
+  },
+  {
+   "from": "अंश",
+   "to": "INSTR"
+  },
+  {
+   "from": "इस",
+   "to": "ASC"
+  },
+  {
+   "from": "मान",
+   "to": "VAL"
+  },
+  {
+   "from": "माप",
+   "to": "LEN"
+  },
+  {
+   "from": "षष्ठादशक",
+   "to": "HEX"
+  },
+  {
+   "from": "आष्टक",
+   "to": "OCT"
+  },
+  {
+   "from": "च_दबाया",
+   "to": "INKEY"
+  },
+  {
+   "from": "समयक",
+   "to": "TIMER"
+  },
+  {
+   "from": "अक्रम_क्रिया",
+   "to": "RANDOMIZE"
+  },
+  {
+   "from": "मानो",
+   "to": "LET"
+  },
+  {
+   "from": "आयाम",
+   "to": "DIM"
+  },
+  {
+   "from": "सार्व",
+   "to": "SHARED"
+  },
+  {
+   "from": "स्थिर",
+   "to": "CONST"
+  },
+  {
+   "from": "अगर",
+   "to": "IF"
+  },
+  {
+   "from": "है",
+   "to": "THEN"
+  },
+  {
+   "from": "हो",
+   "to": "THEN"
+  },
+  {
+   "from": "अन्यथा",
+   "to": "ELSE"
+  },
+  {
+   "from": "क्रम",
+   "to": "FOR"
+  },
+  {
+   "from": "से",
+   "to": "TO"
+  },
+  {
+   "from": "गति",
+   "to": "STEP"
+  },
+  {
+   "from": "क्रमान्त",
+   "to": "NEXT"
+  },
+  {
+   "from": "करो",
+   "to": "DO"
+  },
+  {
+   "from": "फिर",
+   "to": "LOOP"
+  },
+  {
+   "from": "जब",
+   "to": "WHILE"
+  },
+  {
+   "from": "तब",
+   "to": "WEND"
+  },
+  {
+   "from": "खोलो",
+   "to": "OPEN"
+  },
+  {
+   "from": "हेतु",
+   "to": "FOR"
+  },
+  {
+   "from": "पाठ",
+   "to": "INPUT"
+  },
+  {
+   "from": "लेखन",
+   "to": "OUTPUT"
+  },
+  {
+   "from": "नत्थी",
+   "to": "APPEND"
+  },
+  {
+   "from": "पंथ",
+   "to": "AS"
+  },
+  {
+   "from": "बंद",
+   "to": "CLOSE"
+  },
+  {
+   "from": "ख_प",
+   "to": "EOF"
+  },
+  {
+   "from": "पूर्वासित",
+   "to": "EXISTS"
+  },
+  {
+   "from": "ख_लिखो",
+   "to": "PRINT"
+  },
+  {
+   "from": "ख_पढ़ो",
+   "to": "LINE INPUT"
+  },
+  {
+   "from": "ख_शब्द",
+   "to": "INPUT"
+  },
+  {
+   "from": "समाप्त",
+   "to": "END"
+  },
+  {
+   "from": "अवकाश",
+   "to": "SHELL"
+  },
+  {
+   "from": "अगला",
+   "to": "GOTO"
+  },
+  {
+   "from": "जाओ",
+   "to": "GOSUB"
+  },
+  {
+   "from": "वापस",
+   "to": "RETURN"
+  },
+  {
+   "from": "क्रिया",
+   "to": "FUNCTION"
+  },
+  {
+   "from": "अणु",
+   "to": "SUB"
+  },
+  {
+   "from": "निकास",
+   "to": "EXIT SUB"
+  },
+  {
+   "from": "अवरोध",
+   "to": "\\nC break;\\n"
+  },
+  {
+   "from": "जारी",
+   "to": "\\nC continue;\\n"
+  },
+  {
+   "from": "जड़",
+   "to": "STATIC"
+  },
+  {
+   "from": "घोष",
+   "to": "DECLARE"
+  },
+  {
+   "from": "अनुक्रम",
+   "to": "CALL"
+  },
+  {
+   "from": "लॉग",
+   "to": "LOG"
+  },
+  {
+   "from": "साइन",
+   "to": "SIN"
+  },
+  {
+   "from": "कॉस",
+   "to": "COS"
+  },
+  {
+   "from": "टैन",
+   "to": "TAN"
+  },
+  {
+   "from": "अटैन",
+   "to": "ATN"
+  },
+  {
+   "from": "वर्गमूल",
+   "to": "SQR"
+  },
+  {
+   "from": "समपूर्ण",
+   "to": "ABS"
+  },
+  {
+   "from": "प्रतिपादक",
+   "to": "EXP"
+  },
+  {
+   "from": "चिंह",
+   "to": "SGN"
+  },
+  {
+   "from": "अक्रमान्क",
+   "to": "RND"
+  },
+  {
+   "from": "अंक",
+   "to": "INT"
+  },
+  {
+   "from": "पूर्णांक",
+   "to": "CINT"
+  },
+  {
+   "from": "शेष",
+   "to": "MOD"
+  },
+  {
+   "from": "पर्दा",
+   "to": "SCREEN"
+  },
+  {
+   "from": "वृत",
+   "to": "CIRCLE"
+  },
+  {
+   "from": "रेखा",
+   "to": "LINE"
+  },
+  {
+   "from": "बिन्दु",
+   "to": "PSET"
+  },
+  {
+   "from": "और",
+   "to": "AND"
+  },
+  {
+   "from": "और_ब",
+   "to": "&"
+  },
+  {
+   "from": "या",
+   "to": "OR"
+  },
+  {
+   "from": "या_ब",
+   "to": "|"
+  },
+  {
+   "from": "नहीं",
+   "to": "NOT"
+  },
+  {
+   "from": "केवल",
+   "to": "XOR"
+  },
+  {
+   "from": "^#गस[\\x20].*",
+   "to": "\\nCH %s"
+  },
+  {
+   "from": "^#गम[\\x20].*",
+   "to": "\\nCM %s"
+  },
+  {
+   "from": "^#ग[\\x20].*",
+   "to": "\\nC %s"
+  },
+  {
+   "from": "पूर्वादेश",
+   "to": "COMMAND"
+  }
+ ]
+}

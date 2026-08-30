@@ -1,0 +1,165 @@
+{
+ "target": "python",
+ "shaili": "soochee",
+ "host": "Python",
+ "pipeline": [
+  "self"
+ ],
+ "source": "retrieved/legacy/Hindawi/soochee/h2py.uhin",
+ "invented": false,
+ "extracted_at_rules": 38,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "మరియు",
+   "to": "and"
+  },
+  {
+   "from": "వంటి",
+   "to": "as"
+  },
+  {
+   "from": "చాటుకోవడం",
+   "to": "assert"
+  },
+  {
+   "from": "అసమకాలీక",
+   "to": "async"
+  },
+  {
+   "from": "ఎదురు",
+   "to": "await"
+  },
+  {
+   "from": "విడతీయు",
+   "to": "break"
+  },
+  {
+   "from": "తరగతి",
+   "to": "class"
+  },
+  {
+   "from": "కొనసాగించు",
+   "to": "continue"
+  },
+  {
+   "from": "నిర్వచించు",
+   "to": "def"
+  },
+  {
+   "from": "తొలగించు",
+   "to": "del"
+  },
+  {
+   "from": "వేరే_ఉంటే",
+   "to": "elif"
+  },
+  {
+   "from": "వేరే",
+   "to": "else"
+  },
+  {
+   "from": "తప్ప",
+   "to": "except"
+  },
+  {
+   "from": "అమలుపరచు",
+   "to": "exec"
+  },
+  {
+   "from": "తప్పు",
+   "to": "false"
+  },
+  {
+   "from": "చివరకు",
+   "to": "finally"
+  },
+  {
+   "from": "కోసం",
+   "to": "for"
+  },
+  {
+   "from": "నుండి",
+   "to": "from"
+  },
+  {
+   "from": "ప్రపంచ",
+   "to": "global"
+  },
+  {
+   "from": "ఉంటే",
+   "to": "if"
+  },
+  {
+   "from": "దిగుమతి",
+   "to": "import"
+  },
+  {
+   "from": "లో",
+   "to": "in"
+  },
+  {
+   "from": "ఉంది",
+   "to": "is"
+  },
+  {
+   "from": "ఏమీకాదు",
+   "to": "None"
+  },
+  {
+   "from": "స్థానికం_కానిది",
+   "to": "nonlocal"
+  },
+  {
+   "from": "కాదు",
+   "to": "not"
+  },
+  {
+   "from": "లేదా",
+   "to": "or"
+  },
+  {
+   "from": "ఉతీర్ణత",
+   "to": "pass"
+  },
+  {
+   "from": "ముద్రించు",
+   "to": "print"
+  },
+  {
+   "from": "పెంచు",
+   "to": "raise"
+  },
+  {
+   "from": "తిరిగి",
+   "to": "return"
+  },
+  {
+   "from": "నిజం",
+   "to": "true"
+  },
+  {
+   "from": "ప్రయత్నించు",
+   "to": "try"
+  },
+  {
+   "from": "అయిత",
+   "to": "while"
+  },
+  {
+   "from": "తో",
+   "to": "with"
+  },
+  {
+   "from": "దిగుబడి",
+   "to": "yield"
+  }
+ ]
+}
