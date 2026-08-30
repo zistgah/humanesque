@@ -10,10 +10,11 @@ import { js262Run, ts262Run } from "./interp/js262.js";
 import { haskellRun } from "./interp/hseval.js";
 import { stRunFile, stFormat } from "./interp/steval.js";
 import { qb64Run } from "./interp/qb64.js";
-import { rustToC, goToC, juliaToC, zigToC, fortranToC, pascalToC, pascalReject, javaToC, javaReject, } from "./interp/stdlower.js";
+import { rustToC, goToC, juliaToC, zigToC, fortranToC, pascalToC, pascalReject, javaToC, javaReject, csharpToC, kotlinToC, swiftToC, scalaToC, dartToC, adaToC, } from "./interp/stdlower.js";
 import { lispRun } from "./interp/cleval.js";
 import { prologRun } from "./interp/pleval.js";
 import { wrapErr, makeRun, asRun, kconfigRun, ldRun, luaRun, forthRun, schemeRun, ocamlRun, clojureRun, paniniRun, logoRun, lexRun, yaccRun, } from "./extras.js";
+import { rubyRun, perlRun, phpRun, rRun, cobolRun, sqlRun, octaveRun, sysmlRun } from "./interp/appeval.js";
 function cDiag(src) {
     let braces = 0;
     let parens = 0;
@@ -111,6 +112,9 @@ const MONACO = {
     ocaml: "plaintext", clojure: "plaintext", panini: "plaintext", smalltalk: "plaintext",
     haskell: "plaintext", lisp: "plaintext", prolog: "plaintext", fortran: "plaintext",
     julia: "plaintext", zig: "plaintext", logo: "plaintext", lex: "plaintext", yacc: "plaintext",
+    csharp: "csharp", kotlin: "plaintext", swift: "plaintext", scala: "plaintext", dart: "plaintext",
+    ada: "plaintext", ruby: "ruby", perl: "plaintext", php: "php", r: "r", cobol: "plaintext",
+    sql: "sql", octave: "plaintext", sysml: "plaintext",
 };
 export function monacoLang(id) { return MONACO[id] || "plaintext"; }
 export async function runLang(id, source) {
@@ -220,6 +224,34 @@ export async function runLang(id, source) {
                 return yaccRun(src);
             case "panini":
                 return paniniRun(src);
+            case "csharp":
+                return lowerRun(csharpToC, src, "PANINI.Frontend.CSharp");
+            case "kotlin":
+                return lowerRun(kotlinToC, src, "PANINI.Frontend.Kotlin");
+            case "swift":
+                return lowerRun(swiftToC, src, "PANINI.Frontend.Swift");
+            case "scala":
+                return lowerRun(scalaToC, src, "PANINI.Frontend.Scala");
+            case "dart":
+                return lowerRun(dartToC, src, "PANINI.Frontend.Dart");
+            case "ada":
+                return lowerRun(adaToC, src, "PANINI.Frontend.Ada");
+            case "ruby":
+                return rubyRun(src);
+            case "perl":
+                return perlRun(src);
+            case "php":
+                return phpRun(src);
+            case "r":
+                return rRun(src);
+            case "cobol":
+                return cobolRun(src);
+            case "sql":
+                return sqlRun(src);
+            case "octave":
+                return octaveRun(src);
+            case "sysml":
+                return sysmlRun(src);
             default:
                 return { ok: false, error: "unknown frontend " + id, frontend: "PANINI" };
         }

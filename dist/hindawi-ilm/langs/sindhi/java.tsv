@@ -1,0 +1,4 @@
+# sindhi → java  |  script: Perso-Arabic / Khudawadi  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/kritrima/h2j.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	java

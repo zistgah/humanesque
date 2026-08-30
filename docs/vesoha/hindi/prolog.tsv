@@ -1,0 +1,7 @@
+# Vesoha Hindi · frontend prolog · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+है	hai	is
+सत्य	satya	true
+असफल	asaphala	fail
+नियम	niyama	:-

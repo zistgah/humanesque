@@ -1,0 +1,8 @@
+# Vesoha Hindi · frontend kotlin · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+कृत्य	kaृtya	fun
+मान	maana	val
+चर	cara	var
+पङ्क्तिलिखो	panga_ktilikhao	println
+लौटाओ	lautaaau	return

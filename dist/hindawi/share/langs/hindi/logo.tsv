@@ -1,0 +1,13 @@
+# Vesoha Hindi · frontend logo · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+आगे	agae	FORWARD
+पीछे	piichae	BACK
+बाएँ	baaen	LEFT
+दाएँ	daaen	RIGHT
+दोहराओ	daoharaao	REPEAT
+को	kao	TO
+समाप्त	samaapta	END
+कलमउठाओ	kalamaउthaao	PENUP
+कलमरखो	kalamarakhao	PENDOWN
+लिखो	likhao	PRINT

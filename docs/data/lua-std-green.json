@@ -1,0 +1,13 @@
+{
+  "language": "lua",
+  "issuing_body": "lua.org Lua 5.4 reference manual + testes/constructs.lua",
+  "suite": "constructs.lua self-contained integer assert() extract",
+  "n": 9,
+  "pass": 9,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named lua.org 5.4.7 constructs.lua integer-assert extract. require/debug/bitwise/string remain GAP. Full testes/ GAP."
+}

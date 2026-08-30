@@ -1,0 +1,20 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "note": "Machine-readable working set. Human text: REQUIREMENTS.md, TEST_PLAN.md.",
+  "campaign": "vga-vt100-x86-vesoha-local-pkg-ci",
+  "requirements": [
+    {"id": "REQ-000", "text": "Do not modify the original self-hosting spec text.", "test": "manual", "status": "standing"},
+    {"id": "REQ-001", "text": "GPL-3.0-or-later. Copyright 1993-2026 Abhishek Choudhary.", "test": "manual", "status": "standing"},
+    {"id": "REQ-005", "text": "Retrieve, do not reconstruct.", "test": "manual", "status": "standing"},
+    {"id": "REQ-009", "text": "Ship a zip of artifacts/panini. Surface it in chat.", "test": "T-PKG-01", "status": "this-campaign"},
+    {"id": "REQ-010", "text": "Do not invent Eighth Schedule keyword TSVs in retrieved/.", "test": "T-VES-01", "status": "standing"},
+    {"id": "REQ-220", "text": "Console is VT100; bash and COMMAND.COM are applications on it.", "test": "T-EMU-06", "status": "standing"},
+    {"id": "REQ-EMU", "text": "VGA + VT100 + 16-bit x86 guest with AyeBIOS bias, floppy editor, offline (no copy.sh).", "test": "T-EMU-01..05", "status": "this-campaign"},
+    {"id": "REQ-VES", "text": "Vesoha Hindi translation tables for every frontend keywords list. Hindi version, all frontends enabled.", "test": "T-VES-01 T-VES-02", "status": "this-campaign"},
+    {"id": "REQ-LOC", "text": "Frontends target local backend (PANINI→C→gcc) as well as WASM.", "test": "T-CLI-01", "status": "this-campaign"},
+    {"id": "REQ-PKG", "text": "Package and distribution mechanism for what we build on the web (panini-pkg/v1).", "test": "T-PKG-01", "status": "this-campaign"},
+    {"id": "REQ-CI", "text": "PR correctness gate. node scripts/pr_gate.mjs exit 0 required.", "test": "pr_gate.mjs", "status": "this-campaign"},
+    {"id": "REQ-SG", "text": "STANDARD GREEN 45/45. ISO GREEN where the issuing body is ISO-class.", "test": "T-SG-01", "status": "standing"}
+  ]
+}

@@ -385,6 +385,18 @@ END
 FUNCTION run_assembly(source)
     RETURN feRun(source, "PANINI.Frontend.Assembly")
 END
+FUNCTION run_dart(source)
+    RETURN feRun(source, "PANINI.Frontend.Dart")
+END
+FUNCTION run_ada(source)
+    RETURN feRun(source, "PANINI.Frontend.Ada")
+END
+FUNCTION run_octave(source)
+    RETURN feRun(source, "PANINI.Frontend.Octave")
+END
+FUNCTION run_sysml(source)
+    RETURN feRun(source, "PANINI.Frontend.SysML")
+END
 
 FUNCTION main()
     r = run_javascript("console.log(40+2)")

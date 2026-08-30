@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — Vesoha Hindi</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Vesoha Hindi distribution · all 45 frontends enabled · Devanagari</p>
+  <h1>वेसोह हिंदी वितरण</h1>
+  <p>Every workbench frontend has a translation table: native / Romenagri / host keyword. Hindi C (29 rows) is the retrieved 2004 bar. Other frontends are Vesoha pack tables — they are <strong>not</strong> invented inside <code>retrieved/</code>.</p>
+  <p>Backends: <strong>WASM</strong> (browser) and <strong>local</strong> (<code>panini binary</code> → C → gcc). Same tables, both targets.</p>
+  <p><a class="btn" href="workbench.html">Workbench</a> <a class="btn" href="packages.html">Packages</a> <a class="btn" href="local.html">Local zip / CLI</a></p>
+  <h2>Tables</h2>
+  <ul id="list">loading…</ul>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+fetch("data/vesoha-hindi.json").then(function (r) { return r.json(); }).then(function (reg) {
+  var ul = document.getElementById("list");
+  ul.innerHTML = "";
+  (reg.tables || []).forEach(function (t) {
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = t.file;
+    a.textContent = t.id + " · " + t.n + " rows";
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  var li = document.createElement("li");
+  li.innerHTML = '<a href="vesoha/hindi/ALL.tsv">ALL.tsv</a> · <a href="vesoha/hindi/registry.json">registry.json</a>';
+  ul.appendChild(li);
+});
+</script>
+</body>
+</html>

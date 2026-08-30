@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend r · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+कृत्य	kaृtya	function
+यदि	yadi	if
+अन्यथा	anyathaa	else
+लिखो	likhao	print
+सत्य	satya	TRUE
+असत्य	asatya	FALSE

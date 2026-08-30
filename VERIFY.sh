@@ -29,6 +29,11 @@ ck "no map is marked invented"              bash -c '! grep -rq "\"invented\": t
 ck "9 shailis extracted, 27 languages generated" bash -c 'node tools/extract_maps.mjs | grep -c EXTRACTED | grep -q 9 && node tools/build_ilm_matrix.mjs >/dev/null && [ $(ls ilm/langs | wc -l) -ge 27 ] && [ $(ls ilm/langs/tamil/*.tsv | wc -l) -ge 9 ]'
 ck "unauthored cells are skeletons, not guesses" bash -c 'grep -q "UNRESOLVED" ilm/langs/sindhi/c.tsv'
 ck "three ILM axes remain distinct"          bash -c '[ -f retrieved/romenagri/tables/tamil_to_deva.tsv ] && [ -f retrieved/romenagri/langs/tamil_c.tsv ] && [ -f ilm/maps/c.map.json ]'
+ck "ILM distribution is published on the site"  bash -c '[ -f docs/ilm.html ] && [ -f docs/data/ilm-index.json ] && [ -f dist/hindawi-ilm.tar.gz ]'
+ck "ILM page is linked from the site index"     grep -q "ilm.html" docs/index.html
+ck "ILM index matches the generated matrix"     bash -c 'node -e "const a=require(\"./docs/data/ilm-index.json\"),b=require(\"./ilm/MATRIX.json\");process.exit(a.languages.length===b.generated.length?0:1)"'
+ck "every frontend is exercised and reported"   bash -c '[ -f docs/data/frontend-status.json ] && node -e "const d=require(\"./docs/data/frontend-status.json\");process.exit(d.frontends.length>=30?0:1)"'
+ck "no frontend is called working without refusing bad input" bash -c '! node -e "const d=require(\"./docs/data/frontend-status.json\");process.exit(d.frontends.some(f=>f.status===\"WORKING\"&&!f.rejects)?0:1)"'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

@@ -1,0 +1,13 @@
+{
+  "language": "logo",
+  "issuing_body": "UCBLogo tests/UnitTests.lg (jrincayc/ucblogo-code) + Hindawi ROBOT.C cardinals",
+  "suite": "UnitTests.lg to InstallSuite / to RunTests compile-accept",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named UCBLogo UnitTests.lg compile-accept + ROBOT.C cardinals. Turtle FORWARD execute is the workbench sample. Full UCBLogo tests GAP. No ISO Logo."
+}

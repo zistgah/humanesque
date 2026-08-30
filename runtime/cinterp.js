@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Host-speed C eval for heap-heavy programs (calloc / 8-queens).
  * Parse still happens in PANINI.Frontend.C. Semantics match c.pni.
@@ -99,6 +100,7 @@ export function cinterp(source) {
     if (at("&")) { eat(); return {op:"addr", e:pUnary()}; }
     if (at("!")) { eat(); return {op:"not", e:pUnary()}; }
     if (at("-")) { eat(); return {op:"neg", e:pUnary()}; }
+    if (at("+")) { eat(); return pUnary(); }
     if (at("~")) { eat(); return {op:"bnot", e:pUnary()}; }
     if (at("++")) { eat(); return {op:"preinc", e:pUnary()}; }
     if (at("--")) { eat(); return {op:"predec", e:pUnary()}; }

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "pass": 16,
+  "fail": 0,
+  "passed": [
+    "T-EMU-01 emu.html is local",
+    "T-EMU-03 1.44MB",
+    "T-EMU-03b 55AA",
+    "T-EMU-04 sector poke",
+    "T-EMU-02 AYEBIOS on CRT",
+    "T-EMU-02b waiting key",
+    "T-EMU-05 mode 13h",
+    "T-EMU-05b gold bar 3200",
+    "T-EMU-06 VT100/VGA text dump",
+    "T-VES-01 45 Hindi tables",
+    "T-VES-02 catalog keywords present",
+    "T-SG-01 45/45 STANDARD GREEN, 0 CORE",
+    "T-SG-01b iso_green 16",
+    "T-CLI-01 local backend binary|gcc",
+    "T-PKG-01 package command",
+    "T-REQ-01 12 requirements"
+  ],
+  "failed": []
+}

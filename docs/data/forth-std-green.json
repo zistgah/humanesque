@@ -1,0 +1,13 @@
+{
+  "language": "forth",
+  "issuing_body": "ANSI X3.215 / Forth-2012 — Johns Hopkins core.fr (Hayes)",
+  "suite": "core.fr T{ integer AND/OR/XOR/INVERT/2*/2/+ named extract",
+  "n": 42,
+  "pass": 42,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named Forth-2012 core.fr integer T{ extract. HEX / DOUBLE / CORE EXT GAP."
+}

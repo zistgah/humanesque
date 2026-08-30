@@ -56,8 +56,10 @@ Implementation = PANINI frontend + bidirectional transducer. Not `#define`.
 | kram | क्रम | Zig | order | Zig Language Reference MIT |
 | kosh | कोश | Clojure | treasury / lisp | EPL; hosted on JVM |
 | rekha | रेखा | Logo | line / turtle | UCBLogo; no ISO — heritage pedagogy |
+| matrika | मातृका | GNU Octave | matrix | GNU Octave (GPL) M-file subset. **Not MATLAB.** |
+| naksha | नक्शा | SysML | map / plan | SysML v2 textual (OMG). Modeling language, not a conventional PL. |
 
-**Scratch / Visual Basic / MATLAB** are popular (TIOBE) but fail the liability tests below (proprietary VM or no open language standard we can reimplement as a shaili without a vendor runtime). They are **specimens in the museum**, not shailis.
+**Scratch / Visual Basic / MATLAB** are popular (TIOBE) but fail the liability tests below (proprietary VM or no open language standard we can reimplement as a shaili without a vendor runtime). They are **specimens in the museum**, not shailis. GNU Octave is the open M-file path.
 
 ## Naming invariant
 

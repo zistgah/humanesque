@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend make · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+यदिबराबर	yadibaraabara	ifeq
+यदिपरिभाषित	yadiparibhaasita	ifdef
+सम्मिलित	sammilita	include
+वस्तु-y	vastu-y	obj-y
+कृत्रिम	kaृtrima	PHONY
+निर्यात	niryaata	export

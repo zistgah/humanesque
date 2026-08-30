@@ -1,0 +1,20 @@
+/* Copyright (C) 1993-2026 Abhishek Choudhary
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Named-extract frontend. Workbench execution is host-speed (stdlower / appeval).
+ * This module lexes and delegates to the host builtin — same slot as lua.pni.
+ */
+MODULE PANINI.Frontend.R
+
+FUNCTION run_r(source)
+    r = RRUN(source)
+    r.frontend = "PANINI.Frontend.R"
+    r.bytes = LEN(source)
+    RETURN r
+END
+
+FUNCTION main()
+    r = run_r("add <- function(a, b) { a + b }\nprint(add(40, 2))\n")
+    RETURN r.value
+END
+
+END

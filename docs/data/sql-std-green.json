@@ -1,0 +1,13 @@
+{
+  "language": "sql",
+  "issuing_body": "ISO/IEC 9075 proxy — PostgreSQL regress src/test/regress/sql/int4.sql",
+  "suite": "int4.sql self-contained integer SELECT AS extract",
+  "n": 7,
+  "pass": 7,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named PostgreSQL int4 integer-SELECT extract. int4 casts / tables / overflow GAP. Full ISO 9075 GAP."
+}

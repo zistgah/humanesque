@@ -1,0 +1,13 @@
+{
+  "language": "octave",
+  "issuing_body": "GNU Octave scripts/specfun/factorial.m %!assert",
+  "suite": "factorial.m %!assert (factorial (N), K) integer extract",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named GNU Octave factorial.m integer %!assert extract. Not MATLAB. Full fntests GAP."
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hindawi / ILM — keyword tables across 27 languages and 9 shailis</title>
+<meta name="description" content="Hindawi Indic Programming System keyword tables: 27 human languages x 9 shailis, extracted from the 2003-2023 transducers. Nothing invented.">
+<style>
+:root{--ink:#0a1020;--paper:#fbf6e9;--acc:#9a6a12;--line:#d8cdb4;--dim:#6b6252;--bad:#8c2f1d;--ok:#2f5d3a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.55 Georgia,'Noto Serif',serif;padding:2rem 1.2rem 5rem}
+.w{max-width:70rem;margin:0 auto}h1{font-size:1.9rem;margin:0 0 .2rem}
+.sub{color:var(--dim);margin:0 0 1.6rem}
+h2{font-size:1.15rem;margin:2.4rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.3rem}
+code,.m{font-family:ui-monospace,'DejaVu Sans Mono',monospace;font-size:.86em}
+table{border-collapse:collapse;width:100%;margin:.6rem 0}
+th,td{text-align:left;padding:.32rem .55rem;border-bottom:1px solid var(--line);font-size:.9rem}
+th{color:var(--dim);font-weight:normal;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+td.n{text-align:right;font-family:ui-monospace,monospace}
+.native{font-size:1.05rem}
+.pill{display:inline-block;padding:.05rem .45rem;border-radius:2px;font-size:.72rem;
+font-family:ui-monospace,monospace}
+.fill{background:#dfe9de;color:var(--ok)}.skel{background:#efe4de;color:var(--bad)}
+.note{background:#fff;border-left:3px solid var(--acc);padding:.7rem 1rem;margin:1rem 0}
+.axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1rem 0}
+.axis{background:#fff;border:1px solid var(--line);padding:.9rem}
+.axis b{display:block;font-size:.78rem;letter-spacing:.08em;color:var(--acc);text-transform:uppercase}
+.big{font-size:1.7rem;font-family:ui-monospace,monospace}
+a{color:var(--acc)}.dl{display:inline-block;background:var(--ink);color:var(--paper);
+padding:.5rem 1rem;text-decoration:none;margin:.3rem .4rem .3rem 0}
+</style></head><body><div class="w">
+<h1>Hindawi / ILM</h1>
+<p class="sub">Keyword tables across <b id="nl">27</b> human languages and
+<b id="ns">9</b> shailis. <span id="nr">1,913</span> rules, every one read out of
+the 2003–2023 transducers. Nothing invented.</p>
+
+<a class="dl" href="../dist/hindawi-ilm.tar.gz">Download the distribution</a>
+<a class="dl" href="data/ilm-index.json">ilm-index.json</a>
+
+<h2>Three axes, never conflated</h2>
+<div class="axes" id="axes"></div>
+<div class="note">A cell is (script × language × standard). Collapsing any two is
+the error that produces <code>#define je if</code> — a macro that evaporates at
+the preprocessor and reaches no diagnostic, no debugger and no symbol table.</div>
+
+<h2>The nine shailis</h2>
+<table><thead><tr><th>shaili</th><th>host</th><th class="n">rules</th><th>retrieved from</th></tr></thead>
+<tbody id="sh"></tbody></table>
+
+<h2>27 languages × 9 shailis</h2>
+<p class="sub" id="cellsum"></p>
+<table><thead><tr><th>language</th><th>iso</th><th>script</th><th class="n">kw</th><th id="hh"></th></tr></thead>
+<tbody id="lg"></tbody></table>
+<div class="note"><b>A skeleton is not a gap in the machinery.</b> Its romenagri
+and host-keyword columns are filled from retrieved data; only the native column
+is empty, marked <code>UNRESOLVED — a speaker must author them</code>. One TSV
+per language brings the whole toolchain alive for it. A wrong Kashmiri keyword
+would be worse than an absent one.</div>
+
+<h2>Reproduce it</h2>
+<pre class="m">node tools/extract_maps.mjs        # nine shailis from the transducers
+node tools/build_ilm_matrix.mjs    # 27 languages x 9 shailis</pre>
+<p class="sub">Both read only files on disk under <code>retrieved/</code>.
+Every map asserts <code>"invented": false</code>, and VERIFY.sh checks it.</p>
+</div>
+<script>
+fetch('data/ilm-index.json').then(r=>r.json()).then(d=>{
+ const q=s=>document.querySelector(s);
+ q('#nl').textContent=d.languages.length; q('#ns').textContent=d.shailis.length;
+ q('#nr').textContent=d.axes.standard.rules.toLocaleString();
+ q('#axes').innerHTML=[
+  ['Script','writing-system projection',d.axes.script.tables+' tables',d.axes.script.source],
+  ['Language',"the programmer's vocabulary",d.axes.language.tables+' tables',d.axes.language.source],
+  ['Standard','computational construct',d.axes.standard.rules.toLocaleString()+' rules',d.axes.standard.source]
+ ].map(a=>`<div class="axis"><b>${a[0]}</b><div class="sub">${a[1]}</div>
+  <div class="big">${a[2]}</div><code>${a[3]}</code></div>`).join('');
+ q('#sh').innerHTML=d.shailis.map(s=>`<tr><td class="native">${s.shaili}</td><td>${s.host}</td>
+  <td class="n">${s.rules}</td><td><code>${s.source.replace('retrieved/legacy/Hindawi/','')}</code></td></tr>`).join('');
+ const order=d.shailis.map(s=>s.target);
+ q('#hh').outerHTML='<th>'+order.join('</th><th>')+'</th>';
+ q('#cellsum').textContent=d.cells.filled+' of '+d.cells.total+
+  ' cells filled from retrieved data; '+d.cells.skeleton+' are skeletons awaiting a speaker.';
+ q('#lg').innerHTML=d.languages.map(l=>{
+  const cm={}; (l.cells||[]).forEach(c=>cm[c.target]=c);
+  return `<tr><td>${l.id.replace(/_/g,' ')}</td><td><code>${l.iso}</code></td>
+   <td class="sub">${l.script}</td><td class="n">${l.keywords||''}</td>`+
+   order.map(t=>{const c=cm[t];
+    return `<td class="n">${c&&c.status==='FILLED'
+     ?'<span class="pill fill">'+c.filled+'</span>'
+     :'<span class="pill skel">·</span>'}</td>`;}).join('')+'</tr>';
+ }).join('');
+}).catch(e=>{document.querySelector('#axes').innerHTML=
+ '<div class="axis"><b>index unavailable</b><div class="sub">data/ilm-index.json could not be read: '+e+
+ '. Nothing is shown rather than a fabricated table.</div></div>';});
+</script></body></html>

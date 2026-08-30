@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend cppp · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+घोषणा	ghaosanaa	#define
+यदिपरिभाषित	yadiparibhaasita	#ifdef
+यदिअप परिभाषित	yadiapa paribhaasita	#ifndef
+सम्मिलित	sammilita	#include
+अघोषित	aghaosita	#undef
+परिभाषित	paribhaasita	defined

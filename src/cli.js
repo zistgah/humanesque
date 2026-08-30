@@ -311,6 +311,49 @@ async function main() {
     case "selfhost":
       await import("../scripts/selfhost.mjs");
       return;
+    case "package":
+    case "pack": {
+      const file = args[1];
+      const backend = flag("backend") || "wasm";
+      const frontend = flag("frontend") || "panini";
+      const src = file ? readInput(file) : "";
+      const pkg = {
+        format: "panini-pkg/v1",
+        copyright: "Copyright (C) 1993-2026 Abhishek Choudhary",
+        license: "GPL-3.0-or-later",
+        frontend,
+        backend,
+        source: src,
+        built: new Date().toISOString(),
+        run_wasm: "open docs/workbench.html — pick frontend — Run",
+        run_local: "node src/cli.js binary <file.pni> --out a.out",
+      };
+      if (backend === "local" || backend === "gcc" || backend === "binary") {
+        const result = compile(src || "FUNCTION main() -> Int\n    RETURN 0\nEND\n", { filename: file || "<pkg>", target: "c" });
+        pkg.c = result.binary.toString("utf8");
+        pkg.note = "C emitted. gcc is the local backend: panini binary.";
+      }
+      const out = flag("out");
+      const text = JSON.stringify(pkg, null, 2);
+      if (out) fs.writeFileSync(out, text);
+      else console.log(text);
+      return;
+    }
+    case "test-pr":
+    case "pr-gate": {
+      await import("../scripts/pr_gate.mjs");
+      return;
+    }
+    case "backend":
+    case "backends": {
+      console.log(JSON.stringify({
+        wasm: { host: "browser", cmd: "workbench Run / panini wasm" },
+        local: { host: "gcc", cmd: "panini binary <file.pni> --out a.out" },
+        cinterp: { host: "js", cmd: "workbench Run (C-like frontends)" },
+        default: "wasm is the web host; local is PANINI → C → gcc",
+      }, null, 2));
+      return;
+    }
     default: {
       // bare file path
       if (fs.existsSync(cmd)) {
@@ -347,6 +390,10 @@ Usage:
   panini typecheck <file.pni>
   panini compile <file.pni> [--target json|js|c] [--out file]
   panini binary <file.pni> [--out a.out]   # PANINI → C → gcc. Native binary. JS remains the web host.
+  panini gcc <file.pni> [--out a.out]      # alias of binary
+  panini package <file.pni> [--backend wasm|local] [--out file.panini-pkg.json]
+  panini backends
+  panini test-pr                           # PR correctness gate (may fail)
   panini python <file.py>     # invoke host python3
   panini cc <file.c>          # invoke host cc
   panini cpp <file.cpp>       # invoke host c++

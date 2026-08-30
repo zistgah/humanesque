@@ -1,0 +1,13 @@
+{
+  "language": "r",
+  "issuing_body": "GNU R tests/simple-true.R (wch/r-source tags/R-4-4-1)",
+  "suite": "simple-true.R all(1:12==cumsum(rep(1,12))) + typeof integer L-suffix (5)",
+  "n": 5,
+  "pass": 5,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named GNU R simple-true.R integer extract. lowess/polyroot/float GAP. Not MATLAB."
+}

@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend ruby · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+परिभाषा	paribhaasaa	def
+समाप्त	samaapta	end
+लिखो	likhao	puts
+लिखो	likhao	print
+यदि	yadi	if
+अन्यथा	anyathaa	else

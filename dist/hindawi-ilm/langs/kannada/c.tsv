@@ -1,0 +1,30 @@
+# kannada → c  |  script: Kannada  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+ಆದರೆ	aadaree	if
+ಇಲ್ಲದಿದ್ದರೆ	illadiddaree	else
+ತನಕ	tanaka	while
+ಮಾಡು	maadu	do
+ಗಾಗಿ	gaagi	for
+ನಿಲ್ಲಿಸು	nillisu	break
+ಮುಂದುವರಿ	mu_nduvari	continue
+ಆಯ್ಕೆ	aayke	switch
+ಸ್ಥಿತಿ	sthiti	case
+ಪೂರ್ವನಿಯೋಜಿತ	puurvaniyaujita	default
+ಹಿಂತಿರುಗಿಸು	hi_ntirugisu	return
+ಸ್ಥಿರಾಂಕ	sthiraa_nka	const
+ಪೂರ್ಣಾಂಕ	puur_naa_nka	int
+ದಶಮಾಂಶ	dashamaa_nsha	float
+ದ್ವಿಗುಣ	dvigu_na	double
+ಅಕ್ಷರ	ak_sara	char
+ಶೂನ್ಯ	shuunya	void
+ಕಾರ್ಯ	kaarya	void
+ವರ್ಗ	varga	class
+ಹೊಸ	hosa	new
+ಸಾರ್ವಜನಿಕ	saarvajanika	public
+ಖಾಸಗಿ	khaasagi	private
+ಸ್ಥಿರ	sthira	static
+ವಾಸ್ತವಿಕ	vaastavika	virtual
+ಯಾವಾಗ	yaavaaga	case
+ರಚನೆ	racane	struct

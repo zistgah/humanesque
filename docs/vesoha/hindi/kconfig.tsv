@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend kconfig · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+विन्यास	vinyaasa	config
+बूल	buula	bool
+त्रिस्थिति	tristhiti	tristate
+मूल	muula	default
+निर्भर	nirbhara	depends
+चयन	cayana	select
+सहायता	sahaayataa	help

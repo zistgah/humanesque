@@ -1,0 +1,290 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "distribution": "Vesoha Hindi",
+  "script": "devanagari",
+  "language": "hindi",
+  "shaili_default": "guru",
+  "invented_in_retrieved": false,
+  "frontends_enabled": [
+    "ada",
+    "asm",
+    "basic",
+    "c",
+    "clojure",
+    "cobol",
+    "cpp",
+    "cppp",
+    "csharp",
+    "dart",
+    "forth",
+    "fortran",
+    "go",
+    "haskell",
+    "java",
+    "javascript",
+    "julia",
+    "kconfig",
+    "kotlin",
+    "ld",
+    "lex",
+    "lisp",
+    "logo",
+    "lua",
+    "make",
+    "ocaml",
+    "octave",
+    "panini",
+    "pascal",
+    "perl",
+    "php",
+    "prolog",
+    "python",
+    "r",
+    "ruby",
+    "rust",
+    "scala",
+    "scheme",
+    "smalltalk",
+    "sql",
+    "swift",
+    "sysml",
+    "typescript",
+    "yacc",
+    "zig"
+  ],
+  "n_frontends": 45,
+  "tables": [
+    {
+      "id": "ada",
+      "n": 7,
+      "file": "vesoha/hindi/ada.tsv"
+    },
+    {
+      "id": "asm",
+      "n": 7,
+      "file": "vesoha/hindi/asm.tsv"
+    },
+    {
+      "id": "basic",
+      "n": 8,
+      "file": "vesoha/hindi/basic.tsv"
+    },
+    {
+      "id": "c",
+      "n": 29,
+      "file": "vesoha/hindi/c.tsv"
+    },
+    {
+      "id": "clojure",
+      "n": 5,
+      "file": "vesoha/hindi/clojure.tsv"
+    },
+    {
+      "id": "cobol",
+      "n": 6,
+      "file": "vesoha/hindi/cobol.tsv"
+    },
+    {
+      "id": "cpp",
+      "n": 7,
+      "file": "vesoha/hindi/cpp.tsv"
+    },
+    {
+      "id": "cppp",
+      "n": 6,
+      "file": "vesoha/hindi/cppp.tsv"
+    },
+    {
+      "id": "csharp",
+      "n": 7,
+      "file": "vesoha/hindi/csharp.tsv"
+    },
+    {
+      "id": "dart",
+      "n": 5,
+      "file": "vesoha/hindi/dart.tsv"
+    },
+    {
+      "id": "forth",
+      "n": 7,
+      "file": "vesoha/hindi/forth.tsv"
+    },
+    {
+      "id": "fortran",
+      "n": 7,
+      "file": "vesoha/hindi/fortran.tsv"
+    },
+    {
+      "id": "go",
+      "n": 7,
+      "file": "vesoha/hindi/go.tsv"
+    },
+    {
+      "id": "haskell",
+      "n": 6,
+      "file": "vesoha/hindi/haskell.tsv"
+    },
+    {
+      "id": "java",
+      "n": 7,
+      "file": "vesoha/hindi/java.tsv"
+    },
+    {
+      "id": "javascript",
+      "n": 8,
+      "file": "vesoha/hindi/javascript.tsv"
+    },
+    {
+      "id": "julia",
+      "n": 6,
+      "file": "vesoha/hindi/julia.tsv"
+    },
+    {
+      "id": "kconfig",
+      "n": 7,
+      "file": "vesoha/hindi/kconfig.tsv"
+    },
+    {
+      "id": "kotlin",
+      "n": 5,
+      "file": "vesoha/hindi/kotlin.tsv"
+    },
+    {
+      "id": "ld",
+      "n": 6,
+      "file": "vesoha/hindi/ld.tsv"
+    },
+    {
+      "id": "lex",
+      "n": 6,
+      "file": "vesoha/hindi/lex.tsv"
+    },
+    {
+      "id": "lisp",
+      "n": 6,
+      "file": "vesoha/hindi/lisp.tsv"
+    },
+    {
+      "id": "logo",
+      "n": 10,
+      "file": "vesoha/hindi/logo.tsv"
+    },
+    {
+      "id": "lua",
+      "n": 8,
+      "file": "vesoha/hindi/lua.tsv"
+    },
+    {
+      "id": "make",
+      "n": 6,
+      "file": "vesoha/hindi/make.tsv"
+    },
+    {
+      "id": "ocaml",
+      "n": 7,
+      "file": "vesoha/hindi/ocaml.tsv"
+    },
+    {
+      "id": "octave",
+      "n": 6,
+      "file": "vesoha/hindi/octave.tsv"
+    },
+    {
+      "id": "panini",
+      "n": 9,
+      "file": "vesoha/hindi/panini.tsv"
+    },
+    {
+      "id": "pascal",
+      "n": 8,
+      "file": "vesoha/hindi/pascal.tsv"
+    },
+    {
+      "id": "perl",
+      "n": 5,
+      "file": "vesoha/hindi/perl.tsv"
+    },
+    {
+      "id": "php",
+      "n": 4,
+      "file": "vesoha/hindi/php.tsv"
+    },
+    {
+      "id": "prolog",
+      "n": 4,
+      "file": "vesoha/hindi/prolog.tsv"
+    },
+    {
+      "id": "python",
+      "n": 9,
+      "file": "vesoha/hindi/python.tsv"
+    },
+    {
+      "id": "r",
+      "n": 6,
+      "file": "vesoha/hindi/r.tsv"
+    },
+    {
+      "id": "ruby",
+      "n": 6,
+      "file": "vesoha/hindi/ruby.tsv"
+    },
+    {
+      "id": "rust",
+      "n": 7,
+      "file": "vesoha/hindi/rust.tsv"
+    },
+    {
+      "id": "scala",
+      "n": 5,
+      "file": "vesoha/hindi/scala.tsv"
+    },
+    {
+      "id": "scheme",
+      "n": 5,
+      "file": "vesoha/hindi/scheme.tsv"
+    },
+    {
+      "id": "smalltalk",
+      "n": 6,
+      "file": "vesoha/hindi/smalltalk.tsv"
+    },
+    {
+      "id": "sql",
+      "n": 8,
+      "file": "vesoha/hindi/sql.tsv"
+    },
+    {
+      "id": "swift",
+      "n": 5,
+      "file": "vesoha/hindi/swift.tsv"
+    },
+    {
+      "id": "sysml",
+      "n": 6,
+      "file": "vesoha/hindi/sysml.tsv"
+    },
+    {
+      "id": "typescript",
+      "n": 5,
+      "file": "vesoha/hindi/typescript.tsv"
+    },
+    {
+      "id": "yacc",
+      "n": 5,
+      "file": "vesoha/hindi/yacc.tsv"
+    },
+    {
+      "id": "zig",
+      "n": 6,
+      "file": "vesoha/hindi/zig.tsv"
+    }
+  ],
+  "backends": [
+    "wasm",
+    "local",
+    "gcc"
+  ],
+  "note": "Hindi C 29-row bar is retrieved. Other frontend rows are Vesoha distribution tables."
+}

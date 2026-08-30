@@ -54,6 +54,10 @@
           "label": "x86 guest"
         },
         {
+          "href": "emu.html#floppy",
+          "label": "Floppy editor"
+        },
+        {
           "href": "ayebios.html",
           "label": "AyeBIOS"
         },
@@ -153,6 +157,10 @@
           "label": "Gurmukhi"
         },
         {
+          "href": "vesoha.html",
+          "label": "Vesoha Hindi"
+        },
+        {
           "href": "deposits/",
           "label": "Deposits / CSV"
         }
@@ -177,6 +185,14 @@
         {
           "href": "local.html",
           "label": "Download zip / CLI binary"
+        },
+        {
+          "href": "packages.html",
+          "label": "Packages"
+        },
+        {
+          "href": "contribute.html",
+          "label": "Contribute / PR gate"
         },
         {
           "href": "gate-cse.html",

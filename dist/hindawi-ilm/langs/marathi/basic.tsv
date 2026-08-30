@@ -1,0 +1,12 @@
+# marathi → basic  |  script: Devanagari  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/praatha/h2b.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	basic
+अन्यथा	anyathaa	ELSE
+करा	karaa	DO
+साठी	saathii	FOR
+सुरूठेवा	suruutheevaa	\nC continue;\n
+स्थिती	sthitii	WHILE
+पूर्णांक	puur_naa_nka	CINT
+स्थिर	sthira	CONST
+जेव्हा	jeevhaa	WHILE

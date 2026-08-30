@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend smalltalk · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+मूल्यांकन	muulyaankana	Eval
+सत्य	satya	true
+असत्य	asatya	false
+शून्य	shuunya	nil
+स्व	sva	self
+अधि	adhi	super

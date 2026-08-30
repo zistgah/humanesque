@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend ada · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+प्रक्रिया	prakriyaa	procedure
+कृत्य	kaृtya	function
+है	hai	is
+आरम्भ	arambha	begin
+समाप्त	samaapta	end
+लौटाओ	lautaaau	return
+पूर्णांक	puurnaanka	Integer

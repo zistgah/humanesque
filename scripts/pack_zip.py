@@ -79,6 +79,10 @@ def main():
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         n1, b1 = add_tree(z, ROOT, "panini")
         n2, b2 = add_tree(z, SITE, "panini/docs")
+        share = os.path.join(ROOT, "dist", "hindawi", "share")
+        n3 = b3 = 0
+        if os.path.isdir(share):
+            n3, b3 = add_tree(z, share, "panini/dist/hindawi/share")
         z.writestr(
             "panini/PACKING.txt",
             "PANINI local tree\n"
@@ -91,18 +95,22 @@ def main():
             "  - alias standard pages (*-guru.html is *-c.html)\n\n"
             "Web host:  node src/cli.js run examples/hello.pni\n"
             "Binary:    node src/cli.js binary examples/factorial.pni --out factorial\n"
-            "Site copy: docs/index.html\n",
+            "Package:   node src/cli.js package examples/hello.pni --backend local --out hello.panini-pkg.json\n"
+            "PR gate:   node scripts/pr_gate.mjs\n"
+            "Site copy: docs/index.html\n"
+            "Vesoha:    dist/hindawi/share/langs/hindi/  and  docs/vesoha/hindi/\n",
         )
     os.replace(tmp, OUT)
     z = zipfile.ZipFile(OUT)
     bad = [i.filename for i in z.infolist() if i.filename.lower().endswith((".gguf", ".wasm", ".pdf"))]
     err = z.testzip()
     print(
-        "members", n1 + n2 + 1,
-        "src_bytes", b1 + b2,
+        "members", n1 + n2 + n3 + 1,
+        "src_bytes", b1 + b2 + b3,
         "zip_bytes", os.path.getsize(OUT),
         "compiler", n1,
         "docs", n2,
+        "share", n3,
         "testzip", err,
         "forbidden", bad,
     )

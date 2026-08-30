@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend fortran · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+कार्यक्रम	kaaryakrama	PROGRAM
+पूर्णांक	puurnaanka	INTEGER
+रुको	rukao	STOP
+यदि	yadi	IF
+तो	tao	THEN
+समाप्त	samaapta	END
+करो	karau	DO

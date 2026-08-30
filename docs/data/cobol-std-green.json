@@ -1,0 +1,13 @@
+{
+  "language": "cobol",
+  "issuing_body": "ISO/IEC 1989 + GnuCOBOL tests/testsuite.src/run_fundamental.at DISPLAY literals",
+  "suite": "run_fundamental.at DISPLAY literals abc/123/+123/-123 named extract",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named GnuCOBOL fundamental DISPLAY-literals extract. COMPUTE ROUNDED / NIST COBOL85 full GAP."
+}

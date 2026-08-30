@@ -73,4 +73,11 @@ Each REQ has an ID. Implementation evidence lives in TRACEABILITY.md.
 | REQ-540 | Correlate estate repos to numbered REQs and trace each to a dated legacy root. CDAC/NRC-FOSS 2008 award is a retrieved mention. PAT.AL, PRATIK, VIDYA, HMSEI, Research Kundali stay uncollapsed. | Architect 28 Aug evening |
 
 
-See also: CONTRACT.md, CONTEXT.md, ARCHITECTURE.md, DESIGN.md, TRACEABILITY.md, REFERENCES.md.
+| REQ-EMU | VGA + VT100 + 16-bit x86 guest, AyeBIOS bias, floppy editor, offline. | This campaign |
+| REQ-VES | Vesoha Hindi tables for every frontend. Not invented in retrieved/. | This campaign |
+| REQ-LOC | Local backend PANINI→C→gcc as well as WASM. | This campaign |
+| REQ-PKG | panini-pkg/v1 web package + distribution page. | This campaign |
+| REQ-CI | PR gate scripts/pr_gate.mjs + .github/workflows/pr.yml. | This campaign |
+
+See also: CONTRACT.md, CONTEXT.md, ARCHITECTURE.md, DESIGN.md, TRACEABILITY.md, REFERENCES.md, TEST_PLAN.md, CONTRIBUTING.md.
+

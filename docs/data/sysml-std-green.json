@@ -1,0 +1,13 @@
+{
+  "language": "sysml",
+  "issuing_body": "OMG SysML v2 Release — examples/Simple Tests/CommentTest.sysml",
+  "suite": "CommentTest.sysml package/part compile-accept",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named SysML v2 CommentTest extract. ISO/IEC 19514 is SysML 1.x (different language). Model checker GAP."
+}

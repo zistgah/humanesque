@@ -1,0 +1,13 @@
+{
+  "language": "scala",
+  "issuing_body": "Scala test/files/run/t0005.scala (scala/scala v2.13.14)",
+  "suite": "t0005.scala def main / val res = 5 compile-accept",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named scala t0005.scala compile-accept. unapply/match execute GAP. Full scalac suite GAP."
+}

@@ -1,0 +1,13 @@
+{
+  "language": "php",
+  "issuing_body": "php-src tests/lang (PHP language)",
+  "suite": "tests/lang/{001,002,004,010}.phpt FILE vs EXPECT",
+  "n": 4,
+  "pass": 4,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named php-src language extract. Zend arrays/objects GAP. Full php-src GAP."
+}

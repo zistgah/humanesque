@@ -1,0 +1,270 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "when": "2026-08-29T21:22:15.744Z",
+ "method": "each frontend run on a real program and on a malformed one; a frontend that accepts the malformed program is not reported as working",
+ "totals": {
+  "UNREACHABLE": 2,
+  "ACCEPTS-ANYTHING": 13,
+  "WRONG-RESULT": 12,
+  "FAILS-ON-VALID": 2,
+  "WORKING": 3
+ },
+ "frontends": [
+  {
+   "id": "ada",
+   "status": "UNREACHABLE",
+   "want": "3",
+   "got": "",
+   "rejects": false,
+   "error": "Undefined name: b"
+  },
+  {
+   "id": "asm",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "basic",
+   "status": "WRONG-RESULT",
+   "want": "15",
+   "got": "",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "c",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "120",
+   "got": "120",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "clojure",
+   "status": "WRONG-RESULT",
+   "want": "3",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "cobol",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "cpp",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "15",
+   "got": "15",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "csharp",
+   "status": "UNREACHABLE",
+   "want": "3",
+   "got": "",
+   "rejects": false,
+   "error": "Undefined name: b"
+  },
+  {
+   "id": "dart",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "fortran",
+   "status": "WRONG-RESULT",
+   "want": "15",
+   "got": "1",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "haskell",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "java",
+   "status": "WRONG-RESULT",
+   "want": "15",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "javascript",
+   "status": "WRONG-RESULT",
+   "want": "120",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "kotlin",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "lex",
+   "status": "FAILS-ON-VALID",
+   "want": "",
+   "got": "",
+   "rejects": true,
+   "error": null
+  },
+  {
+   "id": "lisp",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "logo",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "make",
+   "status": "WRONG-RESULT",
+   "want": "3",
+   "got": "1",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "ocaml",
+   "status": "WRONG-RESULT",
+   "want": "3",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "octave",
+   "status": "WRONG-RESULT",
+   "want": "3",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "pascal",
+   "status": "WRONG-RESULT",
+   "want": "15",
+   "got": "0",
+   "rejects": true,
+   "error": null
+  },
+  {
+   "id": "perl",
+   "status": "WORKING",
+   "want": "3",
+   "got": "3",
+   "rejects": true,
+   "error": null
+  },
+  {
+   "id": "php",
+   "status": "WORKING",
+   "want": "3",
+   "got": "3",
+   "rejects": true,
+   "error": null
+  },
+  {
+   "id": "prolog",
+   "status": "WRONG-RESULT",
+   "want": "true",
+   "got": "1",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "python",
+   "status": "WRONG-RESULT",
+   "want": "120",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "r",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "ruby",
+   "status": "WORKING",
+   "want": "3",
+   "got": "3",
+   "rejects": true,
+   "error": null
+  },
+  {
+   "id": "scala",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "sql",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "swift",
+   "status": "ACCEPTS-ANYTHING",
+   "want": "3",
+   "got": "3",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "typescript",
+   "status": "WRONG-RESULT",
+   "want": "120",
+   "got": "0",
+   "rejects": false,
+   "error": null
+  },
+  {
+   "id": "yacc",
+   "status": "FAILS-ON-VALID",
+   "want": "",
+   "got": "",
+   "rejects": true,
+   "error": null
+  }
+ ]
+}

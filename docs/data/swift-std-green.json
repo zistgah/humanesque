@@ -1,0 +1,13 @@
+{
+  "language": "swift",
+  "issuing_body": "Swift language (Apache-2.0) — apple/swift swift-5.10-RELEASE",
+  "suite": "IntegerDiagnostics.swift expected-error reject + Interpreter/simple.swift run",
+  "n": 2,
+  "pass": 2,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named Swift diagnostics reject + simple.swift run. Not Apple Swift™. Full stdlib/Int.swift GAP."
+}

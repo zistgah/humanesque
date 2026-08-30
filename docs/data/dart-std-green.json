@@ -1,0 +1,13 @@
+{
+  "language": "dart",
+  "issuing_body": "Dart SDK tests/language/operator/operator_test.dart (stable)",
+  "suite": "operator_test.dart static i1/i2 Expect.equals integer extract",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named Dart operator_test.dart i1/i2 integer extract. Operator-overload class GAP. Full language/arithmetic GAP."
+}

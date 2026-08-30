@@ -1,0 +1,13 @@
+{
+  "language": "julia",
+  "issuing_body": "Julia test/intfuncs.jl gcd",
+  "suite": "intfuncs.jl @test gcd(T(n), T(m)) === T(k) integer extract",
+  "n": 9,
+  "pass": 9,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named Julia intfuncs.jl integer gcd extract. Full test/ GAP. Homemade tests/std/julia is CORE only."
+}

@@ -1,0 +1,8 @@
+# Vesoha Hindi · frontend yacc · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+%प्रतीक	%pratiika	%token
+%आरम्भ	%arambha	%start
+%%	%%	%%
+yyविश्लेषण	yyvishlaesana	yyparse
+yyलेख	yylaekha	yylex

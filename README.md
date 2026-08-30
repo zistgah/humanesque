@@ -1,86 +1,112 @@
-# Humanesque
+# PANINI
 
-**PANINI · ILM / Hindawi · GENIE · Mez · Kitab · the cycler family**
+**Read first (this is the contract for every collaborator, human or AI):**
 
-© 1993–2026 Abhishek Choudhary. AyeAI. GPL-3.0-or-later.
+1. [`AGENTS.md`](AGENTS.md)
+2. [`CONTRACT.md`](CONTRACT.md)
+3. [`CONTEXT.md`](CONTEXT.md)
 
-The full `zistgah/panini_by_grok` tree at latest HEAD, merged with the
-`zistgah/panini_by_claude` engine, plus the ILM matrix built in this merge.
-Grok's own README is kept at `README.grok.md`. `ARCHITECTURE.md` is the index.
+---
+
+# tree-rev: 2026.08.29
+# Copyright (C) 1993-2026 Abhishek Choudhary
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+
+Self-hosting general-purpose computational language and execution environment.
+
+Version: **0.1.0**  
+License: **GPL-3.0-or-later**  
+Copyright: **© 1993-2026 Abhishek Choudhary**  
+Implementation: **JavaScript Stage-0 bootstrap**  
+Workbench editor: **Monaco (MIT, Microsoft)** — see `THIRD_PARTY.md`
+
+PANINI can express computation, artifacts, workflows (cyclers), agents, provenance, and — by construction — the language needed to implement PANINI itself.
+
+## Status
+
+This repository is the Stage-0 external bootstrap required by the constitution:
+
+| Stage | What | Where |
+| --- | --- | --- |
+| 0 | JS host + IR VM | `compiler/`, `runtime/` |
+| 1 | Lexer, parser, AST in PANINI | `src/panini/lexer.pni`, `parser.pni` |
+| 2 | Typechecker in PANINI | `src/panini/typechecker.pni` |
+| 3–4 | IR, optimize, codegen in PANINI | `src/panini/ir.pni`, `compiler.pni` |
+| 5–6 | Self-compile; A = B = C | `node scripts/selfhost.mjs` |
+
+Stage 6 is a **fixed point on the compiler subset**: 36 functions, IR generations identical. The JS host still parses a larger grammar than the self-hosted parser.
+
+## Quick start
+
+Standing requirements: **`REQUIREMENTS.md`**.  
+License: **GPL-3.0-or-later** (not MIT).  
+Workbench: **`docs/`** — Monaco (MIT) + Blockly (Apache-2.0). Terminal is VT100.  
+Pages publishes `docs/`.
+
+Requires Node.js 18+.
+
+```bash
+node src/cli.js run examples/hello.pni
+node src/cli.js run examples/factorial.pni
+node tests/run.mjs
+node scripts/bootstrap.mjs
+node scripts/selfhost.mjs
+```
+
+CLI:
 
 ```
-bash VERIFY.sh                     # 20 checks, no arguments
-bash seed_humanesque.sh --push     # gate: SEED humanesque
+node src/cli.js lex <file.pni>
+node src/cli.js parse <file.pni>
+node src/cli.js typecheck <file.pni>
+node src/cli.js compile <file.pni> --target json
+node src/cli.js run <file.pni>
+node src/cli.js repl
 ```
 
-## What this merge added
-
-**The ILM matrix — 27 languages × 9 shailis.** All nine keyword maps extracted
-from the retrieved 2003–2023 transducers: **1,913 rules, none authored.**
-
-| shaili | host | rules | | shaili | host | rules |
-|---|---|---|---|---|---|---|
-| गुरु guru | C | 323 | | सूची soochee | Python | 38 |
-| श्रेणी shraeni | C++ | 879 | | व्याकरण wyaaka | yacc | 20 |
-| यंत्र yantra | asm | 354 | | रोबोट robot | LOGO | 8 |
-| कृत्रिम kritrima | Java | 186 | | शब्द shabda | lex | 6 |
-| प्राथमिक praatha | BASIC | 99 | | | | |
-
-**81 of 243 cells filled from retrieved data.** The other 162 are skeletons with
-the native column empty and marked `UNRESOLVED — a speaker must author them`.
-Nothing invents a native keyword.
-
-Filled: assamese · bengali · gujarati · hindi · kannada · malayalam · marathi ·
-nepali · odia · punjabi · sanskrit · tamil · telugu · urdu · arabic · persian.
-Skeleton: bodo · dogri · kashmiri · konkani · maithili · manipuri · santali ·
-sindhi · shahmukhi · dari · pashto.
+## Language sketch
 
 ```
-node tools/extract_maps.mjs        # nine shailis from the transducers
-node tools/build_ilm_matrix.mjs    # 27 x 9 keyword tables
+FUNCTION factorial(n:Int) -> Int
+    IF n <= 1
+        RETURN 1
+    ELSE
+        RETURN n * factorial(n - 1)
+    END
+END
+
+FUNCTION main() -> Int
+    PRINT factorial(6)
+    RETURN 0
+END
 ```
 
-**Mez reads the language.** `apps/mez/build-workflows.mjs` derives the desk's
-workflows from the `.pni` cyclers instead of a hand-made 80 KB snapshot. Every
-entry carries `derived:true` and its source path; VERIFY asserts both.
+Blocks close with `END`. Multiple paradigms are representable; this bootstrap executes the imperative/functional core and registers declarative forms (artifacts, cyclers, constitution) as data.
 
-**Four honesty defects fixed**, re-applied to this pull: `package.json` said MIT
-against a GPL LICENSE · `tests/test.mjs` carried `never_nonzero` so 81/83 exited
-0 forever (it now exits 1, and there are two real failures) · `selfhost.mjs:70`
-passed a hardcoded `true` for the A-vs-B comparison · the desk's snapshot.
+## Layout
 
-## On self-hosting — the objection is right
+See **`LAYOUT.md`**. GitHub Pages = `docs/` (not `website/`).
 
-Compiling to JavaScript does not disqualify self-hosting. gcc emits x86 and is
-self-hosted. The target is not the question.
+```
+spec/        constitution
+src/         CLI + PANINI-written frontends
+compiler/    Stage-0 JS
+runtime/     interpreter, shaili, gurmukhi, romenagri
+retrieved/   READ-ONLY Hindawi / Romenagri / APCISR / Punjabi maps
+docs/        site: index, view.html, hindawi.html, punjabi.html, workbench
+examples/    hello.pni, punjabi_hello.uhin
+```
 
-The question is whether the PANINI-source compiler, compiled by itself,
-reproduces itself. That is not passed here, and the reason is not the target:
-`src/panini/compiler.pni` is 25 lines that call `lex()`, `build.pni` is seven
-functions each returning `TRUE`, `typechecker.pni` cannot reject anything, and
-`CAN_LOWER` is satisfied by `compiler/ir.js` — JavaScript. `docs/GROK_UPDATE.md`
-§4 has the line numbers.
+## Invariants honored by this bootstrap
 
-Both implementations are kept and both are left disagreeing. That disagreement is
-the most useful thing in this repository.
+- Artifacts and FILE blocks are first-class and carry MIME + provenance
+- Epistemic status is explicit in the provenance module
+- Model providers are adapters (`ASK` is a stub, not constitutive)
+- GENIE / FAKIR / CHARBAGH are cycler libraries, not the language
+- Simulation and experiment are distinct statuses
+- Untagged claims cannot be canonicalized
 
-## Not asserted
+## License
 
-**Mez does not yet work as intended.** Six output cyclers still recover only their
-first `STAGE`. A fix took matba 1→28, awaz→12, khwab→7, tilasm→14, yadein→13 and
-broke a FILE-block assertion; it was reverted rather than shipped half-tested.
-`docs/GROK_UPDATE.md` §1 carries the numbers and the trap.
-
-**GENIE is not done.** The prompt operating system is specified, `genie.js` lives
-in its own repository, and nothing here implements the eleven nodes.
-
-**LOGO, lex and yacc are thin** — 8, 6 and 20 rules. The transducers are
-retrieved and real; the extractors read only what matched. More rules are in
-those files than my readers currently pull out.
-
-## Read next
-
-`ARCHITECTURE.md` — the three axes, nine shailis, four strata, both AGI stacks,
-release tiers, and what is architectural rather than implemented.
-`docs/GROK_UPDATE.md` · `docs/KNOWLEDGE_TRANSFER_FOR_GROK.md` ·
-`docs/GUIDANCE_TO_GROK_MEZ.md` · `spec/DELTAS.md`.
+GPL-3.0-or-later. See `LICENSE`. Copyright (C) 1993-2026 Abhishek Choudhary.

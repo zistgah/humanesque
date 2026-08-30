@@ -1,0 +1,13 @@
+{
+  "language": "kotlin",
+  "issuing_body": "Kotlin stdlib test/numbers/NumbersTest.kt (JetBrains, v1.8.22)",
+  "suite": "intMinMaxValues assertTrue/assertEquals Int.MIN/MAX + one (4)",
+  "n": 4,
+  "pass": 4,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named Kotlin NumbersTest.kt Int min/max extract. Long/Short/Byte overflow and kotlin.test runner GAP. Not kotlinc."
+}

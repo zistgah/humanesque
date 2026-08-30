@@ -1,0 +1,14 @@
+# sanskrit → java  |  script: Devanagari  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/kritrima/h2j.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	java
+अन्यथा	anyathaa	else
+यावत्	yaavat	while
+कुरु	kuru	do
+भङ्ग	bha_nga	stop
+अनुवर्त	anuvarta	continue
+विकल्प	vikalpa	switch
+पूर्णाङ्क	puur_naa_nka	int
+वर्ण	var_na	char
+गुप्त	gupta	private
+स्थिर	sthira	const

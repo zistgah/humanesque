@@ -1,0 +1,11 @@
+# Vesoha Hindi · frontend sql · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+चयन	cayana	SELECT
+से	sae	FROM
+जहाँ	jahaan	WHERE
+डालो	daalao	INSERT
+में	maen	INTO
+मान	maana	VALUES
+रचो	racao	CREATE
+सारणी	saaranii	TABLE

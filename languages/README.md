@@ -17,6 +17,19 @@ Do not grow a second interpreter here. Factory correlation: `factory/CORRELATION
 | `languages/rust.pni` | `src/panini/frontends/rust.pni` |
 | `languages/go.pni` | `src/panini/frontends/go.pni` |
 | `languages/julia.pni` | `src/panini/frontends/julia.pni` |
-| `languages/sysml.pni` | stub frontend (same file is the stub) |
+| `languages/sysml.pni` | `src/panini/frontends/sysml.pni` |
+| `languages/csharp.pni` | `src/panini/frontends/csharp.pni` |
+| `languages/ruby.pni` | `src/panini/frontends/ruby.pni` |
+| `languages/sql.pni` | `src/panini/frontends/sql.pni` |
+| `languages/kotlin.pni` | `src/panini/frontends/kotlin.pni` |
+| `languages/swift.pni` | `src/panini/frontends/swift.pni` |
+| `languages/perl.pni` | `src/panini/frontends/perl.pni` |
+| `languages/cobol.pni` | `src/panini/frontends/cobol.pni` |
+| `languages/scala.pni` | `src/panini/frontends/scala.pni` |
+| `languages/php.pni` | `src/panini/frontends/php.pni` |
+| `languages/r.pni` | `src/panini/frontends/r.pni` |
+| `languages/ada.pni` | `src/panini/frontends/ada.pni` |
+| `languages/dart.pni` | `src/panini/frontends/dart.pni` |
+| `languages/octave.pni` | `src/panini/frontends/octave.pni` |
 
 Status: architectural embedding, not source-compatible CONFORMANCE.

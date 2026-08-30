@@ -1,0 +1,13 @@
+{
+  "language": "scheme",
+  "issuing_body": "IEEE 1178 / R5RS + chibi-scheme tests/r5rs-tests.scm",
+  "suite": "r5rs-tests.scm self-contained integer (test) extract",
+  "n": 26,
+  "pass": 26,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named chibi r5rs-tests.scm integer extract. Full R5RS / R7RS GAP."
+}

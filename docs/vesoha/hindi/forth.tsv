@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend forth · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+परिभाषा	paribhaasaa	:
+समाप्त	samaapta	;
+द्विगुण	dviguna	DUP
+अदलाबदली	adalaabadalii	SWAP
+गिराओ	giraao	DROP
+ऊपर	uupara	OVER
+छापो	chaapao	.

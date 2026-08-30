@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — packages</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+  <style>
+    textarea { width: 100%; min-height: 10rem; font: 14px ui-monospace, monospace; background: #070d18; color: #e8d9a8; border: 1px solid rgba(201,162,39,.35); padding: .6rem; border-radius: 6px; }
+    .row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0; align-items: center; }
+    .row button, .row .btn { background: #0b1524; color: #e8d9a8; border: 1px solid rgba(201,162,39,.5); padding: .35rem .7rem; border-radius: 4px; cursor: pointer; font: inherit; }
+    #out { white-space: pre-wrap; font: 13px ui-monospace, monospace; }
+  </style>
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">Web-built artifacts. Same IR, two backends: WASM and local gcc.</p>
+  <h1>Package and distribute</h1>
+  <p>What you build here is a package: source, frontend, backend choice, and the emitted artifact. Download it. On a machine with <code>node</code> and <code>gcc</code>, the local backend is <code>panini binary</code>.</p>
+  <div class="row">
+    <label>Frontend
+      <select id="fe"></select>
+    </label>
+    <label>Backend
+      <select id="be">
+        <option value="wasm">WASM (browser)</option>
+        <option value="local">local (PANINI → C → gcc)</option>
+        <option value="cinterp">cinterp (host-speed)</option>
+      </select>
+    </label>
+    <button type="button" id="pack">Pack</button>
+    <button type="button" id="dl">Download .panini-pkg.json</button>
+  </div>
+  <p>Source</p>
+  <textarea id="src">int main(void) {
+    return 40 + 2;
+}
+</textarea>
+  <pre id="out">idle</pre>
+  <h2>Install locally</h2>
+  <pre translate="no">unzip panini.zip
+cd panini
+chmod +x bin/panini
+./bin/panini run examples/hello.pni
+./bin/panini binary examples/factorial.pni --out factorial
+./factorial
+./bin/panini package examples/hello.pni --backend local --out hello.panini-pkg.json</pre>
+  <p><a class="btn" href="local.html">Download panini.zip</a> <a class="btn" href="contribute.html">Contribute</a></p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+<script>
+(function () {
+  var pkg = null;
+  fetch("data/frontends.json").then(function (r) { return r.json(); }).then(function (j) {
+    var sel = document.getElementById("fe");
+    (j.frontends || []).forEach(function (f) {
+      var o = document.createElement("option");
+      o.value = f.id; o.textContent = f.title || f.id;
+      if (f.id === "c") o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.onchange = function () {
+      var f = (j.frontends || []).find(function (x) { return x.id === sel.value; });
+      if (f && f.sample) document.getElementById("src").value = f.sample;
+    };
+  });
+  function pack() {
+    pkg = {
+      format: "panini-pkg/v1",
+      copyright: "Copyright (C) 1993-2026 Abhishek Choudhary",
+      license: "GPL-3.0-or-later",
+      frontend: document.getElementById("fe").value,
+      backend: document.getElementById("be").value,
+      source: document.getElementById("src").value,
+      built: new Date().toISOString(),
+      run_wasm: "open workbench.html, pick frontend, Run",
+      run_local: "panini binary <file.pni> --out a.out   # or panini gcc",
+    };
+    document.getElementById("out").textContent = JSON.stringify(pkg, null, 2);
+  }
+  document.getElementById("pack").onclick = pack;
+  document.getElementById("dl").onclick = function () {
+    if (!pkg) pack();
+    var blob = new Blob([JSON.stringify(pkg, null, 2)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = (pkg.frontend || "panini") + ".panini-pkg.json";
+    a.click();
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Vesoha Hindi · frontend sysml · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+संकुल	sankula	package
+भाग	bhaaga	part
+परिभाषा	paribhaasaa	def
+विशेषता	vishaesataa	attribute
+बाधा	baadhaa	constraint
+आवश्यकता	avashyakataa	requirement

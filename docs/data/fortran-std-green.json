@@ -3,17 +3,13 @@
   "issuing_body": "ISO/IEC JTC1/SC22/WG5 (N2146) + GCC gfortran.dg / fortran-torture execute",
   "suite": "official { dg-do run } / torture execute (emptyif.f90, arithmeticif.f90, pr20124.f90)",
   "n": 3,
-  "pass": 0,
+  "pass": 1,
   "skip": 0,
   "skip0": false,
   "fails": [
     {
-      "file": "emptyif.f90",
-      "error": "unlowered: implicit,elseif,endif"
-    },
-    {
       "file": "arithmeticif.f90",
-      "error": "unlowered: implicit,goto"
+      "error": "unlowered: goto"
     },
     {
       "file": "pr20124.f90",

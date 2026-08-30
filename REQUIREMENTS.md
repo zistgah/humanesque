@@ -36,9 +36,8 @@ GPL-3.0-or-later
 32. STANDARD GREEN BASIC 20/20 (Hindawi Shaili BASIC subset).
 34. STANDARD GREEN means a retrieved issuing-body spec plus that body’s executable suite, skip=0. Homemade 20-case files are CORE GREEN only.
 37. PANINI.V2.WORKBENCH (L15) specified; T0 not altered. AGI stack reports SHIP GREEN and STANDARD GREEN per layer from factory/agi_map.json. STANDARD GREEN is not 27/27.
-
-
-
-
-
-
+38. VGA + VT100 + 16-bit x86 guest with AyeBIOS (A Y E V I O S) bias. Floppy 1.44MB editor. Offline — no copy.sh. (`docs/emu.html`, `runtime/x86rm.js`)
+39. Vesoha Hindi translation tables for every frontend keywords list. Hindi pack, all frontends enabled. Not invented in `retrieved/`.
+40. Local backend: `panini binary` / `panini gcc` (PANINI → C → gcc) in addition to WASM.
+41. Web package format `panini-pkg/v1` (`panini package`, `docs/packages.html`).
+42. PR correctness gate `scripts/pr_gate.mjs` (may fail). GitHub workflow `.github/workflows/pr.yml`.

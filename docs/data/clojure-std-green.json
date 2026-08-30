@@ -1,0 +1,13 @@
+{
+  "language": "clojure",
+  "issuing_body": "Clojure test/clojure/test_clojure/numbers.clj",
+  "suite": "numbers.clj self-contained (+ N M) extract",
+  "n": 4,
+  "pass": 4,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named Clojure numbers.clj integer + extract. Full test_clojure GAP."
+}

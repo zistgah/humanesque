@@ -29,5 +29,11 @@
   {"id":"smalltalk","family":"oop","axes":["@abstract(object)","@eval(message)"]},
   {"id":"logo","family":"turtle","axes":["@imperative"]},
   {"id":"julia","family":"dispatch","axes":["@dispatch(dynamic_multi)"]},
-  {"id":"assembly","family":"machine","axes":["@assembly","@mem(manual_raw)"]}
+  {"id":"assembly","family":"machine","axes":["@assembly","@mem(manual_raw)"]},
+  {"id":"php","family":"dynamic","axes":["@type(dynamic_gradual)","@async(event_loop)"]},
+  {"id":"r","family":"numeric","axes":["@exec(simd_vector)"]},
+  {"id":"ada","family":"structured","axes":["@imperative","@type(static_nominal)"]},
+  {"id":"dart","family":"oop","axes":["@abstract(object)","@async(event_loop)"]},
+  {"id":"octave","family":"numeric","axes":["@exec(simd_vector)"]},
+  {"id":"sysml","family":"model","axes":["@abstract(constraint)"]}
 ]

@@ -1,0 +1,34 @@
+{
+ "target": "lex",
+ "shaili": "shabda",
+ "host": "lex",
+ "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
+ "invented": false,
+ "extracted_at_rules": 6,
+ "rules": [
+  {
+   "from": "\\'(\"\\\\\\'\"|.*)*\\'",
+   "to": "%s"
+  },
+  {
+   "from": "\\\"(\"\\\\\\\"\"|[^\\\"^\\n]*)*\\\"",
+   "to": "%s"
+  },
+  {
+   "from": "श_शब्द",
+   "to": "yylex"
+  },
+  {
+   "from": "श_ब_मान",
+   "to": "yylval"
+  },
+  {
+   "from": "श_माला",
+   "to": "yytext"
+  },
+  {
+   "from": "श_पंक्ति",
+   "to": "yylineno"
+  }
+ ]
+}

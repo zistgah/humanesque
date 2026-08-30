@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend cpp · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+वर्ग	varga	class
+बूल	buula	bool
+साँचा	saancaa	template
+नामस्थान	naamasthaana	namespace
+नवीन	naviina	new
+मिटाओ	mitaao	delete
+आभासी	aabhaasii	virtual

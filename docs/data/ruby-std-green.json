@@ -1,0 +1,13 @@
+{
+  "language": "ruby",
+  "issuing_body": "ISO/IEC 30170 proxy — MRI bootstraptest/test_literal.rb + ruby/spec Integer#+",
+  "suite": "assert_equal integer literals + (N+M).should == K named extract",
+  "n": 3,
+  "pass": 3,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named MRI/RubySpec integer extract. Full bootstraptest / RubySpec GAP."
+}

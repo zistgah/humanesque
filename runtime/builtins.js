@@ -16,7 +16,7 @@ import { cinterp } from "./cinterp.js";
 import { cpplower } from "./cpplower.js";
 import { clower } from "./clower.js";
 import { gnuc } from "./gnuc.js";
-import { rustToC, goToC, juliaToC, tsToC, jsToC, zigToC, luaToC, fortranToC, pascalToC, pascalReject, basicToC, javaToC, javaReject } from "./stdlower.js";
+import { rustToC, goToC, juliaToC, tsToC, jsToC, zigToC, luaToC, fortranToC, pascalToC, pascalReject, basicToC, javaToC, javaReject, csharpToC, kotlinToC, swiftToC, scalaToC, dartToC, adaToC } from "./stdlower.js";
 import { qb64Run } from "./qb64.js";
 import { js262Run, ts262Run } from "./js262.js";
 import { stRunFile } from "./steval.js";
@@ -28,6 +28,7 @@ import { makeRun } from "./makeeval.js";
 import { asRun } from "./aseval.js";
 import { createVga, vgaPset, vgaLine, vgaScreen, vgaCls } from "./vga.js";
 import { renderTextBitmap } from "./dosfont.js";
+import { rubyRun, perlRun, phpRun, rRun, cobolRun, sqlRun, octaveRun, sysmlRun } from "./appeval.js";
 
 export function installBuiltins(env, runtime) {
   const def = (name, fn, arity) => {
@@ -84,6 +85,20 @@ export function installBuiltins(env, runtime) {
   def("ASRUN", (x) => wrap(asRun(toStr(x))), 1);
   def("LISPRUN", (x) => wrap(lispRun(toStr(x))), 1);
   def("PROLOGRUN", (x) => wrap(prologRun(toStr(x))), 1);
+  def("CSHARPLOWER", (x) => vStr(csharpToC(toStr(x))), 1);
+  def("KOTLINLOWER", (x) => vStr(kotlinToC(toStr(x))), 1);
+  def("SWIFTLOWER", (x) => vStr(swiftToC(toStr(x))), 1);
+  def("SCALALOWER", (x) => vStr(scalaToC(toStr(x))), 1);
+  def("DARTLOWER", (x) => vStr(dartToC(toStr(x))), 1);
+  def("ADALOWER", (x) => vStr(adaToC(toStr(x))), 1);
+  def("RUBYRUN", (x) => wrap(rubyRun(toStr(x))), 1);
+  def("PERLRUN", (x) => wrap(perlRun(toStr(x))), 1);
+  def("PHPRUN", (x) => wrap(phpRun(toStr(x))), 1);
+  def("RRUN", (x) => wrap(rRun(toStr(x))), 1);
+  def("COBOLRUN", (x) => wrap(cobolRun(toStr(x))), 1);
+  def("SQLRUN", (x) => wrap(sqlRun(toStr(x))), 1);
+  def("OCTAVERUN", (x) => wrap(octaveRun(toStr(x))), 1);
+  def("SYSMLRUN", (x) => wrap(sysmlRun(toStr(x))), 1);
   {
     let _vga = createVga(13);
     def("VGA", () => wrap({ mode: _vga.mode, w: _vga.w, h: _vga.h, name: _vga.name }));

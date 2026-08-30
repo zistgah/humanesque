@@ -145,7 +145,7 @@
     META.forEach(function (m) {
       var o = document.createElement("option");
       o.value = m.id;
-      o.textContent = (m.standard_green ? "GREEN " : (m.core ? "CORE  " : "      ")) + m.title;
+      o.textContent = (m.iso_green ? "ISO   " : m.standard_green ? "GREEN " : (m.core ? "CORE  " : "      ")) + m.title;
       sel.appendChild(o);
     });
     var want = new URLSearchParams(location.search).get("lang");

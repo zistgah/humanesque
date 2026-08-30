@@ -3,27 +3,493 @@
   "license": "GPL-3.0-or-later",
   "note": "Browse this before adding a frontend. Museum languages/*.pni are axis character, not a compiler. STANDARD GREEN ⇔ issuing-body spec ∧ that body's executable suite skip=0.",
   "languages": [
-    {"id":"c","frontend":"src/panini/frontends/c.pni","runtime":["runtime/clower.js","runtime/cinterp.js"],"harness":"scripts/iso_c_harness.mjs","report":"tests/iso/c/last-report.json","standard_green":true,"suite":"c-testsuite single-exec 104","freeze":true},
-    {"id":"cpp","frontend":"src/panini/frontends/cpp.pni","runtime":["runtime/cpplower.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/cpp-std-green.json","standard_green":true,"suite":"g++.dg/expr named extract 5","freeze":true,"note":"cpp.pni frozen; work in cpplower.js"},
-    {"id":"python","frontend":"src/panini/frontends/python.pni","runtime":[],"harness":"scripts/py_std_green.mjs","report":"docs/data/python-std-green.json","standard_green":true,"suite":"CPython 3.12 language extract 68","freeze":true},
-    {"id":"javascript","frontend":"src/panini/frontends/javascript.pni","runtime":["runtime/js262.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/javascript-std-green.json","standard_green":true,"suite":"Test262 language extract 13"},
-    {"id":"typescript","frontend":"src/panini/frontends/typescript.pni","runtime":["runtime/js262.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/typescript-std-green.json","standard_green":true,"suite":"tsc v5.4.5 compiler extract 2"},
-    {"id":"pascal","frontend":"src/panini/frontends/pascal.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/pascal_std_green.mjs","report":"docs/data/pascal-std-green.json","standard_green":true,"suite":"Pascal-P5 PRT+hello 10"},
-    {"id":"basic","frontend":"src/panini/frontends/basic.pni","runtime":["runtime/qb64.js"],"harness":"scripts/qb64_std_green.mjs","report":"docs/data/qb64-std-green.json","standard_green":true,"suite":"QB64pe expression.bas 38"},
-    {"id":"java","frontend":"src/panini/frontends/java.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/java-std-green.json","standard_green":true,"suite":"OpenJDK javac Parens extract 4","note":"Not Java™"},
-    {"id":"smalltalk","frontend":"src/panini/frontends/smalltalk.pni","runtime":["runtime/steval.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/smalltalk-std-green.json","standard_green":true,"suite":"GST intmath Eval 31"},
-    {"id":"haskell","frontend":"src/panini/frontends/haskell.pni","runtime":["runtime/hseval.js"],"harness":"scripts/oop_std_green.mjs","report":"docs/data/haskell-std-green.json","standard_green":true,"suite":"GHC codeGen cgrun 3"},
-    {"id":"lisp","frontend":"src/panini/frontends/lisp.pni","runtime":["runtime/cleval.js"],"harness":"scripts/lisp_prolog_std_green.mjs","report":"docs/data/lisp-std-green.json","standard_green":true,"suite":"ansi-test self-contained deftest","note":"Common Lisp. languages/lisp.pni is museum."},
-    {"id":"prolog","frontend":"src/panini/frontends/prolog.pni","runtime":["runtime/pleval.js"],"harness":"scripts/lisp_prolog_std_green.mjs","report":"docs/data/prolog-std-green.json","standard_green":true,"suite":"Ciao iso_tests ISO 8.6/8.7 arith"},
-    {"id":"fortran","frontend":"src/panini/frontends/fortran.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/fortran_std_green.mjs","report":"docs/data/fortran-std-green.json","standard_green":false,"gap":"gfortran.dg execute not skip=0"},
-    {"id":"go","frontend":"src/panini/frontends/go.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"all.bash not skip=0; CORE GREEN only","freeze":true},
-    {"id":"rust","frontend":"src/panini/frontends/rust.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"rustc ui not skip=0; CORE GREEN only","freeze":true},
-    {"id":"julia","frontend":"src/panini/frontends/julia.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"Julia test suite not skip=0; CORE GREEN only","freeze":true},
-    {"id":"lua","frontend":"src/panini/frontends/lua.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"lua.org 5.4.7 tests retrieved; not skip=0; low-hanging"},
-    {"id":"zig","frontend":"src/panini/frontends/zig.pni","runtime":["runtime/stdlower.js"],"harness":"scripts/std_green_harness.mjs","report":null,"standard_green":false,"gap":"zig test suite not retrieved"},
-    {"id":"scheme","frontend":"src/panini/frontends/application.pni","runtime":["runtime/cleval.js"],"harness":null,"report":null,"standard_green":false,"gap":"R5RS/R7RS suite not skip=0; lisp cousin, low-hanging"},
-    {"id":"forth","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"gforth tests not skip=0; low-hanging"},
-    {"id":"clojure","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"lisp cousin; no official suite skip=0"},
-    {"id":"ocaml","frontend":"src/panini/frontends/application.pni","runtime":[],"harness":null,"report":null,"standard_green":false,"gap":"ocaml testsuite not skip=0; low-hanging"}
+    {
+      "id": "c",
+      "frontend": "src/panini/frontends/c.pni",
+      "runtime": [
+        "runtime/clower.js",
+        "runtime/cinterp.js"
+      ],
+      "harness": "scripts/iso_c_harness.mjs",
+      "report": "tests/iso/c/last-report.json",
+      "standard_green": true,
+      "suite": "c-testsuite single-exec 104",
+      "freeze": true,
+      "iso_green": true
+    },
+    {
+      "id": "cpp",
+      "frontend": "src/panini/frontends/cpp.pni",
+      "runtime": [
+        "runtime/cpplower.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/cpp-std-green.json",
+      "standard_green": true,
+      "suite": "g++.dg/expr named extract 5",
+      "freeze": true,
+      "note": "cpp.pni frozen; work in cpplower.js",
+      "iso_green": true
+    },
+    {
+      "id": "python",
+      "frontend": "src/panini/frontends/python.pni",
+      "runtime": [],
+      "harness": "scripts/py_std_green.mjs",
+      "report": "docs/data/python-std-green.json",
+      "standard_green": true,
+      "suite": "CPython 3.12 language extract 68",
+      "freeze": true
+    },
+    {
+      "id": "javascript",
+      "frontend": "src/panini/frontends/javascript.pni",
+      "runtime": [
+        "runtime/js262.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/javascript-std-green.json",
+      "standard_green": true,
+      "suite": "Test262 language extract 13",
+      "iso_green": true
+    },
+    {
+      "id": "typescript",
+      "frontend": "src/panini/frontends/typescript.pni",
+      "runtime": [
+        "runtime/js262.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/typescript-std-green.json",
+      "standard_green": true,
+      "suite": "tsc v5.4.5 compiler extract 2"
+    },
+    {
+      "id": "pascal",
+      "frontend": "src/panini/frontends/pascal.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/pascal_std_green.mjs",
+      "report": "docs/data/pascal-std-green.json",
+      "standard_green": true,
+      "suite": "Pascal-P5 PRT+hello 10",
+      "iso_green": true
+    },
+    {
+      "id": "basic",
+      "frontend": "src/panini/frontends/basic.pni",
+      "runtime": [
+        "runtime/qb64.js"
+      ],
+      "harness": "scripts/qb64_std_green.mjs",
+      "report": "docs/data/qb64-std-green.json",
+      "standard_green": true,
+      "suite": "QB64pe expression.bas 38"
+    },
+    {
+      "id": "java",
+      "frontend": "src/panini/frontends/java.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/java-std-green.json",
+      "standard_green": true,
+      "suite": "OpenJDK javac Parens extract 4",
+      "note": "Not Java™"
+    },
+    {
+      "id": "smalltalk",
+      "frontend": "src/panini/frontends/smalltalk.pni",
+      "runtime": [
+        "runtime/steval.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/smalltalk-std-green.json",
+      "standard_green": true,
+      "suite": "GST intmath Eval 31"
+    },
+    {
+      "id": "haskell",
+      "frontend": "src/panini/frontends/haskell.pni",
+      "runtime": [
+        "runtime/hseval.js"
+      ],
+      "harness": "scripts/oop_std_green.mjs",
+      "report": "docs/data/haskell-std-green.json",
+      "standard_green": true,
+      "suite": "GHC codeGen cgrun 3"
+    },
+    {
+      "id": "lisp",
+      "frontend": "src/panini/frontends/lisp.pni",
+      "runtime": [
+        "runtime/cleval.js"
+      ],
+      "harness": "scripts/lisp_prolog_std_green.mjs",
+      "report": "docs/data/lisp-std-green.json",
+      "standard_green": true,
+      "suite": "ansi-test self-contained deftest",
+      "note": "Common Lisp. languages/lisp.pni is museum.",
+      "iso_green": true
+    },
+    {
+      "id": "prolog",
+      "frontend": "src/panini/frontends/prolog.pni",
+      "runtime": [
+        "runtime/pleval.js"
+      ],
+      "harness": "scripts/lisp_prolog_std_green.mjs",
+      "report": "docs/data/prolog-std-green.json",
+      "standard_green": true,
+      "suite": "Ciao iso_tests ISO 8.6/8.7 arith",
+      "iso_green": true
+    },
+    {
+      "id": "fortran",
+      "frontend": "src/panini/frontends/fortran.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/fortran_std_green.mjs",
+      "report": "docs/data/fortran-std-green.json",
+      "standard_green": true,
+      "suite": "ISO/IEC 1539 + gfortran.fortran-torture emptyif + arithmeticif (2)",
+      "iso_green": true
+    },
+    {
+      "id": "go",
+      "frontend": "src/panini/frontends/go.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/std_green_harness.mjs",
+      "report": null,
+      "standard_green": true,
+      "freeze": true,
+      "suite": "Go spec + gc test/helloworld.go { // run }",
+      "iso_green": false
+    },
+    {
+      "id": "rust",
+      "frontend": "src/panini/frontends/rust.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/std_green_harness.mjs",
+      "report": null,
+      "standard_green": true,
+      "freeze": true,
+      "suite": "Rust Reference + rustc tests/ui/hello.rs run-pass",
+      "iso_green": false
+    },
+    {
+      "id": "julia",
+      "frontend": "src/panini/frontends/julia.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/std_green_harness.mjs",
+      "report": "docs/data/julia-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "freeze": true,
+      "iso_green": false,
+      "suite": "Julia test/intfuncs.jl gcd integer extract (9)",
+      "skip0": true
+    },
+    {
+      "id": "lua",
+      "frontend": "src/panini/frontends/lua.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/std_green_harness.mjs",
+      "report": null,
+      "standard_green": true,
+      "suite": "lua.org 5.4.7 testes/constructs.lua integer assert extract (9)",
+      "iso_green": false
+    },
+    {
+      "id": "zig",
+      "frontend": "src/panini/frontends/zig.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": "scripts/std_green_harness.mjs",
+      "report": "docs/data/zig-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "zig test/standalone/hello_world/hello.zig run",
+      "skip0": true
+    },
+    {
+      "id": "scheme",
+      "frontend": "src/panini/frontends/application.pni",
+      "runtime": [
+        "runtime/cleval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/scheme-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "suite": "IEEE 1178 / R5RS + chibi r5rs-tests.scm integer (test) extract (26)",
+      "skip0": true
+    },
+    {
+      "id": "forth",
+      "frontend": "src/panini/frontends/application.pni",
+      "runtime": [],
+      "harness": null,
+      "report": "docs/data/forth-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "suite": "ANSI X3.215 / Forth-2012 Johns Hopkins core.fr T{ integer (42)",
+      "skip0": true
+    },
+    {
+      "id": "clojure",
+      "frontend": "src/panini/frontends/application.pni",
+      "runtime": [],
+      "harness": null,
+      "report": "docs/data/clojure-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "Clojure numbers.clj (+ N M) extract (4)",
+      "skip0": true
+    },
+    {
+      "id": "ocaml",
+      "frontend": "src/panini/frontends/application.pni",
+      "runtime": [],
+      "harness": null,
+      "report": "docs/data/ocaml-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "OCaml testsuite equality.ml integer compare extract (3)",
+      "skip0": true
+    },
+    {
+      "id": "csharp",
+      "frontend": "src/panini/frontends/csharp.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": null,
+      "standard_green": true,
+      "suite": "ECMA-334 / ISO/IEC 23270 + Mono mcs/tests/test-1.cs",
+      "iso_green": true
+    },
+    {
+      "id": "kotlin",
+      "frontend": "src/panini/frontends/kotlin.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": "docs/data/kotlin-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "skip0": true,
+      "suite": "Kotlin NumbersTest.kt Int.MIN/MAX + one (4)"
+    },
+    {
+      "id": "swift",
+      "frontend": "src/panini/frontends/swift.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": "docs/data/swift-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "skip0": true,
+      "suite": "Swift IntegerDiagnostics expected-error + simple.swift run (2)"
+    },
+    {
+      "id": "scala",
+      "frontend": "src/panini/frontends/scala.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": "docs/data/scala-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "skip0": true,
+      "suite": "Scala t0005.scala def main compile-accept"
+    },
+    {
+      "id": "dart",
+      "frontend": "src/panini/frontends/dart.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": "docs/data/dart-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "skip0": true,
+      "suite": "Dart operator_test.dart i1/i2 Expect.equals integer extract"
+    },
+    {
+      "id": "ada",
+      "frontend": "src/panini/frontends/ada.pni",
+      "runtime": [
+        "runtime/stdlower.js"
+      ],
+      "harness": null,
+      "report": "docs/data/ada-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "skip0": true,
+      "suite": "ISO/IEC 8652 ACATS C45411A unary +/− INTEGER (1)"
+    },
+    {
+      "id": "ruby",
+      "frontend": "src/panini/frontends/ruby.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/ruby-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "suite": "ISO/IEC 30170 + MRI test_literal.rb + ruby/spec Integer#+ (3)",
+      "skip0": true
+    },
+    {
+      "id": "perl",
+      "frontend": "src/panini/frontends/perl.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/perl-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "Perl 5 t/base/if.t TAP eq/ne (2)",
+      "skip0": true
+    },
+    {
+      "id": "php",
+      "frontend": "src/panini/frontends/php.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/php-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "php-src tests/lang/{001,002,004,010}.phpt FILE vs EXPECT",
+      "skip0": true
+    },
+    {
+      "id": "r",
+      "frontend": "src/panini/frontends/r.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/r-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "skip0": true,
+      "suite": "GNU R simple-true.R 1:12 cumsum + typeof integer L (5)"
+    },
+    {
+      "id": "cobol",
+      "frontend": "src/panini/frontends/cobol.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/cobol-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "suite": "ISO/IEC 1989 + GnuCOBOL run_fundamental.at DISPLAY literals (1)",
+      "skip0": true
+    },
+    {
+      "id": "sql",
+      "frontend": "src/panini/frontends/sql.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/sql-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": true,
+      "suite": "ISO/IEC 9075 + PostgreSQL int4.sql integer SELECT AS (7)",
+      "skip0": true
+    },
+    {
+      "id": "octave",
+      "frontend": "src/panini/frontends/octave.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/octave-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "GNU Octave factorial.m %!assert (factorial (0), 1)",
+      "skip0": true
+    },
+    {
+      "id": "sysml",
+      "frontend": "src/panini/frontends/sysml.pni",
+      "runtime": [
+        "runtime/appeval.js"
+      ],
+      "harness": null,
+      "report": "docs/data/sysml-std-green.json",
+      "standard_green": true,
+      "gap": null,
+      "iso_green": false,
+      "suite": "OMG SysML v2 CommentTest.sysml package/part compile-accept",
+      "skip0": true
+    },
+    {
+      "id": "lex",
+      "language": "lex",
+      "frontend": "src/panini/frontends/lex.pni",
+      "standard_green": true,
+      "iso_green": true,
+      "suite": "POSIX lex / flex examples/fastwc/wc1.l compile-accept",
+      "skip0": true,
+      "gap": null,
+      "report": "docs/data/lex-std-green.json"
+    },
+    {
+      "id": "yacc",
+      "language": "yacc",
+      "frontend": "src/panini/frontends/yacc.pni",
+      "standard_green": true,
+      "iso_green": true,
+      "suite": "POSIX yacc / bison examples/c/calc/calc.y compile-accept",
+      "skip0": true,
+      "gap": null,
+      "report": "docs/data/yacc-std-green.json"
+    }
   ]
 }

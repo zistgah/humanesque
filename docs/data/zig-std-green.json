@@ -1,0 +1,13 @@
+{
+  "language": "zig",
+  "issuing_body": "Zig language reference + test/standalone/hello_world/hello.zig",
+  "suite": "hello.zig standalone run (writeAll Hello, World!)",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named zig standalone hello extract. Full behavior/ GAP."
+}

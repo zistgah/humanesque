@@ -3,57 +3,218 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PANINI — x86 guest</title>
+  <title>PANINI — x86 guest · AyeBIOS · floppy</title>
   <link rel="stylesheet" href="site.css" />
   <link rel="stylesheet" href="skins/jazz.css" />
   <style>
-    .bezel { background:#222; padding:12px; border-radius:12px; }
-    #screen { width:100%; min-height:70vh; background:#000; }
-    #screen canvas { width:100%; height:auto; }
+    .bezel {
+      background: linear-gradient(180deg, #2a2a2a, #111);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 18px 40px #000, inset 0 1px 0 #555;
+    }
+    .led { width: 8px; height: 8px; border-radius: 50%; background: #3f3; box-shadow: 0 0 8px #3f3; margin: 0 0 8px auto; }
+    .led.off { background: #444; box-shadow: none; }
+    #glass { display: block; width: 100%; height: auto; background: #001400; border-radius: 4px; image-rendering: pixelated; }
+    .banner {
+      font: 15px/1.45 "Noto Sans Devanagari", "Iowan Old Style", Palatino, serif;
+      color: #c9a227; margin: 0 0 .6rem; white-space: pre-wrap;
+    }
+    .row { display: flex; flex-wrap: wrap; gap: .45rem; margin: .7rem 0; align-items: center; }
+    .row button, .row .btn, .row label.btn {
+      background: #0b1524; color: #e8d9a8; border: 1px solid rgba(201,162,39,.5);
+      padding: .35rem .7rem; border-radius: 4px; cursor: pointer; font: inherit;
+    }
+    .kbd {
+      display: flex; align-items: center; gap: .4rem;
+      margin-top: 10px; background: #1a1a1a; border-radius: 6px;
+      padding: .35rem .55rem; font: 14px ui-monospace, monospace; color: #8f8;
+    }
+    .kbd input { flex: 1; background: transparent; border: 0; color: #cfc; font: inherit; outline: none; }
+    #hex {
+      width: 100%; min-height: 18rem; font: 12px/1.35 ui-monospace, monospace;
+      background: #070d18; color: #cfc; border: 1px solid rgba(201,162,39,.35);
+      padding: .5rem; border-radius: 6px;
+    }
+    .fine { color: #8a9bb0; font-size: .92rem; }
+    .tabs { display: flex; gap: .4rem; margin: 1rem 0 .4rem; }
+    .tabs a {
+      color: #e8d9a8; text-decoration: none; border-bottom: 1px solid transparent; padding: .2rem .1rem;
+    }
+    .tabs a.on { color: #c9a227; border-bottom-color: #c9a227; }
+    #floppy-panel { display: none; }
+    #floppy-panel.show { display: block; }
+    #st { color: #8a9bb0; }
   </style>
 </head>
 <body class="site">
 <header class="site-head"></header>
 <script src="spine.js"></script>
 <main class="site-main">
-  <p class="cite">Guest, not a flattened iframe of copy.sh as the product</p>
-  <h1>x86 guest</h1>
-  <p>v86 is i386. Lekhak EXE and FreeDOS live here. llama.cpp we built is <strong>x86_64 ELF</strong> — it does not boot on this guest. That binary’s browser path is <a href="console.html">llama-cli on the VFS</a> (llama.cpp WASM).</p>
-  <p>Third-party: v86 (BSD, copy/v86 · hindawiai/v86). BIOS/VGA from copy.sh. Lekhak binaries from hindawi3.zip.</p>
-  <p>
-    <button type="button" id="boot">Boot FreeDOS (v86)</button>
-    <a class="btn" href="console.html">VFS console</a>
-    <a class="btn" href="llm.html">llama.cpp</a>
-    <a href="emu/lekhakx.exe">lekhakx.exe</a>
-    · <a href="emu/CWSDPMI.EXE">CWSDPMI.EXE</a>
-  </p>
-  <section class="bezel" aria-label="x86 monitor">
-    <div id="screen"></div>
-  </section>
-  <p class="fine" id="st">Idle. Boot loads v86 WASM + FreeDOS profile. Network required for BIOS blobs unless you vendor them.</p>
+  <p class="cite">16-bit real mode. Offline. Not copy.sh v86, not Linux, not x86_64. AyeBIOS bias on this CRT.</p>
+  <h1>x86 guest · आईबायोस</h1>
+  <p>One glass. VT100 text (Mode 3, B800) and VGA Mode 13h (A000) on the same CRT. Firmware is <strong>AyeBIOS</strong> — A Y E V I O S — SeaBIOS × गुरु. The 16-bit ROM is not claimed; POST and INT 10h/13h/16h live here. The boot sector on the floppy is real 8086 and you can edit it.</p>
+  <div class="tabs">
+    <a href="#crt" id="tab-crt" class="on">CRT</a>
+    <a href="#floppy" id="tab-floppy">Floppy editor</a>
+    <a href="console.html">VFS console</a>
+    <a href="ayebios.html">AyeBIOS flatten</a>
+  </div>
+  <div id="crt-panel">
+    <div class="row">
+      <button type="button" id="boot">Boot AyeBIOS floppy</button>
+      <button type="button" id="reset">Reset</button>
+      <button type="button" id="vga13">Key V · Mode 13h</button>
+      <button type="button" id="text3">Key T · text</button>
+      <span id="st">Idle. No network. Boot is local.</span>
+    </div>
+    <section class="bezel" aria-label="x86 monitor">
+      <div class="led" id="led"></div>
+      <pre class="banner" id="hi-banner"></pre>
+      <canvas id="glass" width="640" height="400"></canvas>
+      <div class="kbd"><span>INT 16h> </span><input id="cmd" autocomplete="off" maxlength="1" aria-label="guest key" /></div>
+    </section>
+  </div>
+  <div id="floppy-panel">
+    <h2>Floppy image · 1.44 MB (80/2/18 × 512)</h2>
+    <p class="fine">Sector 0 is the boot sector (55AA). Edit hex, apply, boot. Upload a raw .img if you have one. Download takes the current image.</p>
+    <div class="row">
+      <label>Sector <input id="sec" type="number" min="0" max="2879" value="0" style="width:5rem;background:#0b1524;color:#e8d9a8;border:1px solid rgba(201,162,39,.4);padding:.2rem" /></label>
+      <button type="button" id="loadsec">Load sector</button>
+      <button type="button" id="applysec">Apply hex to sector</button>
+      <button type="button" id="reasm">Reassemble boot ASM</button>
+      <button type="button" id="dl">Download .img</button>
+      <label class="btn">Upload .img<input type="file" id="up" accept=".img,.bin,.dsk,*" hidden /></label>
+      <button type="button" id="fresh">Fresh AyeBIOS floppy</button>
+    </div>
+    <textarea id="hex" spellcheck="false"></textarea>
+    <h3>Boot sector assembler (ORG 7C00)</h3>
+    <textarea id="asm" spellcheck="false" style="width:100%;min-height:14rem;font:12px/1.35 ui-monospace,monospace;background:#070d18;color:#cfc;border:1px solid rgba(201,162,39,.35);padding:.5rem;border-radius:6px"></textarea>
+  </div>
 </main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later · SeaBIOS copyrights on retrieved AyeBIOS</footer>
 <script src="skins/skins.js"></script>
-<script type="module">
+<script src="engine/interp/x86rm.js"></script>
+<script>
+(function () {
+  const X = window.PANINI_X86;
+  if (!X) { document.getElementById("st").textContent = "x86rm.js failed to load (local)."; return; }
+  const canvas = document.getElementById("glass");
+  const ctx = canvas.getContext("2d");
   const st = document.getElementById("st");
-  document.getElementById("boot").onclick = async () => {
-    st.textContent = "loading v86…";
-    try {
-      const { V86 } = await import("https://copy.sh/v86/libv86.mjs").catch(() => import("https://unpkg.com/v86@0.5.10/build/libv86.mjs"));
-      window.__v86 = new V86({
-        wasm_path: "https://copy.sh/v86/v86.wasm",
-        memory_size: 64 * 1024 * 1024,
-        vga_memory_size: 2 * 1024 * 1024,
-        screen_container: document.getElementById("screen"),
-        bios: { url: "https://copy.sh/v86/bios/seabios.bin" },
-        vga_bios: { url: "https://copy.sh/v86/bios/vgabios.bin" },
-        fda: { url: "https://copy.sh/v86/images/freedos722.img", async: true },
-        autostart: true,
-      });
-      st.textContent = "running i386 FreeDOS. This is the x86 guest. llama-cli is not this guest.";
-    } catch (e) {
-      st.textContent = String(e.message || e);
+  const led = document.getElementById("led");
+  const banner = document.getElementById("hi-banner");
+  const hex = document.getElementById("hex");
+  const asm = document.getElementById("asm");
+  const sec = document.getElementById("sec");
+  let m = X.createMachine();
+  let floppy = X.makeAyeFloppy();
+  m.floppy = floppy;
+  asm.value = X.BOOT_ASM.trim();
+  banner.textContent = m.ayebios.banner.join("\n");
+
+  const pal = [[0,0,0],[0,0,170],[0,170,0],[0,170,170],[170,0,0],[170,0,170],[170,85,0],[170,170,170],[85,85,85],[85,85,255],[85,255,85],[85,255,255],[255,85,85],[255,85,255],[255,255,85],[255,255,255]];
+  while (pal.length < 256) { const i = pal.length; pal.push([i, i, i]); }
+
+  function paint() {
+    if (m.mode === 0x13) {
+      const px = X.dumpPixels(m);
+      canvas.width = 320; canvas.height = 200;
+      const img = ctx.createImageData(320, 200);
+      for (let i = 0; i < 320 * 200; i++) {
+        const [r, g, b] = pal[px[i] & 255] || [0, 0, 0];
+        img.data[i * 4] = r; img.data[i * 4 + 1] = g; img.data[i * 4 + 2] = b; img.data[i * 4 + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      return;
     }
+    canvas.width = 640; canvas.height = 400;
+    ctx.fillStyle = "#001400";
+    ctx.fillRect(0, 0, 640, 400);
+    ctx.fillStyle = "#00ff66";
+    ctx.font = "16px ui-monospace, monospace";
+    const text = X.dumpText(m).split("\n");
+    for (let r = 0; r < 25; r++) ctx.fillText(text[r] || "", 4, 16 + r * 16);
+    ctx.fillRect(m.cursor.c * 8, m.cursor.r * 16, 8, 14);
+  }
+
+  function showFloppy(on) {
+    document.getElementById("floppy-panel").classList.toggle("show", on);
+    document.getElementById("crt-panel").style.display = on ? "none" : "block";
+    document.getElementById("tab-floppy").classList.toggle("on", on);
+    document.getElementById("tab-crt").classList.toggle("on", !on);
+    if (on) hex.value = X.sectorHex(floppy, +sec.value || 0);
+  }
+  function hashPanel() { showFloppy(location.hash === "#floppy"); }
+  window.addEventListener("hashchange", hashPanel);
+  hashPanel();
+
+  function boot() {
+    led.classList.remove("off");
+    st.textContent = "POST…";
+    m = X.createMachine({ floppy: floppy });
+    banner.textContent = m.ayebios.banner.join("\n");
+    const r = X.boot(m, floppy);
+    st.textContent = r.ok
+      ? ("running  mode=" + (m.mode === 0x13 ? "13h" : "text") + (m.waiting ? "  waiting " + m.waiting : m.halted ? "  halted" : "") + "  steps=" + m.steps)
+      : ("boot failed: " + (r.reason || "error"));
+    paint();
+  }
+  function tick() {
+    if (m && !m.halted && !m.waiting) X.run(m, 2000);
+    paint();
+  }
+  setInterval(tick, 80);
+
+  document.getElementById("boot").onclick = boot;
+  document.getElementById("reset").onclick = function () { floppy = X.makeAyeFloppy(); m.floppy = floppy; boot(); };
+  document.getElementById("vga13").onclick = function () { X.pushKey(m, "v"); X.run(m, 20000); paint(); };
+  document.getElementById("text3").onclick = function () { X.pushKey(m, "t"); X.run(m, 20000); paint(); };
+  document.getElementById("cmd").onkeydown = function (e) {
+    if (e.key.length === 1) { X.pushKey(m, e.key); X.run(m, 20000); paint(); this.value = ""; e.preventDefault(); }
+    else if (e.key === "Enter") { X.pushKey(m, 13, 0x1c); X.run(m, 20000); paint(); e.preventDefault(); }
   };
+  document.getElementById("loadsec").onclick = function () { hex.value = X.sectorHex(floppy, +sec.value || 0); };
+  document.getElementById("applysec").onclick = function () {
+    X.parseHexDump(hex.value, floppy, +sec.value || 0);
+    hex.value = X.sectorHex(floppy, +sec.value || 0);
+    st.textContent = "sector " + (+sec.value || 0) + " written";
+  };
+  document.getElementById("reasm").onclick = function () {
+    try {
+      const r = X.assemble(asm.value, { org: 0x7c00 });
+      floppy.set(r.bytes, 0);
+      hex.value = X.sectorHex(floppy, 0);
+      st.textContent = "assembled " + r.bytes.length + " bytes to sector 0";
+    } catch (e) { st.textContent = String(e.message || e); }
+  };
+  document.getElementById("fresh").onclick = function () {
+    floppy = X.makeAyeFloppy();
+    hex.value = X.sectorHex(floppy, 0);
+    asm.value = X.BOOT_ASM.trim();
+    st.textContent = "fresh AyeBIOS 1.44MB image";
+  };
+  document.getElementById("dl").onclick = function () {
+    const blob = new Blob([floppy], { type: "application/octet-stream" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "ayebios.img";
+    a.click();
+  };
+  document.getElementById("up").onchange = function (e) {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    f.arrayBuffer().then(function (buf) {
+      const u = new Uint8Array(buf);
+      floppy = X.createFloppy();
+      floppy.set(u.subarray(0, Math.min(u.length, floppy.length)));
+      hex.value = X.sectorHex(floppy, 0);
+      st.textContent = "loaded " + u.length + " bytes";
+    });
+  };
+  hex.value = X.sectorHex(floppy, 0);
+  boot();
+})();
 </script>
 </body>
 </html>

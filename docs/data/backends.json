@@ -1,0 +1,26 @@
+{
+  "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+  "license": "GPL-3.0-or-later",
+  "note": "Every frontend targets both. WASM is the web host. local is PANINI → C → gcc.",
+  "backends": [
+    {
+      "id": "wasm",
+      "title": "WebAssembly",
+      "where": "browser workbench",
+      "cmd": "workbench Run / panini wasm"
+    },
+    {
+      "id": "local",
+      "title": "Local native",
+      "where": "CLI",
+      "cmd": "panini binary <file.pni> --out a.out"
+    },
+    {
+      "id": "cinterp",
+      "title": "Host-speed C interp",
+      "where": "browser + node",
+      "cmd": "C-like frontends lower to C then cinterp"
+    }
+  ],
+  "frontends": "all 45 in data/frontends.json"
+}

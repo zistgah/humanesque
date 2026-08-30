@@ -1,0 +1,13 @@
+{
+  "language": "ada",
+  "issuing_body": "ISO/IEC 8652 — ACATS C45411A (gcc 13.2 acats tests/c4)",
+  "suite": "C45411A unary +/− predefined INTEGER, REPORT/IDENT_INT stubs, RESULT=0",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": true,
+  "note": "Named ACATS C45411A integer unary extract. Derived DT overflow / INTEGER'IMAGE GAP. Full ACATS GAP. Homemade tests/std/ada is CORE only."
+}

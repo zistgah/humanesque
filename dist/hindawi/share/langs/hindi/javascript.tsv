@@ -1,0 +1,11 @@
+# Vesoha Hindi · frontend javascript · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+चर	cara	var
+मान	maana	let
+अचर	acara	const
+कृत्य	kaृtya	function
+यदि	yadi	if
+लौटाओ	lautaaau	return
+फेंको	phaenkao	throw
+नवीन	naviina	new

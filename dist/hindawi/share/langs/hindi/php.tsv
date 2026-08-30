@@ -1,0 +1,7 @@
+# Vesoha Hindi · frontend php · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+कृत्य	kaृtya	function
+प्रतिध्वनि	pratidhvani	echo
+लिखो	likhao	print
+लौटाओ	lautaaau	return

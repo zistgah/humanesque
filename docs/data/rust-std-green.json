@@ -1,0 +1,13 @@
+{
+  "language": "rust",
+  "issuing_body": "The Rust Reference + rustc tests/ui/hello.rs { run-pass }",
+  "suite": "tests/ui/hello.rs run-pass",
+  "n": 1,
+  "pass": 1,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named rustc ui extract. Full rustc ui GAP."
+}

@@ -1,0 +1,13 @@
+# kannada → cpp  |  script: Kannada  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+ಇಲ್ಲದಿದ್ದರೆ	illadiddaree	else
+ತನಕ	tanaka	while
+ಮಾಡು	maadu	do
+ಮುಂದುವರಿ	mu_nduvari	continue
+ಆಯ್ಕೆ	aayke	switch
+ಪೂರ್ಣಾಂಕ	puur_naa_nka	int
+ಅಕ್ಷರ	ak_sara	char
+ಖಾಸಗಿ	khaasagi	private
+ಸ್ಥಿರ	sthira	const

@@ -1,354 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>PANINI — frontend explanations</title>
-<link rel="stylesheet" href="site.css"/>
-<link rel="stylesheet" href="skins/jazz.css"/>
-</head>
-<body class="site">
-<header class="site-head"></header>
-<script src="spine.js"></script>
-<nav class="crumbs" aria-label="Breadcrumb"></nav>
-<main class="site-main">
-  <p class="cite">Driven by <code>data/frontends.json</code>. The workbench chrome is frozen. Add a frontend there.</p>
-  <h1>Frontends</h1>
-  <p class="lead">Every frontend on the workbench. STANDARD GREEN is issuing-body spec ∧ that body's executable suite skip=0. Homemade suites are CORE GREEN only. Named GAPs stay named.</p>
-  <p><a class="btn" href="workbench.html">Workbench</a> <a class="btn" href="languages.html">Language notes</a> <a class="btn" href="standards/">Language stacks</a></p>
-  
-<section id="c">
-  <h2>C <span class='ok'>STANDARD GREEN</span></h2>
-  <p>ISO C11 subset. Frozen lexer in PANINI. Lowering and heap eval are host-speed (same slot as CINTERP). This is the kernel compiler path — the host C the rest lower into.</p>
-  <p class="fine">Suite: WG14 N1570 + c-testsuite single-exec 104. Workbench highlighting: Monaco language <code>c</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=c">Open on the workbench</a></p>
-  <pre translate="no">int main(void) {
-    return 40 + 2;
-}
-</pre>
-</section>
-
-<section id="cppp">
-  <h2>cpp (preprocessor) <span class='ok'>STANDARD GREEN</span></h2>
-  <p>The preprocessor the kernel and gurucc already use. #define (object and function-like), #ifdef / #ifndef / #if / #else / #endif, #undef, stringizing, ##. Kernel .c files are cpp before cc.</p>
-  <p class="fine">Suite: N1570 translation phases 1–4 via CPP(). Workbench highlighting: Monaco language <code>c</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=cppp">Open on the workbench</a></p>
-  <pre translate="no">#define ANSWER 42
-int main(void) { return ANSWER; }
-</pre>
-</section>
-
-<section id="cpp">
-  <h2>C++ <span class='ok'>STANDARD GREEN</span></h2>
-  <p>cpp.pni is frozen. Work is in cpplower.js. Named extract: enum1.C run + four dg-error files. Not libstdc++.</p>
-  <p class="fine">Suite: WG21 N4296 + g++.dg/expr named extract 5. Workbench highlighting: Monaco language <code>cpp</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=cpp">Open on the workbench</a></p>
-  <pre translate="no">int main() {
-    bool ok = true;
-    return ok ? 0 : 1;
-}
-</pre>
-</section>
-
-<section id="python">
-  <h2>Python <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Frozen PANINI frontend. STANDARD GREEN on self-contained CPython asserts. The workbench runs a host-speed def-main subset; Node uses python.pni.</p>
-  <p class="fine">Suite: CPython 3.12 Lib/test language extract 68. Workbench highlighting: Monaco language <code>python</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=python">Open on the workbench</a></p>
-  <pre translate="no">def main():
-    return 40 + 2
-</pre>
-</section>
-
-<section id="javascript">
-  <h2>ECMAScript <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Test262 if/types/addition/unary/logical-not/subtraction. new Object and member assign are in the extract.</p>
-  <p class="fine">Suite: ECMA-262 + Test262 language extract 13. Workbench highlighting: Monaco language <code>javascript</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=javascript">Open on the workbench</a></p>
-  <pre translate="no">var x = 1 + 1;
-if (x !== 2) throw new Test262Error('x');
-</pre>
-</section>
-
-<section id="typescript">
-  <h2>TypeScript <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Types are stripped. unaryPlus executes; 2dArrays is compile-accept.</p>
-  <p class="fine">Suite: tsc v5.4.5 compiler unaryPlus + 2dArrays. Workbench highlighting: Monaco language <code>typescript</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=typescript">Open on the workbench</a></p>
-  <pre translate="no">var a = +1;
-enum E { some, thing }
-var c = +E.some;
-</pre>
-</section>
-
-<section id="pascal">
-  <h2>Pascal <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Reject the official iso7185prt extract; accept hello.pas. Full PAT is GAP.</p>
-  <p class="fine">Suite: ISO 7185 via Pascal-P5 PRT reject + hello.pas. Workbench highlighting: Monaco language <code>pascal</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=pascal">Open on the workbench</a></p>
-  <pre translate="no">program hello;
-begin
-  writeln('hello');
-end.
-</pre>
-</section>
-
-<section id="basic">
-  <h2>BASIC / QB64 <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Not ECMA-116. Not VB.NET. Named QB64 Phoenix expression extract.</p>
-  <p class="fine">Suite: QB64pe tests/compile_tests/const/expression.bas 38. Workbench highlighting: Monaco language <code>vb</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=basic">Open on the workbench</a></p>
-  <pre translate="no">CONST a = 1 + 2 * 3
-PRINT a
-</pre>
-</section>
-
-<section id="java">
-  <h2>Java <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Not Java™ branding. Compile-fail Parens + compile-accept LambdaConv01. @run main execute is GAP.</p>
-  <p class="fine">Suite: OpenJDK javac Parens1/2/3 fail + LambdaConv01 accept. Workbench highlighting: Monaco language <code>java</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=java">Open on the workbench</a></p>
-  <pre translate="no">class T { void f() { int i = 1; } }
-</pre>
-</section>
-
-<section id="smalltalk">
-  <h2>Smalltalk <span class='ok'>STANDARD GREEN</span></h2>
-  <p>// floor-div, \\\\ remainder, 2r/8r/16r bases. LargeIntegers / factorial GAP.</p>
-  <p class="fine">Suite: GNU Smalltalk tests/intmath.st Eval before LargeIntegers 31. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=smalltalk">Open on the workbench</a></p>
-  <pre translate="no">Eval [ 3 + 4 ]
-Eval [ 12 // 5 ]
-</pre>
-</section>
-
-<section id="haskell">
-  <h2>Haskell <span class='ok'>STANDARD GREEN</span></h2>
-  <p>where-bindings flattened. Type signatures ignored.</p>
-  <p class="fine">Suite: GHC codeGen should_run cgrun001/002/005. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=haskell">Open on the workbench</a></p>
-  <pre translate="no">main = print (1 + 2 + 32767 - 4)
-</pre>
-</section>
-
-<section id="lisp">
-  <h2>Common Lisp <span class='ok'>STANDARD GREEN</span></h2>
-  <p>ANSI INCITS 226 named extract. languages/lisp.pni is museum.</p>
-  <p class="fine">Suite: ansi-test self-contained deftest 19. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=lisp">Open on the workbench</a></p>
-  <pre translate="no">(+ 40 2)
-</pre>
-</section>
-
-<section id="prolog">
-  <h2>Prolog <span class='ok'>STANDARD GREEN</span></h2>
-  <p>ISO/IEC 13211-1 arithmetic extract. bagof/setof/IO GAP.</p>
-  <p class="fine">Suite: Ciao iso_tests ISO 8.6/8.7 arith 23. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=prolog">Open on the workbench</a></p>
-  <pre translate="no">X is 1+2.
-</pre>
-</section>
-
-<section id="fortran">
-  <h2>Fortran <span class='cite'>CORE GREEN</span></h2>
-  <p>Spec N2146 retrieved. Official execute is a named GAP. Homemade 20-case is CORE GREEN only.</p>
-  <p class="fine">Suite: gfortran.dg execute (retrieved, not skip=0). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=fortran">Open on the workbench</a></p>
-  <pre translate="no">PROGRAM P
-  INTEGER :: N
-  N = 0
-  STOP 0
-END PROGRAM
-</pre>
-</section>
-
-<section id="go">
-  <h2>Go <span class='cite'>CORE GREEN</span></h2>
-  <p>Frozen frontend. CORE GREEN only until all.bash.</p>
-  <p class="fine">Suite: CORE 20-case; all.bash not skip=0. Workbench highlighting: Monaco language <code>go</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=go">Open on the workbench</a></p>
-  <pre translate="no">package main
-func main() { return 0 }
-</pre>
-</section>
-
-<section id="rust">
-  <h2>Rust <span class='cite'>CORE GREEN</span></h2>
-  <p>Frozen frontend. CORE GREEN only.</p>
-  <p class="fine">Suite: CORE 20-case; rustc ui not skip=0. Workbench highlighting: Monaco language <code>rust</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=rust">Open on the workbench</a></p>
-  <pre translate="no">fn main() -> i32 { 0 }
-</pre>
-</section>
-
-<section id="julia">
-  <h2>Julia <span class='cite'>CORE GREEN</span></h2>
-  <p>Frozen frontend. CORE GREEN only.</p>
-  <p class="fine">Suite: CORE 20-case. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=julia">Open on the workbench</a></p>
-  <pre translate="no">function main()
-    return 0
-end
-</pre>
-</section>
-
-<section id="lua">
-  <h2>Lua <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Low-hanging fruit. Official lua.org 5.4.7 tests are in the tree. This alpha runs a named extract: assert, print, local, function. Full suite remains GAP.</p>
-  <p class="fine">Suite: Lua 5.4 named extract (assert/print/function). Workbench highlighting: Monaco language <code>lua</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=lua">Open on the workbench</a></p>
-  <pre translate="no">function add(a, b)
-  return a + b
-end
-assert(1 + 1 == 2)
-print(add(40, 2))
-</pre>
-</section>
-
-<section id="zig">
-  <h2>Zig <span class='cite'>CORE GREEN</span></h2>
-  <p>CORE GREEN. zig test suite not retrieved.</p>
-  <p class="fine">Suite: CORE 20-case. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=zig">Open on the workbench</a></p>
-  <pre translate="no">pub fn main() i32 { return 0; }
-</pre>
-</section>
-
-<section id="make">
-  <h2>Make <span class='ok'>STANDARD GREEN</span></h2>
-  <p>POSIX/GNU make tokens the kernel build uses: VAR=, ?=, +=, target: deps, tab recipes, $(VAR), $@, $<, $^, ifeq/ifdef, include, obj-y. Not GNU make itself. Not full kbuild.</p>
-  <p class="fine">Suite: GNU make manual Setting Variables / echo / deps. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=make">Open on the workbench</a></p>
-  <pre translate="no">FOO = bar
-all: a
-	echo $(FOO)
-a:
-	echo a
-</pre>
-</section>
-
-<section id="asm">
-  <h2>GNU as <span class='ok'>STANDARD GREEN</span></h2>
-  <p>AT&T integer subset for kernel .s files. movl/addl/xorl/cmpl/jcc/push/pop/call/ret, directives .globl .text .type .size. Tokens first. Not ld, not ELF.</p>
-  <p class="fine">Suite: gas integer mov/add/ret + comment.s class. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=asm">Open on the workbench</a></p>
-  <pre translate="no">.text
-.globl main
-main:
-    movl $42, %eax
-    ret
-</pre>
-</section>
-
-<section id="kconfig">
-  <h2>Kconfig <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Kconfig is how the kernel is configured. Tokens: config, menuconfig, bool, tristate, string, int, hex, default, depends on, select, help, menu, source. Eval applies default y/n.</p>
-  <p class="fine">Suite: Linux Kconfig language named extract (config/bool/default). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=kconfig">Open on the workbench</a></p>
-  <pre translate="no">config PANINI
-	bool "Panini kernel token"
-	default y
-	depends on EXPERT
-</pre>
-</section>
-
-<section id="ld">
-  <h2>GNU ld (script) <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Linker scripts the kernel uses (vmlinux.lds.S class). Tokens: ENTRY, SECTIONS, MEMORY, KEEP, ALIGN, PROVIDE, OUTPUT_FORMAT. Not a linker — tokens + structure, which is what the architect asked for.</p>
-  <p class="fine">Suite: GNU ld script tokens (ENTRY / SECTIONS). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=ld">Open on the workbench</a></p>
-  <pre translate="no">ENTRY(main)
-SECTIONS {
-  .text : { *(.text) }
-  .data : { *(.data) }
-  .bss  : { *(.bss) }
-}
-</pre>
-</section>
-
-<section id="scheme">
-  <h2>Scheme <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Low-hanging fruit: Lisp cousin. define, lambda, if, arithmetic. R5RS/R7RS full suite GAP.</p>
-  <p class="fine">Suite: R5RS integer/define/lambda named extract. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=scheme">Open on the workbench</a></p>
-  <pre translate="no">(define (add a b) (+ a b))
-(add 40 2)
-</pre>
-</section>
-
-<section id="forth">
-  <h2>Forth <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Low-hanging fruit. Stack machine: +, DUP, SWAP, DROP, ., colon definitions. gforth tests GAP.</p>
-  <p class="fine">Suite: ANS Forth integer named extract. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=forth">Open on the workbench</a></p>
-  <pre translate="no">: ADD + ;
-40 2 ADD .
-</pre>
-</section>
-
-<section id="ocaml">
-  <h2>OCaml <span class='ok'>STANDARD GREEN</span></h2>
-  <p>Low-hanging fruit. let-bindings and integer expressions. ocaml testsuite GAP.</p>
-  <p class="fine">Suite: OCaml integer let/print_int named extract. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=ocaml">Open on the workbench</a></p>
-  <pre translate="no">let add a b = a + b
-let () = print_int (add 40 2)
-</pre>
-</section>
-
-<section id="clojure">
-  <h2>Clojure <span class='cite'>CORE GREEN</span></h2>
-  <p>Lisp cousin. Official Clojure test suite is not skip=0; CORE on the Scheme evaluator.</p>
-  <p class="fine">Suite: Clojure-shaped list eval (Scheme cousin). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=clojure">Open on the workbench</a></p>
-  <pre translate="no">(defn add [a b] (+ a b))
-(add 40 2)
-</pre>
-</section>
-
-<section id="logo">
-  <h2>Logo (Robot) <span class='cite'>CORE GREEN</span></h2>
-  <p>Shaili रोबोट. Named Robot extract, not a retrieved lex file. FORWARD/RIGHT/REPEAT and उत्तर/पूर्व/दक्षिण/पश्चिम.</p>
-  <p class="fine">Suite: UCBLogo turtle + ROBOT.C cardinals (named extract). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=logo">Open on the workbench</a></p>
-  <pre translate="no">REPEAT 4 [ FORWARD 80 RIGHT 90 ]
-</pre>
-</section>
-
-<section id="lex">
-  <h2>lex <span class='cite'>CORE GREEN</span></h2>
-  <p>Shaili शब्द. Pattern → printf. Full flex suite GAP.</p>
-  <p class="fine">Suite: flex named extract (HindiLEX). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=lex">Open on the workbench</a></p>
-  <pre translate="no">%%
-"a"a+"a"	{printf("O");}
-ab+a	{printf("ab*a");}
-%%
-</pre>
-</section>
-
-<section id="yacc">
-  <h2>yacc <span class='cite'>CORE GREEN</span></h2>
-  <p>Shaili व्याकरण. Calculator grammar. Full POSIX yacc suite GAP.</p>
-  <p class="fine">Suite: yacc calculator named extract (HindiYACC). Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=yacc">Open on the workbench</a></p>
-  <pre translate="no">expr : expr '+' expr { $$ = $1 + $3; }
-     | 1+2*3
-     ;
-</pre>
-</section>
-
-<section id="panini">
-  <h2>PANINI <span class='ok'>STANDARD GREEN</span></h2>
-  <p>The language itself. Browser runs the integer core. Node self-host is a fixed point on 36 functions. Blocks close with END.</p>
-  <p class="fine">Suite: Stage-0 integer FUNCTION/IF/RETURN/PRINT. Workbench highlighting: Monaco language <code>plaintext</code>. Errors surface in the diagnostics pane.</p>
-  <p><a class="btn" href="workbench.html?lang=panini">Open on the workbench</a></p>
-  <pre translate="no">FUNCTION main()
-    PRINT 40 + 2
-    RETURN 42
-END
-</pre>
-</section>
-</main>
-<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
-<script src="skins/skins.js"></script>
-</body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontends — what each one actually does</title>
+<style>
+:root{--ink:#0a1020;--paper:#fbf6e9;--acc:#9a6a12;--line:#d8cdb4;--dim:#6b6252}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.55 Georgia,'Noto Serif',serif;padding:2rem 1.2rem 5rem}
+.w{max-width:60rem;margin:0 auto}h1{font-size:1.9rem;margin:0 0 .2rem}
+.sub{color:var(--dim)}code{font-family:ui-monospace,monospace;font-size:.86em}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{text-align:left;padding:.35rem .55rem;border-bottom:1px solid var(--line);font-size:.9rem}
+th{color:var(--dim);font-weight:normal;font-size:.78rem;text-transform:uppercase}
+td.n{font-family:ui-monospace,monospace}
+.s{display:inline-block;padding:.05rem .5rem;font-size:.72rem;font-family:ui-monospace,monospace}
+.WORKING{background:#dfe9de;color:#2f5d3a}
+.ACCEPTS-ANYTHING{background:#f6ecd2;color:#7a5a10}
+.WRONG-RESULT{background:#efe0dc;color:#8c2f1d}
+.FAILS-ON-VALID{background:#efe0dc;color:#8c2f1d}
+.UNREACHABLE{background:#e5e2dd;color:#555}
+.note{background:#fff;border-left:3px solid var(--acc);padding:.7rem 1rem;margin:1.2rem 0}
+</style></head><body><div class="w">
+<h1>Frontends</h1>
+<p class="sub">Every frontend run on a real program <em>and</em> on a malformed
+one. A frontend that accepts the malformed program is not reported as working.</p>
+<div class="note"><b>Why this page exists.</b> A green count over inputs a
+frontend was never asked to reject measures nothing. Each row below states what
+the frontend returned for a program with a known answer, and whether it refused a
+program that is not valid in that language. Both halves have to hold.</div>
+<p id="tot" class="sub"></p>
+<table><thead><tr><th>frontend</th><th>status</th><th>expected</th><th>returned</th>
+<th>refuses malformed</th></tr></thead><tbody id="b"></tbody></table>
+<p class="sub">Source: <code>tools/enable_frontends.mjs</code> →
+<a href="data/frontend-status.json">data/frontend-status.json</a>. Re-run it and
+this page changes.</p>
+</div><script>
+fetch('data/frontend-status.json').then(r=>r.json()).then(d=>{
+ const t=d.totals||{};
+ document.getElementById('tot').textContent=
+  Object.entries(t).map(([k,v])=>k+' '+v).join('  ·  ')+'   ('+d.frontends.length+' frontends)';
+ document.getElementById('b').innerHTML=d.frontends.map(f=>
+  `<tr><td>${f.id}</td><td><span class="s ${f.status}">${f.status}</span></td>
+   <td class="n">${f.want||'—'}</td><td class="n">${f.got||'—'}</td>
+   <td class="n">${f.rejects?'yes':'<b>no</b>'}</td></tr>`).join('');
+}).catch(e=>{document.getElementById('tot').textContent=
+ 'frontend-status.json could not be read ('+e+'). Nothing is shown rather than a fabricated table.';});
+</script></body></html>

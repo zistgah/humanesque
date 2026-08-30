@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PANINI — contribute</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="skins/jazz.css" />
+</head>
+<body class="site">
+<header class="site-head"></header>
+<script src="spine.js"></script>
+<main class="site-main">
+  <p class="cite">How a pull request is judged correct. Automated first. Human signoff on named GAPs.</p>
+  <h1>Contribute</h1>
+  <p>PANINI is GPL-3.0-or-later. Copyright 1993–2026 Abhishek Choudhary. Retrieve, do not reconstruct. Consult <code>factory/REGISTRY.json</code> before adding a file. Frozen hashes stay frozen.</p>
+  <h2>What a pull request must pass</h2>
+  <ol>
+    <li><code>node scripts/pr_gate.mjs</code> — correctness gate. Non-zero exit fails the PR.</li>
+    <li>AyeBIOS guest boots offline. Text contains <code>AYEBIOS</code>. Floppy 55AA. Mode 13h gold bar on key V.</li>
+    <li>Vesoha Hindi tables: one TSV per frontend in <code>frontends.json</code>, every catalog keyword present.</li>
+    <li>STANDARD GREEN index: 45 / 45, CORE 0. Named official extract skip=0. Homemade 20-case is CORE only — do not relabel it.</li>
+    <li><code>emu.html</code> does not load copy.sh / unpkg. The guest is local.</li>
+    <li>Do not edit frozen workbench chrome. Add a frontend by appending <code>data/frontends.json</code>.</li>
+    <li>Do not invent keyword maps in <code>retrieved/</code>.</li>
+  </ol>
+  <h2>How CI runs it</h2>
+  <p>GitHub Actions workflow <code>.github/workflows/pr.yml</code> runs the gate on every pull request. A PR is correct when the gate exits 0 and the named STANDARD GREEN harnesses for touched frontends stay skip=0.</p>
+  <pre translate="no">node scripts/pr_gate.mjs
+node scripts/core_std_green.mjs      # named extracts
+node scripts/remaining_std_green.mjs</pre>
+  <h2>Manual checks (the rest of the test plan)</h2>
+  <ul>
+    <li>Home menu present. Workbench Run on C returns 42.</li>
+    <li>x86 guest: Boot, Hindi banner, floppy editor apply hex, re-boot.</li>
+    <li>Vesoha page lists 45 tables.</li>
+    <li>Packages page packs a .panini-pkg.json.</li>
+    <li>local.html zip downloads. Chat also surfaces the zip.</li>
+  </ul>
+  <p><a class="btn" href="TEST_PLAN.md">TEST_PLAN.md</a> <a class="btn" href="CONTRIBUTING.md">CONTRIBUTING.md</a> <a class="btn" href="REQUIREMENTS.md">REQUIREMENTS.md</a></p>
+</main>
+<footer class="pfoot">Copyright (C) 1993–2026 Abhishek Choudhary · GPL-3.0-or-later</footer>
+<script src="skins/skins.js"></script>
+</body>
+</html>

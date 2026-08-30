@@ -1,0 +1,10 @@
+# Vesoha Hindi · frontend rust · Devanagari | (C) 1993-2026 Abhishek Choudhary GPL-3.0-or-later
+# C kernel rows from retrieved/hindi_c.tsv. Other rows: Vesoha pack, not retrieved/.
+native	romenagri	host
+कृत्य	kaृtya	fn
+मान	maana	let
+परिवर्त्य	parivartya	mut
+यदि	yadi	if
+लौटाओ	lautaaau	return
+सार्वजनिक	saarvajanika	pub
+संरचना	sa_nracanaa	struct

@@ -10,4 +10,7 @@ Left out on purpose (named, not hidden):
 
 Web host:  node src/cli.js run examples/hello.pni
 Binary:    node src/cli.js binary examples/factorial.pni --out factorial
+Package:   node src/cli.js package examples/hello.pni --backend local --out hello.panini-pkg.json
+PR gate:   node scripts/pr_gate.mjs
 Site copy: docs/index.html
+Vesoha:    dist/hindawi/share/langs/hindi/  and  docs/vesoha/hindi/

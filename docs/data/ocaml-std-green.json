@@ -1,0 +1,13 @@
+{
+  "language": "ocaml",
+  "issuing_body": "OCaml testsuite tests/basic/equality.ml",
+  "suite": "equality.ml integer compare extract (eq0/eq1/eqm1)",
+  "n": 3,
+  "pass": 3,
+  "skip": 0,
+  "skip0": true,
+  "fails": [],
+  "standard_green": true,
+  "iso_green": false,
+  "note": "Named OCaml equality.ml integer-compare extract. Strings/floats/lists GAP."
+}

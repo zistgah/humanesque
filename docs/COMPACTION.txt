@@ -1,0 +1,359 @@
+PANINI session compaction
+=========================
+Copyright (C) 1993-2026 Abhishek Choudhary
+GPL-3.0-or-later
+
+This is the context-compaction blob that opened the Grok Build
+session after the conversation was compacted. It was NOT a file
+in the repository. It was injected into the model context as
+"Summary:". Reconstructed from that turn, in order, without
+dropping the numbered sections that were present.
+
+There is no other compaction file in /workspace. Lodash compact.js
+and jose compact JWE are unrelated. CONVERSATION.md is a curated
+architect narrative, not this blob. KNOWLEDGE_TRANSFER_FOR_GROK.md
+is a 28 August 2026 handoff from another sibling, not this blob.
+
+
+1. Primary Request and Intent
+-----------------------------
+The user is Abhishek Choudhary / PANINI (GPL-3.0-or-later, 1993–2026).
+Through Grok Build they want a deliverable alpha/beta of PANINI, not
+a zip-download stub. The original site estate is the product, not a
+reinvented React shell.
+
+Governing latest user message (the turn that was compacted into this
+blob, not yet fully shipped at compaction time):
+
+- Pull the latest GitHub (zistgah/panini_by_grok HEAD eb387b6,
+  tree-rev 2026.08.29) and match what we have vs what we don’t.
+- Workbench is not updated / not loading. Restore GitHub workbench
+  (vscode.dev + Monaco + files.js) and make it actually load
+  (textarea fallback; do not depend on a failing ES-module playground
+  as the only chrome).
+- Research paper removed from the webpage — restore it. Homepage
+  currently has Self-Hosting Spec doi:10.5281/zenodo.22121524;
+  Cycles :: Part 1 doi:10.5281/zenodo.22122422 is in REFERENCES but
+  was not on the homepage. Put both + research.html.
+- Homepage design was better earlier. Too many blocks/buttons.
+  Languages should be one block (GitHub index.html: one paragraph +
+  one “Open the stack” button).
+- When they say deliver ILM / Hindi they mean ALL those languages:
+  Logo, Basic, C, C++, Assembly, Lex, Yacc — in all supported human
+  languages (22 Eighth Schedule + Punjabi Gurmukhi/Shahmukhi +
+  Sindhi Deva/Perso + Arabic/Farsi/Dari/Pashto). Not keyword
+  souvenirs. Complete 2004-shaped stacks.
+- People should be able to download the local version (panini.zip).
+- Self-hosted — compile as a binary on the local CLI, not only
+  JavaScript. PANINI → C → gcc. JS remains the web host.
+- Story spinner only gives 8 lines — generate novel-size; keep
+  generating until Stop; “keep giving the word and keep generating.”
+- Make cyclers work (currently cyclers.html says “still pending”;
+  mez desk exists).
+- Add more models to llama.cpp (stories15M only today).
+- GATE CS equivalent programs and original programs, properly
+  adapted (runnable, not a syllabus table).
+- Urdu standard page is in Hindi — clauses, pragma, demo strings.
+  Must be Urdu (RTL for Perso-Arabic pages). Hindi clauses only for
+  Hindi.
+
+Earlier (still binding) constraints:
+
+- Explanation docs for all implemented frontends; enable on workbench
+  with compilation errors + syntax highlighting.
+- ILM localization tables; complete all keywords to Hindi C bar of
+  29 rows.
+- Low-hanging fruit: Lua, Scheme, Forth, OCaml (Clojure as CORE).
+- Updated website with status; people pick any frontend on the
+  workbench and exercise it.
+- Implement tokens needed to build the Linux kernel: make, gas, cpp,
+  kconfig, ld — STANDARD GREEN on named extracts.
+- Everything in the zip.
+- Complete C/C++/BASIC comparable to Hindi 2004 (Guru/C, श्रेणी/C++,
+  प्राथमिक/BASIC).
+- Notebook: shaili is not getting removed (<शैली गुरु> leftover after
+  compile) — fixed that session: host is now #include <stdio.h> /
+  int main().
+- Romenagri pages must use original algorithm (Unicode→ACII→Romenagri
+  / romenagri-orig.js + canonical_basis.json / legacy/Romenagri), not
+  homemade ISO 15919.
+- Freeze workbench chrome; drive frontends from config files. Shaili
+  names the host, never the spoken language.
+- Original notebook linked (nb.frozen.html).
+- Breadcrumbs don’t work — put nav in spine. Theme bar was hijacking
+  Home with broken relative paths — fixed.
+- Website theming consistent.
+
+AGENTS.md: isolated sandbox; user only sees live preview; app on
+0.0.0.0:8080 via npm run dev + /workspace/startup.sh; TanStack Start
++ React 19 + Tailwind v4; auth/db OFF; no imagine_*; never ask user
+to run commands; npm run build + typecheck + browser smoke (dev +
+production) before done. Brand navy #070d18 + gold #c9a227. Do not
+invent keyword maps in retrieved/. STANDARD GREEN ⇔ issuing-body spec
+∧ that body’s executable suite skip=0.
+
+
+2. Key Technical Concepts
+-------------------------
+PANINI Stage-0 JS bootstrap; IR VM; STANDARD GREEN vs CORE GREEN;
+ILM ⟨script, language, shaili⟩; Hindi C bar = 29 rows; Brahmi
+round-trip via Devanagari hub; Perso-Arabic named lossy; Hindawi 2004
+path Unicode → ACII → Romenagri → shaili lex → host; original eight
+shailis in SHAILIS.md: guru/C, shraeni/C++, praatha/BASIC,
+kritrima/Java, soochee/Python, shabda/lex, wyaaka/yacc, robot/Logo
+(yantra/ASM is in bundle.shailis as the 8th in the engine). User’s
+current 7-host ask: Logo, BASIC, C, C++, Assembly, Lex, Yacc.
+L15 workbench (Monaco MIT); spine as canonical menu; / 302 to
+/site/index.html so relative assets resolve; Vite paniniEstatePlugin;
+zip packs artifacts/panini (skip docs) + public/site as panini/docs/,
+excluding .gguf/.wasm/.zip.
+
+
+3. Files and Code Sections examined / created (as the compaction listed)
+------------------------------------------------------------------------
+Examined: /workspace/AGENTS.md; GitHub
+https://github.com/zistgah/panini_by_grok cloned at
+/tmp/gh/panini_by_grok (HEAD eb387b6, 2026.08.29);
+https://github.com/zistgah/panini (cycler language, different repo);
+docs/index.html, workbench.html (GitHub = vscode.dev + files.js, 84
+lines — we overwrote this with L15 frontend runner), workbench.js
+(retired fake chrome), SHAILIS.md, story.html, cyclers.html,
+mentions.html, research.html, gate-cse.html, gate-papers.html,
+stack.html, mez/desk.html, cli.js, compile.js, ir.js,
+emit_backends.js, cycler_load.js, HindiC/CPP/BASIC/ASM/LEX/YACC
+demos, urdu-c.html, urdu_guru.uhin (Hindi pragma + Hindi strings).
+
+Created/modified that session (estate overlay, previous turn, already
+shipped at compaction time):
+
+- /workspace/public/site/ — docs overlay: spine breadcrumbs, nb.js
+  shaili strip, 84 C/C++/BASIC stack pages, extras.js/playground.js
+  (tsc-transpiled), workbench.html (our runner — conflicts with
+  GitHub), skins.js path fix, panini.zip ~26MB / 3749 entries.
+- React: src/components/estate-redirect.tsx; routes
+  index/workbench/frontends/ilm/kernel/status redirect to /site/…;
+  __root.tsx no Shell; vite.config.ts paniniEstatePlugin 302 / →
+  /site/index.html.
+- nb.js stripShailiPragma strips any full-line <> pragma; lexRmn
+  merges retrieved lex_rmn plus original-algorithm romanization of
+  unicode rules so #समावेश → #include.
+- HindiC compile host (verified in browser):
+  #include <stdio.h>
+  int main(){ char _a[८०]; int ka; for(...) printf; return 0; }
+  — no शैली leftover.
+
+Current-turn edits already applied at compaction (not yet fully
+shipped to preview/zip):
+
+- artifacts/panini/compiler/emit_backends.js — C emit now includes
+  else, declares assigned ints, PRINT → printf("%d\n", …).
+- artifacts/panini/src/cli.js — new binary / gcc command:
+  panini binary <file.pni> [--out a.out]  # PANINI → C → gcc
+
+Verified at compaction: node src/cli.js binary examples/factorial.pni
+--out /tmp/factorial emits correct C and prints 720. Process exit 208
+is factorial(6)’s return code, not a crash.
+
+GitHub workbench.html (authoritative to restore) is vscode.dev +
+github.dev + local Monaco file picker from files.js; Run is
+notebook/console, not a third box. Our rewrite hid that.
+
+GitHub index.html Language block (restore this shape): one paragraph
++ <a class="btn" href="stack.html">Open the stack (dropdown of every
+language)</a>. Machine list: Console, emu, llama.cpp, Notebook.
+Papers: Zenodo Self-Hosting Spec.
+
+SHAILIS original 8 (heritage, do not regenerate kernel mappings):
+guru/C, shraeni/C++, praatha/BASIC, kritrima/Java, soochee/Python,
+shabda/lex, wyaaka/yacc, robot/Logo. Bundle engine shailis:
+['guru','kritrima','praatha','shabda','shraeni','soochee','wyaaka','yantra'].
+User’s 7-host deliverable: Logo, BASIC, C, C++, Assembly (yantra),
+Lex, Yacc.
+
+Urdu demo currently mixed at compaction: #समावेश, Hindi strings,
+Devanagari digits, Hindi clauses 1–10. html lang="und" not ur/RTL.
+
+
+4. Errors and Fixes recorded in the compaction
+----------------------------------------------
+- FUSE artifacts/panini earlier unreadable; unzip public/panini.zip /
+  later artifacts became readable (3284 files).
+- Crude type-strip of extras.ts/run.ts produced invalid JS
+  (const rules /*). Fix: typescript.transpileModule → valid
+  public/site/engine/extras.js + playground.js.
+- Workbench bits.join("\\n") bug; missing monacoLang export — fixed
+  in playground transpile.
+- / internal rewrite left URL at / so site.css/spine.js 404’d
+  (6 console errors). Fix: 302 to /site/index.html.
+- Shaili leftover: strip only matched Latin/Devanagari names;
+  Bangla/Gurmukhi pragmas survived. Fix: strip any full-line <> +
+  named forms; also project unicode lex through original Romenagri
+  (#samaawaeesha vs lex #samaawaesha).
+- Breadcrumb Home from standards/hindi-c.html went to
+  standards/index.html. Cause: skins.js rung used path="" except for
+  /dome|/mez|/skins, so href="index.html" was cwd-relative; find text
+  Home clicked the rung not the crumb. Fix: base from currentScript;
+  rung is Themes only; crumbs from spine.
+- C codegen: no else, undeclared result, printf(result). Fix: emit
+  else + locals + printf("%d\n",…). Factorial binary prints 720.
+- extras.ts search_replace of export { wrapErr } with itself was a
+  no-op (logo/lex/yacc not yet added).
+- Smoke after 302: 0 console errors, no overflow,
+  divergesFromBaseline: false on rebuilt preview.
+
+
+5. Problem Solving recorded in the compaction
+---------------------------------------------
+- Product is original docs/ estate at /site/, React is a 302/redirect
+  shell + PreviewHostBridge.
+- GitHub latest workbench is VS Code/Monaco file viewer, not our L15
+  runner. User now: pull GitHub + workbench not loading. Merge:
+  restore GitHub chrome, always-visible textarea, config-driven Run
+  from data/frontends.json so it never blanks if CDN/module fails.
+- Homepage = GitHub one-block Language; restore papers (both DOIs +
+  research.html); zip link without a button farm.
+- 7 shailis × ~28 langs ≈ 196 standard pages; generator pattern
+  already in /tmp/gen_stacks.mjs (C/C++/BASIC 84 pages,
+  leftover-fails 0). Extend SHAILIS list; Logo needs logoRun
+  (Robot/ROBOT.C subset, labeled); lex/yacc from HindiLEX/HindiYACC.
+- Story: N=0 until Stop; Keep going; higher tokens; llama if
+  available else labeled host-speed continuer so it never dies idle.
+- Cyclers: browser runner fetching cyclers/index.json + .pni; mez
+  desk already a full UI.
+- llama models: stories15M + 42M + 110M from ggml-org tinyllamas.
+- GATE: copy src/panini/gate/*.pni to public/site/gate/, run via
+  paniniRun; keep originals + adapted integer-subset mains.
+- CLI binary: works for factorial; document on a local-download page;
+  zip already contains compiler tree.
+- Urdu/Perso: lang=ur dir=rtl; Urdu clauses; no Hindi 1–10; demo in
+  Urdu. Other non-Hindi languages: English clauses, not Hindi.
+
+
+6. All User Messages listed in the compaction
+---------------------------------------------
+(1) Continuation after compaction: frontend explanation docs,
+    workbench, errors + highlighting, ILM tables, complete keywords,
+    low-hanging fruit, website/status, kernel tokens, zip, alpha/beta.
+
+(2) “have you delivered everything in the zip… complete stack
+    comparable to Hindi 2004… shaily not getting removed… Romenagri
+    original algorithm… Where is the workbench? Freeze… config
+    files… 22 Indian languages and Perso-Arabic… C C++ BASIC…
+    original notebook… breadcrumbs… theming… spine. Do not reinvent
+    the wheel.”
+
+(3) Latest: “Workbench is not updated. Please pull the latest version
+    from GitHub. Match what you have, what you don't have. There was
+    a research paper mentioned on the webpage that you have removed.
+    Please restore that. And the design of the homepage was much
+    better earlier. You had used too many blocks. That was a problem.
+    Languages should be one block. Workbench is just not loading.
+    When I say deliver ILM or deliver Hindi, I mean all those
+    languages. Logo, Basic, C, C++, Assembly, Lex, Yacc. In all the
+    human languages. And people should be able to download the local
+    version. This is supposed to be self-hosted. I understand that
+    JavaScript is the primary, but please compile it as a binary on
+    the local CLI also. And the story spinner, it only gives you
+    eight lines. You're an AI, you should be able to generate a story
+    of the size of a novel. So keep giving the word and keep
+    generating. And then make the cyclers work. In llama.cpp, add a
+    few more models. Then GATE computer science and engineering
+    equivalent programs and original programs, but properly adapted.
+    And then when I go for the standard in Urdu, you are giving me a
+    page in Hindi.”
+
+
+7. Pending Tasks at compaction (none fully shipped that turn except C→gcc binary)
+---------------------------------------------------------------------------------
+- Overlay GitHub latest into public/site without clobbering
+  nb.js/spine/skins/engine extras.
+- Restore GitHub workbench.html + files.js; make it always load
+  (textarea + monaco + config Run).
+- Homepage = GitHub one Language block; restore papers (both DOIs +
+  research.html); zip link without a button farm.
+- Complete stacks: Logo, BASIC, C, C++, ASM, Lex, Yacc × all ILM
+  languages; Hindi 2004 shape (demo + host + table + original
+  Romenagri).
+- Urdu (and other Perso) standards in that language / RTL, not Hindi
+  clauses.
+- Story spinner: until-stop, novel length, Keep going.
+- Cyclers actually runnable in the browser (+ mez).
+- llama models: 15M/42M/110M picker.
+- GATE CS: original + adapted runnable programs on the page.
+- Local download + CLI binary docs (panini binary); zip repack.
+- extras.ts logo/lex/yacc + transpile playground; HindiLOGO.uhin.
+- Rebuild, typecheck, smoke, agent-browser (workbench load, Urdu page
+  language, notebook shaili, binary mentioned).
+- Do not invent retrieved keyword maps; Logo as named Robot extract.
+
+
+8. Current Work at compaction
+-----------------------------
+Mid-stream on the latest GitHub-pull + workbench/homepage/ILM-seven-
+shailis/story/cyclers/llm/GATE/Urdu/CLI request.
+
+Completed just then:
+- Cloned/fetched zistgah/panini_by_grok to /tmp/gh/panini_by_grok at
+  eb387b6.
+- Compared GitHub docs vs public/site (we overwrote workbench and
+  bloated homepage Language into many buttons).
+- Fixed emit_backends.js C backend; added cli.js binary/gcc;
+  factorial native binary prints 720.
+- Attempted to append logo/lex/yacc to extras.ts — no-op (same
+  string). Those runners are not in extras yet.
+
+Not done at compaction: homepage restore, workbench restore+load,
+7-shaili generation, Urdu RTL, story, cyclers, models, GATE page,
+local.html, extras transpile, zip, smoke.
+
+Live preview: 8080 still serving / 302 → /site/ with previous estate
+(C/C++/BASIC stacks, working notebook compile, L15 workbench).
+Production smoke had passed on that estate.
+
+
+9. Optional Next Step named in the compaction
+---------------------------------------------
+Continue the latest user request without asking. Direct next actions:
+(a) restore GitHub index.html Language-as-one-block and both Zenodo
+    papers + zip;
+(b) restore GitHub workbench.html + files.js with immediate textarea
+    so it loads, plus config-driven Run;
+(c) extend /tmp/gen_stacks.mjs to Logo/BASIC/C/C++/ASM/Lex/Yacc × all
+    langs with Urdu-native RTL pages;
+(d) story until-stop, cycler runner, llm model picker, GATE run page,
+    local.html for zip + panini binary;
+(e) transpile extras/playground, pack zip, smoke.
+
+Quote of last work in the blob: “C codegen is incomplete — I’ll fix
+emit so factorial actually builds with gcc, then ship the rest.”
+Then factorial C was:
+
+int factorial(int n) {
+  if ((n <= 1)) { return 1; } else { return (n * factorial((n - 1))); }
+}
+int main() {
+  int result = 0;
+  result = factorial(6);
+  printf("%d\n", result);
+  return result;
+}
+
+PANINI → C → gcc wrote /tmp/factorial and run printed 720.
+extras.ts logo/lex/yacc append was a no-op; that is the next code
+to write.
+
+
+What this blob is, and is not
+-----------------------------
+IS: the machine summary that replaced earlier turns when the context
+window was compacted. That is the “compaction”.
+
+IS NOT: a secret second PANINI spec. IS NOT CONVERSATION.md. IS NOT
+the GitHub repo. IS NOT the zip.
+
+After this blob, later turns in the same session (not inside the
+compaction) added: GitHub workbench restore, homepage one Language
+block, both papers, 196 seven-host stacks, Urdu RTL, story-until-stop,
+cyclers runner, llama 15M/42M/110M, GATE adapted programmes, CLI
+binary, zip bloat removal (5.3MB DEFLATED), spine.json missing-comma
+menu break and fix, drop token PANINI-DROP:8f3c1a9e2b7d4c60.

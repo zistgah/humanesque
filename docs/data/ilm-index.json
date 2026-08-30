@@ -1,0 +1,1802 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "invented": false,
+ "axes": {
+  "script": {
+   "source": "retrieved/romenagri/tables",
+   "tables": 74
+  },
+  "language": {
+   "source": "retrieved/romenagri/langs",
+   "tables": 22
+  },
+  "standard": {
+   "source": "ilm/maps",
+   "shailis": 9,
+   "rules": 1913
+  }
+ },
+ "cells": {
+  "total": 243,
+  "filled": 81,
+  "skeleton": 162
+ },
+ "shailis": [
+  {
+   "target": "cpp",
+   "shaili": "shraeni",
+   "host": "C++",
+   "rules": 879,
+   "source": "retrieved/legacy/Hindawi/shraeni/h2cpp.uhin",
+   "invented": false
+  },
+  {
+   "target": "asm",
+   "shaili": "yantra",
+   "host": "asm",
+   "rules": 354,
+   "source": "retrieved/legacy/Hindawi/yantra/h2y.uhin",
+   "invented": false
+  },
+  {
+   "target": "c",
+   "shaili": "guru",
+   "host": "C",
+   "rules": 323,
+   "source": "retrieved/legacy/Hindawi/guru/h2c.lex",
+   "invented": false
+  },
+  {
+   "target": "java",
+   "shaili": "kritrima",
+   "host": "Java",
+   "rules": 186,
+   "source": "retrieved/legacy/Hindawi/kritrima/h2j.uhin",
+   "invented": false
+  },
+  {
+   "target": "basic",
+   "shaili": "praatha",
+   "host": "BASIC",
+   "rules": 99,
+   "source": "retrieved/legacy/Hindawi/praatha/h2b.uhin",
+   "invented": false
+  },
+  {
+   "target": "python",
+   "shaili": "soochee",
+   "host": "Python",
+   "rules": 38,
+   "source": "retrieved/legacy/Hindawi/soochee/h2py.uhin",
+   "invented": false
+  },
+  {
+   "target": "yacc",
+   "shaili": "wyaaka",
+   "host": "yacc",
+   "rules": 20,
+   "source": "retrieved/legacy/Hindawi/wyaaka/h2yacc.uhin",
+   "invented": false
+  },
+  {
+   "target": "logo",
+   "shaili": "robot",
+   "host": "LOGO",
+   "rules": 8,
+   "source": "retrieved/legacy/Hindawi/robot/ROBOT.C",
+   "invented": false
+  },
+  {
+   "target": "lex",
+   "shaili": "shabda",
+   "host": "lex",
+   "rules": 6,
+   "source": "retrieved/legacy/Hindawi/shabda/h2l.uhin",
+   "invented": false
+  }
+ ],
+ "languages": [
+  {
+   "id": "assamese",
+   "iso": "as",
+   "script": "Bengali-Assamese",
+   "script_table": true,
+   "keywords": 8,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 1,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "bengali",
+   "iso": "bn",
+   "script": "Bengali",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "bodo",
+   "iso": "brx",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "dogri",
+   "iso": "doi",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "gujarati",
+   "iso": "gu",
+   "script": "Gujarati",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "hindi",
+   "iso": "hi",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 29,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 29,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 11,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "kannada",
+   "iso": "kn",
+   "script": "Kannada",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "kashmiri",
+   "iso": "ks",
+   "script": "Perso-Arabic / Sharada",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "konkani",
+   "iso": "kok",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "maithili",
+   "iso": "mai",
+   "script": "Devanagari / Tirhuta",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "malayalam",
+   "iso": "ml",
+   "script": "Malayalam",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "manipuri",
+   "iso": "mni",
+   "script": "Meetei Mayek",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "marathi",
+   "iso": "mr",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "nepali",
+   "iso": "ne",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 11,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 1,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 4,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 11,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 4,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 5,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "odia",
+   "iso": "or",
+   "script": "Odia",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "punjabi",
+   "iso": "pa",
+   "script": "Gurmukhi",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "sanskrit",
+   "iso": "sa",
+   "script": "Devanagari",
+   "script_table": true,
+   "keywords": 29,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 4,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 29,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 11,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "santali",
+   "iso": "sat",
+   "script": "Ol Chiki",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "sindhi",
+   "iso": "sd",
+   "script": "Perso-Arabic / Khudawadi",
+   "script_table": true,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "tamil",
+   "iso": "ta",
+   "script": "Tamil",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "telugu",
+   "iso": "te",
+   "script": "Telugu",
+   "script_table": true,
+   "keywords": 26,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 26,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 2,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "urdu",
+   "iso": "ur",
+   "script": "Perso-Arabic",
+   "script_table": null,
+   "keywords": 27,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 27,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "punjabi_shahmukhi",
+   "iso": "pa-shahmukhi",
+   "script": "Shahmukhi",
+   "script_table": null,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "arabic",
+   "iso": "ar",
+   "script": "Arabic",
+   "script_table": null,
+   "keywords": 29,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 29,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "dari",
+   "iso": "prs",
+   "script": "Perso-Arabic",
+   "script_table": null,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "pashto",
+   "iso": "ps",
+   "script": "Perso-Arabic",
+   "script_table": null,
+   "keywords": 0,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 0,
+     "unresolved": 8,
+     "status": "SKELETON"
+    },
+    {
+     "target": "basic",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "c",
+     "filled": 0,
+     "unresolved": 309,
+     "status": "SKELETON"
+    },
+    {
+     "target": "cpp",
+     "filled": 0,
+     "unresolved": 496,
+     "status": "SKELETON"
+    },
+    {
+     "target": "java",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  },
+  {
+   "id": "persian",
+   "iso": "fa",
+   "script": "Perso-Arabic",
+   "script_table": null,
+   "keywords": 27,
+   "cells": [
+    {
+     "target": "asm",
+     "filled": 3,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "basic",
+     "filled": 8,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "c",
+     "filled": 27,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "cpp",
+     "filled": 9,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "java",
+     "filled": 10,
+     "unresolved": 0,
+     "status": "FILLED"
+    },
+    {
+     "target": "lex",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "logo",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "python",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    },
+    {
+     "target": "yacc",
+     "filled": 0,
+     "unresolved": 0,
+     "status": "SKELETON"
+    }
+   ]
+  }
+ ]
+}

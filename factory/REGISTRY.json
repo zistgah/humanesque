@@ -9,11 +9,68 @@
   "frozen_rule": "Do not edit freeze:true without factory/DELIBERATION.md.",
   "languages_index": "factory/languages.json",
   "groups": {
-    "frozen": ["spec-v1", "vfs", "shell", "interp", "vt100", "romenagri", "wasm-front", "wat2wasm", "c-frontend", "python-frontend", "cpp-frontend", "rust-frontend", "go-frontend", "julia-frontend", "notebook-frozen", "license", "retrieved"],
-    "frontends-live": ["javascript-frontend", "typescript-frontend", "java-frontend", "haskell-frontend", "smalltalk-frontend", "lisp-frontend", "prolog-frontend"],
-    "runtimes-live": ["clower", "gnuc", "cpplower", "stdlower", "cinterp", "ccpp", "qb64", "js262", "steval", "hseval", "cleval", "pleval", "vga"],
-    "factory": ["factory-scan", "factory-sync", "agi-map", "agi-green", "languages-index", "spine"],
-    "estate": ["monitor", "wgsl", "softmmu", "esp32", "isa-riscv", "isa-arm", "sysml", "micro-libc", "workbench-spec"]
+    "frozen": [
+      "spec-v1",
+      "vfs",
+      "shell",
+      "interp",
+      "vt100",
+      "romenagri",
+      "wasm-front",
+      "wat2wasm",
+      "c-frontend",
+      "python-frontend",
+      "cpp-frontend",
+      "rust-frontend",
+      "go-frontend",
+      "julia-frontend",
+      "notebook-frozen",
+      "license",
+      "retrieved"
+    ],
+    "frontends-live": [
+      "javascript-frontend",
+      "typescript-frontend",
+      "java-frontend",
+      "haskell-frontend",
+      "smalltalk-frontend",
+      "lisp-frontend",
+      "prolog-frontend"
+    ],
+    "runtimes-live": [
+      "clower",
+      "gnuc",
+      "cpplower",
+      "stdlower",
+      "cinterp",
+      "ccpp",
+      "qb64",
+      "js262",
+      "steval",
+      "hseval",
+      "cleval",
+      "pleval",
+      "vga"
+    ],
+    "factory": [
+      "factory-scan",
+      "factory-sync",
+      "agi-map",
+      "agi-green",
+      "languages-index",
+      "spine"
+    ],
+    "estate": [
+      "monitor",
+      "wgsl",
+      "softmmu",
+      "esp32",
+      "isa-riscv",
+      "isa-arm",
+      "sysml",
+      "micro-libc",
+      "workbench-spec"
+    ]
   },
   "components": [
     {
@@ -76,7 +133,7 @@
     {
       "id": "wasm-front",
       "path": "runtime/wasm_front.js",
-      "owns": "WASM CFG / Maṇḍūkapluti",
+      "owns": "WASM CFG / Ma\u1e47\u1e0d\u016bkapluti",
       "status": "optimized",
       "freeze": true,
       "hash": "32646d5f9d03cbeb",
@@ -181,14 +238,14 @@
     {
       "id": "cpplower",
       "path": "runtime/cpplower.js",
-      "owns": "C++ → C",
+      "owns": "C++ \u2192 C",
       "status": "live",
       "freeze": false
     },
     {
       "id": "stdlower",
       "path": "runtime/stdlower.js",
-      "owns": "Rust/Go/Julia → C",
+      "owns": "Rust/Go/Julia \u2192 C",
       "status": "live",
       "freeze": false
     },
@@ -280,7 +337,7 @@
     {
       "id": "factory-sync",
       "path": "scripts/factory_sync.mjs",
-      "owns": "canonical → adapter copy",
+      "owns": "canonical \u2192 adapter copy",
       "status": "live",
       "freeze": false
     },
@@ -294,7 +351,7 @@
     {
       "id": "agi-map",
       "path": "factory/agi_map.json",
-      "owns": "L0–L26 → registry components",
+      "owns": "L0\u2013L26 \u2192 registry components",
       "status": "live",
       "freeze": false
     },
@@ -360,7 +417,7 @@
     {
       "id": "java-frontend",
       "path": "src/panini/frontends/java.pni",
-      "owns": "Java STANDARD GREEN on OpenJDK javac Parens extract. Not Java™.",
+      "owns": "Java STANDARD GREEN on OpenJDK javac Parens extract. Not Java\u2122.",
       "status": "live",
       "freeze": false
     },
@@ -412,6 +469,17 @@
       "owns": "Language factory index. Browse before adding a frontend.",
       "status": "live",
       "freeze": false
+    },
+    {
+      "id": "x86rm",
+      "path": "runtime/x86rm.js",
+      "owns": "16-bit real-mode guest + AyeBIOS POST + floppy",
+      "status": "live",
+      "freeze": false,
+      "adapter": [
+        "docs/emu.html",
+        "docs/engine/interp/x86rm.js"
+      ]
     }
   ],
   "adapters": [

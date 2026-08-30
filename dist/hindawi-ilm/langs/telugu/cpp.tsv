@@ -1,0 +1,13 @@
+# telugu → cpp  |  script: Telugu  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+లేకపోతే	leekapootee	else
+వరకు	varaku	while
+చేయి	ceeyi	do
+కొనసాగు	konasaagu	continue
+ఎంపిక	empika	switch
+పూర్ణాంకం	puur_naa_nka_m	int
+అక్షరం	ak_sara_m	char
+అంతరంగ	a_ntara_nga	private
+స్థిర	sthira	const
