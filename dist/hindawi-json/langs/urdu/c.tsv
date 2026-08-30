@@ -1,0 +1,31 @@
+# urdu → c  |  script: Perso-Arabic  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+اگر	agara	if
+ورنہ	varnah	else
+جبتک	jabataka	while
+کرو	karau	do
+برائے	baraae	for
+توڑو	taudau	break
+جاری	jaarii	continue
+انتخاب	inatikhaaba	switch
+حالت	haalata	case
+طےشدہ	taeshudah	default
+واپس	vaapasa	return
+ثابت	saabita	const
+صحیح	sahiiha	int
+اعشاری	aeshaarii	float
+دوہرا	dauharaa	double
+حرف	harfa	char
+خالی	khaalii	void
+تابع	taabe	void
+جماعت	jamaaata	class
+نیا	nayaa	new
+عوامی	avaamii	public
+نجی	nijii	private
+ساکن	saakina	static
+مجازی	majaazii	virtual
+جب	jaba	case
+ساخت	saakhta	struct
+شامل	shaamila	include

@@ -1,0 +1,14 @@
+# malayalam → java  |  script: Malayalam  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/kritrima/h2j.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	java
+അല്ലെങ്കിൽ	alle_nkila	else
+വരെ	vare	while
+ചെയ്യുക	ceyyuka	do
+നിർത്തുക	nirttuka	stop
+തുടരുക	tudaruka	continue
+തിരഞ്ഞെടുപ്പ്	tira_nyedupp	switch
+പൂർണ്ണസംഖ്യ	puur_n_nasa_mkhya	int
+അക്ഷരം	ak_sara_m	char
+സ്വകാര്യ	svakaarya	private
+സ്ഥിതം	sthita_m	const

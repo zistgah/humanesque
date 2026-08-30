@@ -1,0 +1,82 @@
+%{
+/*
+Copyright (C) 2003-2023 Abhishek Choudhary
+This file is part of the Hindawi Indic Programming System.
+
+The Hindawi Indic Programming Systemis free software; 
+you can redistribute it and/or modify it under the terms of the 
+GNU General Public License as published by the 
+Free Software Foundation; either version 2 of the License, or 
+(at your option) any later version.
+
+The Hindawi Indic Programming System is distributed in the hope 
+that it will be useful, but WITHOUT ANY WARRANTY; without 
+even the implied warranty of MERCHANTABILITY or FITNESS FOR 
+A PARTICULAR PURPOSE. See the GNU General Public License for 
+more details.
+
+You should have received a copy of the GNU General Public
+License along with this file; see the file COPYING. If
+not, write to the Free Software Foundation,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
+/*
+Modifications: (Please maintain reverse chronological order)
+
+	dd-mmm-yyyy, Nature of modification,
+                        Name of modifier <alias>,
+			email adress of modifier
+
+        31-Jul-2006, Added the modifications section,
+                        Abhishek Choudhary <hi_pedler>,
+                        choudhary@indicybers.net
+
+End of modifications.
+*/
+
+%}
+
+
+%%
+
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}                                                                  
+and       {printf("మరియు");}
+as       {printf("వంటి");}
+assert       {printf("చాటుకోవడం");}
+async       {printf("అసమకాలీక");}
+await       {printf("ఎదురు");}
+break       {printf("שבור");}
+class       {printf("מחלקה");}
+continue       {printf("המשך");}
+def       {printf("నిర్వచించు");}
+del       {printf("తొలగించు");}
+elif       {printf("వేరే_ఉంటే");}
+else       {printf("אחרת");}
+except       {printf("తప్ప");}
+exec       {printf("అమలుపరచు");}
+false       {printf("తప్పు");}
+finally       {printf("చివరకు");}
+for       {printf("עבור");}
+from       {printf("నుండి");}
+global       {printf("ప్రపంచ");}
+if       {printf("𐡄𐡍");}
+import       {printf("దిగుమతి");}
+in       {printf("లో");}
+is       {printf("ఉంది");}
+None       {printf("ఏమీకాదు");}
+nonlocal       {printf("స్థానికం_కానిది");}
+not       {printf("కాదు");}
+or       {printf("లేదా");}
+pass       {printf("ఉతీర్ణత");}
+print       {printf("ముద్రించు");}
+raise       {printf("పెంచు");}
+return       {printf("החזר");}
+true       {printf("నిజం");}
+try       {printf("ప్రయత్నించు");}
+while       {printf("כלעוד");}
+with       {printf("తో");}
+yield       {printf("దిగుబడి");}
+%%
+

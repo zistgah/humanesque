@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(cd "$HERE/.." && pwd)"
+
+export PAN_TOOL="pankt"
+
+exec "$HERE/node_modules/.bin/tsx"     "$ROOT/scripts/pan-tool.mjs"     "$@"

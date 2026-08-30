@@ -1,0 +1,7 @@
+<शैली गुरु>
+##include <मानकपन.स>
+int main()
+{
+	printf("नमस्ते Hindawi\n");
+	return 0;
+}

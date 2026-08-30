@@ -1,0 +1,30 @@
+# bengali → c  |  script: Bengali  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+যদি	yadi	if
+অন্যথা	anyathaa	else
+যতক্ষণ	yatak_sa_na	while
+করো	karau	do
+জন্য	janya	for
+বিরতি	birati	break
+চালু	caalu	continue
+নির্বাচন	nirbaacana	switch
+ক্ষেত্র	k_seetra	case
+পূর্বনির্ধারিত	puurbanirdhaarita	default
+ফেরত	pheerata	return
+ধ্রুবক	dhrubaka	const
+পূর্ণসংখ্যা	puur_nasa_nkhyaa	int
+দশমিক	dashamika	float
+দ্বিগুণ	dbigu_na	double
+অক্ষর	ak_sara	char
+শূন্য	shuunya	void
+কাজ	kaaja	void
+শ্রেণী	shree_nii	class
+নতুন	natuna	new
+সর্বজনীন	sarbajaniina	public
+ব্যক্তিগত	byaktigata	private
+স্থির	sthira	static
+আভাসী	aabhaasii	virtual
+যখন	yakhana	case
+কাঠামো	kaathaamau	struct

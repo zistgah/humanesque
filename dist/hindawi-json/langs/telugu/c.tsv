@@ -1,0 +1,30 @@
+# telugu → c  |  script: Telugu  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+ఒకవేళ	okaveela	if
+లేకపోతే	leekapootee	else
+వరకు	varaku	while
+చేయి	ceeyi	do
+కొరకు	koraku	for
+ఆపు	aapu	break
+కొనసాగు	konasaagu	continue
+ఎంపిక	empika	switch
+స్థితి	sthiti	case
+అప్రమేయ	aprameeya	default
+తిరిగి	tirigi	return
+స్థిరరాశి	sthiraraashi	const
+పూర్ణాంకం	puur_naa_nka_m	int
+దశాంశం	dashaa_msha_m	float
+ద్విగుణ	dvigu_na	double
+అక్షరం	ak_sara_m	char
+శూన్య	shuunya	void
+ప్రమేయం	prameeya_m	void
+తరగతి	taragati	class
+కొత్త	kotta	new
+బహిరంగ	bahira_nga	public
+అంతరంగ	a_ntara_nga	private
+స్థిర	sthira	static
+మాయా	maayaa	virtual
+ఎప్పుడు	eppudu	case
+నిర్మాణం	nirmaa_na_m	struct

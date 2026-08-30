@@ -1,0 +1,30 @@
+# marathi → c  |  script: Devanagari  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+जर	jara	if
+अन्यथा	anyathaa	else
+पर्यंत	parya_nta	while
+करा	karaa	do
+साठी	saathii	for
+थांबा	thaa_mbaa	break
+सुरूठेवा	suruutheevaa	continue
+निवड	nivada	switch
+स्थिती	sthitii	case
+पूर्वनिर्धारित	puurvanirdhaarita	default
+परत	parata	return
+स्थिरांक	sthiraa_nka	const
+पूर्णांक	puur_naa_nka	int
+दशांश	dashaa_nsha	float
+द्विगुण	dvigu_na	double
+अक्षर	ak_sara	char
+शून्य	shuunya	void
+कार्य	kaarya	void
+वर्ग	varga	class
+नवीन	naviina	new
+सार्वजनिक	saarvajanika	public
+खाजगी	khaajagii	private
+स्थिर	sthira	static
+आभासी	aabhaasii	virtual
+जेव्हा	jeevhaa	case
+संरचना	sa_nracanaa	struct

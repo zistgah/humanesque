@@ -1,0 +1,12 @@
+# assamese → c  |  script: Bengali-Assamese  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/guru/h2c.lex)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	c
+যদি	yadi	if
+অন্যথা	anyathaa	else
+যেতিয়ালৈ	yeetiyaalai	while
+কৰা	karaa	do
+বাবে	baabee	for
+ঘূৰাই	ghuuraai	return
+কাৰ্য	kaarya	void
+শ্ৰেণী	shree_nii	class

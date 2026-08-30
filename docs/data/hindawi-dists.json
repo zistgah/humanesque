@@ -1,0 +1,2882 @@
+{
+ "copyright": "Copyright (C) 1993-2026 Abhishek Choudhary",
+ "license": "GPL-3.0-or-later",
+ "base": "every retrieved transducer rule is carried; a language substitutes the words it has and carries the rest through unchanged",
+ "shailis": [
+  {
+   "shaili": "guru",
+   "native": "गुरु",
+   "host": "C",
+   "composes_with": []
+  },
+  {
+   "shaili": "shraeni",
+   "native": "श्रेणी",
+   "host": "C++",
+   "composes_with": []
+  },
+  {
+   "shaili": "praatha",
+   "native": "प्राथमिक",
+   "host": "BASIC",
+   "composes_with": []
+  },
+  {
+   "shaili": "kritrima",
+   "native": "कृत्रिम",
+   "host": "Java",
+   "composes_with": []
+  },
+  {
+   "shaili": "soochee",
+   "native": "सूची",
+   "host": "Python",
+   "composes_with": []
+  },
+  {
+   "shaili": "shabda",
+   "native": "शब्द",
+   "host": "lex",
+   "composes_with": [
+    "h2c"
+   ]
+  },
+  {
+   "shaili": "wyaaka",
+   "native": "व्याकरण",
+   "host": "yacc",
+   "composes_with": [
+    "h2c"
+   ]
+  },
+  {
+   "shaili": "yantra",
+   "native": "यंत्र",
+   "host": "asm",
+   "composes_with": []
+  },
+  {
+   "shaili": "robot",
+   "native": "रोबोट",
+   "host": "LOGO",
+   "composes_with": []
+  }
+ ],
+ "distributions": [
+  {
+   "script": "devanagari",
+   "lang": "hindi",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "sanskrit",
+   "keywords": 736,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 23,
+     "carried": 289
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 25,
+     "carried": 842
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 21,
+     "carried": 161
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "marathi",
+   "keywords": 735,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 21,
+     "carried": 291
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 23,
+     "carried": 844
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 19,
+     "carried": 163
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "konkani",
+   "keywords": 735,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 21,
+     "carried": 291
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 23,
+     "carried": 844
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 19,
+     "carried": 163
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "nepali",
+   "keywords": 730,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 19,
+     "carried": 293
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 21,
+     "carried": 846
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 17,
+     "carried": 165
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "bodo",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "dogri",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "maithili",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "marwari",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "bhojpuri",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "awadhi",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "magahi",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "rajasthani",
+   "keywords": 724,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 16,
+     "carried": 296
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 18,
+     "carried": 849
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 14,
+     "carried": 168
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "pali",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "prakrit",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "devanagari",
+   "lang": "sindhi_deva",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "bengali",
+   "lang": "bengali",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "bengali",
+   "lang": "assamese",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "bengali",
+   "lang": "manipuri_bengali",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected"
+   ]
+  },
+  {
+   "script": "gujarati",
+   "lang": "gujarati",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "gurmukhi",
+   "lang": "punjabi",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "oriya",
+   "lang": "odia",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "tamil",
+   "lang": "tamil",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "telugu",
+   "lang": "telugu",
+   "keywords": 740,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 6,
+     "carried": 30
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "kannada",
+   "lang": "kannada",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "malayalam",
+   "lang": "malayalam",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "sinhala",
+   "lang": "sinhala",
+   "keywords": 736,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 23,
+     "carried": 289
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 25,
+     "carried": 842
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 21,
+     "carried": 161
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected-partial"
+   ]
+  },
+  {
+   "script": "tirhuta",
+   "lang": "maithili_tirhuta",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected"
+   ]
+  },
+  {
+   "script": "modi",
+   "lang": "marathi_modi",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected"
+   ]
+  },
+  {
+   "script": "sharada",
+   "lang": "kashmiri",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "csv"
+   ]
+  },
+  {
+   "script": "takri",
+   "lang": "dogri_takri",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected",
+    "projected-partial"
+   ]
+  },
+  {
+   "script": "khudawadi",
+   "lang": "sindhi_khudawadi",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "multani",
+   "lang": "saraiki",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected"
+   ]
+  },
+  {
+   "script": "kaithi",
+   "lang": "bhojpuri_kaithi",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected",
+    "projected-partial"
+   ]
+  },
+  {
+   "script": "grantha",
+   "lang": "sanskrit_grantha",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected"
+   ]
+  },
+  {
+   "script": "newa",
+   "lang": "nepal_bhasa",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "projected",
+    "projected-partial"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "urdu",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "shahmukhi",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "csv"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "sindhi",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "csv"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "kashmiri_perso",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "pashto",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "csv"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "dari",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "csv"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "persian",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "arabic",
+   "keywords": 741,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv"
+   ]
+  },
+  {
+   "script": "perso_arabic",
+   "lang": "saraiki_perso",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "inherited"
+   ]
+  },
+  {
+   "script": "hebrew",
+   "lang": "hebrew",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "fill-literary"
+   ]
+  },
+  {
+   "script": "syriac",
+   "lang": "syriac",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "hebrew-hub"
+   ]
+  },
+  {
+   "script": "syriac",
+   "lang": "aramaic",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "hebrew-hub"
+   ]
+  },
+  {
+   "script": "phoenician",
+   "lang": "phoenician",
+   "keywords": 742,
+   "native_words": 29,
+   "rules": 1852,
+   "shailis": {
+    "guru": {
+     "rules": 312,
+     "replaced": 24,
+     "carried": 288
+    },
+    "shraeni": {
+     "rules": 867,
+     "replaced": 26,
+     "carried": 841
+    },
+    "praatha": {
+     "rules": 93,
+     "replaced": 0,
+     "carried": 93
+    },
+    "kritrima": {
+     "rules": 182,
+     "replaced": 22,
+     "carried": 160
+    },
+    "soochee": {
+     "rules": 36,
+     "replaced": 8,
+     "carried": 28
+    },
+    "shabda": {
+     "rules": 4,
+     "replaced": 0,
+     "carried": 4
+    },
+    "wyaaka": {
+     "rules": 6,
+     "replaced": 0,
+     "carried": 6
+    },
+    "yantra": {
+     "rules": 352,
+     "replaced": 0,
+     "carried": 352
+    },
+    "robot": {
+     "rules": 0,
+     "replaced": 0,
+     "carried": 0
+    }
+   },
+   "sources": [
+    "tsv",
+    "hebrew-hub"
+   ]
+  }
+ ]
+}

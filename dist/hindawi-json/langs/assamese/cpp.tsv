@@ -1,0 +1,7 @@
+# assamese → cpp  |  script: Bengali-Assamese  |  © 1993-2026 Abhishek Choudhary, GPL-3.0-or-later
+# native ← romenagri (retrieved/romenagri/langs) ; romenagri → target (retrieved/legacy/Hindawi/shraeni/h2cpp.uhin)
+# rows with an EMPTY native column are UNRESOLVED: a speaker must author them. Nothing here is invented.
+native	romenagri	cpp
+অন্যথা	anyathaa	else
+যেতিয়ালৈ	yeetiyaalai	while
+কৰা	karaa	do

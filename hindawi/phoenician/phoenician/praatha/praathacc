@@ -1,0 +1,11 @@
+#!/bin/bash
+#Copyright (C) 1993-2026 Abhishek Choudhary
+#This file is part of the Hindawi Indic Programming System.
+#Shaili praatha (प्राथमिक) — BASIC — phoenician
+
+echo संकलन के परिणाम >  tempfil0123.tmphin
+echo ============ >> tempfil0123.tmphin
+cat $1 | acii2uni | iconv -f UTF-16 -t UTF-8 | h2b > tempfil0123.tmphin.bas
+basic tempfil0123.tmphin.bas 2>> tempfil0123.tmphin
+cat tempfil0123.tmphin
+rm tempfil0123.tmphin

@@ -40,6 +40,17 @@ ck "pipeline reported, not reimplemented"       bash -c 'node tools/hindawi_pipe
 ck "74 per-script Hindawi distributions built"  bash -c '[ $(ls dist/hindawi-scripts/*.tar.gz 2>/dev/null | wc -l) -ge 74 ]'
 ck "each bundle is self-contained"              bash -c 'cd /tmp && rm -rf _t && mkdir _t && tar xzf '"$PWD"'/dist/hindawi-scripts/tamil.tar.gz -C _t && [ -f _t/tamil/tamil_to_deva.tsv ] && [ -f _t/tamil/maps/lex.map.json ] && [ -f _t/tamil/langs/tamil/c.tsv ] && [ -f _t/tamil/hindawi_pipeline.mjs ]'
 ck "script downloads are listed on the site"    bash -c '[ -f docs/data/hindawi-scripts.json ] && grep -q "hindawi-scripts" docs/ilm.html'
+ck "49 Hindawi distributions in original structure" bash -c '[ $(ls hindawi-tar/*.tar.gz|wc -l) -ge 70 ] && [ -f hindawi/devanagari/hindi/guru/h2c.uhin ] && [ -f hindawi/devanagari/hindi/guru/gurucc ] && [ -f hindawi/devanagari/hindi/keywords ]'
+ck "no rule was dropped from the retrieved base"  bash -c 'a=$(grep -c printf retrieved/legacy/Hindawi/guru/h2c.uhin); b=$(grep -c printf hindawi/devanagari/hindi/guru/h2c.uhin); [ "$a" = "$b" ]'
+ck "shraeni keeps all 879 retrieved rules"        bash -c '[ $(grep -c printf hindawi/devanagari/hindi/shraeni/h2cpp.uhin) -ge 870 ]'
+ck "keywords file is the full retrieved set"      bash -c '[ $(wc -l < hindawi/devanagari/hindi/keywords) -ge 700 ]'
+ck "languages differ in their transducers"        bash -c '! cmp -s hindawi/devanagari/hindi/guru/h2c.uhin hindawi/devanagari/sanskrit/guru/h2c.uhin'
+ck "every distribution has exercises"           bash -c 'n=0; e=0; for d in hindawi/*/*/; do n=$((n+1)); [ -f "$d/exercises/README.md" ] && e=$((e+1)); done; [ "$n" -gt 0 ] && [ "$n" = "$e" ]'
+ck "shabda composes in the generated driver"    grep -q "h2l | h2c" hindawi/devanagari/hindi/shabda/shabdacc
+ck "script round trip measured and published"   bash -c '[ -f docs/data/hindawi-roundtrip.json ] && node -e "const r=require(\"./docs/data/hindawi-roundtrip.json\");process.exit(r.scripts.length>=19?0:1)"'
+ck "Hindawi page linked from the site"          grep -q "hindawi.html" docs/index.html
+ck "grok dist/hindawi is intact, not overwritten" bash -c '[ -d dist/hindawi/bin ] && [ -d dist/hindawi/share ] && [ -d dist/hindawi/examples ]'
+ck "46 toolchain frontends carried, isolated"    bash -c '[ $(ls toolchain/bin | grep -vE "\.elf$|node_modules|package|fix_" | wc -l) -ge 46 ] && [ -f toolchain/PROVENANCE.md ]'
 echo " integrity (fixed in this merge)"
 ck "package.json licence matches LICENSE"   bash -c 'grep -q "GPL-3.0-or-later" package.json'
 ck "test suite CAN fail (exit code honoured)" bash -c '! grep -q "never_nonzero" tests/test.mjs'

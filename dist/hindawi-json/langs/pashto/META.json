@@ -1,0 +1,66 @@
+{
+ "language": "pashto",
+ "iso639": "ps",
+ "script": "Perso-Arabic",
+ "script_table": null,
+ "script_axis": "UNRESOLVED",
+ "language_axis": "UNRESOLVED",
+ "keyword_source": null,
+ "invented": false,
+ "cells": [
+  {
+   "target": "asm",
+   "filled": 0,
+   "unresolved": 8,
+   "status": "SKELETON"
+  },
+  {
+   "target": "basic",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "c",
+   "filled": 0,
+   "unresolved": 309,
+   "status": "SKELETON"
+  },
+  {
+   "target": "cpp",
+   "filled": 0,
+   "unresolved": 496,
+   "status": "SKELETON"
+  },
+  {
+   "target": "java",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "lex",
+   "filled": 0,
+   "unresolved": 309,
+   "status": "SKELETON"
+  },
+  {
+   "target": "logo",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "python",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "yacc",
+   "filled": 0,
+   "unresolved": 309,
+   "status": "SKELETON"
+  }
+ ]
+}

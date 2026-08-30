@@ -1,0 +1,66 @@
+{
+ "language": "gujarati",
+ "iso639": "gu",
+ "script": "Gujarati",
+ "script_table": "retrieved/romenagri/tables/gujarati_to_deva.tsv",
+ "script_axis": "RETRIEVED",
+ "language_axis": "RETRIEVED",
+ "keyword_source": "retrieved/romenagri/langs/gujarati_c.tsv",
+ "invented": false,
+ "cells": [
+  {
+   "target": "asm",
+   "filled": 3,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "basic",
+   "filled": 8,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "c",
+   "filled": 26,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "cpp",
+   "filled": 9,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "java",
+   "filled": 10,
+   "unresolved": 0,
+   "status": "FILLED"
+  },
+  {
+   "target": "lex",
+   "filled": 0,
+   "unresolved": 309,
+   "status": "SKELETON"
+  },
+  {
+   "target": "logo",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "python",
+   "filled": 0,
+   "unresolved": 0,
+   "status": "SKELETON"
+  },
+  {
+   "target": "yacc",
+   "filled": 0,
+   "unresolved": 309,
+   "status": "SKELETON"
+  }
+ ]
+}
